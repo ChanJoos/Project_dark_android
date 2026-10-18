@@ -1,0 +1,1246 @@
+{
+  "status": "PARTIAL_NOT_ALL_ARTICLE_ITEMS",
+  "admitted": [
+    {
+      "itemId": "USER_ITEM_20261018_R04366",
+      "name": "매단검",
+      "slot": "무기",
+      "appearanceId": "mw067",
+      "requiredLevel": 26,
+      "sourceRow": 4366,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 40,
+        "MaxATK": 50,
+        "LMinATK": 3,
+        "LMaxATK": 4
+      },
+      "proof": {
+        "article": "306941",
+        "source": "306941/source_00.png",
+        "sourceLabelTop": 1872
+      },
+      "sourceWeight": 7,
+      "sourceDurability": 6000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01852",
+      "name": "타고나이트채찍",
+      "slot": "무기",
+      "appearanceId": "mw049",
+      "requiredLevel": 11,
+      "sourceRow": 1852,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 90,
+        "MaxATK": 100,
+        "LMinATK": 11,
+        "LMaxATK": 11
+      },
+      "proof": {
+        "article": "306941",
+        "source": "306941/source_00.png",
+        "sourceLabelTop": 4432
+      },
+      "sourceWeight": 11,
+      "sourceDurability": 10000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04173",
+      "name": "미스릴채찍",
+      "slot": "무기",
+      "appearanceId": "mw050",
+      "requiredLevel": 99,
+      "sourceRow": 4173,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 90,
+        "MaxATK": 100,
+        "LMinATK": 10,
+        "LMaxATK": 10
+      },
+      "proof": {
+        "article": "306941",
+        "source": "306941/source_00.png",
+        "sourceLabelTop": 4548
+      },
+      "sourceWeight": 17,
+      "sourceDurability": 20000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04990",
+      "name": "루비나반지",
+      "slot": "반지",
+      "appearanceId": null,
+      "requiredLevel": 81,
+      "sourceRow": 4990,
+      "stats": {
+        "AC": -1,
+        "HIT": 2,
+        "DAM": 2,
+        "HP": 500,
+        "MP": 50,
+        "STR": 0,
+        "DEX": 1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "300060",
+        "source": "300060/source_01.png",
+        "existingExactNamedIcon": "IT_SOURCE_152_RUBI_1313E2F4"
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 10000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05113",
+      "name": "레드가넷반지",
+      "slot": "반지",
+      "appearanceId": null,
+      "requiredLevel": 71,
+      "sourceRow": 5113,
+      "stats": {
+        "AC": 0,
+        "HIT": 3,
+        "DAM": 3,
+        "HP": 250,
+        "MP": 1000,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 1,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "300060",
+        "source": "300060/source_01.png",
+        "existingExactNamedIcon": "IT_SOURCE_152_REDDOGANETOYUBIWA_CC8ED229"
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 90000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03562",
+      "name": "산호반지",
+      "slot": "반지",
+      "appearanceId": null,
+      "requiredLevel": 11,
+      "sourceRow": 3562,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 100,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "300060",
+        "source": "300060/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_152_SANGO_A6FE6F21"
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 3000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05211",
+      "name": "대지의홀디트링",
+      "slot": "귀걸이",
+      "appearanceId": null,
+      "requiredLevel": 71,
+      "sourceRow": 5211,
+      "stats": {
+        "AC": -1,
+        "HIT": 10,
+        "DAM": 2,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 10,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "292242",
+        "source": "292242/source_01.png",
+        "existingExactNamedIcon": "IT_SOURCE_146_DAITIHORUDEITO_6523D03A"
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 5000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01388",
+      "name": "화려한귀걸이",
+      "slot": "귀걸이",
+      "appearanceId": null,
+      "requiredLevel": 71,
+      "sourceRow": 1388,
+      "stats": {
+        "AC": -1,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "292242",
+        "source": "292242/source_01.png",
+        "existingExactNamedIcon": "IT_SOURCE_146_HADEEAR_84C2EB0E"
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 8000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01947",
+      "name": "칸의목걸이",
+      "slot": "목걸이",
+      "appearanceId": null,
+      "requiredLevel": 1,
+      "sourceRow": 1947,
+      "stats": {
+        "AC": -1,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "292933",
+        "source": "292933/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_197_KANNEKU_56B04FF1"
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 3000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05011",
+      "name": "로운",
+      "slot": "무기",
+      "appearanceId": "mw135",
+      "requiredLevel": 99,
+      "sourceRow": 5011,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 2,
+        "DEX": 0,
+        "INT": -1,
+        "WIS": -1,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 4,
+        "MaxATK": 20,
+        "LMinATK": 76,
+        "LMaxATK": 80
+      },
+      "proof": {
+        "article": "301172",
+        "source": "301172/source_01.png",
+        "sourceLabelTop": 1313
+      },
+      "sourceWeight": 5,
+      "sourceDurability": 800000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03545",
+      "name": "샤인",
+      "slot": "무기",
+      "appearanceId": "mw139",
+      "requiredLevel": 99,
+      "sourceRow": 3545,
+      "stats": {
+        "AC": 1,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 500,
+        "STR": 2,
+        "DEX": 0,
+        "INT": 1,
+        "WIS": -1,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 24,
+        "MaxATK": 32,
+        "LMinATK": 86,
+        "LMaxATK": 100
+      },
+      "proof": {
+        "article": "301172",
+        "source": "301172/source_01.png",
+        "sourceLabelTop": 1474
+      },
+      "sourceWeight": 6,
+      "sourceDurability": 800000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04432",
+      "name": "마론비쥬",
+      "slot": "무기",
+      "appearanceId": "mw143",
+      "requiredLevel": 99,
+      "sourceRow": 4432,
+      "stats": {
+        "AC": 1,
+        "HIT": 1,
+        "DAM": 1,
+        "HP": 200,
+        "MP": 300,
+        "STR": 1,
+        "DEX": 0,
+        "INT": 1,
+        "WIS": 1,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 34,
+        "MaxATK": 60,
+        "LMinATK": 96,
+        "LMaxATK": 105
+      },
+      "proof": {
+        "article": "301172",
+        "source": "301172/source_01.png",
+        "sourceLabelTop": 1634
+      },
+      "sourceWeight": 7,
+      "sourceDurability": 800000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04445",
+      "name": "림피드비쥬",
+      "slot": "무기",
+      "appearanceId": "mw147",
+      "requiredLevel": 99,
+      "sourceRow": 4445,
+      "stats": {
+        "AC": 2,
+        "HIT": 3,
+        "DAM": 3,
+        "HP": 0,
+        "MP": 3000,
+        "STR": 2,
+        "DEX": 0,
+        "INT": -2,
+        "WIS": -2,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 44,
+        "MaxATK": 60,
+        "LMinATK": 100,
+        "LMaxATK": 110
+      },
+      "proof": {
+        "article": "301172",
+        "source": "301172/source_01.png",
+        "sourceLabelTop": 1800
+      },
+      "sourceWeight": 7,
+      "sourceDurability": 800000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04305",
+      "name": "매직파나",
+      "slot": "무기",
+      "appearanceId": "mw062",
+      "requiredLevel": 11,
+      "sourceRow": 4305,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 4,
+        "MaxATK": 20,
+        "LMinATK": 6,
+        "LMaxATK": 30
+      },
+      "proof": {
+        "article": "301172",
+        "source": "301172/source_00.png",
+        "sourceLabelTop": 1810
+      },
+      "sourceWeight": 5,
+      "sourceDurability": 3000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04341",
+      "name": "매직가디언스태프",
+      "slot": "무기",
+      "appearanceId": "mw187",
+      "requiredLevel": 41,
+      "sourceRow": 4341,
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 4,
+        "MaxATK": 8,
+        "LMinATK": 3,
+        "LMaxATK": 7
+      },
+      "proof": {
+        "article": "301172",
+        "source": "301172/source_00.png",
+        "sourceLabelTop": 2201
+      },
+      "sourceWeight": 3,
+      "sourceDurability": 30000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05554",
+      "name": "가죽각반",
+      "slot": "각반",
+      "appearanceId": null,
+      "requiredLevel": 11,
+      "sourceRow": 5554,
+      "stats": {
+        "AC": -2,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "293869",
+        "source": "293869/source_00.png",
+        "existingExactNamedIcon": "IT_LEGGING_LEATHER"
+      },
+      "sourceWeight": 4,
+      "sourceDurability": 3000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05426",
+      "name": "금각반",
+      "slot": "각반",
+      "appearanceId": null,
+      "requiredLevel": 99,
+      "sourceRow": 5426,
+      "stats": {
+        "AC": -8,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "293869",
+        "source": "293869/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_155_KINGURI_1D935B28"
+      },
+      "sourceWeight": 10,
+      "sourceDurability": 12000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05107",
+      "name": "레드하트각반",
+      "slot": "각반",
+      "appearanceId": null,
+      "requiredLevel": 11,
+      "sourceRow": 5107,
+      "stats": {
+        "AC": -9,
+        "HIT": 0,
+        "DAM": 1,
+        "HP": 300,
+        "MP": 1000,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 5,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "293869",
+        "source": "293869/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_155_REDOHATOGURI_BA65AE3F"
+      },
+      "sourceWeight": 3,
+      "sourceDurability": 50000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03564",
+      "name": "산호각반",
+      "slot": "각반",
+      "appearanceId": null,
+      "requiredLevel": 51,
+      "sourceRow": 3564,
+      "stats": {
+        "AC": -5,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 30,
+        "MP": 10,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 10,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "293869",
+        "source": "293869/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_155_SANGOGURI_48B5B5B7"
+      },
+      "sourceWeight": 6,
+      "sourceDurability": 6000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02509",
+      "name": "용각반",
+      "slot": "각반",
+      "appearanceId": null,
+      "requiredLevel": 99,
+      "sourceRow": 2509,
+      "stats": {
+        "AC": -10,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 500,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 5,
+        "MAGIC_DEFENSE": 0
+      },
+      "proof": {
+        "article": "293869",
+        "source": "293869/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_155_RYUGURI_A6E43C6B"
+      },
+      "sourceWeight": 6,
+      "sourceDurability": 500000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02508",
+      "name": "용맹의각반",
+      "slot": "각반",
+      "appearanceId": null,
+      "requiredLevel": 99,
+      "sourceRow": 2508,
+      "stats": {
+        "AC": -10,
+        "HIT": 1,
+        "DAM": 1,
+        "HP": -500,
+        "MP": 0,
+        "STR": 1,
+        "DEX": -1,
+        "INT": 1,
+        "WIS": -1,
+        "CON": 1,
+        "REGEN": 10,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "293869",
+        "source": "293869/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_155_YUMOU_47B94777"
+      },
+      "sourceWeight": 4,
+      "sourceDurability": 300000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03786",
+      "name": "베네티가죽클립",
+      "slot": "각반",
+      "appearanceId": null,
+      "requiredLevel": 99,
+      "sourceRow": 3786,
+      "stats": {
+        "AC": -11,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 500,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 5,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "293869",
+        "source": "293869/source_00.png",
+        "existingExactNamedIcon": "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103"
+      },
+      "sourceWeight": 3,
+      "sourceDurability": 50000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05189",
+      "name": "돈파",
+      "slot": "무기",
+      "appearanceId": "mw215",
+      "requiredLevel": 99,
+      "sourceRow": 5189,
+      "stats": {
+        "AC": 3,
+        "HIT": 0,
+        "DAM": 5,
+        "HP": 1000,
+        "MP": 300,
+        "STR": 3,
+        "DEX": 3,
+        "INT": -2,
+        "WIS": -2,
+        "CON": 3,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1,
+        "MinATK": 424,
+        "MaxATK": 464,
+        "LMinATK": 355,
+        "LMaxATK": 358
+      },
+      "proof": {
+        "article": "303248",
+        "source": "303248/source_00.png",
+        "sourceLabelTop": 1961
+      },
+      "sourceWeight": 10,
+      "sourceDurability": 3000000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01718",
+      "name": "펄스비트",
+      "slot": "무기",
+      "appearanceId": "mw274",
+      "requiredLevel": 99,
+      "sourceRow": 1718,
+      "stats": {
+        "AC": 2,
+        "HIT": 0,
+        "DAM": 5,
+        "HP": 750,
+        "MP": 750,
+        "STR": 2,
+        "DEX": -1,
+        "INT": -1,
+        "WIS": -1,
+        "CON": 1,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1,
+        "MinATK": 474,
+        "MaxATK": 514,
+        "LMinATK": 55,
+        "LMaxATK": 58
+      },
+      "proof": {
+        "article": "303248",
+        "source": "303248/source_00.png",
+        "sourceLabelTop": 2766
+      },
+      "sourceWeight": 0,
+      "sourceDurability": 3000000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "ORIGINAL_REGISTERED_WEAPON"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05141",
+      "name": "라피드헤어클립-I",
+      "slot": "장식",
+      "appearanceId": null,
+      "requiredLevel": 35,
+      "sourceRow": 5141,
+      "stats": {
+        "AC": 0,
+        "HIT": 1,
+        "DAM": 1,
+        "HP": 30,
+        "MP": 30,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "259752",
+        "source": "rapid_article.txt",
+        "levelIconOrder": [
+          35,
+          74,
+          85,
+          99,
+          "PROMOTED"
+        ],
+        "blackDragonSameAs99": null
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 30000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05145",
+      "name": "라피드헤어클립FX-II",
+      "slot": "장식",
+      "appearanceId": null,
+      "requiredLevel": 74,
+      "sourceRow": 5145,
+      "stats": {
+        "AC": -1,
+        "HIT": 1,
+        "DAM": 1,
+        "HP": 50,
+        "MP": 50,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "259752",
+        "source": "rapid_article.txt",
+        "levelIconOrder": [
+          35,
+          74,
+          85,
+          99,
+          "PROMOTED"
+        ],
+        "blackDragonSameAs99": null
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 30000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05144",
+      "name": "라피드헤어클립FX-III",
+      "slot": "장식",
+      "appearanceId": null,
+      "requiredLevel": 85,
+      "sourceRow": 5144,
+      "stats": {
+        "AC": -1,
+        "HIT": 2,
+        "DAM": 2,
+        "HP": 100,
+        "MP": 100,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 10,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "259752",
+        "source": "rapid_article.txt",
+        "levelIconOrder": [
+          35,
+          74,
+          85,
+          99,
+          "PROMOTED"
+        ],
+        "blackDragonSameAs99": null
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 30000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05143",
+      "name": "라피드헤어클립FX-IV",
+      "slot": "장식",
+      "appearanceId": null,
+      "requiredLevel": 99,
+      "sourceRow": 5143,
+      "stats": {
+        "AC": -2,
+        "HIT": 3,
+        "DAM": 3,
+        "HP": 300,
+        "MP": 300,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 10,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "259752",
+        "source": "rapid_article.txt",
+        "levelIconOrder": [
+          35,
+          74,
+          85,
+          99,
+          "PROMOTED"
+        ],
+        "blackDragonSameAs99": null
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 30000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05142",
+      "name": "라피드헤어클립FX-V",
+      "slot": "장식",
+      "appearanceId": null,
+      "requiredLevel": 99,
+      "sourceRow": 5142,
+      "stats": {
+        "AC": -2,
+        "HIT": 3,
+        "DAM": 3,
+        "HP": 400,
+        "MP": 400,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 10,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "259752",
+        "source": "rapid_article.txt",
+        "levelIconOrder": [
+          35,
+          74,
+          85,
+          99,
+          "PROMOTED"
+        ],
+        "blackDragonSameAs99": null
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 30000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01339",
+      "name": "흑룡의라피드헤어클립FX-IV",
+      "slot": "장식",
+      "appearanceId": null,
+      "requiredLevel": 99,
+      "sourceRow": 1339,
+      "stats": {
+        "AC": -2,
+        "HIT": 3,
+        "DAM": 3,
+        "HP": 300,
+        "MP": 300,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 10,
+        "MAGIC_DEFENSE": 1
+      },
+      "proof": {
+        "article": "259752",
+        "source": "rapid_article.txt",
+        "levelIconOrder": [
+          35,
+          74,
+          85,
+          99,
+          "PROMOTED"
+        ],
+        "blackDragonSameAs99": "EXPLICIT_SOURCE_TEXT"
+      },
+      "sourceWeight": 1,
+      "sourceDurability": 30000,
+      "jobAndPromotionRequirements": "PENDING_NORMAL_EQUIP_BLOCKED",
+      "characterVisual": "NO_BODY_ROUTE_CLAIM"
+    }
+  ],
+  "pending": [
+    {
+      "source": "306941/source_01.png",
+      "name": "크리샤오르",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_01.png",
+      "name": "커스프람베르그",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_01.png",
+      "name": "반보우",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_01.png",
+      "name": "레드반보우",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_01.png",
+      "name": "큰개미씨의보우",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_01.png",
+      "name": "영월궁",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "단검",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "설단검",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "월단검",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "광단검",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "혈단검",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "곡단도",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "비설표",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "비중표",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "비매표",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "비광표",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "비일표",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "비연표",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "306941/source_00.png",
+      "name": "비혈표",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_02.png",
+      "name": "별반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "메투스의금반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "로오의산호반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "메투스의산호반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "셔스의산호반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "로오의자수정반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "메투스의호안석반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "셔스의호안석반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "메투스의사파이어반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "300060/source_00.png",
+      "name": "셔스의사파이어반지",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "292242/source_01.png",
+      "name": "리젠트다이아귀걸이",
+      "reason": "ENHANCEMENT_PREFIX_ON_PREVIOUS_LINE_NOT_BASE_ITEM"
+    },
+    {
+      "source": "292242/source_01.png",
+      "name": "리젠트다이아귀걸이",
+      "reason": "ENHANCEMENT_PREFIX_ON_PREVIOUS_LINE_NOT_BASE_ITEM"
+    },
+    {
+      "source": "301364/source_00.png",
+      "name": "골드베리하프",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "301364/source_00.png",
+      "name": "프린세스하프",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "301364/source_00.png",
+      "name": "황금나무의하프",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "301364/source_00.png",
+      "name": "비파",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "292933/source_01.png",
+      "name": "바다의마기아목걸이",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "292933/source_01.png",
+      "name": "흑요석몽크목걸이(토)",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "301172/source_01.png",
+      "name": "매직프람베르그",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "293869/source_00.png",
+      "name": "뉴비각반",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "293869/source_00.png",
+      "name": "로오의가죽각반",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "293869/source_00.png",
+      "name": "메투스의가죽각반",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "293869/source_00.png",
+      "name": "셔스의금각반",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    },
+    {
+      "source": "293869/source_00.png",
+      "name": "베네티미스릴클립",
+      "reason": "EXACT_ICON_OR_COMPLETE_REGISTERED_WEARABLE_NOT_READY"
+    }
+  ],
+  "remaining": [
+    "Complete all other table rows including clothes and food",
+    "Exact variant and attribute appearance mappings",
+    "Rapid body/effect registration",
+    "Missing source action poses",
+    "Normal job/promotion requirements",
+    "Source weight/durability mechanics and regeneration effect are not implemented by stat mapping"
+  ]
+}
