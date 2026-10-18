@@ -1,0 +1,41 @@
+{
+  "sourceCommit": "f574787d977c90ac2e9a3e737c56d367306709fd",
+  "runId": "39169653775",
+  "builtAtKST": "2026-10-19T06:57:52.314475+09:00",
+  "apkSha256": "6a1305553c72dba95909d2fd5a841c78c5d9773209be89c25b54eb0bc9f67d09",
+  "apkBytes": 83800782,
+  "identity": {
+    "sourceCommit": "f574787d977c90ac2e9a3e737c56d367306709fd",
+    "runId": "39169653775",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending",
+  "nativeCounts": {
+    "tests": 52,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "sparseRegression": [
+    {
+      "name": "sparseFrameIdsNeverShiftLaterPosesIntoMissingFrames",
+      "classname": "com.projectdark.mobile.HorrorEquipmentV184Test",
+      "time": "1.689"
+    }
+  ],
+  "artifactId": 12152267114,
+  "archiveSHA256": "4c6cb64e4be478a4e932b1b0774bc58c4296519c763334a43397da05cc1b41a9",
+  "downloadAndCRCVerified": true,
+  "phone": "PENDING",
+  "allRequestedEquipmentComplete": false,
+  "registrationAudit": {
+    "sources": 249,
+    "frames": 11510,
+    "missingOrDuplicateIds": 0
+  },
+  "broaderCI": {
+    "39169653758": "IN_PROGRESS_AT_CHECKPOINT",
+    "39169657640": "IN_PROGRESS_AT_CHECKPOINT"
+  }
+}
