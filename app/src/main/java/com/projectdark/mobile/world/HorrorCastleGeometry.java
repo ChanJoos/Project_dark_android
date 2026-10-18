@@ -22,7 +22,43 @@ public final class HorrorCastleGeometry {
  public static boolean inside(String id,float x,float y,float radius){float a=(y-160)/32+(x-800)/64,b=(y-160)/32-(x-800)/64;HorrorCastleOriginalData.Grid g=original(id);if(g!=null)return g.walkable(Math.round(a),Math.round(b));float inset=radius/28f;return a>=inset&&b>=inset&&a<=columns(id)-1-inset&&b<=rows(id)-1-inset;}
  public static final class Door {public final float x,y;public final String destination,label;Door(float xx,float yy,String d,String l){x=xx;y=yy;destination=d;label=l;}Door(int u,int v,String d,String l){x=HorrorCastleGeometry.x(u,v);y=HorrorCastleGeometry.y(u,v);destination=d;label=l;}}
  private static Door originalDoor(String id,int u,int v,String destination,String label){WorldMoveTargetController.TileCenter p=nearest(id,u,v);return new Door(p.x,p.y,destination,label);}
- public static List<Door> doors(String id){if(original(id)!=null){List<Door> d=new ArrayList<>();if(LOBBY.equals(id)){d.add(originalDoor(id,24,18,"MILLES","밀레스"));d.add(originalDoor(id,46,2,FIRST,"1층 복도"));d.add(originalDoor(id,18,2,SECOND,"2층 복도"));}else if(room(id)>0){d.add(originalDoor(id,columns(id)/2,1,LOBBY,"로비로"));}else{d.add(originalDoor(id,columns(id)/2-1,rows(id)-2,LOBBY,"로비로"));if(FIRST.equals(id)){for(int v:new int[]{7,13,19,25,31})d.add(originalDoor(id,1,v,roomId(1),"방 입구"));}else d.add(originalDoor(id,8,2,roomId(1),"방 입구"));}return Collections.unmodifiableList(d);}List<Door> out=new ArrayList<>();out.add(new Door(1,rows(id)-3,LOBBY.equals(id)?"MILLES":LOBBY,LOBBY.equals(id)?"밀레스":"로비로"));if(LOBBY.equals(id)){out.add(new Door(7,1,FIRST,"1층 복도"));out.add(new Door(19,1,SECOND,"2층 복도"));}else if(room(id)==0){for(int i=0;i<6;i++)out.add(new Door(4+i*4,1,roomId(1),"방 입구 "+(i+1)));}return Collections.unmodifiableList(out);}
+ private static final Map<String,List<Door>> DOORS=new HashMap<>();
+ public static List<Door> doors(String id){return DOORS.computeIfAbsent(id,HorrorCastleGeometry::buildDoors);}
+ private static List<Door> buildDoors(String id){List<Door> d=new ArrayList<>();HorrorCastleOriginalData.Grid g=original(id);
+  if(LOBBY.equals(id)){
+   // User's device capture: the carpet under the central arches is the west entrance.
+   for(int u=23;u<=25;u++)d.add(originalDoor(id,u,10,FIRST,"1층 서쪽 복도"));
+   d.add(originalDoor(id,46,2,FIRST,"1층 동쪽 복도"));
+   d.add(originalDoor(id,18,2,SECOND,"2층 중앙 복도"));
+   // Every traversable cell across the same exterior threshold, excluding actual pillars.
+   for(int u=1;u<g.width-1;u++)if(g.walkable(u,18))d.add(new Door(u,18,"MILLES","밀레스"));
+  }else if(FIRST.equals(id)){
+   d.add(originalDoor(id,columns(id)/2-1,rows(id)-2,LOBBY,"로비로"));
+   for(int v:new int[]{7,13,19,25,31})d.add(originalDoor(id,1,v,roomId(1),"방 입구"));
+   for(int v:new int[]{6,12,18,24,30})d.add(originalDoor(id,8,v,roomId(1),"방 입구"));
+  }else if(SECOND.equals(id)){
+   d.add(originalDoor(id,columns(id)/2-1,rows(id)-2,LOBBY,"로비로"));
+   d.add(originalDoor(id,8,2,roomId(1),"방 입구"));
+  }else if(room(id)>0){
+   String next=room(id)==13?LOBBY:roomId(room(id)+1);
+   if(g!=null)for(int v=0;v<g.height;v++)for(int u=0;u<g.width;u++)for(int side=1;side<=2;side++){
+    int f=g.value(u,v,side);Door door=null;
+    // Registered native door panels only. Cracked wall panels 11365/11366 are not doors.
+    if(f==11082||f==11367)door=originalDoor(id,u+1,v+1,next,"다음 방");
+    else if(f==11298)door=originalDoor(id,u,v+1,next,"다음 방");
+    else if(f==11398||f==11162)door=originalDoor(id,u+1,v+1,next,"다음 방");
+    if(door!=null&&!sameDoor(d,door))d.add(door);
+   }
+   // Kitchen has an open wall threshold, and 12/13 still use their explicit legacy fixture.
+   if(d.isEmpty()){if(g!=null)d.add(originalDoor(id,Math.min(6,g.width-2),1,next,"다음 방"));else d.add(new Door(columns(id)/2,2,next,"다음 방"));}
+  }
+  return Collections.unmodifiableList(d);
+ }
+ private static boolean sameDoor(List<Door> list,Door candidate){for(Door d:list)if(d.x==candidate.x&&d.y==candidate.y)return true;return false;}
+ public static WorldMoveTargetController.TileCenter exitNpc(String id){WorldMoveTargetController.TileCenter e=entry(id),best=null;float score=Float.MAX_VALUE;
+  for(WorldMoveTargetController.TileCenter t:tiles(id,true)){float dist=(float)Math.hypot(t.x-e.x,t.y-e.y);if(dist<60||dist>80)continue;boolean close=false;for(Door d:doors(id))if(Math.hypot(t.x-d.x,t.y-d.y)<64)close=true;if(close)continue;float q=(t.x-e.x-64)*(t.x-e.x-64)+(t.y-e.y-32)*(t.y-e.y-32);if(q<score){score=q;best=t;}}
+  if(best==null)throw new IllegalStateException("No safe Horror exit NPC "+id);return best;
+ }
  public static final class Prop {public final String art;public final int u,v;public final float width;public Prop(String a,int u,int v,float w){art=a;this.u=u;this.v=v;width=w;}public float x(){return HorrorCastleGeometry.x(u,v);}public float y(){return HorrorCastleGeometry.y(u,v);}}
  public static List<Prop> props(String id){if(original(id)!=null)return Collections.emptyList();List<Prop> p=new ArrayList<>();if(LOBBY.equals(id)){for(int u=3;u<23;u+=5)p.add(new Prop("pillar",u,2,42));p.add(new Prop("stairs",11,3,330));return p;}if(room(id)==0){for(int u=2;u<30;u+=4)p.add(new Prop("pillar",u,0,32));return p;}
   int theme=(room(id)-1)%5;

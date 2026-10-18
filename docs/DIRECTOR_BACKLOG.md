@@ -1770,3 +1770,8 @@ Publication remains BLOCKED_BY_AUTO_REVIEW; no bypass. Physical phone and user V
 
 ## 2026-10-09 — POTE-REWARDS-V123 accepted task
 Director/Game single editor. User requests whole Pote monster EXP/loot, quest equipment and Mantis ring audit. Acceptance: accessible staged gear in actual A–D route, named preview/receipt, first-clear ring once, explicit adapted economy, overflow-safe atomic claim/save, all-job progression and restart tests. Preserve V122 visuals/performance. Baseline617e416; main18ef615; native/APK/device pending.
+
+
+## 2026-10-18 — V181 호러캐슬 포탈 / 출구 NPC
+
+사용자 실기기 캡처로 V180 로비 서쪽 입구 누락과 텍스트 표식을 DEVICE_FAILED_USER_REPORTED로 기록한다. 서쪽 3칸(23~25,10), 동쪽 1개(46,2), 2층 중앙 1개(18,2), 밀레스 외부 경계 v18 전체 통행 셀에 기존 공용 포탈을 연결했다. 두 1층 입구는 확보된 동일 1층 복도 데이터에 연결하며 별도 서쪽 복도 원본 구조를 복구했다고 주장하지 않는다. 복도 양쪽 실제 문은 전부 포탈, 사냥방은 출구 NPC로 로비 복귀하고 문 포탈은 15마리 전멸 후에만 다음 방으로 이동한다. 전멸 즉시 자동 이동은 제거했다. 미처치 진입은 안내 및 충돌 검사한 인접 한 칸 후퇴, 이동 입력 취소와 포탈 래치로 반복 발동을 막는다. 안내인 외형은 기존 주민 에셋 재사용이며 NPC로 나가도 몬스터 죽음/체력은 보존한다. 원본 12~15 맵은 여전히 미복구, 기존 13번까지의 임시 순회 범위 유지. IMPLEMENTED, focused native/build/device 검증 PENDING. 활성 PR197 유지, main 미병합.

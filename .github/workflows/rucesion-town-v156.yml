@@ -1,4 +1,4 @@
-name: V180 Horror preview APK (package verified source)
+name: V181 Horror portals (focused native + APK)
 on:
   push:
     branches: [codex/rucesion-coast-v157]
@@ -85,27 +85,30 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          gradle :app:assembleDebug --stacktrace
+          gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' :app:assembleDebug --stacktrace
           mkdir -p delivery
-          cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_v180_preview.apk
+          cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_v181_portals.apk
           python3 - <<'PY'
           import zipfile,json,hashlib,os,datetime
           from pathlib import Path
           from zoneinfo import ZoneInfo
-          p=Path('delivery/PROJECT_DARK_v180_preview.apk')
+          p=Path('delivery/PROJECT_DARK_v181_portals.apk')
           with zipfile.ZipFile(p) as z:
               assert z.testzip() is None
               identity=json.loads(z.read('assets/build_identity.json'))
               assert identity['sourceCommit']==os.environ['GITHUB_SHA']
-              assert identity['versionCode']==180
+              assert identity['versionCode']==181
               entries=z.namelist()
               assert len([n for n in entries if n.startswith('assets/horror-v180/') and n.endswith('.png')])>=647
-          report=dict(sourceCommit=os.environ['GITHUB_SHA'],runId=os.environ['GITHUB_RUN_ID'],builtAtKST=datetime.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(),apkSha256=hashlib.sha256(p.read_bytes()).hexdigest(),apkBytes=p.stat().st_size,identity=identity,scope='Package of previously native-verified Horror runtime; no runtime changes; handset verification pending; exact original maps12-15 pending')
+          report=dict(sourceCommit=os.environ['GITHUB_SHA'],runId=os.environ['GITHUB_RUN_ID'],builtAtKST=datetime.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(),apkSha256=hashlib.sha256(p.read_bytes()).hexdigest(),apkBytes=p.stat().st_size,identity=identity,scope='Horror portals, gated room travel, one-cell rejection and exit NPC; focused native tests verified; handset verification pending; exact original maps12-15 pending')
           Path('delivery/build_evidence.json').write_text(json.dumps(report,indent=2)+'\n')
           print(json.dumps(report))
           PY
-          "${ANDROID_HOME}/build-tools/35.0.0/apksigner" verify --verbose delivery/PROJECT_DARK_v180_preview.apk
+          "${ANDROID_HOME}/build-tools/35.0.0/apksigner" verify --verbose delivery/PROJECT_DARK_v181_portals.apk
       - uses: actions/upload-artifact@v4
         with:
-          name: PROJECT_DARK_v180_preview
-          path: delivery/
+          name: PROJECT_DARK_v181_portals
+          path: |
+            delivery/
+            app/build/reports/horror-v179/
+            app/build/test-results/

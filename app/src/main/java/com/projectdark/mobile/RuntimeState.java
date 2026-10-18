@@ -30,7 +30,7 @@ public final class RuntimeState {
 
   public static final class Npc {
     public final String id,name,dialogue,assetStatus;public final float x,y;
-    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||id.startsWith("campaign_altar_")?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
+    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||HorrorCastleTravel.EXIT_NPC.equals(id)||id.startsWith("campaign_altar_")?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
   }
 
   public static final class Monster {
@@ -201,7 +201,7 @@ public final class RuntimeState {
     int zone=map.zone;monsters.addAll(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)?HorrorCastleMonsters.spawn(id,horror.seed()):CampaignMonsters.spawnForMap(id));horror.apply(monsters);
     // This roster contains new lives. Reused species#slot keys must not inherit old-map effects.
     for(Monster fresh:monsters)skillEffects.clear(fresh.id);
-    if(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)){}
+    if(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)){if(com.projectdark.mobile.world.HorrorCastleGeometry.room(id)>0){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.HorrorCastleGeometry.exitNpc(id);npcs.add(new Npc(HorrorCastleTravel.EXIT_NPC,"호러캐슬 안내인",t.x,t.y,"사냥을 마치고 로비로 돌아가시겠습니까?","USER_REQUESTED_ADAPTED_EXIT"));}}
     else if(com.projectdark.mobile.world.RucesionTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,TownTravel.center(id).x,TownTravel.center(id).y);npcs.add(new Npc("rucesion_town_travel","해럴드",t.x,t.y,"모든 마을로 이동할 수 있습니다.","ADAPTED"));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.RucesionTownGeometry.x(15,24),com.projectdark.mobile.world.RucesionTownGeometry.y(15,24));npcs.add(new Npc("rucesion_beach_keeper","루크",t.x,t.y,"뤼케시온 해변으로 이동합니다. Lv71 이상 · 시험 모드 미리보기 가능","ADAPTED"));}
     else if(com.projectdark.mobile.world.RucesionCoastGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,map.entryX+96,map.entryY-48);npcs.add(new Npc("rucesion_coast_guide","해안 안내인",t.x,t.y,"모래길 이동 표식으로 구역을 이동하세요. 아리엘 파티 이벤트는 준비 중입니다.","ADAPTED"));}
     else if(com.projectdark.mobile.world.AbelTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,TownTravel.center(id).x,TownTravel.center(id).y);npcs.add(new Npc("abel_town_travel",NpcIdentity.forId("abel_town_travel").label(),t.x,t.y,"모든 마을로 이동할 수 있습니다.",F5mAdaptedPrologueQuest.PROVENANCE));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.AbelTownGeometry.x(81,39),com.projectdark.mobile.world.AbelTownGeometry.y(81,39));npcs.add(new Npc("abel_coast_departure",NpcIdentity.forId("abel_coast_departure").label(),t.x,t.y,"아벨해안으로 이동합니다. Lv41 · 포테 조사 완료",F5mAdaptedPrologueQuest.PROVENANCE));}
