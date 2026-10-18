@@ -5,12 +5,12 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v183test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V183 PREVIEW' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v184test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V184 PREVIEW' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 183
-        versionName '1.83-mobile-horror'
+        versionCode 184
+        versionName '1.84-mobile-horror'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
@@ -47,7 +47,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 183, versionName: '1.83-mobile-horror']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 184, versionName: '1.84-mobile-horror']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
@@ -60,6 +60,14 @@ tasks.register('extractWardrobeV128', Copy) {
     eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
 }
 tasks.named('preBuild').configure { dependsOn('extractWardrobeV128') }
+
+tasks.register('extractHorrorEquipmentV184', Copy) {
+    from(zipTree(rootProject.file('master/source/equipment/horror_v184/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+}
+tasks.named('extractHorrorEquipmentV184').configure { dependsOn('extractWardrobeV128') }
+tasks.named('preBuild').configure { dependsOn('extractHorrorEquipmentV184') }
 
 // Regenerate the reviewed sheets with exact per-family crop/projection metadata.
 tasks.register('generateAbelV161', Exec) {

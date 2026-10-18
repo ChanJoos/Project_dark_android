@@ -28,6 +28,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final WorldMoveTargetController movement;
   private final WorldStepInterpolator presentation;
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
+  private final java.util.Set<Long> tileCenters=new java.util.HashSet<>();
   private final float sceneMinX,sceneMaxX,sceneMinY,sceneMaxY;
   private final List<RectF> sceneObstacles;
   private final TerrainObstacleIndex terrainIndex;
@@ -42,6 +43,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     List<WorldMoveTargetController.TileCenter> centers=new ArrayList<>();
     for(AdaptedMillesIsometricTileLayer.Tile tile:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
     navigationTiles=Collections.unmodifiableList(centers);
+    indexTileCenters();
     sceneMinX=map.bounds().minX;sceneMaxX=map.bounds().maxX;sceneMinY=map.bounds().minY;sceneMaxY=map.bounds().maxY;
     sceneObstacles=runtime.obstacles();terrainIndex=new TerrainObstacleIndex(sceneObstacles);actorsBlockMovement=true;
     snapPlayerToNearestTraversableTile();
@@ -64,6 +66,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     if(runtime==null||tiles==null||tiles.isEmpty())throw new IllegalArgumentException("runtime and authored tiles required");
     this.runtime=runtime;this.map=null;
     this.navigationTiles=Collections.unmodifiableList(new ArrayList<>(tiles));
+    indexTileCenters();
     sceneMinX=minX;sceneMaxX=maxX;sceneMinY=minY;sceneMaxY=maxY;
     sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));this.actorsBlockMovement=actorsBlockMovement;terrainIndex=new TerrainObstacleIndex(sceneObstacles);
     snapPlayerToNearestTraversableTile();
@@ -258,15 +261,21 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   private void snapPlayerToNearestTraversableTile(){
+    if(tileCenters.contains(tileKey(runtime.player().x,runtime.player().y))&&canPlayerStandAt(runtime.player().x,runtime.player().y))return;
     WorldMoveTargetController.TileCenter best=null;float bestDistance=Float.MAX_VALUE;
     for(WorldMoveTargetController.TileCenter tile:navigationTiles){
-      if(!canPlayerStandAt(tile.x,tile.y))continue;
       float dx=tile.x-runtime.player().x,dy=tile.y-runtime.player().y,d=dx*dx+dy*dy;
-      if(d<bestDistance){bestDistance=d;best=tile;}
+      // Leap already supplies a tile center. Do not collision-test the entire map
+      // while resetting its presentation; live occupancy is still checked here.
+      if(d>=bestDistance||!canPlayerStandAt(tile.x,tile.y))continue;
+      bestDistance=d;best=tile;
+      if(d==0f)break;
     }
     if(best==null)throw new IllegalStateException("no traversable spawn tile");
     runtime.player().x=best.x;runtime.player().y=best.y;
   }
+  private static long tileKey(float x,float y){return ((long)Float.floatToIntBits(x)<<32)|(Float.floatToIntBits(y)&0xffffffffL);}
+  private void indexTileCenters(){for(WorldMoveTargetController.TileCenter t:navigationTiles)tileCenters.add(tileKey(t.x,t.y));}
 
   private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id))return m;return null;}
 

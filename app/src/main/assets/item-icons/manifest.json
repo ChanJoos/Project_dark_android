@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 452,
+  "registeredItems": 505,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -11472,6 +11472,960 @@
       "limitation": "Braided gold ring correspondence corroborated by the two user-provided references. Native screenshot has no visible item-name tooltip; visual match is recorded, not independent source-label identity. No upscaling, recoloring or generated artwork.",
       "foregroundPixels": 290,
       "assetSha256": "df8ce512fb789ac79ae951e729694de80ca36a2706925595e4da677eec1f343e"
+    },
+    "USER_ITEM_20261018_R01494": {
+      "itemId": "USER_ITEM_20261018_R01494",
+      "appearanceId": "mu0000036",
+      "assetPath": "item-icons/horror_v184_mu0000036.png",
+      "assetSha256": "4eb41eac52cd7c429095a26d73e32a19b0dac6284cd2e5c943cc097231eca6d4",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/armor/mu0000036.webp",
+      "sourceSha256": "f8c68ab507d19c108a5ab33de4d5a4285eb6ffd3832069a03ba6ea5680cea760",
+      "crop": [
+        241,
+        0,
+        24,
+        47
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01489": {
+      "itemId": "USER_ITEM_20261018_R01489",
+      "appearanceId": "mu0000038",
+      "assetPath": "item-icons/horror_v184_mu0000038.png",
+      "assetSha256": "029392ff451abecbcacdbd3bf22606506199b073cc72a41d8bda4d1d0b39379f",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/armor/mu0000038.webp",
+      "sourceSha256": "312092ef22e606cd14530688376682b0c343a8f557c2fd29d497c11050866386",
+      "crop": [
+        151,
+        0,
+        19,
+        39
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01490": {
+      "itemId": "USER_ITEM_20261018_R01490",
+      "appearanceId": "mu0000040",
+      "assetPath": "item-icons/horror_v184_mu0000040.png",
+      "assetSha256": "5b38b13f06b841e86a9eaa679c78be1445a4243d03635b6d5513408f6e79bdbb",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/armor/mu0000040.webp",
+      "sourceSha256": "89790aae2283386e52740d7cca2dcd103ed7aaecf3800acc01ff378999ee8cee",
+      "crop": [
+        262,
+        0,
+        18,
+        40
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02857": {
+      "itemId": "USER_ITEM_20261018_R02857",
+      "appearanceId": "mw002",
+      "assetPath": "item-icons/horror_v184_mw002.png",
+      "assetSha256": "baf9386382f26a20f9e068e9e2be1659dcfa9379dc644957cee052783caf134c",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw002.webp",
+      "sourceSha256": "b8b43b409ee291dfc66072691d82c171b104285c62f7c0807e8f7f62a473dda2",
+      "crop": [
+        369,
+        0,
+        19,
+        12
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01913": {
+      "itemId": "USER_ITEM_20261018_R01913",
+      "appearanceId": "mw003",
+      "assetPath": "item-icons/horror_v184_mw003.png",
+      "assetSha256": "2586fd434689d5656f5c890173a3b28e174a093864938a5235a8e6ca93f0c031",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw003.webp",
+      "sourceSha256": "2a3d171af8cad4372711a4f303b9c6b998cc55a2b2c9e8f2032e0ca78f5f6b60",
+      "crop": [
+        416,
+        0,
+        23,
+        14
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03464": {
+      "itemId": "USER_ITEM_20261018_R03464",
+      "appearanceId": "mw004",
+      "assetPath": "item-icons/horror_v184_mw004.png",
+      "assetSha256": "09525537e937a87cf83b8d01a54cbd40a16109e7f860dc32da49bbeda36bfde2",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw004.webp",
+      "sourceSha256": "5db5d32df7d62b9484dfd4eaf2736452accd2751076dcc06ba989198a419c81b",
+      "crop": [
+        315,
+        0,
+        27,
+        17
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R05454": {
+      "itemId": "USER_ITEM_20261018_R05454",
+      "appearanceId": "mw005",
+      "assetPath": "item-icons/horror_v184_mw005.png",
+      "assetSha256": "9d0939c25f0a59431e76360d126a58445643e7e7f2707b4f437167314b019f0d",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw005.webp",
+      "sourceSha256": "053ac3be5c99f67d939dfbc199544c44244e68e205a307e224951596993ab442",
+      "crop": [
+        522,
+        0,
+        36,
+        20
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R04361": {
+      "itemId": "USER_ITEM_20261018_R04361",
+      "appearanceId": "mw010",
+      "assetPath": "item-icons/horror_v184_mw010.png",
+      "assetSha256": "dc35e3602e2edee07b5e883e18b6f81745afc3c0ef5726cfc9d82964070f94a7",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw010.webp",
+      "sourceSha256": "df9fa8268521dd0f0e419e19935e6d0d50e2fd5f0df39bdf779b45642577c917",
+      "crop": [
+        519,
+        0,
+        40,
+        22
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R04356": {
+      "itemId": "USER_ITEM_20261018_R04356",
+      "appearanceId": "mw011",
+      "assetPath": "item-icons/horror_v184_mw011.png",
+      "assetSha256": "3c237ad8bde33fa8124cfe99f6a4d453292db0a3547dea70f6768fa343bfe4fe",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw011.webp",
+      "sourceSha256": "200cf14162d27fa7c825fc110565cd6e5f74845348d51cf1bfc3f5cf2a190a38",
+      "crop": [
+        472,
+        0,
+        39,
+        21
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03823": {
+      "itemId": "USER_ITEM_20261018_R03823",
+      "appearanceId": "mw012",
+      "assetPath": "item-icons/horror_v184_mw012.png",
+      "assetSha256": "937bb1038c14a95015d9c7fdb626f897429efcb5443f3eafb8b6fbc39b261549",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw012.webp",
+      "sourceSha256": "77a05ee187dd25b80d4cd3a2c13d669b74df3fa291a271f58ed190c4c0eb6019",
+      "crop": [
+        466,
+        0,
+        32,
+        18
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03702": {
+      "itemId": "USER_ITEM_20261018_R03702",
+      "appearanceId": "mw013",
+      "assetPath": "item-icons/horror_v184_mw013.png",
+      "assetSha256": "2deebbe8e3fc8bf8dbcc0a7bf514b1a9a4c7aebfeda604dc9f23e2db3ad2070c",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw013.webp",
+      "sourceSha256": "a1578c571b4fb69be6f12ce551eab3a7f2420d617865d849bb01c55313e44b32",
+      "crop": [
+        485,
+        0,
+        36,
+        19
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01591": {
+      "itemId": "USER_ITEM_20261018_R01591",
+      "appearanceId": "mw014",
+      "assetPath": "item-icons/horror_v184_mw014.png",
+      "assetSha256": "f1312402d8d21920ea4997adcecae3efb3da152e4baf0cf0261b1440ec2297a7",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw014.webp",
+      "sourceSha256": "0ddcd86815c3aff907e748441b7198caad4306f167bb6747bb39b32ca509610c",
+      "crop": [
+        453,
+        0,
+        30,
+        7
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R05003": {
+      "itemId": "USER_ITEM_20261018_R05003",
+      "appearanceId": "mw015",
+      "assetPath": "item-icons/horror_v184_mw015.png",
+      "assetSha256": "a5538e5bc1ae8dc6dd9d6c6f842dc6026ad8f6913116ea47c4fb594218acbf4d",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw015.webp",
+      "sourceSha256": "2d43bd19008908d5cb2f17f612bed940ecd6ecafa2f3c5016d07f80a3244b286",
+      "crop": [
+        455,
+        0,
+        32,
+        12
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01771": {
+      "itemId": "USER_ITEM_20261018_R01771",
+      "appearanceId": "mw016",
+      "assetPath": "item-icons/horror_v184_mw016.png",
+      "assetSha256": "9a753eab6e6eb9314f7a9104d4489d2f8368da9196c5cebcd43f053d2a8b46b6",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw016.webp",
+      "sourceSha256": "9eaa7702a1099ff360097cc7241388a3153f22c45e3067a638a8a5da4e05ed7d",
+      "crop": [
+        492,
+        0,
+        42,
+        22
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03020": {
+      "itemId": "USER_ITEM_20261018_R03020",
+      "appearanceId": "mw017",
+      "assetPath": "item-icons/horror_v184_mw017.png",
+      "assetSha256": "297a2a8a4b3bb79af6917ba81d44c5cb2a7629234fb491c3d6d4d3302992ae3f",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw017.webp",
+      "sourceSha256": "a7ccb831ae96ef764bbc602ba46e9efea4fc67219dc4ab687f381b2d6ca4bebc",
+      "crop": [
+        496,
+        0,
+        38,
+        13
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01781": {
+      "itemId": "USER_ITEM_20261018_R01781",
+      "appearanceId": "mw018",
+      "assetPath": "item-icons/horror_v184_mw018.png",
+      "assetSha256": "caacdbffe184684e534bad19b9adbf65a35fc05e4b144cb138348d18222204a2",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw018.webp",
+      "sourceSha256": "d2ac437ab958839d99c1ad6a8425748dd8bd9fab051b67f28351de18896330ad",
+      "crop": [
+        485,
+        0,
+        40,
+        23
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01787": {
+      "itemId": "USER_ITEM_20261018_R01787",
+      "appearanceId": "mw019",
+      "assetPath": "item-icons/horror_v184_mw019.png",
+      "assetSha256": "20eda4ee12559b3088389940566011fdf6c089f23140d03f9ee91bde66c02c8b",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw019.webp",
+      "sourceSha256": "240982773966e0d703c4bf3e4c6d3c6af1807b68b0edeb4f77b9d2396dc82f3b",
+      "crop": [
+        531,
+        0,
+        37,
+        15
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R05177": {
+      "itemId": "USER_ITEM_20261018_R05177",
+      "appearanceId": "mw020",
+      "assetPath": "item-icons/horror_v184_mw020.png",
+      "assetSha256": "63c3328df873b3f595eee1e028f17b570109bf8d4b72c24a20079143d7967f52",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw020.webp",
+      "sourceSha256": "e713b322da6377e528bb7977bc549195dc99c4393b74b20e6c233d4e4e5a43ca",
+      "crop": [
+        501,
+        0,
+        35,
+        7
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01793": {
+      "itemId": "USER_ITEM_20261018_R01793",
+      "appearanceId": "mw021",
+      "assetPath": "item-icons/horror_v184_mw021.png",
+      "assetSha256": "ceec13a1c674d176adc00ef3542272d4a114002ceea7365b9424f67223971916",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw021.webp",
+      "sourceSha256": "598316a35b8d823120d52f0b608239ddac4c8a2d9a5d865cc7a69e6beaf5b807",
+      "crop": [
+        551,
+        0,
+        42,
+        9
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01776": {
+      "itemId": "USER_ITEM_20261018_R01776",
+      "appearanceId": "mw022",
+      "assetPath": "item-icons/horror_v184_mw022.png",
+      "assetSha256": "6e3c812039c331d4064c29018fb55e997945986f376346b6172db412b171672d",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw022.webp",
+      "sourceSha256": "ac52bb09660e40af6b741ffeaf2476b0fa2b6a7ecd194a3e0e49a6ee4521d5d7",
+      "crop": [
+        534,
+        0,
+        38,
+        8
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01798": {
+      "itemId": "USER_ITEM_20261018_R01798",
+      "appearanceId": "mw023",
+      "assetPath": "item-icons/horror_v184_mw023.png",
+      "assetSha256": "74f3acd22e4047856829518d4b6defc7e926f78d55b8a0ae679bb300197d976f",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw023.webp",
+      "sourceSha256": "371d3ae85b054524d0d34a6ba7e791330fca4fcb8279a36cc8cd8cf5d84cc3f6",
+      "crop": [
+        521,
+        0,
+        41,
+        22
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02499": {
+      "itemId": "USER_ITEM_20261018_R02499",
+      "appearanceId": "mw034",
+      "assetPath": "item-icons/horror_v184_mw034.png",
+      "assetSha256": "48892b10bb4ea5ccfab01c6d29abb2d6f575db68cfc131d21aa5995c5497e2eb",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw034.webp",
+      "sourceSha256": "ec0d622a105cabe9cf7cb4557dd0b605b9e18c5e0be44fe71aeef8eac65c1b96",
+      "crop": [
+        166,
+        0,
+        19,
+        8
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03015": {
+      "itemId": "USER_ITEM_20261018_R03015",
+      "appearanceId": "mw035",
+      "assetPath": "item-icons/horror_v184_mw035.png",
+      "assetSha256": "655cb4df55680f6941e9d09bfa90c72c0834a55b04aaf8e8f39410104132f889",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw035.webp",
+      "sourceSha256": "63272477c74f291596844632b2e7340c93e24dfa64392127dbf6275289f9eaf8",
+      "crop": [
+        166,
+        0,
+        21,
+        10
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02354": {
+      "itemId": "USER_ITEM_20261018_R02354",
+      "appearanceId": "mw036",
+      "assetPath": "item-icons/horror_v184_mw036.png",
+      "assetSha256": "3759cbefb6917ad7c78e251a55e1af452f5011f7763644deb65b7fa8c01f075c",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw036.webp",
+      "sourceSha256": "6ba888ba5c8c97055927319bd45e9dc608acda52e1e0306d029adddb4bd911c7",
+      "crop": [
+        501,
+        0,
+        39,
+        17
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02356": {
+      "itemId": "USER_ITEM_20261018_R02356",
+      "appearanceId": "mw037",
+      "assetPath": "item-icons/horror_v184_mw037.png",
+      "assetSha256": "06c4b755280d764bf06ad046ef630670cf047e7bed21aa5c9636f03f93b7be30",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw037.webp",
+      "sourceSha256": "b748739584de5678c1ea495fb5b5d052070a3274e2791585d88e00c7825ca319",
+      "crop": [
+        508,
+        0,
+        18,
+        16
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02885": {
+      "itemId": "USER_ITEM_20261018_R02885",
+      "appearanceId": "mw039",
+      "assetPath": "item-icons/horror_v184_mw039.png",
+      "assetSha256": "24ac9d5927ec345b52fd5235c3869bdeb4f4f88571355215fb2e315fb5164ec4",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw039.webp",
+      "sourceSha256": "43f17a1df4c8268e5ce73f48b580d5b5ae7c4edc88a3b4631274b91c3836982d",
+      "crop": [
+        243,
+        0,
+        26,
+        15
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01531": {
+      "itemId": "USER_ITEM_20261018_R01531",
+      "appearanceId": "mw040",
+      "assetPath": "item-icons/horror_v184_mw040.png",
+      "assetSha256": "39fc97b323bf6789b941938ca3a3bfe0bec67526e6d96b31db28ff25d596c06a",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw040.webp",
+      "sourceSha256": "4c7aeddda8520c03951fe4329a127713a0a2f845800d22c95063b9e38d9d8fdb",
+      "crop": [
+        231,
+        0,
+        25,
+        15
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02357": {
+      "itemId": "USER_ITEM_20261018_R02357",
+      "appearanceId": "mw041",
+      "assetPath": "item-icons/horror_v184_mw041.png",
+      "assetSha256": "c9998d57e09dee783ebd6b0a504c1f975adf76e23ad1a92111fc02b022071461",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw041.webp",
+      "sourceSha256": "626fbd7ac78f8490d304e7215b3ecbed4785332cc5d67978e0591e27af6812b4",
+      "crop": [
+        468,
+        0,
+        26,
+        23
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03818": {
+      "itemId": "USER_ITEM_20261018_R03818",
+      "appearanceId": "mw043",
+      "assetPath": "item-icons/horror_v184_mw043.png",
+      "assetSha256": "bc7f5d5e307deac3c693299cb3da3e2715c944ebec196122bb9751d7f5edd7cd",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw043.webp",
+      "sourceSha256": "cf61cc49ec96c31f55a0efe344b21e39db8abf9f89153f81abdc9b55c88b0ba5",
+      "crop": [
+        41,
+        0,
+        22,
+        23
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02355": {
+      "itemId": "USER_ITEM_20261018_R02355",
+      "appearanceId": "mw044",
+      "assetPath": "item-icons/horror_v184_mw044.png",
+      "assetSha256": "bb1f41fec59f35a95669932a324782345731f90ad540f21f5300541c94b73c25",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw044.webp",
+      "sourceSha256": "21e618465b9f5bbce63f4a6c6de7b449c8512287ad27433d71f011c31be8d4eb",
+      "crop": [
+        482,
+        0,
+        36,
+        22
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03011": {
+      "itemId": "USER_ITEM_20261018_R03011",
+      "appearanceId": "mw047",
+      "assetPath": "item-icons/horror_v184_mw047.png",
+      "assetSha256": "dfe8c40bdf551f293d0348237dd0786765dba448a9fd9da8933e10d73035e9f4",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw047.webp",
+      "sourceSha256": "a41e191964922306e9014fac7a93e3999cab55b95866d08134af0f5fb44921d4",
+      "crop": [
+        161,
+        0,
+        28,
+        15
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R05210": {
+      "itemId": "USER_ITEM_20261018_R05210",
+      "appearanceId": "mw048",
+      "assetPath": "item-icons/horror_v184_mw048.png",
+      "assetSha256": "4d484e8e6a963e61217ed74b39e32af945c3f39bbd98f30c84694cde42dee60f",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw048.webp",
+      "sourceSha256": "e35599847514ade0ef9bc53a270d62838aaad74ceff0227285ea2069ef2c7c9b",
+      "crop": [
+        236,
+        0,
+        33,
+        15
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01853": {
+      "itemId": "USER_ITEM_20261018_R01853",
+      "appearanceId": "mw053",
+      "assetPath": "item-icons/horror_v184_mw053.png",
+      "assetSha256": "de317bb2aea761b98ab028579ea0f078bff48def325e0fb27ace6baa3f3490dd",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw053.webp",
+      "sourceSha256": "f875e21cd06851c5516fd0821d0e54fd60cfd4d5c2fc4aa51ff73be02d0da297",
+      "crop": [
+        261,
+        0,
+        31,
+        16
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01533": {
+      "itemId": "USER_ITEM_20261018_R01533",
+      "appearanceId": "mw055",
+      "assetPath": "item-icons/horror_v184_mw055.png",
+      "assetSha256": "c609e5723650491e387bf57f5ec7a75473b066bda2ff19ef9e3ad89307b05f8e",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw055.webp",
+      "sourceSha256": "3ee56b9f402b7f79c9eb645718d23539cb21a9279cbd875620c5764d25314335",
+      "crop": [
+        133,
+        0,
+        28,
+        32
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02967": {
+      "itemId": "USER_ITEM_20261018_R02967",
+      "appearanceId": "mw056",
+      "assetPath": "item-icons/horror_v184_mw056.png",
+      "assetSha256": "40c39845aa2de8f52402f01c5ca5bc834c5c3a085310c9aa15608cb7560dea53",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw056.webp",
+      "sourceSha256": "3898dfb403b74d431068cb4f6fb47e4b286014fc2499b31b9bb29e8749f90e99",
+      "crop": [
+        157,
+        0,
+        29,
+        16
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01570": {
+      "itemId": "USER_ITEM_20261018_R01570",
+      "appearanceId": "mw069",
+      "assetPath": "item-icons/horror_v184_mw069.png",
+      "assetSha256": "fd95fcfb88a22ac800b87fe26e4d21f01e944802c8b84500a0f4343ed0a72b78",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw069.webp",
+      "sourceSha256": "792b43491c181e6f584c16bff2c29870f5ce9fdf9921eba1dc05d06772d93657",
+      "crop": [
+        617,
+        0,
+        38,
+        13
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02940": {
+      "itemId": "USER_ITEM_20261018_R02940",
+      "appearanceId": "mw088",
+      "assetPath": "item-icons/horror_v184_mw088.png",
+      "assetSha256": "f5851fec2fc7c7fc4fda13d94f8cd8fd710218aef0e79fe5d1b7af0b76bd902f",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw088.webp",
+      "sourceSha256": "6719d7ebd169ac1e21e77e520a367ffcb4dabcf1f16125708042eeb71ed00435",
+      "crop": [
+        602,
+        0,
+        36,
+        8
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02882": {
+      "itemId": "USER_ITEM_20261018_R02882",
+      "appearanceId": "mw092",
+      "assetPath": "item-icons/horror_v184_mw092.png",
+      "assetSha256": "00f726c33aac81455740df18c3dcce40328cac53eb360d4411b1ad80e887535d",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw092.webp",
+      "sourceSha256": "da35fc9a0eedc96c57167be71302f81542f5fc524a6ccf767f824c2575297776",
+      "crop": [
+        604,
+        0,
+        36,
+        8
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01569": {
+      "itemId": "USER_ITEM_20261018_R01569",
+      "appearanceId": "mw095",
+      "assetPath": "item-icons/horror_v184_mw095.png",
+      "assetSha256": "b6e913db6044de70a223bd7f4e90b6ca3354cffc7d7a7c30beb4395fda5678fe",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw095.webp",
+      "sourceSha256": "c44a94ec0637cd18244c029aee0ac4fe93648147ff499c235ad8fd644b3aa9ab",
+      "crop": [
+        617,
+        0,
+        38,
+        13
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01567": {
+      "itemId": "USER_ITEM_20261018_R01567",
+      "appearanceId": "mw097",
+      "assetPath": "item-icons/horror_v184_mw097.png",
+      "assetSha256": "9c1d129047f0ba6da732e42b031be27a9b9ef2c2f07c825f10b9f20ecc5965f1",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw097.webp",
+      "sourceSha256": "c4db354cd877433701c972c14f6ee0714120c71225de8c0ad101e472faff6881",
+      "crop": [
+        619,
+        0,
+        38,
+        13
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02883": {
+      "itemId": "USER_ITEM_20261018_R02883",
+      "appearanceId": "mw098",
+      "assetPath": "item-icons/horror_v184_mw098.png",
+      "assetSha256": "d9d4945c41ee990331364e4d17a60b575bc1caea90a0821e9d065749c7095c78",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw098.webp",
+      "sourceSha256": "748cfd79972291b9b2d8aaf2a0de988db99380751bb7607fea82b1e2cca94a05",
+      "crop": [
+        407,
+        0,
+        30,
+        29
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01568": {
+      "itemId": "USER_ITEM_20261018_R01568",
+      "appearanceId": "mw099",
+      "assetPath": "item-icons/horror_v184_mw099.png",
+      "assetSha256": "9646fb82889c6a14f969155f8fa8e4a611d697ef79c98f3950da3af36249f750",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw099.webp",
+      "sourceSha256": "c62fa47f7aa290769fe1de40cee20e5cefec68ace6d1254135e86c2116f51868",
+      "crop": [
+        630,
+        0,
+        38,
+        13
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01566": {
+      "itemId": "USER_ITEM_20261018_R01566",
+      "appearanceId": "mw100",
+      "assetPath": "item-icons/horror_v184_mw100.png",
+      "assetSha256": "5c2fa1b6fbd62a14487bf9d3d988f71a95c2974bfd4eea7e0b25322c6cdae20a",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw100.webp",
+      "sourceSha256": "416dd97c04441c958ca0e977483917143f39d60210c5896b4deae204303fe7be",
+      "crop": [
+        573,
+        0,
+        36,
+        15
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01788": {
+      "itemId": "USER_ITEM_20261018_R01788",
+      "appearanceId": "mw170",
+      "assetPath": "item-icons/horror_v184_mw170.png",
+      "assetSha256": "beee75def270fce62f32ed3409af0d1c8928cfeab22298a61176c85658d2a990",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw170.webp",
+      "sourceSha256": "8669cf4cc0a81c3ff8e1a4d2629bdd23f8682c733cce269e91b49ec16fcc70d5",
+      "crop": [
+        362,
+        0,
+        50,
+        32
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R05569": {
+      "itemId": "USER_ITEM_20261018_R05569",
+      "appearanceId": "mw186",
+      "assetPath": "item-icons/horror_v184_mw186.png",
+      "assetSha256": "37f3907cd03dc3002991fea2624477335c5ccd58866de2b2fcef3e082cb2b7b0",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw186.webp",
+      "sourceSha256": "52e73da15a223e14ecabcc6ca67e1df8a69c2d08f55d647789f1f582bb3637a6",
+      "crop": [
+        760,
+        75,
+        70,
+        37
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01782": {
+      "itemId": "USER_ITEM_20261018_R01782",
+      "appearanceId": "mw203",
+      "assetPath": "item-icons/horror_v184_mw203.png",
+      "assetSha256": "399c091754b89ebecaffc716f2c83a3b062e006e6a07fe9f4fdea6947e80e24c",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw203.webp",
+      "sourceSha256": "a1a5802cc3f41673d3f4da9354a7188d8aaeb19634bdd5a03b308ea0c4ebe058",
+      "crop": [
+        354,
+        76,
+        60,
+        25
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01250": {
+      "itemId": "USER_ITEM_20261018_R01250",
+      "appearanceId": "mw284",
+      "assetPath": "item-icons/horror_v184_mw284.png",
+      "assetSha256": "5b6e4b004b22e32f31641f52b2f356d44a59134fb7a2ef9bd9609f8d1f53e11f",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw284.webp",
+      "sourceSha256": "00cc81ec2355013fef24d5434f2c2d6993febe0e4e6a934dad6807ca0b83dd46",
+      "crop": [
+        937,
+        0,
+        35,
+        16
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01248": {
+      "itemId": "USER_ITEM_20261018_R01248",
+      "appearanceId": "mw288",
+      "assetPath": "item-icons/horror_v184_mw288.png",
+      "assetSha256": "5eb75c0cfa2af241a22b6480d0880717a6cf93affa3174092662e0ef5e6c0f85",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw288.webp",
+      "sourceSha256": "3f7961961d076d03976b004a8e6688aa53da8674bbafc602b5c9b971b804f448",
+      "crop": [
+        551,
+        66,
+        51,
+        28
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R01814": {
+      "itemId": "USER_ITEM_20261018_R01814",
+      "appearanceId": "mw290",
+      "assetPath": "item-icons/horror_v184_mw290.png",
+      "assetSha256": "abc7324f4aa4afb4eb13fbedeb2770a91de0673182046d7573bd3246fae4014e",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/mw290.webp",
+      "sourceSha256": "7541c93fc8f20c7162574e1d05a6c6cb700fb63622af73b45431fd04b859e838",
+      "crop": [
+        387,
+        72,
+        54,
+        32
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02884": {
+      "itemId": "USER_ITEM_20261018_R02884",
+      "appearanceId": "ww096",
+      "assetPath": "item-icons/horror_v184_ww096.png",
+      "assetSha256": "7db6fed743966360460d71af5c0ff1ea65aaada6d40a526b95ce746f5b054dd7",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/ww096.webp",
+      "sourceSha256": "d2ad2c59eda8d7de4a9980aeb51d412bc342764b314f7a82cfaa20e1bd4898ee",
+      "crop": [
+        134,
+        0,
+        30,
+        33
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R03756": {
+      "itemId": "USER_ITEM_20261018_R03756",
+      "appearanceId": "ww141",
+      "assetPath": "item-icons/horror_v184_ww141.png",
+      "assetSha256": "d211e6dfbcf65b64a8b2c01d1642dd639c71eb6b827eb0086496bc00e365a6f9",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/ww141.webp",
+      "sourceSha256": "48b79740839b5b0dba22e971d4ce12b8e76bfecaaa16222a8f65e04afc95a093",
+      "crop": [
+        517,
+        73,
+        49,
+        14
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R05269": {
+      "itemId": "USER_ITEM_20261018_R05269",
+      "appearanceId": "ww145",
+      "assetPath": "item-icons/horror_v184_ww145.png",
+      "assetSha256": "3ad29b53513c532c95df326053f26adabcc0ac60a03fc76a49507b051c1ea29d",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/ww145.webp",
+      "sourceSha256": "9db01bc2b6cf9df7938765957126c3432a32bad1deab0f35c427e8d72c810e01",
+      "crop": [
+        517,
+        73,
+        49,
+        14
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
+    },
+    "USER_ITEM_20261018_R02837": {
+      "itemId": "USER_ITEM_20261018_R02837",
+      "appearanceId": "ww289",
+      "assetPath": "item-icons/horror_v184_ww289.png",
+      "assetSha256": "38f3b4654a4e545c6d5fc430c441cb5ed2c4492ebb6ffb9440461832da5f47b0",
+      "sourcePath": "master/source/equipment/horror_v184/original_wearables.zip",
+      "sourceMember": "atlas/weapon/ww289.webp",
+      "sourceSha256": "4ed266bca101a7409cb3aa7d71705e31874b0074a16bcea0cb87c48876652303",
+      "crop": [
+        0,
+        59,
+        37,
+        21
+      ],
+      "projection": "MASTER_EXACT_NATIVE_CROP",
+      "identityMatch": "EXACT_WEARABLE_APPEARANCE",
+      "evidence": "U"
     }
   }
 }

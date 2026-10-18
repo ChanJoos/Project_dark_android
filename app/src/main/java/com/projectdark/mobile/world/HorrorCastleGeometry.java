@@ -20,9 +20,9 @@ public final class HorrorCastleGeometry {
  public static float maxY(String id){return original(id)==null?960:160+(columns(id)+rows(id))*16+64;}
  public static String title(String id){return LOBBY.equals(id)?"호러캐슬 로비":FIRST.equals(id)?"호러캐슬 1층 복도":SECOND.equals(id)?"호러캐슬 2층 복도":String.format(java.util.Locale.ROOT,"호러캐슬 %02d",room(id));}
  public static boolean inside(String id,float x,float y,float radius){float a=(y-160)/32+(x-800)/64,b=(y-160)/32-(x-800)/64;HorrorCastleOriginalData.Grid g=original(id);if(g!=null)return g.walkable(Math.round(a),Math.round(b));float inset=radius/28f;return a>=inset&&b>=inset&&a<=columns(id)-1-inset&&b<=rows(id)-1-inset;}
- public static final class Door {public final float x,y,markerX,markerY;public final String destination,label;
+ public static final class Door {public final float x,y,markerX,markerY;public final String destination,label;public final boolean visiblePortal;
   Door(float xx,float yy,String d,String l){this(xx,yy,xx,yy,d,l);}
-  Door(float xx,float yy,float mx,float my,String d,String l){x=xx;y=yy;markerX=mx;markerY=my;destination=d;label=l;}
+  Door(float xx,float yy,float mx,float my,String d,String l){x=xx;y=yy;markerX=mx;markerY=my;destination=d;label=l;visiblePortal=!"방 입구".equals(l);}
   Door(int u,int v,String d,String l){this(HorrorCastleGeometry.x(u,v),HorrorCastleGeometry.y(u,v),d,l);}
  }
  private static Door originalDoor(String id,int u,int v,String destination,String label){WorldMoveTargetController.TileCenter p=nearest(id,u,v);return new Door(p.x,p.y,destination,label);}
@@ -31,19 +31,18 @@ public final class HorrorCastleGeometry {
  private static List<Door> buildDoors(String id){List<Door> d=new ArrayList<>();HorrorCastleOriginalData.Grid g=original(id);
   if(LOBBY.equals(id)){
    // User's device capture: the carpet under the central arches is the west entrance.
-   for(int u=24;u<=26;u++)d.add(originalDoor(id,u,10,FIRST,"1층 서쪽 복도"));
-   // The shifted marker is on an original blocked wall cell; keep its reachable threshold.
-   WorldMoveTargetController.TileCenter east=nearest(id,47,2);
-   d.add(new Door(east.x,east.y,x(47,2),y(47,2),FIRST,"1층 동쪽 복도"));
+   for(int u=22;u<=26;u++)d.add(originalDoor(id,u,10,FIRST,"1층 서쪽 복도"));
+   // Keep the marker on the same reachable floor cell as its activation.
+   d.add(originalDoor(id,46,2,FIRST,"1층 동쪽 복도"));
    d.add(originalDoor(id,19,2,SECOND,"2층 중앙 복도"));
    // User-marked five-cell opening between the exterior pillars (u21 and u27).
    for(int u=22;u<=26;u++)d.add(new Door(u,18,"MILLES","밀레스"));
   }else if(FIRST.equals(id)){
-   d.add(originalDoor(id,columns(id)/2-1,rows(id)-2,LOBBY,"로비로"));
+   for(int u=3;u<=6;u++)d.add(originalDoor(id,u,rows(id)-1,LOBBY,"로비로"));
    for(int v:new int[]{7,13,19,25,31})d.add(originalDoor(id,1,v,roomId(1),"방 입구"));
    for(int v:new int[]{6,12,18,24,30})d.add(originalDoor(id,8,v,roomId(1),"방 입구"));
   }else if(SECOND.equals(id)){
-   d.add(originalDoor(id,columns(id)/2-1,rows(id)-2,LOBBY,"로비로"));
+   for(int u=4;u<=7;u++)d.add(originalDoor(id,u,rows(id)-1,LOBBY,"로비로"));
    d.add(originalDoor(id,8,2,roomId(1),"방 입구"));
   }else if(room(id)>0){
    String next=room(id)==13?LOBBY:roomId(room(id)+1);

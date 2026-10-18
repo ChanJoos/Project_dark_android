@@ -249,6 +249,7 @@ public final class RpgProgressionState {
     SourceItemFunctions.install(this);
     SourceEquipmentPerformance.install(this);
     SourceEquipmentRequirements.install(this);
+    HorrorEquipmentCatalog.install(this);
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);
     inventory.put("IT_TEST_SHOES_ML229",1);inventory.put("IT_TEST_SHOES_ML230",1);
@@ -320,6 +321,9 @@ public final class RpgProgressionState {
   public void enableEquipmentSandbox(boolean grant){
     equipmentSandbox=true;
     if(grant)for(ItemDefinition d:items.values())inventory.put(d.itemId,Math.max(pairedSlot(d.equipSlot)?2:1,inventory.getOrDefault(d.itemId,0)));
+    // Existing test profiles receive the newly requested source kit too. Repeated
+    // activation only fills missing entries, never increments owned quantities.
+    for(String id:HorrorEquipmentCatalog.IDS)inventory.put(id,Math.max(1,inventory.getOrDefault(id,0)));
   }
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
