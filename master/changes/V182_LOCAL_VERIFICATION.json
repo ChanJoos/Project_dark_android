@@ -1,0 +1,15 @@
+{
+  "sourceCommit": "c30a7766c6d6259087c60c77ef5e19ce775f1b67",
+  "localChecks": {
+    "rawOriginalGridLobbyReachability": "PASS 10/10",
+    "millesExits": 5,
+    "itemMasterRows": 5722,
+    "sourceXlsxHashes": "PASS 2/2",
+    "monsterMpfRoleMap": "PASS 10/10",
+    "originalMapGenerator": "PASS 14 recovered maps;12/13 still pending"
+  },
+  "androidBuild": "NOT_RUN_NO_LOCAL_ANDROID_TOOLCHAIN",
+  "nativeRuntime": "PENDING_REMOTE_CI",
+  "githubPush": "USER_EXPLICITLY_APPROVED_PUBLIC_SOURCE_UPLOAD_20261018",
+  "eastShift": "MARKER_ONLY_AT47,2;ACTIVATION_RETAINS46,2"
+}

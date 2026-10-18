@@ -847,7 +847,7 @@ private void drawQuestJournalIcon(Canvas c){
     WorldRuntimeAdapter aw=activeWorld();com.projectdark.mobile.world.PoteCampaignMapDef forest=inPoteField?com.projectdark.mobile.world.PoteCampaignMapDef.forId(state.currentMapId()):null;
     float minX=inReagentShop?townInterior.minX():inPoteField?forest.minX:WorldDef.MIN_X,maxX=inReagentShop?townInterior.maxX():inPoteField?forest.maxX:WorldDef.MAX_X,minY=inReagentShop?TownInteriorDef.MIN_Y:inPoteField?forest.minY:WorldDef.MIN_Y,maxY=inReagentShop?townInterior.maxY():inPoteField?forest.maxY:WorldDef.MAX_Y;
     MobileHudSkin.minimap(c,state,aw.presentationPlayerX(),aw.presentationPlayerY(),minX,minY,maxX,maxY);
-    UiTheme.fit(c,inReagentShop?townInterior.title:inPoteField?com.projectdark.mobile.world.CampaignWorld.title(state.currentMapId()):"밀레스",14,15,118,9,UiTheme.TEXT,true);
+    UiTheme.center(c,inReagentShop?townInterior.title:inPoteField?com.projectdark.mobile.world.CampaignWorld.title(state.currentMapId()):"밀레스",68,15,9,UiTheme.TEXT,true);
     UiTheme.text(c,"CH. 5-1",19,133,7,UiTheme.TEXT,false);
   }
 private void drawUtilityRail(Canvas c){

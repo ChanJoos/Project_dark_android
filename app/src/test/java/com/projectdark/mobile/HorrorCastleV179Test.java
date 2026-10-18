@@ -44,9 +44,14 @@ public class HorrorCastleV179Test {
   List<HorrorCastleGeometry.Door> gates=HorrorCastleGeometry.doors(HorrorCastleGeometry.LOBBY);
   assertEquals(3,gates.stream().filter(d->d.label.equals("1층 서쪽 복도")).count());
   assertEquals(1,gates.stream().filter(d->d.label.equals("1층 동쪽 복도")).count());assertEquals(1,gates.stream().filter(d->d.label.equals("2층 중앙 복도")).count());
+  for(int u=24;u<=26;u++){final int col=u;assertTrue(gates.stream().anyMatch(d->d.label.equals("1층 서쪽 복도")&&d.x==HorrorCastleGeometry.x(col,10)&&d.y==HorrorCastleGeometry.y(col,10)));}
+  HorrorCastleGeometry.Door east=gates.stream().filter(d->d.label.equals("1층 동쪽 복도")).findFirst().get();
+  assertEquals(HorrorCastleGeometry.x(47,2),east.markerX,.01);assertEquals(HorrorCastleGeometry.y(47,2),east.markerY,.01);
+  assertTrue(HorrorCastleGeometry.inside(HorrorCastleGeometry.LOBBY,east.x,east.y,0));
+  assertTrue(gates.stream().anyMatch(d->d.label.equals("2층 중앙 복도")&&d.x==HorrorCastleGeometry.x(19,2)&&d.y==HorrorCastleGeometry.y(19,2)));
   HorrorCastleOriginalData.Grid grid=HorrorCastleGeometry.original(HorrorCastleGeometry.LOBBY);int exits=0;
-  for(int u=1;u<49;u++)if(grid.walkable(u,18)){final int col=u;assertTrue(gates.stream().anyMatch(d->d.destination.equals("MILLES")&&d.x==HorrorCastleGeometry.x(col,18)&&d.y==HorrorCastleGeometry.y(col,18)));exits++;}
-  assertEquals(exits,gates.stream().filter(d->d.destination.equals("MILLES")).count());assertEquals(10,HorrorCastleGeometry.doors(HorrorCastleGeometry.FIRST).stream().filter(d->d.destination.equals(HorrorCastleGeometry.roomId(1))).count());
+  for(int u=22;u<=26;u++)if(grid.walkable(u,18)){final int col=u;assertTrue(gates.stream().anyMatch(d->d.destination.equals("MILLES")&&d.x==HorrorCastleGeometry.x(col,18)&&d.y==HorrorCastleGeometry.y(col,18)));exits++;}
+  assertEquals(5,exits);assertEquals(exits,gates.stream().filter(d->d.destination.equals("MILLES")).count());assertEquals(10,HorrorCastleGeometry.doors(HorrorCastleGeometry.FIRST).stream().filter(d->d.destination.equals(HorrorCastleGeometry.roomId(1))).count());
   GameView v=new GameView(c);v.layout(0,0,960,540);java.lang.reflect.Field inside=GameView.class.getDeclaredField("inPoteField");inside.setAccessible(true);inside.setBoolean(v,true);Method change=GameView.class.getDeclaredMethod("changeCampaignMap",String.class,boolean.class);change.setAccessible(true);Method gate=GameView.class.getDeclaredMethod("checkCampaignGate");gate.setAccessible(true);RuntimeState state=ItemWindowReferenceTest.field(v,"state");
   // All five lobby entry tiles must transition through the actual GameView gate handler.
   for(HorrorCastleGeometry.Door d:gates)if(!d.destination.equals("MILLES")){change.invoke(v,HorrorCastleGeometry.LOBBY,false);state.player().x=d.x;state.player().y=d.y;render(v,d.label.contains("서쪽")?"west-entrance.png":d.label.contains("동쪽")?"east-entrance.png":"upper-entrance.png");assertEquals(true,gate.invoke(v));assertEquals(d.destination,state.currentMapId());}

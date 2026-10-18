@@ -9,7 +9,7 @@ ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'app/build/generated/horror-v180-pack/horror-v180';OUT.mkdir(parents=True,exist_ok=True)
 SRC=ROOT/'master/source/horror_v180'
 # Master type order: male/female Warrior, Rogue, Mage, Cleric, Monk.
-IDS=[363,368,365,370,364,369,367,372,366,371]
+IDS=[366,371,365,370,364,369,367,372,363,368]
 receipt=[]
 with zipfile.ZipFile(SRC/'original_monsters.zip') as z:
  for typ,ident in enumerate(IDS):

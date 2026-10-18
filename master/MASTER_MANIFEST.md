@@ -506,3 +506,10 @@ Accepted user-authored all-town network, civilian presentation and18Rucesion que
 
 ## V163 candidate verification
 Exact9e77bf10 APK/native52pass; retained common tail508c24b8pass and final-source broad rerun pending. Ordinary NPC uses only mu0000001. Receipt changes/V163_BUILD_RUNTIME_RECEIPT.json; review docs/TOWN_QUEST_V163_REVIEW.md. Phone/fullHP balance remain pending; original sources unchanged.
+
+
+## 2026-10-18 — V182 resume: user corrections and full source item master
+
+Base6565a0f6, same branch/PR197, main41fe6def unchanged. User rejects V181 lobby exit extent/threshold alignment and monster role labels. Restrict Milles exits to u22–26,v18; west portals move to u24–26,v10; upper to19,2; east marker moves to47,2 while legal activation remains46,2 because original47,2 is blocked (full activation shift remains unresolved). Minimap title centered at68. Original MPF mapping corrects male/female Warrior↔Monk; Rogue/Mage/Cleric keep source correspondence. Raw source pixels preserved.
+
+Recovered both supplied item xlsx sources; each contains5722 populated item rows×27columns. Only differing row4993 has display name 라→루딘의모자 in file02; later source selected, both snapshots retained. Lossless source CSV/all-cell canonical JSON verified; duplicate unique names retained via stable row IDs. This is full Master admission, NOT5722 runtime-ready/equippable/rendered items. Unknown column semantics, item identity/slot/art mappings, Horror worn equipment and article310542 source remain PENDING. Never invent stats/art or merge duplicate rows by name. Importer tools/import_user_item_master_v182.py. Receipt master/changes/V182_HORROR_AND_USER_ITEMS.json. Focused native/build and common CI pending; handset acceptance pending.
