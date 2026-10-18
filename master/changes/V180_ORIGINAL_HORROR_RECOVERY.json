@@ -1,0 +1,21 @@
+{
+  "changeId": "V180_ORIGINAL_HORROR_RECOVERY",
+  "status": "IMPLEMENTED_SOURCE_RECOVERY_NATIVE_PENDING",
+  "before": "Rejected V179 authored maps and substitute wardrobes",
+  "after": "14 recovered original maps +10 actual original MPFs;12/13legacy explicitly pending",
+  "userAuthority": "2026-10-18 user original-faithful maps/monsters and web gap fill; continue",
+  "acceptedSourceChange": "Original pixels and observed original map geometry only; no new balance values",
+  "missing": [
+    "MAP_HORROR_ROOM_12",
+    "MAP_HORROR_ROOM_13"
+  ],
+  "sourceRegistry": "master/source/horror_v180/map_sources.json",
+  "nativeVerification": "PENDING",
+  "visualAcceptance": "PENDING",
+  "phoneVerification": "PENDING",
+  "apk": "NOT_BUILT_NOT_DELIVERABLE_UNTIL_PARITY",
+  "sourceArchives": {
+    "original_maps.zip": "ffa2d9341b3828db3254620f5b4e94fe04dadc71e2649d9a9fe497e0bea9c5fb",
+    "original_monsters.zip": "19537cfc17d0507593dce2d49a1040272c0785c4ad3f9e2f5f685c6648a3b7e2"
+  }
+}
