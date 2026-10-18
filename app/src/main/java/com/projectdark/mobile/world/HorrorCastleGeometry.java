@@ -58,6 +58,15 @@ public final class HorrorCastleGeometry {
    // Kitchen has an open wall threshold, and 12/13 still use their explicit legacy fixture.
    if(d.isEmpty()){if(g!=null)d.add(originalDoor(id,Math.min(6,g.width-2),1,next,"다음 방"));else d.add(new Door(columns(id)/2,2,next,"다음 방"));}
   }
+  if(room(id)>0){List<Door> returns=new ArrayList<>();
+   for(Door old:d){int u=Math.round((old.y-160)/32+(old.x-800)/64),v=Math.round((old.y-160)/32-(old.x-800)/64);
+    int[][] steps={{1,0},{0,1},{0,-1},{-1,0}};Door shifted=null;
+    for(int[] step:steps){int nu=u+step[0],nv=v+step[1];if(g!=null?!g.walkable(nu,nv):nu<1||nv<1||nu>=columns(id)-1||nv>=rows(id)-1)continue;
+     shifted=new Door(nu,nv,"MILLES","밀레스로 돌아가기");break;}
+    if(shifted==null)throw new IllegalStateException("No legal one-cell Horror return "+id);
+    if(!sameDoor(returns,shifted))returns.add(shifted);
+   }d=returns;
+  }
   return Collections.unmodifiableList(d);
  }
  private static boolean sameDoor(List<Door> list,Door candidate){for(Door d:list)if(d.x==candidate.x&&d.y==candidate.y)return true;return false;}

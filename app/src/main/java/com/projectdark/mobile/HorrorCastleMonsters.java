@@ -3,7 +3,7 @@ import com.projectdark.mobile.world.*;
 import java.util.*;
 /** Existing Master HP/EXP anchors; placement/count/attack tuning are explicitly ADAPTED. */
 public final class HorrorCastleMonsters {
- public static final String[] NAMES={"남자전사","여자전사","남자도적","여자도적","남자마법사","여자마법사","남자성직자","여자성직자","남자무도가","여자무도가"};
+ public static final String[] NAMES={"남자 전사","여자 전사","남자 도적","여자 도적","남자 마법사","여자 마법사","남자 성직자","여자 성직자","남자 무도가","여자 무도가"};
  public static final int[] HP={120000,125000,85000,90000,100000,105000,110000,115000,80000,140000},EXP={183000,187000,154000,158000,167000,171000,175000,179000,150000,200000};
  public static boolean actor(String id){return id!=null&&id.startsWith("HORROR_");}
  public static int type(String id){if(!actor(id))return -1;try{return Integer.parseInt(id.substring(7,9));}catch(Exception e){return -1;}}

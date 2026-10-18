@@ -18,7 +18,7 @@ with zipfile.ZipFile(apk_path) as apk:
     identity = json.loads(apk.read('assets/build_identity.json'))
     assert identity['sourceCommit'] == source, identity
     assert identity['runId'] == os.environ['GITHUB_RUN_ID'], identity
-    assert identity['versionCode'] == 179, identity
+    assert identity['versionCode'] == 183, identity
     assert len(list(pathlib.Path('app/src/main/assets/rucesion-v154').glob('*'))) >= 26
     for path in pathlib.Path('app/src/main/assets/rucesion-v154').glob('*'):
         assert apk.read('assets/rucesion-v154/'+path.name)==path.read_bytes(),path
@@ -87,15 +87,15 @@ with zipfile.ZipFile(apk_path) as apk:
     assert apk.testzip() is None
 sdk = os.environ['ANDROID_HOME']
 badging = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'badging', str(apk_path)], text=True)
-assert "versionCode='179'" in badging and "versionName='1.79-horror-castle'" in badging, badging[:300]
-expected_package = 'com.projectdark.mobile.v179test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
+assert "versionCode='183'" in badging and "versionName='1.83-mobile-horror'" in badging, badging[:300]
+expected_package = 'com.projectdark.mobile.v183test' if os.environ.get('PROJECT_DARK_SIDE_BY_SIDE') == '1' else 'com.projectdark.mobile'
 assert "package: name='"+expected_package+"'" in badging
-if expected_package.endswith(".v179test"): assert "application-label:'PROJECT DARK V179 TEST'" in badging
+if expected_package.endswith(".v183test"): assert "application-label:'PROJECT DARK V183 PREVIEW'" in badging
 resource_table = subprocess.check_output([sdk+'/build-tools/35.0.0/aapt', 'dump', 'resources', str(apk_path)], text=True)
 assert 'name='+expected_package in resource_table, resource_table[:400]
 for drawable in ('player_peasant_idle_walk','player_body_mm001_action02_0','player_shirt_mu0000001_source'):
     assert ':drawable/'+drawable in resource_table, drawable
-info = dict(identity, applicationId=expected_package, updateCompatibleWithV167=False if expected_package.endswith('.v179test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
+info = dict(identity, applicationId=expected_package, updateCompatibleWithV167=False if expected_package.endswith('.v183test') else 'PENDING', apkSha256=hashlib.sha256(apk_path.read_bytes()).hexdigest(), apkBytes=apk_path.stat().st_size,
             builtSeoul=datetime.datetime.now(datetime.timezone(datetime.timedelta(hours=9))).isoformat(),
             scope="V179 first playable Horror Castle: Milles manager to source-referenced lobby, two corridors and multiple doors, thirteen compact room themes,15 random Master humanoids per room, no respawn,01-through13 clear progression and instance HP/seed restart. Layouts and source-human wardrobe/attack tuning explicitly ADAPTED; exact original monster costumes,unseen room layout and phone/user acceptance PENDING. Retains existing town/coast/skills/equipment/stats/save and performance contracts.",
             bossPoses=len(poses), phoneAcceptance='PENDING', userVisualAcceptance={'RucesionMonsters':'USER_ACCEPTED_20261015','AbelCalibrationAndMaps':'PENDING'})

@@ -88,6 +88,7 @@ public final class RuntimeCombatSession {
   public Map<String,CombatResolver.Definition> actionDefinitions(){return actions.definitions();}
   public float effectiveCastSeconds(String id){CombatResolver.Definition d=actions.definitions().get(id);return d==null?Float.NaN:port.resolveDefinition(PLAYER_ID,d).hitTime;}
   public int effectiveMpCost(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a==null?0:ItemEffects.mpCost(state.rpg(),id,a.mpCost);}
+  public void cancelForMapTransition(){resolver.cancelForMapTransition();actions.drainEvents();}
   public boolean playerActionActive(){return resolver.actionActive(PLAYER_ID);}
 
   public static String playerAttackActionId(int attackMode){

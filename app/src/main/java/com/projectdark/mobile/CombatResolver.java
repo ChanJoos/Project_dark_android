@@ -112,6 +112,8 @@ public final class CombatResolver {
   }
   private void cancel(Pending p,RejectReason reason){port.finishAction(p.a,p.d.actionId);emit(EventType.ACTION_CANCELLED,p.seq,p.a,p.t,p.d,p.m,reason,null,0);activeByActor.remove(p.a);}
 
+  public void cancelForMapTransition(){for(Pending p:new ArrayList<>(activeByActor.values()))cancel(p,RejectReason.CONTROL);}
+
   public void onTargetRespawned(String id){if(id!=null)defeated.remove(id);} public boolean actionActive(){return !activeByActor.isEmpty();}
   public boolean actionActive(String actorId){return actorId!=null&&activeByActor.containsKey(actorId);} public int activeActionCount(){return activeByActor.size();}
   public List<ActionSnapshot> actionSnapshots(){List<ActionSnapshot> out=new ArrayList<>();for(Pending p:activeByActor.values())out.add(new ActionSnapshot(p));return Collections.unmodifiableList(out);}

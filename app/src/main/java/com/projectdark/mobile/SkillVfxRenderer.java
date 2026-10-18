@@ -6,7 +6,7 @@ import java.util.*;
 
 /** Event-only visual projection: accepted start => caster, resolved non-miss => recipient. */
 final class SkillVfxRenderer {
-  interface Anchors {float x(String id);float y(String id);default float centerX(String id){return x(id);}default float centerY(String id){return y(id)-25f;}}
+  interface Anchors {float x(String id);float y(String id);default float facingX(String id){return 32;}default float facingY(String id){return 16;}default float centerX(String id){return x(id);}default float centerY(String id){return y(id)-25f;}}
   static final class Pulse {
     final long actionSequence;final String id,sheet,anchor;final int row;final boolean caster;final float duration,x,y;float age;float directionX=1,directionY;
     Pulse(long seq,String id,String sheet,int row,String anchor,boolean caster,float duration,float x,float y){actionSequence=seq;this.id=id;this.sheet=sheet;this.row=row;this.anchor=anchor;this.caster=caster;this.duration=duration;this.x=x;this.y=y;}
@@ -16,7 +16,9 @@ final class SkillVfxRenderer {
   final List<Pulse> pulses=new ArrayList<>();private final Set<String> seen=new HashSet<>();private final Deque<String> history=new ArrayDeque<>();private final Paint p=new Paint();
   SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);rogue=new ClassicSkillReference(c,"rogue");warrior=new ClassicSkillReference(c,"warrior");shared=new ClassicSkillReference(c,"shared");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
-  void clear(){pulses.clear();}
+  private final Map<Long,float[]> actionDirections=new LinkedHashMap<>();
+  void clear(){pulses.clear();actionDirections.clear();}
+  private void lockDirection(Pulse p){float[] d=actionDirections.get(p.actionSequence);if(d!=null){p.directionX=d[0];p.directionY=d[1];}}
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
   void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null||MartialSkillPolicy.LEAP.equals(id))return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);}
   void consume(List<CombatResolver.Event> events,Anchors a){for(CombatResolver.Event e:events){
@@ -26,6 +28,10 @@ final class SkillVfxRenderer {
         if(Float.isFinite(x)&&Float.isFinite(y)&&seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,e.actionId,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,x,y));if(pulses.size()>64)pulses.remove(0);}
       }
       continue;
+    }
+    if(e.type==CombatResolver.EventType.ACTION_STARTED){float dx=a.x(e.targetId)-a.x(e.actorId),dy=a.y(e.targetId)-a.y(e.actorId);
+      if(!Float.isFinite(dx)||!Float.isFinite(dy)||Math.abs(dx)+Math.abs(dy)<.001f){dx=a.facingX(e.actorId);dy=a.facingY(e.actorId);}
+      actionDirections.put(e.actionSequence,new float[]{dx,dy});while(actionDirections.size()>64)actionDirections.remove(actionDirections.keySet().iterator().next());
     }
     String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||id.equals("SK_공통_001")||MartialSkillPolicy.LEAP.equals(id))continue;
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
@@ -49,12 +55,12 @@ final class SkillVfxRenderer {
       String anchor=(martialRecipient||!caster&&recipientFinisher(id))?e.targetId:channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor;
       if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
       float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
-      Pulse sourcePulse=new Pulse(e.actionSequence,id,sourceSheet,0,anchor,caster,channel.sequence.duration,x,y);sourcePulse.directionX=a.x(e.targetId)-a.x(e.actorId);sourcePulse.directionY=a.y(e.targetId)-a.y(e.actorId);pulses.add(sourcePulse);if(pulses.size()>64)pulses.remove(0);continue;
+      Pulse sourcePulse=new Pulse(e.actionSequence,id,sourceSheet,0,anchor,caster,channel.sequence.duration,x,y);sourcePulse.directionX=a.x(e.targetId)-a.x(e.actorId);sourcePulse.directionY=a.y(e.targetId)-a.y(e.actorId);lockDirection(sourcePulse);pulses.add(sourcePulse);if(pulses.size()>64)pulses.remove(0);continue;
     }
 boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequence+":"+(caster?"caster":captureContact?"capture":"target:"+e.targetId);if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
     int row=caster?casterRow(v.caster):v.targetRow;if(caster&&row<0||!caster&&v.target.equals("NONE"))continue;String anchor=caster||(captureContact&&captured.get(id).directional&&!recipientFinisher(id))?e.actorId:e.targetId;
     CapturedSkillFx.Sequence sequence=caster?null:captured.get(id);String sheet=sequence!=null?"capture":caster?"caster":v.targetSheet;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
-    Pulse pulse=new Pulse(e.actionSequence,id,sheet,row,anchor,caster,sequence!=null?sequence.duration:caster?.30f:row<0||sheet.equals("finisher-v65")?.75f:.48f,x,y);pulse.directionX=a.x(e.targetId)-a.x(e.actorId);pulse.directionY=a.y(e.targetId)-a.y(e.actorId);pulses.add(pulse);if(pulses.size()>64)pulses.remove(0);
+    Pulse pulse=new Pulse(e.actionSequence,id,sheet,row,anchor,caster,sequence!=null?sequence.duration:caster?.30f:row<0||sheet.equals("finisher-v65")?.75f:.48f,x,y);pulse.directionX=a.x(e.targetId)-a.x(e.actorId);pulse.directionY=a.y(e.targetId)-a.y(e.actorId);lockDirection(pulse);pulses.add(pulse);if(pulses.size()>64)pulses.remove(0);
   }}
   static boolean recipientFinisher(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a!=null&&a.damage()&&a.resourceBurst()&&!"CRASH".equals(a.formula);}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
