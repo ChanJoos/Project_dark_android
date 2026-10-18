@@ -5,6 +5,7 @@ import java.util.*;
 public final class HorrorCastleTravel {
  public static final String EXIT_NPC="horror_exit_keeper";
  private String map;private boolean latched;
+ public void reset(){map=null;latched=false;}
  public HorrorCastleGeometry.Door at(RuntimeState s){if(!s.currentMapId().equals(map)){map=s.currentMapId();latched=false;}HorrorCastleGeometry.Door hit=null;
   for(HorrorCastleGeometry.Door d:HorrorCastleGeometry.doors(map))if(Math.hypot(s.player().x-d.x,s.player().y-d.y)<20){hit=d;break;}
   if(hit==null){latched=false;return null;}if(latched)return null;latched=true;return hit;

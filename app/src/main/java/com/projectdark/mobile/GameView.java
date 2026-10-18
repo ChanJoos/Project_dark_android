@@ -528,7 +528,7 @@ public final class GameView extends View {
 
   private boolean campaignAutoRoute;
   private HorrorCastleRenderer horrorRenderer;
-  private void prepareHorrorScene(){if(com.projectdark.mobile.world.HorrorCastleGeometry.contains(state.currentMapId())){poteFieldRenderer.releaseFloorCache();if(horrorRenderer==null)horrorRenderer=new HorrorCastleRenderer(getContext());horrorRenderer.prepare(state.currentMapId());}else if(horrorRenderer!=null)horrorRenderer.releaseFloor();}
+  private void prepareHorrorScene(){horrorTravel.reset();if(com.projectdark.mobile.world.HorrorCastleGeometry.contains(state.currentMapId())){poteFieldRenderer.releaseFloorCache();if(horrorRenderer==null)horrorRenderer=new HorrorCastleRenderer(getContext());horrorRenderer.prepare(state.currentMapId());}else if(horrorRenderer!=null)horrorRenderer.releaseFloor();}
   private final HorrorCastleTravel horrorTravel=new HorrorCastleTravel();
   private boolean checkHorrorGate(){HorrorCastleGeometry.Door d=horrorTravel.at(state);if(d==null)return false;
     if(HorrorCastleGeometry.room(state.currentMapId())>0&&!state.horror().clear(state.currentMapId(),state.monsters())){
