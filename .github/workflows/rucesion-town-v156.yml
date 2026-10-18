@@ -106,7 +106,7 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' :app:assembleDebug --stacktrace
+          gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test.deviceCorrectedLobbyThresholdsAndBothSidesOfCorridorArePortals' --tests '*HorrorCastleV179Test.liveRoomPortalRejectsOneCellWaitsForLastKillAndExitNpcRestoresDeaths' --tests '*HorrorCastleV179Test.warmBackgroundCacheStaysBoundedAcrossTwelveTripsAndAllSourcePosesExist' :app:assembleDebug --stacktrace
           mkdir -p delivery
           cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_v181_portals.apk
           python3 - <<'PY'

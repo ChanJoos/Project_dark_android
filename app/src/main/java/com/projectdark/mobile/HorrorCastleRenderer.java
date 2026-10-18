@@ -36,8 +36,8 @@ public final class HorrorCastleRenderer {
  public void draw(Canvas c,WorldRuntimeAdapter world,List<PoteFieldRenderer.ActorDraw> input){String id=world.runtime().currentMapId();prepare(id);if(grid==null){legacy.draw(c,world,input);drawPortals(c,id,world.camera().cameraX(),world.camera().cameraY());return;}float ox=world.camera().cameraX(),oy=world.camera().cameraY();c.getClipBounds(clip);paint.setColor(Color.WHITE);paint.setAlpha(255);
   int minCx=(int)Math.floor((ox+clip.left)/256f),maxCx=(int)Math.floor((ox+clip.right)/256f),minCy=(int)Math.floor((oy+clip.top)/256f),maxCy=(int)Math.floor((oy+clip.bottom)/256f);
   for(int cy=minCy;cy<=maxCy;cy++)for(int cx=minCx;cx<=maxCx;cx++)c.drawBitmap(chunk(cx,cy),cx*256f-ox,cy*256f-oy,paint);
-  actors.clear();actors.addAll(input);actors.sort(Comparator.comparingDouble(a->a.y));int i=0;for(PoteFieldRenderer.ActorDraw actor:actors){while(i<foreground.size()&&foreground.get(i).depth<=actor.y)tile(c,foreground.get(i++),ox,oy);actor.draw.run();}while(i<foreground.size())tile(c,foreground.get(i++),ox,oy);actors.clear();
   drawPortals(c,id,ox,oy);
+  actors.clear();actors.addAll(input);actors.sort(Comparator.comparingDouble(a->a.y));int i=0;for(PoteFieldRenderer.ActorDraw actor:actors){while(i<foreground.size()&&foreground.get(i).depth<=actor.y)tile(c,foreground.get(i++),ox,oy);actor.draw.run();}while(i<foreground.size())tile(c,foreground.get(i++),ox,oy);actors.clear();
   if(HorrorCastleGeometry.room(id)>0){int alive=0;for(RuntimeState.Monster m:world.runtime().monsters())if(m.alive)alive++;UiTheme.center(c,"남은 몬스터 "+alive+" / 15",480,82,11,0xffe9d5ad,true);}
  }
  private void drawPortals(Canvas c,String id,float ox,float oy){paint.setColor(Color.WHITE);paint.setAlpha(255);for(HorrorCastleGeometry.Door d:HorrorCastleGeometry.doors(id)){dst.set(d.x-32-ox,d.y-22-oy,d.x+32-ox,d.y+10-oy);c.drawBitmap(portal,null,dst,paint);}}
