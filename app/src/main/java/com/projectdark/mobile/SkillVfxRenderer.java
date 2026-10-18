@@ -17,7 +17,8 @@ final class SkillVfxRenderer {
   SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);rogue=new ClassicSkillReference(c,"rogue");warrior=new ClassicSkillReference(c,"warrior");shared=new ClassicSkillReference(c,"shared");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
   private final Map<Long,float[]> actionDirections=new LinkedHashMap<>();
-  void clear(){pulses.clear();actionDirections.clear();}
+  private final Map<Long,String> directionTargets=new LinkedHashMap<>();private final Set<Long> releasedDirections=new HashSet<>();
+  void clear(){pulses.clear();actionDirections.clear();directionTargets.clear();releasedDirections.clear();}
   private void lockDirection(Pulse p){float[] d=actionDirections.get(p.actionSequence);if(d!=null){p.directionX=d[0];p.directionY=d[1];}}
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
   void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null||MartialSkillPolicy.LEAP.equals(id))return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);}
@@ -31,7 +32,13 @@ final class SkillVfxRenderer {
     }
     if(e.type==CombatResolver.EventType.ACTION_STARTED){float dx=a.x(e.targetId)-a.x(e.actorId),dy=a.y(e.targetId)-a.y(e.actorId);
       if(!Float.isFinite(dx)||!Float.isFinite(dy)||Math.abs(dx)+Math.abs(dy)<.001f){dx=a.facingX(e.actorId);dy=a.facingY(e.actorId);}
-      actionDirections.put(e.actionSequence,new float[]{dx,dy});while(actionDirections.size()>64)actionDirections.remove(actionDirections.keySet().iterator().next());
+      actionDirections.put(e.actionSequence,new float[]{dx,dy});directionTargets.put(e.actionSequence,e.targetId);while(actionDirections.size()>64){Long old=actionDirections.keySet().iterator().next();actionDirections.remove(old);directionTargets.remove(old);releasedDirections.remove(old);}
+    }
+    SkillActionContract.Rule directionRule=SkillActionContract.get(e.actionId);
+    if(e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.targetId.equals(directionTargets.get(e.actionSequence))&&!releasedDirections.contains(e.actionSequence)&&directionRule!=null&&directionRule.pattern==SkillActionContract.Pattern.SINGLE&&directionRule.damage()){
+      float dx=a.x(e.targetId)-a.x(e.actorId),dy=a.y(e.targetId)-a.y(e.actorId);
+      if(Float.isFinite(dx)&&Float.isFinite(dy)&&Math.abs(dx)+Math.abs(dy)>.001f){actionDirections.put(e.actionSequence,new float[]{dx,dy});for(Pulse p:pulses)if(p.actionSequence==e.actionSequence)lockDirection(p);}
+      releasedDirections.add(e.actionSequence);
     }
     String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||id.equals("SK_공통_001")||MartialSkillPolicy.LEAP.equals(id))continue;
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}

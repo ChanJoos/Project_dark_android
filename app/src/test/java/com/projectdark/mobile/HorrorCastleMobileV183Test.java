@@ -42,7 +42,7 @@ public class HorrorCastleMobileV183Test {
  @Test public void multipleRecipientsKeepTheAcceptedSkillDirection()throws Exception{
   SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));float[] target={168,184};
   SkillVfxRenderer.Anchors anchors=new SkillVfxRenderer.Anchors(){public float x(String id){return id.equals("player")?200:id.equals("primary")?target[0]:232;}public float y(String id){return id.equals("player")?200:id.equals("primary")?target[1]:216;}};
-  CombatResolver.Definition d=new CombatResolver.Definition("SK_성직자_003",CombatResolver.ActionKind.MAGIC,CombatResolver.ActionState.MAGIC,CombatResolver.EffectType.MAGIC_HIT,true,8,1,150,.24f,12);
+  CombatResolver.Definition d=new CombatResolver.Definition("SK_무도가_014",CombatResolver.ActionKind.MAGIC,CombatResolver.ActionState.MAGIC,CombatResolver.EffectType.MAGIC_HIT,true,8,1,150,.24f,12);
   fx.consume(Collections.singletonList(new CombatResolver.Event(1,81,CombatResolver.EventType.ACTION_STARTED,"player","primary",d,CombatResolver.InputMode.MANUAL,null,null,0)),anchors);
   target[0]=232;target[1]=216;
   for(String id:new String[]{"primary","secondary"})fx.consume(Collections.singletonList(new CombatResolver.Event(2,81,CombatResolver.EventType.HIT_FEEDBACK,"player",id,d,CombatResolver.InputMode.MANUAL,null,CombatResolver.HitSemantic.DAMAGE,12)),anchors);
