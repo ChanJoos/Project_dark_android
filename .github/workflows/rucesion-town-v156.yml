@@ -5,7 +5,7 @@ on:
   workflow_dispatch:
 permissions:
   contents: read
-  actions: read
+  actions: write
 jobs:
   town:
     runs-on: ubuntu-latest
@@ -18,6 +18,21 @@ jobs:
       PROJECT_DARK_SIDE_BY_SIDE: '1'
     steps:
       - uses: actions/checkout@v4
+      - name: Cancel only the two unintended common runs from previous scoped commit
+        run: |
+          python3 - <<'PYCANCEL'
+          import urllib.request,json,os
+          root='https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
+          for ident in [39095559473,39095556051]:
+              req=urllib.request.Request(root+str(ident),headers=headers)
+              run=json.load(urllib.request.urlopen(req))
+              assert run['head_sha']=='4e1fb08d3dd6fc6c44a6ca0e73564be1f09e80a4' and run['name']=='Validate PROJECT DARK Android'
+              if run['status']!='completed':
+                  req=urllib.request.Request(root+str(ident)+'/cancel',data=b'',headers=headers,method='POST')
+                  with urllib.request.urlopen(req) as response: print('CANCEL_REQUESTED',ident,response.status)
+              else: print('ALREADY_FINISHED',ident,run['conclusion'])
+          PYCANCEL
       - name: Recover starter gear source manifests
         run: |
           python3 tools/collect_peasant_sources.py

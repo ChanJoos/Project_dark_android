@@ -17,7 +17,7 @@ jobs:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
       - id: check
         run: |
-          if git log -1 --format=%B | rg -F '[horror-scoped]' >/dev/null; then
+          if [[ "$(git log -1 --format=%B)" == *"[horror-scoped]"* ]]; then
             git fetch --depth=1 origin af190162322029e3c6785a1362f74d89d7f3101d
             python3 tools/horror_v180_ci_scope.py
           else
