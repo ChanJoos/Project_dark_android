@@ -18,12 +18,23 @@ public class HorrorEquipmentV184Test {
   }
  }
  @Test public void existingProfilesReceiveKitOnceAndEveryItemEquipsWithItsSourceRange() {
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(false);r.bindTwoHandLearning(()->true);
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);
   Map<String,Integer> first=new LinkedHashMap<>(r.inventory());r.enableEquipmentSandbox(false);assertEquals(first,r.inventory());
   for(String id:HorrorEquipmentCatalog.IDS){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(id);assertEquals(RpgProgressionState.Evidence.U,d.evidence);assertTrue(r.inventory().get(id)>=1);r.unequip(d.equipSlot);assertEquals(id,RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));assertEquals(d.appearanceId,"무기".equals(d.equipSlot)?CharacterVisualBinding.from(r).weaponVisualRef():r.equippedDefinition(d.equipSlot).appearanceId);
    if("무기".equals(d.equipSlot)){assertEquals(id,(int)d.statModifiers.get("MinATK"),r.finalStats().weaponMinAttack);assertEquals(id,(int)d.statModifiers.get("MaxATK"),r.finalStats().weaponMaxAttack);}
   }
   RpgProgressionState copy=new RpgProgressionState();copy.bindTwoHandLearning(()->true);assertTrue(copy.restoreOwnedItems(r.inventory(),r.equipment()));assertEquals(r.inventory(),copy.inventory());assertEquals(r.equipment(),copy.equipment());
+ }
+ @Test public void oldProfileMigrationGrantsOnceAndNeverDuplicatesBankedOrRemovedGear() throws Exception {
+  Context c=RuntimeEnvironment.getApplication();android.content.SharedPreferences prefs=c.getSharedPreferences("project_dark_f5m_v1",0);prefs.edit().clear().commit();
+  RpgProgressionState old=new RpgProgressionState();old.enableEquipmentSandbox(true);
+  String banked=HorrorEquipmentCatalog.IDS[0];Map<String,Integer> owned=new LinkedHashMap<>(old.inventory());for(String id:HorrorEquipmentCatalog.IDS)owned.remove(id);
+  assertTrue(old.restoreOwnedItems(owned,Collections.emptyMap()));assertTrue(old.restoreBank(0,Collections.singletonMap(banked,1)));
+  F5mSaveStore.install(c);F5mSaveStore.saveRewardsActive(old);prefs.edit().remove("horror_equipment_granted_v184").commit();
+  RpgProgressionState migrated=new RpgProgressionState();F5mSaveStore.install(c);F5mSaveStore.restoreRewardsActive(migrated);assertTrue(F5mSaveStore.writable());
+  assertFalse(migrated.inventory().containsKey(banked));assertEquals(Integer.valueOf(1),migrated.bankInventory().get(banked));for(String id:HorrorEquipmentCatalog.IDS)if(!id.equals(banked))assertEquals(Integer.valueOf(1),migrated.inventory().get(id));
+  assertTrue(migrated.restoreOwnedItems(Collections.emptyMap(),Collections.emptyMap()));F5mSaveStore.saveRewardsActive(migrated);
+  RpgProgressionState reopened=new RpgProgressionState();F5mSaveStore.install(c);F5mSaveStore.restoreRewardsActive(reopened);reopened.enableEquipmentSandbox(false);assertTrue(reopened.inventory().isEmpty());assertEquals(migrated.bankInventory(),reopened.bankInventory());prefs.edit().clear().commit();
  }
  @Test public void allAdmittedItemsHaveExactIconsAndEveryDirectionalIdleWalkAttackFrame() {
   Context c=RuntimeEnvironment.getApplication();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(c);SourceItemIconRegistry icons=new SourceItemIconRegistry(c);RpgProgressionState r=new RpgProgressionState();
