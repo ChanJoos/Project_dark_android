@@ -1,13 +1,15 @@
 {
   "changeId": "V180_ORIGINAL_HORROR_RECOVERY",
-  "status": "KNOWN_ORIGINAL_SOURCE_IMPLEMENTED_NATIVE_VERIFIED_12_13_PENDING",
+  "status": "ORIGINAL_01_11_IMPLEMENTED_AT_LEAST_15_CONFIRMED_12_15_PENDING",
   "before": "Rejected V179 authored maps and substitute wardrobes",
-  "after": "14 recovered original maps +10 actual original MPFs;12/13legacy explicitly pending",
+  "after": "14 recovered original maps + 10 original MPFs. New user captures confirm room labels through 15; exact original maps 12–15 remain pending.",
   "userAuthority": "2026-10-18 user original-faithful maps/monsters and web gap fill; continue",
   "acceptedSourceChange": "Original pixels and observed original map geometry only; no new balance values",
   "missing": [
     "MAP_HORROR_ROOM_12",
-    "MAP_HORROR_ROOM_13"
+    "MAP_HORROR_ROOM_13",
+    "MAP_HORROR_ROOM_14",
+    "MAP_HORROR_ROOM_15"
   ],
   "sourceRegistry": "master/source/horror_v180/map_sources.json",
   "nativeVerification": {
@@ -30,7 +32,7 @@
       "explicit12/13original-source absence"
     ]
   },
-  "visualAcceptance": "PENDING_USER / 12_13_NOT_REPAIRED",
+  "visualAcceptance": "USER: roughly matches existing comparison; full original parity pending",
   "phoneVerification": "PENDING",
   "apk": "NOT_BUILT_NOT_DELIVERABLE_UNTIL_PARITY",
   "sourceArchives": {
@@ -59,8 +61,13 @@
     "fixedCompile": "SKIPPED"
   },
   "limitations": [
-    "12/13missingexactoriginalmapdata; rejectedlegacyretainedonlyasWIP",
+    "Exact original map data 12–15 unavailable; 13/14/15 have partial screenshot evidence. Runtime still has the previous 13-room sequence; this is not the original final-room specification.",
     "KR exact palette/cadence not independently certified from raw Korean client",
     "no handset FPS/visual certification"
-  ]
+  ],
+  "originalRoomCount": {
+    "minimumConfirmed": 15,
+    "finalRoom": null,
+    "evidence": "master/source/horror_v180/user_room_references_20261018.json"
+  }
 }

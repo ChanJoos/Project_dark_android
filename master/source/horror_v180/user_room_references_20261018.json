@@ -1,0 +1,130 @@
+{
+  "schemaVersion": 1,
+  "userInstruction": "방 번호는 캡처 하단 중앙에있어; 13이 끝이 아닌가봐",
+  "references": [
+    {
+      "file": "01-1000060356.jpg",
+      "sha256": "d06ae5c3b913b43261324db8c7398b5867ed97fff57b95a446f4ba6b16fdd3e8",
+      "room": 3,
+      "roomLabel": "호러캐슬03",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Tiger rug, upholstered chair, clock, patterned carpet.",
+      "sourceMapId": 6403,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "existing raw map visually corroborated"
+    },
+    {
+      "file": "02-1000060354.jpg",
+      "sha256": "cf629b51314f5518dd798df70833a6131838bbd12d704bc870b20890402bdd8b",
+      "room": 9,
+      "roomLabel": "호러캐슬09",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Wood floor kitchen, food and dish counters, pots.",
+      "sourceMapId": 6409,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "existing raw map visually corroborated"
+    },
+    {
+      "file": "03-1000060350.jpg",
+      "sha256": "897298bc0aea730d6352491af20f731809e695072a979e5935c053d1f6d05251",
+      "room": 5,
+      "roomLabel": "호러캐슬05",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Blue/orange checkered library, cauldron, right bookshelf.",
+      "sourceMapId": 6405,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "existing raw map visually corroborated"
+    },
+    {
+      "file": "04-1000060348.jpg",
+      "sha256": "f9453bd7533208e78e8601fd4f62bb8cb9f7d11c59171e6c66051b6e6a20a31a",
+      "room": 4,
+      "roomLabel": "호러캐슬04",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Armor rack, barrels, bust columns, chest and vessels.",
+      "sourceMapId": 6404,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "existing raw map visually corroborated"
+    },
+    {
+      "file": "05-1000060346.jpg",
+      "sha256": "921a230215f4a46548f29d192df53154b5ddbdbeb7441c99a0ddd5cf9418ee96",
+      "room": 13,
+      "roomLabel": "호러캐슬13",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Yellow-green curtains on left wall; chair near corner; clock/books sideboard and round wooden door on right wall.",
+      "sourceMapId": null,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "visual evidence only; exact raw map still unavailable"
+    },
+    {
+      "file": "06-1000060344.jpg",
+      "sha256": "1542a80f696983678baeaeae95ee38d5bdbf27e804be2b1bd2e44a35dc25b7d3",
+      "room": 15,
+      "roomLabel": "호러캐슬15",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Canopy bed at upper left, red chair and white bust/ornament; round wooden door and framed-picture cluster on right wall.",
+      "sourceMapId": null,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "visual evidence only; exact raw map still unavailable"
+    },
+    {
+      "file": "07-1000060342.jpg",
+      "sha256": "6b0ac3744795957fb45228934792cb782e79b46e580f8a961664649ec2cc51a1",
+      "room": 7,
+      "roomLabel": "호러캐슬07",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Carpet library; right bookshelf; chessboard table and red stools.",
+      "sourceMapId": 6407,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "existing raw map visually corroborated"
+    },
+    {
+      "file": "08-1000060338.jpg",
+      "sha256": "4edc2ec1ae6526ed8f9207ccfa7e4982e661d80d91676c3d3b395e3e23366dd3",
+      "room": 7,
+      "roomLabel": "호러캐슬07",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Carpet library; right bookshelf; chessboard table and red stools.",
+      "sourceMapId": 6407,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "existing raw map visually corroborated"
+    },
+    {
+      "file": "09-1000060336.jpg",
+      "sha256": "3555d712c005da1faabc14537d48fcc0469fa725144a505d6588d1d3b794c18b",
+      "room": 14,
+      "roomLabel": "호러캐슬14",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Yellow-green curtains on left wall; upholstered chair near corner; round wooden door on right wall; canopy bed portions visible at both lower edges.",
+      "sourceMapId": null,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "visual evidence only; exact raw map still unavailable"
+    },
+    {
+      "file": "10-1000060328.jpg",
+      "sha256": "c41019ec91a4de82bf3507e1c00f93828d39b63d25e20657f4ba63f5ac5327e0",
+      "room": 4,
+      "roomLabel": "호러캐슬04",
+      "labelLocation": "bottom center, zone field",
+      "observed": "Armor rack, barrels, bust columns, chest and vessels.",
+      "sourceMapId": 6404,
+      "coverage": "partial viewport; not full map",
+      "mapStatus": "existing raw map visually corroborated"
+    }
+  ],
+  "progressionEvidence": {
+    "minimumOriginalRoomCount": 15,
+    "finalOriginalRoomNumber": null,
+    "room13IsFinal": false,
+    "room15IsFinal": "NOT_ESTABLISHED"
+  },
+  "pendingOriginalMaps": [
+    12,
+    13,
+    14,
+    15
+  ],
+  "implementationBoundary": "References do not establish hidden cells, map dimensions, collisions, doorway destinations, or final room. Runtime remains unchanged in this evidence-only update.",
+  "sourceArchive": "user_room_references_20261018.zip"
+}
