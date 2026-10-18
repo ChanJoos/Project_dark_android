@@ -7,7 +7,28 @@ permissions:
   contents: read
   actions: write
 jobs:
+  cancel-accidental-common:
+    if: contains(github.event.head_commit.message, '[horror-ci-only]')
+    runs-on: ubuntu-latest
+    env:
+      GH_TOKEN: ${{ github.token }}
+    steps:
+      - name: Cancel only accidental V181 common runs
+        run: |
+          python3 - <<'PY'
+          import urllib.request,json,os
+          base='https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
+          for ident in [39102512303,39102510494]:
+              run=json.load(urllib.request.urlopen(urllib.request.Request(base+str(ident),headers=headers)))
+              assert run['head_sha']=='9d8344d3f9f39579bfbff7dfe9ece98db37989f8' and run['name']=='Validate PROJECT DARK Android'
+              if run['status']!='completed':
+                  req=urllib.request.Request(base+str(ident)+'/cancel',data=b'',headers=headers,method='POST')
+                  with urllib.request.urlopen(req) as response:print('CANCEL_REQUESTED',ident,response.status)
+              else:print('ALREADY_FINISHED',ident,run['conclusion'])
+          PY
   town:
+    if: ${{ !contains(github.event.head_commit.message, '[horror-ci-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:
