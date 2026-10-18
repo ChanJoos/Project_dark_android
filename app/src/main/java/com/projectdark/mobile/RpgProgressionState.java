@@ -254,6 +254,8 @@ public final class RpgProgressionState {
     LinkedClothingCatalogV186.install(this);
     LinkedFoodCatalogV187.install(this);
     SparseWeaponCatalogV188.install(this);
+    LinkedAccessoryCatalogV189.install(this);
+    for(String id:LinkedAccessoryCatalogV189.IDS)inventory.put(id,pairedSlot(items.get(id).equipSlot)?2:1);
     for(String id:SparseWeaponCatalogV188.IDS)inventory.put(id,1);
     for(String id:LinkedFoodCatalogV187.IDS)inventory.put(id,1);
     for(String id:LinkedClothingCatalogV186.IDS)inventory.put(id,1);

@@ -143,3 +143,12 @@ tasks.register('extractSparseWeaponsV188', Copy) {
 }
 tasks.named('extractSparseWeaponsV188').configure { dependsOn('extractLinkedFoodV187') }
 tasks.named('preBuild').configure { dependsOn('extractSparseWeaponsV188') }
+
+tasks.register('extractLinkedAccessoriesV189', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_accessories_v189.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedAccessoriesV189').configure { dependsOn('extractSparseWeaponsV188') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedAccessoriesV189') }
