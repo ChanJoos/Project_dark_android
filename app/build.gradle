@@ -6,11 +6,11 @@ android {
     defaultConfig {
         applicationId 'com.projectdark.mobile'
         if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v179test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V179 TEST' : 'PROJECT DARK']
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V180 PREVIEW' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 179
-        versionName '1.79-horror-castle'
+        versionCode 180
+        versionName '1.80-horror-preview'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
@@ -47,7 +47,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 179, versionName: '1.79-horror-castle']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 180, versionName: '1.80-horror-preview']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }

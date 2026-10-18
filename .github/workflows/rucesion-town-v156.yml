@@ -1,4 +1,4 @@
-name: V180 original Horror source recovery (scoped, no APK)
+name: V180 Horror preview APK (package verified source)
 on:
   push:
     branches: [codex/rucesion-coast-v157]
@@ -18,21 +18,6 @@ jobs:
       PROJECT_DARK_SIDE_BY_SIDE: '1'
     steps:
       - uses: actions/checkout@v4
-      - name: Cancel only the two unintended common runs from previous scoped commit
-        run: |
-          python3 - <<'PYCANCEL'
-          import urllib.request,json,os
-          root='https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/'
-          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
-          for ident in [39095559473,39095556051]:
-              req=urllib.request.Request(root+str(ident),headers=headers)
-              run=json.load(urllib.request.urlopen(req))
-              assert run['head_sha']=='4e1fb08d3dd6fc6c44a6ca0e73564be1f09e80a4' and run['name']=='Validate PROJECT DARK Android'
-              if run['status']!='completed':
-                  req=urllib.request.Request(root+str(ident)+'/cancel',data=b'',headers=headers,method='POST')
-                  with urllib.request.urlopen(req) as response: print('CANCEL_REQUESTED',ident,response.status)
-              else: print('ALREADY_FINISHED',ident,run['conclusion'])
-          PYCANCEL
       - name: Recover starter gear source manifests
         run: |
           python3 tools/collect_peasant_sources.py
@@ -97,32 +82,30 @@ jobs:
       - uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
-      - name: Decode retained original Horror sources and verify changed Horror runtime
+      - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          python3 tools/build_horror_v180.py
-          gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --stacktrace
-      - name: Record focused JUnit evidence
-        if: always()
-        run: |
-          python3 - <<'PYTEST'
+          gradle :app:assembleDebug --stacktrace
+          mkdir -p delivery
+          cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_v180_preview.apk
+          python3 - <<'PY'
+          import zipfile,json,hashlib,os,datetime
           from pathlib import Path
-          import xml.etree.ElementTree as E
-          totals=dict(tests=0,failures=0,errors=0,skipped=0)
-          files=list(Path('app/build/test-results/testDebugUnitTest').glob('TEST-*.xml'))
-          for p in files:
-              root=E.parse(p).getroot()
-              for k in totals: totals[k]+=int(root.get(k,0))
-              for case in root.findall('testcase'):
-                  for tag in ('failure','error'):
-                      f=case.find(tag)
-                      if f is not None: print('FAILED',case.get('classname'),case.get('name'),f.get('message',''),(f.text or '')[:2500])
-          print('FOCUSED_JUNIT',totals,'SUITES',len(files))
-          PYTEST
+          from zoneinfo import ZoneInfo
+          p=Path('delivery/PROJECT_DARK_v180_preview.apk')
+          with zipfile.ZipFile(p) as z:
+              assert z.testzip() is None
+              identity=json.loads(z.read('assets/build_identity.json'))
+              assert identity['sourceCommit']==os.environ['GITHUB_SHA']
+              assert identity['versionCode']==180
+              entries=z.namelist()
+              assert len([n for n in entries if n.startswith('assets/horror-v180/') and n.endswith('.png')])>=647
+          report=dict(sourceCommit=os.environ['GITHUB_SHA'],runId=os.environ['GITHUB_RUN_ID'],builtAtKST=datetime.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(),apkSha256=hashlib.sha256(p.read_bytes()).hexdigest(),apkBytes=p.stat().st_size,identity=identity,scope='Package of previously native-verified Horror runtime; no runtime changes; handset verification pending; exact original maps12-15 pending')
+          Path('delivery/build_evidence.json').write_text(json.dumps(report,indent=2)+'\n')
+          print(json.dumps(report))
+          PY
+          "${ANDROID_HOME}/build-tools/35.0.0/apksigner" verify --verbose delivery/PROJECT_DARK_v180_preview.apk
       - uses: actions/upload-artifact@v4
-        if: always()
         with:
-          name: horror-v180-source-recovery-${{ github.sha }}
-          path: |
-            app/build/reports/horror-v179/
-            app/build/test-results/
+          name: PROJECT_DARK_v180_preview
+          path: delivery/
