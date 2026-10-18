@@ -36,8 +36,8 @@
   "saveFix": "One-time validated migration; bank ownership prevents duplicate grant; removed gear stays removed after restart",
   "physicalPhone": "PENDING",
   "broaderCI": {
-    "39138901546": "IN_PROGRESS_AT_CHECKPOINT",
-    "39138905397": "IN_PROGRESS_AT_CHECKPOINT"
+    "39138901546": "SUCCESS",
+    "39138905397": "SUCCESS"
   },
   "remaining": [
     "Eight sparse original weapon action registrations",

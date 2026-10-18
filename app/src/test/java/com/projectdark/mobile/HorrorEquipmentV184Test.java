@@ -9,6 +9,19 @@ import org.robolectric.*;
 import org.robolectric.annotation.*;
 @RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE) @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public class HorrorEquipmentV184Test {
+ @Test public void sparseFrameIdsNeverShiftLaterPosesIntoMissingFrames() throws Exception {
+  org.json.JSONArray sparse=new org.json.JSONArray("[{\"f\":0,\"sx\":10},{\"f\":1,\"sx\":20},{\"f\":3,\"sx\":40}]");
+  assertNull(SourceEquipmentRegistration.sourceFrame(sparse,2));
+  assertEquals(40,SourceEquipmentRegistration.sourceFrame(sparse,3).getInt("sx"));
+  assertNull(SourceEquipmentRegistration.sourceFrame(sparse,-1));
+  java.util.zip.ZipFile archive=new java.util.zip.ZipFile("../master/source/equipment/horror_v184/original_wearables.zip");
+  try {for(String id:new String[]{"mw038","mw042","mw054","mw076","mw133","mw137","mw295"}){
+   java.io.InputStream in=archive.getInputStream(archive.getEntry("data/type/weapon/"+id+".json"));
+   org.json.JSONArray frames=new org.json.JSONObject(new String(in.readAllBytes(),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("sprites").getJSONArray("02");in.close();
+   assertNull(id,SourceEquipmentRegistration.sourceFrame(frames,2));
+   assertEquals(id,3,SourceEquipmentRegistration.sourceFrame(frames,3).getInt("f"));
+  }} finally {archive.close();}
+ }
  @Test public void modifiersMatchEveryRetainedUserSourceCell() throws Exception {
   org.json.JSONArray rows=new org.json.JSONObject(new String(java.nio.file.Files.readAllBytes(java.nio.file.Path.of("../master/canonical/User_Item_Master_20261018.json")),java.nio.charset.StandardCharsets.UTF_8)).getJSONArray("records");
   RpgProgressionState r=new RpgProgressionState();Map<String,org.json.JSONObject> source=new HashMap<>();for(int i=0;i<rows.length();i++)source.put(rows.getJSONObject(i).getString("itemId"),rows.getJSONObject(i));

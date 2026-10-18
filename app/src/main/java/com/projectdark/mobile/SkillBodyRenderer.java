@@ -81,10 +81,10 @@ final class SkillBodyRenderer {
     JSONObject own=registration(id);
     JSONObject sprites=own==null?null:own.optJSONObject("sprites");
     JSONArray exact=sprites==null?null:sprites.optJSONArray(group);
-    if(exact!=null&&index<exact.length()){drawGear(c,id,body,group,index,direction,x,y);return;}
+    if(SourceEquipmentRegistration.sourceFrame(exact,index)!=null){drawGear(c,id,body,group,index,direction,x,y);return;}
     EquipmentVisualRegistry.Visual v=gear.get(id);JSONObject registration=registration(id);if(v==null||v.atlas==null||registration==null)return;
     boolean back=ChungryongWeaponRenderer.back(direction);int sourceIndex=back?1:3;
-    JSONArray frames=registration.optJSONObject("sprites").optJSONArray("02");JSONObject f=frames==null?null:frames.optJSONObject(sourceIndex);
+    JSONArray frames=registration.optJSONObject("sprites").optJSONArray("02");JSONObject f=SourceEquipmentRegistration.sourceFrame(frames,sourceIndex);
     JSONObject baseFrame=catalog.frames.optJSONObject(body+"/02/"+sourceIndex);if(f==null||baseFrame==null){drawGear(c,id,body,group,index,direction,x,y);return;}
     Bitmap base=bitmap(baseFrame.optString("path"));if(base==null)return;
     CharacterRenderer.Direction sourceDirection=back?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
@@ -102,10 +102,10 @@ final class SkillBodyRenderer {
   private void drawGear(Canvas c,String id,String body,String group,int index,CharacterRenderer.Direction direction,float x,float y){
     if(id==null||id.isEmpty())return;EquipmentVisualRegistry.Visual v=gear.get(id);if(v==null||v.atlas==null)return;
     JSONObject j=registration(id);if(j==null)return;JSONObject sprites=j.optJSONObject("sprites");if(sprites==null)return;
-    JSONArray a=sprites.optJSONArray(group);JSONObject f=a!=null&&index<a.length()?a.optJSONObject(index):null;
+    JSONArray a=sprites.optJSONArray(group);JSONObject f=SourceEquipmentRegistration.sourceFrame(a,index);
     boolean adapted=f==null;
     // Missing action clips are attached to the current BODY rig, never left at standing coordinates.
-    if(f==null){a=sprites.optJSONArray("01");int n=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE?0:1;f=a!=null&&n<a.length()?a.optJSONObject(n):null;}
+    if(f==null){a=sprites.optJSONArray("01");int n=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE?0:1;f=SourceEquipmentRegistration.sourceFrame(a,n);}
     if(f==null)return;int w=f.optInt("w"),h=f.optInt("h"),sx=f.optInt("sx"),sy=f.optInt("sy");if(w<=0||h<=0||sx+w>v.atlas.getWidth()||sy+h>v.atlas.getHeight())return;
     float left=x-(float)f.optDouble("px")*w*SCALE,top=y-(h-(float)f.optDouble("py")*h)*SCALE;
     c.save();if(adapted){Matrix attachment=attachment(id,body,group,index,direction);c.translate(x,y);c.scale(SCALE,SCALE);c.concat(attachment);c.scale(1/SCALE,1/SCALE);c.translate(-x,-y);}
