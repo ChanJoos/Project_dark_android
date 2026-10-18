@@ -116,3 +116,12 @@ tasks.register('extractLinkedItemsV185', Copy) {
 }
 tasks.named('extractLinkedItemsV185').configure { dependsOn('extractHorrorEquipmentV184') }
 tasks.named('preBuild').configure { dependsOn('extractLinkedItemsV185') }
+
+tasks.register('extractLinkedClothingV186', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_clothes.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedClothingV186').configure { dependsOn('extractLinkedItemsV185') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedClothingV186') }

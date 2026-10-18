@@ -1,3 +1,7 @@
+## Additional23male warrior clothes implemented — verification PENDING
+
+Source raw originals,exact names/IDs,all10idle/walk+4action poses retained. Current user Master wins8historical article differences; actual article fields preserved beside current values. Separate linked_clothes_granted_v186 marker avoids losing additions after V185 saves and avoids bank duplicates/regrant after removal. Real GameView23garment native render/stat/restart and migration tests added. First30item compile failure was test-only Files.readString unsupported by Android compile API; fixed by94aea050 readAllBytes. Existing30exact-source items and new23clothes are53connected rows,NOT complete all15article items. Female body/FX routes,food,remaining table names/variants/requirements are still unfinished.
+
 # Item link bundle V185 — IN PROGRESS
 
 User requests ALL items from supplied15article links: individual assets,inventory,stats,character rendering. NOT COMPLETE. Prior warrior article310542 also remains partial, not all variants/motions.

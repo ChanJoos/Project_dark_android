@@ -251,6 +251,8 @@ public final class RpgProgressionState {
     SourceEquipmentRequirements.install(this);
     HorrorEquipmentCatalog.install(this);
     LinkedItemCatalogV185.install(this);
+    LinkedClothingCatalogV186.install(this);
+    for(String id:LinkedClothingCatalogV186.IDS)inventory.put(id,1);
     for(String id:LinkedItemCatalogV185.IDS){ItemDefinition d=items.get(id);inventory.put(id,pairedSlot(d.equipSlot)?2:1);}
     inventory.put(CHUNGRYONG_ITEM_ID,1);
     inventory.put(REFERENCE_LEOPARD_ITEM_ID,1);inventory.put(REFERENCE_HELM_ITEM_ID,1);

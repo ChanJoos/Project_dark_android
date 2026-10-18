@@ -1,0 +1,981 @@
+{
+  "status": "23_MALE_WARRIOR_CLOTHES_NOT_ALL_LINK_ITEMS",
+  "admitted": [
+    {
+      "name": "밀레스레더튜닉",
+      "appearanceId": "mu0000066",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 1,
+      "itemId": "USER_ITEM_20261018_R04102",
+      "historicalArticleStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "currentUserMasterStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000066.json": "6468d3ae3fa8197819e84750754092ac39589dec99cf387ffc783ee663aaeb78",
+        "atlas/armor/mu0000066.webp": "5c09c960ee3da1e46f06d269a09dc835dc2bf6e1f57cd43fd71c6af0c1bcc5d5"
+      },
+      "stats": {
+        "AC": -11,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 4102,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "루어스레더튜닉",
+      "appearanceId": "mu0000065",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 1,
+      "itemId": "USER_ITEM_20261018_R04926",
+      "historicalArticleStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "currentUserMasterStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000065.json": "646fe4c006000eb83f48c45f9368403820a42c2f2d2f39222e92a368e7decd0d",
+        "atlas/armor/mu0000065.webp": "ef63d36532fa24bfe4310593b5207c30321ef36136d3b15969b43b63f64781fe"
+      },
+      "stats": {
+        "AC": -11,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 4926,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "뤼케시온레더튜닉",
+      "appearanceId": "mu0000064",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 1,
+      "itemId": "USER_ITEM_20261018_R04665",
+      "historicalArticleStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "currentUserMasterStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000064.json": "6b57a1f066a03d84266c3e47a1817fda9cd362dfc5bd3907534915e5042d6828",
+        "atlas/armor/mu0000064.webp": "fd86e464d5d22537e55e43914b8917f8d30877f4f65d5e2d20a83a380a4d91fa"
+      },
+      "stats": {
+        "AC": -11,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 4665,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "수오미레더튜닉",
+      "appearanceId": "mu0000063",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 1,
+      "itemId": "USER_ITEM_20261018_R03255",
+      "historicalArticleStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "currentUserMasterStats": {
+        "AC": -11,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000063.json": "a3b5ea0aa47efd7e4a3b6a32339478f2058473f771932a4910f31670bfa50c24",
+        "atlas/armor/mu0000063.webp": "599b078b2d3287ff5e99554cc3c09e1481177e7458b64f2bec2fe24721e9a1dc"
+      },
+      "stats": {
+        "AC": -11,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 3255,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "밀레스지폰",
+      "appearanceId": "mu0000044",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 2,
+      "itemId": "USER_ITEM_20261018_R04002",
+      "historicalArticleStats": {
+        "AC": -19,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "currentUserMasterStats": {
+        "AC": -17,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000044.json": "42555187879504f4d71009bd524811fce925b3957442f803e99454869421fb0c",
+        "atlas/armor/mu0000044.webp": "d3388b63c97a3842fcc49cf7644837acc2a9d03a72579d88f5204d43c6836568"
+      },
+      "stats": {
+        "AC": -17,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4002,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "루어스지폰",
+      "appearanceId": "mu0000046",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 2,
+      "itemId": "USER_ITEM_20261018_R04825",
+      "historicalArticleStats": {
+        "AC": -19,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "currentUserMasterStats": {
+        "AC": -17,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000046.json": "23c0f13c27d0f1be7ef385ea0c98c260f1ca26ae4320c92d31f686e412518b1c",
+        "atlas/armor/mu0000046.webp": "53539080629d9c7d11f2c0471b23adf11f752329258207b7c04867005f628afc"
+      },
+      "stats": {
+        "AC": -17,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4825,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "뤼케시온지폰",
+      "appearanceId": "mu0000045",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 2,
+      "itemId": "USER_ITEM_20261018_R04564",
+      "historicalArticleStats": {
+        "AC": -19,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "currentUserMasterStats": {
+        "AC": -17,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000045.json": "a49c6ff2c64ce22a79842c30b28067ee16a636d3417b0cd334330c2a6be6a56e",
+        "atlas/armor/mu0000045.webp": "0128f74690cf915cc5ae89b97b79815a1ed080a75274237bdbaf6375519464d3"
+      },
+      "stats": {
+        "AC": -17,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4564,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "수오미지폰",
+      "appearanceId": "mu0000043",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 2,
+      "itemId": "USER_ITEM_20261018_R03154",
+      "historicalArticleStats": {
+        "AC": -19,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "currentUserMasterStats": {
+        "AC": -17,
+        "requiredLevel": 11,
+        "weight": 7
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000043.json": "974dc22f11b329d01cd63ad3c680fdef5cc4e267dae8f64780866650d8b5d795",
+        "atlas/armor/mu0000043.webp": "f9e51342a4111421b3aa10ec9dd79f9e26f410f25e7d6339f86b7bdd47484fb9"
+      },
+      "stats": {
+        "AC": -17,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 3154,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "밀레스하프플레이트",
+      "appearanceId": "mu0000084",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 3,
+      "itemId": "USER_ITEM_20261018_R03921",
+      "historicalArticleStats": {
+        "AC": -26,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "currentUserMasterStats": {
+        "AC": -24,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000084.json": "3d3470f827c7c67dae28a5a20c4ae5485fba199a38f6258d8180f18ad85f18cb",
+        "atlas/armor/mu0000084.webp": "f93293a83f1fd7110597dfeaca31d29e4f46cfb263c6909b998bba708e4831d3"
+      },
+      "stats": {
+        "AC": -24,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 26,
+      "currentStatSourceRow": 3921,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "루어스하프플레이트",
+      "appearanceId": "mu0000085",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 3,
+      "itemId": "USER_ITEM_20261018_R04744",
+      "historicalArticleStats": {
+        "AC": -26,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "currentUserMasterStats": {
+        "AC": -24,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000085.json": "72e66966336984f84fb68e60d486a0e1b66254bae7b098252cd438c7190f41ae",
+        "atlas/armor/mu0000085.webp": "71c13135cf6bcdbc71fedbe955f28a590da9e6560d441e3bdbbcdd73ebedf17c"
+      },
+      "stats": {
+        "AC": -24,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 26,
+      "currentStatSourceRow": 4744,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "뤼케시온하프플레이트",
+      "appearanceId": "mu0000083",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 3,
+      "itemId": "USER_ITEM_20261018_R04483",
+      "historicalArticleStats": {
+        "AC": -26,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "currentUserMasterStats": {
+        "AC": -24,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000083.json": "ce791b13b2d3e9d344d765a8a540c133bca1c7ca577666e96bdf44ef6db3a54b",
+        "atlas/armor/mu0000083.webp": "e42e823421ef8b3b8cae3df445aafd49beec4801eafe500d39003798c4b5b3ec"
+      },
+      "stats": {
+        "AC": -24,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 26,
+      "currentStatSourceRow": 4483,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "수오미하프플레이트",
+      "appearanceId": "mu0000086",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 3,
+      "itemId": "USER_ITEM_20261018_R03073",
+      "historicalArticleStats": {
+        "AC": -26,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "currentUserMasterStats": {
+        "AC": -24,
+        "requiredLevel": 26,
+        "weight": 10
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000086.json": "0a87ce3206df571f681499718ba8b5f0c12e21cfb05313de57ecdd8a8b9f7f70",
+        "atlas/armor/mu0000086.webp": "8167772997888e950fa40e7bf3c74ab7a1316f29ca10e405c527911e2851e737"
+      },
+      "stats": {
+        "AC": -24,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 26,
+      "currentStatSourceRow": 3073,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "밀레스체인메일",
+      "appearanceId": "mu0000146",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 4,
+      "itemId": "USER_ITEM_20261018_R03992",
+      "historicalArticleStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "currentUserMasterStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000146.json": "4bf2068dcf4a5de8904ff46ea981859c0542ab761068945508f0b29215ede4c7",
+        "atlas/armor/mu0000146.webp": "e3f508ac6bbe4db51616937c1d9fe610448acaa33fff35c8937ebd922c071711"
+      },
+      "stats": {
+        "AC": -36,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 56,
+      "currentStatSourceRow": 3992,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "루어스체인메일",
+      "appearanceId": "mu0000145",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 4,
+      "itemId": "USER_ITEM_20261018_R04815",
+      "historicalArticleStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "currentUserMasterStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000145.json": "42d7cee48cc7e58526370e25e38773bc2db081234344f3c442738dfe65102840",
+        "atlas/armor/mu0000145.webp": "0f706e4222e78c75bee3eee56fb7caefe3735635ead60afe4ff644172db45318"
+      },
+      "stats": {
+        "AC": -36,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 56,
+      "currentStatSourceRow": 4815,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "뤼케시온체인메일",
+      "appearanceId": "mu0000144",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 4,
+      "itemId": "USER_ITEM_20261018_R04554",
+      "historicalArticleStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "currentUserMasterStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000144.json": "b94751d341bc043a1236ca48b9edb5ee555c688626dc5d198849af4d26c7b3e7",
+        "atlas/armor/mu0000144.webp": "cc96c7cb8b03f69d88df444193f308bddde98de9c3944d80b932007cdccf68b2"
+      },
+      "stats": {
+        "AC": -36,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 56,
+      "currentStatSourceRow": 4554,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "수오미체인메일",
+      "appearanceId": "mu0000143",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 4,
+      "itemId": "USER_ITEM_20261018_R03144",
+      "historicalArticleStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "currentUserMasterStats": {
+        "AC": -36,
+        "requiredLevel": 56,
+        "weight": 16
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000143.json": "0c7aa467c88e9a32d3f78a334b96150076562827a0c0687896e6c197621754ca",
+        "atlas/armor/mu0000143.webp": "9372d2cc05fdb46967d50fb1728f0b77f66dd8fae4e5ce558b8835f9d16d51e8"
+      },
+      "stats": {
+        "AC": -36,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 56,
+      "currentStatSourceRow": 3144,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "밀레스풀플레이트",
+      "appearanceId": "mu0000126",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 5,
+      "itemId": "USER_ITEM_20261018_R03936",
+      "historicalArticleStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "currentUserMasterStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000126.json": "dad2cf7d54c9c59d92a3d130fe19c7ab2cb89a717fdd507009eb02e44f493875",
+        "atlas/armor/mu0000126.webp": "469d7ce2cd5d931a383ddff7e17f7d3a057a1e56564e9e264d1df42221111798"
+      },
+      "stats": {
+        "AC": -49,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 86,
+      "currentStatSourceRow": 3936,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "루어스풀플레이트",
+      "appearanceId": "mu0000125",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 5,
+      "itemId": "USER_ITEM_20261018_R04759",
+      "historicalArticleStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "currentUserMasterStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000125.json": "ca6c1162eaddd090ed1090b56a88b7172b049015e6cb317d73c1840c7bfa807e",
+        "atlas/armor/mu0000125.webp": "9c9bfd87729a36989207448b29d0156e87844cbf3e59f5da2b94322fd9ab343d"
+      },
+      "stats": {
+        "AC": -49,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 86,
+      "currentStatSourceRow": 4759,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "뤼케시온풀플레이트",
+      "appearanceId": "mu0000124",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 5,
+      "itemId": "USER_ITEM_20261018_R04498",
+      "historicalArticleStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "currentUserMasterStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000124.json": "bcda31daf7845fc35cdefd7f1dba1a876734114d350598dc80782054a9004a3f",
+        "atlas/armor/mu0000124.webp": "35fa737c6b1842954de1b940a2eb5853a61bdea07d28721763ece4b29762ff49"
+      },
+      "stats": {
+        "AC": -49,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 86,
+      "currentStatSourceRow": 4498,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "수오미풀플레이트",
+      "appearanceId": "mu0000123",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_FOUR_TOWNS",
+      "sourceTierRow": 5,
+      "itemId": "USER_ITEM_20261018_R03088",
+      "historicalArticleStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "currentUserMasterStats": {
+        "AC": -49,
+        "requiredLevel": 86,
+        "weight": 22
+      },
+      "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000123.json": "903b2e2a0bc58966c61b220dbebe9f8f77c2769758d36d9135ac93ada98f29ed",
+        "atlas/armor/mu0000123.webp": "4f0250ec90fb8cb2b2ef8648e923c05eb2476f079b0d8a1ca4832f7fc79e70f5"
+      },
+      "stats": {
+        "AC": -49,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 86,
+      "currentStatSourceRow": 3088,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "레더튜닉",
+      "appearanceId": "mu0000002",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_ORANGE_TOWN",
+      "itemId": "USER_ITEM_20261018_R05124",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000002.json": "a2987e382184c0eb4073cee497bdb0eb5f217b70b1381430f48b173909c2e63e",
+        "atlas/armor/mu0000002.webp": "b5622696208a1e7a7abd86257ff20c4ebc4959fc4f0f24dfdd76fb44b7e81038"
+      },
+      "stats": {
+        "AC": -11,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 5124,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "하프플레이트",
+      "appearanceId": "mu0000012",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_ORANGE_TOWN",
+      "itemId": "USER_ITEM_20261018_R01529",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000012.json": "cc94a4a81633022d806948ad3c2c45f626173abb3284c6324262e76736de88bc",
+        "atlas/armor/mu0000012.webp": "553f1fdd70e4fd7ce17ad1109d894e0307b0aabf6223768724461b8cee9477fa"
+      },
+      "stats": {
+        "AC": -24,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 26,
+      "currentStatSourceRow": 1529,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "이프리트메일",
+      "appearanceId": "mu0000028",
+      "type": "armor",
+      "articleId": 291457,
+      "source": "291457/source_00.png",
+      "sourceSection": "MALE_ORANGE_TOWN",
+      "itemId": "USER_ITEM_20261018_R02378",
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/armor/mu0000028.json": "d425a62710ccc7978a631e25c6f3cc45de6e6f42c60f8bc4eba3271a3418e4cd",
+        "atlas/armor/mu0000028.webp": "a9ff3335404ae52a216b991a9717a0e397f7d87c30cbb2585205aa10a36678a5"
+      },
+      "stats": {
+        "AC": -43,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": -1,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 71,
+      "currentStatSourceRow": 2378,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    }
+  ]
+}

@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 535,
+  "registeredItems": 558,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -12919,6 +12919,259 @@
       "projection": "ORIGINAL_ICON_SOCKET_BYTES",
       "evidence": "SOURCE_TEXT_ORDER_AND_MASTER_STATS",
       "itemId": "USER_ITEM_20261018_R01339"
+    },
+    "USER_ITEM_20261018_R04102": {
+      "itemId": "USER_ITEM_20261018_R04102",
+      "assetPath": "item-icons/clothes_v186_mu0000066.png",
+      "assetSha256": "bfce002403ad54404f9d3652ae236d015ab939e2a74f3a7856a651c9b1c88ceb",
+      "appearanceId": "mu0000066",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000066.webp",
+      "sourceSha256": "5c09c960ee3da1e46f06d269a09dc835dc2bf6e1f57cd43fd71c6af0c1bcc5d5",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04926": {
+      "itemId": "USER_ITEM_20261018_R04926",
+      "assetPath": "item-icons/clothes_v186_mu0000065.png",
+      "assetSha256": "204b679e6a2ea50bc93f7e8a3f3c2c229702d8e5e90c7b519636a5254329368e",
+      "appearanceId": "mu0000065",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000065.webp",
+      "sourceSha256": "ef63d36532fa24bfe4310593b5207c30321ef36136d3b15969b43b63f64781fe",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04665": {
+      "itemId": "USER_ITEM_20261018_R04665",
+      "assetPath": "item-icons/clothes_v186_mu0000064.png",
+      "assetSha256": "d2a2aebeeba28dc1b70b6f37372af748615a093cee7ffe2c733c5daea58194fe",
+      "appearanceId": "mu0000064",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000064.webp",
+      "sourceSha256": "fd86e464d5d22537e55e43914b8917f8d30877f4f65d5e2d20a83a380a4d91fa",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03255": {
+      "itemId": "USER_ITEM_20261018_R03255",
+      "assetPath": "item-icons/clothes_v186_mu0000063.png",
+      "assetSha256": "87928d170c4579af636778ad268291e7feca9e540cd81bf48aa0a8dcf62d09b6",
+      "appearanceId": "mu0000063",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000063.webp",
+      "sourceSha256": "599b078b2d3287ff5e99554cc3c09e1481177e7458b64f2bec2fe24721e9a1dc",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04002": {
+      "itemId": "USER_ITEM_20261018_R04002",
+      "assetPath": "item-icons/clothes_v186_mu0000044.png",
+      "assetSha256": "0edac20fca3a261ac0144b3a2d9ed4b50be0bd1b9e84cbcf2428ff7f3e604e0d",
+      "appearanceId": "mu0000044",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000044.webp",
+      "sourceSha256": "d3388b63c97a3842fcc49cf7644837acc2a9d03a72579d88f5204d43c6836568",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04825": {
+      "itemId": "USER_ITEM_20261018_R04825",
+      "assetPath": "item-icons/clothes_v186_mu0000046.png",
+      "assetSha256": "8eec1db5605a81fe6ed93ab82b2ba4c3a6f563306b6f0ddd0544eb599a09406b",
+      "appearanceId": "mu0000046",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000046.webp",
+      "sourceSha256": "53539080629d9c7d11f2c0471b23adf11f752329258207b7c04867005f628afc",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04564": {
+      "itemId": "USER_ITEM_20261018_R04564",
+      "assetPath": "item-icons/clothes_v186_mu0000045.png",
+      "assetSha256": "613100c4124718d5b551dabb7c0ae3ffb95a3dc3fd7b32ed3fac1827c93c338f",
+      "appearanceId": "mu0000045",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000045.webp",
+      "sourceSha256": "0128f74690cf915cc5ae89b97b79815a1ed080a75274237bdbaf6375519464d3",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03154": {
+      "itemId": "USER_ITEM_20261018_R03154",
+      "assetPath": "item-icons/clothes_v186_mu0000043.png",
+      "assetSha256": "4ae2d40196369d816617aa5a6449a63b91d2b0187f960948b025a149799c2b1f",
+      "appearanceId": "mu0000043",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000043.webp",
+      "sourceSha256": "f9e51342a4111421b3aa10ec9dd79f9e26f410f25e7d6339f86b7bdd47484fb9",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03921": {
+      "itemId": "USER_ITEM_20261018_R03921",
+      "assetPath": "item-icons/clothes_v186_mu0000084.png",
+      "assetSha256": "7a2b392ce13a311bf794721ef7f6c57993c8ed79ab619079e377bb0b1161b0e0",
+      "appearanceId": "mu0000084",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000084.webp",
+      "sourceSha256": "f93293a83f1fd7110597dfeaca31d29e4f46cfb263c6909b998bba708e4831d3",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04744": {
+      "itemId": "USER_ITEM_20261018_R04744",
+      "assetPath": "item-icons/clothes_v186_mu0000085.png",
+      "assetSha256": "105afdc19d1e444464a3b493221646df1a86ac51c73fdb0b6bce1d45f5649ecc",
+      "appearanceId": "mu0000085",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000085.webp",
+      "sourceSha256": "71c13135cf6bcdbc71fedbe955f28a590da9e6560d441e3bdbbcdd73ebedf17c",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04483": {
+      "itemId": "USER_ITEM_20261018_R04483",
+      "assetPath": "item-icons/clothes_v186_mu0000083.png",
+      "assetSha256": "f36949a8708b85c1a6c76d872f8f206761d58152b04f65c1bc5c44f88923ba08",
+      "appearanceId": "mu0000083",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000083.webp",
+      "sourceSha256": "e42e823421ef8b3b8cae3df445aafd49beec4801eafe500d39003798c4b5b3ec",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03073": {
+      "itemId": "USER_ITEM_20261018_R03073",
+      "assetPath": "item-icons/clothes_v186_mu0000086.png",
+      "assetSha256": "dd3741156c6e6f0f58b8801affbb4870db6df00fa3c1a7a9c7bb72dc4c921959",
+      "appearanceId": "mu0000086",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000086.webp",
+      "sourceSha256": "8167772997888e950fa40e7bf3c74ab7a1316f29ca10e405c527911e2851e737",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03992": {
+      "itemId": "USER_ITEM_20261018_R03992",
+      "assetPath": "item-icons/clothes_v186_mu0000146.png",
+      "assetSha256": "3796771608dabca86ea67183bc33d585e3727eaa7845620604b1fe12c4057de8",
+      "appearanceId": "mu0000146",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000146.webp",
+      "sourceSha256": "e3f508ac6bbe4db51616937c1d9fe610448acaa33fff35c8937ebd922c071711",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04815": {
+      "itemId": "USER_ITEM_20261018_R04815",
+      "assetPath": "item-icons/clothes_v186_mu0000145.png",
+      "assetSha256": "a0422013c0fdab5d5b08aa8964b6257c60a9a16967957b6649bcc3c207ef592b",
+      "appearanceId": "mu0000145",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000145.webp",
+      "sourceSha256": "0f706e4222e78c75bee3eee56fb7caefe3735635ead60afe4ff644172db45318",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04554": {
+      "itemId": "USER_ITEM_20261018_R04554",
+      "assetPath": "item-icons/clothes_v186_mu0000144.png",
+      "assetSha256": "5efc18f7ba3e2f5a5b8105cdc617a2ea005e06203fa5e1c335395590a5618167",
+      "appearanceId": "mu0000144",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000144.webp",
+      "sourceSha256": "cc96c7cb8b03f69d88df444193f308bddde98de9c3944d80b932007cdccf68b2",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03144": {
+      "itemId": "USER_ITEM_20261018_R03144",
+      "assetPath": "item-icons/clothes_v186_mu0000143.png",
+      "assetSha256": "7b684ee39a466285d6cc73a0b51e155d0f9415e145c4174818e6fe531e3a81ef",
+      "appearanceId": "mu0000143",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000143.webp",
+      "sourceSha256": "9372d2cc05fdb46967d50fb1728f0b77f66dd8fae4e5ce558b8835f9d16d51e8",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03936": {
+      "itemId": "USER_ITEM_20261018_R03936",
+      "assetPath": "item-icons/clothes_v186_mu0000126.png",
+      "assetSha256": "f9466934dc7f8fa0a8e634dee6fb0c7d4c683f2aa20d14a8682f61059426e4a9",
+      "appearanceId": "mu0000126",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000126.webp",
+      "sourceSha256": "469d7ce2cd5d931a383ddff7e17f7d3a057a1e56564e9e264d1df42221111798",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04759": {
+      "itemId": "USER_ITEM_20261018_R04759",
+      "assetPath": "item-icons/clothes_v186_mu0000125.png",
+      "assetSha256": "ca5b3f8d15b24b51d7fea81627aae6a3c96adfb4a046da75b608d4251da798fa",
+      "appearanceId": "mu0000125",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000125.webp",
+      "sourceSha256": "9c9bfd87729a36989207448b29d0156e87844cbf3e59f5da2b94322fd9ab343d",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R04498": {
+      "itemId": "USER_ITEM_20261018_R04498",
+      "assetPath": "item-icons/clothes_v186_mu0000124.png",
+      "assetSha256": "7a18772114719dd7980dd947e217e409565f5c6d27e7d508f7475f9447dc4a27",
+      "appearanceId": "mu0000124",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000124.webp",
+      "sourceSha256": "35fa737c6b1842954de1b940a2eb5853a61bdea07d28721763ece4b29762ff49",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03088": {
+      "itemId": "USER_ITEM_20261018_R03088",
+      "assetPath": "item-icons/clothes_v186_mu0000123.png",
+      "assetSha256": "61d5491723543179d0dc84cbfa9ab6485eba7ca8bd87fccfa5ba274c462be094",
+      "appearanceId": "mu0000123",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000123.webp",
+      "sourceSha256": "4f0250ec90fb8cb2b2ef8648e923c05eb2476f079b0d8a1ca4832f7fc79e70f5",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R05124": {
+      "itemId": "USER_ITEM_20261018_R05124",
+      "assetPath": "item-icons/clothes_v186_mu0000002.png",
+      "assetSha256": "3b7fdfad1f87b336933bda7f59f14e77ec6a8ce4df4a986350486f17fc17e2cd",
+      "appearanceId": "mu0000002",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000002.webp",
+      "sourceSha256": "b5622696208a1e7a7abd86257ff20c4ebc4959fc4f0f24dfdd76fb44b7e81038",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R01529": {
+      "itemId": "USER_ITEM_20261018_R01529",
+      "assetPath": "item-icons/clothes_v186_mu0000012.png",
+      "assetSha256": "2afd0b82358315672936fa3f77247dee5af4e8174a6c569f1dc78a3c1e85c317",
+      "appearanceId": "mu0000012",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000012.webp",
+      "sourceSha256": "553f1fdd70e4fd7ce17ad1109d894e0307b0aabf6223768724461b8cee9477fa",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R02378": {
+      "itemId": "USER_ITEM_20261018_R02378",
+      "assetPath": "item-icons/clothes_v186_mu0000028.png",
+      "assetSha256": "81049698f4312a97bc25644d59e05b7c32c9320cf36f43ac9ac45e71de942e26",
+      "appearanceId": "mu0000028",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/clothing_originals.zip",
+      "sourceMember": "atlas/armor/mu0000028.webp",
+      "sourceSha256": "a9ff3335404ae52a216b991a9717a0e397f7d87c30cbb2585205aa10a36678a5",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
     }
   }
 }
