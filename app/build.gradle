@@ -206,3 +206,12 @@ tasks.register('extractExpandedClothesV197', Copy) {
 }
 tasks.named('extractExpandedClothesV197').configure { dependsOn('extractRecoveredWeaponsV195') }
 tasks.named('preBuild').configure { dependsOn('extractExpandedClothesV197') }
+
+tasks.register('extractRapidSourcesV198', Copy) {
+    from(zipTree(rootProject.file('master/source/items/rapid_v198/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractRapidSourcesV198').configure { dependsOn('extractExpandedClothesV197') }
+tasks.named('preBuild').configure { dependsOn('extractRapidSourcesV198') }

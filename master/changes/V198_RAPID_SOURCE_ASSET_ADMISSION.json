@@ -1,0 +1,14 @@
+{
+  "status": "ACCEPTED_SOURCE_ASSETS_ONLY",
+  "sourceRun": 39202023620,
+  "sourceArtifact": 12164311177,
+  "sourceArchive": "master/source/items/rapid_v198/original_sources.zip",
+  "sourceFiles": 32,
+  "registeredFrames": 2142,
+  "sourceAudit": "master/source/items/rapid_v198/frame_audit.json",
+  "runtimeMapping": "PENDING",
+  "level85": "UNRESOLVED_NO_SUBSTITUTE",
+  "originalArticle": "master/source/items/naver_bundle_20261019/archives/259752.zip",
+  "reason": "Recover full original source registrations instead of rendering static Master thumbnails as wearable animation.",
+  "validation": "PACKAGED_NATIVE_PENDING"
+}
