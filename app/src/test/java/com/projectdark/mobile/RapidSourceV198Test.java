@@ -8,7 +8,7 @@ import org.robolectric.*;
 import org.robolectric.annotation.*;
 import java.util.zip.*;
 import java.util.*;
-@RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE)
+@RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE) @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public class RapidSourceV198Test {
  @Test public void packagedSourceBytesMatchEveryRetainedOriginal()throws Exception{
   Context c=RuntimeEnvironment.getApplication();int checked=0;
@@ -25,5 +25,5 @@ public class RapidSourceV198Test {
    for(int f=0;f<4;f++)bounds(id,v,v.registration.action(f));
   }
  }
- void bounds(String id,EquipmentVisualRegistry.Visual v,SourceEquipmentRegistration.Frame f){assertNotNull(id,f);assertTrue(id,f.src.left>=0&&f.src.top>=0&&f.src.right<=v.atlas.getWidth()&&f.src.bottom<=v.atlas.getHeight());}
+ void bounds(String id,EquipmentVisualRegistry.Visual v,SourceEquipmentRegistration.Frame f){assertNotNull(id,f);assertTrue(id+" rect="+f.src+" atlas="+v.atlas.getWidth()+"x"+v.atlas.getHeight(),f.src.left>=0&&f.src.top>=0&&f.src.right<=v.atlas.getWidth()&&f.src.bottom<=v.atlas.getHeight());}
 }
