@@ -977,7 +977,7 @@ private void drawUtilityRail(Canvas c){
       RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(rpgInteraction.selectedInventoryItemId());
       if(d!=null&&RpgProgressionState.pairedSlot(d.equipSlot)&&itemWindow.hitTargetSlot!=null){
         String slot="RIGHT".equals(itemWindow.hitTargetSlot)?RpgProgressionState.secondSlot(d.equipSlot):d.equipSlot;
-        RpgProgressionState.EquipResult result=state.rpg().equipToSlot(d.itemId,slot);state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),FeedbackTone.INFO);
+        RpgProgressionState.EquipResult result=state.rpg().equipToSlot(InventoryGroupsV199.actionId(state.rpg(),d.itemId,slot),slot);state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),FeedbackTone.INFO);
       }else if(x>=743)activateInventoryItem();
     }
     return true;
@@ -1063,4 +1063,3 @@ private void drawUtilityRail(Canvas c){
   private static boolean circleHit(float x,float y,float cx,float cy,float r){float dx=x-cx,dy=y-cy;return dx*dx+dy*dy<=r*r;}
   private float dist(float a,float b,float c,float d){float x=a-c,y=b-d;return(float)Math.sqrt(x*x+y*y);}
 }
-

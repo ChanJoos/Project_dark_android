@@ -1,3 +1,13 @@
+## 2026-10-19 V199 DEVICE_FAILED_USER_REPORTED inventory/appearance repair
+
+User tested delivered b2ae261f APK and reports newly linked clothes face backwards in inventory, screenshot-backed icon backgrounds, absent Rapid avatar rendering and duplicate-looking inventory rows. This is DEVICE_FAILED_USER_REPORTED; individual reproduced causes/status below, not a phone-fixed claim.
+
+V199 candidate changes: all155 new mu/wu IDLE0 inventory projections select exact source01/f1(front) at display time, cache only small crops and preserve original source bytes.48 screenshot-derived accessory crops and6Rapid socket icons get boundary-connected background removal as an ADAPTED display matte, not rewritten original pixels. Rapid35/74/99/promotion+black-dragon99 keep item/save/stat IDs; native source mg/mc146..149 is selected for two ornament slots, gender-normalized to wg/wc and composed in idle/walk/contact/skill paths with source front/back order. Project ornament-slot projection and missing-group head attachment are ADAPTED; dye/85 identity remains unresolved. No guessed Lv85 source.
+
+Inventory-window grouping uses equality of display name, slot, appearance, attack action, level/jobs, elements, all stats and effect descriptions. Different variants are not merged. It sums visual quantity, preserves physical save/bank IDs, and resolves an actually available alias when equipping paired slots; transactions and raw inventory APIs are unchanged. Native duplicate audit is emitted to distinguish real aliases from same-name conflicting definitions.
+
+Status:IMPLEMENTED_PENDING_NATIVE_BUILD_AND_IMAGE_REVIEW. New native tests cover155front crops, original-preserving matte, actual screenshot icons, exact-alias grouping/paired equip, supported Rapid tiers×both bodies×four directions×idle/walk/contact, actual inventory/equipment/restart. Capture path build/reports/horror-v179/v199. Inspect failures/actual images before delivery; phone acceptance remains pending. User approved GitHub continuation; same PR197/branch, main41fe6def unmerged.
+
 ## 2026-10-19 V198 Rapid assets verified; full inventory scope remains partial
 
 Current PDF-linked catalogs:338 distinct item IDs =39 weapons+155 garments+54 foods+90 accessories; not all original article rows/variants or all equipment visuals/effects. Existing Master5722rows is source admission, not5722 playable items. This count excludes unrelated retained game catalogs.

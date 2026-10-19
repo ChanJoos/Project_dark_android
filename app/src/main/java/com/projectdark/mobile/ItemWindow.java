@@ -25,7 +25,7 @@ final class ItemWindow {
   ItemWindow(Context context){try{JSONObject m=new JSONObject(new String(PresentationAssetBytes.read(context,"item-window/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("crops");Iterator<String> keys=m.keys();while(keys.hasNext()){String k=keys.next();Bitmap b=BitmapFactory.decodeStream(context.getAssets().open(m.getJSONObject(k).getString("path")));if(b==null)throw new IllegalStateException(k);images.put(k,b);}}catch(Exception e){throw new IllegalStateException("Item window skin unavailable",e);}for(String key:new String[]{"panel","slot"})try{Bitmap b=BitmapFactory.decodeStream(context.getAssets().open("equipment-window-v176/"+key+".png"));if(b==null)throw new IllegalStateException(key);equipmentImages.put(key,b);}catch(Exception e){throw new IllegalStateException("Equipment reference skin unavailable",e);}}
   static RectF cell(int i){float x=344+(i%10)*58,y=118+(i/10)*58;return new RectF(x,y,x+58,y+58);}
   static RectF slot(int i){float x=EQUIP_X+POS[i][0]*EQUIP_SCALE,y=EQUIP_Y+POS[i][1]*EQUIP_SCALE;return new RectF(x,y,x+69*EQUIP_SCALE,y+69*EQUIP_SCALE);}
-  List<RpgInventoryPresentation.ItemRow> rows(RpgProgressionState r){List<RpgInventoryPresentation.ItemRow> out=new ArrayList<>();for(RpgInventoryPresentation.ItemRow row:presentation.inventoryRows(r))if(filter==0||filter==1&&row.equipSlot!=null&&!row.equipSlot.isEmpty()||filter==2&&(r.isConsumable(row.itemId)||r.isRecall(row.itemId)))out.add(row);return out;}
+  List<RpgInventoryPresentation.ItemRow> rows(RpgProgressionState r){List<RpgInventoryPresentation.ItemRow> out=new ArrayList<>();for(RpgInventoryPresentation.ItemRow row:presentation.inventoryRows(r))if(filter==0||filter==1&&row.equipSlot!=null&&!row.equipSlot.isEmpty()||filter==2&&(r.isConsumable(row.itemId)||r.isRecall(row.itemId)))out.add(row);return InventoryGroupsV199.group(out,r);}
   void image(Canvas c,String key,RectF r){if(key.equals("all")||key.equals("gear")||key.equals("use")){UiTheme.glyph(c,key.equals("all")?"bag":key.equals("gear")?"gear":"potion",r.centerX(),r.centerY(),8,UiTheme.GOLD);}else UiTheme.slot(c,r,false,false);}
   void txt(Canvas c,String s,float x,float y,float size,int color){UiTheme.text(c,s,x,y,size,UiTheme.ink(color),size>=13);}
   void fit(Canvas c,String s,float x,float y,float w,float size,int color){UiTheme.fit(c,s,x,y,w,size,UiTheme.ink(color),size>=13);}
@@ -41,7 +41,7 @@ final class ItemWindow {
       image(c,keys[i],new RectF(348+i*70,87,365+i*70,105));UiTheme.text(c,labels[i],372+i*70,101,11,filter==i?UiTheme.TEXT:UiTheme.MUTED,true);
       if(filter==i)UiTheme.line(c,tab.left+5,109,tab.right-5,109,UiTheme.ACCENT);
     }
-    UiTheme.right(c,"보유 아이템  "+presentation.inventoryRows(r).size()+"종",922,101,11,UiTheme.MUTED,false);
+    UiTheme.right(c,"보유 아이템  "+InventoryGroupsV199.group(presentation.inventoryRows(r),r).size()+"종",922,101,11,UiTheme.MUTED,false);
     for(int i=0;i<50;i++){RectF b=cell(i);UiTheme.slot(c,b,false,false);if(i<10)txt(c,i==9?"0":String.valueOf(i+1),b.left+3,b.top+9,8,UiTheme.GOLD);int index=page*50+i;if(index>=rows.size())continue;RpgInventoryPresentation.ItemRow row=rows.get(index);v.icon(c,row,b.left+7,b.top+10,43);if(row.quantity>1){String q=row.quantity>9999?"9999+":""+row.quantity;p.setTextSize(11);txt(c,q,b.right-4-p.measureText(q),b.bottom-5,11,0xfffaf5e3);}if(row.equipped)txt(c,"✓",b.right-14,b.top+14,13,0xffe2bd6a);if(row.itemId.equals(selected)&&details)border(c,b,0xffe9c367);}
     UiTheme.line(c,344,428,924,428,UiTheme.LINE);
     UiTheme.text(c,"소지품",347,446,11,UiTheme.MUTED,false);
@@ -73,7 +73,7 @@ final class ItemWindow {
   String actionLabel(RpgProgressionState r,RpgProgressionState.ItemDefinition d,boolean equipped){
     if(!RpgProgressionState.pairedSlot(d.equipSlot))return ItemEffects.actionLabel(d,r,equipped);
     String target=targetSlot(r,d);if(target==null)return "장비 선택";
-    String current=r.equipment().get(target);return current==null?"장착":d.itemId.equals(current)?"해제":"교체";
+    String current=r.equipment().get(target);return current==null?"장착":InventoryGroupsV199.equivalent(r,d.itemId,current)?"해제":"교체";
   }
   void comparisonCards(Canvas c,RpgProgressionState r,RpgProgressionState.ItemDefinition d,String target,Visuals v){
     panel(c,new RectF(40,348,467,464),"착용 중인 장비");int count=RpgProgressionState.pairedSlot(d.equipSlot)?2:1;

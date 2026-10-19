@@ -89,6 +89,8 @@ public final class CharacterVisualBinding {
           resolved=true;
           appearances.add(new EquipmentAppearance(def.appearanceId,VisualSlot.WEAPON,null));
         }
+      }else if(RapidHairclipV199.appearance(itemId,slot)!=null){
+        String rapid=RapidHairclipV199.appearance(itemId,slot);equipmentTokens.add(rapid);resolved=true;appearances.add(new EquipmentAppearance(rapid,VisualSlot.HEAD,null));
       }else if(def!=null&&def.appearanceId!=null){
         equipmentTokens.add(def.appearanceId);resolved=true;
         GarmentCoverage coverage=garmentCoverageForAppearance(def.appearanceId);

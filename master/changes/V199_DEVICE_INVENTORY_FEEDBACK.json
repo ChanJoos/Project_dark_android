@@ -1,0 +1,42 @@
+{
+  "status": "ACCEPTED_USER_CONFIRMED_REPAIR",
+  "userReport": "DEVICE_FAILED_USER_REPORTED",
+  "deliveredSource": "b2ae261f247a712e4a89764938fd46da094fd6e8",
+  "issues": [
+    "Back-facing155garment icons",
+    "Screenshot icon backgrounds",
+    "Missing Rapid avatar layers",
+    "Duplicate-looking inventory IDs"
+  ],
+  "sourcePreservation": true,
+  "sourcePose": {
+    "before": "01/f0 back",
+    "after": "01/f1 front",
+    "scope": 155
+  },
+  "displayMatte": {
+    "sourceCrops": 48,
+    "rapidSocketIcons": 6,
+    "evidence": "ADAPTED_BOUNDARY_CONNECTED_BACKGROUND_ONLY"
+  },
+  "rapid": {
+    "sourceArchive": "master/source/items/rapid_v198/original_sources.zip",
+    "providerMetadata": "master/source/items/naver_bundle_20261019/provider_name_snapshot_20261019.zip",
+    "tiers": {
+      "R05141": 146,
+      "R05145": 147,
+      "R05143": 148,
+      "R01339": 148,
+      "R05142": 149
+    },
+    "slotProjection": "ADAPTED_BACK_CAPE_TO_TWO_ORNAMENT_SLOTS",
+    "genderNormalization": "mm001 mg/mc; wm001 wg/wc",
+    "unresolved": [
+      "Lv85 exact appearance",
+      "Dye semantics"
+    ]
+  },
+  "duplicatePolicy": "UI-only exact semantic equality; preserve variants/save IDs/bank; consume available original alias for paired slots",
+  "validation": "PENDING",
+  "phone": "PENDING"
+}

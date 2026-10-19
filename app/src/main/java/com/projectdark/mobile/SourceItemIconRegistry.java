@@ -14,6 +14,7 @@ import java.nio.charset.StandardCharsets;
 final class SourceItemIconRegistry {
  private final Context context;
  private final Map<String,Bitmap> cache=new HashMap<>();
+
  private JSONObject full;
  SourceItemIconRegistry(Context c){context=c;try(InputStream in=c.getAssets().open("item-icons/manifest.json")){full=new JSONObject(new String(read(in),StandardCharsets.UTF_8));}catch(Exception e){throw new IllegalStateException("Full original item artwork manifest unavailable",e);}}
 
@@ -35,8 +36,10 @@ final class SourceItemIconRegistry {
     if(base==null){base=cache.get(path);}
     if(base!=null){Bitmap orange=orangeCurum(base);cache.put(cacheKey,orange);return orange;}
   }
+  Bitmap front=InventoryArtworkV199.front(row,context);if(front!=null){cache.put(cacheKey,front);return front;}
   Bitmap bitmap=null;try(InputStream in=context.getAssets().open(path)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;bitmap=BitmapFactory.decodeStream(in,null,options);}catch(Exception e){throw new IllegalStateException("Missing original item artwork: "+id,e);}
   if("IT_REAGENT_CURUM".equals(id))bitmap=orangeCurum(bitmap);
+  if((row.optString("projection").contains("BACKGROUND_PRESERVED")||row.optString("projection").equals("ORIGINAL_ICON_SOCKET_BYTES"))&&bitmap!=null)bitmap=InventoryArtworkV199.removeTileBackground(bitmap);
   cache.put(cacheKey,bitmap);return bitmap;
  }
  /** USER_CONFIRMED_ORANGE / ADAPTED: original Curum identity is not recovered.
@@ -102,4 +105,3 @@ final class SourceItemIconRegistry {
  }
  Bitmap get(RpgProgressionState.ItemDefinition d){return d==null?null:get(d.itemId);}
 }
-

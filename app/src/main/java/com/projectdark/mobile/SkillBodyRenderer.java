@@ -27,7 +27,7 @@ final class SkillBodyRenderer {
   private String preparedEquipment,preparedWeapon;
   void prepare(String equipment,String weapon){
     if(Objects.equals(preparedEquipment,equipment)&&Objects.equals(preparedWeapon,weapon))return;
-    for(String id:equipment==null?new String[0]:equipment.split(",")){gear.get(id);registration(id);}
+    for(String id:equipment==null?new String[0]:equipment.split(",")){gear.get(id);registration(id);if(RapidHairclipV199.source(id)){String female=RapidHairclipV199.gender(id,"wm001");gear.get(female);registration(female);}}
     gear.get(weapon);registration(weapon);preparedEquipment=equipment;preparedWeapon=weapon;
   }
   boolean drawChungryong(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
@@ -43,9 +43,11 @@ final class SkillBodyRenderer {
     c.save();if(ChungryongWeaponRenderer.west(p.direction))c.scale(-1,1,x,y);
     if(back)chungryong.layer(c,motion,true,n,hx,hy,SCALE);
     float left=x-(float)f.optDouble("pivotX")*SCALE,top=y-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
+    drawRapid(c,p,body,group,index,x,y,true);
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
-    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,body,group,index,p.direction,x,y);
+    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(!RapidHairclipV199.source(id))drawGear(c,id,body,group,index,p.direction,x,y);
     if(!back)chungryong.layer(c,motion,false,n,hx,hy,SCALE);
+    drawRapid(c,p,body,group,index,x,y,false);
     c.restore();return true;
   }
   boolean draw(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
@@ -68,10 +70,12 @@ final class SkillBodyRenderer {
     boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND")||motion.equals("IDLE")||motion.equals("WALK");
     if(weapon&&back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",true,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
+    drawRapid(c,p,body,group,index,rootX,rootY,true);
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
-    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))drawGear(c,id,body,group,index,p.direction,rootX,rootY);
+    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(!RapidHairclipV199.source(id))drawGear(c,id,body,group,index,p.direction,rootX,rootY);
     if(weapon&&!back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",false,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     if(jumpWeapon&&!back)chungryong.layer(c,"basic",false,0,jumpHandX,jumpHandY,SCALE);
+    drawRapid(c,p,body,group,index,rootX,rootY,false);
     c.restore();return true;
   }
   // Presentation-only takeoff/contact/landing; world position and accepted sphere stay fixed.
@@ -99,6 +103,9 @@ final class SkillBodyRenderer {
     float left=x+(dx-(float)f.optDouble("px")*w)*SCALE,top=y+(dy-h+(float)f.optDouble("py")*h)*SCALE;
     c.drawBitmap(v.atlas,new Rect(sx,sy,sx+w,sy+h),new RectF(left,top,left+w*SCALE,top+h*SCALE),paint);
   }
+  private void drawRapid(Canvas c,CharacterRenderer.Pose p,String body,String group,int index,float x,float y,boolean behind){
+    for(String id:RapidHairclipV199.layers(p.equipmentVisualRef,body,p.direction,behind))drawGear(c,id,body,group,index,p.direction,x,y);
+  }
   private void drawGear(Canvas c,String id,String body,String group,int index,CharacterRenderer.Direction direction,float x,float y){
     if(id==null||id.isEmpty())return;EquipmentVisualRegistry.Visual v=gear.get(id);if(v==null||v.atlas==null)return;
     JSONObject j=registration(id);if(j==null)return;JSONObject sprites=j.optJSONObject("sprites");if(sprites==null)return;
@@ -125,7 +132,7 @@ final class SkillBodyRenderer {
     CharacterRenderer.Direction d=back?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.SE;
     CharacterSemanticRig.Anchors ar=rig(body+"/01/"+(back?0:1),a,d),br=rig(body+"/"+group+"/"+index,b,d);
     if(id.startsWith("ml")||id.startsWith("wl")){translateAnchor(m,ar.foot,br.foot,from,to,a,b);return m;}
-    if(id.startsWith("mh")||id.startsWith("wh")){translateAnchor(m,new CharacterSemanticRig.Point(ar.shoulder.x,0),new CharacterSemanticRig.Point(br.shoulder.x,0),from,to,a,b);return m;}
+    if(RapidHairclipV199.source(id)||id.startsWith("mh")||id.startsWith("wh")){translateAnchor(m,new CharacterSemanticRig.Point(ar.shoulder.x,0),new CharacterSemanticRig.Point(br.shoulder.x,0),from,to,a,b);return m;}
     if(id.startsWith("ms")||id.startsWith("ws")){translateAnchor(m,ar.dominantHand,br.dominantHand,from,to,a,b);return m;}
     float[] src={localX(ar.shoulder,from),localY(ar.shoulder,from,a),localX(ar.pelvis,from),localY(ar.pelvis,from,a)};
     float[] dst={localX(br.shoulder,to),localY(br.shoulder,to,b),localX(br.pelvis,to),localY(br.pelvis,to,b)};
