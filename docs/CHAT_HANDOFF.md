@@ -1,3 +1,13 @@
+## 2026-10-19 V197 resumed verification and inventory pagination regression
+
+Resumed existing PR197/codex/rucesion-coast-v157 at b2ae261f247a712e4a89764938fd46da094fd6e8; main41fe6def unchanged. V197 adds50 exact-name village garments, source icon/registration/body, U stats and one-time bank-aware migration. User authorizes continued GitHub publication. Uploaded attachments are present; no reupload needed.
+
+Independently downloaded focused39196448484/job117880160268 artifact12162243336:275184622bytes, SHA256 b30fe902a2dd2558b22a144381e89975f59c8b346a85dffbfcfabfd38eb57277, ZIP CRC PASS; parsed94 JUnit cases,0failures/errors/skips. Inspected actual50 equipment garment images plus world_mm001/world_wm001. Embedded assets/build_identity.json matches source/run, APK85415469bytes/SHA2563dec4ff8a895d3c9d9cc896187e2e7e51924480b412c90254536d8a58cabdeb1/build2026-10-19T13:01:52.015958+09:00; APK CRC PASS. This is host-native evidence, not handset/user visual acceptance or all-link completion. No new APK delivery/merge claim.
+
+Common39196452445/job117880228432 failed ChungryongWeaponTest.inventoryInputEquipsActualIconAndPaperDollThenRestarts: test used a global inventory index as a visible50-cell coordinate. Runtime ItemWindow pages correctly; test had no page navigation. Commit fd424789fb8498c432aed76d8a7893e058100029 navigates actual next-page taps, asserts target page and selected ID, and retains real equip/paper-doll/restart assertions. No production code changed. New common39198744574/39198748408 and focused39198744507 pending at this checkpoint; inspect existing runs, do not blindly rerun.
+
+Remaining: pending_clothes_identity_v197.json16 unresolved identities, article variants/enhancements, job/promotion restrictions, special/Rapid effects, sparse source motion and original combat fidelity; original Horror12/13 and handset acceptance remain pending. Whole request PARTIAL. Next inspect CI actual failure/result, preserve verified50 garment assets and94 successful cases, then continue only source-evidenced remaining mappings.
+
 ## 2026-10-19 V196 source identity correction and expanded linked items
 
 Current source candidate: 288 distinct linked rows across V185–V195 (39 weapons, 105 garments, 54 foods, 90 accessories); NOT all 15 article rows/variants or full original motion/mechanics. V193 adds31 reviewed accessories with exact source socket crops; V194 adds홀리완드/다크디아나/블로우웨이브; V195 adds6 exact-name weapons from the current provider name snapshot. Five retain explicit source frame omissions; empty layers are preserved without drawing whole atlases. Original attack classification/cadence remains ADAPTED/PENDING.

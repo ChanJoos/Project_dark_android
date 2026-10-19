@@ -1,0 +1,16 @@
+{
+  "source": "b2ae261f247a712e4a89764938fd46da094fd6e8",
+  "testFix": "fd424789fb8498c432aed76d8a7893e058100029",
+  "run": 39196448484,
+  "artifact": 12162243336,
+  "archiveSha256": "b30fe902a2dd2558b22a144381e89975f59c8b346a85dffbfcfabfd38eb57277",
+  "tests": 94,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "imagesReviewed": 52,
+  "apkSha256": "3dec4ff8a895d3c9d9cc896187e2e7e51924480b412c90254536d8a58cabdeb1",
+  "phone": "PENDING",
+  "allLinkItems": "PARTIAL",
+  "fixCi": "PENDING"
+}
