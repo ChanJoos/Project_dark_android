@@ -723,7 +723,7 @@
       "itemId": "USER_ITEM_20261018_R05189",
       "name": "돈파",
       "slot": "무기",
-      "appearanceId": "mw215",
+      "appearanceId": "mw189",
       "requiredLevel": 99,
       "sourceRow": 5189,
       "stats": {
@@ -1241,6 +1241,6 @@
     "Rapid body/effect registration",
     "Missing source action poses",
     "Normal job/promotion requirements",
-    "Source weight/durability mechanics and regeneration effect are not implemented by stat mapping"
+    "Source weight capacity/durability wear remain unimplemented; REGEN uses the existing adapted tick"
   ]
 }

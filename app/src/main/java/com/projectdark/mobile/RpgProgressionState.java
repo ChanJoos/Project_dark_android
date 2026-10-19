@@ -260,6 +260,8 @@ public final class RpgProgressionState {
     FemaleVillageClothingV192.install(this);
     LinkedAccessoryCatalogV193.install(this);
     LinkedStaffCatalogV194.install(this);
+    RecoveredWeaponCatalogV195.install(this);
+    for(String id:RecoveredWeaponCatalogV195.IDS)inventory.put(id,1);
     for(String id:LinkedStaffCatalogV194.IDS)inventory.put(id,1);
     for(String id:LinkedAccessoryCatalogV193.IDS)inventory.put(id,pairedSlot(items.get(id).equipSlot)?2:1);
     for(String id:FemaleVillageClothingV192.IDS)inventory.put(id,1);

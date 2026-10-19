@@ -1,0 +1,277 @@
+{
+  "status": "6_SOURCE_NAMED_WEAPONS_WITH_EXPLICIT_OMISSIONS",
+  "admitted": [
+    {
+      "name": "단검",
+      "appearanceId": "mw006",
+      "itemId": "USER_ITEM_20261018_R05262",
+      "source": "306941/source_00.png",
+      "sourceLabelTop": 1021,
+      "identity": "EXACT_TABLE_LABEL_AND_LIVE_PROVIDER_NAME_ID",
+      "nameAuthority": "FAN_PROVIDER_LIVE_NAMES_NOT_ORIGINAL_GAME_AUTHORITY",
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "completeIdleWalkAction": false,
+      "files": {
+        "data/type/weapon/mw006.json": "ded1b9fe3e1393f727f22f382ddb98099edd5c59a4177810f84014d1d99b222d",
+        "atlas/weapon/mw006.webp": "cdb2d8b9b6719395eaefe324a1a52eeaf3d6ff6c59e4ac62674eacb9fcd24f7f"
+      },
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 5,
+        "MaxATK": 15,
+        "LMinATK": 1,
+        "LMaxATK": 2
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 5262,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "basicAttackPresentation": "ADAPTED_DIRECTIONAL_SOURCE_CONTACT_NOT_ORIGINAL_ATTACK_CLASSIFICATION",
+      "sourceFramePolicy": "EXPLICIT_OMISSION_SUPPRESSES_GEAR_LAYER_NOT_ASSUMED_LOSS_OR_COMPLETENESS",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "혈단검",
+      "appearanceId": "mw032",
+      "itemId": "USER_ITEM_20261018_R01478",
+      "source": "306941/source_00.png",
+      "sourceLabelTop": 2338,
+      "identity": "EXACT_TABLE_LABEL_AND_LIVE_PROVIDER_NAME_ID",
+      "nameAuthority": "FAN_PROVIDER_LIVE_NAMES_NOT_ORIGINAL_GAME_AUTHORITY",
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "completeIdleWalkAction": false,
+      "files": {
+        "data/type/weapon/mw032.json": "c335de08b5070aee2b1692ee9351c3a60790dcbf863b1a34490783f4ccdd0137",
+        "atlas/weapon/mw032.webp": "522f29c2447ea8f4701fb266eb753fbddb346a890a5c114386390d896fe15343"
+      },
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 95,
+        "MaxATK": 125,
+        "LMinATK": 9,
+        "LMaxATK": 12
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 1478,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "basicAttackPresentation": "ADAPTED_DIRECTIONAL_SOURCE_CONTACT_NOT_ORIGINAL_ATTACK_CLASSIFICATION",
+      "sourceFramePolicy": "EXPLICIT_OMISSION_SUPPRESSES_GEAR_LAYER_NOT_ASSUMED_LOSS_OR_COMPLETENESS",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "비설표",
+      "appearanceId": "mw028",
+      "itemId": "USER_ITEM_20261018_R03682",
+      "source": "306941/source_00.png",
+      "sourceLabelTop": 3267,
+      "identity": "EXACT_TABLE_LABEL_AND_LIVE_PROVIDER_NAME_ID",
+      "nameAuthority": "FAN_PROVIDER_LIVE_NAMES_NOT_ORIGINAL_GAME_AUTHORITY",
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "completeIdleWalkAction": false,
+      "files": {
+        "data/type/weapon/mw028.json": "ee405589b299854e9f4cf078d962db3d893df6ae28967693538e26ec9ef5cfb1",
+        "atlas/weapon/mw028.webp": "2e77c48812052eb97960a0eb3747498d03171e421e22feb27bc7ef6bfdfa7a61"
+      },
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 10,
+        "MaxATK": 20,
+        "LMinATK": 1,
+        "LMaxATK": 2
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 3682,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "basicAttackPresentation": "ADAPTED_DIRECTIONAL_SOURCE_CONTACT_NOT_ORIGINAL_ATTACK_CLASSIFICATION",
+      "sourceFramePolicy": "EXPLICIT_OMISSION_SUPPRESSES_GEAR_LAYER_NOT_ASSUMED_LOSS_OR_COMPLETENESS",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "골드베리하프",
+      "appearanceId": "mw136",
+      "itemId": "USER_ITEM_20261018_R05484",
+      "source": "301364/source_00.png",
+      "sourceLabelTop": 2838,
+      "identity": "EXACT_TABLE_LABEL_AND_LIVE_PROVIDER_NAME_ID",
+      "nameAuthority": "FAN_PROVIDER_LIVE_NAMES_NOT_ORIGINAL_GAME_AUTHORITY",
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "completeIdleWalkAction": false,
+      "files": {
+        "data/type/weapon/mw136.json": "17b2974ace8890747a6eaca46e19fa9bb2e28391547c223bb0c48e69a942e9c5",
+        "atlas/weapon/mw136.webp": "ecea539ebc6753075110b744b2ba085a77321451d77bfb4df6184cc1a46de2ed"
+      },
+      "stats": {
+        "AC": 1,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 500,
+        "STR": 2,
+        "DEX": 0,
+        "INT": -1,
+        "WIS": 1,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 24,
+        "MaxATK": 32,
+        "LMinATK": 86,
+        "LMaxATK": 100
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 5484,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "basicAttackPresentation": "ADAPTED_DIRECTIONAL_SOURCE_CONTACT_NOT_ORIGINAL_ATTACK_CLASSIFICATION",
+      "sourceFramePolicy": "EXPLICIT_OMISSION_SUPPRESSES_GEAR_LAYER_NOT_ASSUMED_LOSS_OR_COMPLETENESS",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "비파",
+      "appearanceId": "mw173",
+      "itemId": "USER_ITEM_20261018_R03653",
+      "source": "301364/source_00.png",
+      "sourceLabelTop": 3302,
+      "identity": "EXACT_TABLE_LABEL_AND_LIVE_PROVIDER_NAME_ID",
+      "nameAuthority": "FAN_PROVIDER_LIVE_NAMES_NOT_ORIGINAL_GAME_AUTHORITY",
+      "missingSourceFrames": {
+        "01": [
+          9
+        ],
+        "02": [
+          2
+        ]
+      },
+      "completeIdleWalkAction": false,
+      "files": {
+        "data/type/weapon/mw173.json": "4381b18035143d2265c73f9da178fcfd96f22f9b698b6ac7b2b1cd1c7c53b87f",
+        "atlas/weapon/mw173.webp": "c2010004a869142b30604df481a1fb21d9733fad71cac2451f0036d7425ac1aa"
+      },
+      "stats": {
+        "AC": 2,
+        "HIT": 3,
+        "DAM": 3,
+        "HP": 1000,
+        "MP": 3000,
+        "STR": 2,
+        "DEX": 0,
+        "INT": -2,
+        "WIS": -2,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 2,
+        "MinATK": 44,
+        "MaxATK": 60,
+        "LMinATK": 100,
+        "LMaxATK": 110
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 3653,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "basicAttackPresentation": "ADAPTED_DIRECTIONAL_SOURCE_CONTACT_NOT_ORIGINAL_ATTACK_CLASSIFICATION",
+      "sourceFramePolicy": "EXPLICIT_OMISSION_SUPPRESSES_GEAR_LAYER_NOT_ASSUMED_LOSS_OR_COMPLETENESS",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    },
+    {
+      "name": "홀리가디언스태프",
+      "appearanceId": "mw188",
+      "itemId": "USER_ITEM_20261018_R01435",
+      "source": "301364/source_00.png",
+      "sourceLabelTop": 1613,
+      "identity": "EXACT_TABLE_LABEL_AND_LIVE_PROVIDER_NAME_ID",
+      "nameAuthority": "FAN_PROVIDER_LIVE_NAMES_NOT_ORIGINAL_GAME_AUTHORITY",
+      "missingSourceFrames": {
+        "01": [],
+        "02": []
+      },
+      "completeIdleWalkAction": true,
+      "files": {
+        "data/type/weapon/mw188.json": "02c5c93ec4318fc50415a43ade6351bcd42fb544d150a0ecc9831d810ddaab8b",
+        "atlas/weapon/mw188.webp": "91080ca60ba7e670c88d9595d81af010c41a53d2d74c0f1208d5f42cdee74b9b"
+      },
+      "stats": {
+        "AC": 0,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0,
+        "MinATK": 4,
+        "MaxATK": 8,
+        "LMinATK": 6,
+        "LMaxATK": 8
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 1435,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "basicAttackPresentation": "ADAPTED_DIRECTIONAL_SOURCE_CONTACT_NOT_ORIGINAL_ATTACK_CLASSIFICATION",
+      "sourceFramePolicy": "EXPLICIT_OMISSION_SUPPRESSES_GEAR_LAYER_NOT_ASSUMED_LOSS_OR_COMPLETENESS",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+    }
+  ]
+}

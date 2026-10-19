@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 787,
+  "registeredItems": 793,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -12839,12 +12839,12 @@
       "identityMatch": "EXISTING_LABELLED_SOURCE"
     },
     "USER_ITEM_20261018_R05189": {
-      "assetPath": "item-icons/linked_v185_mw215.png",
-      "assetSha256": "f0b398b7912de19490cb6eac521f2ecc6ef8105e67a466a06100f0d2c4189052",
-      "appearanceId": "mw215",
-      "sourceArchive": "master/source/items/naver_bundle_20261019/wearables.zip",
-      "sourceMember": "atlas/weapon/mw215.webp",
-      "sourceSha256": "d964ac137294dd390d82c7afa8e73df22d9f9fa33df53ac1ba96804195208be2",
+      "assetPath": "item-icons/linked_v185_mw189.png",
+      "assetSha256": "31938dc3cca39acbb365590ce56828e43ad519267584a222a33ee267d675ef43",
+      "appearanceId": "mw189",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/tonfa_correction_originals_v196.zip",
+      "sourceMember": "atlas/weapon/mw189.webp",
+      "sourceSha256": "50f3f3cdede5fc110710304cbd7e5c62a115b04c0ee8ef1c244c0df7fc959b02",
       "projection": "EXACT_NATIVE_IDLE0_CROP",
       "evidence": "EXACT_NAMED_SOURCE",
       "itemId": "USER_ITEM_20261018_R05189"
@@ -16930,6 +16930,72 @@
       "sourceArchive": "master/source/items/naver_bundle_20261019/staff_originals_v194.zip",
       "sourceMember": "atlas/weapon/mw276.webp",
       "sourceSha256": "679ae5075b565df7a3df980355359f83e16b56ea6d404f04b882a1517cb6e3c9",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R05262": {
+      "itemId": "USER_ITEM_20261018_R05262",
+      "assetPath": "item-icons/recovered_v195_mw006.png",
+      "assetSha256": "e991a786be63ef33adfda073907fc6c00bb122e0c594c558646d4a0d5d11f48a",
+      "appearanceId": "mw006",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/recovered_weapon_originals_v195.zip",
+      "sourceMember": "atlas/weapon/mw006.webp",
+      "sourceSha256": "cdb2d8b9b6719395eaefe324a1a52eeaf3d6ff6c59e4ac62674eacb9fcd24f7f",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R01478": {
+      "itemId": "USER_ITEM_20261018_R01478",
+      "assetPath": "item-icons/recovered_v195_mw032.png",
+      "assetSha256": "1e296d9b96af25f252cdb4b838b9a2b91ab6c2ff68fa6eea8f2f29b1692a3f30",
+      "appearanceId": "mw032",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/recovered_weapon_originals_v195.zip",
+      "sourceMember": "atlas/weapon/mw032.webp",
+      "sourceSha256": "522f29c2447ea8f4701fb266eb753fbddb346a890a5c114386390d896fe15343",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03682": {
+      "itemId": "USER_ITEM_20261018_R03682",
+      "assetPath": "item-icons/recovered_v195_mw028.png",
+      "assetSha256": "a0586ef907c8bf7943ea0dd51be557ace62ba718d71e7c020d79844d83147848",
+      "appearanceId": "mw028",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/recovered_weapon_originals_v195.zip",
+      "sourceMember": "atlas/weapon/mw028.webp",
+      "sourceSha256": "2e77c48812052eb97960a0eb3747498d03171e421e22feb27bc7ef6bfdfa7a61",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R05484": {
+      "itemId": "USER_ITEM_20261018_R05484",
+      "assetPath": "item-icons/recovered_v195_mw136.png",
+      "assetSha256": "804cacc8ae28b35607e630eeb73eba810f342e313180b9e665fc5beab13f7a58",
+      "appearanceId": "mw136",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/recovered_weapon_originals_v195.zip",
+      "sourceMember": "atlas/weapon/mw136.webp",
+      "sourceSha256": "ecea539ebc6753075110b744b2ba085a77321451d77bfb4df6184cc1a46de2ed",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03653": {
+      "itemId": "USER_ITEM_20261018_R03653",
+      "assetPath": "item-icons/recovered_v195_mw173.png",
+      "assetSha256": "c4218ca08620e4597a782c5a43d9b970730105532168086247faf955c73d1cb0",
+      "appearanceId": "mw173",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/recovered_weapon_originals_v195.zip",
+      "sourceMember": "atlas/weapon/mw173.webp",
+      "sourceSha256": "c2010004a869142b30604df481a1fb21d9733fad71cac2451f0036d7425ac1aa",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R01435": {
+      "itemId": "USER_ITEM_20261018_R01435",
+      "assetPath": "item-icons/recovered_v195_mw188.png",
+      "assetSha256": "85dcf0d2ceb07c9b3b4c713cda4abde455aa71daace3750ff0dbc559df4ee077",
+      "appearanceId": "mw188",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/recovered_weapon_originals_v195.zip",
+      "sourceMember": "atlas/weapon/mw188.webp",
+      "sourceSha256": "91080ca60ba7e670c88d9595d81af010c41a53d2d74c0f1208d5f42cdee74b9b",
       "projection": "EXACT_NATIVE_IDLE0_CROP",
       "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
     }

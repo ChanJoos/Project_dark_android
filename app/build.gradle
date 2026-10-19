@@ -188,3 +188,12 @@ tasks.register('extractLinkedStaffsV194', Copy) {
 }
 tasks.named('extractLinkedStaffsV194').configure { dependsOn('extractLinkedAccessoriesV193') }
 tasks.named('preBuild').configure { dependsOn('extractLinkedStaffsV194') }
+
+tasks.register('extractRecoveredWeaponsV195', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_recovered_weapons_v195.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractRecoveredWeaponsV195').configure { dependsOn('extractLinkedStaffsV194') }
+tasks.named('preBuild').configure { dependsOn('extractRecoveredWeaponsV195') }

@@ -1,0 +1,16 @@
+[
+  {
+    "itemId": "USER_ITEM_20261018_R05189",
+    "name": "돈파",
+    "oldAppearanceId": "mw215",
+    "newAppearanceId": "mw189",
+    "oldNameAuthority": "OLD_ASSET_MASTER_LABEL",
+    "newNameAuthority": "LIVE_PROVIDER_NAME_AND_REVIEWED_ORIGINAL_PIXELS",
+    "oldLiveName": "검은우산",
+    "sourceArticle": "303248/source_00.png",
+    "sourceLabelTop": 1961,
+    "sourceNamesSnapshot": "provider_name_snapshot_20261019.zip",
+    "newOriginalArchive": "tonfa_correction_originals_v196.zip",
+    "status": "ACCEPTED_IDENTITY_CORRECTION_KEEP_SAVE_ID_AND_STATS"
+  }
+]

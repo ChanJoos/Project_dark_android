@@ -12,6 +12,7 @@ for article in [259752]:
 by_name={}
 for r in rows:by_name.setdefault(norm(r['displayName']),[]).append(r)
 access_by={norm(a['name']):a for a in accessories};ready={r['name']:r for r in wear if r.get('completeIdleWalkAction') and r['id'].startswith('mw')};admitted=[];pending=[];seen=set();q=lambda x:json.dumps(x,ensure_ascii=False)
+for correction in json.loads((SRC/'identity_corrections_v196.json').read_text()):ready[correction['name']]=dict(id=correction['newAppearanceId'],name=correction['name'],completeIdleWalkAction=True)
 lines=['package com.projectdark.mobile;','import java.util.*;','/** Exact source-row links; this is NOT the whole article catalog. */','final class LinkedItemCatalogV185 {',' static void install(RpgProgressionState r){']
 def admit(row,slot,appearance,icon,proof):
  if row['itemId'] in seen:return
@@ -23,16 +24,16 @@ def admit(row,slot,appearance,icon,proof):
  lines.append('  r.registerSourceAccessory(new RpgProgressionState.ItemDefinition('+','.join(args)+'));')
  entry=dict(itemId=row['itemId'],name=row['displayName'],slot=slot,appearanceId=appearance,requiredLevel=c[21],sourceRow=row['sourceRow'],stats=stats,proof=proof,sourceWeight=c[2],sourceDurability=c[8],jobAndPromotionRequirements='PENDING_NORMAL_EQUIP_BLOCKED',characterVisual='ORIGINAL_REGISTERED_WEAPON' if appearance else 'NO_BODY_ROUTE_CLAIM')
  admitted.append(entry);manifest['items'][row['itemId']]=dict(icon,itemId=row['itemId'])
-with zipfile.ZipFile(SRC/'wearables.zip') as z,zipfile.ZipFile(SRC/'generated_assets.zip','w',zipfile.ZIP_DEFLATED) as out:
+with zipfile.ZipFile(SRC/'wearables.zip') as z,zipfile.ZipFile(SRC/'tonfa_correction_originals_v196.zip') as corrected,zipfile.ZipFile(SRC/'generated_assets.zip','w',zipfile.ZIP_DEFLATED) as out:
  for i,c in enumerate(candidates):
   name=c['label']['text']
   if i in [37,38]:pending.append(dict(source=c['source'],name=name,reason='ENHANCEMENT_PREFIX_ON_PREVIOUS_LINE_NOT_BASE_ITEM'));continue
   matches=by_name.get(norm(name),[])
   if name in ready:
-   w=ready[name];ident=w['id'];meta=json.loads(z.read(f'data/type/weapon/{ident}.json'));raw=z.read(f'atlas/weapon/{ident}.webp');im=Image.open(io.BytesIO(raw));f=next(x for x in meta['sprites']['01'] if x['f']==0);icon=im.crop((f['sx'],f['sy'],f['sx']+f['w'],f['sy']+f['h']));buf=io.BytesIO();icon.save(buf,format='PNG');image=buf.getvalue();path=f'item-icons/linked_v185_{ident}.png'
-   for p,b in [(f'wearable-atlases/{ident}.webp',raw),(f'source-registration/{ident}.json',z.read(f'data/type/weapon/{ident}.json')),(path,image)]:
+   w=ready[name];ident=w['id'];weapon_source=corrected if ident=='mw189' else z;meta=json.loads(weapon_source.read(f'data/type/weapon/{ident}.json'));raw=weapon_source.read(f'atlas/weapon/{ident}.webp');im=Image.open(io.BytesIO(raw));f=next(x for x in meta['sprites']['01'] if x['f']==0);icon=im.crop((f['sx'],f['sy'],f['sx']+f['w'],f['sy']+f['h']));buf=io.BytesIO();icon.save(buf,format='PNG');image=buf.getvalue();path=f'item-icons/linked_v185_{ident}.png'
+   for p,b in [(f'wearable-atlases/{ident}.webp',raw),(f'source-registration/{ident}.json',weapon_source.read(f'data/type/weapon/{ident}.json')),(path,image)]:
     if p not in out.namelist():out.writestr(p,b)
-   iconrow=dict(assetPath=path,assetSha256=hashlib.sha256(image).hexdigest(),appearanceId=ident,sourceArchive=str((SRC/'wearables.zip').relative_to(ROOT)),sourceMember=f'atlas/weapon/{ident}.webp',sourceSha256=hashlib.sha256(raw).hexdigest(),projection='EXACT_NATIVE_IDLE0_CROP',evidence='EXACT_NAMED_SOURCE')
+   iconrow=dict(assetPath=path,assetSha256=hashlib.sha256(image).hexdigest(),appearanceId=ident,sourceArchive=str((SRC/('tonfa_correction_originals_v196.zip' if ident=='mw189' else 'wearables.zip')).relative_to(ROOT)),sourceMember=f'atlas/weapon/{ident}.webp',sourceSha256=hashlib.sha256(raw).hexdigest(),projection='EXACT_NATIVE_IDLE0_CROP',evidence='EXACT_NAMED_SOURCE')
    for row in matches:admit(row,'무기',ident,iconrow,dict(article=c['source'].split('/')[0],source=c['source'],sourceLabelTop=c['label']['top']))
   elif norm(name) in access_by and access_by[norm(name)]['itemId'] in manifest['items']:
    a=access_by[norm(name)];iconrow=manifest['items'][a['itemId']]
@@ -45,4 +46,4 @@ with zipfile.ZipFile(SRC/'wearables.zip') as z,zipfile.ZipFile(SRC/'generated_as
   iconrow=dict(assetPath=path,assetSha256=hashlib.sha256(raw).hexdigest(),sourceArchive=str((SRC/'archives/259752.zip').relative_to(ROOT)),sourceMember=f'259752/source_{index:02}.jpg',sourceSha256=hashlib.sha256(raw).hexdigest(),projection='ORIGINAL_ICON_SOCKET_BYTES',evidence='SOURCE_TEXT_ORDER_AND_MASTER_STATS')
   for row in by_name.get(name,[]):admit(row,'장식',None,iconrow,dict(article='259752',source='rapid_article.txt',levelIconOrder=[35,74,85,99,'PROMOTED'],blackDragonSameAs99='EXPLICIT_SOURCE_TEXT' if n==5 else None))
 lines+=[' }',' static final String[] IDS={'+','.join(q(x['itemId']) for x in admitted)+'};',' private static Map<String,Integer> stats(Object... pairs){Map<String,Integer> out=new LinkedHashMap<>();for(int i=0;i<pairs.length;i+=2)out.put((String)pairs[i],(Integer)pairs[i+1]);return out;}','}']
-(ROOT/'app/src/main/java/com/projectdark/mobile/LinkedItemCatalogV185.java').write_text('\n'.join(lines)+'\n');manifest['registeredItems']=len(manifest['items']);(ASSETS/'item-icons/manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n');(SRC/'runtime_catalog.json').write_text(json.dumps(dict(status='PARTIAL_NOT_ALL_ARTICLE_ITEMS',admitted=admitted,pending=pending,remaining=['Complete all other table rows including clothes and food','Exact variant and attribute appearance mappings','Rapid body/effect registration','Missing source action poses','Normal job/promotion requirements','Source weight/durability mechanics and regeneration effect are not implemented by stat mapping']),ensure_ascii=False,indent=2)+'\n');print('ADMITTED',len(admitted),'PENDING_REVIEW',len(pending))
+(ROOT/'app/src/main/java/com/projectdark/mobile/LinkedItemCatalogV185.java').write_text('\n'.join(lines)+'\n');manifest['registeredItems']=len(manifest['items']);(ASSETS/'item-icons/manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n');(SRC/'runtime_catalog.json').write_text(json.dumps(dict(status='PARTIAL_NOT_ALL_ARTICLE_ITEMS',admitted=admitted,pending=pending,remaining=['Complete all other table rows including clothes and food','Exact variant and attribute appearance mappings','Rapid body/effect registration','Missing source action poses','Normal job/promotion requirements','Source weight capacity/durability wear remain unimplemented; REGEN uses the existing adapted tick']),ensure_ascii=False,indent=2)+'\n');print('ADMITTED',len(admitted),'PENDING_REVIEW',len(pending))

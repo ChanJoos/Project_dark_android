@@ -1,3 +1,7 @@
+## 2026-10-19 — V196 linked source identity and metadata
+
+Accepted delta: changes/V196_LINKED_SOURCE_IDENTITY_AND_METADATA.json. Correct 돈파 from stale mw215 (black umbrella) to verified mw189 without changing item/save IDs, quantities or U stats. Original source CSV/archive bytes are preserved; linked-item generator consumes the explicit correction and original new source pair. 234 linked U rows expose source weight/durability and unresolved stat cells; no weight-capacity or durability-wear claim. Full link bundle remains PARTIAL; current build/native regression pending. Female V192 source 408136032a1c514c4271b83eaeef1e4b8e38c174 independently verified 79 native tests, no failures/errors/skips, run39193590695/artifact12161083333; handset pending.
+
 ## V179_HORROR_FIRST_PLAYABLE admission and verification — 2026-10-18
 
 Accepted project delta:changes/V179_HORROR_CASTLE.json. Original Horror_Room_Master/Horror_EXP_Model CSV bytes remain unchanged; latest user13-room sequential policy supersedes original random-next-room project rows in the runtime adapter only. Generator tools/build_horror_v179.py consumes source/horror_v179/original_sources.zip/reference.json and emits app/src/main/assets/horror-v179/manifest.json revisionV179_HORROR_FIRST_PLAYABLE. Source human wardrobes/unseen room geometry are ADAPTED; HP/EXP retainU+B and unknown original costume/balance facts stay unknown. Source gateway312424HTTP401 is not read evidence.

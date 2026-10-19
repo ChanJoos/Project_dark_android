@@ -1,0 +1,38 @@
+{
+  "changeId": "V196_LINKED_SOURCE_IDENTITY_AND_METADATA",
+  "status": "ACCEPTED",
+  "date": "2026-10-19",
+  "source": {
+    "old": "master/data/Asset_Master.csv mw215 name=돈파",
+    "new": "master/source/items/naver_bundle_20261019/provider_name_snapshot_20261019.zip:data/boot.json",
+    "sourceArticle": "303248/source_00.png label top 1961"
+  },
+  "before": {
+    "itemId": "USER_ITEM_20261018_R05189",
+    "appearanceId": "mw215",
+    "actualAppearance": "검은우산"
+  },
+  "after": {
+    "itemId": "USER_ITEM_20261018_R05189",
+    "appearanceId": "mw189",
+    "name": "돈파"
+  },
+  "reason": "Live provider name map conflicts with old CSV; exact source PNGs visibly distinguish paired white tonfa from black umbrella, original article table confirms paired white tonfa.",
+  "evidence": [
+    "FAN_PROVIDER_LIVE_NAME",
+    "VIEWED_SOURCE_ARTICLE_LABEL_AND_POSES",
+    "VIEWED_BOTH_EXACT_NATIVE_ATLAS_IDLE_CROPS"
+  ],
+  "impact": {
+    "runtime": "Corrected initial linked-item identity and icon, regenerated derived V185 runtime pack",
+    "save": "Stable item ID, quantity and equipped slot; no restock migration",
+    "canonical": "Raw Asset_Master.csv and immutable old weapon archive remain unchanged",
+    "metadata": "234 U rows expose source weight/durability and unknown HP; no capacity/wear mechanic"
+  },
+  "verification": "Native regression and old-save identity test added; current source CI pending",
+  "remaining": [
+    "Source job/promotion requirements",
+    "Original combat classification/cadence",
+    "Unmapped variants and FX"
+  ]
+}

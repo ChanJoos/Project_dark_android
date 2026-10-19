@@ -1,3 +1,13 @@
+## 2026-10-19 V196 source identity correction and expanded linked items
+
+Current source candidate: 288 distinct linked rows across V185–V195 (39 weapons, 105 garments, 54 foods, 90 accessories); NOT all 15 article rows/variants or full original motion/mechanics. V193 adds31 reviewed accessories with exact source socket crops; V194 adds홀리완드/다크디아나/블로우웨이브; V195 adds6 exact-name weapons from the current provider name snapshot. Five retain explicit source frame omissions; empty layers are preserved without drawing whole atlases. Original attack classification/cadence remains ADAPTED/PENDING.
+
+V196 corrects 돈파 USER_ITEM_20261018_R05189 from stale mw215 (black umbrella) to mw189 (paired white tonfa), after inspecting both source atlases and the Naver table. Stable save ID/count/stats retained; old CSV/archive bytes preserved. Accepted delta master/changes/V196_LINKED_SOURCE_IDENTITY_AND_METADATA.json; explicit generator correction input identity_corrections_v196.json. 234 U records now expose original weight/baseline durability and unknown cells in effects/details; no capacity/durability-wear mechanic. 루어스팔루텐 HP ㅁ remains unresolved.
+
+Verified V192 source408136032a1c514c4271b83eaeef1e4b8e38c174: focused39193590695 SUCCESS, downloaded artifact12161083333 (SHA2561811f88ea3a52b6b2c03b87fcafee8a6d82c7ac5045d72d390788d61fe9d3175), CRC/JUnit79/0fail/errors/skips/APK embedded identity+hash independently checked. Female 꼬뜨 and 미스틱로브 actual native equipment screenshots inspected. Host native verification only; handset/user visual acceptance pending. Receipt verification/FEMALE_CLOTHING_V192_BUILD.json. V191 independently verified75tests, receipt verification/LINKED_BELTS_V191_BUILD.json.
+
+Current V196 build/native regressions PENDING; new tests cover preserved old 돈파 save identity, missing-gear-layer pixels and unresolved HP visibility. Next: inspect latest CI, correct actual failures first, inspect new native equipment images; continue pending original table rows, variants, job/promotion restrictions, special effects/Rapid FX, source identity conflicts and combat fidelity. No merge or completed-all/APK delivery claim.
+
 ## 2026-10-19 V192 linked-item continuation (candidate, not completion)
 
 V191 `fe77bd4c812f806c903439f51d706c3faca3e411` adds 23 exact-name belts, U stats and existing canonical defense elements; focused run 39192767890 pending at checkpoint creation. V190 test correction `55946e4e69534b6893daa9f2c30424bc35668912` preserves unresolved HP cell `ㅁ` for 루어스팔루텐; never converts it to zero/source fact. V189 run 39177202812 succeeded.
