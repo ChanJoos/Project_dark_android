@@ -17,7 +17,17 @@
   "displayMatte": {
     "sourceCrops": 48,
     "rapidSocketIcons": 6,
-    "evidence": "ADAPTED_BOUNDARY_CONNECTED_BACKGROUND_ONLY"
+    "status": "ADAPTED_DISPLAY_PROJECTION_NOT_SOURCE_REWRITE",
+    "method": "Source wood texture palette, border-only frame palette and tiny dark background-remnant removal",
+    "initialMethod": "REJECTED_IN_LOCAL_QA_BROAD_CORNER_DISTANCE_REMOVED_BROWN_ITEM_PIXELS",
+    "review": "48 original/derived icons visually compared; dark leather items use existing complete native source artwork",
+    "nativeLeatherIconAliases": {
+      "USER_ITEM_20261018_R05062": "IT_LEGGING_LEATHER",
+      "USER_ITEM_20261018_R04290": "IT_LEGGING_LEATHER"
+    },
+    "nativeSource": "master/assets/equipment/accessories_20261009/155_kawaguri.png",
+    "nativeMask": "master/assets/equipment/background_masks_v126/155_kawaguri.png",
+    "mappingEvidence": "Same leather-gaiter shape: first crop 97.36% foreground RGB match within12 with offset(-1,0); second is vertically offset and source-cropped. Existing original artwork supplies full icon; no stat/save mapping changes."
   },
   "rapid": {
     "sourceArchive": "master/source/items/rapid_v198/original_sources.zip",

@@ -22,11 +22,12 @@ public class InventoryFeedbackV199Test {
    SourceItemIconRegistry.draw(canvas,actual,new RectF((count%10)*70,(count/10)*76,(count%10)*70+68,(count/10)*76+70),new Paint());count++;
   }assertTrue("all 155 linked garments",count>=155);save(sheet,"front-clothing-icons");
  }
- @Test public void backgroundMattePreservesForegroundAndEnclosedPixels(){
+ @Test public void textureMattePreservesForegroundAndClearsEnclosedBackground(){
   Bitmap original=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888);original.eraseColor(0xff302820);
-  for(int y=10;y<30;y++)for(int x=10;x<30;x++)original.setPixel(x,y,Color.WHITE);original.setPixel(20,20,0xff302820);
-  Bitmap clean=InventoryArtworkV199.removeTileBackground(original);assertEquals(0,Color.alpha(clean.getPixel(0,0)));assertEquals(Color.WHITE,clean.getPixel(10,10));assertEquals(0xff302820,clean.getPixel(20,20));assertEquals(255,Color.alpha(original.getPixel(0,0)));
+  for(int y=10;y<30;y++)for(int x=10;x<30;x++)original.setPixel(x,y,Color.WHITE);original.setPixel(20,20,0xff302820);original.setPixel(20,21,0xff906040);
+  Bitmap clean=InventoryArtworkV199.removeTileBackground(original);assertEquals(0,Color.alpha(clean.getPixel(0,0)));assertEquals(Color.WHITE,clean.getPixel(10,10));assertEquals(0,Color.alpha(clean.getPixel(20,20)));assertEquals(0xff906040,clean.getPixel(20,21));assertEquals(255,Color.alpha(original.getPixel(0,0)));
  }
+ @Test public void leatherLeggingsUseReviewedCompleteNativeArtwork(){SourceItemIconRegistry icons=new SourceItemIconRegistry(c);assertTrue(icons.get("IT_LEGGING_LEATHER").sameAs(icons.get("USER_ITEM_20261018_R05062")));assertTrue(icons.get("IT_LEGGING_LEATHER").sameAs(icons.get("USER_ITEM_20261018_R04290")));}
  @Test public void actualScreenshotAccessoriesHaveTransparentOuterBackground()throws Exception{
   SourceItemIconRegistry icons=new SourceItemIconRegistry(c);RpgProgressionState r=new RpgProgressionState();int changed=0;
   Bitmap sheet=Bitmap.createBitmap(720,600,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(sheet);out.drawColor(0xff246050);

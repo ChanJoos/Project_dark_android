@@ -36,6 +36,7 @@ final class SourceItemIconRegistry {
     if(base==null){base=cache.get(path);}
     if(base!=null){Bitmap orange=orangeCurum(base);cache.put(cacheKey,orange);return orange;}
   }
+  if("USER_ITEM_20261018_R05062".equals(id)||"USER_ITEM_20261018_R04290".equals(id)){Bitmap nativeIcon=get("IT_LEGGING_LEATHER");if(nativeIcon!=null){cache.put(cacheKey,nativeIcon);return nativeIcon;}}
   Bitmap front=InventoryArtworkV199.front(row,context);if(front!=null){cache.put(cacheKey,front);return front;}
   Bitmap bitmap=null;try(InputStream in=context.getAssets().open(path)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;bitmap=BitmapFactory.decodeStream(in,null,options);}catch(Exception e){throw new IllegalStateException("Missing original item artwork: "+id,e);}
   if("IT_REAGENT_CURUM".equals(id))bitmap=orangeCurum(bitmap);

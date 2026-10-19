@@ -138,6 +138,7 @@ jobs:
           PY
           "${ANDROID_HOME}/build-tools/35.0.0/apksigner" verify --verbose delivery/PROJECT_DARK_v184_portals.apk
       - uses: actions/upload-artifact@v4
+        if: always()
         with:
           name: PROJECT_DARK_v184_portals
           path: |
