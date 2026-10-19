@@ -38,7 +38,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 4142,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "루어스노미쉬레더",
@@ -77,7 +78,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 4966,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "뤼케시온노미쉬레더",
@@ -116,7 +118,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 4705,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "수오미노미쉬레더",
@@ -155,7 +158,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 3295,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "오렌노미쉬레더",
@@ -194,7 +198,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 2753,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "루어스팔루텐",
@@ -232,7 +237,10 @@
       "requiredLevel": 41,
       "currentStatSourceRow": 4769,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {
+        "HP": "ㅁ"
+      }
     },
     {
       "name": "수오미팔루텐",
@@ -271,7 +279,8 @@
       "requiredLevel": 41,
       "currentStatSourceRow": 3098,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "오렌팔루텐",
@@ -310,7 +319,8 @@
       "requiredLevel": 41,
       "currentStatSourceRow": 2563,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "밀레스바르도클",
@@ -349,7 +359,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 4057,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "루어스바르도클",
@@ -388,7 +399,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 4880,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "뤼케시온바르도클",
@@ -427,7 +439,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 4619,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "수오미바르도클",
@@ -466,7 +479,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 3209,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "오렌바르도클",
@@ -505,7 +519,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 2682,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "밀레스도복",
@@ -544,7 +559,8 @@
       "requiredLevel": 1,
       "currentStatSourceRow": 4117,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "루어스도복",
@@ -583,7 +599,8 @@
       "requiredLevel": 1,
       "currentStatSourceRow": 4941,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "뤼케시온도복",
@@ -622,7 +639,8 @@
       "requiredLevel": 1,
       "currentStatSourceRow": 4680,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "수오미도복",
@@ -661,7 +679,8 @@
       "requiredLevel": 1,
       "currentStatSourceRow": 3270,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "오렌도복",
@@ -700,7 +719,8 @@
       "requiredLevel": 1,
       "currentStatSourceRow": 2728,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "루어스단도복",
@@ -739,7 +759,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 4956,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "뤼케시온단도복",
@@ -778,7 +799,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 4695,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "수오미단도복",
@@ -817,7 +839,8 @@
       "requiredLevel": 11,
       "currentStatSourceRow": 3285,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "밀레스천지도복",
@@ -856,7 +879,8 @@
       "requiredLevel": 41,
       "currentStatSourceRow": 3997,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "루어스천지도복",
@@ -895,7 +919,8 @@
       "requiredLevel": 41,
       "currentStatSourceRow": 4820,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "뤼케시온천지도복",
@@ -934,7 +959,8 @@
       "requiredLevel": 41,
       "currentStatSourceRow": 4559,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "오렌천지도복",
@@ -973,7 +999,8 @@
       "requiredLevel": 41,
       "currentStatSourceRow": 2614,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "밀레스선풍도복",
@@ -1012,7 +1039,8 @@
       "requiredLevel": 71,
       "currentStatSourceRow": 4042,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "루어스선풍도복",
@@ -1051,7 +1079,8 @@
       "requiredLevel": 71,
       "currentStatSourceRow": 4865,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "오렌선풍도복",
@@ -1090,7 +1119,8 @@
       "requiredLevel": 71,
       "currentStatSourceRow": 2666,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "뤼케시온태산도복",
@@ -1129,7 +1159,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 4519,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "수오미태산도복",
@@ -1168,7 +1199,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 3109,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     },
     {
       "name": "오렌태산도복",
@@ -1207,7 +1239,8 @@
       "requiredLevel": 99,
       "currentStatSourceRow": 2574,
       "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
-      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION"
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
     }
   ]
 }
