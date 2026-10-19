@@ -22,8 +22,8 @@ public final class HorrorCastleLegacyRenderer {
   wall(c,id,true);wall(c,id,false);
   if(HorrorCastleGeometry.LOBBY.equals(id))stairs(c,HorrorCastleGeometry.x(11,3),HorrorCastleGeometry.y(11,3));
   for(HorrorCastleGeometry.Door d:HorrorCastleGeometry.doors(id)){
-   if(!"MILLES".equals(d.destination)&&!"로비로".equals(d.label)){bitmap(c,"door",d.x+32,d.y-16,55);}
-   p.setColor(0xffa28c67);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);c.drawOval(d.x-16,d.y-6,d.x+16,d.y+6,p);p.setStyle(Paint.Style.FILL);
+   if("밀레스로 돌아가기".equals(d.label)){bitmap(c,"door",d.x,d.y,55);}else if(!"MILLES".equals(d.destination)&&!"로비로".equals(d.label)){bitmap(c,"door",d.x+32,d.y-16,55);}
+   if(d.visiblePortal){p.setColor(0xffa28c67);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);c.drawOval(d.x-16,d.y-6,d.x+16,d.y+6,p);p.setStyle(Paint.Style.FILL);}
   }
  }
  private void wall(Canvas c,String id,boolean left){int count=(left?HorrorCastleGeometry.rows(id):HorrorCastleGeometry.columns(id))-1;float sign=left?-1:1,x=800,y=160,length=count*32;
@@ -38,7 +38,7 @@ public final class HorrorCastleLegacyRenderer {
  private void pillar(Canvas c,float x,float y,float width){float w=width/2;polygon(c,0xff3e4039,x-w,y-4,x,y+7,x+w,y-4,x,y-14);polygon(c,0xffb0ac96,x-w+4,y-10,x-4,y-4,x-4,y-91,x-w+4,y-98);polygon(c,0xff706f62,x-4,y-4,x+w-4,y-13,x+w-4,y-101,x-4,y-91);polygon(c,0xffbcb9a4,x-w,y-97,x,y-87,x+w,y-97,x,y-108);line(c,0xffdfd6bb,1,x-w+6,y-16,x-w+6,y-94);}
  private void bookshelf(Canvas c,float x,float y,float width){float w=width/2;polygon(c,0xff35251f,x-w,y,x+w,y-28,x+w,y-120,x-w,y-92);for(int shelf=0;shelf<4;shelf++){float yy=y-8-shelf*22;line(c,0xffb58b54,3,x-w,yy,x+w,yy-28);for(int i=0;i<13;i++){float a=x-w+4+i*(width-7)/13,b=yy-(a-x+w)*28/width;int color=new int[]{0xff74583e,0xff525944,0xff704747,0xff56596c,0xff9d8058}[(i+shelf*3)%5];polygon(c,color,a,b-3,a+4,b-5,a+4,b-19,a,b-17);}}}
  public void draw(Canvas c,WorldRuntimeAdapter world,List<PoteFieldRenderer.ActorDraw> actors){String id=world.runtime().currentMapId();prepare(id);float ox=world.camera().cameraX(),oy=world.camera().cameraY();p.setColor(Color.WHITE);c.drawBitmap(background,-ox,-oy,p);sorted.clear();sorted.addAll(actors);for(HorrorCastleGeometry.Prop prop:HorrorCastleGeometry.props(id)){if(prop.art.equals("stairs"))continue;sorted.add(new PoteFieldRenderer.ActorDraw(prop.x(),prop.y(),110,prop.width,()->{c.save();c.translate(-ox,-oy);if(prop.art.equals("pillar"))pillar(c,prop.x(),prop.y(),prop.width);else if(prop.art.equals("bookcase"))bookshelf(c,prop.x(),prop.y(),prop.width);else bitmap(c,prop.art,prop.x(),prop.y(),prop.width);c.restore();}));}sorted.sort(Comparator.comparingDouble(a->a.y));for(PoteFieldRenderer.ActorDraw a:sorted)a.draw.run();sorted.clear();
-  if(HorrorCastleGeometry.room(id)>0){int alive=0;for(RuntimeState.Monster m:world.runtime().monsters())if(m.alive)alive++;UiTheme.center(c,"남은 몬스터 "+alive+" / 15",480,82,11,0xffe9d5ad,true);}
+  // Counter is drawn once by HorrorCastleRenderer in viewport coordinates.
  }
  public void monster(Canvas c,RuntimeState.Monster m){int t=HorrorCastleMonsters.type(m.id);if(t<0||t>9)return;CharacterRenderer.Direction d=m.visualFacing.presentation();int col=d==CharacterRenderer.Direction.NW?0:d==CharacterRenderer.Direction.NE?1:d==CharacterRenderer.Direction.SW?2:3;int row=m.attackPrimed||m.attackVisualRemaining>0?5:m.isMoving?1+((int)(m.animationClock/.12f)%4):0;p.setColor(0x55000000);c.drawOval(m.x-10,m.y-3,m.x+10,m.y+3,p);p.setColor(Color.WHITE);c.drawBitmap(images.get("human_"+t),new Rect(col*64,row*64,col*64+64,row*64+64),new RectF(m.x-36,m.y-67.5f,m.x+36,m.y+4.5f),p);}
 }
