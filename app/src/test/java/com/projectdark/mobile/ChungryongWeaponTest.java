@@ -21,7 +21,13 @@ public class ChungryongWeaponTest {
     GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=TownInteriorTest.field(v,"state");ItemWindow w=TownInteriorTest.field(v,"itemWindow");learnTwoHand(v);
     assertEquals(Integer.valueOf(1),s.rpg().inventory().get(ChungryongWeaponRenderer.ITEM));TownInteriorTest.tap(v,742,28);int index=-1;
     List<RpgInventoryPresentation.ItemRow> rows=w.rows(s.rpg());for(int i=0;i<rows.size();i++)if(ChungryongWeaponRenderer.ITEM.equals(rows.get(i).itemId))index=i;
-    assertTrue(index>=0);RectF cell=ItemWindow.cell(index);TownInteriorTest.tap(v,cell.centerX(),cell.centerY());save(render(v),"inventory-compare");TownInteriorTest.tap(v,805,490);
+    assertTrue(index>=0);
+    // Catalog growth can put this weapon beyond the first visible inventory page.
+    int targetPage=index/ItemWindow.PAGE_SIZE;
+    for(int page=0;page<targetPage;page++)TownInteriorTest.tap(v,894,481);
+    assertEquals(targetPage,w.page);
+    RectF cell=ItemWindow.cell(index%ItemWindow.PAGE_SIZE);TownInteriorTest.tap(v,cell.centerX(),cell.centerY());
+    assertEquals(ChungryongWeaponRenderer.ITEM,w.hitItem);save(render(v),"inventory-compare");TownInteriorTest.tap(v,805,490);
     assertEquals(ChungryongWeaponRenderer.ITEM,s.rpg().equipment().get("무기"));assertEquals(ChungryongWeaponRenderer.APPEARANCE,CharacterVisualBinding.from(s.rpg()).weaponVisualRef());
     TownInteriorTest.tap(v,914,60);TownInteriorTest.tap(v,830,28);save(render(v),"equipped-paper-doll");v.pause();F5mSaveStore.install(c);GameView restored=new GameView(c);RuntimeState r=TownInteriorTest.field(restored,"state");
     assertEquals(s.rpg().equipment(),r.rpg().equipment());assertEquals(Integer.valueOf(1),r.rpg().inventory().get(ChungryongWeaponRenderer.ITEM));
