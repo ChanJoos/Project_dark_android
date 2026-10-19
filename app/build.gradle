@@ -197,3 +197,12 @@ tasks.register('extractRecoveredWeaponsV195', Copy) {
 }
 tasks.named('extractRecoveredWeaponsV195').configure { dependsOn('extractLinkedStaffsV194') }
 tasks.named('preBuild').configure { dependsOn('extractRecoveredWeaponsV195') }
+
+tasks.register('extractExpandedClothesV197', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_expanded_clothes_v197.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractExpandedClothesV197').configure { dependsOn('extractRecoveredWeaponsV195') }
+tasks.named('preBuild').configure { dependsOn('extractExpandedClothesV197') }

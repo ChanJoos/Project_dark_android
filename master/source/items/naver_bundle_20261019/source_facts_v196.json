@@ -170,6 +170,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R01996",
+      "sourceRow": 1996,
+      "weight": 13,
+      "durability": 12000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R02096",
       "sourceRow": 2096,
       "weight": 20,
@@ -247,6 +254,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R02543",
+      "sourceRow": 2543,
+      "weight": 22,
+      "durability": 21000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R02548",
       "sourceRow": 2548,
       "weight": 11,
@@ -268,6 +282,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R02568",
+      "sourceRow": 2568,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R02574",
       "sourceRow": 2574,
       "weight": 10,
@@ -282,6 +303,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R02604",
+      "sourceRow": 2604,
+      "weight": 13,
+      "durability": 12000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R02614",
       "sourceRow": 2614,
       "weight": 8,
@@ -291,6 +319,20 @@
     {
       "itemId": "USER_ITEM_20261018_R02629",
       "sourceRow": 2629,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02639",
+      "sourceRow": 2639,
+      "weight": 7,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02655",
+      "sourceRow": 2655,
       "weight": 4,
       "durability": 3000,
       "unresolvedStatCells": {}
@@ -373,6 +415,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R02972",
+      "sourceRow": 2972,
+      "weight": 17,
+      "durability": 8000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R03026",
       "sourceRow": 3026,
       "weight": 11,
@@ -408,6 +457,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R03083",
+      "sourceRow": 3083,
+      "weight": 8,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R03088",
       "sourceRow": 3088,
       "weight": 22,
@@ -429,6 +485,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R03103",
+      "sourceRow": 3103,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R03109",
       "sourceRow": 3109,
       "weight": 14,
@@ -436,10 +499,31 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R03114",
+      "sourceRow": 3114,
+      "weight": 13,
+      "durability": 12000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R03129",
       "sourceRow": 3129,
       "weight": 9,
       "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03134",
+      "sourceRow": 3134,
+      "weight": 18,
+      "durability": 15000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03139",
+      "sourceRow": 3139,
+      "weight": 13,
+      "durability": 12000,
       "unresolvedStatCells": {}
     },
     {
@@ -461,6 +545,27 @@
       "sourceRow": 3164,
       "weight": 4,
       "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03174",
+      "sourceRow": 3174,
+      "weight": 7,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03184",
+      "sourceRow": 3184,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03194",
+      "sourceRow": 3194,
+      "weight": 11,
+      "durability": 12000,
       "unresolvedStatCells": {}
     },
     {
@@ -492,10 +597,31 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R03240",
+      "sourceRow": 3240,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03250",
+      "sourceRow": 3250,
+      "weight": 7,
+      "durability": 6000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R03255",
       "sourceRow": 3255,
       "weight": 4,
       "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03265",
+      "sourceRow": 3265,
+      "weight": 19,
+      "durability": 18000,
       "unresolvedStatCells": {}
     },
     {
@@ -849,10 +975,45 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R03946",
+      "sourceRow": 3946,
+      "weight": 9,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03951",
+      "sourceRow": 3951,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03957",
+      "sourceRow": 3957,
+      "weight": 14,
+      "durability": 15000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03962",
+      "sourceRow": 3962,
+      "weight": 13,
+      "durability": 12000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R03977",
       "sourceRow": 3977,
       "weight": 9,
       "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03982",
+      "sourceRow": 3982,
+      "weight": 18,
+      "durability": 15000,
       "unresolvedStatCells": {}
     },
     {
@@ -891,6 +1052,20 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04022",
+      "sourceRow": 4022,
+      "weight": 7,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04032",
+      "sourceRow": 4032,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04042",
       "sourceRow": 4042,
       "weight": 11,
@@ -926,10 +1101,31 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04087",
+      "sourceRow": 4087,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04097",
+      "sourceRow": 4097,
+      "weight": 7,
+      "durability": 6000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04102",
       "sourceRow": 4102,
       "weight": 4,
       "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04112",
+      "sourceRow": 4112,
+      "weight": 19,
+      "durability": 18000,
       "unresolvedStatCells": {}
     },
     {
@@ -1080,6 +1276,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04493",
+      "sourceRow": 4493,
+      "weight": 8,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04498",
       "sourceRow": 4498,
       "weight": 22,
@@ -1094,6 +1297,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04513",
+      "sourceRow": 4513,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04519",
       "sourceRow": 4519,
       "weight": 14,
@@ -1101,10 +1311,31 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04524",
+      "sourceRow": 4524,
+      "weight": 13,
+      "durability": 12000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04539",
       "sourceRow": 4539,
       "weight": 9,
       "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04544",
+      "sourceRow": 4544,
+      "weight": 18,
+      "durability": 15000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04549",
+      "sourceRow": 4549,
+      "weight": 13,
+      "durability": 12000,
       "unresolvedStatCells": {}
     },
     {
@@ -1143,6 +1374,27 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04584",
+      "sourceRow": 4584,
+      "weight": 7,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04594",
+      "sourceRow": 4594,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04604",
+      "sourceRow": 4604,
+      "weight": 11,
+      "durability": 12000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04609",
       "sourceRow": 4609,
       "weight": 6,
@@ -1171,10 +1423,31 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04650",
+      "sourceRow": 4650,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04660",
+      "sourceRow": 4660,
+      "weight": 7,
+      "durability": 6000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04665",
       "sourceRow": 4665,
       "weight": 4,
       "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04675",
+      "sourceRow": 4675,
+      "weight": 19,
+      "durability": 18000,
       "unresolvedStatCells": {}
     },
     {
@@ -1227,6 +1500,13 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04754",
+      "sourceRow": 4754,
+      "weight": 8,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04759",
       "sourceRow": 4759,
       "weight": 22,
@@ -1250,10 +1530,38 @@
       }
     },
     {
+      "itemId": "USER_ITEM_20261018_R04774",
+      "sourceRow": 4774,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04785",
+      "sourceRow": 4785,
+      "weight": 13,
+      "durability": 12000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04800",
       "sourceRow": 4800,
       "weight": 9,
       "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04805",
+      "sourceRow": 4805,
+      "weight": 18,
+      "durability": 15000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04810",
+      "sourceRow": 4810,
+      "weight": 13,
+      "durability": 12000,
       "unresolvedStatCells": {}
     },
     {
@@ -1292,6 +1600,20 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04845",
+      "sourceRow": 4845,
+      "weight": 7,
+      "durability": 9000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04855",
+      "sourceRow": 4855,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04865",
       "sourceRow": 4865,
       "weight": 11,
@@ -1327,6 +1649,20 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04911",
+      "sourceRow": 4911,
+      "weight": 4,
+      "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04921",
+      "sourceRow": 4921,
+      "weight": 7,
+      "durability": 6000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04926",
       "sourceRow": 4926,
       "weight": 4,
@@ -1334,10 +1670,24 @@
       "unresolvedStatCells": {}
     },
     {
+      "itemId": "USER_ITEM_20261018_R04936",
+      "sourceRow": 4936,
+      "weight": 19,
+      "durability": 18000,
+      "unresolvedStatCells": {}
+    },
+    {
       "itemId": "USER_ITEM_20261018_R04941",
       "sourceRow": 4941,
       "weight": 4,
       "durability": 3000,
+      "unresolvedStatCells": {}
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04946",
+      "sourceRow": 4946,
+      "weight": 14,
+      "durability": 15000,
       "unresolvedStatCells": {}
     },
     {
