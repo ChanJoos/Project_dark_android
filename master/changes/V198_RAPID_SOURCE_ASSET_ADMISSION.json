@@ -10,5 +10,6 @@
   "level85": "UNRESOLVED_NO_SUBSTITUTE",
   "originalArticle": "master/source/items/naver_bundle_20261019/archives/259752.zip",
   "reason": "Recover full original source registrations instead of rendering static Master thumbnails as wearable animation.",
-  "validation": "PACKAGED_NATIVE_PENDING"
+  "validation": "SOURCE_BYTES_BUILD_AND_2_NATIVE_ASSET_TESTS_VERIFIED",
+  "verificationReceipt": "verification/RAPID_SOURCE_V198_BUILD.json"
 }

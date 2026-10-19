@@ -1,0 +1,1703 @@
+{
+  "status": "PARTIAL_NO_FULL_ARTICLE_DENOMINATOR",
+  "distinctLinkedItemIds": 338,
+  "categories": {
+    "weapons": 39,
+    "garments": 155,
+    "food": 54,
+    "accessories": 90
+  },
+  "rows": [
+    {
+      "itemId": "USER_ITEM_20261018_R04366",
+      "name": "매단검",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01852",
+      "name": "타고나이트채찍",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04173",
+      "name": "미스릴채찍",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04990",
+      "name": "루비나반지",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05113",
+      "name": "레드가넷반지",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03562",
+      "name": "산호반지",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05211",
+      "name": "대지의홀디트링",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01388",
+      "name": "화려한귀걸이",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01947",
+      "name": "칸의목걸이",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05011",
+      "name": "로운",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03545",
+      "name": "샤인",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04432",
+      "name": "마론비쥬",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04445",
+      "name": "림피드비쥬",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04305",
+      "name": "매직파나",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04341",
+      "name": "매직가디언스태프",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05554",
+      "name": "가죽각반",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05426",
+      "name": "금각반",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05107",
+      "name": "레드하트각반",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03564",
+      "name": "산호각반",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02509",
+      "name": "용각반",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02508",
+      "name": "용맹의각반",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03786",
+      "name": "베네티가죽클립",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05189",
+      "name": "돈파",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01718",
+      "name": "펄스비트",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05141",
+      "name": "라피드헤어클립-I",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05145",
+      "name": "라피드헤어클립FX-II",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05144",
+      "name": "라피드헤어클립FX-III",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05143",
+      "name": "라피드헤어클립FX-IV",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05142",
+      "name": "라피드헤어클립FX-V",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01339",
+      "name": "흑룡의라피드헤어클립FX-IV",
+      "catalog": "runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04102",
+      "name": "밀레스레더튜닉",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04926",
+      "name": "루어스레더튜닉",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04665",
+      "name": "뤼케시온레더튜닉",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03255",
+      "name": "수오미레더튜닉",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04002",
+      "name": "밀레스지폰",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04825",
+      "name": "루어스지폰",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04564",
+      "name": "뤼케시온지폰",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03154",
+      "name": "수오미지폰",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03921",
+      "name": "밀레스하프플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04744",
+      "name": "루어스하프플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04483",
+      "name": "뤼케시온하프플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03073",
+      "name": "수오미하프플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03992",
+      "name": "밀레스체인메일",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04815",
+      "name": "루어스체인메일",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04554",
+      "name": "뤼케시온체인메일",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03144",
+      "name": "수오미체인메일",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03936",
+      "name": "밀레스풀플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04759",
+      "name": "루어스풀플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04498",
+      "name": "뤼케시온풀플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03088",
+      "name": "수오미풀플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05124",
+      "name": "레더튜닉",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01529",
+      "name": "하프플레이트",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02378",
+      "name": "이프리트메일",
+      "catalog": "clothing_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_00",
+      "name": "고기",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_01",
+      "name": "닭고기",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_02",
+      "name": "샌드위치",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_03",
+      "name": "소고기 스테이크",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_04",
+      "name": "도이치맥주",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_05",
+      "name": "치즈",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_06",
+      "name": "과일바구니",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_07",
+      "name": "피크닉샌드위치",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_08",
+      "name": "과일술",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_09",
+      "name": "양고기스테이크정식",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_10",
+      "name": "바베큐치킨",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_11",
+      "name": "마이소시아정식",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_12",
+      "name": "와인한잔",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_13",
+      "name": "시원한 물",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_14",
+      "name": "절인 소고기",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_15",
+      "name": "후추",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_16",
+      "name": "설탕",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_17",
+      "name": "빵",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_18",
+      "name": "짜장면",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_19",
+      "name": "델리초코렛",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_20",
+      "name": "고디바초코렛",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_21",
+      "name": "체리캔디",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_22",
+      "name": "캔디부케",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_23",
+      "name": "와인",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_24",
+      "name": "브랜디",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_25",
+      "name": "벌꿀",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_26",
+      "name": "우유",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_27",
+      "name": "파이 한조각",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_28",
+      "name": "파이",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_29",
+      "name": "포도주(작은병)",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_30",
+      "name": "포도주(큰병)",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_31",
+      "name": "오믈렛",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_32",
+      "name": "잼과식빵",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_33",
+      "name": "빨간 사과",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_34",
+      "name": "감",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_35",
+      "name": "피치",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_36",
+      "name": "딸기",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_37",
+      "name": "키위",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_38",
+      "name": "바나나",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_39",
+      "name": "포도",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_40",
+      "name": "파",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_41",
+      "name": "무우",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_42",
+      "name": "당근",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_43",
+      "name": "맛있는 케이크",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_44",
+      "name": "휘시 버거",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_45",
+      "name": "라쿠아트",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_46",
+      "name": "아프리코튼",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_47",
+      "name": "파프리카",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_48",
+      "name": "바나스",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_49",
+      "name": "블루피치",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_50",
+      "name": "복숭아만두",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_51",
+      "name": "복숭아 만두 세트",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_52",
+      "name": "쑥밥세트",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_53",
+      "name": "영지버섯",
+      "catalog": "food_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01503",
+      "name": "핸드액스",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03026",
+      "name": "스톤액스",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02096",
+      "name": "체인",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01807",
+      "name": "토마호크",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02918",
+      "name": "아스카론",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05301",
+      "name": "다인블레이드",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03843",
+      "name": "바스타드블레이드",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01201",
+      "name": "s피닉스크로어5",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01565",
+      "name": "피닉스크로어5",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05473",
+      "name": "광단검",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02486",
+      "name": "월단검",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05502",
+      "name": "곡단도",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01881",
+      "name": "크리샤오르",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01582",
+      "name": "프린세스하프",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03838",
+      "name": "반보우",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01357",
+      "name": "황금나무의하프",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02772",
+      "name": "영월궁",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01914",
+      "name": "커스프람베르그",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04303",
+      "name": "매직프람베르그",
+      "catalog": "sparse_weapon_runtime_catalog.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03771",
+      "name": "별반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04282",
+      "name": "메투스의금반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05030",
+      "name": "로오의산호반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04263",
+      "name": "메투스의산호반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03348",
+      "name": "셔스의산호반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05018",
+      "name": "로오의자수정반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04250",
+      "name": "메투스의호안석반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03335",
+      "name": "셔스의호안석반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04265",
+      "name": "메투스의사파이어반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03350",
+      "name": "셔스의사파이어반지",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03895",
+      "name": "바다의마기아목걸이",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01306",
+      "name": "흑요석몽크목걸이(토)",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05308",
+      "name": "뉴비각반",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05062",
+      "name": "로오의가죽각반",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04290",
+      "name": "메투스의가죽각반",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03368",
+      "name": "셔스의금각반",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03785",
+      "name": "베네티미스릴클립",
+      "catalog": "reviewed_accessories_v189.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04142",
+      "name": "밀레스노미쉬레더",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04966",
+      "name": "루어스노미쉬레더",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04705",
+      "name": "뤼케시온노미쉬레더",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03295",
+      "name": "수오미노미쉬레더",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02753",
+      "name": "오렌노미쉬레더",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04769",
+      "name": "루어스팔루텐",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03098",
+      "name": "수오미팔루텐",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02563",
+      "name": "오렌팔루텐",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04057",
+      "name": "밀레스바르도클",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04880",
+      "name": "루어스바르도클",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04619",
+      "name": "뤼케시온바르도클",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03209",
+      "name": "수오미바르도클",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02682",
+      "name": "오렌바르도클",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04117",
+      "name": "밀레스도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04941",
+      "name": "루어스도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04680",
+      "name": "뤼케시온도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03270",
+      "name": "수오미도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02728",
+      "name": "오렌도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04956",
+      "name": "루어스단도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04695",
+      "name": "뤼케시온단도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03285",
+      "name": "수오미단도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03997",
+      "name": "밀레스천지도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04820",
+      "name": "루어스천지도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04559",
+      "name": "뤼케시온천지도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02614",
+      "name": "오렌천지도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04042",
+      "name": "밀레스선풍도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04865",
+      "name": "루어스선풍도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02666",
+      "name": "오렌선풍도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04519",
+      "name": "뤼케시온태산도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03109",
+      "name": "수오미태산도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02574",
+      "name": "오렌태산도복",
+      "catalog": "male_clothes_runtime_v190.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03893",
+      "name": "바다의벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05227",
+      "name": "대지의벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03866",
+      "name": "바람의벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01380",
+      "name": "화염의벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05552",
+      "name": "가죽벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03900",
+      "name": "바다의가죽벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05234",
+      "name": "대지의가죽벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03873",
+      "name": "바람의가죽벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01387",
+      "name": "화염의가죽벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02449",
+      "name": "은벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03886",
+      "name": "바다의은벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05220",
+      "name": "대지의은벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03859",
+      "name": "바람의은벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01373",
+      "name": "화염의은벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05423",
+      "name": "금벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03899",
+      "name": "바다의금벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05233",
+      "name": "대지의금벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03872",
+      "name": "바람의금벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03888",
+      "name": "바다의승염벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05222",
+      "name": "대지의승염벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03861",
+      "name": "바람의승염벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01375",
+      "name": "화염의승염벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02284",
+      "name": "주작의벨트",
+      "catalog": "belt_runtime_v191.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04152",
+      "name": "밀레스꼬뜨",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04976",
+      "name": "루어스꼬뜨",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04715",
+      "name": "뤼케시온꼬뜨",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03305",
+      "name": "수오미꼬뜨",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02763",
+      "name": "오렌꼬뜨",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04047",
+      "name": "밀레스브리간딘",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04870",
+      "name": "루어스브리간딘",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04609",
+      "name": "뤼케시온브리간딘",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03199",
+      "name": "수오미브리간딘",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02671",
+      "name": "오렌브리간딘",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03977",
+      "name": "밀레스코르스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04800",
+      "name": "루어스코르스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04539",
+      "name": "뤼케시온코르스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03129",
+      "name": "수오미코르스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02594",
+      "name": "오렌코르스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03941",
+      "name": "밀레스페플로스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04764",
+      "name": "루어스페플로스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04503",
+      "name": "뤼케시온페플로스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03093",
+      "name": "수오미페플로스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02558",
+      "name": "오렌페플로스",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04012",
+      "name": "밀레스연무복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04835",
+      "name": "루어스연무복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04574",
+      "name": "뤼케시온연무복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03164",
+      "name": "수오미연무복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02629",
+      "name": "오렌연무복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04017",
+      "name": "밀레스연무도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04840",
+      "name": "루어스연무도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04579",
+      "name": "뤼케시온연무도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03926",
+      "name": "밀레스풍전도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04488",
+      "name": "뤼케시온풍전도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03078",
+      "name": "수오미풍전도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02548",
+      "name": "오렌풍전도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04122",
+      "name": "밀레스대양도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04685",
+      "name": "뤼케시온대양도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03275",
+      "name": "수오미대양도복",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02708",
+      "name": "오렌로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04062",
+      "name": "밀레스미스틱로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04885",
+      "name": "루어스미스틱로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04624",
+      "name": "뤼케시온미스틱로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03214",
+      "name": "수오미미스틱로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02687",
+      "name": "오렌미스틱로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03913",
+      "name": "밀레스홀리로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04736",
+      "name": "루어스홀리로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04475",
+      "name": "뤼케시온홀리로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03065",
+      "name": "수오미홀리로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02530",
+      "name": "오렌홀리로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04082",
+      "name": "밀레스매직로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04906",
+      "name": "루어스매직로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04645",
+      "name": "뤼케시온매직로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03235",
+      "name": "수오미매직로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02703",
+      "name": "오렌매직로브",
+      "catalog": "female_clothes_runtime_v192.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05015",
+      "name": "로오의현철반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05424",
+      "name": "금반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03440",
+      "name": "세토아의금반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03367",
+      "name": "셔스의금반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03419",
+      "name": "세토아의산호반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03409",
+      "name": "세토아의자수정반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02385",
+      "name": "이아의자수정반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05032",
+      "name": "로오의사파이어반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03432",
+      "name": "세토아의녹옥반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05045",
+      "name": "로오의녹옥반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04275",
+      "name": "메투스의녹옥반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03360",
+      "name": "셔스의녹옥반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05521",
+      "name": "강화된레드가넷반지",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03359",
+      "name": "셔스의동각반",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04258",
+      "name": "메투스의은각반",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05433",
+      "name": "그린하트각반",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03894",
+      "name": "바다의목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05228",
+      "name": "대지의목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03867",
+      "name": "바람의목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01381",
+      "name": "화염의목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02205",
+      "name": "진주목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03880",
+      "name": "바다의진주목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05214",
+      "name": "대지의진주목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03853",
+      "name": "바람의진주목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01367",
+      "name": "화염의진주목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02359",
+      "name": "자수정목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03885",
+      "name": "바다의자수정목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05219",
+      "name": "대지의자수정목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03858",
+      "name": "바람의자수정목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03049",
+      "name": "숲의벽옥목걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03561",
+      "name": "산호석귀걸이",
+      "catalog": "accessories_runtime_v193.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01401",
+      "name": "홀리완드",
+      "catalog": "staff_runtime_v194.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05275",
+      "name": "다크디아나",
+      "catalog": "staff_runtime_v194.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03696",
+      "name": "블로우웨이브",
+      "catalog": "staff_runtime_v194.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05262",
+      "name": "단검",
+      "catalog": "recovered_weapon_runtime_v195.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01478",
+      "name": "혈단검",
+      "catalog": "recovered_weapon_runtime_v195.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03682",
+      "name": "비설표",
+      "catalog": "recovered_weapon_runtime_v195.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05484",
+      "name": "골드베리하프",
+      "catalog": "recovered_weapon_runtime_v195.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03653",
+      "name": "비파",
+      "catalog": "recovered_weapon_runtime_v195.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01435",
+      "name": "홀리가디언스태프",
+      "catalog": "recovered_weapon_runtime_v195.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04032",
+      "name": "밀레스스카웃튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04855",
+      "name": "루어스스카웃튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04594",
+      "name": "뤼케시온스카웃튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03184",
+      "name": "수오미스카웃튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02655",
+      "name": "오렌스카웃튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03946",
+      "name": "밀레스팔루텐",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03962",
+      "name": "밀레스키톤",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04785",
+      "name": "루어스키톤",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04524",
+      "name": "뤼케시온키톤",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03114",
+      "name": "수오미키톤",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04604",
+      "name": "뤼케시온선풍도복",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03194",
+      "name": "수오미선풍도복",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03957",
+      "name": "밀레스태산도복",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03982",
+      "name": "밀레스카쿰",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04805",
+      "name": "루어스카쿰",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04544",
+      "name": "뤼케시온카쿰",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03134",
+      "name": "수오미카쿰",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04754",
+      "name": "루어스풍월도복",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04493",
+      "name": "뤼케시온풍월도복",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03083",
+      "name": "수오미풍월도복",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04946",
+      "name": "루어스대양도복",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04087",
+      "name": "밀레스로브",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04911",
+      "name": "루어스로브",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04650",
+      "name": "뤼케시온로브",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03240",
+      "name": "수오미로브",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04022",
+      "name": "밀레스엘레맨틀",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04845",
+      "name": "루어스엘레맨틀",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04584",
+      "name": "뤼케시온엘레맨틀",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03174",
+      "name": "수오미엘레맨틀",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02639",
+      "name": "오렌엘레맨틀",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03951",
+      "name": "밀레스튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04774",
+      "name": "루어스튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04513",
+      "name": "뤼케시온튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03103",
+      "name": "수오미튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04097",
+      "name": "밀레스레데메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04921",
+      "name": "루어스레데메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04660",
+      "name": "뤼케시온레데메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03250",
+      "name": "수오미레데메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04810",
+      "name": "루어스카스뮴플레이트",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04549",
+      "name": "뤼케시온카스뮴플레이트",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03139",
+      "name": "수오미카스뮴플레이트",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04112",
+      "name": "밀레스라비린스메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04936",
+      "name": "루어스라비린스메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R04675",
+      "name": "뤼케시온라비린스메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R03265",
+      "name": "수오미라비린스메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02568",
+      "name": "오렌튜닉",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02604",
+      "name": "오렌카스뮴플레이트",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02543",
+      "name": "오렌피닉스메일",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R02972",
+      "name": "실버세인트아머",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01996",
+      "name": "카스뮴아머",
+      "catalog": "expanded_clothes_runtime_v197.json"
+    }
+  ],
+  "warning": "Registration/count is not full wearable motion/effect completion; Rapid assets newly staged, runtime binding pending."
+}
