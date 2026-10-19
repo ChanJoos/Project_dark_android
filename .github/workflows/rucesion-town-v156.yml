@@ -115,8 +115,17 @@ jobs:
               esac
             done < <(git diff --name-only b300a5c3e2049e68b32a00a29b1f5396793b60d0 HEAD)
             gradle :app:testDebugUnitTest --tests '*RapidSourceV198Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[inventory-tests-only]"* ]]; then
+            git fetch --depth=1 origin d3695a9bd388028d2dab62cb8e5c60eb48e106d8
+            while IFS= read -r changed; do
+              case "$changed" in
+                app/src/test/java/com/projectdark/mobile/ItemWindowReferenceTest.java|.github/workflows/rucesion-town-v156.yml) ;;
+                *) echo "Unexpected production change in inventory-test validation: $changed"; exit 1 ;;
+              esac
+            done < <(git diff --name-only d3695a9bd388028d2dab62cb8e5c60eb48e106d8 HEAD)
+            gradle :app:testDebugUnitTest --tests '*ItemWindowReferenceTest' --tests '*InventoryFeedbackV199Test' --tests '*RapidSourceV198Test' :app:assembleDebug --stacktrace
           else
-            gradle :app:testDebugUnitTest --tests '*HorrorCastleMobileV183Test' --tests '*HorrorEquipmentV184Test' --tests '*LinkedItemCatalogV185Test' --tests '*LinkedClothingV186Test' --tests '*LinkedFoodV187Test' --tests '*SparseWeaponV188Test' --tests '*LinkedAccessoryV189Test' --tests '*MaleVillageClothingV190Test' --tests '*LinkedBeltV191Test' --tests '*FemaleVillageClothingV192Test' --tests '*LinkedAccessoryV193Test' --tests '*LinkedStaffV194Test' --tests '*RecoveredWeaponV195Test' --tests '*ExpandedVillageClothingV197Test' --tests '*InventoryFeedbackV199Test' --tests '*RapidSourceV198Test' --tests '*AccessoryCatalogV125Test' --tests '*LeapPlacementV184Test' --tests '*HorrorCastleV179Test' --tests '*SkillPresentationTest' --tests '*Martial*Test' :app:assembleDebug --stacktrace
+            gradle :app:testDebugUnitTest --tests '*HorrorCastleMobileV183Test' --tests '*HorrorEquipmentV184Test' --tests '*LinkedItemCatalogV185Test' --tests '*LinkedClothingV186Test' --tests '*LinkedFoodV187Test' --tests '*SparseWeaponV188Test' --tests '*LinkedAccessoryV189Test' --tests '*MaleVillageClothingV190Test' --tests '*LinkedBeltV191Test' --tests '*FemaleVillageClothingV192Test' --tests '*LinkedAccessoryV193Test' --tests '*LinkedStaffV194Test' --tests '*RecoveredWeaponV195Test' --tests '*ExpandedVillageClothingV197Test' --tests '*InventoryFeedbackV199Test' --tests '*RapidSourceV198Test' --tests '*ItemWindowReferenceTest' --tests '*AccessoryCatalogV125Test' --tests '*LeapPlacementV184Test' --tests '*HorrorCastleV179Test' --tests '*SkillPresentationTest' --tests '*Martial*Test' :app:assembleDebug --stacktrace
           fi
           mkdir -p delivery
           cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_v184_portals.apk
