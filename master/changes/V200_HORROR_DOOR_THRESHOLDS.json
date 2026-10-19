@@ -1,0 +1,44 @@
+{
+  "status": "ACCEPTED_USER_INSTRUCTION_IMPLEMENTED_PENDING_VALIDATION",
+  "report": "DEVICE_FAILED_USER_REPORTED",
+  "reportedSource": "d3695a9bd388028d2dab62cb8e5c60eb48e106d8",
+  "evidence": "User20261019 19:34KST inline original photos1000060384/385/386/387; original map6002/6003/6801 and panels from source6401..6411",
+  "changes": {
+    "west": {
+      "before": "u22..26,v10",
+      "after": "u22..26,v13"
+    },
+    "east": {
+      "before": "u46,v2",
+      "after": "u46,v4"
+    },
+    "upper": "u19,v2 retained; analogous single portal per user",
+    "exterior": "u22..26,v18 retained",
+    "corridor": {
+      "before": "1,v7/13/19/25/31 and8,v6/12/18/24/30",
+      "after": "0/9,v6/12/18/24/30"
+    },
+    "room": {
+      "before": "source panel +offset then extra adjacent+u",
+      "after": "nearest legal source-panel threshold; no ring"
+    },
+    "counter": {
+      "before": "x480",
+      "after": "actual clip center x;top82 retained"
+    }
+  },
+  "preserved": [
+    "source pixels",
+    "15 monsters/no respawn",
+    "last-kill progression",
+    "save/reward",
+    "32chunk cache",
+    "navigation/vsync"
+  ],
+  "scope": "Manual reference-based threshold projection, not recovered original warp-table coordinates",
+  "phone": "PENDING",
+  "unresolved": [
+    "exact source maps12/13",
+    "full original warp-table parity"
+  ]
+}

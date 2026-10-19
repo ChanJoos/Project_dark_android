@@ -124,6 +124,15 @@ jobs:
               esac
             done < <(git diff --name-only d3695a9bd388028d2dab62cb8e5c60eb48e106d8 HEAD)
             gradle :app:testDebugUnitTest --tests '*ItemWindowReferenceTest' --tests '*InventoryFeedbackV199Test' --tests '*RapidSourceV198Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[horror-doors-only]"* ]]; then
+            git fetch --depth=1 origin fa692546d720fde62c45914f763c1805b60b6849
+            while IFS= read -r changed; do
+              case "$changed" in
+                app/src/main/java/com/projectdark/mobile/world/HorrorCastleGeometry.java|app/src/main/java/com/projectdark/mobile/HorrorCastleRenderer.java|app/src/test/java/com/projectdark/mobile/HorrorCastleV179Test.java|app/src/test/java/com/projectdark/mobile/HorrorDoorsV200Test.java|.github/workflows/rucesion-town-v156.yml|docs/*|master/MASTER_MANIFEST.md|master/changes/V200_HORROR_DOOR_THRESHOLDS.json) ;;
+                *) echo "Unexpected change in Horror doorway scope: $changed"; exit 1 ;;
+              esac
+            done < <(git diff --name-only fa692546d720fde62c45914f763c1805b60b6849 HEAD)
+            gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' :app:assembleDebug --stacktrace
           else
             gradle :app:testDebugUnitTest --tests '*HorrorCastleMobileV183Test' --tests '*HorrorEquipmentV184Test' --tests '*LinkedItemCatalogV185Test' --tests '*LinkedClothingV186Test' --tests '*LinkedFoodV187Test' --tests '*SparseWeaponV188Test' --tests '*LinkedAccessoryV189Test' --tests '*MaleVillageClothingV190Test' --tests '*LinkedBeltV191Test' --tests '*FemaleVillageClothingV192Test' --tests '*LinkedAccessoryV193Test' --tests '*LinkedStaffV194Test' --tests '*RecoveredWeaponV195Test' --tests '*ExpandedVillageClothingV197Test' --tests '*InventoryFeedbackV199Test' --tests '*RapidSourceV198Test' --tests '*ItemWindowReferenceTest' --tests '*AccessoryCatalogV125Test' --tests '*LeapPlacementV184Test' --tests '*HorrorCastleV179Test' --tests '*SkillPresentationTest' --tests '*Martial*Test' :app:assembleDebug --stacktrace
           fi

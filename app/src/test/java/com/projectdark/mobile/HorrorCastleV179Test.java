@@ -44,9 +44,9 @@ public class HorrorCastleV179Test {
   List<HorrorCastleGeometry.Door> gates=HorrorCastleGeometry.doors(HorrorCastleGeometry.LOBBY);
   assertEquals(5,gates.stream().filter(d->d.label.equals("1층 서쪽 복도")).count());
   assertEquals(1,gates.stream().filter(d->d.label.equals("1층 동쪽 복도")).count());assertEquals(1,gates.stream().filter(d->d.label.equals("2층 중앙 복도")).count());
-  for(int u=22;u<=26;u++){final int col=u;assertTrue(gates.stream().anyMatch(d->d.label.equals("1층 서쪽 복도")&&d.x==HorrorCastleGeometry.x(col,10)&&d.y==HorrorCastleGeometry.y(col,10)));}
+  for(int u=22;u<=26;u++){final int col=u;assertTrue(gates.stream().anyMatch(d->d.label.equals("1층 서쪽 복도")&&d.x==HorrorCastleGeometry.x(col,13)&&d.y==HorrorCastleGeometry.y(col,13)));}
   HorrorCastleGeometry.Door east=gates.stream().filter(d->d.label.equals("1층 동쪽 복도")).findFirst().get();
-  assertEquals(HorrorCastleGeometry.x(46,2),east.markerX,.01);assertEquals(HorrorCastleGeometry.y(46,2),east.markerY,.01);
+  assertEquals(HorrorCastleGeometry.x(46,4),east.markerX,.01);assertEquals(HorrorCastleGeometry.y(46,4),east.markerY,.01);
   assertTrue(HorrorCastleGeometry.inside(HorrorCastleGeometry.LOBBY,east.x,east.y,0));
   assertTrue(gates.stream().anyMatch(d->d.label.equals("2층 중앙 복도")&&d.x==HorrorCastleGeometry.x(19,2)&&d.y==HorrorCastleGeometry.y(19,2)));
   HorrorCastleOriginalData.Grid grid=HorrorCastleGeometry.original(HorrorCastleGeometry.LOBBY);int exits=0;

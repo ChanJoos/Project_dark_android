@@ -22,7 +22,7 @@ public final class HorrorCastleGeometry {
  public static boolean inside(String id,float x,float y,float radius){float a=(y-160)/32+(x-800)/64,b=(y-160)/32-(x-800)/64;HorrorCastleOriginalData.Grid g=original(id);if(g!=null)return g.walkable(Math.round(a),Math.round(b));float inset=radius/28f;return a>=inset&&b>=inset&&a<=columns(id)-1-inset&&b<=rows(id)-1-inset;}
  public static final class Door {public final float x,y,markerX,markerY;public final String destination,label;public final boolean visiblePortal;
   Door(float xx,float yy,String d,String l){this(xx,yy,xx,yy,d,l);}
-  Door(float xx,float yy,float mx,float my,String d,String l){x=xx;y=yy;markerX=mx;markerY=my;destination=d;label=l;visiblePortal=!"방 입구".equals(l);}
+  Door(float xx,float yy,float mx,float my,String d,String l){x=xx;y=yy;markerX=mx;markerY=my;destination=d;label=l;visiblePortal=!"방 입구".equals(l)&&!"밀레스로 돌아가기".equals(l);}
   Door(int u,int v,String d,String l){this(HorrorCastleGeometry.x(u,v),HorrorCastleGeometry.y(u,v),d,l);}
  }
  private static Door originalDoor(String id,int u,int v,String destination,String label){WorldMoveTargetController.TileCenter p=nearest(id,u,v);return new Door(p.x,p.y,destination,label);}
@@ -31,16 +31,16 @@ public final class HorrorCastleGeometry {
  private static List<Door> buildDoors(String id){List<Door> d=new ArrayList<>();HorrorCastleOriginalData.Grid g=original(id);
   if(LOBBY.equals(id)){
    // User's device capture: the carpet under the central arches is the west entrance.
-   for(int u=22;u<=26;u++)d.add(originalDoor(id,u,10,FIRST,"1층 서쪽 복도"));
+   for(int u=22;u<=26;u++)d.add(originalDoor(id,u,13,FIRST,"1층 서쪽 복도"));
    // Keep the marker on the same reachable floor cell as its activation.
-   d.add(originalDoor(id,46,2,FIRST,"1층 동쪽 복도"));
+   d.add(originalDoor(id,46,4,FIRST,"1층 동쪽 복도"));
    d.add(originalDoor(id,19,2,SECOND,"2층 중앙 복도"));
    // User-marked five-cell opening between the exterior pillars (u21 and u27).
    for(int u=22;u<=26;u++)d.add(new Door(u,18,"MILLES","밀레스"));
   }else if(FIRST.equals(id)){
    for(int u=3;u<=6;u++)d.add(originalDoor(id,u,rows(id)-1,LOBBY,"로비로"));
-   for(int v:new int[]{7,13,19,25,31})d.add(originalDoor(id,1,v,roomId(1),"방 입구"));
-   for(int v:new int[]{6,12,18,24,30})d.add(originalDoor(id,8,v,roomId(1),"방 입구"));
+   for(int v:new int[]{6,12,18,24,30})d.add(originalDoor(id,0,v,roomId(1),"방 입구"));
+   for(int v:new int[]{6,12,18,24,30})d.add(originalDoor(id,9,v,roomId(1),"방 입구"));
   }else if(SECOND.equals(id)){
    for(int u=4;u<=7;u++)d.add(originalDoor(id,u,rows(id)-1,LOBBY,"로비로"));
    d.add(originalDoor(id,8,2,roomId(1),"방 입구"));
@@ -49,21 +49,17 @@ public final class HorrorCastleGeometry {
    if(g!=null)for(int v=0;v<g.height;v++)for(int u=0;u<g.width;u++)for(int side=1;side<=2;side++){
     int f=g.value(u,v,side);Door door=null;
     // Registered native door panels only. Cracked wall panels 11365/11366 are not doors.
-    if(f==11082||f==11367)door=originalDoor(id,u+1,v+1,next,"다음 방");
-    else if(f==11298)door=originalDoor(id,u,v+1,next,"다음 방");
-    else if(f==11398||f==11162)door=originalDoor(id,u+1,v+1,next,"다음 방");
+    if(f==11082||f==11367)door=originalDoor(id,u,v,next,"다음 방");
+    else if(f==11298)door=originalDoor(id,u,v,next,"다음 방");
+    else if(f==11398||f==11162)door=originalDoor(id,u,v,next,"다음 방");
     if(door!=null&&!sameDoor(d,door))d.add(door);
    }
    // Kitchen has an open wall threshold, and 12/13 still use their explicit legacy fixture.
    if(d.isEmpty()){if(g!=null)d.add(originalDoor(id,Math.min(6,g.width-2),1,next,"다음 방"));else d.add(new Door(columns(id)/2,2,next,"다음 방"));}
   }
   if(room(id)>0){List<Door> returns=new ArrayList<>();
-   for(Door old:d){int u=Math.round((old.y-160)/32+(old.x-800)/64),v=Math.round((old.y-160)/32-(old.x-800)/64);
-    int[][] steps={{1,0},{0,1},{0,-1},{-1,0}};Door shifted=null;
-    for(int[] step:steps){int nu=u+step[0],nv=v+step[1];if(g!=null?!g.walkable(nu,nv):nu<1||nv<1||nu>=columns(id)-1||nv>=rows(id)-1)continue;
-     shifted=new Door(nu,nv,"MILLES","밀레스로 돌아가기");break;}
-    if(shifted==null)throw new IllegalStateException("No legal one-cell Horror return "+id);
-    if(!sameDoor(returns,shifted))returns.add(shifted);
+   // Return through the native doorway itself, never an adjacent +u/+v floor portal.
+   for(Door old:d){Door threshold=new Door(old.x,old.y,old.x,old.y,"MILLES","밀레스로 돌아가기");if(!sameDoor(returns,threshold))returns.add(threshold);
    }d=returns;
   }
   return Collections.unmodifiableList(d);

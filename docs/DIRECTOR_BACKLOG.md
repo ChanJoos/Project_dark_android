@@ -1,3 +1,11 @@
+## 2026-10-19 V200 original-reference doorway correction
+
+Accepted user instruction: lobby exterior5/west5/east1/upper1 visible portals; each corridor return4; room entry/exit activates in the door itself without floor rings; hunting counter centered horizontally on actual viewport. Prior delivered source d3695a9b doorway-position complaint DEVICE_FAILED_USER_REPORTED. Diagnosis: room gates explicitly shifted one legal tile toward +u after already offsetting source panels; corridor gates were adjacent to source panels; east lobby marker hidden at pillar; counter hardcoded x480 on wide phones.
+
+Candidate changes: west lobby gate row22..26/v13 on unobscured floor instead ofv10 behind arches; east46/4 instead of46/2 at pillar; upper19/2 and exterior22..26/v18 retained. Corridor native panel cells0/9,v6/12/18/24/30 replace offset cells1/8. Room panel source cells select nearest legal threshold, no extra +u/+v; kitchen opening and unresolved12/13 fixture remain explicit. Hunting exits remain Milles return; last kill automatic01..13 progression retained. Doorway rings suppressed for hunting rooms. Counter reads actual Canvas viewport center, including legacy fallback scenes. Original assets, populations, reward/save, navigation/cache/prewarm/vsync contracts unchanged.
+
+IMPLEMENTED_PENDING_NATIVE_BUILD_AND_VISUAL_REVIEW. Native selected HorrorCastleV179Test+HorrorCastleMobileV183Test+HorrorDoorsV200Test cover gate counts, real GameView transitions, neighboring floor nonactivation, real navigation to native door, wide counter,13-stage clear/save,12-trip bounded floor cache. Source12/13 still unresolved; no complete original-map parity or handset acceptance claim. Same PR197/main41fe6def unmerged.
+
 ## 2026-10-19 V199 user-reported inventory defects — candidate verification
 
 The user-reported failure remains DEVICE_FAILED_USER_REPORTED for delivered b2ae261f. Candidate source d3695a9bd388028d2dab62cb8e5c60eb48e106d8 contains the repair; handset acceptance is PENDING.
