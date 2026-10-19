@@ -12,5 +12,19 @@
   "apkSha256": "3dec4ff8a895d3c9d9cc896187e2e7e51924480b412c90254536d8a58cabdeb1",
   "phone": "PENDING",
   "allLinkItems": "PARTIAL",
-  "fixCi": "PENDING"
+  "fixCi": {
+    "run": 39198744574,
+    "job": 117887134100,
+    "step": 23,
+    "result": "SUCCESS",
+    "completedAt": "2026-10-19T04:26:29Z",
+    "laterStages": "IN_PROGRESS"
+  },
+  "packagedGarments": {
+    "count": 50,
+    "iconHashes": "PASS",
+    "sourceAtlasHashes": "PASS",
+    "registrationsAndFrameBounds": "PASS",
+    "idleCropPixels": "PASS"
+  }
 }
