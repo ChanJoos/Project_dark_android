@@ -1,0 +1,529 @@
+[
+  {
+    "source": "300060/source_00.png",
+    "text": "로오의현철반지",
+    "top": 573,
+    "left": 46,
+    "itemIds": [
+      "USER_ITEM_20261018_R05015"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 0,
+    "crop": [
+      0,
+      558,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "금반지",
+    "top": 767,
+    "left": 45,
+    "itemIds": [
+      "USER_ITEM_20261018_R05424"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 1,
+    "crop": [
+      0,
+      752,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "세토아의금반지",
+    "top": 828,
+    "left": 46,
+    "itemIds": [
+      "USER_ITEM_20261018_R03440"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 2,
+    "crop": [
+      0,
+      810,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "셔스의금반지",
+    "top": 1037,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R03367"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 3,
+    "crop": [
+      0,
+      1022,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "세토아의산호반지",
+    "top": 1383,
+    "left": 47,
+    "itemIds": [
+      "USER_ITEM_20261018_R03419"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 4,
+    "crop": [
+      0,
+      1368,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "세토아의자수정반지",
+    "top": 1693,
+    "left": 46,
+    "itemIds": [
+      "USER_ITEM_20261018_R03409"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 5,
+    "crop": [
+      0,
+      1678,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "이아의자수정반지",
+    "top": 1811,
+    "left": 47,
+    "itemIds": [
+      "USER_ITEM_20261018_R02385"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 6,
+    "crop": [
+      0,
+      1796,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "로오의사파이어반지",
+    "top": 2620,
+    "left": 46,
+    "itemIds": [
+      "USER_ITEM_20261018_R05032"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 7,
+    "crop": [
+      0,
+      2606,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "세토아의녹옥반지",
+    "top": 2829,
+    "left": 45,
+    "itemIds": [
+      "USER_ITEM_20261018_R03432"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 8,
+    "crop": [
+      0,
+      2815,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "로오의녹옥반지",
+    "top": 2908,
+    "left": 46,
+    "itemIds": [
+      "USER_ITEM_20261018_R05045"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 9,
+    "crop": [
+      0,
+      2895,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "메투스의녹옥반지",
+    "top": 3047,
+    "left": 45,
+    "itemIds": [
+      "USER_ITEM_20261018_R04275"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 10,
+    "crop": [
+      0,
+      3034,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "text": "셔스의녹옥반지",
+    "top": 3084,
+    "left": 44,
+    "itemIds": [
+      "USER_ITEM_20261018_R03360"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 11,
+    "crop": [
+      0,
+      3070,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "300060/source_01.png",
+    "text": "강화된레드가넷반지",
+    "top": 1933,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R05521"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 12,
+    "crop": [
+      0,
+      1918,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "text": "셔스의동각반",
+    "top": 1092,
+    "left": 45,
+    "itemIds": [
+      "USER_ITEM_20261018_R03359"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 13,
+    "crop": [
+      0,
+      1079,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "text": "메투스의은각반",
+    "top": 1415,
+    "left": 45,
+    "itemIds": [
+      "USER_ITEM_20261018_R04258"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 14,
+    "crop": [
+      0,
+      1402,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "text": "그린하트각반",
+    "top": 2003,
+    "left": 42,
+    "itemIds": [
+      "USER_ITEM_20261018_R05433"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 15,
+    "crop": [
+      0,
+      1988,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "바다의목걸이",
+    "top": 432,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R03894"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 19,
+    "crop": [
+      0,
+      416,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "대지의목걸이",
+    "top": 470,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R05228"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 20,
+    "crop": [
+      0,
+      454,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "바람의목걸이",
+    "top": 500,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R03867"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 21,
+    "crop": [
+      0,
+      490,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "화염의목걸이",
+    "top": 536,
+    "left": 42,
+    "itemIds": [
+      "USER_ITEM_20261018_R01381"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 22,
+    "crop": [
+      0,
+      528,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "진주목걸이",
+    "top": 1071,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R02205"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 23,
+    "crop": [
+      0,
+      1056,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "바다의진주목걸이",
+    "top": 1109,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R03880"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 24,
+    "crop": [
+      0,
+      1092,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "대지의진주목걸이",
+    "top": 1147,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R05214"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 25,
+    "crop": [
+      0,
+      1130,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "바람의진주목걸이",
+    "top": 1183,
+    "left": 43,
+    "itemIds": [
+      "USER_ITEM_20261018_R03853"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 26,
+    "crop": [
+      0,
+      1166,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "화염의진주목걸이",
+    "top": 1220,
+    "left": 42,
+    "itemIds": [
+      "USER_ITEM_20261018_R01367"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 27,
+    "crop": [
+      0,
+      1204,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "자수정목걸이",
+    "top": 2301,
+    "left": 42,
+    "itemIds": [
+      "USER_ITEM_20261018_R02359"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 28,
+    "crop": [
+      0,
+      2284,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "바다의자수정목걸이",
+    "top": 2331,
+    "left": 41,
+    "itemIds": [
+      "USER_ITEM_20261018_R03885"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 29,
+    "crop": [
+      0,
+      2322,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "대지의자수정목걸이",
+    "top": 2367,
+    "left": 41,
+    "itemIds": [
+      "USER_ITEM_20261018_R05219"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 30,
+    "crop": [
+      0,
+      2358,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "바람의자수정목걸이",
+    "top": 2404,
+    "left": 42,
+    "itemIds": [
+      "USER_ITEM_20261018_R03858"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 31,
+    "crop": [
+      0,
+      2396,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "text": "숲의벽옥목걸이",
+    "top": 2478,
+    "left": 40,
+    "itemIds": [
+      "USER_ITEM_20261018_R03049"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 32,
+    "crop": [
+      0,
+      2470,
+      40,
+      40
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "text": "산호석귀걸이",
+    "top": 34,
+    "left": 42,
+    "itemIds": [
+      "USER_ITEM_20261018_R03561"
+    ],
+    "reviewStatus": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL_AND_ICON",
+    "proposalIndex": 33,
+    "crop": [
+      0,
+      19,
+      40,
+      40
+    ]
+  }
+]

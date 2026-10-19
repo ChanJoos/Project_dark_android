@@ -1,0 +1,22 @@
+{
+  "sourceCommit": "fe77bd4c812f806c903439f51d706c3faca3e411",
+  "runId": "39192767890",
+  "builtAtKST": "2026-10-19T12:13:34.247786+09:00",
+  "apkSha256": "68f7885a4281803c7c7e6acd2db25dff68f8194c875f1ee85985d9517638c3eb",
+  "apkBytes": 84622540,
+  "identity": {
+    "sourceCommit": "fe77bd4c812f806c903439f51d706c3faca3e411",
+    "runId": "39192767890",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending",
+  "tests": [
+    75,
+    0,
+    0,
+    0
+  ],
+  "artifactId": 12161131722,
+  "artifactSha256": "fadc9f7d26db418245e9d52f06f6c22b3858d7d7a1297ad5cf42f3454bfd7f84"
+}
