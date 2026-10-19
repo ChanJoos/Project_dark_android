@@ -65,7 +65,7 @@ final class SkillBodyRenderer {
     float jumpHandX=rootX+(13f*b.getWidth()/17f-(float)f.optDouble("pivotX"))*SCALE;
     float jumpHandY=rootY+(24-b.getHeight()-(float)f.optDouble("offsetY"))*SCALE;
     if(jumpWeapon&&back)chungryong.layer(c,"basic",true,0,jumpHandX,jumpHandY,SCALE);
-    boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND")||motion.equals("IDLE");
+    boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND")||motion.equals("IDLE")||motion.equals("WALK");
     if(weapon&&back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",true,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);

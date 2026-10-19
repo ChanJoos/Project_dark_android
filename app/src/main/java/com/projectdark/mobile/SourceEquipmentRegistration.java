@@ -18,7 +18,7 @@ final class SourceEquipmentRegistration {
   static SourceEquipmentRegistration load(Context context,String identity){
     if(context==null||identity==null)return null;
     try{
-      JSONObject b=new JSONObject(read(context,"source-registration/mm001.json"));
+      JSONObject b=new JSONObject(read(context,"source-registration/"+(identity.startsWith("w")?"wm001":"mm001")+".json"));
       JSONObject g=new JSONObject(read(context,"source-registration/"+identity+".json"));
       return new SourceEquipmentRegistration(b,g);
     }catch(Throwable ignored){return null;}

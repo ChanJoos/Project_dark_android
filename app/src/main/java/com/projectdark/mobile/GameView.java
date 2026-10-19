@@ -774,6 +774,7 @@ public final class GameView extends View {
   private CharacterVisualBinding cachedPlayerVisuals;
   private CharacterVisualBinding playerVisuals(){if(cachedPlayerVisuals==null||!cachedPlayerVisuals.equippedBySlot().equals(state.rpg().equipment()))cachedPlayerVisuals=CharacterVisualBinding.from(state.rpg());return cachedPlayerVisuals;}
   private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=playerVisuals();float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
+    String characterBodyIdentity=visuals.sourceBodyIdentity(this.characterBodyIdentity);
     SkillPresentationCatalog.Entry selected=skillPresentation.get(activeSkillVisualId);
     String weaponMotion=WeaponCombatProfile.motion(state.rpg(),selected==null?"EQUIPPED_BASIC":selected.motion);
     if(isActing()&&presentation==CharacterRenderer.State.ATTACK&&(selected==null||"SK_공통_001".equals(selected.id))){
@@ -805,6 +806,7 @@ public final class GameView extends View {
       }
       if(skillBodyRenderer.draw(c,pose,characterBodyIdentity,weaponMotion,skillPosePhase(actionClock,stateDuration,contact)))return;
     }
+    if("wm001".equals(characterBodyIdentity)&&skillBodyRenderer.draw(c,pose,characterBodyIdentity,presentation==CharacterRenderer.State.WALK?"WALK":"IDLE",walkClock))return;
     characterRenderer.draw(c,pose);}
 
   private void panel(Canvas c,float l,float t,float r,float b){UiTheme.surface(c,new RectF(l,t,r,b),0xe5101722,0x88607485,9);}
@@ -901,7 +903,7 @@ private void drawUtilityRail(Canvas c){
       Bitmap bitmap=sourceItemIcons.get(row.itemId);
       if(bitmap!=null)SourceItemIconRegistry.drawEquipmentForSlot(c,bitmap,new RectF(x,y,x+size,y+size),p,slot,row.itemId);
     }
-    public void actor(Canvas c,float x,float y){CharacterVisualBinding visuals=CharacterVisualBinding.from(state.rpg());c.save();c.translate(x,y);c.scale(2f,2f);characterRenderer.draw(c,new CharacterRenderer.Pose(0,0,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE));c.restore();}
+    public void actor(Canvas c,float x,float y){CharacterVisualBinding visuals=playerVisuals();c.save();c.translate(x,y);c.scale(2f,2f);CharacterRenderer.Pose pose=new CharacterRenderer.Pose(0,0,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE);String body=visuals.sourceBodyIdentity(characterBodyIdentity);if(!"wm001".equals(body)||!skillBodyRenderer.draw(c,pose,body,"IDLE",0))characterRenderer.draw(c,pose);c.restore();}
   };
   private void drawInventory(Canvas c){if(inventoryOpen){c.save();c.translate(hudCenterOffset,0);itemWindow.inventory(c,state.rpg(),rpgInteraction.selectedInventoryItemId(),itemWindowVisuals);c.restore();}}
 

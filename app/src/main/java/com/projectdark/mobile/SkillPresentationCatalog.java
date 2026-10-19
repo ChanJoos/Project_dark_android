@@ -15,6 +15,7 @@ final class SkillPresentationCatalog {
   SkillPresentationCatalog(Context c){try{JSONObject j=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/catalog.json"),StandardCharsets.UTF_8));profiles=j.getJSONObject("profiles");frames=j.getJSONObject("frames");JSONArray a=j.getJSONArray("skills");for(int i=0;i<a.length();i++){Entry e=new Entry(a.getJSONObject(i));if(entries.put(e.id,e)!=null)throw new IllegalStateException("duplicate presentation ID");}}catch(Exception e){throw new IllegalStateException("skill presentation catalog",e);}}
   Entry get(String id){return entries.get(id);}
   String frameKey(String body,String motion,CharacterRenderer.Direction d,float phase){
+    if("WALK".equals(motion))return body+"/01/"+ShirtSourceRegistration.idleFrame(d,CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,phase));
     JSONObject p=profiles.optJSONObject(motion);if(p==null)return null;String group=p.optString("group");
     if("02".equals(group))return body+"/02/"+CharacterRenderer.actionSourceIndex(d);
     boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;

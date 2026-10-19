@@ -117,6 +117,12 @@ public final class CharacterVisualBinding {
   public boolean isDefinitionConsistent(){return valid;}
   public boolean hasResolvedSpriteAssets(){return resolved;}
 
+  /** Match the source BODY to an equipped gender-specific garment, retaining the saved body otherwise. */
+  public String sourceBodyIdentity(String fallback){
+    if(equipmentVisualRef!=null){if(equipmentVisualRef.startsWith("wu")||equipmentVisualRef.contains(",wu"))return "wm001";if(equipmentVisualRef.startsWith("mu")||equipmentVisualRef.contains(",mu"))return "mm001";}
+    return "wm001".equals(fallback)?"wm001":"mm001";
+  }
+
   public boolean hasCoverage(GarmentCoverage coverage){
     if(coverage==null)return false;
     for(EquipmentAppearance appearance:appearances)if(appearance.garmentCoverage==coverage)return true;
