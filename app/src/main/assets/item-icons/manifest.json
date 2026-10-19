@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 784,
+  "registeredItems": 787,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -16899,6 +16899,39 @@
       ],
       "projection": "EXACT_REVIEWED_SOCKET_CROP_BACKGROUND_PRESERVED",
       "evidence": "MANUALLY_REVIEWED_EXACT_TABLE_LABEL"
+    },
+    "USER_ITEM_20261018_R01401": {
+      "itemId": "USER_ITEM_20261018_R01401",
+      "assetPath": "item-icons/staff_v194_mw162.png",
+      "assetSha256": "d95e14da750f95f51a811910d29ed3d59835ae2c89345161e45b053161c935d2",
+      "appearanceId": "mw162",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/staff_originals_v194.zip",
+      "sourceMember": "atlas/weapon/mw162.webp",
+      "sourceSha256": "ba7a9d8d638412cfbe545fcfe52ad3d91c7b582de0f62be6aaf8a51b1e95ad09",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R05275": {
+      "itemId": "USER_ITEM_20261018_R05275",
+      "assetPath": "item-icons/staff_v194_mw094.png",
+      "assetSha256": "0590fd6c98107a7dea6c4f279b584de4c0d4bbd1092c07e2fc6ef453ef61bf8e",
+      "appearanceId": "mw094",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/staff_originals_v194.zip",
+      "sourceMember": "atlas/weapon/mw094.webp",
+      "sourceSha256": "e273119c7b24f7ec7475891761169c2c8a6c98571abde5ee24682cda46fd875d",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R03696": {
+      "itemId": "USER_ITEM_20261018_R03696",
+      "assetPath": "item-icons/staff_v194_mw276.png",
+      "assetSha256": "2c256e12801cd764acf2104f61a0677a1eaac3090c617159e062b9226069c5e2",
+      "appearanceId": "mw276",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/staff_originals_v194.zip",
+      "sourceMember": "atlas/weapon/mw276.webp",
+      "sourceSha256": "679ae5075b565df7a3df980355359f83e16b56ea6d404f04b882a1517cb6e3c9",
+      "projection": "EXACT_NATIVE_IDLE0_CROP",
+      "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
     }
   }
 }

@@ -179,3 +179,12 @@ tasks.register('extractLinkedAccessoriesV193', Copy) {
 }
 tasks.named('extractLinkedAccessoriesV193').configure { dependsOn('extractFemaleClothesV192') }
 tasks.named('preBuild').configure { dependsOn('extractLinkedAccessoriesV193') }
+
+tasks.register('extractLinkedStaffsV194', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_staffs_v194.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedStaffsV194').configure { dependsOn('extractLinkedAccessoriesV193') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedStaffsV194') }
