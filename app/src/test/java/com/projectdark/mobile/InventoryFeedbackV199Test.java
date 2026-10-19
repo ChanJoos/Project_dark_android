@@ -38,6 +38,9 @@ public class InventoryFeedbackV199Test {
   }assertTrue("real source screenshot backgrounds removed",changed>=20);save(sheet,"clean-accessory-icons");
  }
  RpgProgressionState.ItemDefinition ring(String id,int hp){return new RpgProgressionState.ItemDefinition(id,"검증 반지","반지",1,Collections.<String>emptySet(),true,null,null,Collections.singletonMap("HP",hp),RpgProgressionState.Evidence.U);}
+ @Test public void actualGoldRingAliasesStackDespiteExplicitZeroFieldsAndSourceMetadata(){
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);String a="USER_ITEM_20261018_R05424",b="IT_SOURCE_152_KIN_67A36C40";assertTrue(InventoryGroupsV199.equivalent(r,a,b));Map<String,Integer> owned=new LinkedHashMap<>();owned.put(a,1);owned.put(b,2);assertTrue(r.restoreOwnedItems(owned,Collections.emptyMap()));List<RpgInventoryPresentation.ItemRow> rows=new ItemWindow(c).rows(r);assertEquals(1,rows.size());assertEquals(3,rows.get(0).quantity);assertEquals(owned,r.inventory());
+ }
  @Test public void exactAliasesStackButDifferentStatsStaySeparateAndPairedEquipKeepsIds(){
   RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.registerSourceAccessory(ring("ALIAS_A",100));r.registerSourceAccessory(ring("ALIAS_B",100));r.registerSourceAccessory(ring("VARIANT_C",200));Map<String,Integer> owned=new LinkedHashMap<>();owned.put("ALIAS_A",1);owned.put("ALIAS_B",2);owned.put("VARIANT_C",1);assertTrue(r.restoreOwnedItems(owned,Collections.emptyMap()));
   ItemWindow window=new ItemWindow(c);List<RpgInventoryPresentation.ItemRow> rows=window.rows(r);assertEquals(2,rows.size());assertEquals(3,rows.get(0).quantity);assertFalse(InventoryGroupsV199.equivalent(r,"ALIAS_A","VARIANT_C"));assertEquals(owned,r.inventory());
