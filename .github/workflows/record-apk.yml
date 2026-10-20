@@ -60,7 +60,13 @@ jobs:
           sdkmanager 'platform-tools' 'emulator' 'system-images;android-35;google_apis;x86_64' </dev/null
           test -f "$ANDROID_HOME/system-images/android-35/google_apis/x86_64/package.xml"
           test -x "$ANDROID_HOME/emulator/emulator"
-          echo no | avdmanager create avd -n apk-capture -k 'system-images;android-35;google_apis;x86_64' --force
+          export ANDROID_AVD_HOME="$RUNNER_TEMP/avd"
+          export ANDROID_USER_HOME="$RUNNER_TEMP/android-home"
+          mkdir -p "$ANDROID_AVD_HOME" "$ANDROID_USER_HOME"
+          echo no | avdmanager create avd -n apk-capture -p "$ANDROID_AVD_HOME/apk-capture.avd" -k 'system-images;android-35;google_apis;x86_64' --force
+          find "$RUNNER_TEMP" -name 'apk-capture.ini' -o -name 'config.ini' > evidence/avd-paths.txt
+          emulator -list-avds | tee evidence/avd-list.txt
+          grep -qx apk-capture evidence/avd-list.txt
           # Official Ubuntu runtime dependencies, unpacked locally without root changes.
           mkdir -p "$RUNNER_TEMP/emulator-libs/packages" "$RUNNER_TEMP/emulator-libs/root"
           (cd "$RUNNER_TEMP/emulator-libs/packages" && apt-get download libpulse0 libasyncns0 libsndfile1 libflac12t64 libogg0 libopus0 libvorbis0a libvorbisenc2 libmpg123-0t64 libmp3lame0)
@@ -73,6 +79,9 @@ jobs:
           getfacl /dev/kvm > evidence/kvm-acl-after.txt
           emulator -accel-check > evidence/acceleration.txt 2>&1
           emulator -avd apk-capture -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader -accel on -memory 4096 > evidence/emulator.log 2>&1 &
+          EMULATOR_PID=$!
+          sleep 5
+          kill -0 "$EMULATOR_PID" || { cat evidence/emulator.log; exit 1; }
           timeout 300 adb wait-for-device
           timeout 300 bash -c 'until [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d "\r")" == 1 ]]; do sleep 2; done'
           adb shell input keyevent 82
