@@ -33,7 +33,7 @@ public class CurseHudV202Test {
   }
  }
  @Test public void prewarmedSkullsHaveDistinctColorsAnimatedFramesAndBoundedSharedMemory()throws Exception{
-  CurseSkullFx fx=new CurseSkullFx(new ClassicSkillReference(c));assertTrue(CurseSkullFx.allocationBytes()<=4_000_000);long bytes=CurseSkullFx.allocationBytes();new CurseSkullFx(new ClassicSkillReference(c));assertEquals(bytes,CurseSkullFx.allocationBytes());
+  CurseSkullFx fx=new CurseSkullFx(c);assertTrue(CurseSkullFx.allocationBytes()<=4_000_000);long bytes=CurseSkullFx.allocationBytes();new CurseSkullFx(c);assertEquals(bytes,CurseSkullFx.allocationBytes());
   Bitmap contact=Bitmap.createBitmap(640,440,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(contact);canvas.drawColor(0xff292526);String[] ids={"SK_마법사_053","SK_마법사_002","SK_마법사_024","SK_마법사_011"};
   Set<Integer> hashes=new HashSet<>();for(int k=0;k<4;k++){for(int frame=0;frame<3;frame++){float age=frame*.27f;fx.draw(canvas,ids[k],age,80+k*160,80+frame*130);}Bitmap tile=Bitmap.createBitmap(128,160,Bitmap.Config.ARGB_8888);fx.draw(new Canvas(tile),ids[k],.25f,64,80);int[] px=new int[128*160];tile.getPixels(px,0,128,0,0,128,160);int visible=0;for(int v:px)if(Color.alpha(v)>20)visible++;assertTrue(visible>1800);hashes.add(Arrays.hashCode(px));tile.recycle();}assertEquals(4,hashes.size());save(contact,"four-colors-three-phases");
  }

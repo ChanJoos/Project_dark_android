@@ -1,0 +1,17 @@
+{
+  "path": "screen-magic-v204/curse-pink.png",
+  "width": 90,
+  "height": 120,
+  "columns": 4,
+  "durationsMs": [
+    120,
+    200,
+    320,
+    240
+  ],
+  "pivotX": 45,
+  "pivotY": 60,
+  "scale": 1,
+  "blend": "NORMAL",
+  "atlasSha256": "f71faddbb6533ab0cea26f4dbbcf4c467276a536eb0a3b4eab9e948c5a0f31fa"
+}

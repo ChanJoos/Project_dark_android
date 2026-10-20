@@ -1,6 +1,6 @@
 package com.projectdark.mobile;
 import android.graphics.*;
-/** Original captured curse silhouette/palette. No replacement anatomical skull or invented geometry. */
+/** User original-capture silhouette, clean alpha and labelled palette variants. No replacement anatomical skull or invented geometry. */
 final class CurseSkullFx {
  static final float DURATION=.88f;
  private final CapturedSkillFx.Sequence[] originals=new CapturedSkillFx.Sequence[4];
@@ -8,7 +8,7 @@ final class CurseSkullFx {
  private final Paint paint=new Paint(Paint.FILTER_BITMAP_FLAG);
  private final Rect source=new Rect();private final RectF destination=new RectF();
  private static long bytes;
- CurseSkullFx(ClassicSkillReference refs){String[] ids={"SK_마법사_002","SK_마법사_011","SK_마법사_024","SK_마법사_053"};long total=0;for(int i=0;i<4;i++){originals[i]=refs.channel(ids[i],false).sequence;total+=originals[i].atlas.getAllocationByteCount();}bytes=total;}
+ CurseSkullFx(android.content.Context c){String[] names={"blue","yellow","pink","red"};long total=0;try{for(int i=0;i<4;i++){org.json.JSONObject j=new org.json.JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/screen-magic-v204/curse-"+names[i]+".json"),java.nio.charset.StandardCharsets.UTF_8));originals[i]=new CapturedSkillFx.Sequence(c,j);total+=originals[i].atlas.getAllocationByteCount();}}catch(Exception ex){throw new IllegalStateException("Original curse source",ex);}bytes=total;}
   static int variant(String id){
     switch(id){
       case "SK_마법사_002":case "SK_마법사_047":return 0;

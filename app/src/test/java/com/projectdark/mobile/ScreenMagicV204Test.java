@@ -53,6 +53,13 @@ public class ScreenMagicV204Test {
   assertEquals(CombatResolver.RejectReason.RESOURCE,session.submitPlayer("player","SK_마법사_043").rejectReason);assertEquals(12959,s.player().mp);
   assertEquals(50000,SkillAbilityExecutor.previewMp(SkillAbilityCatalog.get("SK_마법사_043"),0,true));assertEquals(0,SkillAbilityExecutor.previewMp(SkillAbilityCatalog.get("SK_마법사_043"),0,false));
  }
+ @Test public void curseHasOriginalTallSilhouetteAndSharedCleanSourceFrames()throws Exception{
+  for(String name:new String[]{"blue","yellow","pink","red"}){
+   org.json.JSONObject j=new org.json.JSONObject(new String(PresentationAssetBytes.read(h.c,"skill-presentation/screen-magic-v204/curse-"+name+".json"),java.nio.charset.StandardCharsets.UTF_8));
+   CapturedSkillFx.Sequence seq=new CapturedSkillFx.Sequence(h.c,j);assertEquals(90,seq.width);assertEquals(120,seq.height);assertEquals(4,seq.durations.length);
+   assertEquals(0,Color.alpha(seq.atlas.getPixel(0,0)));assertTrue(seq.atlas.getAllocationByteCount()<=700000);
+  }
+ }
  @Test public void meteorUsesCompleteOriginalAnimationAndScreenshotIcon()throws Exception{
   SkillIconCatalog icons=new SkillIconCatalog(h.c);Bitmap b=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888);assertTrue(icons.drawSquare(new Canvas(b),"SK_마법사_043",new RectF(0,0,40,40)));
   org.json.JSONObject j=new org.json.JSONObject(new String(PresentationAssetBytes.read(h.c,"skill-presentation/screen-magic-v204/meteor.json"),java.nio.charset.StandardCharsets.UTF_8));CapturedSkillFx.Sequence seq=new CapturedSkillFx.Sequence(h.c,j);assertEquals(7,seq.durations.length);assertEquals(294,seq.width);assertEquals(235,seq.height);

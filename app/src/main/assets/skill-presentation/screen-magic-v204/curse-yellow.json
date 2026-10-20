@@ -1,0 +1,17 @@
+{
+  "path": "screen-magic-v204/curse-yellow.png",
+  "width": 90,
+  "height": 120,
+  "columns": 4,
+  "durationsMs": [
+    120,
+    200,
+    320,
+    240
+  ],
+  "pivotX": 45,
+  "pivotY": 60,
+  "scale": 1,
+  "blend": "NORMAL",
+  "atlasSha256": "429f7e819ff55c70a252324531f7823e959199e3c23d4ec193b812c27372213d"
+}
