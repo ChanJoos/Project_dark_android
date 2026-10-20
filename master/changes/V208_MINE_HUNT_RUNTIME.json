@@ -30,7 +30,8 @@
         78
       ]
     ],
-    "limits": "Recovered old client source matches observed rock/timber/cart landmarks. Exact current Korean server warp/spawn table is unavailable. User square recollection is not substituted for recovered dimensions."
+    "limits": "Recovered old client source matches observed rock/timber/cart landmarks. Exact current Korean server warp/spawn table is unavailable. User square recollection is not substituted for recovered dimensions.",
+    "coordinates": "Mine HUD preserves original source u/v coordinates; shared movement coordinate convention elsewhere remains unchanged"
   },
   "travel": "Mine town travel manager, Lv99 hunting card; armed exit portal returns to Mine town",
   "actors": {
@@ -49,7 +50,8 @@
     ],
     "source": "retained native MPF/palette bytes, original anchors, two original facings mirrored for four directions",
     "identityLimits": "First three Korean labels descriptive. 153 is a source-family candidate not positively sighted in the recovered excerpt. Other Korean names and armor relations remain provisional visual/community associations. No claim all ten server identities proven.",
-    "animationLimit": "158 missing final front attack frame holds its preceding original frame; recorded in manifest."
+    "animationLimit": "158 missing final front attack frame holds its preceding original frame; recorded in manifest.",
+    "idleAnimation": "Native stand frames when present; native first walk pose only when source declares zero stand frames"
   },
   "mobilePolicy": {
     "id": "MINE_V208_MOBILE_BALANCE",
@@ -89,7 +91,7 @@
   "performance": {
     "floorLruEntries": 32,
     "floorByteBudget": 8652800,
-    "fourStateAtlasBytes": 27893760,
+    "fourStateAtlasBytes": 29736960,
     "atlasBudget": 35389440,
     "movementSeconds": 0.6,
     "decodeOnEntry": true,

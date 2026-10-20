@@ -32,9 +32,10 @@ with zipfile.ZipFile(SRC/'original_sources.zip') as z:
  monsters=[]
  for typ,ident in enumerate(ref['sourceMPFs']):
   raw=entries[f'hades/mns{ident:03}.mpf'];m=mpf(raw);pal=palette(entries[f"hades/mns{m['palette']:03}.pal"])
-  wc,ac=m['walkcount'],m['attackcount'];rows=1+wc+ac
+  wc,ac=m['walkcount'],m['attackcount'];sc=max(1,m['standcount']);rows=sc+wc+ac
   # Source frame centers remain the common foot; canvas bounds are measured, not cropped.
-  all_frames=[m['frames'][m['walk']+i] for i in range(2*wc)]+[m['frames'][m['attack']+i] for i in range(min(2*ac,len(m['frames'])-m['attack']))]
+  idle_frames=[m['frames'][m['stand']+i] for i in range(2*m['standcount'])] if m['standcount'] else [m['frames'][m['walk']+view*wc] for view in range(2)]
+  all_frames=idle_frames+[m['frames'][m['walk']+i] for i in range(2*wc)]+[m['frames'][m['attack']+i] for i in range(min(2*ac,len(m['frames'])-m['attack']))]
   extent=max(max(abs(f['left']-f['cx']),abs(f['right']-f['cx'])) for f in all_frames)
   above=max(f['cy']-f['top'] for f in all_frames);below=max(f['bottom']-f['cy'] for f in all_frames)
   width=max(96,((extent*2+15)//16)*16);height=max(96,((above+below+15)//16)*16)
@@ -42,13 +43,14 @@ with zipfile.ZipFile(SRC/'original_sources.zip') as z:
   for row in range(rows):
    for col in range(2):
     view=col
-    index=m['walk']+view*wc+(0 if row==0 else row-1) if row<=wc else m['attack']+view*ac+row-wc-1
+    if row<sc:index=m['stand']+view*sc+row if m['standcount'] else m['walk']+view*wc
+    elif row<sc+wc:index=m['walk']+view*wc+row-sc
+    else:index=m['attack']+view*ac+row-sc-wc
     index=min(index,len(m['frames'])-1);f=m['frames'][index];im=render_frame(m,pal,index);left=ax+f['left']-f['cx'];top=ay+f['top']-f['cy']
-    if False:im=im.transpose(Image.Transpose.FLIP_LEFT_RIGHT);left=ax-(f['right']-f['cx'])
     assert 0<=left and 0<=top and left+im.width<=width and top+im.height<=height,(ident,row,col)
     sheet.alpha_composite(im,(col*width+left,row*height+top))
   sheet.save(OUT/f'monster_{typ}.png')
-  monsters.append(dict(type=typ,mpf=ident,width=width,height=height,anchorX=ax,anchorY=ay,walk=wc,attack=ac,frontAttackFrames=min(ac,len(m['frames'])-m['attack']-ac),rows=rows,bytes=sheet.width*sheet.height*4,sourceSha256=hashlib.sha256(raw).hexdigest()))
+  monsters.append(dict(type=typ,mpf=ident,width=width,height=height,anchorX=ax,anchorY=ay,idle=sc,walk=wc,attack=ac,frontAttackFrames=min(ac,len(m['frames'])-m['attack']-ac),rows=rows,bytes=sheet.width*sheet.height*4,sourceSha256=hashlib.sha256(raw).hexdigest()))
  manifest=dict(sourceMap=2102,width=150,height=102,monsters=monsters,atlasBytes=sum(m['bytes'] for m in monsters),files={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.png'))})
  assert manifest['atlasBytes']<=35389440
  (OUT/'manifest.json').write_text(json.dumps(manifest,indent=2)+'\n')
