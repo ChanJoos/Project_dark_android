@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_USER_INSTRUCTION_IMPLEMENTED_PENDING_NATIVE",
+  "status": "IMPLEMENTED_NATIVE_VERIFIED_HANDSET_PENDING",
   "reported": "DEVICE_FAILED_USER_REPORTED",
   "reportedAPK": "not explicitly identified; latest delivered6d21a7c",
   "base": "77596336f9e6c843a2b071b23a5d7511e08acf0c",
@@ -14,5 +14,7 @@
     "single/physical LOS",
     "path index/live collisions"
   ],
-  "phone": "PENDING"
+  "phone": "PENDING",
+  "verification": "verification/SCREEN_MAGIC_V201_BUILD.json",
+  "queueBound": 4096
 }

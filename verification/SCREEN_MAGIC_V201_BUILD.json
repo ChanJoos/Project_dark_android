@@ -1,0 +1,129 @@
+{
+  "version": "V201",
+  "status": "IMPLEMENTED_NATIVE_VERIFIED_HANDSET_PENDING",
+  "source": "8de565c4c954e53f93b45ef46cfe71cb300002d1",
+  "run": 39385004700,
+  "artifact": 12246814750,
+  "builtAtKST": "2026-10-20T16:26:11.409340+09:00",
+  "apkBytes": 85464049,
+  "apkSha256": "aa3ab97a5cec73e1f1213b5f6e7b00beb21be5d66a769cabc829acf6baf7fcb7",
+  "embeddedIdentity": {
+    "sourceCommit": "8de565c4c954e53f93b45ef46cfe71cb300002d1",
+    "runId": "39385004700",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "tests": {
+    "tests": 62,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "suite": "com.projectdark.mobile.AbelCombatV153Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.AllSkillRuntimeV138Test",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.HorrorCastleMobileV183Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.ScreenMagicV201Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillAbilityRuntimeTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillSpatialContractTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "screenScope": "11 registered SCREEN magic IDs:7damage+4curse, all checked against blocked rays. Current viewport, live/dead and contact membership preserved.",
+  "checks": [
+    "7 damaging spells via normal learned Horror quickslots behind actual furniture",
+    "AUTO Ragnarok sole blocked target without approach",
+    "108 victims receive damage and all216 effect/feedback events within bounded4096 queue",
+    "Positive damage provokes surviving targets beyond passive radius in Pote/coast/Horror, with live collision",
+    "Confusion clears provocation; fresh damage removes AGGRO_RESET; zero damage/death/player death/fresh actor lifecycle",
+    "Existing221-ID/141magic runtime, resource, contact, spatial, navigation and Horror regressions"
+  ],
+  "screensReviewed": 8,
+  "phone": "PENDING; user-reported failure not device-accepted until retest",
+  "commonCI": [
+    {
+      "id": 39385010450,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 39385004700,
+      "name": "V184 Horror portals (focused native + APK)",
+      "status": "completed",
+      "conclusion": "success"
+    },
+    {
+      "id": 39385004685,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null
+    }
+  ],
+  "limitations": [
+    "Host native Robolectric sdk34, not physical handset/FPS proof",
+    "No independent same-actor respawn assertion in new V201 lifecycle test; production respawn clears provocation",
+    "Workflow build_evidence.scope retains legacy Horror prose; this receipt states actual selected scope",
+    "Internal Android versionCode184/versionName1.84-mobile-horror retained",
+    "Prior V199/V200 incomplete art/maps and other known limitations remain"
+  ],
+  "delivery": {
+    "file": "PROJECT_DARK_V201_TEST.apk",
+    "persistentCopy": "FAILED_HTTP403 during current prepared helper tools/list; local verified copy available; GitHub artifact retained"
+  }
+}
