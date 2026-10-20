@@ -6,8 +6,8 @@ public final class MineTownGeometry {
  public static final float SCALE=8f/7f;
  public static boolean contains(String id){return ID.equals(id);}
  public static float x(int u,int v){return 2048+(u-v)*32;}public static float y(int u,int v){return 64+(u+v)*16;}
- public static int tile(int u,int v){if(u<8||v<8||u>55||v>55)return 0;if(v>=30&&v<=34)return bridge(u,v)?2:0;return 1;}
- public static boolean bridge(int u,int v){return v>=29&&v<=35&&(u>=19&&u<=23||u>=43&&u<=47);}
+ public static int tile(int u,int v){if(u<8||v<8||u>55||v>55)return 0;if(v>=28&&v<=36)return bridge(u,v)?2:0;return 1;}
+ public static boolean bridge(int u,int v){return v>=27&&v<=37&&(u>=19&&u<=23||u>=43&&u<=47);}
  public static final class Prop {
   public final String asset;public final int u,v;public final float x,y,anchorX,anchorY,width,height,depthY;public final boolean blocking;
   Prop(String a,int u,int v,float ax,float ay,float w,float h,boolean block){asset=a;this.u=u;this.v=v;x=MineTownGeometry.x(u,v);y=MineTownGeometry.y(u,v);anchorX=ax*SCALE;anchorY=ay*SCALE;width=w*SCALE;height=h*SCALE;depthY=y+Math.max(0,height-anchorY);blocking=block;}
@@ -26,7 +26,7 @@ public final class MineTownGeometry {
    boolean shore=false;for(int[] d:new int[][]{{1,0},{-1,0},{0,1},{0,-1}})if(tile(u+d[0],v+d[1])==0)shore=true;
    if(shore){int n=Math.floorMod(u*17+v*31,3);p.add(new Prop("rock"+n,u,v,n==0?22:22,n==2?43:38,n==0?44:45,n==2?49:44,true));}
   }
-  for(int u:new int[]{19,23,43,47})for(int v=29;v<=35;v++)p.add(new Prop("rail",u,v,28,42,57,49,true));
+  for(int u:new int[]{19,23,43,47})for(int v=27;v<=37;v++)p.add(new Prop("rail",u,v,28,42,57,49,true));
   for(int v=19;v<=25;v+=2)p.add(new Prop("cliff",10,v,90,130,175,141,true));
   p.add(new Prop("mine_hatch",14,23,50,50,115,63,true));
   for(int[] uv:new int[][]{{17,25},{25,24},{36,24},{49,23},{17,40},{28,42},{37,51},{50,47},{24,51},{49,13},{32,14},{13,49},{15,12}})p.add(new Prop("lamp",uv[0],uv[1],13,116,61,118,true));

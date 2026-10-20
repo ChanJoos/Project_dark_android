@@ -797,6 +797,44 @@
       ],
       "greenMask": false,
       "sha256": "3da450e31a23937e05ae7b0a4f9db824ccf8dee7441a4d0811371a0bbf6ae509"
+    },
+    {
+      "id": "water_material",
+      "frame": 68,
+      "box": [
+        554,
+        51,
+        610,
+        79
+      ],
+      "polygon": null,
+      "greenMask": false,
+      "size": [
+        56,
+        28
+      ],
+      "sha256": "f30908fecda6bf8438952de7c354eb6c0317bc4e00fca2f0604bdf074e499a64"
+    },
+    {
+      "id": "cliff_material",
+      "frame": 50,
+      "box": [
+        500,
+        10,
+        580,
+        90
+      ],
+      "polygon": null,
+      "greenMask": false,
+      "size": [
+        80,
+        80
+      ],
+      "sha256": "b2fc517f9036caafa714a9eeb7c5baff2e10df4d8850c7a5b43bcf6a7152562f"
     }
-  ]
+  ],
+  "continuousMaterials": {
+    "water": "world-anchored mirrored pixel material, no tile-sized rock motifs",
+    "cliff": "continuous jagged stone wall mesh from source material; source fragment no longer repeated"
+  }
 }
