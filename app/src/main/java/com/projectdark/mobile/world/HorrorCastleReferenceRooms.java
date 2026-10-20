@@ -36,9 +36,10 @@ public final class HorrorCastleReferenceRooms {
  public static synchronized HorrorCastleOriginalData.Grid grid(String id){int n=HorrorCastleGeometry.room(id);if(n<12||n>15)return null;HorrorCastleOriginalData.Grid result=GRIDS.get(id);if(result!=null)return result;
   HorrorCastleOriginalData.Grid base=HorrorCastleOriginalData.get("MAP_HORROR_ROOM_03");int w=base.width,h=base.height;byte[] cells=new byte[w*h*6],walk=new byte[(w*h+7)/8];
   for(int v=0;v<h;v++)for(int u=0;u<w;u++){
-   for(int layer=0;layer<3;layer++){int value=base.value(u,v,layer);if(u>0&&v>0){if(layer>0)value=0;else value=11051+Math.floorMod(u*17+v*31,6);}int i=((v*w+u)*3+layer)*2;cells[i]=(byte)value;cells[i+1]=(byte)(value>>8);}
+   for(int layer=0;layer<3;layer++){int sourceU=u;if(n==12&&v==0){if(u>=5&&u<=7)sourceU=u-3;else if(u>=8&&u<=10)sourceU=u-3;}int value=base.value(sourceU,v,layer);if(u>0&&v>0){if(layer>0)value=0;else value=11051+Math.floorMod(u*17+v*31,6);}int i=((v*w+u)*3+layer)*2;cells[i]=(byte)value;cells[i+1]=(byte)(value>>8);}
    if((u>0&&v>0)||base.walkable(u,v)){int i=v*w+u;walk[i/8]|=1<<(i%8);}
   }
+  if(n==12){walk[6/8]&=~(1<<(6%8));walk[9/8]|=1<<(9%8);}
   for(Piece p:pieces(id)){int du=p.u-p.sourceU,dv=p.v-p.sourceV;int u=p.anchorU+(p.mirror?dv:du),v=p.anchorV+(p.mirror?du:dv);if(u>=0&&v>=0&&u<w&&v<h){int i=v*w+u;walk[i/8]&=~(1<<(i%8));}}
   result=new HorrorCastleOriginalData.Grid(0,w,h,Base64.getEncoder().encodeToString(cells),Base64.getEncoder().encodeToString(walk));GRIDS.put(id,result);return result;
  }
