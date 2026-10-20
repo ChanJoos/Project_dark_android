@@ -7,6 +7,8 @@ ROOT=Path(__file__).resolve().parents[1]
 SRC=ROOT/'master/source/mine_hunt_v208'
 OUT=ROOT/'app/build/generated/mine-hunt-v208/mine-hunt-v208'
 OUT.mkdir(parents=True,exist_ok=True)
+# Generated output only: remove stale sheets if the admitted roster shrinks.
+for stale in OUT.glob("*.png"):stale.unlink()
 ref=json.loads((SRC/'reference.json').read_text())
 class Entries:
  def __init__(self,values):self.entries=values

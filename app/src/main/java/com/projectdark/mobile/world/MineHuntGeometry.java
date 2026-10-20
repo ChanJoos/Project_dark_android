@@ -9,8 +9,8 @@ public final class MineHuntGeometry {
  public static float y(int u,int v){return 160+(u+v)*16;}
  public static WorldMoveTargetController.TileCenter at(int u,int v){return new WorldMoveTargetController.TileCenter(x(u,v),y(u,v));}
  public static HorrorCastleOriginalData.Grid grid(){return MineHuntData.grid();}
- public static WorldMoveTargetController.TileCenter entry(){return at(87,37);}
- public static WorldMoveTargetController.TileCenter exit(){return at(86,37);}
+ public static WorldMoveTargetController.TileCenter entry(){return at(12,34);}
+ public static WorldMoveTargetController.TileCenter exit(){return at(13,35);}
  public static int sourceU(float x,float y){return Math.round((y-160)/32+(x-3400)/64);}
  public static int sourceV(float x,float y){return Math.round((y-160)/32-(x-3400)/64);}
  public static boolean inside(float x,float y){return grid().walkable(sourceU(x,y),sourceV(x,y));}

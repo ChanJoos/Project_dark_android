@@ -1,3 +1,7 @@
+## V209 Mine/user icon repair — CI pending
+
+User rejected V208 missing robed mage, mine visual quality and inconsistent weapon icons. Missing original68red-hood mage replaces rejected153placeholder; thief155/monk238roles corrected. Both robed caster silhouettes route mobile mage/priest robe families; exact original priest-server association unresolved. Original-cell minimap and observed entrance route replace generic/min-map-middle presentation. Weapon/staff NEdiagonal32px shared inventory/equipment display, immutable source/actor art retained. Source/evidence contract master/source/mine_hunt_v209/repair_contract.json;31complete-retained-recording regions checked. Full YouTube media unavailable (195byteerror bodies), no full932secvisual claim.
+
 ## V208 Mine hunting runtime (build/host native verified; phone/common pending)
 
 Original map/graphics retained in master/source/mine_hunt_v208/{original_sources.zip,reference.json,armor_sources.zip,armor_bindings.json}; offline generator tools/build_mine_hunt_v208.py. Runtime/mobile uncertainty contract master/changes/V208_MINE_HUNT_RUNTIME.json, checkpoint docs/V208_MINE_HUNT_CHECKPOINT.md. Original source dimensions150×102; ten original MPF appearances; server numbers remain unknown. Exact runtime 5f4044d9bcd30fcbbb3d4f17d53209610c25d583/focused39512080778SUCCESS:28tests; receipt verification/MINE_HUNT_V208_BUILD.json.

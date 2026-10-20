@@ -1,0 +1,384 @@
+{
+  "recordingSha256": "9bca1e3f0cb9ed6f03f378f8d249f065f7e9873c7a403d0f00ee1ee26c5895d8",
+  "recordingSeconds": 127.974271,
+  "sampledEverySeconds": 4,
+  "regions": [
+    {
+      "second": 0,
+      "coordinate": [
+        95,
+        42
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 683,
+      "inliers": 184,
+      "foregroundInliers": 128,
+      "medianErrorPixels": 0.6302940313131694
+    },
+    {
+      "second": 4,
+      "coordinate": [
+        103,
+        35
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 821,
+      "inliers": 248,
+      "foregroundInliers": 187,
+      "medianErrorPixels": 0.6183535357204195
+    },
+    {
+      "second": 8,
+      "coordinate": [
+        97,
+        38
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 776,
+      "inliers": 263,
+      "foregroundInliers": 204,
+      "medianErrorPixels": 0.5546312369425965
+    },
+    {
+      "second": 12,
+      "coordinate": [
+        71,
+        15
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 677,
+      "inliers": 231,
+      "foregroundInliers": 188,
+      "medianErrorPixels": 0.7566432567600345
+    },
+    {
+      "second": 16,
+      "coordinate": [
+        67,
+        4
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 545,
+      "inliers": 174,
+      "foregroundInliers": 162,
+      "medianErrorPixels": 0.5276709557465418
+    },
+    {
+      "second": 20,
+      "coordinate": [
+        44,
+        17
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 779,
+      "inliers": 327,
+      "foregroundInliers": 272,
+      "medianErrorPixels": 0.6855008563562665
+    },
+    {
+      "second": 24,
+      "coordinate": [
+        10,
+        30
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 858,
+      "inliers": 356,
+      "foregroundInliers": 290,
+      "medianErrorPixels": 0.614476355786333
+    },
+    {
+      "second": 28,
+      "coordinate": [
+        13,
+        35
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 616,
+      "inliers": 322,
+      "foregroundInliers": 275,
+      "medianErrorPixels": 0.4689183371490076
+    },
+    {
+      "second": 32,
+      "coordinate": [
+        23,
+        53
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 644,
+      "inliers": 272,
+      "foregroundInliers": 225,
+      "medianErrorPixels": 0.7332678026725687
+    },
+    {
+      "second": 36,
+      "coordinate": [
+        32,
+        66
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 736,
+      "inliers": 229,
+      "foregroundInliers": 179,
+      "medianErrorPixels": 0.6368161952945202
+    },
+    {
+      "second": 40,
+      "coordinate": [
+        34,
+        79
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 628,
+      "inliers": 263,
+      "foregroundInliers": 222,
+      "medianErrorPixels": 0.5979367153236517
+    },
+    {
+      "second": 44,
+      "coordinate": [
+        33,
+        83
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 584,
+      "inliers": 297,
+      "foregroundInliers": 255,
+      "medianErrorPixels": 0.5439084396855992
+    },
+    {
+      "second": 48,
+      "coordinate": [
+        25,
+        87
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 618,
+      "inliers": 331,
+      "foregroundInliers": 269,
+      "medianErrorPixels": 0.5897862401100685
+    },
+    {
+      "second": 52,
+      "coordinate": [
+        14,
+        84
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 580,
+      "inliers": 227,
+      "foregroundInliers": 181,
+      "medianErrorPixels": 0.5469476250377471
+    },
+    {
+      "second": 56,
+      "coordinate": [
+        12,
+        85
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 669,
+      "inliers": 286,
+      "foregroundInliers": 224,
+      "medianErrorPixels": 0.5734908606029646
+    },
+    {
+      "second": 60,
+      "coordinate": [
+        14,
+        89
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 616,
+      "inliers": 279,
+      "foregroundInliers": 205,
+      "medianErrorPixels": 0.5584835464140909
+    },
+    {
+      "second": 64,
+      "coordinate": [
+        47,
+        92
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 450,
+      "inliers": 223,
+      "foregroundInliers": 145,
+      "medianErrorPixels": 0.6349364330278778
+    },
+    {
+      "second": 68,
+      "coordinate": [
+        56,
+        80
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 463,
+      "inliers": 262,
+      "foregroundInliers": 214,
+      "medianErrorPixels": 0.5072432279526113
+    },
+    {
+      "second": 72,
+      "coordinate": [
+        67,
+        81
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 359,
+      "inliers": 117,
+      "foregroundInliers": 77,
+      "medianErrorPixels": 0.6547059889901294
+    },
+    {
+      "second": 76,
+      "coordinate": [
+        70,
+        81
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 244,
+      "inliers": 96,
+      "foregroundInliers": 60,
+      "medianErrorPixels": 0.681971101410966
+    },
+    {
+      "second": 80,
+      "coordinate": [
+        70,
+        87
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 377,
+      "inliers": 149,
+      "foregroundInliers": 84,
+      "medianErrorPixels": 0.6558594132082488
+    },
+    {
+      "second": 84,
+      "coordinate": [
+        70,
+        77
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 347,
+      "inliers": 225,
+      "foregroundInliers": 177,
+      "medianErrorPixels": 0.489376506191574
+    },
+    {
+      "second": 88,
+      "coordinate": [
+        65,
+        65
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 596,
+      "inliers": 260,
+      "foregroundInliers": 220,
+      "medianErrorPixels": 0.6218013264426643
+    },
+    {
+      "second": 92,
+      "status": "HUD_OCR_UNRESOLVED"
+    },
+    {
+      "second": 96,
+      "coordinate": [
+        76,
+        72
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 547,
+      "inliers": 242,
+      "foregroundInliers": 196,
+      "medianErrorPixels": 0.5372059301260944
+    },
+    {
+      "second": 100,
+      "coordinate": [
+        78,
+        82
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 495,
+      "inliers": 175,
+      "foregroundInliers": 98,
+      "medianErrorPixels": 0.6593367014787023
+    },
+    {
+      "second": 104,
+      "coordinate": [
+        92,
+        75
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 536,
+      "inliers": 215,
+      "foregroundInliers": 189,
+      "medianErrorPixels": 0.52533721240136
+    },
+    {
+      "second": 108,
+      "coordinate": [
+        99,
+        78
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 400,
+      "inliers": 189,
+      "foregroundInliers": 171,
+      "medianErrorPixels": 0.5835915004979699
+    },
+    {
+      "second": 112,
+      "coordinate": [
+        103,
+        77
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 367,
+      "inliers": 158,
+      "foregroundInliers": 141,
+      "medianErrorPixels": 0.5858024428086915
+    },
+    {
+      "second": 116,
+      "coordinate": [
+        103,
+        77
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 445,
+      "inliers": 165,
+      "foregroundInliers": 146,
+      "medianErrorPixels": 0.5547498908577095
+    },
+    {
+      "second": 120,
+      "coordinate": [
+        102,
+        76
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 477,
+      "inliers": 185,
+      "foregroundInliers": 161,
+      "medianErrorPixels": 0.5586573902444333
+    },
+    {
+      "second": 124,
+      "coordinate": [
+        109,
+        72
+      ],
+      "status": "OBSERVED_LANDMARK_MATCH",
+      "matches": 618,
+      "inliers": 157,
+      "foregroundInliers": 118,
+      "medianErrorPixels": 0.5898455714880331
+    }
+  ],
+  "limit": "Complete128sec retained recording sampled across tour, not full15m32s YouTube video. Media CDN returned195byte SiteUnavailable bodies, not usable video. Unseen regions/current server spawn or warp tables remain unverified."
+}

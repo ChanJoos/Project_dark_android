@@ -910,7 +910,7 @@ private void drawUtilityRail(Canvas c){
     public void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size){drawInventoryItemIcon(c,row,x,y,size);}
     public void equipmentIcon(Canvas c,RpgInventoryPresentation.ItemRow row,String slot,float x,float y,float size){
       if(sourceItemIcons==null)sourceItemIcons=new SourceItemIconRegistry(getContext());
-      Bitmap bitmap=sourceItemIcons.get(row.itemId);
+      Bitmap bitmap=sourceItemIcons.get(state.rpg().itemDefinitions().get(row.itemId));
       if(bitmap!=null)SourceItemIconRegistry.drawEquipmentForSlot(c,bitmap,new RectF(x,y,x+size,y+size),p,slot,row.itemId);
     }
     public void actor(Canvas c,float x,float y){CharacterVisualBinding visuals=playerVisuals();c.save();c.translate(x,y);c.scale(2f,2f);CharacterRenderer.Pose pose=new CharacterRenderer.Pose(0,0,CharacterRenderer.Direction.SW,CharacterRenderer.State.IDLE,0,0,1,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE);String body=visuals.sourceBodyIdentity(characterBodyIdentity);if(!"wm001".equals(body)||!skillBodyRenderer.draw(c,pose,body,"IDLE",0))characterRenderer.draw(c,pose);c.restore();}

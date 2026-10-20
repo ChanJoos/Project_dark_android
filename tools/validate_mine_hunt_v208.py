@@ -43,9 +43,10 @@ def validate():
         assert hashlib.sha256(z.read('maps/lod2102.map')).hexdigest()==ref['mapSha256']
         assert len(z.read('maps/lod2102.map'))==150*102*6
     assert len(ref['sourceMPFs'])==len(set(ref['sourceMPFs']))==10
+    assert ref['sourceMPFs'][-1]==68
     supplement=json.loads((ROOT/'master/source/mine_hunt_v208/armor_bindings.json').read_text())
     assert {x['itemId'] for x in supplement}=={'USER_ITEM_20261018_R01482','USER_ITEM_20261018_R01486'}
-    print('PASS: historical 5 armor stat rows preserved; 10 original MPFs and exact 2102 map bytes verified; runtime tuning remains explicitly separate.')
+    print('PASS: historical 5 armor stat rows preserved; 10 original MPFs including the labelled missing Hell Sorcerer and exact 2102 map bytes verified; runtime tuning remains explicitly separate.')
 
 
 if __name__ == '__main__':

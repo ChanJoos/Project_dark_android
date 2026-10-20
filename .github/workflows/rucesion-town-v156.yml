@@ -142,6 +142,9 @@ jobs:
               esac
             done < <(git diff --name-only 2a05f305473150327b765264cd86d29bf1e64636 HEAD)
             gradle :app:testDebugUnitTest --tests '*AllJobSkillSourceTest.allJobsUseProductionInputAndRenderSkillAndActualRecipientTogether' --tests '*ClassicSkillReferenceTest.productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies' --tests '*SkillFxAuditTest.all221RuntimeRoutesAndFourDirectionsRenderWithoutBorrowingSources' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[mine-repair-v209]"* ]]; then
+            python3 tools/validate_mine_hunt_v208.py
+            gradle :app:testDebugUnitTest --tests '*MineHuntV209Test' --tests '*WeaponIconsV209Test' --tests '*MineHuntV208Test' --tests '*InventoryFeedbackV199Test' --tests '*ItemWindowReferenceTest' --tests '*MineTownV203Test' --tests '*MinePolishV206Test' --tests '*ScreenMagicV204Test' --tests '*HorrorCastleLoopV207Test' --tests '*MonsterChasePerformanceTest' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[mine-hunt-v208]"* ]]; then
             python3 tools/validate_mine_hunt_v208.py
             gradle :app:testDebugUnitTest --tests '*MineHuntV208Test' --tests '*MineTownV203Test' --tests '*MinePolishV206Test' --tests '*ScreenMagicV204Test' --tests '*HorrorCastleLoopV207Test' --tests '*MonsterChasePerformanceTest' :app:assembleDebug --stacktrace
@@ -199,7 +202,7 @@ jobs:
               assert identity['versionCode']==184
               entries=z.namelist()
               assert len([n for n in entries if n.startswith('assets/horror-v180/') and n.endswith('.png')])>=647
-          report=dict(sourceCommit=os.environ['GITHUB_SHA'],runId=os.environ['GITHUB_RUN_ID'],builtAtKST=datetime.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(),apkSha256=hashlib.sha256(p.read_bytes()).hexdigest(),apkBytes=p.stat().st_size,identity=identity,scope=('V208 original mine2102, ten native appearances, Mine NPC travel, shared combat, direct armor/axe/dagger inventory rewards, cache and save regressions; original server stats and full-map current-version parity unresolved; handset pending' if '[mine-hunt-v208]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True) else 'Legacy focused Android runtime; inspect source-specific verification receipt'))
+          report=dict(sourceCommit=os.environ['GITHUB_SHA'],runId=os.environ['GITHUB_RUN_ID'],builtAtKST=datetime.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(),apkSha256=hashlib.sha256(p.read_bytes()).hexdigest(),apkBytes=p.stat().st_size,identity=identity,scope=('V208/V209 source-backed mine2102, ten native appearances, Mine NPC travel, shared combat, direct armor/axe/dagger inventory rewards, cache and save regressions; original server stats and full-map current-version parity unresolved; handset pending' if any(marker in subprocess.check_output(['git','log','-1','--format=%B'],text=True) for marker in ('[mine-hunt-v208]','[mine-repair-v209]')) else 'Legacy focused Android runtime; inspect source-specific verification receipt'))
           Path('delivery/build_evidence.json').write_text(json.dumps(report,indent=2)+'\n')
           print(json.dumps(report))
           PY
@@ -207,7 +210,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: ${{ contains(github.event.head_commit.message, '[mine-hunt-v208]') && 'PROJECT_DARK_V208_MINE' || 'PROJECT_DARK_v184_portals' }}
+          name: ${{ contains(github.event.head_commit.message, '[mine-repair-v209]') && 'PROJECT_DARK_V209_MINE_REPAIR' || contains(github.event.head_commit.message, '[mine-hunt-v208]') && 'PROJECT_DARK_V208_MINE' || 'PROJECT_DARK_v184_portals' }}
           path: |
             delivery/
             app/build/reports/horror-v179/

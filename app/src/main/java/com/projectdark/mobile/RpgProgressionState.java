@@ -536,7 +536,7 @@ public final class RpgProgressionState {
   }
   private void applyCampaignReward(CombatLedger.Event e,AdaptedCampaignRewardCatalog.Reward reward){
     Map<String,Integer> mineLoot=new LinkedHashMap<>();Map<String,AutoLootResult> mineOutcomes=new LinkedHashMap<>();
-    String armor=MineHuntMonsters.armor(e.targetId);if(armor!=null&&MineHuntMonsters.dropRoll(e.targetId,e.sequence)<350){AutoLootResult result=autoLootResolvedItem(armor,1);mineOutcomes.put(armor,result);if(result==AutoLootResult.LOOTED)mineLoot.put(armor,1);}
+    for(String armor:MineHuntMonsters.armors(e.targetId))if(MineHuntMonsters.dropRoll(e.targetId+":"+armor,e.sequence)<350){AutoLootResult result=autoLootResolvedItem(armor,1);mineOutcomes.put(armor,result);if(result==AutoLootResult.LOOTED)mineLoot.put(armor,1);}
     String weapon=MineHuntMonsters.weapon(e.targetId);if(weapon!=null&&MineHuntMonsters.dropRoll(e.targetId+":weapon",e.sequence)<200){AutoLootResult result=autoLootResolvedItem(weapon,1);mineOutcomes.put(weapon,result);if(result==AutoLootResult.LOOTED)mineLoot.put(weapon,1);}
     grantAdaptedReward(reward.exp,reward.gold);
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,

@@ -1,3 +1,12 @@
+mine_hunt_repair_v209:
+  status: REPAIR_IMPLEMENTED_EXACT_SHA_CI_PENDING
+  reported_candidate: 5f4044d9bcd30fcbbb3d4f17d53209610c25d583
+  installed_hash: UNKNOWN
+  issues: [missing_mage_family_and_armor_owner, map_quality_rejected, weapon_icons_inconsistent_inventory_equipment]
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  phone_verified: false
+
 mine_hunt_v208:
   status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
   runtime_source: 5f4044d9bcd30fcbbb3d4f17d53209610c25d583

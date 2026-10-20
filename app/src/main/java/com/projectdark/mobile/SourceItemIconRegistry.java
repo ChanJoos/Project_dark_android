@@ -89,6 +89,7 @@ final class SourceItemIconRegistry {
   equipmentCenters.put(bitmap,center);return center;
  }
  static void drawEquipmentForSlot(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,String slot,String itemId){
+  if("무기".equals(RpgProgressionState.baseSlot(slot))){draw(canvas,bitmap,target,paint);return;}
   RectF fitted=new RectF(target);float size=equipmentSize(slot,itemId);fitted.inset(target.width()*(1-size)/2,target.height()*(1-size)/2);
   drawEquipment(canvas,bitmap,fitted,paint,equipmentMirrored(slot),"목걸이".equals(slot)||"갑옷".equals(slot));
  }
@@ -104,5 +105,9 @@ final class SourceItemIconRegistry {
   paint.setFilterBitmap(false);paint.setAntiAlias(false);int save=canvas.save();canvas.clipRect(target);
   if(mirror)canvas.scale(-1,1,target.centerX(),target.centerY());canvas.drawBitmap(bitmap,src,dst,paint);canvas.restoreToCount(save);
  }
- Bitmap get(RpgProgressionState.ItemDefinition d){return d==null?null:get(d.itemId);}
+ Bitmap get(RpgProgressionState.ItemDefinition d){
+  if(d==null)return null;Bitmap source=get(d.itemId);if(source==null||!"무기".equals(d.equipSlot))return source;
+  JSONObject row=receipt(d.itemId);String key="V209_DIAGONAL:"+(row==null?d.itemId:row.optString("assetPath",d.itemId));
+  Bitmap icon=cache.get(key);if(icon==null){icon=WeaponInventoryArtworkV209.diagonal(source);cache.put(key,icon);}return icon;
+ }
 }
