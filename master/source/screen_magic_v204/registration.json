@@ -1,0 +1,17 @@
+{
+  "status": "ACCEPTED_USER_REQUEST_20261020",
+  "originalSha256": {
+    "01-1000060431.jpg": "cc418200192a8847aae384a1be780c67fcdfbc52eb0620e1d3f1fecc93a37637",
+    "02-1000060433.jpg": "ff9a0df4f5db700af63526a9f40165dd800c137ad9e5f6b48412b3aa73c799f9",
+    "03-1000060430.gif": "6ee8a93feb9875898ae4f9e980624b0e2070468b03344d764a95b053aec86d13"
+  },
+  "formulas": {
+    "METEOR": "max(0, MP-12960)*1.5",
+    "HOLY_DRAGON": "max(0, MP-12960)*1.8"
+  },
+  "mpCost": 12960,
+  "element": "DARK",
+  "meteorCastSeconds": 2,
+  "evidence": "User supplied original-client screenshots; source context/version not independently dated. Fixed base cost; existing staff reductions retained. Modern upgrades unspecified.",
+  "fx": "Source GIF colors/silhouette/cadence; stationary frame0 floor differenced, alpha edge matting adapted. Original raw GIF retained; no invented frames."
+}

@@ -1,6 +1,6 @@
 package com.projectdark.mobile;
 
-/** Live world coordinates, not camera/screen pixels; cache until the displayed integer changes. */
+/** Live logical tile coordinates, not world/screen pixels; cache until the displayed integer changes. */
 final class HudMapLocation {
   private String title,label;private int x=Integer.MIN_VALUE,y=Integer.MIN_VALUE;
   String label(String map,float worldX,float worldY){

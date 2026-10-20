@@ -133,6 +133,10 @@ jobs:
               esac
             done < <(git diff --name-only fa692546d720fde62c45914f763c1805b60b6849 HEAD)
             gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[screen-magic-v204]"* ]]; then
+            python3 tools/generate_skill_abilities.py
+            git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_ABILITY_FORMULAS.csv
+            gradle :app:testDebugUnitTest --tests '*ScreenMagicV204Test' --tests '*CurseHudV202Test' --tests '*ScreenMagicV201Test' --tests '*AllSkillRuntimeV138Test' --tests '*SkillAbilityRuntimeTest' --tests '*SkillContactRegressionTest' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[mine-town-only]"* ]]; then
             git fetch --depth=1 origin 3c796b66acaf7aaf9cb8efb8de06dd3f6900f532
             while IFS= read -r changed; do

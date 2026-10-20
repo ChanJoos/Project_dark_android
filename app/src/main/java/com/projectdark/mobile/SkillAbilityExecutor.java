@@ -21,7 +21,7 @@ final class SkillAbilityExecutor {
   if(!begin&&!a.resourceBurst())return null;
   if(a.formula.equals("CRASH")&&p.hp>Math.max(1,state.rpg().finalStats().maxHp*.02))return CombatResolver.RejectReason.RESOURCE;
   if(a.formula.equals("DARA")&&(p.mp<1440||p.hp<=1))return CombatResolver.RejectReason.RESOURCE;
-  if(a.formula.equals("SEMELIA")&&p.mp<=3240||a.formula.equals("METEOR")&&p.mp<=12960)return CombatResolver.RejectReason.RESOURCE;
+  if(a.formula.equals("SEMELIA")&&p.mp<=3240||a.formula.equals("METEOR")&&p.mp<=ItemEffects.mpCost(state.rpg(),id,a.mpCost))return CombatResolver.RejectReason.RESOURCE;
   if((a.allMp&&p.mp<=0)||begin&&p.mp<ItemEffects.mpCost(state.rpg(),id,a.mpCost))return CombatResolver.RejectReason.RESOURCE;
   if(Arrays.asList("SOUL","ASSASSIN","ASSASSIN_PLUS","HP_BURST","DALMA").contains(a.formula)&&p.hp<=1)return CombatResolver.RejectReason.RESOURCE;
   RuntimeState.Monster m=SkillEffectState.monster(state,target);
@@ -29,11 +29,12 @@ final class SkillAbilityExecutor {
   if(Arrays.asList("습격","기습","습격진","백스탭").contains(a.name)&&m!=null&&!fx.hidden()&&!fx.has(m.id,"AGGRO_RESET"))return CombatResolver.RejectReason.CONTROL;
   return null;
  }
- void prepare(String actor,String id){if(!actor.equals("player"))return;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null)return;FinalStats stats=state.rpg().finalStats().withEffects(fx,"player");snapshots.put(id,new SkillAbilityCatalog.Snapshot(stats,state.player().hp,state.player().mp,state.rpg().normalLevel()==null?1:state.rpg().normalLevel(),proficiency.applyAsInt(id),random.getAsDouble()<.25));charged.remove(id);}
+ static int previewMp(SkillAbilityCatalog.Ability a,int current,boolean test){return test&&a!=null&&a.damage()&&!a.formula.equals("DARA")&&(a.resourceBurst()||a.formula.equals("METEOR")||a.formula.equals("HOLY_DRAGON"))?Math.max(50000,current):current;}
+ void prepare(String actor,String id){if(!actor.equals("player"))return;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null)return;FinalStats stats=state.rpg().finalStats().withEffects(fx,"player");snapshots.put(id,new SkillAbilityCatalog.Snapshot(stats,state.player().hp,previewMp(a,state.player().mp,testMode),state.rpg().normalLevel()==null?1:state.rpg().normalLevel(),proficiency.applyAsInt(id),random.getAsDouble()<.25,ItemEffects.mpCost(state.rpg(),id,a.mpCost)));charged.remove(id);}
  void finish(String actor,String id){if(actor.equals("player")){snapshots.remove(id);charged.remove(id);}}
  boolean snapCritical(String id){SkillAbilityCatalog.Snapshot x=snapshots.get(id);return x!=null&&x.critical;}
  int amount(String id,int fallback){refreshBurst(id);SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);SkillAbilityCatalog.Snapshot x=snapshots.get(id);return a==null||x==null?fallback:SkillAbilityCatalog.amount(a,x);}
- void refreshBurst(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);SkillAbilityCatalog.Snapshot x=snapshots.get(id);if(a!=null&&a.resourceBurst()&&x!=null&&!charged.contains(id))snapshots.put(id,new SkillAbilityCatalog.Snapshot(x.stats,state.player().hp,state.player().mp,x.level,x.proficiency,x.critical));}
+ void refreshBurst(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);SkillAbilityCatalog.Snapshot x=snapshots.get(id);if(a!=null&&a.resourceBurst()&&x!=null&&!charged.contains(id))snapshots.put(id,new SkillAbilityCatalog.Snapshot(x.stats,state.player().hp,previewMp(a,state.player().mp,testMode),x.level,x.proficiency,x.critical,x.mpCost));}
  void chargeRelease(SkillAbilityCatalog.Ability a){
   if(!charged.add(a.id)||testMode)return;RuntimeState.Player p=state.player();
   if(a.allMp)p.mp=0;

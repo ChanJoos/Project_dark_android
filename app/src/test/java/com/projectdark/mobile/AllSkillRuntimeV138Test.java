@@ -53,9 +53,9 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String upper="SK_마법사_013";assertTrue(b.learn(upper,50));RuntimeState.Monster m=distantTarget(v);RuntimeCombatSession c=field(v,"combatSession");assertTrue(c.submitPlayer(m.id,upper).accepted());c.tick(.001f);assertEquals(CombatResolver.RejectReason.ACTION_BUSY,c.submitPlayer("player",HEAL).rejectReason);c.tick(.334f);assertTrue(c.submitPlayer("player",HEAL).accepted());
   s.rpg().autoLootResolvedItem("IT_WARDROBE_MW062",1);assertEquals(0,c.effectiveCastSeconds(upper),0);
  }
- @Test public void screenSpellAutoWaitsAtRangeAfterItsAllMpRelease()throws Exception{
+ @Test public void screenSpellAutoWaitsAtRangeAfterItsFixedCostRelease()throws Exception{
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String id="SK_마법사_043";assertTrue(b.learn(id,50));for(int i=0;i<SkillBook.SLOT_COUNT;i++)b.clearSlot(i);assertTrue(b.assign(0,id));RuntimeState.Monster m=distantTarget(v);float x=s.player().x,y=s.player().y;int hp=m.hp;
-  tap(v,926,507);advance(v,1.4f);assertTrue(m.hp<hp);assertEquals(0,s.player().mp);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);render(v,"screen-spell-empty-mp-auto");
+  int beforeMp=s.player().mp;tap(v,926,507);advance(v,2.8f);assertTrue(m.hp<hp);assertEquals(beforeMp-((RuntimeCombatSession)field(v,"combatSession")).effectiveMpCost(id),s.player().mp);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);render(v,"screen-spell-empty-mp-auto");
  }
  @Test public void utilityRejectsInsufficientMpDeadPlayerAndControlWithoutCharging(){
   RuntimeState s=new RuntimeState();RuntimeCombatSession c=new RuntimeCombatSession(s,(a,b)->true,(a,id)->true,a->true);String id="SK_도적_012";s.player().mp=0;assertFalse(c.useUtility(id));assertEquals(0,s.player().mp);s.player().mp=100;s.player().alive=false;assertFalse(c.useUtility(id));assertEquals(100,s.player().mp);s.player().alive=true;s.skillEffects().put("player","qa-sleep","SLEEP",1,30);assertFalse(c.useUtility(id));assertEquals(100,s.player().mp);

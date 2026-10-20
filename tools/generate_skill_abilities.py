@@ -30,9 +30,9 @@ statuses={
 }
 byname={n:s for s,names in statuses.items() for n in names}
 anchors={'크래셔':('CRASH',3.38),'데빌크래셔':('CRASH',6.76),'매드소울':('SOUL',1.5),'매드소울진':('SOUL',1.65),
- '암살격':('ASSASSIN',.6336),'암살격진':('ASSASSIN_PLUS',.95),'세멜리아':('SEMELIA',1.815),'메테오':('METEOR',1.815),
+ '암살격':('ASSASSIN',.6336),'암살격진':('ASSASSIN_PLUS',.95),'세멜리아':('SEMELIA',1.815),'메테오':('METEOR',1.5),
  '라그나로크':('RAGNAROK',.454),'다라밀공':('DARA',3.38),'달마신공':('DALMA',.3),'구양신공':('HP_BURST',.6336),'무영신공':('MP_BURST',4),
- '아마게돈':('MP_BURST',1.05),'숨마스텔라':('MP_BURST',.8),'홀리드래곤':('MP_BURST',.65)}
+ '아마게돈':('MP_BURST',1.05),'숨마스텔라':('MP_BURST',.8),'홀리드래곤':('HOLY_DRAGON',1.8)}
 policy=json.loads((ROOT/'master/changes/V174_SKILL_TIMING.json').read_text())
 assert policy['status']=='ACCEPTED'
 timing={r['id']:r for r in policy['rows']}
@@ -72,6 +72,8 @@ for e in cat:
  if n=='금강불괴':cost=200
  allmp=formula in ('SEMELIA','METEOR','RAGNAROK') or n in ('아마게돈','숨마스텔라','홀리드래곤','데스')
  if allmp:cost=0
+ if n in ('메테오','홀리드래곤'):
+  allmp=False;cost=12960;evidence='USER_SCREENSHOT_20261020';source='master/source/screen_magic_v204/1000060431.jpg: fixed MP12960; post-cost MP x1.5/x1.8; dark element'
  timingRow=timing[e['id']];cd=timingRow['runtimeSeconds']
  if e['id'] in retained:
   fixed=retained[e['id']];formula=fixed['retainedFormula'];coef=fixed['retainedCoefficient'];cost=fixed['retainedMpCost']
@@ -82,7 +84,7 @@ for e in cat:
  if kind=='HEAL':desc=f'회복 = round((WIS×5 + INT×1.5 + Lv×2)×{coef}); 최대 HP까지'
  elif kind=='DAMAGE':desc={'PHYSICAL':'(무기 공격+STR×3+DAM)','ROGUE':'(무기 공격+STR×1.8+DEX×2.2+DAM)','MARTIAL':'(무기 공격+sqrt(STR×CON)×4+DAM)','MAGIC':'(8+INT×4+WIS+Lv×1.5)','BASIC':'(무기 공격+STR×3+DAM)'}.get(formula,formula)+f' × {coef}'
  else:desc=(e['effect']+f' · {duration}초') if status else ('기본공격/장착 연동' if kind=='PASSIVE' else '대상 서비스가 존재할 때만 사용; 없는 콘텐츠 생성/보상 없음')
- exact={'CRASH':f'최대HP × {coef}; 현재HP ≤ 최대HP의2%', 'SOUL':f'현재HP × {coef}; HP90% 소모', 'ASSASSIN':'현재HP × 0.6336 / 강타25%: ×1.69', 'ASSASSIN_PLUS':'현재HP ×0.95 / 강타25%: ×3.5', 'SEMELIA':'max(0, MP-3240) ×1.815', 'METEOR':'max(0, MP-12960) ×1.815', 'RAGNAROK':'MP ×0.454', 'DARA':'max(0, HP+MP-1440) ×3.38', 'DALMA':'현재HP ×0.30; 방어/속성/무적 무시', 'HP_BURST':f'현재HP ×{coef}', 'MP_BURST':f'MP ×{coef}'}
+ exact={'CRASH':f'최대HP × {coef}; 현재HP ≤ 최대HP의2%', 'SOUL':f'현재HP × {coef}; HP90% 소모', 'ASSASSIN':'현재HP × 0.6336 / 강타25%: ×1.69', 'ASSASSIN_PLUS':'현재HP ×0.95 / 강타25%: ×3.5', 'SEMELIA':'max(0, MP-3240) ×1.815', 'METEOR':'max(0, MP-12960) ×1.5', 'HOLY_DRAGON':'max(0, MP-12960) ×1.8', 'RAGNAROK':'MP ×0.454', 'DARA':'max(0, HP+MP-1440) ×3.38', 'DALMA':'현재HP ×0.30; 방어/속성/무적 무시', 'HP_BURST':f'현재HP ×{coef}', 'MP_BURST':f'MP ×{coef}'}
  if formula in exact:desc=exact[formula]
  if n=='이형환위':desc='별도 이펙트/모션 없이 이동하고 착지 후 대상을 바라봄. 바라보는 방향의 인접 몬스터/NPC를 뛰어넘음. 뒤가 막히면 대상 좌우의 빈칸 중 무작위 착지. 대상/착지 공간이 없으면 발동 안 함.'
  if n=='일음지':desc='8초 동안 이동 불가. 인접한 캐릭터는 공격 가능.'

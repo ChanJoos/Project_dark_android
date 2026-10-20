@@ -10,8 +10,9 @@ public final class SkillAbilityCatalog {
   public boolean resourceBurst(){return allMp||Arrays.asList("DARA","CRASH","SOUL","ASSASSIN","ASSASSIN_PLUS","DALMA","HP_BURST","MP_BURST").contains(formula);}
  }
  public static final class Snapshot {
-  public final FinalStats stats;public final int hp,mp,level,proficiency;public final boolean critical;
-  public Snapshot(FinalStats s,int hp,int mp,int lv,int proficiency,boolean critical){stats=s;this.hp=hp;this.mp=mp;level=lv;this.proficiency=proficiency;this.critical=critical;}
+  public final FinalStats stats;public final int hp,mp,level,proficiency;public final boolean critical;public final int mpCost;
+  public Snapshot(FinalStats s,int hp,int mp,int lv,int proficiency,boolean critical){this(s,hp,mp,lv,proficiency,critical,12960);}
+  public Snapshot(FinalStats s,int hp,int mp,int lv,int proficiency,boolean critical,int cost){mpCost=cost;stats=s;this.hp=hp;this.mp=mp;level=lv;this.proficiency=proficiency;this.critical=critical;}
  }
  private static final Map<String,Ability> ALL=new LinkedHashMap<>();
  static{for(String[] r:SkillAbilityData.ROWS){Ability a=new Ability(r);if(ALL.put(a.id,a)!=null)throw new IllegalStateException(a.id);}}
@@ -31,13 +32,13 @@ public final class SkillAbilityCatalog {
    case "ASSASSIN":raw=x.hp*(x.critical?1.69:a.coefficient);break;
    case "ASSASSIN_PLUS":raw=x.hp*(x.critical?3.5:a.coefficient);break;
    case "SEMELIA":raw=Math.max(0,x.mp-3240)*a.coefficient;break;
-   case "METEOR":raw=Math.max(0,x.mp-12960)*a.coefficient;break;
+   case "METEOR":case "HOLY_DRAGON":raw=Math.max(0,x.mp-x.mpCost)*a.coefficient;break;
    case "RAGNAROK":case "MP_BURST":raw=x.mp*a.coefficient;break;
    case "DARA":raw=Math.max(0,(double)x.hp+x.mp-1440)*a.coefficient;break;
    default:return 0;
   }
   // Supplied finishers preserve their exact base coefficients; learned ordinary attacks improve with practice.
-  if(!a.resourceBurst()&&!a.heal())raw*=.8+.2*Math.max(0,Math.min(100,x.proficiency))/100d;
+  if(!a.resourceBurst()&&!a.heal()&&!a.formula.equals("METEOR")&&!a.formula.equals("HOLY_DRAGON"))raw*=.8+.2*Math.max(0,Math.min(100,x.proficiency))/100d;
   return Math.max(0,(int)Math.min(Integer.MAX_VALUE,Math.round(raw)));
  }
  public static String resources(Ability a){if(a==null)return "";if(a.formula.equals("DARA"))return "HP·MP → 1";if(a.allMp)return "MP 전량";if(a.formula.equals("DALMA"))return "HP 60%";if(Arrays.asList("SOUL","HP_BURST","ASSASSIN","ASSASSIN_PLUS").contains(a.formula))return "HP 90%";if(a.formula.equals("CRASH"))return "HP 2% 이하";return "MP "+a.mpCost;}

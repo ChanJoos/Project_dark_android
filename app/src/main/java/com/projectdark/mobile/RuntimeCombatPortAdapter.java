@@ -255,7 +255,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     return findMonster(targetId)==null?CombatResolver.DefeatedTargetKind.OTHER:CombatResolver.DefeatedTargetKind.MONSTER;
   }
 
-  private static String skillElement(SkillAbilityCatalog.Ability a){String n=a.name;if(n.contains("마레")||n.equals("마네나로")||n.equals("아이스블러스트"))return "WATER";if(n.contains("테라")||n.equals("퀘이크"))return "EARTH";if(n.contains("아듀")||n.equals("플레쉬스톰")||n.equals("무영신공"))return "WIND";if(n.contains("플라")&&!n.startsWith("프라")||n.equals("플레어"))return "FIRE";return "";}
+  private static String skillElement(SkillAbilityCatalog.Ability a){String n=a.name;if(a.formula.equals("METEOR")||a.formula.equals("HOLY_DRAGON"))return "DARK";if(n.contains("마레")||n.equals("마네나로")||n.equals("아이스블러스트"))return "WATER";if(n.contains("테라")||n.equals("퀘이크"))return "EARTH";if(n.contains("아듀")||n.equals("플레쉬스톰")||n.equals("무영신공"))return "WIND";if(n.contains("플라")&&!n.startsWith("프라")||n.equals("플레어"))return "FIRE";return "";}
   private static int safeScale(int n,double scale){return (int)Math.min(Integer.MAX_VALUE,Math.max(0,Math.round(n*scale)));}
   private static String key(String actorId,String actionId){return String.valueOf(actorId)+'\u0000'+String.valueOf(actionId);}
   private static final class Position { final float x,y; Position(float x,float y){this.x=x;this.y=y;} }

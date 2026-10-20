@@ -275,7 +275,10 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     runtime.player().x=best.x;runtime.player().y=best.y;
   }
   private static long tileKey(float x,float y){return ((long)Float.floatToIntBits(x)<<32)|(Float.floatToIntBits(y)&0xffffffffL);}
-  private void indexTileCenters(){for(WorldMoveTargetController.TileCenter t:navigationTiles)tileCenters.add(tileKey(t.x,t.y));}
+  private float coordinateMinX,coordinateMinY;
+  public int tileCoordinateX(float x,float y){return Math.round((x/32f-y/16f)/2f-coordinateMinX);}
+  public int tileCoordinateY(float x,float y){return Math.round((x/32f+y/16f)/2f-coordinateMinY);}
+  private void indexTileCenters(){coordinateMinX=Float.POSITIVE_INFINITY;coordinateMinY=Float.POSITIVE_INFINITY;for(WorldMoveTargetController.TileCenter t:navigationTiles){tileCenters.add(tileKey(t.x,t.y));coordinateMinX=Math.min(coordinateMinX,(t.x/32f-t.y/16f)/2f);coordinateMinY=Math.min(coordinateMinY,(t.x/32f+t.y/16f)/2f);}}
 
   private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id))return m;return null;}
 

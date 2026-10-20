@@ -36,18 +36,19 @@ final class SkillIconCatalog {
       JSONObject refs=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/"+directory+"/references.json"),StandardCharsets.UTF_8));JSONArray list=refs.getJSONArray("rows");
       for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id"),path=row.getString("iconAssetPath");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/"+directory+"/"+path));if(icon==null)throw new IOException("Invalid classic icon: "+path);presentation.put(id,icon);index.putIfAbsent(id,-1);}
       }
+      Bitmap meteorIcon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/screen-magic-v204/meteor-icon.png"));if(meteorIcon==null)throw new IOException("Meteor source icon");presentation.put("SK_마법사_043",meteorIcon);index.putIfAbsent("SK_마법사_043",-1);
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
   static String iconId(String id){return "SK_무도가_001".equals(id)?"SK_무도가_006":id;}
   SkillWindowSkin windowSkin(){return windowSkin;}
   boolean drawSquare(Canvas c,String id,RectF dest){
     id=iconId(id);
-    if(windowSkin.draw(c,id,dest))return true;
+    if(!id.equals("SK_마법사_043")&&windowSkin.draw(c,id,dest))return true;
     Bitmap image=presentation.get(id);if(image==null)return false;paint.setFilterBitmap(true);c.drawBitmap(image,null,dest,paint);return true;
   }
   boolean drawQuickslot(Canvas c,String id,RectF dest){id=iconId(id);float side=Math.min(dest.width(),dest.height());dest=new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2);
     Path clip=new Path();clip.addRoundRect(dest,3,3,Path.Direction.CW);c.save();c.clipPath(clip);
-    boolean result=windowSkin.drawContent(c,id,dest);
+    boolean result=!id.equals("SK_마법사_043")&&windowSkin.drawContent(c,id,dest);
     if(!result){Bitmap image=presentation.get(id);if(image!=null){int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));paint.setFilterBitmap(false);c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),dest,paint);result=true;}}
     c.restore();return result;
   }

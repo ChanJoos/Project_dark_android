@@ -15,6 +15,7 @@ final class MagicTimingPolicy {
     if (id.equals("SK_성직자_055") || id.equals("SK_공통_004")) return 5;
     // One-second elementary cast is ADAPTED pending a labelled original timing capture.
     switch (id) {
+      case "SK_마법사_043": return 2; // User original-client screenshot1000060433.
       case "SK_마법사_001": case "SK_마법사_003":
       case "SK_마법사_004": case "SK_마법사_005": return 1;
       default: return fallback;
