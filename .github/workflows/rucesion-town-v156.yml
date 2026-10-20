@@ -133,6 +133,15 @@ jobs:
               esac
             done < <(git diff --name-only fa692546d720fde62c45914f763c1805b60b6849 HEAD)
             gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[mine-town-only]"* ]]; then
+            git fetch --depth=1 origin 3c796b66acaf7aaf9cb8efb8de06dd3f6900f532
+            while IFS= read -r changed; do
+              case "$changed" in
+                app/src/main/java/com/projectdark/mobile/GameView.java|app/src/main/java/com/projectdark/mobile/RuntimeState.java|app/src/main/java/com/projectdark/mobile/TownTravel.java|app/src/main/java/com/projectdark/mobile/TownTravelWindow.java|app/src/main/java/com/projectdark/mobile/TownServiceLabels.java|app/src/main/java/com/projectdark/mobile/NpcIdentity.java|app/src/main/java/com/projectdark/mobile/world/CampaignWorld.java|app/src/main/java/com/projectdark/mobile/world/PoteCampaignMapDef.java|app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java|app/src/main/java/com/projectdark/mobile/world/MineTownGeometry.java|app/src/main/java/com/projectdark/mobile/world/MineTownRenderer.java|app/src/test/java/com/projectdark/mobile/MineTownV203Test.java|app/src/main/assets/mine-v203/*|master/source/mine_v203/*|tools/mine_v203/*|.github/workflows/rucesion-town-v156.yml|docs/*|master/MASTER_MANIFEST.md|master/changes/V203_MINE_TOWN.json) ;;
+                *) echo "Unexpected Mine town scope: $changed"; exit 1 ;;
+              esac
+            done < <(git diff --name-only 3c796b66acaf7aaf9cb8efb8de06dd3f6900f532 HEAD)
+            gradle :app:testDebugUnitTest --tests '*MineTownV203Test' --tests '*TownCampaignV163Test.allTwelveTownPairsUseRealManagerDialogAndPersistWithoutQuestOrLevelGrant' --tests '*TownInteriorTest' --tests '*CurseHudV202Test' --tests '*ScreenMagicV201Test' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[curse-hud-only]"* ]]; then
             git fetch --depth=1 origin 15c6dd1d2cf9dd15b0042f625bb6b6e9eca0dbe0
             while IFS= read -r changed; do

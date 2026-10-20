@@ -1,0 +1,24 @@
+package com.projectdark.mobile.world;
+import android.content.Context;import android.graphics.*;import java.io.*;import java.util.*;
+/** Independent video-derived materials/objects, shared 64x32 world and bounded floor cache. */
+public final class MineTownRenderer {
+ private final Context context;private final Paint paint=new Paint();private final RectF dst=new RectF();private final Map<String,Bitmap> art=new HashMap<>();
+ private static final int CHUNK=256,GUTTER=2,LIMIT=32;private final LinkedHashMap<Long,Bitmap> floor=new LinkedHashMap<>(40,.75f,true);private int builds;private Bitmap portal;
+ public MineTownRenderer(Context c){context=c;paint.setFilterBitmap(false);}
+ private Bitmap image(String n){Bitmap b=art.get(n);if(b==null)try(InputStream s=context.getAssets().open("mine-v203/"+n+".png")){b=BitmapFactory.decodeStream(s);if(b==null)throw new IOException(n);b.prepareToDraw();art.put(n,b);}catch(IOException e){throw new IllegalStateException("Missing Mine source asset "+n,e);}return b;}
+ public void prepare(){for(String n:new String[]{"grass","grass2","grass3","water","planks"})image(n);for(MineTownGeometry.Prop a:MineTownGeometry.PROPS)image(a.asset);if(portal==null)try(InputStream s=context.getAssets().open("assets/world/portal/portal_reagent_shop.webp")){portal=BitmapFactory.decodeStream(s);portal.prepareToDraw();}catch(IOException e){throw new IllegalStateException(e);}}
+ public void releaseFloor(){floor.clear();}public int floorCacheEntries(){return floor.size();}public long floorCachePixelBytes(){long n=0;for(Bitmap b:floor.values())n+=b.getAllocationByteCount();return n;}public int floorBuildCount(){return builds;}
+ public void draw(Canvas c,WorldRuntimeAdapter w,List<PoteFieldRenderer.ActorDraw> actors){float ox=w.camera().cameraX(),oy=w.camera().cameraY(),vw=w.camera().viewportWidth(),vh=w.camera().viewportHeight();c.drawColor(Color.BLACK);paint.setColor(Color.WHITE);paint.setAlpha(255);
+  int nx=(int)Math.floor((ox+vw)/CHUNK)-(int)Math.floor(ox/CHUNK)+1,ny=(int)Math.floor((oy+vh)/CHUNK)-(int)Math.floor(oy/CHUNK)+1;
+  if(nx*ny>LIMIT)ground(c,ox,oy,vw,vh);else for(int cy=(int)Math.floor(oy/CHUNK);cy<=(int)Math.floor((oy+vh)/CHUNK);cy++)for(int cx=(int)Math.floor(ox/CHUNK);cx<=(int)Math.floor((ox+vw)/CHUNK);cx++){
+   long key=((long)cx<<32)^(cy&0xffffffffL);Bitmap b=floor.get(key);if(b==null){b=Bitmap.createBitmap(CHUNK+GUTTER*2,CHUNK+GUTTER*2,Bitmap.Config.ARGB_8888);ground(new Canvas(b),cx*CHUNK-GUTTER,cy*CHUNK-GUTTER,CHUNK+GUTTER*2,CHUNK+GUTTER*2);builds++;floor.put(key,b);if(floor.size()>LIMIT){Iterator<Map.Entry<Long,Bitmap>> it=floor.entrySet().iterator();it.next();it.remove();}}
+   dst.set(cx*CHUNK-GUTTER-ox,cy*CHUNK-GUTTER-oy,(cx+1)*CHUNK+GUTTER-ox,(cy+1)*CHUNK+GUTTER-oy);c.drawBitmap(b,null,dst,paint);
+  }
+  List<PoteFieldRenderer.ActorDraw> order=new ArrayList<>(actors);
+  for(MineTownGeometry.Prop a:MineTownGeometry.PROPS){float x=a.x-ox-a.anchorX,y=a.y-oy-a.anchorY;if(x>vw||x+a.width<0||y>vh||y+a.height<0)continue;order.add(new PoteFieldRenderer.ActorDraw(a.x,a.depthY,a.height,a.width,()->sprite(c,a.asset,x,y,a.width,a.height)));}
+  for(MineTownGeometry.Building b:MineTownGeometry.BUILDINGS){float x=b.doorX()-ox,y=b.doorY()-oy;order.add(new PoteFieldRenderer.ActorDraw(b.doorX(),Math.max(b.doorY(),b.prop.depthY)+.01f,16,40,()->{dst.set(x-20,y-8,x+20,y+8);c.drawBitmap(portal,null,dst,paint);}));}
+  order.sort(Comparator.comparingDouble(a->a.y));for(PoteFieldRenderer.ActorDraw a:order)a.draw.run();
+ }
+ private void ground(Canvas c,float ox,float oy,float vw,float vh){c.drawColor(Color.BLACK);for(int u=0;u<MineTownGeometry.SIZE;u++)for(int v=0;v<MineTownGeometry.SIZE;v++){float x=MineTownGeometry.x(u,v)-ox,y=MineTownGeometry.y(u,v)-oy;if(x< -33||x>vw+33||y< -17||y>vh+17)continue;int k=MineTownGeometry.tile(u,v);String n=k==0?"water":k==2?"planks":Math.floorMod(u*31+v*17,3)==0?"grass":Math.floorMod(u*31+v*17,3)==1?"grass2":"grass3";sprite(c,n,x-32,y-16,64,32);}}
+ private void sprite(Canvas c,String n,float x,float y,float w,float h){dst.set(x,y,x+w,y+h);c.drawBitmap(image(n),null,dst,paint);}
+}
