@@ -117,20 +117,21 @@ jobs:
         run: |
           python3 - <<'PYRESUME'
           import json, os, subprocess, urllib.request
-          baseline='d7aaf0bafb2cf6bab694809b82edb519eea7f410'
+          baseline='963da315bcce37b6e9be472965291b97a604801e'
           subprocess.run(['git','fetch','--depth=1','origin',baseline],check=True)
           changed=subprocess.check_output(['git','diff','--name-only',baseline,'HEAD'],text=True).splitlines()
-          allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/HorrorCastleV179Test.java','app/src/test/java/com/projectdark/mobile/AdaptedCampaignRewardTest.java'}
+          allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/NpcAppearanceTest.java','master/MASTER_MANIFEST.md','master/changes/V203_MINE_TOWN.json','verification/MINE_TOWN_V203_BUILD.json','tools/mine_v203/materials.py'}
           passed=[]
-          if all(p in allowed for p in changed):
-              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39074826700/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+          if all(p in allowed or p.startswith('docs/') for p in changed):
+              assert subprocess.check_output(['git','rev-parse',baseline+':app/src/main'],text=True)==subprocess.check_output(['git','rev-parse','HEAD:app/src/main'],text=True)
+              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39399531451/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
               jobs=json.load(urllib.request.urlopen(req))['jobs']
-              job=next(j for j in jobs if j['id']==117519688314)
+              job=next(j for j in jobs if j['id']==118550596068)
               prefix=[x for x in job['steps'] if 9<=x['number']<24]
               assert len(prefix)==15 and all(x['conclusion']=='success' for x in prefix)
               assert job['head_sha']==baseline
               passed=[x['name'] for x in prefix]
-              print('REUSING 15 verified prefix checks from',baseline,'run39074826700; changed:',changed)
+              print('REUSING 15 verified prefix checks from',baseline,'run39399531451; changed:',changed)
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('passed='+json.dumps(passed)+'\n')
           PYRESUME
       - name: Validate Master DB

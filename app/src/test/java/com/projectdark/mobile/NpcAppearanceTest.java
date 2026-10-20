@@ -21,7 +21,16 @@ public final class NpcAppearanceTest {
  private int[] pixels(Bitmap b){int[] a=new int[b.getWidth()*b.getHeight()];b.getPixels(a,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return a;}
  @Test public void allHumanNpcRoutesHaveDistinctRegisteredProfilesAndFutureDefaults(){
   Set<String> names=new HashSet<>(),outfits=new HashSet<>();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context());
-  assertEquals(40,NpcIdentity.ALL.size());
+  assertEquals(43,NpcIdentity.ALL.size());
+  Set<String> registeredIds=new HashSet<>();
+  for(NpcIdentity.Profile p:NpcIdentity.ALL)assertTrue("unique registered NPC "+p.id,registeredIds.add(p.id));
+  assertTrue(registeredIds.contains("mine_town_travel"));
+  assertEquals("마을 이동 도우미",NpcIdentity.forId("mine_town_travel").role);
+  for(TownInteriorDef d:TownInteriorDef.MINE){
+   String id=NpcIdentity.interiorKey(d.mapId,d.kind.name());
+   assertTrue("Mine service uses registered profile "+id,registeredIds.contains(id));
+   assertEquals(NpcIdentity.forId(id).label(),d.npcName);
+  }
   for(NpcIdentity.Profile p:NpcIdentity.ALL){
    assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));outfits.add(p.outfit);if(!NpcIdentity.special(p.id)){assertNull(p.weapon);assertEquals("mu0000001",p.outfit.split(",")[0]);}
    for(String id:p.outfit.split(",")){EquipmentVisualRegistry.Visual v=registry.get(id);assertNotNull("real atlas "+id,v);assertNotNull("real source registration "+id,v.registration);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())assertNotNull(v.registration.idle(d,0));}
