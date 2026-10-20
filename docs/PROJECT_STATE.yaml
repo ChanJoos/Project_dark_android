@@ -1,9 +1,19 @@
 mine_polish_v206:
-  status: IN_PROGRESS_DEVICE_FAILED_USER_REPORTED
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
   active_branch: codex/rucesion-coast-v157
   owner: ROOT_SINGLE_EDITOR
   pull_request: 197
   main_merged: false
+  runtime_source: 61e7d3073b3334dba514178affbbc465b7b93c17
+  focused_run: 39436251669
+  receipt: verification/MINE_POLISH_V206_BUILD.json
+  native_tests: 25
+  validator_source: 1956820e49d447587e34f9f376fa5fded1c1b135
+  validator_focused_run: 39441131035
+  validator_focused_status: SUCCESS
+  common_status: RUNNING
+  phone_verified: false
+  user_visual_accepted: false
   reported_candidate: 9de2609df95ace2bb0d4a1302fbc77e551c1f933
   report: "Tree contains blue source water; village visual quality below supplied footage."
   required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, docs/VILLAGE_CREATION_LESSONS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/source/mine_v203/assets.json, master/source/mine_v205/assets.json, app/src/main/java/com/projectdark/mobile/world/MineTownGeometry.java, app/src/main/java/com/projectdark/mobile/world/MineTownRenderer.java]

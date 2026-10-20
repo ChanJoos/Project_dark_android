@@ -1,11 +1,11 @@
 {
   "id": "V206_MINE_POLISH",
-  "status": "ACCEPTED_IMPLEMENTATION_VERIFICATION_PENDING",
+  "status": "ACCEPTED_IMPLEMENTATION_BUILD_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
   "report": "DEVICE_FAILED_USER_REPORTED: V205 tree source-water contamination and unfinished village visual quality; exact installed APK unspecified.",
   "before": "Blue water within source tree polygon; uniform repeated lawn and regular bank rock cycle; objects lack integrated ground contact.",
   "after": "Prewarmed native chroma matte removes river pixels from tree/wood source cutouts without recolouring kept foliage; feathered three source lawn details, original flower pots, small cached contact shade, irregular bank variant rhythm.",
   "source": "master/source/mine_v206/assets.json",
   "adaptations": "RGB source pixels unchanged; alpha extraction, ground contact shading, patch distribution and compact map placements explicitly ADAPTED. No claim of original full map or animation recovery.",
   "preserved": "64x32/.60s movement, original player, service doors and only inn/reagent, Milles travel, V204 skills/coords, commerce/save,32floorcache",
-  "verification": "PENDING exact source native and APK"
+  "verification": "verification/MINE_POLISH_V206_BUILD.json; runtime61e7d307,run39436251669,25native tests passed,physical handset/user visual acceptance pending"
 }
