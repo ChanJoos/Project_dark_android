@@ -17,7 +17,7 @@ public final class MineTownRenderer {
   }
   List<PoteFieldRenderer.ActorDraw> order=new ArrayList<>(actors);
   for(int u:new int[]{19,43})for(int v=27;v<=37;v++){final int bu=u,bv=v;order.add(new PoteFieldRenderer.ActorDraw(MineTownGeometry.x(u+4,v),MineTownGeometry.y(u+4,v)+4,50,90,()->bridgeFront(c,ox,oy,bu,bv)));}
-  for(MineTownGeometry.Prop a:MineTownGeometry.PROPS){if(a.asset.equals("cliff")||a.asset.startsWith("paving")||a.asset.startsWith("riverrock"))continue;float x=a.x-ox-a.anchorX,y=a.y-oy-a.anchorY;if(x>vw||x+a.width<0||y>vh||y+a.height<0)continue;if(a.asset.equals("cave")){for(int strip=0;strip<13;strip++){final int k=strip;float foot=a.y+(32-k*16)*MineTownGeometry.SCALE;order.add(new PoteFieldRenderer.ActorDraw(a.x,foot,a.height,36,()->{c.save();c.clipRect(x+k*32*MineTownGeometry.SCALE,y,x+Math.min(398,(k+1)*32)*MineTownGeometry.SCALE,y+a.height);sprite(c,a.asset,x,y,a.width,a.height);c.restore();}));}}else order.add(new PoteFieldRenderer.ActorDraw(a.x,a.depthY,a.height,a.width,()->sprite(c,a.asset,x,y,a.width,a.height)));}
+  for(MineTownGeometry.Prop a:MineTownGeometry.PROPS){if(a.asset.equals("cliff")||a.asset.startsWith("paving")||a.asset.startsWith("riverrock"))continue;float x=a.x-ox-a.anchorX,y=a.y-oy-a.anchorY;if(x>vw||x+a.width<0||y>vh||y+a.height<0)continue;if(a.asset.equals("cave")){order.add(new PoteFieldRenderer.ActorDraw(a.x,a.y-64,a.height,160,()->ridgeCap(c,a,x,y,ox,oy)));for(int strip=0;strip<13;strip++){final int k=strip;float foot=a.y+(32-k*16)*MineTownGeometry.SCALE;order.add(new PoteFieldRenderer.ActorDraw(a.x,foot,a.height,36,()->{c.save();c.clipRect(x+k*32*MineTownGeometry.SCALE,y,x+Math.min(398,(k+1)*32)*MineTownGeometry.SCALE,y+a.height);sprite(c,a.asset,x,y,a.width,a.height);c.restore();}));}}else order.add(new PoteFieldRenderer.ActorDraw(a.x,a.depthY,a.height,a.width,()->sprite(c,a.asset,x,y,a.width,a.height)));}
   for(MineTownGeometry.Building b:MineTownGeometry.BUILDINGS){float x=b.doorX()-ox,y=b.doorY()-oy;order.add(new PoteFieldRenderer.ActorDraw(b.doorX(),Math.max(b.doorY(),b.prop.depthY)+.01f,16,40,()->{dst.set(x-20,y-8,x+20,y+8);c.drawBitmap(portal,null,dst,paint);}));}
   order.sort(Comparator.comparingDouble(a->a.y));for(PoteFieldRenderer.ActorDraw a:order)a.draw.run();
  }
@@ -28,5 +28,12 @@ public final class MineTownRenderer {
  }
  private Matrix bridgeMatrix(float ox,float oy,int u){Matrix m=new Matrix();float a=u-.5f,b=u+4.5f;float[] src={17,223,361,61,510,137},to={2048+(a-37)*32-ox,64+(a+37)*16-oy,2048+(a-27)*32-ox,64+(a+27)*16-oy,2048+(b-27)*32-ox,64+(b+27)*16-oy};m.setPolyToPoly(src,0,to,0,3);return m;}
  private void bridgeFront(Canvas c,float ox,float oy,int u,int v){c.save();c.concat(bridgeMatrix(ox,oy,u));float left=171+(37-v)*34; c.clipRect(left,0,v==27?550:left+34.1f,310);c.drawBitmap(image("bridge_front"),0,0,paint);c.restore();}
+ /** Source material continuation closes the crop's unseen side; explicit adapted terrain join. */
+ private void ridgeCap(Canvas c,MineTownGeometry.Prop a,float x,float y,float ox,float oy){prepareMaterials();float scale=MineTownGeometry.SCALE;
+  materialMatrix.setValues(new float[]{scale,0,-ox,0,scale,-oy,0,0,1});grassMaterial.setLocalMatrix(materialMatrix);cliffMaterial.setLocalMatrix(materialMatrix);
+  // A short grass plateau joins the source ridge crest instead of leaving a vertical cutout in water.
+  shape.reset();shape.moveTo(x,y+29*scale);shape.lineTo(x+56*scale,y+8*scale);shape.lineTo(x+133*scale,y+8*scale);shape.lineTo(x+143*scale,y);shape.lineTo(x+252*scale,y);shape.lineTo(x+252*scale-128,y-64);shape.lineTo(x+143*scale-128,y-64);shape.lineTo(x-128,y+29*scale-64);shape.close();paint.setShader(grassMaterial);c.drawPath(shape,paint);paint.setShader(null);
+  shape.reset();shape.moveTo(x-128,y+29*scale-64);shape.lineTo(x,y+29*scale);shape.lineTo(x,y+317*scale);shape.lineTo(x-128,y+317*scale-64);shape.lineTo(x-135,y+230*scale-64);shape.lineTo(x-124,y+140*scale-64);shape.close();paint.setShader(cliffMaterial);c.drawPath(shape,paint);paint.setShader(null);
+ }
  private void sprite(Canvas c,String n,float x,float y,float w,float h){dst.set(x,y,x+w,y+h);c.drawBitmap(image(n),null,dst,paint);}
 }
