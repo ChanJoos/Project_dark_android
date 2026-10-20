@@ -831,10 +831,28 @@
         80
       ],
       "sha256": "b2fc517f9036caafa714a9eeb7c5baff2e10df4d8850c7a5b43bcf6a7152562f"
+    },
+    {
+      "id": "grass_material",
+      "frame": 68,
+      "box": [
+        178,
+        121,
+        234,
+        149
+      ],
+      "polygon": null,
+      "greenMask": false,
+      "size": [
+        56,
+        28
+      ],
+      "sha256": "93baa6a7f652128f0427c10a326b09e0e5e48b8ce05638ac7fbfd19349f747fd"
     }
   ],
   "continuousMaterials": {
-    "water": "world-anchored mirrored pixel material, no tile-sized rock motifs",
-    "cliff": "continuous jagged stone wall mesh from source material; source fragment no longer repeated"
+    "water": "world-anchored REPEAT source ripple material; avoid mirrored ripple diamonds",
+    "cliff": "continuous jagged stone wall mesh from source material; source fragment no longer repeated",
+    "grass": "world-anchored continuous source grass; no alternating diamond tone grid"
   }
 }
