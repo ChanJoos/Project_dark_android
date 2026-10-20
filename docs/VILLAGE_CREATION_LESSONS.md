@@ -15,3 +15,5 @@ Apply before adding or rebuilding a village. V203 extends the accepted Milles/Ab
 11. Do not upload raw phone/YouTube recordings or reference frames containing notifications. Preserve their private source hash and extraction recipe; publish only the user-authorized, isolated game assets without unrelated overlays.
 
 V203 evidence and limitations: verification/MINE_TOWN_V203_BUILD.json and master/source/mine_v203/assets.json. The compact two-bank layout and service assignments are adapted from observed mining-town motifs; original full map/warp coordinates and unobserved Mine interiors are not recovered facts.
+
+12. Adding a town also changes the human NPC registry. Extend the roster regression with explicit stable travel/service IDs, uniqueness, labels and source registrations; do not leave a historical total (V203:40→43) that blocks common CI after focused town tests pass.

@@ -111,5 +111,66 @@
     "persistentCopy": "FAILED_HTTP403 prepared current helper tools/list; local APK and exact GitHub artifact retained"
   },
   "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
-  "merged": false
+  "merged": false,
+  "ciRecovery": {
+    "validatorSource": "0d12d52c67444738fe6646cf68e61e891f8237bf",
+    "run": 39417953290,
+    "artifact": 12262885986,
+    "counts": {
+      "tests": 34,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.CurseHudV202Test",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.MineTownV203Test",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.NpcAppearanceTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ScreenMagicV201Test",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TownCampaignV163Test",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TownInteriorTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "reason": "Earlier common39399531451/39399524352 failed stale NPC40 assertion after Mine added3; corrected test verifies43unique IDs and actual Mine service/travel registration.",
+    "appSourceAndAssets": "git diff963da315..0d12d52c -- app/src/main assets data master/assets: empty; original verified APK remains delivery source",
+    "commonPending": [
+      39417961289,
+      39417953318
+    ]
+  }
 }
