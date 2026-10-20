@@ -1,6 +1,8 @@
 package com.projectdark.mobile;
 import com.projectdark.mobile.world.HorrorCastleGeometry;
 import com.projectdark.mobile.world.MineTownGeometry;
+import com.projectdark.mobile.world.MineHuntGeometry;
+import com.projectdark.mobile.world.CampaignWorld;
 import com.projectdark.mobile.world.MineTownRenderer;
 
 import android.content.Context;
@@ -856,7 +858,7 @@ private void drawQuestJournalIcon(Canvas c){
   }
   private void drawTarget(Canvas c){RuntimeState.Monster selected=combat.target();if(selected==null)return;c.save();c.translate(hudCenterOffset,0);panel(c,380,12,580,55);text(c,selected.name,397,31,9.5f);bar(c,397,39,563,48,0xffd63e49,selected.hp/(float)selected.maxHp);c.restore();}
   private final HudMapLocation mapLocation=new HudMapLocation();
-  private String currentMapLocation(){WorldRuntimeAdapter aw=activeWorld();return mapLocation.label(inReagentShop?townInterior.title:inPoteField?com.projectdark.mobile.world.CampaignWorld.title(state.currentMapId()):"밀레스 마을",aw.tileCoordinateX(aw.presentationPlayerX(),aw.presentationPlayerY()),aw.tileCoordinateY(aw.presentationPlayerX(),aw.presentationPlayerY()));}
+  private String currentMapLocation(){WorldRuntimeAdapter aw=activeWorld();if(MineHuntGeometry.contains(state.currentMapId()))return mapLocation.label(CampaignWorld.title(state.currentMapId()),MineHuntGeometry.sourceU(aw.presentationPlayerX(),aw.presentationPlayerY()),MineHuntGeometry.sourceV(aw.presentationPlayerX(),aw.presentationPlayerY()));return mapLocation.label(inReagentShop?townInterior.title:inPoteField?com.projectdark.mobile.world.CampaignWorld.title(state.currentMapId()):"밀레스 마을",aw.tileCoordinateX(aw.presentationPlayerX(),aw.presentationPlayerY()),aw.tileCoordinateY(aw.presentationPlayerX(),aw.presentationPlayerY()));}
   private void drawMinimap(Canvas c){
     WorldRuntimeAdapter aw=activeWorld();com.projectdark.mobile.world.PoteCampaignMapDef forest=inPoteField?com.projectdark.mobile.world.PoteCampaignMapDef.forId(state.currentMapId()):null;
     float minX=inReagentShop?townInterior.minX():inPoteField?forest.minX:WorldDef.MIN_X,maxX=inReagentShop?townInterior.maxX():inPoteField?forest.maxX:WorldDef.MAX_X,minY=inReagentShop?TownInteriorDef.MIN_Y:inPoteField?forest.minY:WorldDef.MIN_Y,maxY=inReagentShop?townInterior.maxY():inPoteField?forest.maxY:WorldDef.MAX_Y;

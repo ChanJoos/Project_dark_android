@@ -11,7 +11,9 @@ public final class MineHuntGeometry {
  public static HorrorCastleOriginalData.Grid grid(){return MineHuntData.grid();}
  public static WorldMoveTargetController.TileCenter entry(){return at(87,37);}
  public static WorldMoveTargetController.TileCenter exit(){return at(86,37);}
- public static boolean inside(float x,float y){int u=Math.round((y-160)/32+(x-3400)/64),v=Math.round((y-160)/32-(x-3400)/64);return grid().walkable(u,v);}
+ public static int sourceU(float x,float y){return Math.round((y-160)/32+(x-3400)/64);}
+ public static int sourceV(float x,float y){return Math.round((y-160)/32-(x-3400)/64);}
+ public static boolean inside(float x,float y){return grid().walkable(sourceU(x,y),sourceV(x,y));}
  private static List<WorldMoveTargetController.TileCenter> nav,ground;
  private static List<RectF> obstacles;
  public static List<WorldMoveTargetController.TileCenter> tiles(boolean navigation){if(navigation&&nav!=null)return nav;if(!navigation&&ground!=null)return ground;List<WorldMoveTargetController.TileCenter> out=new ArrayList<>();for(int v=0;v<grid().height;v++)for(int u=0;u<grid().width;u++)if(!navigation||grid().walkable(u,v))out.add(at(u,v));if(navigation)nav=Collections.unmodifiableList(out);else ground=Collections.unmodifiableList(out);return navigation?nav:ground;}
