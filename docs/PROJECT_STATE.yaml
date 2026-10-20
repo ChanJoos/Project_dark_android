@@ -1,5 +1,10 @@
 mine_hunt_v208:
-  status: IMPLEMENTED_SOURCE_BACKED_RUNTIME_CI_PENDING
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
+  runtime_source: 5f4044d9bcd30fcbbb3d4f17d53209610c25d583
+  focused_run: 39512080778
+  artifact: 12306557014
+  native_tests: 28
+  receipt: verification/MINE_HUNT_V208_BUILD.json
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197

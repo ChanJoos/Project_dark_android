@@ -1,6 +1,6 @@
 {
   "version": 208,
-  "status": "IMPLEMENTED_CI_PENDING",
+  "status": "BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING",
   "map": {
     "id": "MAP_MINE_HUNT_3",
     "source": "lod2102.map",
@@ -100,9 +100,13 @@
   "validation": {
     "sourceValidator": "PASS",
     "masterValidator": "PASS (existing findings unchanged)",
-    "nativeTests": "PENDING",
+    "nativeTests": "28 PASS / 6 suites",
     "phone": "PENDING",
-    "userVisualAcceptance": "PENDING"
+    "userVisualAcceptance": "PENDING",
+    "runtimeSource": "5f4044d9bcd30fcbbb3d4f17d53209610c25d583",
+    "focusedRun": "39512080778",
+    "artifactId": 12306557014,
+    "receipt": "verification/MINE_HUNT_V208_BUILD.json"
   },
   "lootCommunityEvidence": [
     {

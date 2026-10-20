@@ -278,11 +278,13 @@
     "hades/mns238.mpf": "48d7105682341f66e48f18977721bbdc64a0259eed81c279d0605e769d05d254",
     "hades/mns153.mpf": "1efa68000c482777d4e91e48e5b2d6179ba0f87b9cff4a675f1e39023d48c45f"
   },
-  "parity": "SOURCE_CELLS_RECOVERED_VIDEO_LANDMARK_COMPARISON_PENDING",
+  "parity": "OBSERVED_SOURCE_REGIONS_CONFIRMED_FULL_CURRENT_VERSION_UNVERIFIED",
   "dimensionsNote": "User described a square. Recovered matching tunnel source is 150x102; do not stretch or fabricate extra floor to claim a square original map.",
   "unresolved": [
     "Exact Korean species names for ambiguous visual forms",
     "Original server HP/physical/magic/defense/rates are not in client graphics",
     "Mobile reward/drop/combat tuning must be separate from original source facts"
-  ]
+  ],
+  "parityEvidence": "verification/mine_v208/source_video_parity.json",
+  "runtimeParityEvidence": "verification/MINE_HUNT_V208_BUILD.json"
 }

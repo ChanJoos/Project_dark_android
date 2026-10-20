@@ -1,6 +1,6 @@
-## V208 Mine hunting runtime (CI pending)
+## V208 Mine hunting runtime (build/host native verified; phone/common pending)
 
-Original map/graphics retained in master/source/mine_hunt_v208/{original_sources.zip,reference.json,armor_sources.zip,armor_bindings.json}; offline generator tools/build_mine_hunt_v208.py. Runtime/mobile uncertainty contract master/changes/V208_MINE_HUNT_RUNTIME.json, checkpoint docs/V208_MINE_HUNT_CHECKPOINT.md. Original source dimensions150×102; ten original MPF appearances; server numbers remain unknown.
+Original map/graphics retained in master/source/mine_hunt_v208/{original_sources.zip,reference.json,armor_sources.zip,armor_bindings.json}; offline generator tools/build_mine_hunt_v208.py. Runtime/mobile uncertainty contract master/changes/V208_MINE_HUNT_RUNTIME.json, checkpoint docs/V208_MINE_HUNT_CHECKPOINT.md. Original source dimensions150×102; ten original MPF appearances; server numbers remain unknown. Exact runtime 5f4044d9bcd30fcbbb3d4f17d53209610c25d583/focused39512080778SUCCESS:28tests; receipt verification/MINE_HUNT_V208_BUILD.json.
 
 ## 2026-10-21 V208 Mine hunting — source stage only, implementation blocked by missing recording
 
