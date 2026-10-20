@@ -79,7 +79,12 @@
       "R01482",
       "R01486"
     ],
-    "probabilityEvidence": "Explicit mobile balance, not original drop probability"
+    "probabilityEvidence": "Explicit mobile balance, not original drop probability",
+    "weaponIds": [
+      "R01533",
+      "R05502"
+    ],
+    "weaponDropProbability": 0.02
   },
   "performance": {
     "floorLruEntries": 32,
@@ -96,5 +101,18 @@
     "nativeTests": "PENDING",
     "phone": "PENDING",
     "userVisualAcceptance": "PENDING"
-  }
+  },
+  "lootCommunityEvidence": [
+    {
+      "url": "https://lod.nexon.com/Community/game/788?Category2=1&SearchBoard=1",
+      "kind": "B user-authored community post, not official server table",
+      "association": "헬블씨프 → 곡단도",
+      "date": "2005-08-18"
+    },
+    {
+      "url": "https://lod.nexon.com/community/game/3484?SearchBoard=3",
+      "kind": "B community association",
+      "association": "헬블루나이트 → 하이브라질배틀액스"
+    }
+  ]
 }

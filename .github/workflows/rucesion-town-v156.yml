@@ -188,7 +188,7 @@ jobs:
           mkdir -p delivery
           cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_v184_portals.apk
           python3 - <<'PY'
-          import zipfile,json,hashlib,os,datetime
+          import zipfile,json,hashlib,os,datetime,subprocess
           from pathlib import Path
           from zoneinfo import ZoneInfo
           p=Path('delivery/PROJECT_DARK_v184_portals.apk')
@@ -199,7 +199,7 @@ jobs:
               assert identity['versionCode']==184
               entries=z.namelist()
               assert len([n for n in entries if n.startswith('assets/horror-v180/') and n.endswith('.png')])>=647
-          report=dict(sourceCommit=os.environ['GITHUB_SHA'],runId=os.environ['GITHUB_RUN_ID'],builtAtKST=datetime.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(),apkSha256=hashlib.sha256(p.read_bytes()).hexdigest(),apkBytes=p.stat().st_size,identity=identity,scope='Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending')
+          report=dict(sourceCommit=os.environ['GITHUB_SHA'],runId=os.environ['GITHUB_RUN_ID'],builtAtKST=datetime.datetime.now(ZoneInfo('Asia/Seoul')).isoformat(),apkSha256=hashlib.sha256(p.read_bytes()).hexdigest(),apkBytes=p.stat().st_size,identity=identity,scope=('V208 original mine2102, ten native appearances, Mine NPC travel, shared combat, direct armor/axe/dagger inventory rewards, cache and save regressions; original server stats and full-map current-version parity unresolved; handset pending' if '[mine-hunt-v208]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True) else 'Legacy focused Android runtime; inspect source-specific verification receipt'))
           Path('delivery/build_evidence.json').write_text(json.dumps(report,indent=2)+'\n')
           print(json.dumps(report))
           PY
@@ -207,7 +207,7 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: PROJECT_DARK_v184_portals
+          name: ${{ contains(github.event.head_commit.message, '[mine-hunt-v208]') && 'PROJECT_DARK_V208_MINE' || 'PROJECT_DARK_v184_portals' }}
           path: |
             delivery/
             app/build/reports/horror-v179/
