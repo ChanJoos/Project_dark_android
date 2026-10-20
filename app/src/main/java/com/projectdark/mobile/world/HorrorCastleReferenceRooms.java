@@ -27,7 +27,7 @@ public final class HorrorCastleReferenceRooms {
    pair(p,11003,11004,1,2);pair(p,11017,11018,2,3);pair(p,10999,11000,3,11);pair(p,11001,11002,12,6);
   }else if(n==15){
    // The capture clips the bed's far side: native upholstered pieces and busts reconstruct that motif.
-   pair(p,11253,11254,1,3);pair(p,11255,11256,1,4);pair(p,11321,11322,1,2);pair(p,11323,11324,1,5);
+   pair(p,11253,11254,1,3);pair(p,11255,11254,1,4);pair(p,11321,11322,1,2);pair(p,11323,11324,1,5);
    // Source painting panels, same wall/door orientation as the reference.
    block(p,2,1,0,3,0,10,0,false);
   }
