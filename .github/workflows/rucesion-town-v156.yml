@@ -142,6 +142,9 @@ jobs:
               esac
             done < <(git diff --name-only 2a05f305473150327b765264cd86d29bf1e64636 HEAD)
             gradle :app:testDebugUnitTest --tests '*AllJobSkillSourceTest.allJobsUseProductionInputAndRenderSkillAndActualRecipientTogether' --tests '*ClassicSkillReferenceTest.productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies' --tests '*SkillFxAuditTest.all221RuntimeRoutesAndFourDirectionsRenderWithoutBorrowingSources' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[mine-hunt-v208]"* ]]; then
+            python3 tools/validate_mine_hunt_v208.py
+            gradle :app:testDebugUnitTest --tests '*MineHuntV208Test' --tests '*MineTownV203Test' --tests '*MinePolishV206Test' --tests '*ScreenMagicV204Test' --tests '*HorrorCastleLoopV207Test' --tests '*MonsterChasePerformanceTest' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[horror-loop-v207]"* ]]; then
             gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' --tests '*HorrorCastleLoopV207Test' --tests '*ScreenMagicV204Test' --tests '*MinePolishV206Test' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[mine-polish-v206]"* ]]; then

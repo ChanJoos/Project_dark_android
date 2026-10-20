@@ -1,3 +1,7 @@
+## V208 Mine hunting runtime (CI pending)
+
+Original map/graphics retained in master/source/mine_hunt_v208/{original_sources.zip,reference.json,armor_sources.zip,armor_bindings.json}; offline generator tools/build_mine_hunt_v208.py. Runtime/mobile uncertainty contract master/changes/V208_MINE_HUNT_RUNTIME.json, checkpoint docs/V208_MINE_HUNT_CHECKPOINT.md. Original source dimensions150×102; ten original MPF appearances; server numbers remain unknown.
+
 ## 2026-10-21 V208 Mine hunting — source stage only, implementation blocked by missing recording
 
 User requests square original mine accessed from Mine travel NPC, all recorded original monsters and native atlases, per-species combat, worn equipment direct-to-inventory drops, promoted-player highest mobile XP/Gold, and map parity verification. Armor photo readable: five rows cross-referenced in master/source/mine_hunt_v208/catalog.json. Negative HP/MP/core stats preserved; thief AC -57 comes from existing Master and community corroboration, not the photo. Sex-independent stats are user-confirmed. Three existing V184 armor registrations remain; two unresolved appearances are not falsely admitted.

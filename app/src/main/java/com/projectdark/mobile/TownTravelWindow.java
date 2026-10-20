@@ -15,11 +15,12 @@ final class TownTravelWindow {
   if(!com.projectdark.mobile.world.CampaignWorld.PIET.equals(current))out.add(hunting(current));if(WorldDef.ID.equals(current))out.add(com.projectdark.mobile.world.HorrorCastleGeometry.LOBBY);return out;
  }
  static String hunting(String current){
+  if(com.projectdark.mobile.world.MineTownGeometry.contains(current))return com.projectdark.mobile.world.MineHuntGeometry.ID;
   if(com.projectdark.mobile.world.AbelTownGeometry.contains(current))return com.projectdark.mobile.world.AbelCoastGeometry.ENTRY;
   if(com.projectdark.mobile.world.RucesionTownGeometry.contains(current))return com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY;
   return FOREST;
  }
- static boolean huntingMap(String map){return FOREST.equals(map)||com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)||com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map);}
+ static boolean huntingMap(String map){return com.projectdark.mobile.world.MineHuntGeometry.ID.equals(map)||FOREST.equals(map)||com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)||com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map);}
  static RectF card(int i){float x=270+(i%2)*210,y=193+(i/2)*84;return new RectF(x,y,x+200,y+72);}
  static RectF cardFor(String current,String map){int i=destinations(current).indexOf(map);return i<0?null:card(i);}
  static boolean close(float x,float y){return !PANEL.contains(x,y)||new RectF(661,144,697,180).contains(x,y);}
@@ -40,8 +41,8 @@ final class TownTravelWindow {
   }
   UiTheme.close(c,679,162);
  }
- static String title(String map){if(com.projectdark.mobile.world.HorrorCastleGeometry.LOBBY.equals(map))return "호러캐슬";return FOREST.equals(map)?"포테의 숲":com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)?"아벨해안":com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map)?"뤼케시온해안":TownTravel.forMap(map).title;}
- static String description(String map){if(com.projectdark.mobile.world.HorrorCastleGeometry.LOBBY.equals(map))return "로비 · 1층/2층 복도 · 01~13 순차 사냥";return FOREST.equals(map)?"2써클 사냥터 (Lv 11~Lv 40)":com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)?"Lv 41 이상 · 포테 조사 완료":com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map)?"Lv 71 이상":"";}
+ static String title(String map){if(com.projectdark.mobile.world.MineHuntGeometry.ID.equals(map))return "카스마늄 광산";if(com.projectdark.mobile.world.HorrorCastleGeometry.LOBBY.equals(map))return "호러캐슬";return FOREST.equals(map)?"포테의 숲":com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)?"아벨해안":com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map)?"뤼케시온해안":TownTravel.forMap(map).title;}
+ static String description(String map){if(com.projectdark.mobile.world.MineHuntGeometry.ID.equals(map))return "Lv99 · 3갱도 · 헬 장비 사냥";if(com.projectdark.mobile.world.HorrorCastleGeometry.LOBBY.equals(map))return "로비 · 1층/2층 복도 · 01~13 순차 사냥";return FOREST.equals(map)?"2써클 사냥터 (Lv 11~Lv 40)":com.projectdark.mobile.world.AbelCoastGeometry.ENTRY.equals(map)?"Lv 41 이상 · 포테 조사 완료":com.projectdark.mobile.world.RucesionCoastGeometry.ENTRY.equals(map)?"Lv 71 이상":"";}
  private TownTravelWindow(){}
 }
 

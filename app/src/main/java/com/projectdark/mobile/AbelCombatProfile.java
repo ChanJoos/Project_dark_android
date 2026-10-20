@@ -22,7 +22,7 @@ public final class AbelCombatProfile {
   add("ABEL_KINGARK",70,8500,38,-15,18,"LIFE","MONSTER_WATER",150000,300,2.4f);
  }
  public static AbelCombatProfile regional(String id,int lv,int hp,int damage,int ac,int md,String element,String spell,int exp,long gold,float cd){return new AbelCombatProfile(id,lv,hp,damage,ac,md,element,spell,exp,gold,cd);}
- public static AbelCombatProfile forId(String id){if(id==null)return null;if(HorrorCastleMonsters.actor(id))return HorrorCastleMonsters.profile(id);int n=id.indexOf('#');String s=n<0?id:id.substring(0,n);AbelCombatProfile p=ALL.get(s);return p!=null?p:RucesionCombatProfiles.forId(s);}
+ public static AbelCombatProfile forId(String id){if(id==null)return null;if(MineHuntMonsters.actor(id))return MineHuntMonsters.profile(id);if(HorrorCastleMonsters.actor(id))return HorrorCastleMonsters.profile(id);int n=id.indexOf('#');String s=n<0?id:id.substring(0,n);AbelCombatProfile p=ALL.get(s);return p!=null?p:RucesionCombatProfiles.forId(s);}
  public static Collection<AbelCombatProfile> all(){return Collections.unmodifiableCollection(ALL.values());}
  public static boolean spell(String id){return id!=null&&ACTIONS.contains(id);}
  public static final List<String> ACTIONS=Collections.unmodifiableList(Arrays.asList("MONSTER_WATER","MONSTER_FIRE","MONSTER_BLIND","MONSTER_ROOT","MONSTER_CURSE","MONSTER_VENOM","MONSTER_VENOM_BITE","MONSTER_FREEZE","MONSTER_RECOVER"));

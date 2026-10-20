@@ -1,0 +1,100 @@
+{
+  "version": 208,
+  "status": "IMPLEMENTED_CI_PENDING",
+  "map": {
+    "id": "MAP_MINE_HUNT_3",
+    "source": "lod2102.map",
+    "width": 150,
+    "height": 102,
+    "walkable": 9468,
+    "rawCellsPreserved": true,
+    "recordedLandmarks": [
+      [
+        87,
+        37
+      ],
+      [
+        35,
+        76
+      ],
+      [
+        78,
+        82
+      ],
+      [
+        102,
+        76
+      ],
+      [
+        112,
+        78
+      ]
+    ],
+    "limits": "Recovered old client source matches observed rock/timber/cart landmarks. Exact current Korean server warp/spawn table is unavailable. User square recollection is not substituted for recovered dimensions."
+  },
+  "travel": "Mine town travel manager, Lv99 hunting card; armed exit portal returns to Mine town",
+  "actors": {
+    "count": 100,
+    "appearances": [
+      683,
+      684,
+      685,
+      11,
+      151,
+      155,
+      156,
+      158,
+      238,
+      153
+    ],
+    "source": "retained native MPF/palette bytes, original anchors, two original facings mirrored for four directions",
+    "identityLimits": "First three Korean labels descriptive. 153 is a source-family candidate not positively sighted in the recovered excerpt. Other Korean names and armor relations remain provisional visual/community associations. No claim all ten server identities proven.",
+    "animationLimit": "158 missing final front attack frame holds its preceding original frame; recorded in manifest."
+  },
+  "mobilePolicy": {
+    "id": "MINE_V208_MOBILE_BALANCE",
+    "serverStats": "UNRESOLVED; never populated as original facts",
+    "hp": [
+      150000,
+      170000,
+      190000,
+      240000,
+      360000,
+      260000,
+      320000,
+      210000,
+      280000,
+      230000
+    ],
+    "physicalDamage": "75 + speciesIndex*9",
+    "experience": "1400000 + speciesIndex*120000",
+    "gold": "800 + speciesIndex*90",
+    "armorDropProbability": 0.035,
+    "blueKnightAxeProbability": 0.02,
+    "dropDestination": "existing inventory reward ledger; no floor loot; existing full bag handling",
+    "armorIds": [
+      "R01490",
+      "R01494",
+      "R01489",
+      "R01482",
+      "R01486"
+    ],
+    "probabilityEvidence": "Explicit mobile balance, not original drop probability"
+  },
+  "performance": {
+    "floorLruEntries": 32,
+    "floorByteBudget": 8652800,
+    "fourStateAtlasBytes": 27893760,
+    "atlasBudget": 35389440,
+    "movementSeconds": 0.6,
+    "decodeOnEntry": true,
+    "releaseOnExit": true
+  },
+  "validation": {
+    "sourceValidator": "PASS",
+    "masterValidator": "PASS (existing findings unchanged)",
+    "nativeTests": "PENDING",
+    "phone": "PENDING",
+    "userVisualAcceptance": "PENDING"
+  }
+}

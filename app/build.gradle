@@ -16,7 +16,7 @@ android {
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile]
         }
     }
     testOptions {
@@ -215,3 +215,12 @@ tasks.register('extractRapidSourcesV198', Copy) {
 }
 tasks.named('extractRapidSourcesV198').configure { dependsOn('extractExpandedClothesV197') }
 tasks.named('preBuild').configure { dependsOn('extractRapidSourcesV198') }
+
+// Offline exact-source mine tiles/objects and ten MPF appearances.
+tasks.register('generateMineHuntV208', Exec) {
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/build_mine_hunt_v208.py'
+ inputs.files(rootProject.fileTree('master/source/mine_hunt_v208'),rootProject.file('tools/build_mine_hunt_v208.py'),rootProject.file('tools/horror_original_formats.py'))
+ outputs.dir(layout.buildDirectory.dir('generated/mine-hunt-v208'))
+}
+tasks.named('preBuild').configure { dependsOn('generateMineHuntV208') }

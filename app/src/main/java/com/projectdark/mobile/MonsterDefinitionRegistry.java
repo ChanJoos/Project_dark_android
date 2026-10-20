@@ -12,6 +12,7 @@ public final class MonsterDefinitionRegistry {
   private final Map<String,MonsterDefinition> definitions=new LinkedHashMap<>();
 
   public MonsterDefinitionRegistry(){
+    for(AbelCombatProfile p:MineHuntMonsters.all())definitions.put(p.id,new MonsterDefinition(p.id,MineHuntMonsters.NAMES[MineHuntMonsters.type(p.id)],"카스마늄 광산",99,p.hp,p.exp,null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));
     for(AbelCombatProfile p:AbelCombatProfile.all())definitions.put(p.id,new MonsterDefinition(p.id,AbelCoastMonsters.name(p.id),"아벨 모바일 3써클",p.level,p.hp,p.exp,null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));
     for(AbelCombatProfile p:RucesionCombatProfiles.all())definitions.put(p.id,new MonsterDefinition(p.id,RucesionCoastMonsters.name(p.id),"뤼케시온해안 · 영상 기준 후보",RucesionCoastMonsters.observedLevel(p.id),null,null,null,MonsterDefinition.Evidence.U,MonsterDefinition.Status.PROTOTYPE_PENDING));
     for(int t=0;t<10;t++)for(int e=0;e<4;e++){String id=String.format(java.util.Locale.ROOT,"HORROR_%02d_%d",t,e);definitions.put(id,new MonsterDefinition(id,HorrorCastleMonsters.NAMES[t],"호러캐슬",99,HorrorCastleMonsters.HP[t],HorrorCastleMonsters.EXP[t],null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));}

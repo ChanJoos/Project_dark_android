@@ -249,7 +249,7 @@ public final class RpgProgressionState {
     SourceItemFunctions.install(this);
     SourceEquipmentPerformance.install(this);
     SourceEquipmentRequirements.install(this);
-    HorrorEquipmentCatalog.install(this);
+    HorrorEquipmentCatalog.install(this);MineHuntEquipment.install(this);
     LinkedItemCatalogV185.install(this);
     LinkedClothingCatalogV186.install(this);
     LinkedFoodCatalogV187.install(this);
@@ -535,10 +535,13 @@ public final class RpgProgressionState {
     applyCampaignReward(e,reward);
   }
   private void applyCampaignReward(CombatLedger.Event e,AdaptedCampaignRewardCatalog.Reward reward){
+    Map<String,Integer> mineLoot=new LinkedHashMap<>();Map<String,AutoLootResult> mineOutcomes=new LinkedHashMap<>();
+    String armor=MineHuntMonsters.armor(e.targetId);if(armor!=null&&MineHuntMonsters.dropRoll(e.targetId,e.sequence)<350){AutoLootResult result=autoLootResolvedItem(armor,1);mineOutcomes.put(armor,result);if(result==AutoLootResult.LOOTED)mineLoot.put(armor,1);}
+    String weapon=MineHuntMonsters.weapon(e.targetId);if(weapon!=null&&MineHuntMonsters.dropRoll(e.targetId+":weapon",e.sequence)<200){AutoLootResult result=autoLootResolvedItem(weapon,1);mineOutcomes.put(weapon,result);if(result==AutoLootResult.LOOTED)mineLoot.put(weapon,1);}
     grantAdaptedReward(reward.exp,reward.gold);
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,
-        Collections.<String,Integer>emptyMap(),Collections.<String,AutoLootResult>emptyMap(),
-        RewardSource.ADAPTED_CAMPAIGN,AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone,reward.gold));
+        mineLoot, mineOutcomes,
+        RewardSource.ADAPTED_CAMPAIGN,MineHuntMonsters.actor(e.targetId)?MineHuntMonsters.POLICY:AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone,reward.gold));
     trimRewardHistory();
   }
 

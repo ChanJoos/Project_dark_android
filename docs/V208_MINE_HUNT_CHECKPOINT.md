@@ -1,0 +1,7 @@
+# V208 Mine hunting implementation
+
+Implemented original source lod2102 (150×102, 9468 connected collision cells), 244 source floor/object textures, ten native MPF appearances, Mine travel-manager Lv99 hunting card, exit to Mine, shared combat/spells, highest current hunt XP/gold and five armor families plus blue-knight axe directly into inventory. Generator consumes retained original bytes offline; no client executable is run. Normal/hit/curse/curse-hit atlases prewarm within 27,893,760bytes; floor LRU32 bounded; shared movement0.60s preserved.
+
+Original server numeric combat/loot/spawn tables remain unverified. Values and rates are explicitly mobile balance. Some Korean species names and armor/appearance identities are provisional; MPF153 is an associated source candidate not positively visible in this excerpt. Original source dimensions differ from the user's square recollection. Full-map current Korean-version parity is not claimed. MPF158 incomplete front attack uses a hold of its existing source frame.
+
+Local original-byte validator/generator and diff whitespace pass. Focused Android native tests and APK build pending exact published SHA. Do not claim handset verification or deliver the previous Horror APK as this mine. Runtime contract: master/changes/V208_MINE_HUNT_RUNTIME.json. Recovered recording evidence: master/source/mine_hunt_v208/recording_recovery.json and reference.json. CI marker: [mine-hunt-v208].

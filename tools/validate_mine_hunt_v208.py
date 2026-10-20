@@ -34,7 +34,18 @@ def validate():
     assert reward['groundDrops'] is False
     assert all(reward[k] is None for k in ('experience', 'gold', 'dropProbability'))
     assert data['status'] == 'PARTIAL_SOURCE_ONLY_NOT_PLAYABLE'
-    print('PASS: 5 armor rows match retained Master; 3 existing admissions; unknown mine data stays unadmitted.')
+    # The earlier catalog remains an immutable source-stage snapshot. New runtime admission is separate.
+    import zipfile
+    ref=json.loads((ROOT/'master/source/mine_hunt_v208/reference.json').read_text())
+    with zipfile.ZipFile(ROOT/'master/source/mine_hunt_v208/original_sources.zip') as z:
+        for name,digest in ref['files'].items():
+            assert hashlib.sha256(z.read(name)).hexdigest()==digest,name
+        assert hashlib.sha256(z.read('maps/lod2102.map')).hexdigest()==ref['mapSha256']
+        assert len(z.read('maps/lod2102.map'))==150*102*6
+    assert len(ref['sourceMPFs'])==len(set(ref['sourceMPFs']))==10
+    supplement=json.loads((ROOT/'master/source/mine_hunt_v208/armor_bindings.json').read_text())
+    assert {x['itemId'] for x in supplement}=={'USER_ITEM_20261018_R01482','USER_ITEM_20261018_R01486'}
+    print('PASS: historical 5 armor stat rows preserved; 10 original MPFs and exact 2102 map bytes verified; runtime tuning remains explicitly separate.')
 
 
 if __name__ == '__main__':

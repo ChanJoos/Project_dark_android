@@ -1,3 +1,13 @@
+mine_hunt_v208:
+  status: IMPLEMENTED_SOURCE_BACKED_RUNTIME_CI_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  base_sha: 39a4158a79f67b2a053c915825f3ea9ffc16296f
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, docs/MONSTER_CREATION_MANUAL.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/mine_hunt_v208/catalog.json, master/source/mine_hunt_v208/reference.json, master/source/mine_hunt_v208/original_sources.zip, master/canonical/User_Item_Master_20261018.json]
+  phone_verified: false
+  original_server_stats: UNRESOLVED_SEPARATE_FROM_MOBILE_BALANCE
+
 horror_loop_v207:
   status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
   runtime_source: b75b417598201b5c94588626bc02ab9b753555b3

@@ -1,6 +1,6 @@
 {
   "revision": "INVENTORY_ART_V131",
-  "registeredItems": 843,
+  "registeredItems": 845,
   "policy": "Labelled inventory illustrations take precedence over held-weapon previews. Source RGB/native orientation retained; missing dedicated illustrations remain explicit wearable fallbacks.",
   "items": {
     "IT_EARRING_DOUBLE_SILVER": {
@@ -17548,6 +17548,28 @@
       "sourceSha256": "b74da8993bb931797ca6f5e5d257f7db4936483673ff56f877aae2379c9bb208",
       "projection": "EXACT_NATIVE_IDLE0_CROP",
       "evidence": "EXACT_LABEL_AND_CURRENT_USER_MASTER"
+    },
+    "USER_ITEM_20261018_R01486": {
+      "itemId": "USER_ITEM_20261018_R01486",
+      "appearanceId": "mu0000037",
+      "assetPath": "item-icons/mine_mu0000037.png",
+      "assetSha256": "9de4eab09da647d841ff0a24044ef1403fbfc365cdb2cc85e318a9ef69be5cbc",
+      "sourcePath": "master/source/mine_hunt_v208/armor_sources.zip",
+      "sourceMember": "atlas/armor/mu0000037.webp",
+      "projection": "EXACT_FRONT_SOURCE_FRAME_01_F1",
+      "evidence": "U+SOURCE_APPEARANCE_ASSOCIATION",
+      "identityMatch": "NAME_ALIAS"
+    },
+    "USER_ITEM_20261018_R01482": {
+      "itemId": "USER_ITEM_20261018_R01482",
+      "appearanceId": "mu0000039",
+      "assetPath": "item-icons/mine_mu0000039.png",
+      "assetSha256": "17280ef509b2f6927df22ea9138ba713bce8d1265a6b243911089233e8228333",
+      "sourcePath": "master/source/mine_hunt_v208/armor_sources.zip",
+      "sourceMember": "atlas/armor/mu0000039.webp",
+      "projection": "EXACT_FRONT_SOURCE_FRAME_01_F1",
+      "evidence": "U+SOURCE_APPEARANCE_ASSOCIATION",
+      "identityMatch": "PRIEST80_APPEARANCE_ASSOCIATION"
     }
   }
 }
