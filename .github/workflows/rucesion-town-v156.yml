@@ -133,6 +133,15 @@ jobs:
               esac
             done < <(git diff --name-only fa692546d720fde62c45914f763c1805b60b6849 HEAD)
             gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[curse-hud-only]"* ]]; then
+            git fetch --depth=1 origin 15c6dd1d2cf9dd15b0042f625bb6b6e9eca0dbe0
+            while IFS= read -r changed; do
+              case "$changed" in
+                app/src/main/java/com/projectdark/mobile/GameView.java|app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java|app/src/main/java/com/projectdark/mobile/CurseSkullFx.java|app/src/main/java/com/projectdark/mobile/HudMapLocation.java|app/src/test/java/com/projectdark/mobile/CurseHudV202Test.java|.github/workflows/rucesion-town-v156.yml|docs/*|master/MASTER_MANIFEST.md|master/changes/V202_CURSE_HUD.json) ;;
+                *) echo "Unexpected change in curse/HUD scope: $changed"; exit 1 ;;
+              esac
+            done < <(git diff --name-only 15c6dd1d2cf9dd15b0042f625bb6b6e9eca0dbe0 HEAD)
+            gradle :app:testDebugUnitTest --tests '*CurseHudV202Test' --tests '*ScreenMagicV201Test' --tests '*SkillPresentationTest' --tests '*SkillContactRegressionTest' --tests '*MobileHudV135Test' --tests '*MonsterCurseV162Test' --tests '*AllSkillRuntimeV138Test' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[screen-magic-only]"* ]]; then
             git fetch --depth=1 origin 77596336f9e6c843a2b071b23a5d7511e08acf0c
             while IFS= read -r changed; do

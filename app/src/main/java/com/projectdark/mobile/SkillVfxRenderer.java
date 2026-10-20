@@ -12,6 +12,8 @@ final class SkillVfxRenderer {
     Pulse(long seq,String id,String sheet,int row,String anchor,boolean caster,float duration,float x,float y){actionSequence=seq;this.id=id;this.sheet=sheet;this.row=row;this.anchor=anchor;this.caster=caster;this.duration=duration;this.x=x;this.y=y;}
   }
   private final CapturedSkillFx captured;private final ClassicSkillReference classic,rogue,warrior,shared;private final SkillPresentationCatalog catalog;private final Map<String,Bitmap> sheets=new HashMap<>();
+  private final CurseSkullFx curseSkull=new CurseSkullFx();
+  private static final int MAX_PULSES=1024;
   boolean testAccess;
   final List<Pulse> pulses=new ArrayList<>();private final Set<String> seen=new HashSet<>();private final Deque<String> history=new ArrayDeque<>();private final Paint p=new Paint();
   SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);rogue=new ClassicSkillReference(c,"rogue");warrior=new ClassicSkillReference(c,"warrior");shared=new ClassicSkillReference(c,"shared");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
@@ -21,12 +23,12 @@ final class SkillVfxRenderer {
   void clear(){pulses.clear();actionDirections.clear();directionTargets.clear();releasedDirections.clear();}
   private void lockDirection(Pulse p){float[] d=actionDirections.get(p.actionSequence);if(d!=null){p.directionX=d[0];p.directionY=d[1];}}
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
-  void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null||MartialSkillPolicy.LEAP.equals(id))return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>64)pulses.remove(0);}
+  void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null||MartialSkillPolicy.LEAP.equals(id))return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>MAX_PULSES)pulses.remove(0);}
   void consume(List<CombatResolver.Event> events,Anchors a){for(CombatResolver.Event e:events){
     if(!RuntimeCombatSession.PLAYER_ID.equals(e.actorId)){
       if(e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)){
         String key=e.actionSequence+":monster-contact:"+e.targetId;float x=a.x(e.targetId),y=a.y(e.targetId);
-        if(Float.isFinite(x)&&Float.isFinite(y)&&seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,e.actionId,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,x,y));if(pulses.size()>64)pulses.remove(0);}
+        if(Float.isFinite(x)&&Float.isFinite(y)&&seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,e.actionId,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,x,y));if(pulses.size()>MAX_PULSES)pulses.remove(0);}
       }
       continue;
     }
@@ -45,13 +47,19 @@ final class SkillVfxRenderer {
     boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&(e.hitSemantic!=CombatResolver.HitSemantic.MISS);
     if(!caster&&!target)continue;
     if(MartialSkillPolicy.LINE.equals(id)){
-      if(target){String key=e.actionSequence+":martial-line:"+e.targetId;if(seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"martial-line",0,e.targetId,false,.32f,a.x(e.targetId),a.y(e.targetId)));if(pulses.size()>64)pulses.remove(0);}}continue;
+      if(target){String key=e.actionSequence+":martial-line:"+e.targetId;if(seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"martial-line",0,e.targetId,false,.32f,a.x(e.targetId),a.y(e.targetId)));if(pulses.size()>MAX_PULSES)pulses.remove(0);}}continue;
     }
     // A real resolved damaging contact has its own recipient-only visual channel.
     // Preview (amount zero), misses and healing never pretend the monster took damage.
     if(target&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)&&!e.actorId.equals(e.targetId)){
       String impactKey=e.actionSequence+":recipient-damage:"+e.targetId;float ix=a.x(e.targetId),iy=a.y(e.targetId);
-      if(Float.isFinite(ix)&&Float.isFinite(iy)&&seen.add(impactKey)){history.add(impactKey);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,ix,iy));if(pulses.size()>64)pulses.remove(0);}
+      if(Float.isFinite(ix)&&Float.isFinite(iy)&&seen.add(impactKey)){history.add(impactKey);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,ix,iy));if(pulses.size()>MAX_PULSES)pulses.remove(0);}
+    }
+    // A real curse contact gets one identical skull per recipient. Bypass captured actor/scene pixels.
+    if(target&&CurseSkullFx.variant(id)>=0){
+      String key=e.actionSequence+":curse-skull:"+e.targetId;
+      float x=a.x(e.targetId),y=a.y(e.targetId);
+      if(Float.isFinite(x)&&Float.isFinite(y)&&seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"curse-skull",0,e.targetId,false,CurseSkullFx.DURATION,x,y));if(pulses.size()>MAX_PULSES)pulses.remove(0);}continue;
     }
     if(rogue.has(id)||classic.has(id)||warrior.has(id)||shared.has(id)){
       ClassicSkillReference reference=rogue.has(id)?rogue:classic.has(id)?classic:warrior.has(id)?warrior:shared;String sourceSheet=rogue.has(id)?"rogue":classic.has(id)?"classic":warrior.has(id)?"warrior":"shared";
@@ -62,16 +70,17 @@ final class SkillVfxRenderer {
       String anchor=(martialRecipient||!caster&&recipientFinisher(id))?e.targetId:channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor;
       if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
       float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
-      Pulse sourcePulse=new Pulse(e.actionSequence,id,sourceSheet,0,anchor,caster,channel.sequence.duration,x,y);sourcePulse.directionX=a.x(e.targetId)-a.x(e.actorId);sourcePulse.directionY=a.y(e.targetId)-a.y(e.actorId);lockDirection(sourcePulse);pulses.add(sourcePulse);if(pulses.size()>64)pulses.remove(0);continue;
+      Pulse sourcePulse=new Pulse(e.actionSequence,id,sourceSheet,0,anchor,caster,channel.sequence.duration,x,y);sourcePulse.directionX=a.x(e.targetId)-a.x(e.actorId);sourcePulse.directionY=a.y(e.targetId)-a.y(e.actorId);lockDirection(sourcePulse);pulses.add(sourcePulse);if(pulses.size()>MAX_PULSES)pulses.remove(0);continue;
     }
 boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequence+":"+(caster?"caster":captureContact?"capture":"target:"+e.targetId);if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
     int row=caster?casterRow(v.caster):v.targetRow;if(caster&&row<0||!caster&&v.target.equals("NONE"))continue;String anchor=caster||(captureContact&&captured.get(id).directional&&!recipientFinisher(id))?e.actorId:e.targetId;
     CapturedSkillFx.Sequence sequence=caster?null:captured.get(id);String sheet=sequence!=null?"capture":caster?"caster":v.targetSheet;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
-    Pulse pulse=new Pulse(e.actionSequence,id,sheet,row,anchor,caster,sequence!=null?sequence.duration:caster?.30f:row<0||sheet.equals("finisher-v65")?.75f:.48f,x,y);pulse.directionX=a.x(e.targetId)-a.x(e.actorId);pulse.directionY=a.y(e.targetId)-a.y(e.actorId);lockDirection(pulse);pulses.add(pulse);if(pulses.size()>64)pulses.remove(0);
+    Pulse pulse=new Pulse(e.actionSequence,id,sheet,row,anchor,caster,sequence!=null?sequence.duration:caster?.30f:row<0||sheet.equals("finisher-v65")?.75f:.48f,x,y);pulse.directionX=a.x(e.targetId)-a.x(e.actorId);pulse.directionY=a.y(e.targetId)-a.y(e.actorId);lockDirection(pulse);pulses.add(pulse);if(pulses.size()>MAX_PULSES)pulses.remove(0);
   }}
   static boolean recipientFinisher(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a!=null&&a.damage()&&a.resourceBurst()&&!"CRASH".equals(a.formula);}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
   void draw(Canvas c,Anchors a){for(Pulse f:pulses){
+    if(f.sheet.equals("curse-skull")){float x=a.centerX(f.anchor),y=a.centerY(f.anchor);curseSkull.draw(c,f.id,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y-25);continue;}
     if(f.sheet.equals("martial-line")){classic.drawBaekboContact(c,f.age,a.centerX(f.anchor),a.centerY(f.anchor));continue;}
     if(f.sheet.equals("classic")||f.sheet.equals("rogue")||f.sheet.equals("warrior")||f.sheet.equals("shared")){ClassicSkillReference reference=f.sheet.equals("rogue")?rogue:f.sheet.equals("warrior")?warrior:f.sheet.equals("shared")?shared:classic;float x=a.x(f.anchor),y=a.y(f.anchor);ClassicSkillReference.Channel channel=reference.channel(f.id,f.caster);float cy=a.centerY(f.anchor),cx=a.centerX(f.anchor);
       if(!f.caster&&recipientFinisher(f.id)){reference.drawCentered(c,channel,f.age,Float.isFinite(cx)?cx:f.x,Float.isFinite(cy)?cy:f.y-25);continue;}
@@ -101,4 +110,5 @@ boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequenc
     if(martialCast)c.restore();p.setColorFilter(null);
   }p.setAlpha(255);}
 }
+
 

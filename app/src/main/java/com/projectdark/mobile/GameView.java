@@ -849,11 +849,13 @@ private void drawQuestJournalIcon(Canvas c){
     UiTheme.center(c,"퀘스트",x,51,6.5f,UiTheme.TEXT,false);
   }
   private void drawTarget(Canvas c){RuntimeState.Monster selected=combat.target();if(selected==null)return;c.save();c.translate(hudCenterOffset,0);panel(c,380,12,580,55);text(c,selected.name,397,31,9.5f);bar(c,397,39,563,48,0xffd63e49,selected.hp/(float)selected.maxHp);c.restore();}
+  private final HudMapLocation mapLocation=new HudMapLocation();
+  private String currentMapLocation(){WorldRuntimeAdapter aw=activeWorld();return mapLocation.label(inReagentShop?townInterior.title:inPoteField?com.projectdark.mobile.world.CampaignWorld.title(state.currentMapId()):"밀레스 마을",aw.presentationPlayerX(),aw.presentationPlayerY());}
   private void drawMinimap(Canvas c){
     WorldRuntimeAdapter aw=activeWorld();com.projectdark.mobile.world.PoteCampaignMapDef forest=inPoteField?com.projectdark.mobile.world.PoteCampaignMapDef.forId(state.currentMapId()):null;
     float minX=inReagentShop?townInterior.minX():inPoteField?forest.minX:WorldDef.MIN_X,maxX=inReagentShop?townInterior.maxX():inPoteField?forest.maxX:WorldDef.MAX_X,minY=inReagentShop?TownInteriorDef.MIN_Y:inPoteField?forest.minY:WorldDef.MIN_Y,maxY=inReagentShop?townInterior.maxY():inPoteField?forest.maxY:WorldDef.MAX_Y;
     MobileHudSkin.minimap(c,state,aw.presentationPlayerX(),aw.presentationPlayerY(),minX,minY,maxX,maxY);
-    UiTheme.center(c,inReagentShop?townInterior.title:inPoteField?com.projectdark.mobile.world.CampaignWorld.title(state.currentMapId()):"밀레스",68,15,9,UiTheme.TEXT,true);
+    UiTheme.fit(c,currentMapLocation(),18,15,270,9,UiTheme.TEXT,true);
     UiTheme.text(c,"CH. 5-1",19,133,7,UiTheme.TEXT,false);
   }
 private void drawUtilityRail(Canvas c){
@@ -1063,3 +1065,4 @@ private void drawUtilityRail(Canvas c){
   private static boolean circleHit(float x,float y,float cx,float cy,float r){float dx=x-cx,dy=y-cy;return dx*dx+dy*dy<=r*r;}
   private float dist(float a,float b,float c,float d){float x=a-c,y=b-d;return(float)Math.sqrt(x*x+y*y);}
 }
+

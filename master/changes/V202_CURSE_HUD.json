@@ -1,0 +1,19 @@
+{
+  "status": "ACCEPTED_IMPLEMENTED_PENDING_NATIVE",
+  "base": "15c6dd1d2cf9dd15b0042f625bb6b6e9eca0dbe0",
+  "source": "USER_SCREENSHOTS_20261020_INLINE_1000060424_25_27_26",
+  "evidence": "ADAPTED_USER_REFERENCE",
+  "changes": [
+    "live active-world coordinate label; integer world units, not recovered original cell IDs",
+    "4colored reconstructed skulls; shared prewarmed12frame atlas",
+    "9single/screen curse presentation mappings, target-only real contact",
+    "bounded1024pulse retention fixes108recipient truncation"
+  ],
+  "unchanged": [
+    "mechanics",
+    "source assets",
+    "movement",
+    "V201 screen visibility/LOS/aggro"
+  ],
+  "phone": "PENDING"
+}

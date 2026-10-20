@@ -1,3 +1,11 @@
+## 2026-10-20 V202 live map coordinates and curse skull presentation
+
+User accepted: show map title plus dynamically updated player coordinates above minimap; red Pravo, blue Lento, pink Depreco, yellow Bardo skull effect, same per-recipient effect for whole-screen counterparts. Reference: user four screenshots1000060424/25/27/26, observed inline; reconstruction ADAPTED_USER_REFERENCE, not original extracted frames. Existing weak visuals are DEVICE_FAILED_USER_REPORTED (APK source not explicitly identified).
+
+Implementation: HudMapLocation formats current active-world presentation X/Y rounded to integer world units, independent of camera, and caches unchanged label. Title uses left-aligned fit at minimap top, including town/interior/hunting maps. World units are current project's coordinates, not claimed recovered original map cell numbers. Shared prewarmed4color×12frame skull atlas (3932160 bytes), ornate cranium/sockets/brow/cheek/jaw/teeth/cracks/glow; target-only resolved curse HIT_FEEDBACK channel bypasses old captured scene/caster anchor.9 mapped curse IDs =4mage single+cleric Bardo+4SCREEN; unreferenced Darkness Mark stays unchanged. Whole4 use identical palette/animation/size per live recipient. Pulse capacity bounded1024 replaces64 which silently evicted early recipients. Existing curse strength/duration/dispel/palette and V201 visibility/obstacle rules unchanged. No source asset bytes changed.
+
+IMPLEMENTED_PENDING_NATIVE. Verify normal learned whole4 Horror quickslots behind source furniture; all108 targets per curse and no offscreen/dead/duplicate skull; animations/palette/cache; real movement midpoint and map switch labels, standard/wide screenshots; existing V201 wholemagic+aggro,221/141skill runtime/presentation/contact/curse palette/HUD. Candidate PR197; main41fe6def unchanged; phone/user visual acceptance pending.
+
 ## 2026-10-20 V201 whole-screen magic and damage aggro repair
 
 DEVICE_FAILED_USER_REPORTED: Mage/Cleric screen attacks (Ragnarok/Meteor/HolyDragon examples) skip visible blocked victims, and damaged victims fail to aggro. User did not explicitly name APK SHA; latest delivered6d21a7c. Current source reproduces two LOS filters (recipient selection and Resolver contact), AUTO requires a reachable/LOS target, and AI ignores damaged distant actors beyond180px.
