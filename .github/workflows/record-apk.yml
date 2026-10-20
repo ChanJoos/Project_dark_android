@@ -97,6 +97,9 @@ jobs:
           adb shell pm path "$PKG" | tee evidence/installed-path.txt
           adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity" | tee evidence/launch.txt
           sleep 8
+          # Dismiss the observed Android first-run fullscreen tutorial, not a permission dialog.
+          adb shell input tap 1340 380
+          sleep 20
           adb shell pidof "$PKG" | tee evidence/pid-before.txt
           adb shell dumpsys activity activities > evidence/activity.txt
           adb exec-out screencap -p > evidence/start.png
