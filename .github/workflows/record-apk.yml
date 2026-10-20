@@ -67,8 +67,11 @@ jobs:
           for deb in "$RUNNER_TEMP/emulator-libs/packages/"*.deb; do dpkg-deb -x "$deb" "$RUNNER_TEMP/emulator-libs/root"; done
           export LD_LIBRARY_PATH="$RUNNER_TEMP/emulator-libs/root/usr/lib/x86_64-linux-gnu:$RUNNER_TEMP/emulator-libs/root/usr/lib/x86_64-linux-gnu/pulseaudio:${LD_LIBRARY_PATH:-}"
           emulator -version > evidence/emulator-version.txt 2>&1
+          # User approved only current account access in this ephemeral runner.
+          getfacl /dev/kvm > evidence/kvm-acl-before.txt
+          sudo setfacl -m "u:$(id -un):rw" /dev/kvm
+          getfacl /dev/kvm > evidence/kvm-acl-after.txt
           emulator -accel-check > evidence/acceleration.txt 2>&1
-          # No chmod, group changes, sudo, or security-setting changes. Fail if KVM is unavailable.
           emulator -avd apk-capture -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader -accel on -memory 4096 > evidence/emulator.log 2>&1 &
           timeout 300 adb wait-for-device
           timeout 300 bash -c 'until [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d "\r")" == 1 ]]; do sleep 2; done'
