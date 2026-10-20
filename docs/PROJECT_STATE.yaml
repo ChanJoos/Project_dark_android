@@ -1,5 +1,10 @@
 mine_hunt_repair_v209:
-  status: REPAIR_IMPLEMENTED_EXACT_SHA_CI_PENDING
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
+  runtime_source: 90845f57470ca994abce73db1ced38eb053d22a0
+  focused_run: 39516434711
+  artifact: 12308520348
+  native_tests: 44
+  receipt: verification/MINE_HUNT_V209_BUILD.json
   reported_candidate: 5f4044d9bcd30fcbbb3d4f17d53209610c25d583
   installed_hash: UNKNOWN
   issues: [missing_mage_family_and_armor_owner, map_quality_rejected, weapon_icons_inconsistent_inventory_equipment]

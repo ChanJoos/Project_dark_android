@@ -1,0 +1,135 @@
+{
+  "sourceCommit": "90845f57470ca994abce73db1ced38eb053d22a0",
+  "runId": "39516434711",
+  "builtAtKST": "2026-10-21T08:43:03.257889+09:00",
+  "apkSha256": "fce8bb394cdd037132af2ad843784912180439772c33d01ae59f890500cd7220",
+  "apkBytes": 88070346,
+  "identity": {
+    "sourceCommit": "90845f57470ca994abce73db1ced38eb053d22a0",
+    "runId": "39516434711",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V208/V209 source-backed mine2102, ten native appearances, Mine NPC travel, shared combat, direct armor/axe/dagger inventory rewards, cache and save regressions; original server stats and full-map current-version parity unresolved; handset pending",
+  "artifactId": 12308520348,
+  "archiveSha256": "97e36c0c097c01d8e7c689b85be936bc5c6fae7284ffbaa5f5a5413c3e721074",
+  "candidate": true,
+  "mainMerged": false,
+  "nativeSuites": [
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.HorrorCastleLoopV207Test"
+    },
+    {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.InventoryFeedbackV199Test"
+    },
+    {
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MineHuntV208Test"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.ItemWindowReferenceTest"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MineHuntV209Test"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MinePolishV206Test"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MineTownV203Test"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.ScreenMagicV204Test"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.WeaponIconsV209Test"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MonsterChasePerformanceTest"
+    }
+  ],
+  "nativeTests": 44,
+  "nativeSourcePngFilesVerified": 244,
+  "nativeToUploadedVideoParity": {
+    "coordinate": [
+      102,
+      76
+    ],
+    "videoSeconds": 120,
+    "tentativeMatches": 159,
+    "inliers": 87,
+    "cartRegionInliers": 60,
+    "medianErrorPixels": 0.6349426570424348,
+    "limit": "Observed region only; not unseen full-map or server warp/spawn/identity proof"
+  },
+  "nativeCaptureCount": 127,
+  "phoneVerified": false,
+  "userVisualAccepted": false,
+  "sourceUncertainties": [
+    "First three soldier Korean identities unresolved; MPF153 removed and labelled original MPF68 Hell Sorcerer admitted. Priest robe shared caster drops are mobile policy, exact original priest drop owner unresolved",
+    "Exact server stats and rates unresolved; all numeric combat, spawn/reward/drop rates are separate mobile balance",
+    "Original retained map150x102; complete current Korean server-version parity not established"
+  ],
+  "commonCI": {
+    "push": 39516434627,
+    "pullRequest": 39516440166,
+    "status": "PENDING_AT_RECEIPT"
+  },
+  "deliveryName": "PROJECT_DARK_V209_TEST.apk",
+  "internalVersionNote": "Legacy184/1.84 retained; source/run identify actual V209 content",
+  "nativeRepairVerification": {
+    "tests": 44,
+    "suites": 10,
+    "weaponAxisAndSharedCallbacks": "PASS",
+    "mage68ActualEntryKillDropSave": "PASS",
+    "sourceTourCoordinates": 26,
+    "sourceRecordingRegionsMatched": 31,
+    "sourceRecordingDurationSeconds": 127.974271,
+    "fullYoutubeDurationSeconds": 932,
+    "fullYoutubeFramesAccessible": false,
+    "sourceToNativeRegionInliers": 87,
+    "sourceToNativeCartInliers": 60,
+    "wallOcclusionAndSourceMinimap": "PASS",
+    "atlasesBytes": 29147136
+  },
+  "saveResult": "FAILED_HTTP403_BEFORE_UPLOAD"
+}

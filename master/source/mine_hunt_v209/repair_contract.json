@@ -34,6 +34,14 @@
       "direction": "weapon/staff inventory icons run lower-left to upper-right; same image in equipment"
     }
   ],
-  "validation": "CI_PENDING",
+  "validation": {
+    "status": "BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING",
+    "runtimeSource": "90845f57470ca994abce73db1ced38eb053d22a0",
+    "run": 39516434711,
+    "artifact": 12308520348,
+    "nativeTests": 44,
+    "receipt": "verification/MINE_HUNT_V209_BUILD.json",
+    "phoneVerified": false
+  },
   "phone": "PENDING"
 }
