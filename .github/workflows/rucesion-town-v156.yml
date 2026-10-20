@@ -133,6 +133,15 @@ jobs:
               esac
             done < <(git diff --name-only fa692546d720fde62c45914f763c1805b60b6849 HEAD)
             gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[v204-regression-only]"* ]]; then
+            git fetch --depth=1 origin 2a05f305473150327b765264cd86d29bf1e64636
+            while IFS= read -r changed; do
+              case "$changed" in
+                .github/workflows/rucesion-town-v156.yml|app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java|app/src/test/java/com/projectdark/mobile/ClassicSkillReferenceTest.java|app/src/test/java/com/projectdark/mobile/SkillFxAuditTest.java) ;;
+                *) echo "Unexpected regression-only change: $changed"; exit 1 ;;
+              esac
+            done < <(git diff --name-only 2a05f305473150327b765264cd86d29bf1e64636 HEAD)
+            gradle :app:testDebugUnitTest --tests '*AllJobSkillSourceTest.allJobsUseProductionInputAndRenderSkillAndActualRecipientTogether' --tests '*ClassicSkillReferenceTest.productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies' --tests '*SkillFxAuditTest.all221RuntimeRoutesAndFourDirectionsRenderWithoutBorrowingSources' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[screen-magic-v204]"* ]]; then
             python3 tools/generate_skill_abilities.py
             git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_ABILITY_FORMULAS.csv
