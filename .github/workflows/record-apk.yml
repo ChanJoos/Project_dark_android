@@ -61,6 +61,11 @@ jobs:
           test -f "$ANDROID_HOME/system-images/android-35/google_apis/x86_64/package.xml"
           test -x "$ANDROID_HOME/emulator/emulator"
           echo no | avdmanager create avd -n apk-capture -k 'system-images;android-35;google_apis;x86_64' --force
+          # Official Ubuntu runtime dependencies, unpacked locally without root changes.
+          mkdir -p "$RUNNER_TEMP/emulator-libs/packages" "$RUNNER_TEMP/emulator-libs/root"
+          (cd "$RUNNER_TEMP/emulator-libs/packages" && apt-get download libpulse0 libasyncns0 libsndfile1 libflac12t64 libogg0 libopus0 libvorbis0a libvorbisenc2 libmpg123-0t64 libmp3lame0)
+          for deb in "$RUNNER_TEMP/emulator-libs/packages/"*.deb; do dpkg-deb -x "$deb" "$RUNNER_TEMP/emulator-libs/root"; done
+          export LD_LIBRARY_PATH="$RUNNER_TEMP/emulator-libs/root/usr/lib/x86_64-linux-gnu:$RUNNER_TEMP/emulator-libs/root/usr/lib/x86_64-linux-gnu/pulseaudio:${LD_LIBRARY_PATH:-}"
           emulator -version > evidence/emulator-version.txt 2>&1
           emulator -accel-check > evidence/acceleration.txt 2>&1
           # No chmod, group changes, sudo, or security-setting changes. Fail if KVM is unavailable.
