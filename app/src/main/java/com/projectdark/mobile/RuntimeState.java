@@ -199,7 +199,7 @@ public final class RuntimeState {
   }
   public void enterCampaignMap(String id,boolean fromNext){id=com.projectdark.mobile.world.AbelCoastGeometry.canonical(com.projectdark.mobile.world.AbelTownGeometry.canonical(id));
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
-    horror.record(currentMapId,monsters);com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    horror.record(currentMapId,monsters);if(com.projectdark.mobile.world.HorrorCastleGeometry.room(currentMapId)==com.projectdark.mobile.world.HorrorCastleGeometry.ROOM_COUNT&&com.projectdark.mobile.world.HorrorCastleGeometry.roomId(1).equals(id)&&horror.clear(currentMapId,monsters))horror.start();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
     int zone=map.zone;monsters.addAll(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)?HorrorCastleMonsters.spawn(id,horror.seed()):CampaignMonsters.spawnForMap(id));horror.apply(monsters);
     // This roster contains new lives. Reused species#slot keys must not inherit old-map effects.
     for(Monster fresh:monsters)skillEffects.clear(fresh.id);

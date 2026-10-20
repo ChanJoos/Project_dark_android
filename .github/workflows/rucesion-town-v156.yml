@@ -142,6 +142,8 @@ jobs:
               esac
             done < <(git diff --name-only 2a05f305473150327b765264cd86d29bf1e64636 HEAD)
             gradle :app:testDebugUnitTest --tests '*AllJobSkillSourceTest.allJobsUseProductionInputAndRenderSkillAndActualRecipientTogether' --tests '*ClassicSkillReferenceTest.productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies' --tests '*SkillFxAuditTest.all221RuntimeRoutesAndFourDirectionsRenderWithoutBorrowingSources' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[horror-loop-v207]"* ]]; then
+            gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' --tests '*HorrorCastleLoopV207Test' --tests '*ScreenMagicV204Test' --tests '*MinePolishV206Test' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[mine-polish-v206]"* ]]; then
             gradle :app:testDebugUnitTest --tests '*MineTownV203Test' --tests '*MinePolishV206Test' --tests '*SkillSpatialContractTest' --tests '*ScreenMagicV204Test' --tests '*TownInteriorTest' --tests '*NpcAppearanceTest' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[mine-rebuild-v205]"* ]]; then

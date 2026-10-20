@@ -1,0 +1,15 @@
+{
+  "status": "ACCEPTED_IMPLEMENTATION_VERIFICATION_PENDING",
+  "user": "2026-10-20 portal HUDcoordinates and screenshots12..15; sequential15->1 infinite loop, manual room door->lobby",
+  "portals": {
+    "0,21..25": "MILLES",
+    "9,21..25": "MAP_HORROR_CORRIDOR_1",
+    "16,45": "MAP_HORROR_CORRIDOR_1",
+    "18,17": "MAP_HORROR_CORRIDOR_2"
+  },
+  "coordinates": "LOBBY HUD(x,y) maps to native(u=y+1,v=19-x); markers and activation same cell",
+  "source": "master/source/horror_v207/reference.json",
+  "rooms": "1..11raw unchanged;12..15native tile screenshot-guided ADAPTED layouts; no legacy fallback",
+  "loop": "record last room, clear run state and increment encounter serial before spawning fresh room1; no stale dead-room replay",
+  "preserved": "15random actors, original humanoid pixels/stats, shared combat/reward/save,0.60s movement,32chunk cache"
+}

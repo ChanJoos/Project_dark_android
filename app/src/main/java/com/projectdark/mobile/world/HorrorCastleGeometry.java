@@ -1,13 +1,14 @@
 package com.projectdark.mobile.world;
 import android.graphics.RectF;
 import java.util.*;
-/** Original cells for recovered maps. Legacy V179 rooms 12/13 remain unverified, never a fidelity claim. */
+/** Original cells for recovered maps. Rooms12–15 use explicit screenshot-guided native-tile adaptations. */
 public final class HorrorCastleGeometry {
+ public static final int ROOM_COUNT=15;
  public static final String LOBBY="MAP_HORROR_LOBBY",FIRST="MAP_HORROR_CORRIDOR_1",SECOND="MAP_HORROR_CORRIDOR_2";
  public static boolean contains(String id){return LOBBY.equals(id)||FIRST.equals(id)||SECOND.equals(id)||room(id)>0;}
- public static int room(String id){if(id==null||!id.matches("MAP_HORROR_ROOM_(0[1-9]|1[0-3])"))return 0;return Integer.parseInt(id.substring(id.length()-2));}
- public static String roomId(int n){if(n<1||n>13)throw new IllegalArgumentException("room");return String.format(java.util.Locale.ROOT,"MAP_HORROR_ROOM_%02d",n);}
- public static HorrorCastleOriginalData.Grid original(String id){return HorrorCastleOriginalData.get(id);}
+ public static int room(String id){if(id==null||!id.matches("MAP_HORROR_ROOM_(0[1-9]|1[0-5])"))return 0;return Integer.parseInt(id.substring(id.length()-2));}
+ public static String roomId(int n){if(n<1||n>ROOM_COUNT)throw new IllegalArgumentException("room");return String.format(java.util.Locale.ROOT,"MAP_HORROR_ROOM_%02d",n);}
+ public static HorrorCastleOriginalData.Grid original(String id){HorrorCastleOriginalData.Grid g=HorrorCastleOriginalData.get(id);return g!=null?g:HorrorCastleReferenceRooms.grid(id);}
  public static int columns(String id){HorrorCastleOriginalData.Grid g=original(id);if(g!=null)return g.width;return LOBBY.equals(id)?24:room(id)>0?18:30;}
  public static int rows(String id){HorrorCastleOriginalData.Grid g=original(id);if(g!=null)return g.height;return LOBBY.equals(id)?18:room(id)>0?16:7;}
  public static float x(int u,int v){return 800+(u-v)*32;}
@@ -22,7 +23,7 @@ public final class HorrorCastleGeometry {
  public static boolean inside(String id,float x,float y,float radius){float a=(y-160)/32+(x-800)/64,b=(y-160)/32-(x-800)/64;HorrorCastleOriginalData.Grid g=original(id);if(g!=null)return g.walkable(Math.round(a),Math.round(b));float inset=radius/28f;return a>=inset&&b>=inset&&a<=columns(id)-1-inset&&b<=rows(id)-1-inset;}
  public static final class Door {public final float x,y,markerX,markerY;public final String destination,label;public final boolean visiblePortal;
   Door(float xx,float yy,String d,String l){this(xx,yy,xx,yy,d,l);}
-  Door(float xx,float yy,float mx,float my,String d,String l){x=xx;y=yy;markerX=mx;markerY=my;destination=d;label=l;visiblePortal=!"방 입구".equals(l)&&!"밀레스로 돌아가기".equals(l);}
+  Door(float xx,float yy,float mx,float my,String d,String l){x=xx;y=yy;markerX=mx;markerY=my;destination=d;label=l;visiblePortal=!"방 입구".equals(l)&&!"로비로 돌아가기".equals(l);}
   Door(int u,int v,String d,String l){this(HorrorCastleGeometry.x(u,v),HorrorCastleGeometry.y(u,v),d,l);}
  }
  private static Door originalDoor(String id,int u,int v,String destination,String label){WorldMoveTargetController.TileCenter p=nearest(id,u,v);return new Door(p.x,p.y,destination,label);}
@@ -31,12 +32,12 @@ public final class HorrorCastleGeometry {
  private static List<Door> buildDoors(String id){List<Door> d=new ArrayList<>();HorrorCastleOriginalData.Grid g=original(id);
   if(LOBBY.equals(id)){
    // User's device capture: the carpet under the central arches is the west entrance.
-   for(int u=22;u<=26;u++)d.add(originalDoor(id,u,13,FIRST,"1층 서쪽 복도"));
+   for(int u=22;u<=26;u++)d.add(originalDoor(id,u,10,FIRST,"1층 서쪽 복도"));
    // Keep the marker on the same reachable floor cell as its activation.
-   d.add(originalDoor(id,46,4,FIRST,"1층 동쪽 복도"));
-   d.add(originalDoor(id,19,2,SECOND,"2층 중앙 복도"));
+   d.add(originalDoor(id,46,3,FIRST,"1층 동쪽 복도"));
+   d.add(originalDoor(id,18,1,SECOND,"2층 중앙 복도"));
    // User-marked five-cell opening between the exterior pillars (u21 and u27).
-   for(int u=22;u<=26;u++)d.add(new Door(u,18,"MILLES","밀레스"));
+   for(int u=22;u<=26;u++)d.add(new Door(u,19,"MILLES","밀레스"));
   }else if(FIRST.equals(id)){
    for(int u=3;u<=6;u++)d.add(originalDoor(id,u,rows(id)-1,LOBBY,"로비로"));
    for(int v:new int[]{6,12,18,24,30})d.add(originalDoor(id,0,v,roomId(1),"방 입구"));
@@ -45,7 +46,7 @@ public final class HorrorCastleGeometry {
    for(int u=4;u<=7;u++)d.add(originalDoor(id,u,rows(id)-1,LOBBY,"로비로"));
    d.add(originalDoor(id,8,2,roomId(1),"방 입구"));
   }else if(room(id)>0){
-   String next=room(id)==13?LOBBY:roomId(room(id)+1);
+   String next=room(id)==ROOM_COUNT?roomId(1):roomId(room(id)+1);
    if(g!=null)for(int v=0;v<g.height;v++)for(int u=0;u<g.width;u++)for(int side=1;side<=2;side++){
     int f=g.value(u,v,side);Door door=null;
     // Registered native door panels only. Cracked wall panels 11365/11366 are not doors.
@@ -59,7 +60,7 @@ public final class HorrorCastleGeometry {
   }
   if(room(id)>0){List<Door> returns=new ArrayList<>();
    // Return through the native doorway itself, never an adjacent +u/+v floor portal.
-   for(Door old:d){Door threshold=new Door(old.x,old.y,old.x,old.y,"MILLES","밀레스로 돌아가기");if(!sameDoor(returns,threshold))returns.add(threshold);
+   for(Door old:d){Door threshold=new Door(old.x,old.y,old.x,old.y,LOBBY,"로비로 돌아가기");if(!sameDoor(returns,threshold))returns.add(threshold);
    }d=returns;
   }
   return Collections.unmodifiableList(d);

@@ -17,26 +17,26 @@ public class HorrorCastleMobileV183Test {
  void enter(GameView v,int room)throws Exception{call(v,"changeCampaignMap",new Class<?>[]{String.class,boolean.class},HorrorCastleGeometry.roomId(room),false);}
  @Test public void lastKillAutomaticallyTraversesAllRoomsAndResetsFacing()throws Exception{
   GameView v=view();RuntimeState s=ItemWindowReferenceTest.field(v,"state");enter(v,1);
-  for(int n=1;n<=13;n++){
+  for(int n=1;n<=HorrorCastleGeometry.ROOM_COUNT;n++){
    assertTrue(s.npcs().isEmpty());for(int i=0;i<14;i++)s.damage(s.monsters().get(i),Integer.MAX_VALUE);
    call(v,"updatePoteField",new Class<?>[]{float.class},0f);assertEquals(HorrorCastleGeometry.roomId(n),s.currentMapId());
    CanonicalActorFacing facing=ItemWindowReferenceTest.field(v,"playerFacing");facing.beginAttack(CharacterRenderer.Direction.NE);
    s.damage(s.monsters().get(14),Integer.MAX_VALUE);call(v,"updatePoteField",new Class<?>[]{float.class},0f);
-   assertEquals(n==13?HorrorCastleGeometry.LOBBY:HorrorCastleGeometry.roomId(n+1),s.currentMapId());
+   assertEquals(n==HorrorCastleGeometry.ROOM_COUNT?HorrorCastleGeometry.roomId(1):HorrorCastleGeometry.roomId(n+1),s.currentMapId());
    assertFalse(facing.attackLocked());assertEquals(CharacterRenderer.Direction.SW,facing.presentation());assertNull(ItemWindowReferenceTest.field(v,"activeSkillVisualId"));
-   assertEquals(n==13?0:15,s.monsters().size());
+   assertEquals(15,s.monsters().size());
   }
-  assertEquals(8191,s.horror().clearedMask());
+  assertEquals(0,s.horror().clearedMask());
  }
- @Test public void everyRoomHasNoNpcAndPortalsReturnToMillesWithLivingMonsters()throws Exception{
-  for(int n=1;n<=13;n++){
+ @Test public void everyRoomHasNoNpcAndDoorsReturnToLobbyWithLivingMonsters()throws Exception{
+  for(int n=1;n<=HorrorCastleGeometry.ROOM_COUNT;n++){
    GameView v=view();RuntimeState s=ItemWindowReferenceTest.field(v,"state");enter(v,n);assertTrue(s.npcs().isEmpty());
    for(HorrorCastleGeometry.Door d:HorrorCastleGeometry.doors(s.currentMapId())){
-    assertEquals("MILLES",d.destination);assertTrue(HorrorCastleGeometry.inside(s.currentMapId(),d.x,d.y,0));
+    assertEquals(HorrorCastleGeometry.LOBBY,d.destination);assertTrue(HorrorCastleGeometry.inside(s.currentMapId(),d.x,d.y,0));
    }
    CanonicalActorFacing facing=ItemWindowReferenceTest.field(v,"playerFacing");facing.beginAttack(CharacterRenderer.Direction.NE);
    HorrorCastleGeometry.Door exit=HorrorCastleGeometry.doors(s.currentMapId()).get(0);s.player().x=exit.x;s.player().y=exit.y;
-   call(v,"checkCampaignGate",new Class<?>[]{});assertEquals(WorldDef.ID,s.currentMapId());assertFalse(facing.attackLocked());assertEquals(CharacterRenderer.Direction.SW,facing.presentation());
+   call(v,"checkCampaignGate",new Class<?>[]{});assertEquals(HorrorCastleGeometry.LOBBY,s.currentMapId());assertFalse(facing.attackLocked());assertEquals(CharacterRenderer.Direction.SW,facing.presentation());
   }
  }
  @Test public void multipleRecipientsKeepTheAcceptedSkillDirection()throws Exception{

@@ -14,7 +14,7 @@ public final class HorrorCastleRenderer {
  private final LinkedHashMap<Long,Bitmap> chunks=new LinkedHashMap<>(32,.75f,true);
  private final List<TileDraw> foreground=new ArrayList<>();private final List<PoteFieldRenderer.ActorDraw> actors=new ArrayList<>();
  private String map;private int builds;private HorrorCastleOriginalData.Grid grid;private HorrorCastleLegacyRenderer legacy;
- private static final class TileDraw {final Bitmap image;final float x,y,depth;TileDraw(Bitmap b,float xx,float yy,float z){image=b;x=xx;y=yy;depth=z;}}
+ private static final class TileDraw {final Bitmap image;final float x,y,depth;final boolean flip;TileDraw(Bitmap b,float xx,float yy,float z){this(b,xx,yy,z,false);}TileDraw(Bitmap b,float xx,float yy,float z,boolean f){image=b;x=xx;y=yy;depth=z;flip=f;}}
  public HorrorCastleRenderer(Context c){context=c;paint.setFilterBitmap(false);for(int i=0;i<10;i++)monsters[i]=load("monster_"+i);try(InputStream in=c.getAssets().open("assets/world/portal/portal_reagent_shop.webp")){portal=BitmapFactory.decodeStream(in);if(portal==null)throw new IllegalStateException("shared portal");portal.prepareToDraw();}catch(Exception e){throw new IllegalStateException("Missing shared portal",e);}}
  private Bitmap load(String name){try(InputStream in=context.getAssets().open("horror-v180/"+name+".png")){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;Bitmap b=BitmapFactory.decodeStream(in,null,options);if(b==null)throw new IllegalStateException(name);b.prepareToDraw();return b;}catch(Exception e){throw new IllegalStateException("Original Horror source "+name,e);}}
  public int backgroundBuilds(){return builds;}
@@ -25,6 +25,13 @@ public final class HorrorCastleRenderer {
    int bg=grid.value(u,v,0);if(bg>0&&!floors.containsKey(bg))floors.put(bg,load("bg"+bg));
    for(int side=1;side<=2;side++){int index=grid.value(u,v,side);if(!rendered(index))continue;Bitmap b=objects.get(index);if(b==null){b=load(String.format(Locale.ROOT,"stc%05d",index));objects.put(index,b);}float x=HorrorCastleGeometry.x(u,v)-32+(side-1)*32,y=HorrorCastleGeometry.y(u,v)+16;foreground.add(new TileDraw(b,x,y-b.getHeight()*SCALE,y));}
   }
+  for(HorrorCastleReferenceRooms.Piece p:HorrorCastleReferenceRooms.pieces(id)){
+   Bitmap b=objects.get(p.sprite);if(b==null){b=load(String.format(Locale.ROOT,"stc%05d",p.sprite));objects.put(p.sprite,b);}
+   float dx=HorrorCastleGeometry.x(p.u,p.v)-HorrorCastleGeometry.x(p.sourceU,p.sourceV)-32+(p.side-1)*32;
+   float dy=HorrorCastleGeometry.y(p.u,p.v)-HorrorCastleGeometry.y(p.sourceU,p.sourceV)+16;
+   float x=HorrorCastleGeometry.x(p.anchorU,p.anchorV)+(p.mirror?-dx-b.getWidth()*SCALE:dx),foot=HorrorCastleGeometry.y(p.anchorU,p.anchorV)+dy;
+   foreground.add(new TileDraw(b,x,foot-b.getHeight()*SCALE,foot,p.mirror));
+  }
   foreground.sort(Comparator.comparingDouble(a->a.depth));
  }
  private static boolean rendered(int i){return i>10012||i%10000>12;}
@@ -32,7 +39,7 @@ public final class HorrorCastleRenderer {
   for(int v=0;v<grid.height;v++)for(int u=0;u<grid.width;u++){float x=HorrorCastleGeometry.x(u,v)-32,y=HorrorCastleGeometry.y(u,v)-16;if(x+64<left||x>left+256||y+32<top||y>top+256)continue;Bitmap tile=floors.get(grid.value(u,v,0));if(tile!=null){dst.set(x-left,y-top,x-left+64,y-top+27*SCALE);out.drawBitmap(tile,null,dst,paint);}}
   b.prepareToDraw();chunks.put(key,b);if(chunks.size()>32){Iterator<Map.Entry<Long,Bitmap>> it=chunks.entrySet().iterator();it.next();it.remove();}return b;
  }
- private void tile(Canvas c,TileDraw t,float ox,float oy){if(t.x+t.image.getWidth()*SCALE<ox+clip.left||t.x>ox+clip.right||t.y+t.image.getHeight()*SCALE<oy+clip.top||t.y>oy+clip.bottom)return;dst.set(t.x-ox,t.y-oy,t.x-ox+t.image.getWidth()*SCALE,t.y-oy+t.image.getHeight()*SCALE);c.drawBitmap(t.image,null,dst,paint);}
+ private void tile(Canvas c,TileDraw t,float ox,float oy){if(t.x+t.image.getWidth()*SCALE<ox+clip.left||t.x>ox+clip.right||t.y+t.image.getHeight()*SCALE<oy+clip.top||t.y>oy+clip.bottom)return;dst.set(t.x-ox,t.y-oy,t.x-ox+t.image.getWidth()*SCALE,t.y-oy+t.image.getHeight()*SCALE);if(t.flip){c.save();c.scale(-1,1,dst.centerX(),dst.centerY());c.drawBitmap(t.image,null,dst,paint);c.restore();}else c.drawBitmap(t.image,null,dst,paint);}
  public void draw(Canvas c,WorldRuntimeAdapter world,List<PoteFieldRenderer.ActorDraw> input){String id=world.runtime().currentMapId();prepare(id);if(grid==null){legacy.draw(c,world,input);drawPortals(c,id,world.camera().cameraX(),world.camera().cameraY());drawCounter(c,world);return;}float ox=world.camera().cameraX(),oy=world.camera().cameraY();c.getClipBounds(clip);paint.setColor(Color.WHITE);paint.setAlpha(255);
   int minCx=(int)Math.floor((ox+clip.left)/256f),maxCx=(int)Math.floor((ox+clip.right)/256f),minCy=(int)Math.floor((oy+clip.top)/256f),maxCy=(int)Math.floor((oy+clip.bottom)/256f);
   for(int cy=minCy;cy<=maxCy;cy++)for(int cx=minCx;cx<=maxCx;cx++)c.drawBitmap(chunk(cx,cy),cx*256f-ox,cy*256f-oy,paint);

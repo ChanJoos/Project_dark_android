@@ -540,7 +540,7 @@ public final class GameView extends View {
   private final HorrorCastleTravel horrorTravel=new HorrorCastleTravel();
   private boolean checkHorrorGate(){HorrorCastleGeometry.Door d=horrorTravel.at(state);if(d==null)return false;
     if("MILLES".equals(d.destination)){leavePoteField();state.player().x=TownTravel.center(WorldDef.ID).x+32;state.player().y=TownTravel.center(WorldDef.ID).y+16;worldAdapter.snapCameraToPlayer();checkpoint();}
-    else{if(HorrorCastleGeometry.roomId(1).equals(d.destination)&&state.horror().clearedMask()==8191)state.horror().start();changeCampaignMap(d.destination,false);}return true;
+    else{if(HorrorCastleGeometry.roomId(1).equals(d.destination)&&state.horror().clearedMask()==((1<<HorrorCastleGeometry.ROOM_COUNT)-1))state.horror().start();changeCampaignMap(d.destination,false);}return true;
   }
   private boolean horrorExitDialogue(){return interaction.dialogNpc()!=null&&HorrorCastleTravel.EXIT_NPC.equals(interaction.dialogNpc().id);}
   private void drawHorrorExitDialogue(Canvas c){UiTheme.scrim(c);modalPanel(c,190,300,770,462);UiTheme.text(c,"호러캐슬 안내인",218,333,18,UiTheme.TEXT,true);drawWrappedText(c,"로비로 돌아가시겠습니까? 처치한 몬스터와 남은 체력은 유지됩니다.",218,372,510,13,19);UiTheme.button(c,new RectF(500,408,606,442),"로비로 나가기",true,false);UiTheme.button(c,new RectF(620,408,726,442),"계속 사냥",true,false);UiTheme.close(c,744,321);}

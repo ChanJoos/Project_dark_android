@@ -1,3 +1,10 @@
+horror_loop_v207:
+  status: IMPLEMENTED_VERIFICATION_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [docs/HUNT_MAP_PERFORMANCE_LESSONS.md, master/source/horror_v207/reference.json, master/changes/V207_HORROR_LOOP.json, master/source/horror_v180/map_sources.json, design/DATA_CONTRACT.md]
+
 mine_polish_v206:
   status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
   active_branch: codex/rucesion-coast-v157
