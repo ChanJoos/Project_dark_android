@@ -25,7 +25,7 @@ public final class MineTownGeometry {
   // Shore fronts carry native irregular rock groups; do not stamp a closed paving outline.
   for(int u=8;u<=55;u++)for(int v=8;v<=55;v++)if(tile(u,v)==1&&!bridge(u,v)){
    boolean shore=false;for(int[] d:new int[][]{{1,0},{-1,0},{0,1},{0,-1}})if(tile(u+d[0],v+d[1])==0)shore=true;
-   if(shore){int n=Math.floorMod(u*17+v*31,3);boolean front=tile(u+1,v)==0||tile(u,v+1)==0; p.add(new Prop(front?"shore"+n:"rock"+n,u,v,22,front?34:n==2?43:38,front?(n==1?50:n==2?47:49):44,front?53:n==2?49:44,true));}
+   if(shore){int seed=(u*73856093)^(v*19349663),n=Math.floorMod(seed,3);boolean front=tile(u+1,v)==0||tile(u,v+1)==0; p.add(new Prop(front?"shore"+n:"rock"+n,u,v,21+Math.floorMod(seed/3,3),(front?34:n==2?43:38)+Math.floorMod(seed/9,3)-1,front?(n==1?50:n==2?47:49):44,front?53:n==2?49:44,true));}
   }
   // Bridge rail collision is registered separately; the restored source bridge is drawn as a whole.
   for(int v=18;v<=25;v+=2)p.add(new Prop("cliff",10,v,90,130,175,141,true));
@@ -34,6 +34,8 @@ public final class MineTownGeometry {
   for(int[] uv:new int[][]{{16,20},{12,26},{27,18},{34,17},{27,48},{35,48},{16,46},{47,15}})p.add(new Prop("tree",uv[0],uv[1],30,128,62,131,true));
   for(int[] uv:new int[][]{{17,25},{25,24},{36,24},{49,23},{17,40},{28,42},{37,51},{50,47},{24,51},{49,13},{32,14},{13,49},{15,12}})p.add(new Prop("lamp",uv[0],uv[1],13,116,61,118,true));
   for(int[] uv:new int[][]{{35,21},{36,46},{16,16},{24,46},{15,28}})p.add(new Prop("bench",uv[0],uv[1],25,40,51,44,true));
+  // Small source-visible flower pots sit at facades, away from service approaches.
+  for(int[] uv:new int[][]{{18,19},{22,19},{40,21},{45,19},{40,48},{45,46},{18,48},{23,47}})p.add(new Prop("flowers",uv[0],uv[1],15,54,30,60,true));
   int i=0;for(int[] uv:new int[][]{{16,25},{19,25},{23,25},{26,24},{30,24},{34,24},{38,23},{42,23},{46,24},{49,23},{21,40},{24,41},{27,42},{31,42},{35,43},{39,46},{42,50},{46,50},{49,48},{16,44},{16,48},{23,50},{36,17},{39,18},{17,17},{23,20},{16,27}}){int n=i++%3;p.add(new Prop("paving"+n,uv[0],uv[1],n==0?34:n==1?35:26,n==0?20:n==1?23:17,n==0?69:n==1?71:52,n==0?40:n==1?46:34,false));}
   i=0;for(int[] uv:new int[][]{{12,30},{16,34},{26,31},{30,34},{35,30},{39,33},{50,31},{53,35},{13,6},{24,6},{38,6},{47,5},{57,16},{58,25},{58,42},{55,57},{43,58},{35,57},{22,58},{13,57},{6,47},{6,38},{6,26},{6,14},{31,11},{31,52}}){int n=i++%3;if(tile(uv[0],uv[1])==0)p.add(new Prop("riverrock"+n,uv[0],uv[1],n==0?24:19,24,n==0?49:n==1?38:41,n==0?38:n==1?31:30,false));}
   return Collections.unmodifiableList(p);
