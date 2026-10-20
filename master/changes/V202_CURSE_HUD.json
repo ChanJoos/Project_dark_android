@@ -1,13 +1,15 @@
 {
-  "status": "ACCEPTED_IMPLEMENTED_PENDING_NATIVE",
+  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
   "base": "15c6dd1d2cf9dd15b0042f625bb6b6e9eca0dbe0",
   "source": "USER_SCREENSHOTS_20261020_INLINE_1000060424_25_27_26",
   "evidence": "ADAPTED_USER_REFERENCE",
   "changes": [
-    "live active-world coordinate label; integer world units, not recovered original cell IDs",
-    "4colored reconstructed skulls; shared prewarmed12frame atlas",
-    "9single/screen curse presentation mappings, target-only real contact",
-    "bounded1024pulse retention fixes108recipient truncation"
+    "Live map title and integer world coordinates; real Milles walking midpoint, destination, Horror transition and wide HUD",
+    "All4 whole curses via normal learned quickslots with actual Horror furniture, exactly1 skull per visible living recipient",
+    "All4 whole curses108recipients each, hidden/dead excluded, duplicate contact consumption does not duplicate skulls",
+    "All6 single curses including clericBardo and DarknessMark via real Resolver contacts; HolyCure removes curse",
+    "4color shared12frame atlas3932160bytes, no per-monster image creation, real8captures visually reviewed",
+    "Existing221/141skill runtime, V201 screenmagic+damageaggro, presentation/contact/HUD/palette regressions"
   ],
   "unchanged": [
     "mechanics",
@@ -15,5 +17,7 @@
     "movement",
     "V201 screen visibility/LOS/aggro"
   ],
-  "phone": "PENDING"
+  "phone": "PENDING",
+  "art": "ADAPTED_USER_REFERENCE reconstruction based on4user screenshots; no source/captured image bytes shipped; DarknessMark reuses strongest red family as authored extension, original color not verified",
+  "verification": "verification/CURSE_HUD_V202_BUILD.json"
 }

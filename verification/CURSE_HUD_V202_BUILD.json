@@ -1,0 +1,120 @@
+{
+  "version": "V202",
+  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "source": "0f884d1301af0b9f9ed2eb20dde9f9814354a15b",
+  "run": 39389225961,
+  "artifact": 12248094712,
+  "artifactBytes": 92024516,
+  "builtAtKST": "2026-10-20T16:54:43.680085+09:00",
+  "apkBytes": 85467757,
+  "apkSha256": "2f547190ab675dd4faa57ad1297796f8177bc2c8c5422e341dde6a7971dac294",
+  "identity": {
+    "sourceCommit": "0f884d1301af0b9f9ed2eb20dde9f9814354a15b",
+    "runId": "39389225961",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "total": {
+    "tests": 48,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "suite": "com.projectdark.mobile.AllSkillRuntimeV138Test",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.CurseHudV202Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MonsterCurseV162Test",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.ScreenMagicV201Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillPresentationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "checks": [
+    "Live map title and integer world coordinates; real Milles walking midpoint, destination, Horror transition and wide HUD",
+    "All4 whole curses via normal learned quickslots with actual Horror furniture, exactly1 skull per visible living recipient",
+    "All4 whole curses108recipients each, hidden/dead excluded, duplicate contact consumption does not duplicate skulls",
+    "All6 single curses including clericBardo and DarknessMark via real Resolver contacts; HolyCure removes curse",
+    "4color shared12frame atlas3932160bytes, no per-monster image creation, real8captures visually reviewed",
+    "Existing221/141skill runtime, V201 screenmagic+damageaggro, presentation/contact/HUD/palette regressions"
+  ],
+  "coordinates": "Current project integer world units from active presentation position, not recovered original map cell IDs",
+  "art": "ADAPTED_USER_REFERENCE reconstruction based on4user screenshots; no source/captured image bytes shipped; DarknessMark reuses strongest red family as authored extension, original color not verified",
+  "pulseLimit": 1024,
+  "unchanged": [
+    "mechanics",
+    "existing asset bytes",
+    "movement",
+    "V201 viewport/LOS/aggro"
+  ],
+  "verificationLimits": [
+    "Host native Robolectric sdk34; no physical handset acceptance or FPS proof",
+    "Internal184/1.84 labels and legacy workflow build_evidence.scope retained; this receipt is actual task scope",
+    "Prior partial items/maps limitations remain"
+  ],
+  "commonCI": [
+    {
+      "id": 39389231307,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 39389226100,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 39389225961,
+      "name": "V184 Horror portals (focused native + APK)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "delivery": {
+    "file": "PROJECT_DARK_V202_TEST.apk",
+    "persistentCopy": "FAILED_HTTP403 current prepared helper tools/list. Local verified APK and exact GitHub artifact retained."
+  }
+}
