@@ -1,5 +1,5 @@
 {
-  "status": "ACCEPTED_USER_INSTRUCTION_IMPLEMENTED_PENDING_VALIDATION",
+  "status": "HOST_NATIVE_VERIFIED_PHONE_PENDING",
   "report": "DEVICE_FAILED_USER_REPORTED",
   "reportedSource": "d3695a9bd388028d2dab62cb8e5c60eb48e106d8",
   "evidence": "User20261019 19:34KST inline original photos1000060384/385/386/387; original map6002/6003/6801 and panels from source6401..6411",
@@ -40,5 +40,64 @@
   "unresolved": [
     "exact source maps12/13",
     "full original warp-table parity"
-  ]
+  ],
+  "validation": {
+    "build": {
+      "sourceCommit": "6d21a7c394a1c55dd6c343aead42df4123c445cc",
+      "runId": "39240728126",
+      "builtAtKST": "2026-10-19T19:57:30.932069+09:00",
+      "apkSha256": "f75066816ebe8b7d0ca5fb6aa3ef396bf5cd7c8d20ba365021f2d4b97cb7bbed",
+      "apkBytes": 85463945,
+      "identity": {
+        "sourceCommit": "6d21a7c394a1c55dd6c343aead42df4123c445cc",
+        "runId": "39240728126",
+        "versionCode": 184,
+        "versionName": "1.84-mobile-horror"
+      },
+      "scope": "Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending"
+    },
+    "counts": {
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      "com.projectdark.mobile.HorrorCastleMobileV183Test",
+      "com.projectdark.mobile.HorrorCastleV179Test",
+      "com.projectdark.mobile.HorrorDoorsV200Test"
+    ],
+    "archiveSHA256": "2e75cba0082746d1c709265476c92956f1541fbac8b73dcd4122669e2abe0c5b",
+    "artifactId": 12181800732,
+    "commonRuns": {
+      "39240737110": "SUCCESS",
+      "39240728266": "SUCCESS"
+    },
+    "status": "HOST_NATIVE_VERIFIED_PHONE_PENDING",
+    "testedScope": "Lobby5/5/1/1 gates and corridor4 returns; native door entry/exit without rings; every13room navigation and adjacent-floor nonactivation;960/1280wide horizontal counter; original13room progression/save/norespawn and12trip cache bounds.",
+    "scopeWarning": "Original build_evidence.scope retains obsolete historical shifted-return wording; executed scope is the three JUnit suites recorded here.",
+    "sourceAssets": "No asset/source-byte files changed in Git comparison fa692546..6d21a7c.",
+    "visualReview": {
+      "availableCaptures": 37,
+      "reviewed": [
+        "lobby-0",
+        "lobby-5",
+        "room-door-8",
+        "room-door-12",
+        "counter-1280"
+      ],
+      "status": "HOST_NATIVE_IMAGES_REVIEWED_NOT_USER_VISUAL_ACCEPTED",
+      "limits": [
+        "12/13 remain explicit unverified legacy layouts",
+        "Manual threshold projection; original warp table not recovered",
+        "Phone movement/FPS/visual acceptance pending"
+      ]
+    },
+    "library": {
+      "file_id": "file_000000009fdc81f590ab3260b8c29392",
+      "library_file_id": "libfile_4d39430486808191bc0676a5e54c5a7e",
+      "filename": "PROJECT_DARK_V200_TEST.apk"
+    },
+    "testHarnessCorrections": "Repeated room reentry restores inPoteField; screenshots move only camera rather than snapCameraToPlayer (which may reposition player for live actor occupancy). Assertions retained; every13room real navigation added. Initial failed candidate runs were not delivered."
+  }
 }
