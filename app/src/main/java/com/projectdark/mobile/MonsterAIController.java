@@ -126,7 +126,7 @@ public final class MonsterAIController {
       if(tile.retreatSteps<2&&!state.skillEffects().rooted(m.id)){tile.stepClock+=dt;if(tile.stepClock<MONSTER_STEP_SECONDS_B)return;tile.resetClock();WorldMoveTargetController.Direction best=null;double away=distance;for(WorldMoveTargetController.Direction d:WorldMoveTargetController.Direction.values()){double n=Math.hypot(m.x+d.dx-state.player().x,m.y+d.dy-state.player().y);if(n>away&&state.tryMoveMonster(m,d.dx,d.dy,MonsterTileCenterLocomotion.STEP_DISTANCE)){best=d;break;}}tile.retreatSteps++;if(best!=null)return;}
       if(m.attackCooldown<=0)lastSubmission=attackRouter.submitAction(state,m,++submissionSequence,"MONSTER_RECOVER");return;
     }
-    if(distance>CHASE_RADIUS_B&&!state.skillEffects().has(m.id,"TAUNT")){tile.resetClock();return;}
+    if(distance>CHASE_RADIUS_B&&!m.provoked&&!state.skillEffects().has(m.id,"TAUNT")){tile.resetClock();return;}
     if(m.attackCooldown<=0&&tile.spellClock>=7&&!p.spell.isEmpty()&&distance<=p.range&&m.mp>=8){lastSubmission=attackRouter.submitAction(state,m,++submissionSequence,p.spell);if(lastSubmission.outcome==SubmissionOutcome.ACCEPTED){tile.spellClock=0;return;}}
     if(near){tile.resetClock();if(m.attackCooldown<=0)lastSubmission=attackRouter.submitAction(state,m,++submissionSequence,RuntimeCombatSession.MONSTER_BASIC_ACTION_ID);return;}
     if(state.skillEffects().rooted(m.id))return;tile.stepClock+=Math.max(0,dt);if(tile.stepClock<MONSTER_STEP_SECONDS_B)return;tile.stepClock-=MONSTER_STEP_SECONDS_B;WorldMoveTargetController.Direction d=state.nextMonsterChaseStep(m,state.player().x,state.player().y);if(d!=null&&state.tryMoveMonster(m,d.dx,d.dy,MonsterTileCenterLocomotion.STEP_DISTANCE))m.state=RuntimeState.Monster.State.CHASE;
@@ -154,7 +154,7 @@ public final class MonsterAIController {
     // Let the hit frame submit first; only pause pursuit while the attack recovery is still visible.
     if(m.attackVisualRemaining>0f){tile.resetClock();return;}
 
-    if((taunted||d<CHASE_RADIUS_B)&&!meleeAdjacent&&!state.skillEffects().rooted(m.id)){
+    if((taunted||m.provoked||d<CHASE_RADIUS_B)&&!meleeAdjacent&&!state.skillEffects().rooted(m.id)){
       tile.stepClock+=Math.max(0f,dt);
       if(tile.stepClock+.00001f<MONSTER_STEP_SECONDS_B)return;
       tile.stepClock-=MONSTER_STEP_SECONDS_B;

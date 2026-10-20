@@ -78,7 +78,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     float tx=t.x,ty=t.y;float[] intent=directions.get(actor+":"+action);
     if(intent==null&&MartialSkillPolicy.LINE.equals(action)&&(playerFacing!=null||actor.equals(target)))intent=MartialSkillPolicy.step(facing());
     if(intent!=null&&(r.pattern==SkillActionContract.Pattern.FRONT||r.pattern==SkillActionContract.Pattern.FRONT_BACK)){tx=a.x+intent[0];ty=a.y+intent[1];}
-    for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,tx,ty,m.x,m.y,true)&&hasLineOfSight(actor,m.id))out.add(m.id);
+    for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,tx,ty,m.x,m.y,true)&&hasActionLineOfSight(actor,m.id,action))out.add(m.id);
     return out;
   }
 
@@ -129,6 +129,11 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public boolean hasLineOfSight(String actorId,String targetId){return actorId.equals(targetId)||lineOfSight.hasLineOfSight(actorId,targetId);}
+  /** Screen spells are viewport effects, not rays through terrain; physical and targeted actions retain LOS. */
+  public boolean hasActionLineOfSight(String actor,String target,String action){
+    SkillActionContract.Rule r=SkillActionContract.get(action);
+    return "player".equals(actor)&&r!=null&&r.pattern==SkillActionContract.Pattern.SCREEN&&"마법".equals(r.kind)||hasLineOfSight(actor,target);
+  }
 
   public void consumeResource(String actorId,int amount){
     if(abilities.testMode&&"player".equals(actorId)||amount<=0)return;

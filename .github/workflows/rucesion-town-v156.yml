@@ -133,6 +133,15 @@ jobs:
               esac
             done < <(git diff --name-only fa692546d720fde62c45914f763c1805b60b6849 HEAD)
             gradle :app:testDebugUnitTest --tests '*HorrorCastleV179Test' --tests '*HorrorCastleMobileV183Test' --tests '*HorrorDoorsV200Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[screen-magic-only]"* ]]; then
+            git fetch --depth=1 origin 77596336f9e6c843a2b071b23a5d7511e08acf0c
+            while IFS= read -r changed; do
+              case "$changed" in
+                app/src/main/java/com/projectdark/mobile/CombatResolver.java|app/src/main/java/com/projectdark/mobile/RuntimeCombatPortAdapter.java|app/src/main/java/com/projectdark/mobile/RuntimeCombatSession.java|app/src/main/java/com/projectdark/mobile/RuntimeState.java|app/src/main/java/com/projectdark/mobile/MonsterAIController.java|app/src/main/java/com/projectdark/mobile/SkillAbilityExecutor.java|app/src/main/java/com/projectdark/mobile/GameView.java|app/src/test/java/com/projectdark/mobile/ScreenMagicV201Test.java|.github/workflows/rucesion-town-v156.yml|docs/*|master/MASTER_MANIFEST.md|master/changes/V201_SCREEN_MAGIC_AGGRO.json) ;;
+                *) echo "Unexpected change in screen-magic scope: $changed"; exit 1 ;;
+              esac
+            done < <(git diff --name-only 77596336f9e6c843a2b071b23a5d7511e08acf0c HEAD)
+            gradle :app:testDebugUnitTest --tests '*ScreenMagicV201Test' --tests '*SkillSpatialContractTest' --tests '*AllSkillRuntimeV138Test' --tests '*SkillAbilityRuntimeTest' --tests '*PoteMonsterPlayableRuntimeTest' --tests '*MonsterChasePerformanceTest' --tests '*AbelCombatV153Test' --tests '*SkillContactRegressionTest' --tests '*HorrorCastleMobileV183Test' :app:assembleDebug --stacktrace
           else
             gradle :app:testDebugUnitTest --tests '*HorrorCastleMobileV183Test' --tests '*HorrorEquipmentV184Test' --tests '*LinkedItemCatalogV185Test' --tests '*LinkedClothingV186Test' --tests '*LinkedFoodV187Test' --tests '*SparseWeaponV188Test' --tests '*LinkedAccessoryV189Test' --tests '*MaleVillageClothingV190Test' --tests '*LinkedBeltV191Test' --tests '*FemaleVillageClothingV192Test' --tests '*LinkedAccessoryV193Test' --tests '*LinkedStaffV194Test' --tests '*RecoveredWeaponV195Test' --tests '*ExpandedVillageClothingV197Test' --tests '*InventoryFeedbackV199Test' --tests '*RapidSourceV198Test' --tests '*ItemWindowReferenceTest' --tests '*AccessoryCatalogV125Test' --tests '*LeapPlacementV184Test' --tests '*HorrorCastleV179Test' --tests '*SkillPresentationTest' --tests '*Martial*Test' :app:assembleDebug --stacktrace
           fi

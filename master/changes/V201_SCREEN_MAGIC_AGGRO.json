@@ -1,0 +1,18 @@
+{
+  "status": "ACCEPTED_USER_INSTRUCTION_IMPLEMENTED_PENDING_NATIVE",
+  "reported": "DEVICE_FAILED_USER_REPORTED",
+  "reportedAPK": "not explicitly identified; latest delivered6d21a7c",
+  "base": "77596336f9e6c843a2b071b23a5d7511e08acf0c",
+  "wholeScreenPolicy": "11 SCREEN magic IDs:7damage+4curse; ignore terrain ray only, current viewport/live recipients at contact",
+  "aggro": "Positive shared damage provokes surviving actors beyond passive range; collision and controls preserved; transient actor-life flag cleared by reset/death/respawn/player death.",
+  "unchanged": [
+    "assets",
+    "populations",
+    "rewards",
+    "MP/HP formulas",
+    "cast timings",
+    "single/physical LOS",
+    "path index/live collisions"
+  ],
+  "phone": "PENDING"
+}
