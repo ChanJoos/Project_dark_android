@@ -13,7 +13,7 @@ public final class MineHuntRenderer {
  private final LinkedHashMap<Long,Bitmap> chunks=new LinkedHashMap<>(32,.75f,true);
  private final List<Piece> foreground=new ArrayList<>();private final List<PoteFieldRenderer.ActorDraw> actors=new ArrayList<>();
  private final Bitmap[][] sheets=new Bitmap[4][MineHuntMonsters.COUNT];private final int[] widths=new int[MineHuntMonsters.COUNT],heights=new int[MineHuntMonsters.COUNT],ax=new int[MineHuntMonsters.COUNT],ay=new int[MineHuntMonsters.COUNT],idle=new int[MineHuntMonsters.COUNT],walk=new int[MineHuntMonsters.COUNT],attack=new int[MineHuntMonsters.COUNT];
- private Bitmap portal;private boolean ready;private int builds;
+ private Bitmap portal;private boolean ready;private int builds,fadedPieces;private float playerX,playerY;
  private static final class Piece {final Bitmap image;final float x,y,depth;Piece(Bitmap b,float x,float y,float d){image=b;this.x=x;this.y=y;depth=d;}}
  public MineHuntRenderer(Context c){context=c;p.setFilterBitmap(false);}
  private Bitmap load(String n){try(InputStream in=context.getAssets().open("mine-hunt-v208/"+n+".png")){BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;Bitmap b=BitmapFactory.decodeStream(in,null,o);if(b==null)throw new IOException(n);b.prepareToDraw();return b;}catch(Exception e){throw new IllegalStateException("Missing original Mine asset "+n,e);}}
@@ -22,13 +22,16 @@ public final class MineHuntRenderer {
   foreground.sort(Comparator.comparingDouble(a->a.depth));try(InputStream in=context.getAssets().open("assets/world/portal/portal_reagent_shop.webp")){portal=BitmapFactory.decodeStream(in);}catch(Exception e){throw new IllegalStateException(e);}ready=true;
  }
  public void release(){chunks.clear();floors.clear();objects.clear();foreground.clear();actors.clear();for(Bitmap[] state:sheets)Arrays.fill(state,null);portal=null;ready=false;}
- public int floorBuilds(){return builds;}public int floorEntries(){return chunks.size();}public long floorBytes(){long n=0;for(Bitmap b:chunks.values())n+=b.getAllocationByteCount();return n;}public long atlasBytes(){long n=0;for(Bitmap[] state:sheets)for(Bitmap b:state)if(b!=null)n+=b.getAllocationByteCount();return n;}
+ public int fadedPieces(){return fadedPieces;}public int floorBuilds(){return builds;}public int floorEntries(){return chunks.size();}public long floorBytes(){long n=0;for(Bitmap b:chunks.values())n+=b.getAllocationByteCount();return n;}public long atlasBytes(){long n=0;for(Bitmap[] state:sheets)for(Bitmap b:state)if(b!=null)n+=b.getAllocationByteCount();return n;}
  private Bitmap chunk(int cx,int cy){long key=((long)cx<<32)^(cy&0xffffffffL);Bitmap cached=chunks.get(key);if(cached!=null)return cached;Bitmap b=Bitmap.createBitmap(256,256,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(b);c.drawColor(Color.BLACK);float left=cx*256f,top=cy*256f;HorrorCastleOriginalData.Grid g=MineHuntGeometry.grid();
   for(int v=0;v<g.height;v++)for(int u=0;u<g.width;u++){float x=MineHuntGeometry.x(u,v)-32,y=MineHuntGeometry.y(u,v)-16;if(x+64<left||x>left+256||y+32<top||y>top+256)continue;Bitmap tile=floors.get(g.value(u,v,0));if(tile!=null){dst.set(x-left,y-top,x-left+64,y-top+27*SCALE);c.drawBitmap(tile,null,dst,p);}}
   b.prepareToDraw();chunks.put(key,b);builds++;if(chunks.size()>32){Iterator<Long> it=chunks.keySet().iterator();it.next();it.remove();}return b;
  }
- private void piece(Canvas c,Piece a,float ox,float oy){float w=a.image.getWidth()*SCALE,h=a.image.getHeight()*SCALE;if(a.x+w<ox+clip.left||a.x>ox+clip.right||a.y+h<oy+clip.top||a.y>oy+clip.bottom)return;dst.set(a.x-ox,a.y-oy,a.x-ox+w,a.y-oy+h);c.drawBitmap(a.image,null,dst,p);}
- public void draw(Canvas c,WorldRuntimeAdapter world,List<PoteFieldRenderer.ActorDraw> input){prepare();float ox=world.camera().cameraX(),oy=world.camera().cameraY();c.getClipBounds(clip);p.setColorFilter(null);p.setAlpha(255);for(int cy=(int)Math.floor((oy+clip.top)/256f);cy<=Math.floor((oy+clip.bottom)/256f);cy++)for(int cx=(int)Math.floor((ox+clip.left)/256f);cx<=Math.floor((ox+clip.right)/256f);cx++)c.drawBitmap(chunk(cx,cy),cx*256f-ox,cy*256f-oy,p);
+ private void piece(Canvas c,Piece a,float ox,float oy){float w=a.image.getWidth()*SCALE,h=a.image.getHeight()*SCALE;if(a.x+w<ox+clip.left||a.x>ox+clip.right||a.y+h<oy+clip.top||a.y>oy+clip.bottom)return;dst.set(a.x-ox,a.y-oy,a.x-ox+w,a.y-oy+h);
+  // Original entrance footage shows the player through the near wall. Fade only occluding tall foreground.
+  boolean occludes=a.image.getHeight()>=48&&a.depth>playerY+2&&a.depth-playerY<150&&playerX>=a.x-12&&playerX<=a.x+w+12&&playerY-40>a.y;
+  p.setAlpha(occludes?108:255);if(occludes)fadedPieces++;c.drawBitmap(a.image,null,dst,p);p.setAlpha(255);}
+ public void draw(Canvas c,WorldRuntimeAdapter world,List<PoteFieldRenderer.ActorDraw> input){prepare();fadedPieces=0;playerX=world.presentationPlayerX();playerY=world.presentationPlayerY();float ox=world.camera().cameraX(),oy=world.camera().cameraY();c.getClipBounds(clip);p.setColorFilter(null);p.setAlpha(255);for(int cy=(int)Math.floor((oy+clip.top)/256f);cy<=Math.floor((oy+clip.bottom)/256f);cy++)for(int cx=(int)Math.floor((ox+clip.left)/256f);cx<=Math.floor((ox+clip.right)/256f);cx++)c.drawBitmap(chunk(cx,cy),cx*256f-ox,cy*256f-oy,p);
   WorldMoveTargetController.TileCenter e=MineHuntGeometry.exit();dst.set(e.x-24-ox,e.y-15-oy,e.x+24-ox,e.y+9-oy);c.drawBitmap(portal,null,dst,p);
   actors.clear();actors.addAll(input);actors.sort(Comparator.comparingDouble(a->a.y));int i=0;for(PoteFieldRenderer.ActorDraw actor:actors){while(i<foreground.size()&&foreground.get(i).depth<=actor.y)piece(c,foreground.get(i++),ox,oy);actor.draw.run();}while(i<foreground.size())piece(c,foreground.get(i++),ox,oy);actors.clear();
  }

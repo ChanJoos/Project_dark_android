@@ -7,7 +7,7 @@ import org.robolectric.*;import org.robolectric.annotation.*;
 import static org.junit.Assert.*;
 @RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE) @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public class WeaponIconsV209Test {
- Context c;@Before public void setup(){c=RuntimeEnvironment.getApplication();new MineTownV203Test().reset();}
+ Context c;MineTownV203Test fixture;@Before public void setup(){c=RuntimeEnvironment.getApplication();fixture=new MineTownV203Test();fixture.reset();}
  @Test public void everyRegisteredWeaponUsesDiagonalSharedProjectionIncludingStaves()throws Exception{
   RpgProgressionState r=new RpgProgressionState();SourceItemIconRegistry icons=new SourceItemIconRegistry(c);int count=0,elongated=0;List<String> audit=new ArrayList<>();Bitmap gallery=Bitmap.createBitmap(960,1800,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(gallery);canvas.drawColor(0xff302820);Paint p=new Paint();
   for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if("무기".equals(d.equipSlot)){
@@ -17,8 +17,8 @@ public class WeaponIconsV209Test {
   }assertTrue(count>100);assertTrue("swords and staff long axes",elongated>30);save(gallery,"all-weapons");File f=new File("build/reports/horror-v179/v209-weapon-axis.csv");try(PrintWriter out=new PrintWriter(f)){out.println("itemId,name,axisDegrees,elongation");for(String row:audit)out.println(row);}
  }
  @Test public void actualGameViewInventoryAndEquipmentCallbacksDrawIdenticalWeaponPixels()throws Exception{
-  GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=MineTownV203Test.field(v,"state");s.rpg().enableEquipmentSandbox(true);Map<String,Integer> owned=new LinkedHashMap<>();for(String id:new String[]{"IT_ADAPTED_PLAYTEST_MOKDO","IT_B_JOB_CLERIC_WAND","USER_ITEM_20261018_R05502","USER_ITEM_20261018_R01533"})owned.put(id,1);assertTrue(s.rpg().restoreOwnedItems(owned,Collections.emptyMap()));
-  ItemWindow.Visuals visuals=MineTownV203Test.field(v,"itemWindowVisuals");int n=0;Bitmap comparison=Bitmap.createBitmap(320,160,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(comparison);
+  GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=fixture.field(v,"state");s.rpg().enableEquipmentSandbox(true);Map<String,Integer> owned=new LinkedHashMap<>();for(String id:new String[]{"IT_ADAPTED_PLAYTEST_MOKDO","IT_B_JOB_CLERIC_WAND","USER_ITEM_20261018_R05502","USER_ITEM_20261018_R01533"})owned.put(id,1);assertTrue(s.rpg().restoreOwnedItems(owned,Collections.emptyMap()));
+  ItemWindow.Visuals visuals=fixture.field(v,"itemWindowVisuals");int n=0;Bitmap comparison=Bitmap.createBitmap(320,160,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(comparison);
   for(RpgInventoryPresentation.ItemRow row:new RpgInventoryPresentation().inventoryRows(s.rpg())){
    Bitmap bag=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888),gear=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888);visuals.icon(new Canvas(bag),row,0,0,40);visuals.equipmentIcon(new Canvas(gear),row,"무기",0,0,40);assertTrue(row.name,bag.sameAs(gear));out.drawBitmap(bag,n*80,0,null);out.drawBitmap(gear,n*80,80,null);n++;
   }assertEquals(4,n);save(comparison,"bag-equipment-same-icons");

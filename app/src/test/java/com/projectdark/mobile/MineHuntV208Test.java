@@ -55,6 +55,8 @@ public class MineHuntV208Test {
  }
  @Test public void actualSourceLandmarksAndTwelveRoundTripsKeepWarmFloorBounded()throws Exception{
   GameView v=enter();RuntimeState s=f.field(v,"state");WorldRuntimeAdapter w=f.field(v,"poteFieldAdapter");MineHuntRenderer renderer=f.field(v,"mineHuntRenderer");
+  // Fixed terrain/HUD coordinates must not be nudged by randomly spawned live actors.
+  for(RuntimeState.Monster m:s.monsters())m.alive=false;
   for(int[] uv:new int[][]{{87,37},{35,76},{78,82},{102,76},{112,78}}){WorldMoveTargetController.TileCenter t=CampaignWorld.nearestConnectedTile(MineHuntGeometry.ID,MineHuntGeometry.x(uv[0],uv[1]),MineHuntGeometry.y(uv[0],uv[1]));s.player().x=t.x;s.player().y=t.y;w.snapCameraToPlayer();assertEquals("카스마늄제1·3갱도 ("+uv[0]+","+uv[1]+")",f.call(v,"currentMapLocation",new Class<?>[]{}));f.shot(v,"v208-original-"+uv[0]+"-"+uv[1]);}
   Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);for(int i=0;i<12;i++){v.draw(new Canvas(frame));int builds=renderer.floorBuilds();v.draw(new Canvas(frame));assertEquals(builds,renderer.floorBuilds());assertTrue(renderer.floorEntries()<=32);assertTrue(renderer.floorBytes()<=8652800L);f.call(v,"travelTown",new Class<?>[]{String.class},MineTownGeometry.ID);assertEquals(0,renderer.floorEntries());assertEquals(0,renderer.atlasBytes());f.call(v,"changeCampaignMap",new Class<?>[]{String.class,boolean.class},MineHuntGeometry.ID,false);renderer=f.field(v,"mineHuntRenderer");}frame.recycle();
  }

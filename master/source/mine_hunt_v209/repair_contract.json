@@ -17,7 +17,7 @@
   },
   "casterPriestRobePolicy": "Same original robe silhouette exists as mage/priest equipment; both robed casters award both registered robe families as explicit mobile policy. Exact original priest drop association remains unverified, no invented priest sprite is added.",
   "weaponPolicy": "Shared32px NE diagonal display projection from existing retained source alpha, nearest sampling; source files/hashes and actor weapons unchanged. Same bitmap and draw path in actual inventory/equipment callbacks.",
-  "mapChanges": "Original-cell minimap; arrival12,34 and return13,35 at observed entrance notch; initial species visible around entrance; title follows recorded 카스마늄제1·3갱도. Raw150x102cells unchanged.",
+  "mapChanges": "Original-cell minimap; arrival12,34 and return13,35 at observed entrance notch; initial species visible around entrance; title follows recorded 카스마늄제1·3갱도. Raw150x102cells unchanged. Tall foreground that obscures the player fades at the entrance, as observed at recording28sec. Collision, source alpha and all source bytes remain unchanged.",
   "mapAudit": "31/32four-second samples match source foreground landmarks; one HUD OCR unresolved. Does not prove unseen complete current-server map.",
   "fullYoutube": "Metadata932seconds recovered;720p/360p/storyboard media returned195-byte SiteUnavailable HTML; never treated as decoded video.",
   "referencePhotos": [
