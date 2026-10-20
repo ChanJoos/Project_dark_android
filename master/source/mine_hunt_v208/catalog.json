@@ -1,0 +1,214 @@
+{
+  "revision": "MINE_HUNT_V208_SOURCE_STAGE",
+  "status": "PARTIAL_SOURCE_ONLY_NOT_PLAYABLE",
+  "evidence": {
+    "armorPhoto": {
+      "filename": "01-1000060380.jpg",
+      "sha256": "54e0d9c4e2e4ea1ba19b06fc65aab310a34f764782870868309616bf2f524a92",
+      "type": "U"
+    },
+    "itemMaster": {
+      "path": "master/canonical/User_Item_Master_20261018.json",
+      "sha256": "51446a746af625f932bd78941c1326dbd941e58f722a49c5a9e6fe47735ac2c8",
+      "type": "U"
+    }
+  },
+  "items": [
+    {
+      "itemId": "USER_ITEM_20261018_R01482",
+      "name": "헬프리스트로브",
+      "job": "성직자",
+      "sourceRow": 1482,
+      "weight": 10,
+      "durability": 7500,
+      "requiredLevel": 99,
+      "stats": {
+        "AC": -51,
+        "MP": -500,
+        "WIS": -2
+      },
+      "photoFields": [
+        "weight",
+        "durability",
+        "AC",
+        "MP",
+        "WIS"
+      ],
+      "sexStatPolicy": "SAME_STATS_USER_CONFIRMED",
+      "runtimeAdmission": "PENDING_ORIGINAL_APPEARANCE_BINDING",
+      "monsterBindings": [],
+      "dropProbability": null
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01486",
+      "name": "헬씨프아머",
+      "job": "도적",
+      "sourceRow": 1486,
+      "weight": 12,
+      "durability": 7500,
+      "requiredLevel": 99,
+      "stats": {
+        "AC": -57,
+        "HIT": 10,
+        "DAM": 1,
+        "HP": -900,
+        "DEX": -2
+      },
+      "photoFields": [
+        "weight",
+        "durability",
+        "HIT",
+        "DAM",
+        "HP",
+        "DEX"
+      ],
+      "sexStatPolicy": "SAME_STATS_USER_CONFIRMED",
+      "runtimeAdmission": "PENDING_ORIGINAL_APPEARANCE_BINDING",
+      "monsterBindings": [],
+      "dropProbability": null
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01489",
+      "name": "헬소서러로브",
+      "job": "마법사",
+      "sourceRow": 1489,
+      "weight": 7,
+      "durability": 7500,
+      "requiredLevel": 99,
+      "stats": {
+        "AC": -48,
+        "MP": -500,
+        "INT": -2
+      },
+      "photoFields": [
+        "weight",
+        "durability",
+        "AC",
+        "MP",
+        "INT"
+      ],
+      "sexStatPolicy": "SAME_STATS_USER_CONFIRMED",
+      "runtimeAdmission": "EXISTING",
+      "monsterBindings": [],
+      "dropProbability": null
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01490",
+      "name": "헬몽크아머",
+      "job": "무도가",
+      "sourceRow": 1490,
+      "weight": 10,
+      "durability": 7500,
+      "requiredLevel": 99,
+      "stats": {
+        "AC": -57,
+        "HIT": 5,
+        "DAM": 1,
+        "HP": -500,
+        "MP": -250,
+        "CON": -2
+      },
+      "photoFields": [
+        "weight",
+        "durability",
+        "AC",
+        "HIT",
+        "DAM",
+        "HP",
+        "MP",
+        "CON"
+      ],
+      "sexStatPolicy": "SAME_STATS_USER_CONFIRMED",
+      "runtimeAdmission": "EXISTING",
+      "monsterBindings": [],
+      "dropProbability": null
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01494",
+      "name": "헬나이트아머",
+      "job": "전사",
+      "sourceRow": 1494,
+      "weight": 17,
+      "durability": 12000,
+      "requiredLevel": 99,
+      "stats": {
+        "AC": -68,
+        "HIT": 5,
+        "DAM": 2,
+        "HP": -900,
+        "STR": -2
+      },
+      "photoFields": [
+        "weight",
+        "durability",
+        "AC",
+        "HIT",
+        "DAM",
+        "HP",
+        "STR"
+      ],
+      "sexStatPolicy": "SAME_STATS_USER_CONFIRMED",
+      "runtimeAdmission": "EXISTING",
+      "monsterBindings": [],
+      "dropProbability": null
+    }
+  ],
+  "requestedMap": {
+    "shape": "SQUARE",
+    "shapeEvidence": "U",
+    "width": null,
+    "height": null,
+    "tiles": null,
+    "collision": null,
+    "entryNpc": "mine_town_travel",
+    "entryStatus": "REQUESTED_NOT_WIRED",
+    "roster": null,
+    "originalParity": "UNVERIFIED_MISSING_VIDEO"
+  },
+  "rewardPolicy": {
+    "delivery": "MONSTER_DEFEATED -> shared resolution -> inventory",
+    "groundDrops": false,
+    "equipmentAssociation": "ONLY_CONFIRMED_WORN_EQUIPMENT",
+    "dropProbability": null,
+    "experience": null,
+    "gold": null,
+    "relativeBalance": "USER_REQUESTED_HIGHEST_EXISTING_HUNT_REWARDS_FOR_PROMOTED_PLAYERS",
+    "numericBalanceEvidence": "PENDING_EXPLICIT_MOBILE_BALANCE_NOT_ORIGINAL"
+  },
+  "research": [
+    {
+      "url": "https://lod.nexon.com/news/notice/1188",
+      "type": "O",
+      "date": "2004-12-08",
+      "finding": "Two mine entrances, each with three tunnels; tunnel3 replaces old floor29 and contains Hell monsters. Does not establish this requested map layout or exact combat stats."
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/1915",
+      "type": "FAN",
+      "date": "2006-03-04",
+      "finding": "Corroborates thief armor AC -57; community equipment reference, not monster HP or magic table."
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/7485",
+      "type": "FAN",
+      "date": "2021-08-23",
+      "finding": "Distinguishes tunnel mines, old mine, infinite event mine and Mine A. Do not combine versions."
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/7056",
+      "type": "FAN",
+      "finding": "Quick dungeon player brackets and rewards; excluded from original mine combat and XP data."
+    },
+    {
+      "url": "https://lod.nexon.com/board/1493172227/906",
+      "type": "FAN",
+      "date": "2005-08-25",
+      "finding": "Reports Hell Blue Knight on floor29 drops high brazyl battle axe; candidate association, not confirmation of requested video roster."
+    }
+  ],
+  "blocked": [
+    "Requested mine recording Screen_Recording_20261020_221456_YouTube.mp4 unavailable locally; roster/geometry cannot be inspected.",
+    "Per-species HP, physical attack, magic, defense, elements, original rewards and drop chances unresolved.",
+    "Original monster atlas identities/frame registrations unresolved; wearable atlases are not monster atlases."
+  ]
+}
