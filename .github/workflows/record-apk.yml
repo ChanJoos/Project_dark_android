@@ -1,0 +1,101 @@
+name: Record installed APK
+on:
+  push:
+    branches: [dot/apk-recording-20261020]
+    paths: ['.github/workflows/record-apk.yml']
+permissions:
+  contents: read
+  actions: read
+jobs:
+  record:
+    runs-on: ubuntu-24.04
+    timeout-minutes: 25
+    env:
+      SOURCE_RUN: '39422054821'
+      SOURCE_SHA: '558cb267c403d2c4524a5e07b77aa95934403a16'
+      SOURCE_ARTIFACT: '12265010849'
+      APK_SHA256: '0bfd6fdf1c6199a4e45267600dec789844c1a15c4ba529069a96989d15c620f5'
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+    steps:
+      - name: Validate source run before downloading its APK
+        run: |
+          mkdir -p evidence input
+          gh api "repos/$GH_REPO/actions/runs/$SOURCE_RUN" > evidence/source-run.json
+          python3 - <<'PY'
+          import json, os
+          r=json.load(open('evidence/source-run.json'))
+          assert r['head_sha']==os.environ['SOURCE_SHA']
+          assert r['status']=='completed' and r['conclusion']=='success'
+          assert r['head_repository']['full_name']==os.environ['GH_REPO']
+          PY
+          gh api "repos/$GH_REPO/actions/runs/$SOURCE_RUN/artifacts" > evidence/source-artifacts.json
+          gh run download "$SOURCE_RUN" --repo "$GH_REPO" --name PROJECT_DARK_v184_portals --dir input
+          python3 - <<'PY'
+          import pathlib, json, hashlib, zipfile, os
+          artifacts=json.load(open('evidence/source-artifacts.json'))['artifacts']
+          selected=[a for a in artifacts if str(a['id'])==os.environ['SOURCE_ARTIFACT']]
+          assert len(selected)==1 and not selected[0]['expired']
+          assert selected[0]['name']=='PROJECT_DARK_v184_portals'
+          apks=list(pathlib.Path('input').rglob('*.apk'))
+          assert len(apks)==1, apks
+          p=apks[0]
+          assert hashlib.sha256(p.read_bytes()).hexdigest()==os.environ['APK_SHA256']
+          with zipfile.ZipFile(p) as z:
+              identity=json.loads(z.read('assets/build_identity.json'))
+          assert identity['sourceCommit']==os.environ['SOURCE_SHA']
+          assert str(identity['runId'])==os.environ['SOURCE_RUN']
+          proof={'identity':identity,'apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),
+                 'capture':'installed APK on Android emulator; not a handset recording',
+                 'scope':'startup and idle smoke footage; gameplay interactions not yet verified',
+                 'audio':False}
+          pathlib.Path('evidence/apk-identity.json').write_text(json.dumps(proof,indent=2))
+          pathlib.Path('input/app.apk').write_bytes(p.read_bytes())
+          PY
+      - name: Prepare Android emulator using official SDK
+        run: |
+          export PATH="$ANDROID_HOME/cmdline-tools/latest/bin:$ANDROID_HOME/platform-tools:$ANDROID_HOME/emulator:$PATH"
+          echo "$ANDROID_HOME/platform-tools" >> "$GITHUB_PATH"
+          # Never accept a new license implicitly; EOF declines any new prompt.
+          sdkmanager 'platform-tools' 'emulator' 'system-images;android-35;google_apis;x86_64' </dev/null
+          test -f "$ANDROID_HOME/system-images/android-35/google_apis/x86_64/package.xml"
+          test -x "$ANDROID_HOME/emulator/emulator"
+          echo no | avdmanager create avd -n apk-capture -k 'system-images;android-35;google_apis;x86_64' --force
+          emulator -version > evidence/emulator-version.txt 2>&1
+          emulator -accel-check > evidence/acceleration.txt 2>&1
+          # No chmod, group changes, sudo, or security-setting changes. Fail if KVM is unavailable.
+          emulator -avd apk-capture -no-window -no-audio -no-boot-anim -no-snapshot -gpu swiftshader -accel on -memory 4096 > evidence/emulator.log 2>&1 &
+          timeout 300 adb wait-for-device
+          timeout 300 bash -c 'until [[ "$(adb shell getprop sys.boot_completed 2>/dev/null | tr -d "\r")" == 1 ]]; do sleep 2; done'
+          adb shell input keyevent 82
+          adb shell settings put system accelerometer_rotation 0
+          adb shell settings put system user_rotation 1
+          adb shell wm size 1080x1920
+          adb shell wm density 320
+      - name: Install exact artifact and record real running app
+        run: |
+          adb install -r input/app.apk | tee evidence/install.txt
+          adb shell pm list packages | grep projectdark | tee evidence/packages.txt
+          PKG=com.projectdark.mobile.v184test
+          adb shell pm path "$PKG" | tee evidence/installed-path.txt
+          adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity" | tee evidence/launch.txt
+          sleep 8
+          adb shell pidof "$PKG" | tee evidence/pid-before.txt
+          adb shell dumpsys activity activities > evidence/activity.txt
+          adb exec-out screencap -p > evidence/start.png
+          # First pass intentionally has no speculative gameplay taps. Inspect the screenshot
+          # and then add a reviewed adb input sequence for the intended walkthrough.
+          adb shell screenrecord --size 1920x1080 --bit-rate 12000000 --time-limit 20 /sdcard/installed-apk.mp4
+          adb pull /sdcard/installed-apk.mp4 evidence/installed-apk.mp4
+          adb exec-out screencap -p > evidence/end.png
+          adb shell pidof "$PKG" | tee evidence/pid-after.txt
+          adb logcat -d > evidence/logcat.txt
+          test -s evidence/installed-apk.mp4
+      - name: Preserve video and diagnostic evidence
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: installed-apk-recording-${{ github.run_id }}
+          path: evidence/
+          retention-days: 7
+          if-no-files-found: error
