@@ -1,0 +1,11 @@
+{
+  "id": "V205_MINE_REBUILD",
+  "status": "ACCEPTED_IMPLEMENTATION_PENDING_NATIVE_VERIFICATION",
+  "source": "master/source/mine_v205/assets.json",
+  "report": "DEVICE_FAILED_USER_REPORTED: water, bridges, repetitive U-shaped stone patch and absent mining geography. Exact installed APK not supplied; V203/V204 share rejected Mine assets.",
+  "before": "Small diamond deck tiles; same isolated rocks across all banks; repeated U-shaped paving; texture-strip cliff.",
+  "after": "Original whole bridge deck plus split rails reconstructed from multiple video frames; native cave mouth/rock face and trees; irregular paving patches; foam-bearing shore stones; river rocks; two canal inlets.",
+  "evidence": "User reuploaded84sec video and requests correction. Inspected full timeline and native frames32/37/49/52/64sec. Source crops/mattes are adaptations; compact map topology and reused interiors are ADAPTED, not exact recovered original map.",
+  "preserved": "Milles travel, inn+reagent only, stable doors/map IDs, character64x32movement0.60s, logical HUD coords, V204magic, commerce/save, bounded32chunkcache",
+  "verification": "Pending host native Mine travel/doors/collision/depth/cache/screenshots and V204regression; handset and user visual acceptance pending."
+}
