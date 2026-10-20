@@ -1,5 +1,12 @@
 horror_loop_v207:
-  status: IMPLEMENTED_VERIFICATION_PENDING
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
+  runtime_source: b75b417598201b5c94588626bc02ab9b753555b3
+  focused_run: 39445126813
+  artifact: 12277035459
+  native_tests: 27
+  receipt: verification/HORROR_LOOP_V207_BUILD.json
+  phone_verified: false
+  user_visual_accepted: false
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197

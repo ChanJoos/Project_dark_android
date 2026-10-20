@@ -1,3 +1,7 @@
+## V207 Horror loop acceptance amendment — 2026-10-21
+
+User requires rooms01..15in sequence, last kill15→fresh01 indefinitely, manual room-door→lobby with living actors allowed. Existing15random source humanoids/HP/EXP/combat/AI/no within-room respawn remain. New lap records last room then clears encounter HP/mask and increments serial before spawning01, preventing stale-dead room skipping; old13room saves remain accepted. Screenshot-guided native tile rooms12..15are ADAPTED, not original binary map recovery. Required gates: two full live GameView laps, exact12HUDportal cells and former-cell rejection, all15native door routes, partial second-lap save/restart and12cache roundtrips. V207b75b4175/run39445126813SUCCESS:27tests/0failures,all647nativePNGbytesmatched,fiveactualcapturesreviewed. No phone/original visual acceptance claim.
+
 ## 2026-10-20 V201 whole-screen magic and damage aggro repair
 
 DEVICE_FAILED_USER_REPORTED: Mage/Cleric screen attacks (Ragnarok/Meteor/HolyDragon examples) skip visible blocked victims, and damaged victims fail to aggro. User did not explicitly name APK SHA; latest delivered6d21a7c. Current source reproduces two LOS filters (recipient selection and Resolver contact), AUTO requires a reachable/LOS target, and AI ignores damaged distant actors beyond180px.
