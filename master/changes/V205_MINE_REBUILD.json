@@ -1,11 +1,33 @@
 {
   "id": "V205_MINE_REBUILD",
-  "status": "ACCEPTED_IMPLEMENTATION_PENDING_NATIVE_VERIFICATION",
+  "status": "ACCEPTED_BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
   "source": "master/source/mine_v205/assets.json",
   "report": "DEVICE_FAILED_USER_REPORTED: water, bridges, repetitive U-shaped stone patch and absent mining geography. Exact installed APK not supplied; V203/V204 share rejected Mine assets.",
   "before": "Small diamond deck tiles; same isolated rocks across all banks; repeated U-shaped paving; texture-strip cliff.",
-  "after": "Original whole bridge deck plus split rails reconstructed from multiple video frames; native cave mouth/rock face and trees; irregular paving patches; foam-bearing shore stones; river rocks; two canal inlets.",
+  "after": "Original whole bridge deck plus split rails reconstructed from multiple video frames; native cave mouth/rock face and trees; irregular paving patches; foam-bearing shore stones; river rocks; two canal inlets. Source-material sidewall and grass plateau close the cave crop boundary; continuation remains explicitly ADAPTED.",
   "evidence": "User reuploaded84sec video and requests correction. Inspected full timeline and native frames32/37/49/52/64sec. Source crops/mattes are adaptations; compact map topology and reused interiors are ADAPTED, not exact recovered original map.",
   "preserved": "Milles travel, inn+reagent only, stable doors/map IDs, character64x32movement0.60s, logical HUD coords, V204magic, commerce/save, bounded32chunkcache",
-  "verification": "Pending host native Mine travel/doors/collision/depth/cache/screenshots and V204regression; handset and user visual acceptance pending."
+  "verification": "verification/MINE_REBUILD_V205_BUILD.json",
+  "iterations": [
+    {
+      "source": "c34cdac5eface46ade2a71a559eda607ec4a79c0",
+      "run": 39427757242,
+      "tests": 23,
+      "result": "PASS; visual review found source-label contamination, cut shore corners, and water repetition; superseded."
+    },
+    {
+      "source": "7291337010008b396123b253d77b1d6116722504",
+      "run": 39429051902,
+      "tests": 23,
+      "result": "PASS; clean labels/water/shore. Additional cave side/plateau join required after native visual review."
+    },
+    {
+      "source": "37ae1b7a8167bc11aac15fba727d51be74900d3c",
+      "run": 39430039907,
+      "tests": 23,
+      "result": "PASS; ridge join integrated. Native review identified mirrored source-rock motifs; direction and culling bounds corrected in 9de2609d."
+    }
+  ],
+  "runtimeSource": "9de2609df95ace2bb0d4a1302fbc77e551c1f933",
+  "tests": 23
 }

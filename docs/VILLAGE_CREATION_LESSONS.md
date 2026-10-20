@@ -17,3 +17,7 @@ Apply before adding or rebuilding a village. V203 extends the accepted Milles/Ab
 V203 evidence and limitations: verification/MINE_TOWN_V203_BUILD.json and master/source/mine_v203/assets.json. The compact two-bank layout and service assignments are adapted from observed mining-town motifs; original full map/warp coordinates and unobserved Mine interiors are not recovered facts.
 
 12. Adding a town also changes the human NPC registry. Extend the roster regression with explicit stable travel/service IDs, uniqueness, labels and source registrations; do not leave a historical total (V203:40→43) that blocks common CI after focused town tests pass.
+
+13. V205 user rejection: native screenshots and functional tests did not establish visual fidelity. Do not repeat a cropped closed/U-shaped stone outline as a road, tile railings without respecting spans, or substitute a texture strip for a source-visible cave. Inspect whole object silhouettes and source bank foam, preserve multi-frame object continuity, and compare matching landmarks before delivery.
+
+14. Native source crops can still contain overhead character names. Inspect every final runtime crop on the actual floor, not just atlas thumbnails. Reject mirrored cliff shaders that create symmetrical motifs, and extend culling bounds when adding side/top terrain continuations. A passed screenshot-producing test is not a visual approval.

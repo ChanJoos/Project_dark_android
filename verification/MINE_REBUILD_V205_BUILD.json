@@ -1,0 +1,79 @@
+{
+  "source": "9de2609df95ace2bb0d4a1302fbc77e551c1f933",
+  "run": 39431169827,
+  "artifact": 12267633597,
+  "builtAtKST": "2026-10-20T22:34:47.105530+09:00",
+  "apk": "PROJECT_DARK_V205_TEST.apk",
+  "apkSha256": "456fafc122ce00cdbae87ec17030eb68957872ea1e3ceb1eaa52cfd858a3bd47",
+  "apkBytes": 86608881,
+  "suites": [
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.NpcAppearanceTest"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.ScreenMagicV204Test"
+    },
+    {
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.TownInteriorTest"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MineTownV203Test"
+    }
+  ],
+  "tests": 23,
+  "packagedAssetBytesMatched": true,
+  "status": "BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "archiveSha256": "df38e4f698de711a26867441c94e62e0f2edb9684a2aa88ee6e8a067d3b4ff5a",
+  "archiveBytes": 96401822,
+  "commonCI": {
+    "39431180160": "in_progress",
+    "39431169524": "in_progress"
+  },
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "candidate": true,
+  "scope": [
+    "Milles manager travel and return without progression grant",
+    "Two Mine service doors, real inn/shop operations, exit and restart",
+    "Water/bridge/shore/cave navigation and normal0.60second movement",
+    "Standard/wide native landmarks, floor cache32chunks and12roundtrips",
+    "V204tile coordinates and original screen-magic regressions",
+    "Human NPC source registry and retained interior services"
+  ],
+  "limits": [
+    "Physical handset, OS process death and user visual acceptance pending",
+    "Compact layout, source crop mattes, unseen ridge side/plateau, canal placement and interior reuse are ADAPTED; original full map/warp tables not recovered",
+    "Water is a static corrected source material; original water animation is not claimed",
+    "Historical workflow/internal184labels are not the V205scope; this receipt identifies actual content"
+  ],
+  "saving": "Current Library prepared-upload helper failed HTTP403 at hosted tools/list before upload. Local verified APK and immutable GitHub Actions artifact available.",
+  "screenshots": [
+    {
+      "path": "verification/v205/cave.png",
+      "sha256": "5b9e155afc0f8bb8f411d94bba4786fce7e02b36dd6704e8afe559d2f9a29167",
+      "source": "9de2609df95ace2bb0d4a1302fbc77e551c1f933",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER"
+    },
+    {
+      "path": "verification/v205/bridge.png",
+      "sha256": "622fa2bc0c839c9c847c2a0f147c52b1e1e854585e3c0e4a96e22bd53327e786",
+      "source": "9de2609df95ace2bb0d4a1302fbc77e551c1f933",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER"
+    }
+  ]
+}
