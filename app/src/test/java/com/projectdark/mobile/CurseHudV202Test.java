@@ -25,7 +25,12 @@ public class CurseHudV202Test {
   }
  }
  @Test public void singleCursesMatchWholeVariantsAndDoNotChangeDispelOrNonCurse(){
-  String[] ids={"SK_마법사_002","SK_마법사_011","SK_마법사_024","SK_마법사_053"};for(int i=0;i<ids.length;i++)assertEquals(i,CurseSkullFx.variant(ids[i]));assertEquals(1,CurseSkullFx.variant("SK_성직자_012"));for(String id:new String[]{"SK_성직자_003","SK_성직자_041","SK_마법사_006","SK_마법사_046"})assertEquals(-1,CurseSkullFx.variant(id));
+  String[] ids={"SK_마법사_002","SK_마법사_011","SK_마법사_024","SK_마법사_053"};for(int i=0;i<ids.length;i++)assertEquals(i,CurseSkullFx.variant(ids[i]));assertEquals(1,CurseSkullFx.variant("SK_성직자_012"));assertEquals(3,CurseSkullFx.variant("SK_마법사_046"));for(String id:new String[]{"SK_성직자_003","SK_성직자_041","SK_마법사_006"})assertEquals(-1,CurseSkullFx.variant(id));
+ }
+ @Test public void allSixSingleCurseContactsUseRecipientSkullAndDispelStillWorks()throws Exception{
+  for(String id:new String[]{"SK_마법사_002","SK_마법사_011","SK_마법사_024","SK_마법사_053","SK_성직자_012","SK_마법사_046"}){
+   RuntimeState s=fixture(1);RuntimeCombatSession session=new RuntimeCombatSession(s,(a,t)->true,(a,n)->true,a->true);SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));assertTrue(id,session.submitPlayer("m0",id).accepted());List<CombatResolver.Event> events=session.tick(session.effectiveCastSeconds(id)+.001f).events;fx.consume(events,anchors(s));assertEquals(1,fx.pulses.stream().filter(p->p.sheet.equals("curse-skull")&&p.anchor.equals("m0")).count());assertTrue(s.skillEffects().has("m0","CURSE"));new SkillAbilityExecutor(s).apply("m0","SK_성직자_039");assertFalse(s.skillEffects().has("m0","CURSE"));
+  }
  }
  @Test public void prewarmedSkullsHaveDistinctColorsAnimatedFramesAndBoundedSharedMemory()throws Exception{
   CurseSkullFx fx=new CurseSkullFx();assertTrue(CurseSkullFx.allocationBytes()<=4_000_000);long bytes=CurseSkullFx.allocationBytes();new CurseSkullFx();assertEquals(bytes,CurseSkullFx.allocationBytes());
