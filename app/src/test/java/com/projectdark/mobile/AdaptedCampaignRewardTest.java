@@ -31,7 +31,8 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(41,c.entries().keySet().stream().filter(id->!id.startsWith("HORROR_")).count());
+    assertEquals(41,c.entries().keySet().stream().filter(id->!id.startsWith("HORROR_")&&!id.startsWith("MINE_")).count());
+    assertEquals(MineHuntMonsters.COUNT,c.entries().keySet().stream().filter(id->id.startsWith("MINE_")).count());for(AbelCombatProfile p:MineHuntMonsters.all()){assertEquals(p.exp,c.find(p.id).exp);assertEquals(p.gold,c.find(p.id).gold);}
     java.util.Set<String> expectedHorror=new java.util.HashSet<>(),actualHorror=new java.util.HashSet<>();
     for(int type=0;type<10;type++)for(int element=0;element<4;element++){String id=String.format(java.util.Locale.ROOT,"HORROR_%02d_%d",type,element);expectedHorror.add(id);assertEquals(HorrorCastleMonsters.EXP[type],c.find(id).exp);assertEquals(0,c.find(id).gold);}
     for(String id:c.entries().keySet())if(id.startsWith("HORROR_"))actualHorror.add(id);

@@ -160,6 +160,10 @@ public final class F5mSaveStore {
         .putLong("growth_random_state_v168",r.growthRandomState()).putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence())
         .putString("job_code_v4",r.currentJobCode()).putString("campaign_v1",r.campaign().snapshot().toString());
   }
+  private static void grantCanonical(Map<String,Integer> owned,Map<String,Integer> bank,String id,int quantity){
+    String canonical=RpgProgressionState.canonicalItemId(id);
+    if(!bank.containsKey(canonical))owned.putIfAbsent(canonical,quantity);
+  }
   private void restoreRpg(RpgProgressionState r){
     // Decode ownership first. Unknown identities preserve the source save instead of overwriting it.
     Map<String,Integer> owned=new LinkedHashMap<>(r.inventory());
@@ -180,77 +184,79 @@ public final class F5mSaveStore {
       }
       RpgProgressionState staged=new RpgProgressionState();
       if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid saved ownership");
-      // User-requested visual test item: seed old saves once, preserve all equipment and other ownership.
-      if(!prefs.getBoolean("chungryong_granted_v94",false)&&!owned.containsKey(RpgProgressionState.CHUNGRYONG_ITEM_ID)){
-        owned.put(RpgProgressionState.CHUNGRYONG_ITEM_ID,1);
-        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid V94 ownership migration");
-      }
-      if(!prefs.getBoolean("reference_warrior_granted_v107",false)){
-        owned.putIfAbsent(RpgProgressionState.REFERENCE_LEOPARD_ITEM_ID,1);
-        owned.putIfAbsent(RpgProgressionState.REFERENCE_HELM_ITEM_ID,1);
-        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid reference gear migration");
-      }
+      owned=new LinkedHashMap<>(staged.inventory());equipped=new LinkedHashMap<>(staged.equipment());
       Map<String,Integer> bank=new LinkedHashMap<>();JSONObject bankJson=new JSONObject(prefs.getString("bank_inventory_v84","{}"));
       for(java.util.Iterator<String> it=bankJson.keys();it.hasNext();){String id=it.next();bank.put(id,bankJson.getInt(id));}
       if(!staged.restoreBank(prefs.getLong("bank_gold_v84",0),bank))throw new IllegalArgumentException("Invalid bank");
+      bank=new LinkedHashMap<>(staged.bankInventory());
+      // User-requested visual test item: seed old saves once, preserve all equipment and other ownership.
+      if(!prefs.getBoolean("chungryong_granted_v94",false)&&!owned.containsKey(RpgProgressionState.CHUNGRYONG_ITEM_ID)){
+        grantCanonical(owned,bank,RpgProgressionState.CHUNGRYONG_ITEM_ID,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid V94 ownership migration");
+      }
+      if(!prefs.getBoolean("reference_warrior_granted_v107",false)){
+        grantCanonical(owned,bank,RpgProgressionState.REFERENCE_LEOPARD_ITEM_ID,1);
+        grantCanonical(owned,bank,RpgProgressionState.REFERENCE_HELM_ITEM_ID,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid reference gear migration");
+      }
       // Grant newly admitted gear once. Banked items already belong to the player.
       if(!prefs.getBoolean("horror_equipment_granted_v184",false)){
-        for(String id:HorrorEquipmentCatalog.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:HorrorEquipmentCatalog.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid Horror equipment migration");
       }
       if(!prefs.getBoolean("linked_items_granted_v185",false)){
-        for(String id:LinkedItemCatalogV185.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:LinkedItemCatalogV185.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid linked-item migration");
       }
       if(!prefs.getBoolean("linked_clothes_granted_v186",false)){
-        for(String id:LinkedClothingCatalogV186.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:LinkedClothingCatalogV186.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid linked-clothing migration");
       }
       if(!prefs.getBoolean("linked_food_granted_v187",false)){
-        for(String id:LinkedFoodCatalogV187.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:LinkedFoodCatalogV187.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid linked-food migration");
       }
       if(!prefs.getBoolean("sparse_weapons_granted_v188",false)){
-        for(String id:SparseWeaponCatalogV188.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:SparseWeaponCatalogV188.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid sparse-weapon migration");
       }
       if(!prefs.getBoolean("linked_accessories_granted_v189",false)){
-        for(String id:LinkedAccessoryCatalogV189.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
+        for(String id:LinkedAccessoryCatalogV189.IDS)grantCanonical(owned,bank,id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid accessory migration");
       }
       if(!prefs.getBoolean("male_clothes_granted_v190",false)){
-        for(String id:MaleVillageClothingV190.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:MaleVillageClothingV190.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid male-clothing migration");
       }
       if(!prefs.getBoolean("linked_belts_granted_v191",false)){
-        for(String id:LinkedBeltCatalogV191.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:LinkedBeltCatalogV191.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid belt migration");
       }
       if(!prefs.getBoolean("female_clothes_granted_v192",false)){
-        for(String id:FemaleVillageClothingV192.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:FemaleVillageClothingV192.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid female-clothing migration");
       }
       if(!prefs.getBoolean("linked_accessories_granted_v193",false)){
-        for(String id:LinkedAccessoryCatalogV193.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
+        for(String id:LinkedAccessoryCatalogV193.IDS)grantCanonical(owned,bank,id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid accessory V193 migration");
       }
       if(!prefs.getBoolean("linked_staffs_granted_v194",false)){
-        for(String id:LinkedStaffCatalogV194.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:LinkedStaffCatalogV194.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid staff migration");
       }
       if(!prefs.getBoolean("recovered_weapons_granted_v195",false)){
-        for(String id:RecoveredWeaponCatalogV195.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:RecoveredWeaponCatalogV195.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid recovered-weapon migration");
       }
       if(!prefs.getBoolean("expanded_clothes_granted_v197",false)){
-        for(String id:ExpandedVillageClothingV197.IDS)if(!bank.containsKey(id))owned.putIfAbsent(id,1);
+        for(String id:ExpandedVillageClothingV197.IDS)grantCanonical(owned,bank,id,1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid expanded-clothing migration");
       }
       if(!prefs.getBoolean("unified_items_granted_v210",false)){
         // Normalize aliases before granting: a canonical item already in the bank is already owned.
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid item identity migration");
         owned=new LinkedHashMap<>(staged.inventory());equipped=new LinkedHashMap<>(staged.equipment());
-        for(String id:UnifiedItemCatalogV210.IDS)if(!staged.bankInventory().containsKey(id))owned.putIfAbsent(id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
+        for(String id:UnifiedItemCatalogV210.IDS)grantCanonical(owned,bank,id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid unified item grant");
       }
       staged.restoreProgression(prefs.getInt("normal_level",1),prefs.getLong("normal_exp",0L));

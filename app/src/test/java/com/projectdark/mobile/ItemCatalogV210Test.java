@@ -36,6 +36,13 @@ public class ItemCatalogV210Test {
   String armor=r.equipment().get("갑옷");assertTrue(r.grantCampaignGear(11));assertEquals(armor,r.equipment().get("갑옷"));
   r.restoreProgression(11,0L);assertTrue(r.grantCampaignGear(11));assertEquals(RpgProgressionState.canonicalItemId("IT_B_CAMPAIGN_WARRIOR_11"),r.equipment().get("갑옷"));
  }
+ @Test public void preGrantFlagSaveNormalizesOwnershipAndBankBeforeAnyHistoricalGrant()throws Exception{
+  SharedPreferences prefs=c.getSharedPreferences("project_dark_f5m_v1",0);String legacy="IT_TEST_WEAPON_MW002",sword=RpgProgressionState.canonicalItemId(legacy),helmet=RpgProgressionState.canonicalItemId("IT_REFERENCE_HELM");
+  prefs.edit().putString("inventory_v2",new JSONObject().put(legacy,2).toString()).putString("equipment_v2",new JSONObject().put("무기",legacy).toString()).putString("bank_inventory_v84",new JSONObject().put("IT_REFERENCE_HELM",4).toString()).commit();
+  F5mSaveStore.install(c);GameView v=new GameView(c);RuntimeState state=f.field(v,"state");RpgProgressionState r=state.rpg();
+  assertTrue(F5mSaveStore.writable());assertEquals(Integer.valueOf(2),r.inventory().get(sword));assertEquals(sword,r.equipment().get("무기"));assertEquals(Integer.valueOf(4),r.bankInventory().get(helmet));assertFalse(r.inventory().containsKey(helmet));assertFalse(r.inventory().containsKey(legacy));
+  v.pause();F5mSaveStore.install(c);GameView next=new GameView(c);RuntimeState reopened=f.field(next,"state");assertEquals(r.inventory(),reopened.rpg().inventory());assertEquals(r.bankInventory(),reopened.rpg().bankInventory());
+ }
  @Test public void originalDeityVariantsKeepSeparateNamesStatsRowsAndBothRingSlots()throws Exception{
   RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);String base="USER_ITEM_20261018_R05424",setoa="USER_ITEM_20261018_R03440";Map<String,Integer> own=new LinkedHashMap<>();own.put(base,1);own.put(setoa,1);assertTrue(r.restoreOwnedItems(own,Collections.emptyMap()));assertNotEquals(RpgProgressionState.canonicalItemId(base),RpgProgressionState.canonicalItemId(setoa));assertFalse(InventoryGroupsV199.equivalent(r,base,setoa));assertEquals(2,new ItemWindow(c).rows(r).size());assertNotEquals(r.itemDefinitions().get(base).statModifiers,r.itemDefinitions().get(setoa).statModifiers);
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(base,"반지"));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(setoa,RpgProgressionState.RIGHT_RING_SLOT));assertEquals(base,r.equipment().get("반지"));assertEquals(setoa,r.equipment().get(RpgProgressionState.RIGHT_RING_SLOT));assertEquals(2,new ItemWindow(c).rows(r).size());
