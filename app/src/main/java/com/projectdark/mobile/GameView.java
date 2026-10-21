@@ -216,7 +216,8 @@ public final class GameView extends View {
     for(Map.Entry<String,Integer> e:items.entrySet())message+=" · "+itemDisplayName(e.getKey())+" x"+e.getValue();
     if(unresolved)message+=" · 미확인 보상";if(full)message+=" · 가방 수량 한도";showReward(message);
   }
-  private int inventoryQuantity(String itemId){for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(itemId))return row.quantity;return 0;}
+  // HUD counters read live ownership, without projecting every item's name and equip requirements.
+  private int inventoryQuantity(String itemId){return state.rpg().inventory().getOrDefault(itemId,0);}
   private String itemDisplayName(String itemId){for(RpgInventoryPresentation.ItemRow row:rpgPresentation.inventoryRows(state.rpg()))if(row.itemId.equals(itemId))return row.name;return itemId;}
   private RuntimeState.Npc findNpc(String id){if(id==null)return null;for(RuntimeState.Npc npc:state.npcs())if(id.equals(npc.id))return npc;return null;}
   private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)&&m.alive)return m;return null;}
