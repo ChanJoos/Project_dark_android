@@ -123,7 +123,7 @@
         750000
       ]
     },
-    "portal": "read-only -> selectable, explicit selection releases only arrival latch; no position writes"
+    "portal": "read-only -> selectable; only an explicit selection of the blocked return destination releases that arrival latch. Selecting another entrance preserves bounce protection; no position writes"
   },
   "preserved": [
     "source MPF166/178/175/176 pixels",

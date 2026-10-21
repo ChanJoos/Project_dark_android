@@ -29,6 +29,12 @@ public class DeathNavigationV221Test {
   map=open(v);pin=map.pins().stream().filter(p->p.label.equals("건물 1")).findFirst().get();f.tap(v,map.screenX(pin,0),map.screenY(pin));for(int i=0;i<240&&DeathVillageGeometry.FIELD.equals(s.currentMapId());i++)f.tick(v,1);assertEquals("MAP_DEATH_HOUSE_1",s.currentMapId());f.shot(v,"v221-map-selected-house1");assertFalse((Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));
  }
  @Test public void groupedPinsSelectLegalGateAllDeathScenesAndBlankTouchCannotLeakOrRebake()throws Exception{
+  DeathVillageData.Gate inbound=DeathVillageGeometry.gates(DeathVillageGeometry.LOBBY).get(0);
+  DeathVillageData.Gate back=DeathVillageGeometry.gates(DeathVillageGeometry.FIELD).stream().filter(g->g.to.equals(DeathVillageGeometry.LOBBY)).findFirst().get();
+  DeathVillageData.Gate house=DeathVillageGeometry.gates(DeathVillageGeometry.FIELD).stream().filter(g->g.to.equals("MAP_DEATH_HOUSE_1")).findFirst().get();
+  DeathVillageTravel latch=new DeathVillageTravel();latch.arrived(inbound.to,inbound);float ax=DeathVillageGeometry.x(inbound.arrivalU,inbound.arrivalV),ay=DeathVillageGeometry.y(inbound.arrivalU,inbound.arrivalV);
+  latch.select(inbound.to,DeathVillageGeometry.x(house.u,house.v),DeathVillageGeometry.y(house.u,house.v),ax,ay);assertNull("other destination preserves arrival bounce protection",latch.at(inbound.to,ax,ay));
+  latch.select(inbound.to,DeathVillageGeometry.x(back.u,back.v),DeathVillageGeometry.y(back.u,back.v),ax,ay);assertNotNull("explicit return selection releases its own latch",latch.at(inbound.to,ax,ay));
   for(String id:DeathVillageData.ids()){
    for(WorldMapWindow.Pin pin:WorldMapWindow.entrances(id))assertTrue(id+" legal selected gate",DeathVillageGeometry.gates(id).stream().anyMatch(g->pin.targetX==DeathVillageGeometry.x(g.u,g.v)&&pin.targetY==DeathVillageGeometry.y(g.u,g.v)));
   }

@@ -898,7 +898,7 @@ private void drawQuestJournalIcon(Canvas c){
     questEntryPending=questExitPending=campaignAutoRoute=false;cancelSkillApproach();
     interaction.cancel();combat.cancelApproach();autoAttackEnabled=false;joy=false;vx=vy=0;
     knobX=JOY_X;knobY=JOY_Y;activeWorld().cancelForAction();
-    if(DeathVillageGeometry.contains(state.currentMapId()))deathTravel.select(state.currentMapId());
+    if(DeathVillageGeometry.contains(state.currentMapId()))deathTravel.select(state.currentMapId(),pin.targetX,pin.targetY,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY());
     WorldMoveTargetController.Snapshot move=activeWorld().requestGroundWorld(pin.targetX,pin.targetY);
     tapMarkerX=move.targetX;tapMarkerY=move.targetY;tapMarkerClock=.7f;
     showFeedback(pin.label+" 이동",FeedbackTone.INFO);consumeMoveOutcome(move);

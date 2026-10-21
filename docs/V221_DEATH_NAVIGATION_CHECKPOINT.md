@@ -1,3 +1,7 @@
+## V221 선택 포탈별 도착 보호 보강
+
+Initial published source be4bf25c/run39692798621 remains under focused verification. Code review caught that selecting a different entrance while standing at the arrival gate must preserve the return latch; only explicit selection of that return destination releases it. Added both assertions to the existing new grouped-pin test. This production change requires a new exact-source focused run; it is not a duplicate no-change rebuild.
+
 ## 2026-10-22 V221 재개 — 몬스터 배치/영상 HP/750000EXP/지도 포탈 선택 구현, 검증 대기
 
 기존 PR197/codex/rucesion-coast-v157, main41fe6def 유지. 마지막 성공 runtime45936b9b/V220 run39685771102; 문서HEAD884a3599에서 재개. 이전 프롬프트 이후 미커밋 작업은 현재 checkout에 없으므로 저장된 V220부터 수정. 이번 세션 첨부 경로는 실제 비어 있었음; 이전 실행 중단 전체원인은 UNKNOWN. 승인된 GitHub 수정 계속.
