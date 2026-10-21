@@ -29,3 +29,13 @@ Report IMPLEMENTED / BUILD VERIFIED / RUNTIME VERIFIED / VISUAL ACCEPTED separat
 
 ## Required hunting-map performance baseline
 Before creating or changing any hunting map, read `docs/HUNT_MAP_PERFORMANCE_LESSONS.md` and retain its static-cache/live-collision/prewarm/vsync/save and memory regression gates. User reported forest speed resolved on 2026-10-09; do not regress the accepted experience.
+
+## Change-scoped verification — user decision 2026-10-21
+- Before running checks, state the changed behavior, affected files/shared dependencies, the smallest meaningful test set, and why each adjacent subsystem is included. A large file such as GameView changing does not by itself require every suite.
+- Default to requested-feature tests plus directly affected integration/regression paths. EXP changes include reward accounting and applicable save migration; equipment rendering includes the changed idle/action layers. They do not automatically require every growth quest, skill, job or map scenario.
+- Run full regression for final integration into main, broad shared-foundation changes (save schema, shared combat/progression rules, global movement/render loop), or an observed failure showing wider impact. Record the concrete trigger; use a bounded affected suite first for diagnosis and iteration.
+- Deliver an explicitly scoped candidate APK after its applicable build/runtime/artifact checks pass; unrelated full regression is not a blanket prerequisite. Integration remains gated by its required checks. Do not call focused success full-suite success or claim phone/visual acceptance from host tests.
+- Reuse valid evidence for the same source and relevant scope. Do not intentionally schedule duplicate full push and PR checks for the same source/environment. Repeat or broaden checks only for new changes, failures or unresolved concerns; never disable meaningful assertions to save time.
+- Documentation-only changes need content/link/diff checks, not game regression or a new APK. Preserve exact source/run/artifact/hash proof for APK delivery.
+- CI configuration and this policy are separate: until workflow changes are verified, report automatic duplicate/full runs as still configured. Do not claim a documentation edit optimized CI. Next CI maintenance must add reviewed scope selection and same-source duplicate suppression before the next gameplay build.
+- This section narrows historical blanket verification language in handoffs/guides; prior test reports remain historical evidence, not a requirement to repeat their entire scope.

@@ -1,3 +1,9 @@
+## 2026-10-21 사용자 확정 — 변경 영향에 따른 검사 범위
+
+사용자 요청에 따라 AGENTS.md의 Change-scoped verification과 docs/DIRECTOR_GUIDE.md를 개정했다. 변경 기능과 직접 영향받는 경로를 우선 검증하고, 전체 회귀는 최종 main 통합·공통 기반 변경·실패로 확인된 광범위 영향 때 수행한다. 성장/퀘스트/스킬 전체 검사를 개별 수정의 일괄 선행조건으로 삼지 않는다. 동일 소스의 유효한 증거는 재사용하며 문서 수정으로 APK를 재빌드하지 않는다.
+
+지침 적용 완료 / CI 자동 선택·중복 억제는 미구현. 현재 android.yml은 push 및 PR에서 공통 전체 검사를 각각 실행하고, 별도 focused workflow도 실행한다. 다음 gameplay 빌드 전 Director의 후속 작업: 영향 범위 선택과 동일 소스 중복 실행 방지를 workflow에 구현·검증한다. 지침 변경만으로 CI 실행 시간이 개선됐다고 보고하지 않는다. 이번 변경은 문서만이며 V215 APK/source/실기기 미검증 상태는 기존 기록 그대로다. 내용·참조·git diff 검사만 수행하고 Android 검사/APK 빌드는 실행하지 않는다.
+
 ## 2026-10-21 V215 exact-source/native/full CI/APK closure — handset pending
 
 Runtime7b6afeab226ab626c471e8798a323a27f1e25a81; focused39597531378/job119213458092 SUCCESS/11suites/55tests/0failure-error-skip. Common push39597531257 and PR39597540594 SUCCESS on that exact source. Temple guide→hub→actual doorway→Seo and visible-foot auto exits without portals, held joystick, cumulative99EXP/one-time legacy-save refund/numeric stats,12exact filters, exclusive wing slot18items and14exact named shield appearance links.512male/female idle/contact paired render assertions and native windows/routes reviewed. Source original2250file bytes and APKv2cryptographic signature/content digest verified independently. Altar visible source cut plus explicitly ADAPTED minimap-occluded corner; exact hidden geometry unresolved. Existing skill/body/movement/world/cache policies retained.
