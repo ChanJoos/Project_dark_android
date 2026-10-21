@@ -6,7 +6,9 @@ public final class TempleRoutes {
   public final float x,y;public final String label,target;public final boolean exit;
   Gate(int u,int v,String label,String target,boolean exit){x=TownInteriorDef.x(u,v);y=TownInteriorDef.y(u,v);this.label=label;this.target=target;this.exit=exit;}
  }
- public static List<Gate> forRoom(TownInteriorDef d){
+ private static final Map<String,List<Gate>> CACHE=new HashMap<>();
+ public static List<Gate> forRoom(TownInteriorDef d){if(!d.isTemple())return Collections.emptyList();List<Gate> gates=CACHE.get(d.mapId);if(gates==null){gates=create(d);CACHE.put(d.mapId,gates);}return gates;}
+ private static List<Gate> create(TownInteriorDef d){
   if(!d.isTemple())return Collections.emptyList();
   List<Gate> gates=new ArrayList<>();
   if(d.mapId.endsWith("_lobby"))gates.add(new Gate(9,5,"신들의 세계","milles_interior_temple_hub",false));
