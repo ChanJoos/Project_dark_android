@@ -135,7 +135,7 @@ jobs:
           item_base='709dda2179042c66b292acb03a4a6275b2292a7a'
           subprocess.run(['git','fetch','--depth=1','origin',item_base],check=True)
           item_changed=subprocess.check_output(['git','diff','--name-only',item_base,'HEAD'],text=True).splitlines()
-          item_allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/ModernUiTest.java','app/src/test/java/com/projectdark/mobile/F5mRestartPersistenceMatrixTest.java','master/MASTER_MANIFEST.md','master/changes/V210_UNIFIED_ITEM_IDENTITIES.json','verification/ITEM_CATALOG_V210_BUILD.json'}
+          item_allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/ModernUiTest.java','app/src/test/java/com/projectdark/mobile/F5mRestartPersistenceMatrixTest.java','app/src/test/java/com/projectdark/mobile/DeviceRecordingRegressionTest.java','master/MASTER_MANIFEST.md','master/changes/V210_UNIFIED_ITEM_IDENTITIES.json','verification/ITEM_CATALOG_V210_BUILD.json'}
           if all(p in item_allowed or p.startswith('docs/') for p in item_changed):
               assert subprocess.check_output(['git','rev-parse',item_base+':app/src/main'],text=True)==subprocess.check_output(['git','rev-parse','HEAD:app/src/main'],text=True)
               req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39526763045/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
@@ -147,7 +147,7 @@ jobs:
           ui_base='2df70c54095df1966b1385bcca51d07bb8719497'
           subprocess.run(['git','fetch','--depth=1','origin',ui_base],check=True)
           ui_changed=subprocess.check_output(['git','diff','--name-only',ui_base,'HEAD'],text=True).splitlines()
-          ui_allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/F5mRestartPersistenceMatrixTest.java','master/MASTER_MANIFEST.md','master/changes/V210_UNIFIED_ITEM_IDENTITIES.json','verification/ITEM_CATALOG_V210_BUILD.json'}
+          ui_allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/F5mRestartPersistenceMatrixTest.java','app/src/test/java/com/projectdark/mobile/DeviceRecordingRegressionTest.java','master/MASTER_MANIFEST.md','master/changes/V210_UNIFIED_ITEM_IDENTITIES.json','verification/ITEM_CATALOG_V210_BUILD.json'}
           if len(passed)==13 and all(p in ui_allowed or p.startswith('docs/') for p in ui_changed):
               assert subprocess.check_output(['git','rev-parse',ui_base+':app/src/main'],text=True)==subprocess.check_output(['git','rev-parse','HEAD:app/src/main'],text=True)
               req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39528078728/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
