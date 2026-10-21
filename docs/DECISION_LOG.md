@@ -1,3 +1,11 @@
+## 2026-10-21 V216 관련 검사·APK 확인 완료 — 실기기 대기
+
+Runtime d551a99295aae45fa16ac88ca4b10f6256ea32ad. Focused Actions39604859782/job119238330790 SUCCESS:6suites/16tests/0failures-errors-skips.21,25 ground tap 및 held joystick 진입, 허브 NPC 무표시/무충돌/무클릭, 세오 구매·출구·재진입,15필터/팔찌 양손 장갑, 날개 방패 오른쪽/상단 글씨 제거, 라피드6종 기타 표시·선택·착용·저장복원 통과.10native V216 captures 검토. 라피드는 현재 기타2페이지, 슬롯은 장식 유지. 원본32Rapid 파일 및2250wearable 파일 바이트 확인; APKv2서명과1MiB content digest 독립 검증. 일반 성장 퀘스트/전체 스킬 회귀는 이번 검사 범위 아님.
+
+APK PROJECT_DARK_V216_TEST.apk,2026-10-21 22:09:23.369617KST,99,571,607bytes,SHA25695eae39801e7608dd8195abcec0141fcc75c76be4b9c3ee9bb86bdc308eb9d1c,artifact12348053272. com.projectdark.mobile.v216test 별도 앱/저장; 기존 앱 보존, 자동 이전 없음. Exact source/run/artifact/전체 세부 검사는 verification/TEMPLE_EQUIPMENT_V216_BUILD.json. Native host 검증이며 PHONE/USER_VISUAL PENDING; 기존 전체 게임 렉 해결 주장 없음. PR197 미병합, main41fe6def 유지. 이 종료 기록은 metadata-only, 새 APK 재빌드 금지.
+
+CI 범위 선택 및 push/PR 전체 중복 제거는 이번 원격 실행으로 확인: common PR39604868913/scope119238360354 SUCCESS, compile119238497133 의도적 SKIPPED; common push 없음. 마지막 full-verified runtime7b6과 동일한274cfbf를 기준으로 리뷰한 V216 바이트만 focused, 다른 runtime 변경은 full 복귀. 최종 main 통합 전 full-regression label/manual full gate 필수. 다음 작업은 이 exact APK의 사용자 신전/장비 피드백이며 무관한 회귀 대기로 후보 전달을 막지 않는다.
+
 ## 2026-10-21 V216 사용자 수정 — 구현 / CI 대기
 
 V215 DEVICE_FAILED_USER_REPORTED: 신들의세계 표시 좌표21,25에서 세오신전 진입 안 됨. 코드 확인: forward gate가17,23으로 지정돼 있었다.21,25는 원본 grid walkable이며 새 자동 진입점으로 변경. 허브 NPC는 그리기/이름/클릭/충돌에서 제거; 대기실 안내 NPC와 세오는 유지. 방패/귀걸이/장갑 착용 슬롯은 이미 존재하여 인벤토리 필터에 세 분류를 추가(총15); 팔찌는 기존 장갑 슬롯 및 양손 규칙 유지. 날개 슬롯을 방패 바로 오른쪽으로 이동하고 상단 글씨 제거. 라피드6종은 삭제된 것이 아니라 기타/장식에 유지; 목록 선택·착용·저장 경로 검증 예정.
