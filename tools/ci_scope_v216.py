@@ -1,4 +1,4 @@
-"""Bounded V221 candidate gate from the last full-verified source.
+"""Bounded V222 candidate gate from the last full-verified source.
 Only reviewed exact runtime blobs qualify; unknown changes fail back to full CI.
 Final integration uses manual full verification or the full-regression PR label.
 """
@@ -23,7 +23,7 @@ def classify(paths, hashes, expected, force_full=False):
                 return True, 'unreviewed blob: ' + p
         elif not (p.startswith('docs/') or p.startswith('verification/') or p in CONFIG):
             return True, 'unreviewed path: ' + p
-    return False, 'reviewed V221 portal navigation, corrected pools and Sense HP/user EXP scope; focused workflow required'
+    return False, 'reviewed V222 original entry/door source joins and equivalent dense collision allocation scope; focused paired/runtime workflow required'
 
 def main():
     expected = json.loads((ROOT/'tools/ci_scope_v216.json').read_text())

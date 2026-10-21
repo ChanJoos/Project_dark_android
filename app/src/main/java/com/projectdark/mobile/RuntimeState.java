@@ -35,7 +35,7 @@ public final class RuntimeState {
 
   public static final class Monster {
     public enum State { SPAWN,IDLE,WANDER,DETECT,CHASE,ATTACK,DEAD,RESPAWN }
-    public final String id,name,assetStatus;public final float spawnX,spawnY;public float x,y;
+    public final String id,name,assetStatus;public final float spawnX,spawnY,collisionRadius;public float x,y;
     /** Selected only by the mobile 2-circle field adapter; null keeps unknown prototypes fail-closed. */
     public String campaignRewardProfileId;
     public float moveStartX,moveStartY,moveTargetX,moveTargetY,moveElapsed,moveDuration;
@@ -54,7 +54,7 @@ public final class RuntimeState {
     /** Per-actor animation phase used to animate single-pose candidate art. */
     public float animationClock=0f;
     public float respawnSeconds=4f;
-    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;state=State.IDLE;}
+    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;collisionRadius=collisionRadiusForId(id);state=State.IDLE;}
   }
 
   private final BootMode bootMode;
@@ -300,6 +300,11 @@ public final class RuntimeState {
       if(other==self||!other.alive)continue;
       float min=radius+monsterCollisionRadius(other)+ACTOR_CLEARANCE;
       float minSquared=min*min;
+      // Conservative live bounds only. Detailed endpoint/reservation/crossing checks remain below.
+      float fromX=self==null?x:self.x,fromY=self==null?y:self.y;
+      float otherX=other.isMoving?other.moveTargetX:other.x,otherY=other.isMoving?other.moveTargetY:other.y;
+      if(Math.max(fromX,x)+min<Math.min(other.x,otherX)||Math.min(fromX,x)-min>Math.max(other.x,otherX)
+          ||Math.max(fromY,y)+min<Math.min(other.y,otherY)||Math.min(fromY,y)-min>Math.max(other.y,otherY))continue;
       if(distanceSquared(x,y,other.x,other.y)<minSquared)return true;
       // An in-flight destination is reserved, so two AI updates cannot choose the same tile.
       if(other.isMoving&&distanceSquared(x,y,other.moveTargetX,other.moveTargetY)<minSquared)return true;
@@ -309,10 +314,13 @@ public final class RuntimeState {
     }
     return false;
   }
-  private float monsterCollisionRadius(Monster monster){
-    String species=PoteForestMonsterShowcase.species(monster.id);if(species!=null&&species.startsWith("LYK_"))return species.equals("LYK_ARIEL")||species.equals("LYK_TYRANT")||species.endsWith("KOATL")?18f:14f;
-    return "milles_mouse_proto".equals(monster.id)?7f:"POTE_MANTIS".equals(PoteForestMonsterShowcase.species(monster.id))?18f:"POTE_LYCAN".equals(PoteForestMonsterShowcase.species(monster.id))?16f:MONSTER_RADIUS;
+  private float monsterCollisionRadius(Monster monster){return monster.collisionRadius;}
+  private static float collisionRadiusForId(String id){
+    int separator=id==null?-1:id.indexOf('#');String species=separator<0?id:id.substring(0,separator);
+    if(species!=null&&species.startsWith("LYK_"))return species.equals("LYK_ARIEL")||species.equals("LYK_TYRANT")||species.endsWith("KOATL")?18f:14f;
+    return "milles_mouse_proto".equals(id)?7f:"POTE_MANTIS".equals(species)?18f:"POTE_LYCAN".equals(species)?16f:MONSTER_RADIUS;
   }
+
   private boolean npcOccupied(float x,float y,float radius){
     for(Npc n:npcs){float min=radius+NPC_RADIUS+ACTOR_CLEARANCE;if(distance(x,y,n.x,n.y)<min)return true;}
     return false;

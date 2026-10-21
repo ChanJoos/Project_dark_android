@@ -24,9 +24,9 @@ public class DeathNavigationV221Test {
    assertTrue(id+" selected entrance path",CampaignNavigationTest.walk(w,w.snapshot().movement));w.tickNavigation(.7f);if(WorldDef.ID.equals(id))f.tick(v,1);else assertTrue(id+" actual gate",(Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));assertNotEquals("ordinary door/portal enters destination",id,s.currentMapId());assertEquals(exp,CampaignProgress.earnedExp(s.rpg()));assertEquals(gold,s.rpg().gold().longValue());
   }
  }
- @Test public void actualUpdateWalksLobbyToOutdoorAndOutdoorToHouseWithLiveMonsters()throws Exception{
+ @Test public void actualUpdateRestoresOriginalOutdoorArrivalThenWalksDoorWithLiveCollision()throws Exception{
   GameView v=scene(DeathVillageGeometry.LOBBY);RuntimeState s=f.field(v,"state");WorldMapWindow map=open(v);WorldMapWindow.Pin pin=map.pins().get(0);f.tap(v,map.screenX(pin,0),map.screenY(pin));for(int i=0;i<500&&DeathVillageGeometry.LOBBY.equals(s.currentMapId());i++)f.tick(v,1);assertEquals(DeathVillageGeometry.FIELD,s.currentMapId());assertEquals(72,s.monsters().size());assertEquals(72,s.monsters().stream().filter(m->m.alive).count());
-  map=open(v);pin=map.pins().stream().filter(p->p.label.equals("건물 1")).findFirst().get();f.tap(v,map.screenX(pin,0),map.screenY(pin));for(int i=0;i<240&&DeathVillageGeometry.FIELD.equals(s.currentMapId());i++)f.tick(v,1);assertEquals("MAP_DEATH_HOUSE_1",s.currentMapId());f.shot(v,"v221-map-selected-house1");assertFalse((Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));
+  assertEquals(12,DeathVillageGeometry.u(s.player().x,s.player().y));assertEquals(85,DeathVillageGeometry.v(s.player().x,s.player().y));map=open(v);pin=map.pins().stream().filter(p->p.label.equals("건물 1")).findFirst().get();f.tap(v,map.screenX(pin,0),map.screenY(pin));WorldRuntimeAdapter route=world(v);assertTrue(CampaignNavigationTest.walk(route,route.snapshot().movement));route.tickNavigation(.7f);assertTrue((Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));assertEquals("MAP_DEATH_HOUSE_1",s.currentMapId());f.shot(v,"v221-map-selected-house1");assertFalse((Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));
  }
  @Test public void groupedPinsSelectLegalGateAllDeathScenesAndBlankTouchCannotLeakOrRebake()throws Exception{
   DeathVillageData.Gate inbound=DeathVillageGeometry.gates(DeathVillageGeometry.LOBBY).get(0);

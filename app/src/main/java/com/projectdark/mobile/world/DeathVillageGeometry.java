@@ -11,6 +11,8 @@ public final class DeathVillageGeometry {
  public static int u(float x,float y){return Math.round((y-160)/32+(x-3400)/64);}public static int v(float x,float y){return Math.round((y-160)/32-(x-3400)/64);}
  public static WorldMoveTargetController.TileCenter at(int u,int v){return new WorldMoveTargetController.TileCenter(x(u,v),y(u,v));}
  public static WorldMoveTargetController.TileCenter entry(String id){int[] p=DeathVillageData.spawn(id);return at(p[0],p[1]);}
+ public static float portalX(DeathVillageData.Gate gate){return gate.doorSide==0?x(gate.u,gate.v):x(gate.doorU,gate.doorV)+(gate.doorSide==1?-16:16);}
+ public static float portalY(DeathVillageData.Gate gate){return gate.doorSide==0?y(gate.u,gate.v):y(gate.doorU,gate.doorV)+16;}
  public static String title(String id){if(LOBBY.equals(id))return "죽음의마을 대기실";if(FIELD.equals(id))return "죽음의마을";if(house(id))return "죽음의마을 집안 "+id.substring(id.length()-1);return "죽음의마을 지하 "+id.substring(id.length()-1);}
  public static boolean inside(String id,float x,float y){return DeathVillageData.grid(id).walkable(u(x,y),v(x,y));}
  private static final Map<String,List<WorldMoveTargetController.TileCenter>> NAV=new HashMap<>(),GROUND=new HashMap<>();private static final Map<String,List<RectF>> OBSTACLES=new HashMap<>();

@@ -16,7 +16,7 @@ final class WorldMapWindow {
    Set<String> seen=new HashSet<>();
    for(DeathVillageData.Gate g:DeathVillageGeometry.gates(id)){
     if(!seen.add(g.to))continue;float x=0,y=0;int n=0;
-    for(DeathVillageData.Gate other:DeathVillageGeometry.gates(id))if(g.to.equals(other.to)){x+=DeathVillageGeometry.x(other.u,other.v);y+=DeathVillageGeometry.y(other.u,other.v);n++;}
+    for(DeathVillageData.Gate other:DeathVillageGeometry.gates(id))if(g.to.equals(other.to)){x+=DeathVillageGeometry.portalX(other);y+=DeathVillageGeometry.portalY(other);n++;}
     float cx=x/n,cy=y/n;DeathVillageData.Gate target=g;float best=Float.MAX_VALUE;
     for(DeathVillageData.Gate other:DeathVillageGeometry.gates(id))if(g.to.equals(other.to)){float d=(float)Math.hypot(DeathVillageGeometry.x(other.u,other.v)-cx,DeathVillageGeometry.y(other.u,other.v)-cy);if(d<best){best=d;target=other;}}
     out.add(new Pin(gateLabel(g),cx,cy,DeathVillageGeometry.x(target.u,target.v),DeathVillageGeometry.y(target.u,target.v)));
