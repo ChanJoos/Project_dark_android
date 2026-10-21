@@ -1,6 +1,6 @@
 """Recover only exact named wearable sources; pin all original bytes before runtime admission."""
 from pathlib import Path
-import gzip,json,hashlib,io,urllib.request,concurrent.futures,sys,zipfile
+import shutil,gzip,json,hashlib,io,urllib.request,concurrent.futures,sys,zipfile
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'app/build/generated/wearables-v212'
@@ -40,13 +40,15 @@ def main():
    a=Path(r['previewPath']).name.split('_')[0]
    specs.append(dict(itemId=r['itemId'],name=r['name'],appearanceId=a,kind=KINDS[r['slot']]))
  else:specs=json.loads(gzip.decompress(CONTRACT.read_bytes()))['items']
- accepted=[];pending=[];OUT.mkdir(parents=True,exist_ok=True)
+ accepted=[];pending=[];
+ if OUT.exists():shutil.rmtree(OUT)
+ OUT.mkdir(parents=True,exist_ok=True)
  with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
   for n,(result,data) in enumerate(pool.map(recover,specs),1):
    if data:
     accepted.append(result)
     for directory,ext,tag in [('wearables-v212/registrations','.json','registration'),('wearables-v212/atlases','.webp','atlas')]:
-     p=OUT/directory/(result['appearanceId']+ext);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data[tag])
+     p=OUT/directory/(result['appearanceId'].lower()+ext);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data[tag])
    else:pending.append(result)
    if n%100==0:print('RECOVERED',n,'/',len(specs),'accepted',len(accepted),'pending',len(pending),flush=True)
  if pin:
@@ -61,7 +63,7 @@ def main():
  lines.append(' }')
  for i in range((len(accepted)+99)//100):
   lines.append(' static void part%d(RpgProgressionState r){'%i)
-  for a in accepted[i*100:(i+1)*100]:lines.append('  r.bindRecoveredWearable('+json.dumps(a['itemId'])+','+json.dumps(a['appearanceId'])+');')
+  for a in accepted[i*100:(i+1)*100]:lines.append('  r.bindRecoveredWearable('+json.dumps(a['itemId'])+','+json.dumps(a['appearanceId'].lower())+');')
   lines.append(' }')
  lines.append(' static final String[] IDS={'+','.join(json.dumps(a['itemId']) for a in accepted)+'};')
  lines.append('}');java.write_text('\n'.join(lines)+'\n')
