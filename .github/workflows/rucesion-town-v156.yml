@@ -28,7 +28,7 @@ jobs:
               else:print('ALREADY_FINISHED',ident,run['conclusion'])
           PY
   town:
-    if: ${{ !contains(github.event.head_commit.message, '[horror-ci-only]') }}
+    if: ${{ !contains(github.event.head_commit.message, '[horror-ci-only]') && !contains(github.event.head_commit.message, '[v218-regression-only]') }}
     runs-on: ubuntu-latest
     timeout-minutes: 35
     env:

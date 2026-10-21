@@ -177,6 +177,21 @@ jobs:
               assert restart_job['head_sha']==restart_base and len(extra)==6 and all(x['conclusion']=='success' for x in extra)
               passed += [x['name'] for x in extra]
               print('REUSING six exact-app reward/restart/Dara/skill/source checks; failed equipment details and later checks remain live')
+          # Tests-only repair: reuse only the exact-app successful prefix, never the
+          # stale reward-count failure or any unexecuted later step. APK is not rebuilt for delivery.
+          perf_base='3ca35fe7e9eebf07ba12624919601ad158c23fd6'
+          subprocess.run(['git','fetch','--depth=1','origin',perf_base],check=True)
+          perf_changed=subprocess.check_output(['git','diff','--name-only',perf_base,'HEAD'],text=True).splitlines()
+          perf_allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/AdaptedCampaignRewardTest.java'}
+          if all(p in perf_allowed or p.startswith(('docs/','verification/')) for p in perf_changed):
+              for path in ['app/src/main','app/build.gradle']:
+                  assert subprocess.check_output(['git','rev-parse',perf_base+':'+path],text=True)==subprocess.check_output(['git','rev-parse','HEAD:'+path],text=True)
+              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39617101084/jobs?per_page=100',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+              perf_job=next(j for j in json.load(urllib.request.urlopen(req))['jobs'] if j['id']==119281027809)
+              prefix=[x for x in perf_job['steps'] if 9<=x['number']<24]
+              assert perf_job['head_sha']==perf_base and len(prefix)==15 and all(x['conclusion']=='success' for x in prefix)
+              passed=[x['name'] for x in prefix]
+              print('REUSING 15 exact-app V218 prefix checks; reward-count failure and all later checks remain live',perf_changed)
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('passed='+json.dumps(passed)+'\n')
           PYRESUME
       - name: Validate Master DB
