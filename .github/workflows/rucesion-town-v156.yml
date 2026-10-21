@@ -108,6 +108,7 @@ jobs:
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           if [[ "$(git log -1 --format=%B)" == *"[death-repair-v222]"* ]]; then
             python3 tools/test_ci_scope_v216.py
+            git fetch --depth=1 origin 3bf65b964c85696420c7a56b38825231f5ec795a
             baseline_dir=$(mktemp -d)
             cp app/src/main/java/com/projectdark/mobile/RuntimeState.java "$baseline_dir/RuntimeState.java"
             cp app/src/main/java/com/projectdark/mobile/PoteForestMonsterShowcase.java "$baseline_dir/PoteForestMonsterShowcase.java"

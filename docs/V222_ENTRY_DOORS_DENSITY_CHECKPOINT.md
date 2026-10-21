@@ -1,3 +1,7 @@
+## V222 CI baseline checkout repair
+
+Published f98cb3df/run39696577345 stopped before Java compilation: checkout was shallow, so the exact V221 source used by git show was absent. Added explicit depth1 fetch of approved baseline3bf65b96 before the temporary before-phase. Trap restored final production; no runtime test or APK existed from that failed attempt. Common scope39696584605 succeeded. Production bytes unchanged; next exact-source focused run required.
+
 ## 2026-10-22 V222 사용자 실기기 결함 신고 — 입구/지하문/밀집 렉 수정, 검증 대기
 
 DEVICE_FAILED_USER_REPORTED: 야외 시작점이상·지하문과분리된포탈·몬스터밀집렉. 사용자설치APK정확SHA는UNKNOWN;직전전달V221호스트27PASS를휴대폰수용으로간주하지않음. main41fe6def/기존PR197/codex/rucesion-coast-v157,마지막성공소스3bf65b96/run39693321115에서재개,문서HEADc91f1359. 이전V219의임의FIELD28,10을원본source spawn12,85로복구. 웨어렛HP180000은사용자조정U/ADAPTED,원작확정아님;3종EXP750000유지.
