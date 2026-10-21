@@ -1,0 +1,176 @@
+{
+  "evidence": {
+    "sourceCommit": "c9bda787ba95a26d418cf858e558eece8c63f81c",
+    "runId": "39568721180",
+    "builtAtKST": "2026-10-21T17:27:08.649118+09:00",
+    "apkSha256": "5ea628b0b4e441a56a222ac32b5bca2a5e492e9d9b50da26ea7e71a0369160a5",
+    "apkBytes": 99011745,
+    "identity": {
+      "sourceCommit": "c9bda787ba95a26d418cf858e558eece8c63f81c",
+      "runId": "39568721180",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "V212 inventory projection/ownership-save cache, source named wearable recovery, 60 source icon alpha repairs; host native test and physical handset pending"
+  },
+  "counts": {
+    "tests": 53,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ItemCatalogV210Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.InventoryFeedbackV199Test",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.TempleV211Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.InventoryRepairV212Test",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MineHuntV209Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.CurseHudV202Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ItemWindowReferenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "packagedPairs": 1073,
+  "artifact": 12330179816,
+  "run": 39568721180,
+  "job": 119117271339,
+  "archiveSha256": "253377c04fc2cfdd96d6bc8eb614a4f9b85912e50492acbb62a9da828732db68",
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "source": "c9bda787ba95a26d418cf858e558eece8c63f81c",
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "merged": false,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "sourceAudit": {
+    "wearables": 1073,
+    "armors": 557,
+    "hats": 331,
+    "weapons": 185,
+    "packagedSourceFileHashesMatched": 2146,
+    "retainedPreviewExactPixelMatches": 1072,
+    "previewDifference": {
+      "name": "터틀",
+      "appearance": "mu0000256",
+      "visiblePixelDifferences": 291,
+      "alphaPixelDifferences": 66,
+      "limit": "Same named source identity; retained inventory preview is not replaced; exact source-version parity unknown"
+    },
+    "repairedIcons": 60,
+    "sourceRgbPreserved": true,
+    "remainingInventoryOnly": 47,
+    "sourceRejected": 26,
+    "unsupportedBackCape": 21
+  },
+  "performance": {
+    "repeatedWindowDetails": "120 rounds x15lookups reuse one projection; inventory/equipment changes invalidate immediately",
+    "ownershipJson": "60 unchanged autosaves generate no additional inventory/equipment JSON; real loot invalidates inventory and survives fresh runtime",
+    "queryOnlyNanoseconds": {
+      "p50": 11321,
+      "p95": 16210,
+      "p99": 39544
+    },
+    "limit": "Host SDK34 query timing, not full render/frame/FPS or physical handset improvement",
+    "coordinates": "Existing O(1) tile arithmetic/cached HUD label retained"
+  },
+  "delivery": {
+    "apk": "PROJECT_DARK_V212_TEST.apk",
+    "apkLibraryFileId": "libfile_8605658972208191a45d52ec8181497a",
+    "originalSources": "PROJECT_DARK_V212_ORIGINAL_WEARABLE_SOURCES.zip",
+    "sourceLibraryFileId": "libfile_d215409c3a8c8191b3796311fcf5293b",
+    "saved": true
+  },
+  "commonCI": [
+    {
+      "run": 39568721140,
+      "event": "push",
+      "status": "in_progress"
+    },
+    {
+      "run": 39568729484,
+      "event": "pull_request",
+      "status": "in_progress"
+    }
+  ],
+  "limits": [
+    "User-reported full-game slowdown root cause and improvement remain unconfirmed on physical handset; do not relabel host cache tests as device FPS proof",
+    "47 source-limited/unsupported source identities remain inventory-only; missing original contact/walk poses are not fabricated",
+    "Source-local alpha repair is adapted and manually inspected, not recovered native alpha; all retained source RGB preserved",
+    "Native composite capture reviewed, not all1073items in every motion/handset visual acceptance",
+    "Legacy internal184/1.84labels retained; exact source/run/hash identify V212"
+  ],
+  "initialFailures": [
+    {
+      "source": "bba6e0f6",
+      "reason": "Duplicate packaged paths; fixed namespaced source assets"
+    },
+    {
+      "source": "d64759c4",
+      "reason": "Legacy preview atlas mixed with full source coordinates; fixed exact pair precedence"
+    },
+    {
+      "source": "e24b4b0f",
+      "reason": "Eight uppercase source IDs missed lower-case runtime lookup; fixed normalized output paths/refs"
+    }
+  ]
+}

@@ -12,7 +12,15 @@
     "wearable source build",
     "SourceItemIconRegistry"
   ],
-  "verification": "PENDING_EXACT_SOURCE_CI",
+  "verification": {
+    "runtime": "c9bda787ba95a26d418cf858e558eece8c63f81c",
+    "focusedRun": 39568721180,
+    "tests": 53,
+    "failures": 0,
+    "handset": "PENDING",
+    "wholeGameSpeed": "USER_REPORTED_ROOT_CAUSE_UNKNOWN",
+    "common": "IN_PROGRESS"
+  },
   "limits": [
     "no physical handset FPS claim",
     "no new stats/names/aliases",
