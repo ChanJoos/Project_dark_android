@@ -11,8 +11,8 @@
   },
   "after": {
     "experience99": "refund all thresholds 1..98 exactly once at reaching99; retain overflow within existing4.2b cap; old99 saves one-time durable migration; pre-existing overcap retained",
-    "temple": "lobby guide only; hub actual door at17,23 walks toSeo; original hub exit27,26 returns; no portal drawings or tap shortcuts",
-    "inventory": "12 exact requested categories; exclusive wing slot; old ornament wing assignment migrates; ownership preserved",
+    "temple": "lobby guide only; hub actual door at17,23 walks toSeo; original hub exit27,26 returns; no portal drawings or tap shortcuts; visible interpolated foot radius28 handles continuous joystick, not idle-only logical exact-tile",
+    "inventory": "12 exact requested categories; exclusive wing slot; old ornament wing assignment migrates; ownership preserved; known reagents/potions→시약 including unusable reagents; food and recall→기타",
     "shield14": "exact boot.json original Korean source-label bindings; 깨진포보스방패 to 깨진포보스의방패 is explicit observed name variant",
     "wings16": "source mg/wg back and matching mc/wc front layers registered at source fixed depth; no omitted-facing fallback",
     "altar": "source video21 cut; UI-occluded corner has explicit ADAPTED geometry/color reconstruction; hidden original geometry remains unresolved"

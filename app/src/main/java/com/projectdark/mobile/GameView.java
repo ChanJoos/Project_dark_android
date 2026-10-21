@@ -705,7 +705,12 @@ public final class GameView extends View {
     if(nav.movement.lastStepDirection!=null)applyWorldFacing(nav.movement.lastStepDirection);if(reagentShopAdapter.presentationMoving()){action=Action.WALK;walkClock+=dt;}else if(!isActing())action=Action.IDLE;
     if(merchantApproach&&!reagentShopAdapter.presentationMoving()&&Math.abs(state.player().x-townInterior.customerX())<.01&&Math.abs(state.player().y-townInterior.customerY())<.01){merchantApproach=false;reagentShopAdapter.cancelForAction();if(townInterior.kind==TownInteriorDef.Kind.INN)innDialogueOpen=true;else if(townInterior.isTemple())openTempleNpc();else{townWindow.open(townInterior,state);focusTutorialShop();reagentShopOpen=true;}}
     if(!townInterior.isRegional()&&townInterior.kind==TownInteriorDef.Kind.INN&&f5mQuest.state()==F5mAdaptedPrologueQuest.State.RETURN_READY&&!reagentShopAdapter.presentationMoving()&&Math.abs(state.player().x-townInterior.customerX())<.01&&Math.abs(state.player().y-townInterior.customerY())<.01){innDialogueOpen=true;reagentShopAdapter.cancelForAction();}
-    if(townInterior.isTemple()&&!reagentShopAdapter.presentationMoving()){float distance=(float)Math.hypot(state.player().x-townInterior.exitX(),state.player().y-townInterior.exitY());if(distance>48)templeGateArmed=true;for(com.projectdark.mobile.world.TempleRoutes.Gate gate:com.projectdark.mobile.world.TempleRoutes.forRoom(townInterior))if(!gate.exit&&Math.hypot(state.player().x-gate.x,state.player().y-gate.y)<1){changeTempleRoom(gate.target);return;}if(!templeGateArmed)return;}
+    if(townInterior.isTemple()){
+      float px=reagentShopAdapter.presentationPlayerX(),py=reagentShopAdapter.presentationPlayerY();
+      float exitDistance=(float)Math.hypot(px-townInterior.exitX(),py-townInterior.exitY());if(exitDistance>48)templeGateArmed=true;
+      for(com.projectdark.mobile.world.TempleRoutes.Gate gate:com.projectdark.mobile.world.TempleRoutes.forRoom(townInterior))if(!gate.exit&&Math.hypot(px-gate.x,py-gate.y)<=28){changeTempleRoom(gate.target);return;}
+      if(templeGateArmed&&exitDistance<=28)leaveReagentShop();return;
+    }
     if(Math.abs(state.player().x-townInterior.exitX())<.01&&Math.abs(state.player().y-townInterior.exitY())<.01)leaveReagentShop();
   }
   private void drawReagentShopWorld(Canvas c){if(reagentShopAdapter==null)return;if(townInterior.isTemple())templeRenderer.ground(c,reagentShopAdapter,townInterior);else townRenderer.ground(c,reagentShopAdapter,townInterior);java.util.List<Runnable> draws=new java.util.ArrayList<>();java.util.List<Float> depths=new java.util.ArrayList<>();

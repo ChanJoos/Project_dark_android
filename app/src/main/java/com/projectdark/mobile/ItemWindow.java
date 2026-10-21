@@ -13,7 +13,7 @@ final class ItemWindow {
   static final String[] FILTERS={"전체","무기","모자","옷","신발","각반","반지","목걸이","벨트","날개","시약","기타"};
   static RectF filterTab(int i){return new RectF(344+i*48,82,391+i*48,110);}
   static int category(RpgInventoryPresentation.ItemRow row,RpgProgressionState r){String slot=row.equipSlot;
-    if("무기".equals(slot))return 1;if("모자".equals(slot))return 2;if("갑옷".equals(slot))return 3;if("신발".equals(slot))return 4;if("각반".equals(slot))return 5;if("반지".equals(slot)||RpgProgressionState.RIGHT_RING_SLOT.equals(slot))return 6;if("목걸이".equals(slot))return 7;if("벨트".equals(slot))return 8;if("날개".equals(slot))return 9;if(r.isConsumable(row.itemId)||r.isRecall(row.itemId))return 10;return 11;
+    if("무기".equals(slot))return 1;if("모자".equals(slot))return 2;if("갑옷".equals(slot))return 3;if("신발".equals(slot))return 4;if("각반".equals(slot))return 5;if("반지".equals(slot)||RpgProgressionState.RIGHT_RING_SLOT.equals(slot))return 6;if("목걸이".equals(slot))return 7;if("벨트".equals(slot))return 8;if("날개".equals(slot))return 9;if(row.itemId.startsWith("IT_REAGENT_")||RpgProgressionState.B5_SMALL_HP_POTION_ITEM_ID.equals(row.itemId)||"IT_B_MP_POTION".equals(row.itemId))return 10;return 11;
   }
   static final String[] SLOTS={"모자","귀걸이","목걸이","갑옷","무기","장갑",RpgProgressionState.RIGHT_GLOVE_SLOT,"반지",RpgProgressionState.RIGHT_RING_SLOT,"신발","각반","벨트","방패","장식",RpgProgressionState.SECOND_ORNAMENT_SLOT,"날개"};
   // Coordinates in the user's 522x556 reference crop. Cosmetic-only source cells omitted.
