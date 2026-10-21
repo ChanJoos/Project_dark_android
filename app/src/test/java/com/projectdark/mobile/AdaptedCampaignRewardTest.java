@@ -80,7 +80,7 @@ public final class AdaptedCampaignRewardTest {
     assertEquals(Integer.valueOf(3),r.normalLevel());
     assertTrue(r.chooseInitialJob("MARTIAL_ARTIST"));
     assertEquals("MARTIAL_ARTIST",r.currentJobCode());
-    assertEquals("IT_B_JOB_MONK_GI",r.equipment().get(RpgProgressionState.ARMOR_SLOT));
+    assertTrue(r.inventory().containsKey(RpgProgressionState.canonicalItemId("IT_B_JOB_MONK_GI")));
     assertFalse(r.chooseInitialJob("MAGE"));
   }
   @Test public void firstJobChoiceSurvivesRestartWithoutRegranting(){
@@ -99,9 +99,18 @@ public final class AdaptedCampaignRewardTest {
     assertFalse(state.blocked(counselor.x,counselor.y));
     assertNotNull(state.nearestMonsterTileCenter(counselor.x,counselor.y));
   }
-  @Test public void eachInitialJobGetsItsOwnWearableAndUsableWeaponPolicy(){
+  @Test public void eachInitialJobOwnsOriginalGearAndAutoEquipsOnlyWhenOriginalConditionsAllow(){
     String[][] expected={{"WARRIOR","IT_B_JOB_WARRIOR_TUNIC","IT_B_JOB_WARRIOR_WEAPON"},{"ROGUE","IT_B_JOB_ROGUE_GARMENT","IT_B_JOB_ROGUE_WEAPON"},{"MAGE","IT_B_JOB_MAGE_ROBE","IT_B_JOB_MAGE_WAND"},{"CLERIC","IT_B_JOB_CLERIC_ROBE","IT_B_JOB_CLERIC_WAND"},{"MARTIAL_ARTIST","IT_B_JOB_MONK_GI",null}};
-    for(String[] row:expected){RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(22800,0);assertTrue(r.chooseInitialJob(row[0]));String armor=r.equipment().get(RpgProgressionState.ARMOR_SLOT);assertEquals(row[1],armor);assertTrue(r.itemDefinitions().get(armor).allowedJobCodes.contains(row[0]));if(row[2]==null)assertFalse(r.equipment().containsKey(RpgProgressionState.WEAPON_SLOT));else{assertEquals(row[2],r.equipment().get(RpgProgressionState.WEAPON_SLOT));assertTrue(r.itemDefinitions().get(row[2]).allowedJobCodes.contains(row[0]));}}
+    for(String[] row:expected){
+      RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(22800,0);java.util.Map<String,String> before=new java.util.LinkedHashMap<>(r.equipment());assertTrue(r.chooseInitialJob(row[0]));
+      for(int i=1;i<=2;i++){
+        String slot=i==1?RpgProgressionState.ARMOR_SLOT:RpgProgressionState.WEAPON_SLOT;
+        if(row[i]==null){assertFalse(r.equipment().containsKey(slot));continue;}
+        String canonical=RpgProgressionState.canonicalItemId(row[i]);assertTrue(row[0]+" owns "+canonical,r.inventory().getOrDefault(canonical,0)>0);assertFalse(r.inventory().containsKey(row[i]));
+        if(r.currentRequirements(canonical)==RpgProgressionState.RequirementResult.MET)assertEquals(canonical,r.equipment().get(slot));
+        else assertEquals("unmet original conditions must not auto-equip "+canonical,before.get(slot),r.equipment().get(slot));
+      }
+    }
   }
   private RuntimeState.Monster find(RuntimeState r,String id){for(RuntimeState.Monster m:r.monsters())if(id.equals(m.id))return m;throw new AssertionError(id);}
 }
