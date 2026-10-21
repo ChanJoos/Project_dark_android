@@ -1,0 +1,30 @@
+[
+  {
+    "itemId": "USER_ITEM_20261018_R00813",
+    "name": "나겔링부스터",
+    "appearance": "mg261",
+    "part": 26,
+    "category": "wing",
+    "files": {
+      "data/type/back/mg261.json": "ad2a690759232ebb2bb5f32528d8c9aea6b09bfae17684dbe0355d29ba76f702",
+      "atlas/back/mg261.webp": "cb4518596dec6a3d60186733b19e85a940e9d62f3046a3df90fa54389c75b504",
+      "data/type/cape/mc261.json": "2c3208c8b973e3a8383dd46dd052ca4670fe238b89951538d9e4aa3063d830d9",
+      "atlas/cape/mc261.webp": "3980bf375c52d0a06c620302783c5de753271677957e8c50290eff5b37329a70"
+    },
+    "front": "mc261"
+  },
+  {
+    "itemId": "IT_NATIVE_V210_84BD5A9CA00577FD",
+    "name": "플로팅블레이드",
+    "appearance": "mg332",
+    "part": 26,
+    "category": null,
+    "files": {
+      "data/type/back/mg332.json": "b051e012c43a52916f5612d096730265564b978e0708a63103e5957561196cff",
+      "atlas/back/mg332.webp": "9c8770de969345f294f5b06ff387814697c98b3253744cf0e36b0e80e5c36fbf",
+      "data/type/cape/mc332.json": "a9559c6e2eb3ca1ab6fdd554fa6b828894670a73327d51b30501ddca7f1859e3",
+      "atlas/cape/mc332.webp": "ed4f4d0f9e7ceba6666a80d5871152edafcae616fb4c3381f146a1b787e486a9"
+    },
+    "front": "mc332"
+  }
+]

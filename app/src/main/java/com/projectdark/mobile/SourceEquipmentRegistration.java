@@ -13,27 +13,28 @@ final class SourceEquipmentRegistration {
     final Rect src; final float dx,dy;
     Frame(Rect src,float dx,float dy){this.src=src;this.dx=dx;this.dy=dy;}
   }
-  private final JSONObject body,gear;
-  private SourceEquipmentRegistration(JSONObject body,JSONObject gear){this.body=body;this.gear=gear;}
+  private final JSONObject body,gear;private final String identity;
+  private SourceEquipmentRegistration(JSONObject body,JSONObject gear,String id){this.body=body;this.gear=gear;this.identity=id;}
   static SourceEquipmentRegistration load(Context context,String identity){
     if(context==null||identity==null)return null;
     try{
       JSONObject b=new JSONObject(read(context,"source-registration/"+(identity.startsWith("w")?"wm001":"mm001")+".json"));
       JSONObject g=new JSONObject(read(context,"source-registration/"+identity+".json"));
-      return new SourceEquipmentRegistration(b,g);
+      return new SourceEquipmentRegistration(b,g,identity);
     }catch(Throwable ignored){return null;}
   }
   Frame idle(CharacterRenderer.Direction direction,int column){
     int frame=ShirtSourceRegistration.idleFrame(direction,column);
     return frame("01",frame);
   }
-  Frame action(int sourceIndex){return frame("02",sourceIndex);}
+  Frame action(int sourceIndex){return frame("02",sourceIndex,WingShieldV215.actionFrame(identity,sourceIndex));}
   Frame idleByIndex(int index){return frame("01",index);}
-  private Frame frame(String group,int index){
+  private Frame frame(String group,int index){return frame(group,index,index);}
+  private Frame frame(String group,int bodyIndex,int gearIndex){
     try{
       JSONArray bs=body.getJSONObject("sprites").getJSONArray(group);
       JSONArray gs=gear.getJSONObject("sprites").getJSONArray(group);
-      JSONObject b=sourceFrame(bs,index),g=sourceFrame(gs,index);
+      JSONObject b=sourceFrame(bs,bodyIndex),g=sourceFrame(gs,gearIndex);
       if(b==null||g==null)return null;
       int bw=b.getInt("w"),bh=b.getInt("h"),gw=g.getInt("w"),gh=g.getInt("h");
       float bx=(float)b.getDouble("px")*bw, by=-(float)b.getDouble("py")*bh;

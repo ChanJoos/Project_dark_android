@@ -1,6 +1,9 @@
 package com.projectdark.mobile;
 final class WingShieldV215 {
  static void install(RpgProgressionState r){
+  r.installVisibleAccessory("USER_ITEM_20261018_R00813","날개","mg261");
+  r.installVisibleAccessory("IT_NATIVE_V210_84BD5A9CA00577FD","날개","mg332");
+
   r.installVisibleAccessory("USER_ITEM_20261018_R00774","날개","mg198");
   r.installVisibleAccessory("USER_ITEM_20261018_R00689","날개","mg087");
   r.installVisibleAccessory("USER_ITEM_20261018_R00688","날개","mg285");
@@ -33,6 +36,9 @@ final class WingShieldV215 {
   r.installVisibleAccessory("IT_SHIELD_PAPAYA","방패","ms018");
  }
  static final java.util.Map<String,String> FRONTS=new java.util.HashMap<>();static {
+  FRONTS.put("mg261","mc261");
+  FRONTS.put("mg332","mc332");
+
   FRONTS.put("mg045","mc045");
   FRONTS.put("mg046","mc046");
   FRONTS.put("mg047","mc047");
@@ -55,5 +61,6 @@ final class WingShieldV215 {
  static String front(String id){return FRONTS.get(id);}
  static boolean layer(String id){return wing(id)||FRONTS.containsValue(id);}
  static boolean inFront(String id,CharacterRenderer.Direction d){return FRONTS.containsValue(id)||(!FRONTS.containsKey(id)&&(d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE));}
+ static int actionFrame(String id,int bodyFrame){return "mg332".equals(id)||"mc332".equals(id)?bodyFrame*4:bodyFrame;}
  private WingShieldV215(){}
 }

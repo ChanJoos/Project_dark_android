@@ -109,7 +109,7 @@ final class SkillBodyRenderer {
   private void drawGear(Canvas c,String id,String body,String group,int index,CharacterRenderer.Direction direction,float x,float y){
     if(id==null||id.isEmpty())return;EquipmentVisualRegistry.Visual v=gear.get(id);if(v==null||v.atlas==null)return;
     JSONObject j=registration(id);if(j==null)return;JSONObject sprites=j.optJSONObject("sprites");if(sprites==null)return;
-    JSONArray a=sprites.optJSONArray(group);JSONObject f=SourceEquipmentRegistration.sourceFrame(a,index);
+    JSONArray a=sprites.optJSONArray(group);int gearIndex="02".equals(group)?WingShieldV215.actionFrame(id,index):index;JSONObject f=SourceEquipmentRegistration.sourceFrame(a,gearIndex);
     // Explicit source group omissions have no layer; do not substitute a later/standing pose.
     if(a!=null&&f==null)return;
     boolean adapted=f==null;

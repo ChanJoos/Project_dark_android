@@ -15,13 +15,15 @@
     "inventory": "12 exact requested categories; exclusive wing slot; old ornament wing assignment migrates; ownership preserved; known reagents/potions→시약 including unusable reagents; food and recall→기타",
     "shield14": "exact boot.json original Korean source-label bindings; 깨진포보스방패 to 깨진포보스의방패 is explicit observed name variant",
     "wings16": "source mg/wg back and matching mc/wc front layers registered at source fixed depth; no omitted-facing fallback",
-    "altar": "source video21 cut; UI-occluded corner has explicit ADAPTED geometry/color reconstruction; hidden original geometry remains unresolved"
+    "altar": "source video21 cut; UI-occluded corner has explicit ADAPTED geometry/color reconstruction; hidden original geometry remains unresolved",
+    "wings18": "16 named wings plus 나겔링부스터mg261 and 플로팅블레이드mg332, both source Item.bin part26; paired original mc261/mc332 layers. mg332/mc332 packed16contact frames mapped source body0..3→0,4,8,12, preserving source north0..7/south8..15 and strict absent-layer omissions; current approved body poses unchanged."
   },
   "sourceFiles": [
     "master/source/equipment/shields_v215/sources.json",
     "master/source/equipment/wings_v215/sources.json",
     "master/source/equipment/wings_v215/paired_layers.json",
-    "master/source/temple_v215/reference.json"
+    "master/source/temple_v215/reference.json",
+    "master/source/equipment/wings_v215/extra_sources.json"
   ],
   "sourceUrls": [
     "https://lod-dressup-2.web.app/data/boot.json",
@@ -41,5 +43,5 @@
     "TempleRoutes",
     "TempleEntranceRenderer"
   ],
-  "validation": "SystemsV215Test and affected native/system/performance regressions in focused and common CI. Exact source/build/APK/phone statuses pending."
+  "validation": "SystemsV215Test32items×4directions×idle/contact male/female, strict packed north/south frames, threshold-held joystick,99migration and windows; focused/common CI PENDING."
 }
