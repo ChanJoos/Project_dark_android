@@ -1,0 +1,133 @@
+{
+  "sourceCommit": "b439c3b5ed6174c480ab8594063e12c53745a130",
+  "runId": "39679695547",
+  "builtAtKST": "2026-10-22T06:37:46.231381+09:00",
+  "apkSha256": "24b8dcf2478296e9935601da13271a316affdf19934421330b5234c0fabc4058",
+  "apkBytes": 101663264,
+  "identity": {
+    "sourceCommit": "b439c3b5ed6174c480ab8594063e12c53745a130",
+    "runId": "39679695547",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V219 real lobby-spawn outdoor entrance, source first-building arrival, three live-collision door routes, unchanged underground topology, four startup test quickslots and preference migration; handset pending",
+  "manifest": {
+    "manifest.versionCode": 184,
+    "manifest.versionName": "1.84-mobile-horror",
+    "manifest.compileSdkVersion": 35,
+    "manifest.compileSdkVersionCodename": "15",
+    "manifest.package": "com.projectdark.mobile.v219test",
+    "manifest.platformBuildVersionCode": 35,
+    "manifest.platformBuildVersionName": 15,
+    "application.theme": 2130837504,
+    "application.label": "PROJECT DARK V219 TEST",
+    "application.debuggable": 4294967295,
+    "application.extractNativeLibs": 0
+  },
+  "signatureV2": {
+    "algorithm": "RSA_PKCS1_SHA256",
+    "contentDigest": "320c7622562b1f828851bed128bcabdf6b7384f4a26dfdfd87eae7fe162f4e34",
+    "chunks": 99,
+    "certificateSha256": "fd699d08054e3d4627a4a65bf5918b9ae4d610f2018c010439c480edececd5c9",
+    "verified": true
+  },
+  "originalDeathAssetsCompared": 825,
+  "apkFile": "PROJECT_DARK_V219_TEST.apk",
+  "artifactId": 12382999598,
+  "artifactZipSha256": "47dd0219607784d7c287a07b2c716928c22c9cf1c77ed1eeb57a3ab93c1a839a",
+  "nativeJob": 119498638236,
+  "runConclusion": "success",
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.DeathVillageV217Test",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "24.672"
+    },
+    {
+      "name": "com.projectdark.mobile.DeathVillageV219Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "14.937"
+    },
+    {
+      "name": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "17.006"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillTestModeTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "11.912"
+    },
+    {
+      "name": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.183"
+    }
+  ],
+  "handset": "PENDING; host native execution does not certify physical phone or full performance fix",
+  "branch": "codex/rucesion-coast-v157",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "merged": false,
+  "commonScope": {
+    "run": 39679702893,
+    "result": "success",
+    "fullCompile": "intentionally skipped exact reviewed V219 scope"
+  },
+  "reference": {
+    "file": "Screen_Recording_20261021_205405_YouTube(2).mp4",
+    "sha256": "223c845d4c5287975701e45a76d4c4af93fc8552378fb1ea8be7ea7692dcc0e2",
+    "seconds": 97.384062,
+    "reviewedFramesSeconds": [
+      23,
+      50
+    ],
+    "limits": "Original name/monster joins and full current-version map parity not certified"
+  },
+  "quickslots": [
+    "프라베라",
+    "속성강화",
+    "메테오",
+    "홀리드래곤",
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+  ],
+  "mobileEntranceOverride": {
+    "old": [
+      12,
+      85
+    ],
+    "new": [
+      28,
+      10
+    ],
+    "status": "ADAPTED, original grid and PNG source bytes preserved"
+  },
+  "nativeCaptures": {
+    "v219-outdoor-door-1-wide.png": "520ffca5c0d80af4fe8c55ec46f4077d4ebcb1ac0b7094efa416abb1e414408b",
+    "v219-01-lobby-real-spawn.png": "f1690d4b21445eab2fc2c7865cd3cea914afdb0d83bb36863b5aafbc03169616",
+    "v219-outdoor-door-2-wide.png": "c346933172bc1dd5b85eb77f1a2e2f3cf9dc32ebff056c73a6236e22c51ec21b",
+    "v219-four-startup-skills.png": "9c897671a2dc3cc4db80d53948f837b6c7e833c108a0d3bd8d44459607a2a0ce",
+    "v219-03-house1-arrival.png": "3a458997198cc779928cc06fa6932e41c40d757611e7efdfb04f6a379c321330",
+    "v219-outdoor-door-3-wide.png": "03628b18eb725e1eb80aaf366c3f58daff50a7fc3ced05473fe847f7426f8230",
+    "v219-02-outdoor-on-arrival.png": "a5812105b7491853299e762bf6458afed4917e14a504a549ab5edd350dd77c87"
+  }
+}
