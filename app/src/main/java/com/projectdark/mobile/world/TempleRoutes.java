@@ -12,7 +12,7 @@ public final class TempleRoutes {
   if(!d.isTemple())return Collections.emptyList();
   List<Gate> gates=new ArrayList<>();
   // Lobby forward travel is exclusively the guide NPC.
-  if(d.mapId.endsWith("_hub"))gates.add(new Gate(17,23,"세오신전 · 체력/마력","milles_interior_temple_seo",false));
+  if(d.mapId.endsWith("_hub"))gates.add(new Gate(21,25,"세오신전 · 체력/마력","milles_interior_temple_seo",false));
   gates.add(new Gate(exitU(d),exitV(d),d.mapId.endsWith("_lobby")?"밀레스 마을":d.mapId.endsWith("_hub")?"신전대기실":"신들의 세계",null,true));
   return Collections.unmodifiableList(gates);
  }

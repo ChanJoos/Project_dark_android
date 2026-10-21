@@ -1,8 +1,10 @@
 name: Validate PROJECT DARK Android
 on:
   push:
+    branches: [main]
   pull_request:
     branches: [main]
+    types: [opened, synchronize, reopened, labeled]
   workflow_dispatch:
 permissions:
   contents: read
@@ -15,9 +17,16 @@ jobs:
       - uses: actions/checkout@v4
         with:
           ref: ${{ github.event.pull_request.head.sha || github.sha }}
+          fetch-depth: 0
       - id: check
+        env:
+          FORCE_FULL: ${{ github.event_name == 'workflow_dispatch' || github.ref == 'refs/heads/main' || contains(github.event.pull_request.labels.*.name, 'full-regression') }}
         run: |
-          if [[ "$(git log -1 --format=%B)" == *"[horror-scoped]"* ]]; then
+          if [[ "$FORCE_FULL" == "true" ]]; then
+            echo 'full=true' >> "$GITHUB_OUTPUT"
+          elif [[ -f tools/ci_scope_v216.py ]]; then
+            python3 tools/ci_scope_v216.py
+          elif [[ "$(git log -1 --format=%B)" == *"[horror-scoped]"* ]]; then
             git fetch --depth=1 origin af190162322029e3c6785a1362f74d89d7f3101d
             python3 tools/horror_v180_ci_scope.py
           else

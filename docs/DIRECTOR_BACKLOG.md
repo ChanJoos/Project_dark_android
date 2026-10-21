@@ -1,3 +1,9 @@
+## 2026-10-21 V216 사용자 수정 — 구현 / CI 대기
+
+V215 DEVICE_FAILED_USER_REPORTED: 신들의세계 표시 좌표21,25에서 세오신전 진입 안 됨. 코드 확인: forward gate가17,23으로 지정돼 있었다.21,25는 원본 grid walkable이며 새 자동 진입점으로 변경. 허브 NPC는 그리기/이름/클릭/충돌에서 제거; 대기실 안내 NPC와 세오는 유지. 방패/귀걸이/장갑 착용 슬롯은 이미 존재하여 인벤토리 필터에 세 분류를 추가(총15); 팔찌는 기존 장갑 슬롯 및 양손 규칙 유지. 날개 슬롯을 방패 바로 오른쪽으로 이동하고 상단 글씨 제거. 라피드6종은 삭제된 것이 아니라 기타/장식에 유지; 목록 선택·착용·저장 경로 검증 예정.
+
+Director 단일 편집, 기존 PR197/main41fe6def 유지. 새 후보 패키지com.projectdark.mobile.v216test. 관련 native tests와 assemble/exact APK만 실행; 성장 퀘스트·전체 스킬 등 무관한 전체 회귀를 선행조건으로 하지 않는다. common CI는 feature push를 중복 실행하지 않고 PR에서 마지막 full-verified7b6의 metadata-only closure274cfbf 대비 변경을 검사한다. V216 리뷰한 파일의 정확한 SHA256만 focused로 인정하며 다른 runtime 경로/바이트는 full로 복귀. 최종 통합 전 full-regression PR label 또는 manual common workflow로 전체 검사 필수. 지침과 selector 5검사 및 YAML/쉘 구문을 로컬 검사; 원격 실행 결과/실기기/사용자 시각 수용은 대기. docs-only 종료 기록은 APK 재빌드 금지.
+
 ## 2026-10-21 사용자 확정 — 변경 영향에 따른 검사 범위
 
 사용자 요청에 따라 AGENTS.md의 Change-scoped verification과 docs/DIRECTOR_GUIDE.md를 개정했다. 변경 기능과 직접 영향받는 경로를 우선 검증하고, 전체 회귀는 최종 main 통합·공통 기반 변경·실패로 확인된 광범위 영향 때 수행한다. 성장/퀘스트/스킬 전체 검사를 개별 수정의 일괄 선행조건으로 삼지 않는다. 동일 소스의 유효한 증거는 재사용하며 문서 수정으로 APK를 재빌드하지 않는다.

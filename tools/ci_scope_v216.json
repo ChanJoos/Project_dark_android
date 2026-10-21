@@ -1,0 +1,10 @@
+{
+  "app/build.gradle": "38a8053d9b8a92d5b0ee5eda5be425bcb09e8fc68c146b91b5a7235f933f7f61",
+  "app/src/main/java/com/projectdark/mobile/GameView.java": "00ca58fdc1a46e4dd4f8db612228d26f10b3d8087081b2fade961754cd0a37cc",
+  "app/src/main/java/com/projectdark/mobile/ItemWindow.java": "20edaa843ff363fc1cd201c83da1db1e6c1cc8bea19db6783b1682786da13638",
+  "app/src/main/java/com/projectdark/mobile/world/TempleRoutes.java": "ea9db42971c5209fb8ebc1895dec77e2ce4981b2d7328b7a716816af79fad35a",
+  "app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java": "ffe1c825aed30423321d2a704386815b6488de937a08008d313292419bb7d4df",
+  "app/src/test/java/com/projectdark/mobile/SystemsV215Test.java": "56c620896eec1397071b4f3b2975cf546b5feb555ecf28ec2e004131461fa1b9",
+  "app/src/test/java/com/projectdark/mobile/TempleMillesV213Test.java": "5bcfaa2a9fc20680568513946526da76b940ff7281c89719e2afd846c454e755",
+  "app/src/test/java/com/projectdark/mobile/TempleEquipmentV216Test.java": "ad04be71da7e5736ecffc8f8449ee0317a5077eaa2026ece060ac17c98898ae6"
+}

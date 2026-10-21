@@ -105,6 +105,7 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
  public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:TEMPLE)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:RUCESION)if(d.mapId.equals(id))return d;for(TownInteriorDef d:MINE)if(d.mapId.equals(id))return d;return null;}
  public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;for(TownInteriorDef d:TEMPLE)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
+ public boolean hasNpc(){return !mapId.endsWith("_temple_hub");}
  public boolean isTemple(){return kind==Kind.TEMPLE;}
  public TempleOriginalData.Grid original(){return TempleOriginalData.get(mapId);}
  public float minY(){return isTemple()?-128:MIN_Y;}
@@ -112,7 +113,7 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
  private int entryU(){return isAbel()&&kind==Kind.INN?13:kind==Kind.BANK?5:6;}
  public float spawnX(){if(isTemple())return x(original().spawnU,original().spawnV);return x(entryU(),rows-2);}public float spawnY(){if(isTemple())return y(original().spawnU,original().spawnV);return y(entryU(),rows-2);}public float exitX(){if(isTemple())return x(TempleRoutes.exitU(this),TempleRoutes.exitV(this));return x(entryU(),rows-1);}public float exitY(){if(isTemple())return y(TempleRoutes.exitU(this),TempleRoutes.exitV(this));return y(entryU(),rows-1);}
  public float npcX(){if(isTemple())return x(npcU,npcV);return x(npcU,npcV)-12;}public float npcY(){if(isTemple())return y(npcU,npcV);return y(npcU,npcV)-6;}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
- public boolean blocked(int u,int v){if(isTemple())return !original().walkable(u,v)||(u==npcU&&v==npcV);if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}
+ public boolean blocked(int u,int v){if(isTemple())return !original().walkable(u,v)||(hasNpc()&&u==npcU&&v==npcV);if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}
  public List<WorldMoveTargetController.TileCenter> navigationTiles(){List<WorldMoveTargetController.TileCenter> t=new ArrayList<>();for(int u=1;u<columns;u++)for(int v=1;v<rows;v++)if(!blocked(u,v))t.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(t);}
  public List<RectF> obstacles(){List<RectF> a=new ArrayList<>();for(int u=0;u<columns;u++)for(int v=0;v<rows;v++)if(blocked(u,v))a.add(new RectF(x(u,v)-3,y(u,v)-3,x(u,v)+3,y(u,v)+3));return a;}
  public int floor(int u,int v){return kind==Kind.REAGENT?1:kind==Kind.CHURCH?(u>=5&&u<=7?3:2):0;}
