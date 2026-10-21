@@ -137,16 +137,16 @@
     {
       "id": "boundary_tree_east",
       "asset": "vegetation/trees/OBJ_tree_01.png",
-      "x": 2200,
-      "y": 944,
+      "x": 2264,
+      "y": 864,
       "scale": 0.56,
       "district": "village_edge"
     },
     {
       "id": "waterside_tree",
       "asset": "vegetation/trees/OBJ_tree_05.png",
-      "x": 2040,
-      "y": 1280,
+      "x": 1760,
+      "y": 1430,
       "scale": 0.86,
       "district": "waterside"
     },

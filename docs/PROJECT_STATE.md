@@ -1,3 +1,7 @@
+## 2026-10-21 V213 user temple regression and Milles revision
+
+DEVICE_FAILED (user-reported): exterior differs from supplied recording; missing internal portals/NPC. Preserve approved interior room artwork. Root cause on installed physical APK UNKNOWN. Code/native baseline confirms hidden exact-tile hub transition and omitted hub guide. V213 adds source-sprite labeled/tappable forward/return gates and separate visible guide, source light alpha repair, clears overlapping shrine trees, uses captured Milles grass and varied retained tree silhouettes, caches static river geometry/shaders. Existing HP/MP formula, services, save and 0.60s movement retained. BUILD/RUNTIME/USER VISUAL acceptance pending. docs/V213_MILLES_TEMPLE_CHECKPOINT.md owns continuation; PR197 unmerged, main41fe6def unchanged.
+
 ## 2026-10-21 V212 final CI closure — handset verification remains pending
 
 Runtime `c9bda787ba95a26d418cf858e558eece8c63f81c`: focused39568721180 **SUCCESS / 53tests**, full common push39568721140 **SUCCESS**, full common PR39568729484 **SUCCESS**. Exact delivered APK remains unchanged: built2026-10-21 17:27:08KST,99,011,745bytes,SHA256 `5ea628b0b4e441a56a222ac32b5bca2a5e492e9d9b50da26ea7e71a0369160a5`. Native source/artifact hashes and all2146wearable files independently verified. Documentation closure does not rebuild or relabel the APK. PR197 remains unmerged; main41fe6def unchanged.

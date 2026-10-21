@@ -23,7 +23,7 @@ public final class TownInteriorDef {
   TempleOriginalData.Grid g=TempleOriginalData.get(id);
   kind=k;mapId=id;this.title=title;npcId=com.projectdark.mobile.NpcIdentity.interiorKey(id,k.name());com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(npcId);npcName=k==Kind.TEMPLE?(id.endsWith("_seo")?"세오":"선진"):profile.label();this.outfit=profile.outfit;doorId=door;
   columns=g!=null?g.width:k==Kind.INN&&id.startsWith("abel_")?17:k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=g!=null?g.height:k==Kind.INN&&id.startsWith("abel_")?16:k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
-  npcU=g!=null?g.npcU:k==Kind.INN&&id.startsWith("abel_")?10:k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=g!=null?g.npcV:k==Kind.INN&&id.startsWith("abel_")?4:k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
+  npcU=g!=null?(id.endsWith("_temple_hub")?24:g.npcU):k==Kind.INN&&id.startsWith("abel_")?10:k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=g!=null?(id.endsWith("_temple_hub")?22:g.npcV):k==Kind.INN&&id.startsWith("abel_")?4:k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
   counterV=npcV+2;customerU=npcU;customerV=g!=null?npcV+1:counterV+1;
   counterStart=k==Kind.BANK?4:3;counterEnd=k==Kind.EQUIPMENT?11:k==Kind.BANK?8:10;
   List<Prop> p=new ArrayList<>();
@@ -112,7 +112,7 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
  private int entryU(){return isAbel()&&kind==Kind.INN?13:kind==Kind.BANK?5:6;}
  public float spawnX(){if(isTemple())return x(original().spawnU,original().spawnV);return x(entryU(),rows-2);}public float spawnY(){if(isTemple())return y(original().spawnU,original().spawnV);return y(entryU(),rows-2);}public float exitX(){if(isTemple())return x(original().exitU,original().exitV);return x(entryU(),rows-1);}public float exitY(){if(isTemple())return y(original().exitU,original().exitV);return y(entryU(),rows-1);}
  public float npcX(){if(isTemple())return x(npcU,npcV);return x(npcU,npcV)-12;}public float npcY(){if(isTemple())return y(npcU,npcV);return y(npcU,npcV)-6;}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
- public boolean blocked(int u,int v){if(isTemple())return !original().walkable(u,v)||(!mapId.endsWith("_hub")&&u==npcU&&v==npcV);if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}
+ public boolean blocked(int u,int v){if(isTemple())return !original().walkable(u,v)||(u==npcU&&v==npcV);if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}
  public List<WorldMoveTargetController.TileCenter> navigationTiles(){List<WorldMoveTargetController.TileCenter> t=new ArrayList<>();for(int u=1;u<columns;u++)for(int v=1;v<rows;v++)if(!blocked(u,v))t.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(t);}
  public List<RectF> obstacles(){List<RectF> a=new ArrayList<>();for(int u=0;u<columns;u++)for(int v=0;v<rows;v++)if(blocked(u,v))a.add(new RectF(x(u,v)-3,y(u,v)-3,x(u,v)+3,y(u,v)+3));return a;}
  public int floor(int u,int v){return kind==Kind.REAGENT?1:kind==Kind.CHURCH?(u>=5&&u<=7?3:2):0;}

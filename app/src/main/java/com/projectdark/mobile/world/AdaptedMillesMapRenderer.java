@@ -32,7 +32,7 @@ public final class AdaptedMillesMapRenderer {
   private static final float TILE_W=AdaptedMillesIsometricTileLayer.TILE_WIDTH;
   private static final float TILE_H=AdaptedMillesIsometricTileLayer.TILE_HEIGHT;
   private static final float SEAM_GUARD=1f;
-  private static final String GRASS_SURFACE="style_v102/grass.png";
+  private static final String GRASS_SURFACE="video_reference/terrain/grass_texture.png";
   private static final String SOIL_SURFACE="video_reference/terrain/dirt_path_fill_texture.png";
 
   private static final class SpritePlacement {
@@ -55,6 +55,9 @@ public final class AdaptedMillesMapRenderer {
   private final MillesSourceStyle sourceStyle;
   private final Paint grassPaint=new Paint();
   private BitmapShader riverWaterShader;
+  private final Path riverRipples=new Path();
+  private final Paint roadFringePaint=new Paint();
+  private final List<Path> roadOuter=buildRoadContours(27.5f);
   private final List<SpritePlacement> placements,groundPlacements,standingPlacements;
 
   public AdaptedMillesMapRenderer(){
@@ -63,6 +66,8 @@ public final class AdaptedMillesMapRenderer {
     configureRoadPaint(soilEdgePaint,0x996b522d,49f);
     configureRoadPaint(soilPaint,0xff91602d,43f);
     soilPaint.setStyle(Paint.Style.FILL);soilEdgePaint.setStyle(Paint.Style.FILL);
+    roadFringePaint.setAntiAlias(false);roadFringePaint.setColor(0x455d6633);
+    for(int y=48;y<1600;y+=16)for(int x=-512;x<2304;x+=32){if(MillesRiverGeometry.distance(x,y)>MillesRiverGeometry.HALF_WIDTH-14||MillesRiverGeometry.bridgeDeck(x,y))continue;int k=(x*17+y*13)&31;if(k<=11)riverRipples.addRect(x,y,x+6+(k%3)*3,y+1,Path.Direction.CW);}
     assets=findAssets();sourceStyle=new MillesSourceStyle(assets);placements=loadPlacements();
     List<SpritePlacement> ground=new ArrayList<>(),standing=new ArrayList<>();
     for(SpritePlacement value:placements){
@@ -144,17 +149,18 @@ public final class AdaptedMillesMapRenderer {
   private void drawConnectedSoil(Canvas canvas,WorldRuntimeAdapter world){
     Bitmap soil=bitmap(SOIL_SURFACE);
     if(soil==null)return;
-    soilPaint.setShader(sourceMaterial(soil));
+    if(soilPaint.getShader()==null)soilPaint.setShader(sourceMaterial(soil));
     canvas.save();
     canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
     // Draw every fringe before the soil surfaces, so intersections cannot leave
     // dark seams. Geometry is built once; camera travel only translates it.
+    for(Path contour:roadOuter)canvas.drawPath(contour,roadFringePaint);
     for(Path contour:soilEdgeContours)canvas.drawPath(contour,soilEdgePaint);
     drawRoadCaps(canvas,soilEdgePaint,24.5f);
     for(Path contour:soilContours)canvas.drawPath(contour,soilPaint);
     drawRoadCaps(canvas,soilPaint,21.5f);
     canvas.restore();
-    soilPaint.setShader(null);
+
   }
 
   private void drawRiver(Canvas canvas,WorldRuntimeAdapter world){
@@ -169,10 +175,7 @@ public final class AdaptedMillesMapRenderer {
     canvas.drawPath(channel,p);p.setShader(null);
     // Quiet pixel ripples follow the actual water mask; never extend onto bank/deck.
     p.setStyle(Paint.Style.FILL);p.setColor(0xff51808a);
-    for(int y=48;y<1600;y+=16)for(int x=-512;x<2304;x+=32){
-      if(MillesRiverGeometry.distance(x,y)>MillesRiverGeometry.HALF_WIDTH-14||MillesRiverGeometry.bridgeDeck(x,y))continue;
-      int k=(x*17+y*13)&31;if(k>11)continue;canvas.drawRect(x,y,x+6+(k%3)*3,y+1,p);
-    }
+    canvas.drawPath(riverRipples,p);
     canvas.restore();
   }
 
@@ -183,7 +186,7 @@ public final class AdaptedMillesMapRenderer {
   }
   private void drawContinuousGrass(Canvas canvas,WorldRuntimeAdapter world){
     Bitmap grass=bitmap(GRASS_SURFACE);if(grass==null)return;
-    grassPaint.setAntiAlias(false);grassPaint.setFilterBitmap(false);grassPaint.setShader(sourceMaterial(grass));
+    grassPaint.setAntiAlias(false);grassPaint.setFilterBitmap(false);if(grassPaint.getShader()==null)grassPaint.setShader(sourceMaterial(grass));
     canvas.save();canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
     canvas.drawRect(com.projectdark.mobile.WorldDef.MIN_X,com.projectdark.mobile.WorldDef.MIN_Y,
         com.projectdark.mobile.WorldDef.MAX_X,com.projectdark.mobile.WorldDef.MAX_Y,grassPaint);
@@ -261,7 +264,7 @@ public final class AdaptedMillesMapRenderer {
     if(assets!=null)try(InputStream in=assets.open(source)){BitmapFactory.Options options=new BitmapFactory.Options();options.inScaled=false;options.inPremultiplied=!source.contains("bench_video_cutout");image=BitmapFactory.decodeStream(in,null,options);}catch(Throwable ignored){}
     // A clean material-only crop, excluding the building, actor, road and lamp.
     // The tiny mirrored swatch created conspicuous repeated circular patterns.
-    if(image!=null&&path.equals(GRASS_SURFACE))image=MillesSourceStyle.quietGrass(image);
+    if(image!=null&&path.equals(GRASS_SURFACE))image.prepareToDraw();
     else if(image!=null)image=sourceStyle.replacement(image,path);
     // Complete V103 supports must never pass through the old grass-key/short-foot mask.
     if(image!=null&&!source.contains("bench_video_cutout"))image=sourceStyle.scenery(image,path);
