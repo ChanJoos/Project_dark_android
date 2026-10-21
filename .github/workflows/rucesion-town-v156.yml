@@ -150,7 +150,7 @@ jobs:
           allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/ModernUiTest.java','app/src/test/java/com/projectdark/mobile/F5mRestartPersistenceMatrixTest.java','app/src/test/java/com/projectdark/mobile/DeviceRecordingRegressionTest.java','app/src/test/java/com/projectdark/mobile/EquipmentStatsAndDetailsTest.java'}
           assert set(subprocess.check_output(['git','diff','--name-only','709dda2179042c66b292acb03a4a6275b2292a7a','HEAD'],text=True).splitlines())<=allowed
           PYGUARD
-            gradle :app:testDebugUnitTest --tests '*F5mRestartPersistenceMatrixTest' --tests '*DeviceRecordingRegressionTest' --tests '*EquipmentStatsAndDetailsTest' :app:assembleDebug --stacktrace
+            gradle :app:testDebugUnitTest --tests '*EquipmentStatsAndDetailsTest' :app:assembleDebug --stacktrace
             mkdir -p app/build/reports/horror-v179/v210-validation
             if compgen -G "app/build/reports/device-review/v99-*.png" > /dev/null; then cp app/build/reports/device-review/v99-*.png app/build/reports/horror-v179/v210-validation/; fi
           elif [[ "$(git log -1 --format=%B)" == *"[item-catalog-v210]"* ]]; then

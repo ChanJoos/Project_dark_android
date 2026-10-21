@@ -13,7 +13,8 @@ public final class EquipmentStatsAndDetailsTest {
    assertEquals(RpgProgressionState.EquipResult.UNEQUIPPED,r.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID));
    assertEquals(18,atk);assertEquals(17,r.finalStats().prototypePhysicalAttack());assertEquals(0,r.finalStats().dam);assertEquals(0,r.finalStats().hit);
    assertEquals(RpgProgressionState.EquipResult.UNEQUIPPED,r.equip(RpgProgressionState.STARTER_SHIELD_ITEM_ID));
-   assertEquals(-2,r.finalStats().ac);
+   assertEquals(-4,r.finalStats().ac);assertTrue(r.itemDefinitions().get(RpgProgressionState.STARTER_SHIELD_ITEM_ID).statModifiers.isEmpty());
+   assertEquals(RpgProgressionState.EquipResult.UNEQUIPPED,r.equip(RpgProgressionState.STARTER_SHIRT_ITEM_ID));assertEquals(0,r.finalStats().ac);
  }
  @Test public void sourceMokdoOptionsResolveButUnidentifiedShoesStayPending(){
    RpgProgressionState r=new RpgProgressionState();
