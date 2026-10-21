@@ -37,3 +37,7 @@ for m in ref['maps']:
 java+=['}','public static Grid get(String id){return MAPS.get(id);}','private TempleOriginalData(){}','}'];dest=ROOT/'app/src/main/java/com/projectdark/mobile/world/TempleOriginalData.java';text='\n'.join(java)+'\n'
 if '--check' in __import__('sys').argv:assert dest.read_text()==text,'Temple grid drift'
 else:dest.write_text(text)
+
+# Current circular exterior is recovered from complementary video/official references.
+import subprocess,sys
+subprocess.run([sys.executable,str(ROOT/"tools/extract_temple_entrance_v211.py")],check=True)

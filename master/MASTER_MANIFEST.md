@@ -1,3 +1,7 @@
+## 2026-10-21 V211 user formula supersedes calibrated prices — implementation candidate
+
+Latest attached1000060526.jpg explicitly replaces approximate HP4000→10000≈100m: HP=5*(a+b-50)*(a-b), MP=10*(a+b-25)*(a-b), a target/b current pure resource. HP4000→10000=418,500,000EXP; MP4000→7000=329,250,000EXP. Exact long quotes; no rounding or artificial quote clamp at held-EXP cap. Retain target int bound, transaction/save rollback, existing balances/resources and spent ledger. Source bytes/hash and accepted decision: master/changes/V211_USER_GROWTH_FORMULA.json. Tests now cover HP/MP batches vs repeated purchases, exact funds/insufficient no mutation, high-resource long boundary and actual MP click/save alongside HP. Exact-source Android CI pending. Explicit GitHub approval received for existing ChanJoos/Project_dark_android branch; proceed to push/build and independently verify APK/screenshots. Phone/user visual acceptance pending.
+
 ## 2026-10-21 V210 original item integration — build and host runtime verified
 
 1772 canonical inventory identities now use original source artwork; 293 compatibility aliases (including 60 synthetic training/campaign items) retire duplicate equipment without merging distinct original name/option variants. Bag, bank and equipped save IDs normalize before historical grants. Current User Master options win; unresolved facts remain pending. T04/T05 use verified Epe purchase/equip at 300G.

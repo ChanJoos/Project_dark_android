@@ -228,7 +228,7 @@ tasks.named('preBuild').configure { dependsOn('generateMineHuntV208') }
 tasks.register('generateTempleV211', Exec) {
  workingDir rootProject.projectDir
  commandLine 'python3', 'tools/build_temple_v211.py', '--check'
- inputs.files(rootProject.fileTree('master/source/temple_v211'), rootProject.file('tools/build_temple_v211.py'), rootProject.file('tools/horror_original_formats.py'), file('src/main/java/com/projectdark/mobile/world/TempleOriginalData.java'))
+ inputs.files(rootProject.fileTree('master/source/temple_v211'), rootProject.file('tools/build_temple_v211.py'), rootProject.file('tools/extract_temple_entrance_v211.py'), rootProject.file('tools/horror_original_formats.py'), file('src/main/java/com/projectdark/mobile/world/TempleOriginalData.java'))
  outputs.dir(layout.buildDirectory.dir('generated/temple-v211'))
 }
 tasks.named('preBuild').configure { dependsOn 'generateTempleV211' }

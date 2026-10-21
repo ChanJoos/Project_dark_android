@@ -5,26 +5,21 @@ public final class TempleGrowthPolicy {
   public static final long EXP_CAP=4_200_000_000L,ADVANCEMENT_EXP=250_000_000L;
   public enum Resource { HP, MP }
   public enum Result { OK, LEVEL_REQUIRED, JOB_REQUIRED, INSUFFICIENT_EXP, STATS_REQUIRED, ALREADY_ADVANCED, INVALID, SAVE_FAILED }
-  private static final double CALIBRATION;
-  static { double sum=0;for(int hp=4000;hp<10000;hp+=50)sum+=(double)hp*hp;CALIBRATION=100_000_000d/sum; }
   private TempleGrowthPolicy(){}
   public static int unit(Resource resource){return resource==Resource.HP?50:25;}
-  /** Calibrated to ~100m for HP4000->10000. An explicit mobile curve, not a recovered server formula. */
+  /** User-supplied formula: either one HP+50 or one MP+25 costs 500 * current pure amount. */
   public static long singleCost(int pureAmount){
     if(pureAmount<1)return Long.MAX_VALUE;
-    double cost=CALIBRATION*pureAmount*pureAmount;
-    if(pureAmount>10000)cost*=Math.pow(pureAmount/10000d,2);
-    return cost>EXP_CAP?EXP_CAP+1:Math.max(1,Math.round(cost));
+    return 500L*pureAmount;
   }
+  /** HP: 5*(a+b-50)*(a-b), MP: 10*(a+b-25)*(a-b). Never round or cap a quote. */
   public static long quote(RpgProgressionState r,Resource resource,int count){
     if(r==null||resource==null||count<1||count>1000)return -1;
-    long amount=resource==Resource.HP?r.baseMaxHp():r.baseMaxMp(),total=0;
-    for(int i=0;i<count;i++){
-      if(amount>Integer.MAX_VALUE-unit(resource))return -1;
-      long cost=singleCost((int)amount);if(total>EXP_CAP-cost)return -1;
-      total+=cost;amount+=unit(resource);
-    }
-    return total;
+    long b=resource==Resource.HP?r.baseMaxHp():r.baseMaxMp();
+    long delta=(long)unit(resource)*count,a=b+delta;
+    if(b<1||a>Integer.MAX_VALUE)return -1;
+    // Valid int resource bounds and <=1000 purchases keep the product well within long.
+    return (resource==Resource.HP?5L:10L)*(a+b-unit(resource))*delta;
   }
   public static int hpRequired(String job){switch(job){case "WARRIOR":return 17000;case "ROGUE":case "CLERIC":return 13000;case "MAGE":return 12000;case "MARTIAL_ARTIST":return 16000;default:return 0;}}
   public static int mpRequired(String job){switch(job){case "WARRIOR":return 5000;case "ROGUE":case "MARTIAL_ARTIST":return 7000;case "MAGE":return 13000;case "CLERIC":return 14000;default:return 0;}}

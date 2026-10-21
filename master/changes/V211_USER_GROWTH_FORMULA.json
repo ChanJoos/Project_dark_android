@@ -1,0 +1,33 @@
+{
+  "id": "V211_USER_GROWTH_FORMULA",
+  "status": "ACCEPTED",
+  "evidence": "U",
+  "source": {
+    "file": "master/source/temple_v211/user_growth_formula.jpg",
+    "sha256": "af8a58ca15187a6e1b9eaeb7afc1095fac39bcdb597d7de0e797fa7e540b2188",
+    "date": "2026-10-21",
+    "instruction": "이 공식 적용해서 이어가"
+  },
+  "before": "Calibrated HP4000->10000 approximately100m; quadratic then quartic mobile curve",
+  "after": {
+    "HP": "5 * (target + current - 50) * (target - current)",
+    "MP": "10 * (target + current - 25) * (target - current)",
+    "unitHP": 50,
+    "unitMP": 25,
+    "current": "permanent pure resource, not current damage-reduced HP or equipment bonus",
+    "rounding": "none; exact long integer arithmetic",
+    "quoteLimit": "1..1000 purchases and target <= Integer.MAX_VALUE; EXP holding cap is not a quote cap"
+  },
+  "reason": "User supplied exact formula supersedes approximate recollection and calibration",
+  "impact": [
+    "TempleGrowthPolicy.quote/singleCost",
+    "existing purchase quote/confirmation/atomic save",
+    "TempleV211Test"
+  ],
+  "examples": {
+    "HP4000to10000": 418500000,
+    "MP4000to7000": 329250000
+  },
+  "migration": "Preserve existing resources/balances/spent ledger. No retroactive repricing or refund without instruction.",
+  "verification": "pending exact-source Android CI"
+}

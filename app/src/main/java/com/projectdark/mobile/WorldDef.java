@@ -40,6 +40,7 @@ public final class WorldDef {
       if(door==null)b.add(new RectF(f.left,f.top,f.right,f.bottom));
       else{float half=40,top=door.y-28;b.add(new RectF(f.left,f.top,f.right,top));b.add(new RectF(f.left,top,door.x-half,f.bottom));b.add(new RectF(door.x+half+32,top,f.right,f.bottom));}
     }
+    for(float[] foot:TempleEntranceRenderer.archFeet())b.add(new RectF(foot[0],foot[1],foot[2],foot[3]));
     blockers=Collections.unmodifiableList(b);
 
     List<NpcSpawn> n=new ArrayList<>();
@@ -61,7 +62,7 @@ public final class WorldDef {
     monsterSpawns=Collections.unmodifiableList(m);
 
     List<PortalSpawn> p=new ArrayList<>();
-    p.add(new PortalSpawn("temple_door","milles_interior_temple_lobby",2080f,1104f,40f,"USER_VIDEO_TEMPLE_V211","ADAPTED_PLACEMENT_ORIGINAL_TEMPLE_ENTRY"));
+    p.add(new PortalSpawn("temple_door","milles_interior_temple_lobby",TempleEntranceRenderer.X,TempleEntranceRenderer.Y,40f,"USER_VIDEO_TEMPLE_V211","ADAPTED_PLACEMENT_ORIGINAL_TEMPLE_ENTRY"));
     // Building exteriors stay fully solid. Entry is exclusively through front-door portal triggers.
     // Door threshold itself is the portal. Keep it wider than one player radius so diagonal tile stepping cannot skip the trigger.
     p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").y,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));

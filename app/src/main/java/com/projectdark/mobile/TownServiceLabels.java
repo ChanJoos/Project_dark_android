@@ -9,7 +9,7 @@ final class TownServiceLabels {
  private static final Map<String,List<Sign>> cache=new HashMap<>();
  static String name(TownInteriorDef d){return d.title.replace("밀레스 ","").replace("아벨 ","").replace("뤼케시온 ","").replace("마인 ","");}
  static List<Sign> signs(String map){List<Sign> saved=cache.get(map);if(saved!=null)return saved;List<Sign> out=new ArrayList<>();
-  if(WorldDef.ID.equals(map)){for(MillesDoorAnchors.Door door:MillesDoorAnchors.ALL){TownInteriorDef d=TownInteriorDef.forDoor(door.id);if(d!=null)out.add(new Sign(name(d),door.x,door.y));}}
+  if(WorldDef.ID.equals(map)){out.add(new Sign("밀레스 신전",TempleEntranceRenderer.X,TempleEntranceRenderer.Y+20));for(MillesDoorAnchors.Door door:MillesDoorAnchors.ALL){TownInteriorDef d=TownInteriorDef.forDoor(door.id);if(d!=null)out.add(new Sign(name(d),door.x,door.y));}}
   else if(AbelTownGeometry.contains(map)){for(AbelTownGeometry.Building b:AbelTownGeometry.BUILDINGS)out.add(new Sign(name(TownInteriorDef.forMap(b.interior)),b.doorX(),b.doorY()));}
   else if(MineTownGeometry.contains(map)){for(MineTownGeometry.Building b:MineTownGeometry.BUILDINGS)out.add(new Sign(name(TownInteriorDef.forMap(b.interior)),b.doorX(),b.doorY()));}
   else if(RucesionTownGeometry.contains(map)){for(RucesionTownGeometry.Building b:RucesionTownGeometry.BUILDINGS)out.add(new Sign(name(TownInteriorDef.forMap(b.interior)),b.doorX(),b.doorY()));}

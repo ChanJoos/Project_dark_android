@@ -265,5 +265,157 @@
     "Classic client raw maps match video room structures; video current-version door coordinates must be checked separately.",
     "One Seo handles both resources; no mastery/dungeon/offerings per explicit mobile user instruction.",
     "Cost curve is user-calibrated mobile balance, not recovered original server pricing."
-  ]
+  ],
+  "entrance": {
+    "videoFrameSeconds": 10,
+    "recordingCrop": [
+      210,
+      0,
+      1920,
+      1080
+    ],
+    "resize": [
+      640,
+      360
+    ],
+    "officialScreenshot": "https://storage.nexon.com/dsk03/12/NX_FILE/Board/65536/05/1/000/00/00/5485479733065941114.png",
+    "officialPage": "https://lod.nexon.com/news/event/82170",
+    "officialDate": "2024-01-25",
+    "alignment": {
+      "affine": [
+        [
+          0.3637827158929018,
+          0.0001561911321402622,
+          211.1584542971762
+        ],
+        [
+          -0.0001561911321402622,
+          0.3637827158929018,
+          94.52024528953598
+        ]
+      ],
+      "inliers": 50
+    },
+    "files": {
+      "native10.png": "36137c4d064954562dc3ade962b8d2771cd667eac97d88b32fae278ff8556d30",
+      "official-platform.png": "9b809b8132c2487d747baadb57980780cd829e28e3a87e1957e3fcc48ffd8ab8",
+      "native10-temporal.png": "0bd1a91966bcb2bd7aee2b9ca30bbe3829484d1eda0e9cbff7c818c02bddfb22"
+    },
+    "evidence": "50 SIFT/RANSAC inliers match original circle glyph and stair pixels; source patches replace only video actor occlusions. Winter screenshot exposure fitted to summer recording. Light alpha matte is an adapted source extraction, not a recovered native animation.",
+    "temporalAlignment": [
+      {
+        "frame": 8,
+        "inliers": 921,
+        "matrix": [
+          [
+            1.00001758166516,
+            7.648554215826762e-05,
+            -39.60320483981746
+          ],
+          [
+            -7.648554215826762e-05,
+            1.00001758166516,
+            19.85137141158853
+          ]
+        ]
+      },
+      {
+        "frame": 9,
+        "inliers": 552,
+        "matrix": [
+          [
+            0.999980132926669,
+            8.702162786520741e-05,
+            -39.594893221779856
+          ],
+          [
+            -8.702162786520741e-05,
+            0.999980132926669,
+            19.854599195640496
+          ]
+        ]
+      },
+      {
+        "frame": 10,
+        "inliers": 987,
+        "matrix": [
+          [
+            1.0001271400480078,
+            0.00010905565907555203,
+            -31.09152257140476
+          ],
+          [
+            -0.00010905565907555203,
+            1.0001271400480078,
+            15.569897809992984
+          ]
+        ]
+      },
+      {
+        "frame": 11,
+        "inliers": 2338,
+        "matrix": [
+          [
+            1.0000389955696725,
+            5.432089176355436e-05,
+            -0.03045533554131643
+          ],
+          [
+            -5.432089176355436e-05,
+            1.0000389955696725,
+            0.008843169071296605
+          ]
+        ]
+      },
+      {
+        "frame": 12,
+        "inliers": 1121,
+        "matrix": [
+          [
+            1.0000998785250608,
+            9.663225622013532e-05,
+            7.043530051870927
+          ],
+          [
+            -9.663225622013532e-05,
+            1.0000998785250608,
+            -3.5455423363485186
+          ]
+        ]
+      },
+      {
+        "frame": 13,
+        "inliers": 2070,
+        "matrix": [
+          [
+            0.999960940894246,
+            1.1506921185168421e-05,
+            -0.015648193241390128
+          ],
+          [
+            -1.1506921185168421e-05,
+            0.999960940894246,
+            0.010698829984787534
+          ]
+        ]
+      },
+      {
+        "frame": 14,
+        "inliers": 1787,
+        "matrix": [
+          [
+            0.9999977744849549,
+            2.84071803783544e-05,
+            -0.029193727247098945
+          ],
+          [
+            -2.84071803783544e-05,
+            0.9999977744849549,
+            0.011022195761630181
+          ]
+        ]
+      }
+    ],
+    "temporalMethod": "Median of seven 1fps source frames8..14 aligned to native10; RANSAC552..2338inliers; only source object polygons are admitted."
+  }
 }
