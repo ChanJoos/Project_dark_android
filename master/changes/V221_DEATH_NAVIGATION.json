@@ -1,0 +1,150 @@
+{
+  "revision": "V221_DEATH_NAVIGATION",
+  "status": "ACCEPTED_USER_CORRECTION_IMPLEMENTED_VERIFICATION_PENDING",
+  "base": "884a3599",
+  "owner": "Director single editor; existing PR197 branch",
+  "user_canon": {
+    "field": [
+      "니크르",
+      "독거미"
+    ],
+    "underground": [
+      "니크르",
+      "웨어렛",
+      "독거미"
+    ],
+    "house": [
+      "니크르",
+      "독거미"
+    ],
+    "kill_exp": 750000,
+    "map": "minimap opens full original-art overview; select entrance to walk with existing collision and ordinary portal transition"
+  },
+  "source": {
+    "library_file_id": "libfile_6887971515908191a07f5156595b0f71",
+    "filename": "Screen_Recording_20261021_205939_YouTube.mp4",
+    "sha256": "7096f671d0a2b1ea029eca875423d97181f0d79655f78183f255c2b2db2b998b",
+    "observed": [
+      {
+        "seconds": 3.5,
+        "name": "독거미",
+        "hp": 192707,
+        "exp": 237000,
+        "level": 99,
+        "attack": "번개",
+        "defense": "불"
+      },
+      {
+        "seconds": 17.25,
+        "name": "니크르",
+        "hp": 161239,
+        "exp": 237000,
+        "level": 99,
+        "attack": "번개",
+        "defense": "땅"
+      },
+      {
+        "seconds": 20.75,
+        "name": "니크르",
+        "hp": 164926,
+        "exp": 237000,
+        "level": 99,
+        "attack": "땅",
+        "defense": "불"
+      },
+      {
+        "seconds": 40.5,
+        "name": "독거미",
+        "hp": 164044,
+        "exp": 237000,
+        "level": 99,
+        "attack": "땅",
+        "defense": "번개"
+      }
+    ],
+    "combat_log": {
+      "seconds": 40,
+      "exp": 733772
+    },
+    "mp": "NO MP FIELD ON OBSERVED SENSE PANELS",
+    "limitations": "Different individuals/current HP and variable attributes; highest observed HP selected as explicit runtime calibration, not proven undamaged maximum. Earlier recalled HP141008/Wererat172875 not verified by present source and not admitted."
+  },
+  "before_after": {
+    "pools": {
+      "before": {
+        "field": [
+          0
+        ],
+        "house": [
+          1,
+          3
+        ],
+        "under": [
+          2
+        ]
+      },
+      "after": {
+        "field": [
+          1,
+          3
+        ],
+        "house": [
+          1,
+          3
+        ],
+        "under": [
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "hp": {
+      "DEATH_01": [
+        200000,
+        164926
+      ],
+      "DEATH_03": [
+        200000,
+        192707
+      ]
+    },
+    "exp": {
+      "DEATH_01": [
+        450000,
+        750000
+      ],
+      "DEATH_02": [
+        600000,
+        750000
+      ],
+      "DEATH_03": [
+        750000,
+        750000
+      ]
+    },
+    "portal": "read-only -> selectable, explicit selection releases only arrival latch; no position writes"
+  },
+  "preserved": [
+    "source MPF166/178/175/176 pixels",
+    "original map/collision and72/15/36population",
+    "existing direct reward catalog/accounting and save schema",
+    "32floorLRU and2MiB overview cache"
+  ],
+  "unresolved": [
+    "Wererat HP220000 and all MP remain B/ADAPTED",
+    "damage/AC/element/spells/gold remain prior mobile policy; observed individual attributes are evidence, not constant species proof",
+    "Original full layouts beyond footage remain ADAPTED",
+    "phone/user visual and speed acceptance pending"
+  ],
+  "verification_plan": [
+    "DeathNavigationV221Test4",
+    "DeathMapV220Test4 with corrected pool expectations and blank-only read-only behavior",
+    "DeathVillageV217Test7 retained gates/renderer/cache/reward/save",
+    "DeathVillageV219Test startup quickslots",
+    "GroundTapPathTest",
+    "MobileHudV135Test",
+    "F5mRestartPersistenceMatrixTest",
+    "scope classifier5 tests; exact APK/run/source identity and signature"
+  ]
+}
