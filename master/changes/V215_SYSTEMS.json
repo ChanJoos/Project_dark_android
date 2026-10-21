@@ -14,9 +14,9 @@
     "temple": "lobby guide only; hub actual door at17,23 walks toSeo; original hub exit27,26 returns; no portal drawings or tap shortcuts; visible interpolated foot radius28 handles continuous joystick, not idle-only logical exact-tile",
     "inventory": "12 exact requested categories; exclusive wing slot; old ornament wing assignment migrates; ownership preserved; known reagents/potions→시약 including unusable reagents; food and recall→기타",
     "shield14": "exact boot.json original Korean source-label bindings; 깨진포보스방패 to 깨진포보스의방패 is explicit observed name variant",
-    "wings16": "source mg/wg back and matching mc/wc front layers registered at source fixed depth; no omitted-facing fallback",
     "altar": "source video21 cut; UI-occluded corner has explicit ADAPTED geometry/color reconstruction; hidden original geometry remains unresolved",
-    "wings18": "16 named wings plus 나겔링부스터mg261 and 플로팅블레이드mg332, both source Item.bin part26; paired original mc261/mc332 layers. mg332/mc332 packed16contact frames mapped source body0..3→0,4,8,12, preserving source north0..7/south8..15 and strict absent-layer omissions; current approved body poses unchanged."
+    "wings18": "16 named wings plus 나겔링부스터mg261 and 플로팅블레이드mg332, both source Item.bin part26; paired original mc261/mc332 layers. mg332/mc332 packed16contact frames mapped source body0..3→0,4,8,12, preserving source north0..7/south8..15 and strict absent-layer omissions; current approved body poses unchanged.",
+    "wingClassificationCaveat": "18mobile wing-slot items is ADAPTED categorization per user. Original boot jobs tags 루캐트의윙mg285/화이어윙wg142 aspart14/level100; do not claim all18originalpart26 or change original condition fields. Two extra non-wing-nameditems confirmedpart26. Other3back entries remain accessory/cape."
   },
   "sourceFiles": [
     "master/source/equipment/shields_v215/sources.json",
@@ -43,5 +43,5 @@
     "TempleRoutes",
     "TempleEntranceRenderer"
   ],
-  "validation": "SystemsV215Test32items×4directions×idle/contact male/female, strict packed north/south frames, threshold-held joystick,99migration and windows; focused/common CI PENDING."
+  "validation": "Exact7b6afeab226ab626c471e8798a323a27f1e25a81 focused39597531378SUCCESS/55tests/0failure-error-skip;512male/female paired render assertions; original2250files and APKsignature/source/hash verified. Common push39597531257/PR39597540594SUCCESS on exact source; handset/user visual PENDING. Receipt verification/SYSTEMS_V215_BUILD.json."
 }

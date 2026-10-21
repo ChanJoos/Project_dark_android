@@ -1,0 +1,273 @@
+{
+  "sourceCommit": "7b6afeab226ab626c471e8798a323a27f1e25a81",
+  "runId": "39597531378",
+  "builtAtKST": "2026-10-21T21:16:01.788099+09:00",
+  "apkSha256": "1c1a93dde44a4ee2a997569c49312da1dcfa80251482d47580feac93a354fa96",
+  "apkBytes": 99571583,
+  "identity": {
+    "sourceCommit": "7b6afeab226ab626c471e8798a323a27f1e25a81",
+    "runId": "39597531378",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V21518mobile wing items with paired layers;14exact named shields;12inventory categories; retained99EXP and durable migration; NPC/held-joystick doorway/auto-exit temple; source-derived adapted altar",
+  "builderScopeNote": "Build evidence text still says16named wing items; this final receipt supersedes that stale count. Runtime has18, proven32item native matrix.",
+  "package": "com.projectdark.mobile.v215test",
+  "label": "PROJECT DARK V215 TEST",
+  "apkSignatureV2": "RSA-PKCS1-v1.5/SHA-256 signature and1MiB chunked APK content digest independently VERIFIED",
+  "signatureAlgorithm": "0x103",
+  "signerCertificateSha256": "0739963ebaed19dfb466f8b47969d35ba755567ee67418772ecc4e2e1d789852",
+  "manifest": {
+    "manifest.versionCode": 184,
+    "manifest.versionName": "1.84-mobile-horror",
+    "manifest.compileSdkVersion": 35,
+    "manifest.compileSdkVersionCodename": "15",
+    "manifest.package": "com.projectdark.mobile.v215test",
+    "manifest.platformBuildVersionCode": 35,
+    "manifest.platformBuildVersionName": 15,
+    "uses-sdk.minSdkVersion": 26,
+    "uses-sdk.targetSdkVersion": 35,
+    "application.theme": 2130837504,
+    "application.label": "PROJECT DARK V215 TEST",
+    "application.debuggable": 4294967295,
+    "application.extractNativeLibs": 0
+  },
+  "extendedOriginalFiles": 104,
+  "retainedOriginalFiles": 2146,
+  "focused": {
+    "run": 39597531378,
+    "job": 119213458092,
+    "artifact": 12344344821,
+    "zipBytes": 134670152,
+    "zipSha256": "683662b2088ad0cfef1b12a4aa41e75608168af2dc32bdf577208719698bf590",
+    "tests": 55,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.EquipmentPerformanceV130Test",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.EquipmentWindowV176Test",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.FramePerformanceV214Test",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.InventoryRepairV212Test",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ItemCatalogV210Test",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ItemWindowReferenceTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.SystemsV215Test",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TempleMillesV213Test",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TempleV211Test",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "physicalPhone": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "branchCandidate": true,
+  "performance": {
+    "environment": "host native CPU; not phone FPS",
+    "inventory": 1772,
+    "fullJournal": {
+      "p50ms": 1.329015,
+      "p95ms": 2.267631,
+      "p99ms": 5.421669,
+      "maxms": 5.421669
+    },
+    "compactHud": {
+      "p50ms": 0.142965,
+      "p95ms": 0.281204,
+      "p99ms": 0.82185,
+      "maxms": 0.82185
+    },
+    "wholeFrame": {
+      "p50ms": 16.915138,
+      "p95ms": 30.926766,
+      "p99ms": 33.20342,
+      "maxms": 39.088418
+    },
+    "drawWorld": {
+      "p50ms": 6.287996,
+      "p95ms": 9.263845,
+      "p99ms": 10.233758,
+      "maxms": 10.233758
+    },
+    "drawHud": {
+      "p50ms": 5.995074,
+      "p95ms": 7.276317,
+      "p99ms": 11.576594,
+      "maxms": 11.576594
+    }
+  },
+  "movingPerformance": {
+    "source": "7b6afeab226ab626c471e8798a323a27f1e25a81",
+    "environment": "Robolectric native CPU; no physical phone FPS claim",
+    "framesPerScene": 360,
+    "scenes": [
+      {
+        "map": "MILLES",
+        "monsters": 3,
+        "tiles": 4176,
+        "travel": 263.6958015695292,
+        "movingFrames": 277,
+        "updateMedianMs": 0.169285,
+        "updateP95Ms": 0.565883,
+        "updateP99Ms": 1.182505,
+        "updateMaxMs": 11.210103,
+        "renderMedianMs": 13.342661,
+        "renderP95Ms": 22.333275,
+        "renderP99Ms": 35.227628,
+        "renderMaxMs": 1530.275236
+      },
+      {
+        "map": "MAP_POTE_01",
+        "monsters": 72,
+        "tiles": 7075,
+        "travel": 142.58096206023575,
+        "movingFrames": 151,
+        "updateMedianMs": 0.317699,
+        "updateP95Ms": 0.634678,
+        "updateP99Ms": 5.46828,
+        "updateMaxMs": 9.78278,
+        "renderMedianMs": 11.183262,
+        "renderP95Ms": 17.770851,
+        "renderP99Ms": 21.458294,
+        "renderMaxMs": 232.064439
+      },
+      {
+        "map": "MAP_POTE_03",
+        "monsters": 108,
+        "tiles": 10222,
+        "travel": 214.5618036012228,
+        "movingFrames": 226,
+        "updateMedianMs": 0.34497,
+        "updateP95Ms": 0.524511,
+        "updateP99Ms": 1.694477,
+        "updateMaxMs": 7.071518,
+        "renderMedianMs": 8.973068,
+        "renderP95Ms": 13.559417,
+        "renderP99Ms": 16.759624,
+        "renderMaxMs": 23.069033
+      }
+    ]
+  },
+  "visualReview": {
+    "status": "HOST_NATIVE_REVIEWED; USER_VISUAL_ACCEPTANCE_PENDING",
+    "reviewed": [
+      "32male paper-doll idle/contact rows in4directions",
+      "Female SkillBodyRenderer32items×4directions×idle/contact actual pixel-difference assertions; not physical phone",
+      "equipment wing/shield actual window",
+      "stats held numeric EXP",
+      "all12category actual window taps and screenshots",
+      "lobby→hub actual doorway→Seo purchases→exits/reentry",
+      "held joystick crossing door",
+      "Milles exterior altar source cut/occluded-corner adaptation"
+    ],
+    "originalTemporalLimits": "FloatingBlade16source contact frames sampled at0,4,8,12 for approved4body contact slots; full8frame-per-facing temporal playback not certified",
+    "altar": "Video21sec visible original pixels; UI-occluded right corner source-color reconstruction ADAPTED, exact unseen original geometry unresolved"
+  },
+  "classificationPolicy": {
+    "wingItems": 18,
+    "basis": "16named wing visuals plus two additional sourcepart26items (나겔링부스터,플로팅블레이드); mobile categorization per user request",
+    "originalPartCaveat": "Retained client source jobs metadata tags named 루캐트의윙mg285 and 화이어윙wg142 aspart14/level100; mobile wing classification is ADAPTED, not a claim all18are originalpart26. Preserve existing stats/level/job fields and test-sandbox policy; no new invented conditions.",
+    "remainingBackItems": "여우귀mg313 accessory14,여우꼬리mg314cape27,운명신의깃펜mg335accessory14 retained unsupported/inventory-only; no false wing admission",
+    "filters": [
+      "전체",
+      "무기",
+      "모자",
+      "옷",
+      "신발",
+      "각반",
+      "반지",
+      "목걸이",
+      "벨트",
+      "날개",
+      "시약",
+      "기타"
+    ],
+    "other": "shields,gloves,earrings,ornaments,food,recall in기타; all known reagents in시약 even if use unavailable"
+  },
+  "common": [
+    {
+      "run": 39597531257,
+      "event": "push",
+      "sourceCommit": "7b6afeab226ab626c471e8798a323a27f1e25a81",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/39597531257",
+      "job": 119213541211
+    },
+    {
+      "run": 39597540594,
+      "event": "pull_request",
+      "sourceCommit": "7b6afeab226ab626c471e8798a323a27f1e25a81",
+      "status": "completed",
+      "conclusion": "success",
+      "url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/39597540594",
+      "job": 119213577565
+    }
+  ],
+  "deliverySaved": true
+}
