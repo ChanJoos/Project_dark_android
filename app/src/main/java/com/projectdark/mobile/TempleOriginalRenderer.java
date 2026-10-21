@@ -9,8 +9,8 @@ import java.util.*;
 /** Original tile layers. Floor is built once per room; foreground shares actor depth sorting. */
 public final class TempleOriginalRenderer {
  private static final float SCALE=8f/7f;
- private final Bitmap atlas,portal;private Bitmap floor;private final Paint paint=new Paint();private final Map<String,Rect> regions=new HashMap<>();private final Map<String,float[]> anchors=new HashMap<>();private String map;private float left;private int builds;
- public TempleOriginalRenderer(Context c){try(InputStream a=c.getAssets().open("temple-v211/atlas.png");InputStream j=c.getAssets().open("temple-v211/atlas.json")){atlas=BitmapFactory.decodeStream(a);JSONObject rs=new JSONObject(new String(read(j),"UTF-8")).getJSONObject("regions");for(Iterator<String> it=rs.keys();it.hasNext();){String k=it.next();JSONObject r=rs.getJSONObject(k);regions.put(k,new Rect(r.getInt("x"),r.getInt("y"),r.getInt("x")+r.getInt("width"),r.getInt("y")+r.getInt("height")));if(!r.isNull("anchor")){JSONArray v=r.getJSONArray("anchor");anchors.put(k,new float[]{(float)v.getDouble(0),(float)v.getDouble(1)});}}}catch(Exception e){throw new IllegalStateException("Original temple atlas",e);}try(InputStream in=c.getAssets().open("assets/world/portal/portal_reagent_shop.webp")){portal=BitmapFactory.decodeStream(in);if(portal==null)throw new IOException("portal");portal.prepareToDraw();}catch(IOException e){throw new IllegalStateException(e);}paint.setFilterBitmap(false);}
+ private final Bitmap atlas;private Bitmap floor;private final Paint paint=new Paint();private final Map<String,Rect> regions=new HashMap<>();private final Map<String,float[]> anchors=new HashMap<>();private String map;private float left;private int builds;
+ public TempleOriginalRenderer(Context c){try(InputStream a=c.getAssets().open("temple-v211/atlas.png");InputStream j=c.getAssets().open("temple-v211/atlas.json")){atlas=BitmapFactory.decodeStream(a);JSONObject rs=new JSONObject(new String(read(j),"UTF-8")).getJSONObject("regions");for(Iterator<String> it=rs.keys();it.hasNext();){String k=it.next();JSONObject r=rs.getJSONObject(k);regions.put(k,new Rect(r.getInt("x"),r.getInt("y"),r.getInt("x")+r.getInt("width"),r.getInt("y")+r.getInt("height")));if(!r.isNull("anchor")){JSONArray v=r.getJSONArray("anchor");anchors.put(k,new float[]{(float)v.getDouble(0),(float)v.getDouble(1)});}}}catch(Exception e){throw new IllegalStateException("Original temple atlas",e);}paint.setFilterBitmap(false);}
  private static byte[] read(InputStream in)throws IOException{ByteArrayOutputStream b=new ByteArrayOutputStream();byte[] a=new byte[8192];for(int n;(n=in.read(a))!=-1;)b.write(a,0,n);return b.toByteArray();}
  public int floorBuilds(){return builds;}public int floorBytes(){return floor==null?0:floor.getAllocationByteCount();}
  public void release(){if(floor!=null)floor.recycle();floor=null;map=null;}
@@ -19,12 +19,8 @@ public final class TempleOriginalRenderer {
  public void ground(Canvas c,WorldRuntimeAdapter w,TownInteriorDef d){if(!d.mapId.equals(map))throw new IllegalStateException("Temple not prewarmed");c.drawColor(Color.BLACK);c.drawBitmap(floor,left-w.camera().cameraX(),-w.camera().cameraY(),paint);}
  public void foreground(Canvas c,WorldRuntimeAdapter w,TownInteriorDef d,List<Runnable> draws,List<Float> depths){TempleOriginalData.Grid g=d.original();for(int v=0;v<g.height;v++)for(int u=0;u<g.width;u++)for(int side=1;side<=2;side++){int id=g.value(u,v,side);if(id<=1||id==10000)continue;String key="stc"+id;Rect r=regions.get(key);float x=TownInteriorDef.x(u,v)-32+(side-1)*32,y=TownInteriorDef.y(u,v)+16;draws.add(()->{float px=w.presentationPlayerX(),py=w.presentationPlayerY();boolean covers=r.height()>56&&y>py&&px>x-18&&px<x+r.width()*SCALE+18&&py>y-r.height()*SCALE-5;paint.setAlpha(covers?110:255);tile(c,key,x-w.camera().cameraX(),y-r.height()*SCALE-w.camera().cameraY());paint.setAlpha(255);});depths.add(y);}}
  public void gates(Canvas c,WorldRuntimeAdapter w,TownInteriorDef d){
-  paint.setTextSize(11);paint.setTextAlign(Paint.Align.CENTER);paint.setTypeface(Typeface.DEFAULT_BOLD);
-  for(TempleRoutes.Gate g:TempleRoutes.forRoom(d)){WorldCameraTransform.Point q=w.worldToScreen(g.x,g.y);
-   paint.setAlpha(255);c.drawBitmap(portal,null,new RectF(q.x-25,q.y-10,q.x+25,q.y+10),paint);
-   paint.setColor(0xcc10202b);float width=paint.measureText(g.label)/2+8;c.drawRoundRect(new RectF(q.x-width,q.y+12,q.x+width,q.y+30),5,5,paint);
-   paint.setColor(0xffffedbb);c.drawText(g.label,q.x,q.y+25,paint);
-  }paint.setColor(Color.WHITE);paint.setTextAlign(Paint.Align.LEFT);
+  // Original entrances/exits are walk triggers; no portal overlay.
+
  }
  public void npc(Canvas c,WorldRuntimeAdapter w,TownInteriorDef d){String key="npc"+d.original().npc;float[] a=anchors.get(key);WorldCameraTransform.Point q=w.worldToScreen(d.npcX(),d.npcY());tile(c,key,q.x-a[0]*SCALE,q.y-a[1]*SCALE);}
 }

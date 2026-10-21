@@ -10,9 +10,14 @@ final class ItemWindow {
   interface Visuals { void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size); void actor(Canvas c,float x,float y); default void equipmentIcon(Canvas c,RpgInventoryPresentation.ItemRow row,String slot,float x,float y,float size){icon(c,row,x,y,size);} }
   enum Hit { NONE,CLOSE,SELECT,ACTION,DETAILS,CONSUMED }
   static final int PAGE_SIZE=50;
-  static final String[] SLOTS={"모자","귀걸이","목걸이","갑옷","무기","장갑",RpgProgressionState.RIGHT_GLOVE_SLOT,"반지",RpgProgressionState.RIGHT_RING_SLOT,"신발","각반","벨트","방패","장식",RpgProgressionState.SECOND_ORNAMENT_SLOT};
+  static final String[] FILTERS={"전체","무기","모자","옷","신발","각반","반지","목걸이","벨트","날개","시약","기타"};
+  static RectF filterTab(int i){return new RectF(344+i*48,82,391+i*48,110);}
+  static int category(RpgInventoryPresentation.ItemRow row,RpgProgressionState r){String slot=row.equipSlot;
+    if("무기".equals(slot))return 1;if("모자".equals(slot))return 2;if("갑옷".equals(slot))return 3;if("신발".equals(slot))return 4;if("각반".equals(slot))return 5;if("반지".equals(slot)||RpgProgressionState.RIGHT_RING_SLOT.equals(slot))return 6;if("목걸이".equals(slot))return 7;if("벨트".equals(slot))return 8;if("날개".equals(slot))return 9;if(r.isConsumable(row.itemId)||r.isRecall(row.itemId))return 10;return 11;
+  }
+  static final String[] SLOTS={"모자","귀걸이","목걸이","갑옷","무기","장갑",RpgProgressionState.RIGHT_GLOVE_SLOT,"반지",RpgProgressionState.RIGHT_RING_SLOT,"신발","각반","벨트","방패","장식",RpgProgressionState.SECOND_ORNAMENT_SLOT,"날개"};
   // Coordinates in the user's 522x556 reference crop. Cosmetic-only source cells omitted.
-  static final float[][] POS={{226,64},{332,64},{120,64},{120,144},{120,224},{40,304},{412,304},{120,304},{332,304},{226,384},{120,384},{332,384},{332,224},{332,144},{412,144}};
+  static final float[][] POS={{226,64},{332,64},{120,64},{120,144},{120,224},{40,304},{412,304},{120,304},{332,304},{226,384},{120,384},{332,384},{332,224},{332,144},{412,144},{40,144}};
   static final float EQUIP_X=224,EQUIP_Y=35,EQUIP_SCALE=.85f;
   static RectF equipmentClose(){return new RectF(EQUIP_X+472*EQUIP_SCALE,EQUIP_Y,EQUIP_X+520*EQUIP_SCALE,EQUIP_Y+46*EQUIP_SCALE);}
   static RectF equipmentStats(){return new RectF(224+430*.85f,35+54*.85f,224+493*.85f,35+107*.85f);}
@@ -36,7 +41,7 @@ final class ItemWindow {
       cachedRpg=r;cachedInventoryRevision=r.inventoryRevision();cachedEquipmentRevision=r.equipmentRevision();rowBuilds++;cachedLevel=r.normalLevel();cachedJob=r.currentJobCode();cachedSandbox=r.equipmentSandbox();List<RpgInventoryPresentation.ItemRow> raw=presentation.inventoryRows(r);cachedById.clear();for(RpgInventoryPresentation.ItemRow row:raw)cachedById.put(row.itemId,row);cachedAll=InventoryGroupsV199.group(raw,r);cachedFilters.clear();
     }return cachedAll;
   }
-  List<RpgInventoryPresentation.ItemRow> rows(RpgProgressionState r){List<RpgInventoryPresentation.ItemRow> all=allRows(r);if(filter==0)return all;List<RpgInventoryPresentation.ItemRow> out=cachedFilters.get(filter);if(out!=null)return out;out=new ArrayList<>();for(RpgInventoryPresentation.ItemRow row:all)if(filter==1&&row.equipSlot!=null&&!row.equipSlot.isEmpty()||filter==2&&(r.isConsumable(row.itemId)||r.isRecall(row.itemId)))out.add(row);cachedFilters.put(filter,out);return out;}
+  List<RpgInventoryPresentation.ItemRow> rows(RpgProgressionState r){List<RpgInventoryPresentation.ItemRow> all=allRows(r);if(filter==0)return all;List<RpgInventoryPresentation.ItemRow> out=cachedFilters.get(filter);if(out!=null)return out;out=new ArrayList<>();for(RpgInventoryPresentation.ItemRow row:all)if(category(row,r)==filter)out.add(row);cachedFilters.put(filter,out);return out;}
   void image(Canvas c,String key,RectF r){if(key.equals("all")||key.equals("gear")||key.equals("use")){UiTheme.glyph(c,key.equals("all")?"bag":key.equals("gear")?"gear":"potion",r.centerX(),r.centerY(),8,UiTheme.GOLD);}else UiTheme.slot(c,r,false,false);}
   void txt(Canvas c,String s,float x,float y,float size,int color){UiTheme.text(c,s,x,y,size,UiTheme.ink(color),size>=13);}
   void fit(Canvas c,String s,float x,float y,float w,float size,int color){UiTheme.fit(c,s,x,y,w,size,UiTheme.ink(color),size>=13);}
@@ -46,20 +51,14 @@ final class ItemWindow {
   void inventory(Canvas c,RpgProgressionState r,String selected,Visuals v){
     UiTheme.scrim(c);panel(c,new RectF(328,48,940,520),"인벤토리");UiTheme.close(c,916,66);
     List<RpgInventoryPresentation.ItemRow> rows=rows(r);int pages=Math.max(1,(rows.size()+49)/50);page=Math.max(0,Math.min(page,pages-1));
-    String[] keys={"all","gear","use"},labels={"전체","장비","소비"};
-    for(int i=0;i<3;i++){
-      RectF tab=new RectF(342+i*70,82,409+i*70,110);UiTheme.surface(c,tab,filter==i?UiTheme.RAISED:UiTheme.BG,filter==i?UiTheme.GOLD:0,0);
-      image(c,keys[i],new RectF(348+i*70,87,365+i*70,105));UiTheme.text(c,labels[i],372+i*70,101,11,filter==i?UiTheme.TEXT:UiTheme.MUTED,true);
-      if(filter==i)UiTheme.line(c,tab.left+5,109,tab.right-5,109,UiTheme.ACCENT);
-    }
-    UiTheme.right(c,"보유 아이템  "+allRows(r).size()+"종",922,101,11,UiTheme.MUTED,false);
+    for(int i=0;i<FILTERS.length;i++){RectF tab=filterTab(i);UiTheme.surface(c,tab,filter==i?UiTheme.RAISED:UiTheme.BG,filter==i?UiTheme.GOLD:0,0);UiTheme.center(c,FILTERS[i],tab.centerX(),101,9,filter==i?UiTheme.TEXT:UiTheme.MUTED,true);}
     for(int i=0;i<50;i++){RectF b=cell(i);UiTheme.slot(c,b,false,false);if(i<10)txt(c,i==9?"0":String.valueOf(i+1),b.left+3,b.top+9,8,UiTheme.GOLD);int index=page*50+i;if(index>=rows.size())continue;RpgInventoryPresentation.ItemRow row=rows.get(index);v.icon(c,row,b.left+7,b.top+10,43);if(row.quantity>1){String q=row.quantity>9999?"9999+":""+row.quantity;p.setTextSize(11);txt(c,q,b.right-4-p.measureText(q),b.bottom-5,11,0xfffaf5e3);}if(row.equipped)txt(c,"✓",b.right-14,b.top+14,13,0xffe2bd6a);if(row.itemId.equals(selected)&&details)border(c,b,0xffe9c367);}
     UiTheme.line(c,344,428,924,428,UiTheme.LINE);
     UiTheme.text(c,"소지품",347,446,11,UiTheme.MUTED,false);
     UiTheme.right(c,String.format(java.util.Locale.ROOT,"%,d",r.gold())+" G",921,447,13,UiTheme.GOLD,true);
     button(c,new RectF(344,463,400,499),"‹");button(c,new RectF(866,463,923,499),"›");
     UiTheme.center(c,String.format(java.util.Locale.ROOT,"%02d  /  %02d",page+1,pages),634,485,12,UiTheme.TEXT,true);
-    UiTheme.center(c,new String[]{"전체 아이템","장비 목록","소비 아이템"}[filter],634,504,10,UiTheme.MUTED,false);
+    UiTheme.center(c,FILTERS[filter]+" · "+rows.size()+"종",634,504,10,UiTheme.MUTED,false);
     RpgInventoryPresentation.ItemRow selectedRow=find(r,selected);
     if(details&&selectedRow!=null){
       detailItemId=selected;RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(selected);
@@ -147,6 +146,7 @@ final class ItemWindow {
     for(int i=0;i<SLOTS.length;i++){
       float x=POS[i][0],y=POS[i][1];RectF b=new RectF(x,y,x+70,y+70);
       c.drawBitmap(equipmentImages.get("slot"),null,b,p);
+      if("날개".equals(SLOTS[i]))UiTheme.center(c,"날개",x+35,y-4,11,UiTheme.GOLD,true);
       String id=r.equipment().get(SLOTS[i]);RpgInventoryPresentation.ItemRow row=find(r,id);
       if(row!=null)v.equipmentIcon(c,row,SLOTS[i],x+8,y+8,54);
       if(SLOTS[i].equals(selectedSlot)){p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(0xffe6bf77);c.drawRect(x+2,y+2,x+68,y+68,p);p.setStyle(Paint.Style.FILL);}
@@ -184,7 +184,7 @@ final class ItemWindow {
       if(detailTouch(x,y,479))return Hit.CONSUMED;if(new RectF(898,234,936,268).contains(x,y)){details=false;return Hit.CONSUMED;}if(y>=476&&y<=507&&x>=743&&x<=893){
       if(d!=null&&RpgProgressionState.pairedSlot(d.equipSlot)){String target=targetSlot(r,d);if(target==null)return Hit.CONSUMED;hitTargetSlot=target.equals(RpgProgressionState.secondSlot(d.equipSlot))?"RIGHT":"LEFT";}return Hit.ACTION;
     }return Hit.CONSUMED;}
-    for(int i=0;i<3;i++)if(new RectF(342+i*70,80,409+i*70,110).contains(x,y)){filter=i;page=0;details=false;return Hit.CONSUMED;}
+    for(int i=0;i<FILTERS.length;i++)if(filterTab(i).contains(x,y)){filter=i;page=0;details=false;return Hit.CONSUMED;}
     List<RpgInventoryPresentation.ItemRow> list=rows(r);int pages=Math.max(1,(list.size()+49)/50);if(y>=463&&y<500){if(x>=344&&x<400)page=Math.max(0,page-1);if(x>=866&&x<924)page=Math.min(pages-1,page+1);return Hit.CONSUMED;}
     for(int i=0;i<50;i++)if(cell(i).contains(x,y)){int n=page*50+i;if(n<list.size()){hitItem=list.get(n).itemId;detailItemId=hitItem;pickedTargetSlot=null;details=true;effectDetails=false;effectPage=0;return Hit.SELECT;}return Hit.CONSUMED;}
     return Hit.CONSUMED;

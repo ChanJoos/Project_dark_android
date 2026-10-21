@@ -18,7 +18,7 @@ public final class CharacterVisualBinding {
   public static final String WEAPON_SLOT="무기";
 
   public enum GarmentCoverage { FULL_BODY, UPPER, LOWER }
-  public enum VisualSlot { FULL_BODY, UPPER, LOWER, HEAD, HANDS, FEET, WEAPON, SHIELD }
+  public enum VisualSlot { FULL_BODY, UPPER, LOWER, HEAD, HANDS, FEET, WEAPON, SHIELD, WINGS }
 
   public static final class EquipmentAppearance {
     public final String appearanceId;
@@ -61,7 +61,7 @@ public final class CharacterVisualBinding {
     if(a.startsWith("mw")||a.startsWith("ww"))return VisualSlot.WEAPON;
     if(a.startsWith("ml")||a.startsWith("wl"))return VisualSlot.FEET;
     if(a.startsWith("mh")||a.startsWith("wh"))return VisualSlot.HEAD;
-    if(a.startsWith("ms")||a.startsWith("ws"))return VisualSlot.SHIELD;
+    if(a.startsWith("ms")||a.startsWith("ws"))return VisualSlot.SHIELD;if(WingShieldV215.layer(a))return VisualSlot.WINGS;
     GarmentCoverage coverage=garmentCoverageForAppearance(appearanceId);
     if(coverage==GarmentCoverage.FULL_BODY)return VisualSlot.FULL_BODY;if(coverage==GarmentCoverage.UPPER)return VisualSlot.UPPER;if(coverage==GarmentCoverage.LOWER)return VisualSlot.LOWER;return null;
   }
@@ -92,7 +92,7 @@ public final class CharacterVisualBinding {
       }else if(RapidHairclipV199.appearance(itemId,slot)!=null){
         String rapid=RapidHairclipV199.appearance(itemId,slot);equipmentTokens.add(rapid);resolved=true;appearances.add(new EquipmentAppearance(rapid,VisualSlot.HEAD,null));
       }else if(def!=null&&def.appearanceId!=null){
-        equipmentTokens.add(def.appearanceId);resolved=true;
+        equipmentTokens.add(def.appearanceId);String wingFront=WingShieldV215.front(def.appearanceId);if(wingFront!=null)equipmentTokens.add(wingFront);resolved=true;
         GarmentCoverage coverage=garmentCoverageForAppearance(def.appearanceId);
         appearances.add(new EquipmentAppearance(def.appearanceId,visualSlotForAppearance(def.appearanceId),coverage));
       }else equipmentTokens.add(ASSET_STATUS+":"+itemId);

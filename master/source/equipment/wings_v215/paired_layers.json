@@ -1,0 +1,138 @@
+[
+  {
+    "back": "mg045",
+    "front": "mc045",
+    "originalKey": "MC045",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/MC045.json",
+    "registrationSha256": "77976e201c9eceefeeb382175b781ff889627f2d8c48696cbb955d43b76f6e31",
+    "atlasSha256": "a7181f9c665ad78c56c9950b09b5a18d6f4f4cf7824ead75716307e41897da05"
+  },
+  {
+    "back": "mg046",
+    "front": "mc046",
+    "originalKey": "MC046",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/MC046.json",
+    "registrationSha256": "2c0a24899e610e7882a3d9b6ba95a4e5c6833699caf293cc380dc4d254f5447e",
+    "atlasSha256": "a8c55ea2fba66c87d4ec7a33ffcfcdfbea410d7ac49fc36d030e80dd1ee02fb8"
+  },
+  {
+    "back": "mg047",
+    "front": "mc047",
+    "originalKey": "MC047",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/MC047.json",
+    "registrationSha256": "b18ed6e668a9496905187e6a8d4b83276fd45b5763e4ea5bd7bd8494e46cf1fc",
+    "atlasSha256": "239b155d164b977e86f931a80ffafe1c9a5206ecdbac9fe6b171d34e63b8fdbe"
+  },
+  {
+    "back": "mg087",
+    "front": "mc087",
+    "originalKey": "mc087",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc087.json",
+    "registrationSha256": "1e457c9c03061aa23946ddabe31304df0613c2478311b05ecf5bac51202d045d",
+    "atlasSha256": "c2c0325bc03919488114e0f7e738780ebe3f8c155c5e61985879d97e391189ce"
+  },
+  {
+    "back": "mg090",
+    "front": "mc090",
+    "originalKey": "mc090",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc090.json",
+    "registrationSha256": "82e8cecf57c4777402c9639bd63f1abde040510deaeb37fed529e39309fa69dd",
+    "atlasSha256": "409b92987aacdfc16a388634033c5fb4301290fc37df22524262950e58b9b0db"
+  },
+  {
+    "back": "mg142",
+    "front": "mc142",
+    "originalKey": "mc142",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc142.json",
+    "registrationSha256": "283b1ea6dfd48a7b8f099f81effdae4405a47f57e1a42b2f45005b0b5d0d9608",
+    "atlasSha256": "7ea74a1961c10835722e21c3dca9c5f1297b15ddb75436641fa04d002ce0912c"
+  },
+  {
+    "back": "mg164",
+    "front": "mc164",
+    "originalKey": "mc164",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc164.json",
+    "registrationSha256": "b39239d394bc76c538a17db9ee8ed39a5e7aa8c0a2bea3b27ed4856e69f9ec79",
+    "atlasSha256": "6464fc3edfce97a699ac79d614c7387771a9b0b9431919f770b46a2e2c65804d"
+  },
+  {
+    "back": "mg165",
+    "front": "mc165",
+    "originalKey": "mc165",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc165.json",
+    "registrationSha256": "0df18fb40082350eb8e1c191c541462313e4ab13fcda40e4a41a4dd2756c6902",
+    "atlasSha256": "b8b57a32b00ac82d15e29b77ef3c1684d3fc37d784e4094d05071d54453d3ac7"
+  },
+  {
+    "back": "mg198",
+    "front": "mc198",
+    "originalKey": "mc198",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc198.json",
+    "registrationSha256": "6763a921098697f1db1d2e6d497104f35a292ab78b6ba6088115a39d2f6aa57e",
+    "atlasSha256": "616af80ad42731275ee442ad3383da12e43b5f7d04660542b0028c658a5bac76"
+  },
+  {
+    "back": "mg216",
+    "front": "mc216",
+    "originalKey": "mc216",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc216.json",
+    "registrationSha256": "8010cd30c153067f61de9c5b1e62dc1bafe484aa9baaf3acb4703650fd8e2a0b",
+    "atlasSha256": "7ceb9bc333f854de54a984950170dee3b8df6e8cffed4d3bb7476fd12571f64e"
+  },
+  {
+    "back": "mg239",
+    "front": "mc239",
+    "originalKey": "mc239",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc239.json",
+    "registrationSha256": "80a824cfbedacc2fc3218c640852429c4864f927c91cbb84ced7569186579cef",
+    "atlasSha256": "aca0fed075798f646eebe8c4484bb35d739450b57a7db99a28c42836aaaffb30"
+  },
+  {
+    "back": "mg252",
+    "front": "mc252",
+    "originalKey": "mc252",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc252.json",
+    "registrationSha256": "ea9bcf41a68573ccee19d319d5c36d9f7cb760cf9c6177ee4d27ea615c63d24b",
+    "atlasSha256": "3a210744b2000ace1f7108eefa90a4f884705e7c82f08e1208569fa848ceda5d"
+  },
+  {
+    "back": "mg253",
+    "front": "mc253",
+    "originalKey": "mc253",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc253.json",
+    "registrationSha256": "8df2ee64b6728c02a072e05821d35c0c14f83ce16be14b248a64cb15f3dedb35",
+    "atlasSha256": "2b82383ecda27aa237b22024b4665a1009eded2d5e116a09ab4f3ef1a531a7b6"
+  },
+  {
+    "back": "mg266",
+    "front": "mc266",
+    "originalKey": "mc266",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc266.json",
+    "registrationSha256": "e63783ac5186db2a1309c8e41669bfd8908d6fcd2da82df52c50d3c98476f79b",
+    "atlasSha256": "861a498178074d27b379a6e93843aff460e23af39c02d66b78b324757757ac2b"
+  },
+  {
+    "back": "mg285",
+    "front": "mc285",
+    "originalKey": "mc285",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/mc285.json",
+    "registrationSha256": "ecbf451182c9666dfdcc5957ff62bfa9ba0956656958133771dd0991bf82bdfd",
+    "atlasSha256": "1ad0bfd8640068d2fc3405239aee0068f6e063d035ae54cd710c32412ba88fae"
+  },
+  {
+    "back": "wg090",
+    "front": "wc090",
+    "originalKey": "wc090",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/wc090.json",
+    "registrationSha256": "e400b62f52d6d6d54d9b122acc560988dac299f3fe272cf8b75123d4a444479e",
+    "atlasSha256": "ec0cc4a45666e32f39ef1bd15e823859132cdcd2ad10cc3406956cb2fffc0982"
+  },
+  {
+    "back": "wg142",
+    "front": "wc142",
+    "originalKey": "wc142",
+    "url": "https://lod-dressup-2.web.app/data/type/cape/wc142.json",
+    "registrationSha256": "4ad6655838473649cdc4582b6e37cf399b2e8d4db45549d81489647cdbd4c073",
+    "atlasSha256": "b76ab1f071033dbe4520aeba8cff1dea9efd516a4c5a2ce58b04bafd81ca8a3f"
+  }
+]

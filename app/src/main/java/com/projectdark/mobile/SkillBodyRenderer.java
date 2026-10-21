@@ -43,9 +43,9 @@ final class SkillBodyRenderer {
     c.save();if(ChungryongWeaponRenderer.west(p.direction))c.scale(-1,1,x,y);
     if(back)chungryong.layer(c,motion,true,n,hx,hy,SCALE);
     float left=x-(float)f.optDouble("pivotX")*SCALE,top=y-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
-    drawRapid(c,p,body,group,index,x,y,true);
+    drawRapid(c,p,body,group,index,x,y,true);for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(WingShieldV215.layer(id)&&!WingShieldV215.inFront(id,p.direction))drawGear(c,id,body,group,index,p.direction,x,y);
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
-    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(!RapidHairclipV199.source(id))drawGear(c,id,body,group,index,p.direction,x,y);
+    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(!RapidHairclipV199.source(id)&&(!WingShieldV215.layer(id)||WingShieldV215.inFront(id,p.direction)))drawGear(c,id,body,group,index,p.direction,x,y);
     if(!back)chungryong.layer(c,motion,false,n,hx,hy,SCALE);
     drawRapid(c,p,body,group,index,x,y,false);
     c.restore();return true;
@@ -70,9 +70,9 @@ final class SkillBodyRenderer {
     boolean weapon=motion.equals("THRUST")||motion.equals("SWING")||motion.equals("TWO_HAND")||motion.equals("IDLE")||motion.equals("WALK");
     if(weapon&&back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",true,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     float left=rootX-(float)f.optDouble("pivotX")*SCALE,top=rootY-(b.getHeight()+(float)f.optDouble("offsetY"))*SCALE;
-    drawRapid(c,p,body,group,index,rootX,rootY,true);
+    drawRapid(c,p,body,group,index,rootX,rootY,true);for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(WingShieldV215.layer(id)&&!WingShieldV215.inFront(id,p.direction))drawGear(c,id,body,group,index,p.direction,rootX,rootY);
     c.drawBitmap(b,null,new RectF(left,top,left+b.getWidth()*SCALE,top+b.getHeight()*SCALE),paint);
-    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(!RapidHairclipV199.source(id))drawGear(c,id,body,group,index,p.direction,rootX,rootY);
+    for(String id:p.equipmentVisualRef==null?new String[0]:p.equipmentVisualRef.split(","))if(!RapidHairclipV199.source(id)&&(!WingShieldV215.layer(id)||WingShieldV215.inFront(id,p.direction)))drawGear(c,id,body,group,index,p.direction,rootX,rootY);
     if(weapon&&!back){if(ChungryongWeaponRenderer.equipped(p.weaponVisualRef))chungryong.layer(c,"basic",false,0,rootX+6*SCALE,rootY-29*SCALE,SCALE);else drawHeldWeapon(c,p.weaponVisualRef,body,group,index,p.direction,rootX,rootY,b,f);}
     if(jumpWeapon&&!back)chungryong.layer(c,"basic",false,0,jumpHandX,jumpHandY,SCALE);
     drawRapid(c,p,body,group,index,rootX,rootY,false);
@@ -141,6 +141,6 @@ final class SkillBodyRenderer {
   private static float localX(CharacterSemanticRig.Point p,JSONObject f){return p.x-(float)f.optDouble("pivotX");}
   private static float localY(CharacterSemanticRig.Point p,JSONObject f,Bitmap b){return p.y-b.getHeight()-(float)f.optDouble("offsetY");}
   private static void translateAnchor(Matrix m,CharacterSemanticRig.Point a,CharacterSemanticRig.Point b,JSONObject from,JSONObject to,Bitmap src,Bitmap dst){m.setTranslate(localX(b,to)-localX(a,from),localY(b,to,dst)-localY(a,from,src));}
-  private JSONObject registration(String id){if(registrations.containsKey(id))return registrations.get(id);JSONObject j=null;try{j=new JSONObject(new String(PresentationAssetBytes.read(context,"wearables-v212/registrations/"+id+".json"),StandardCharsets.UTF_8));}catch(Exception missing){try{j=new JSONObject(new String(PresentationAssetBytes.read(context,"source-registration/"+id+".json"),StandardCharsets.UTF_8));}catch(Exception ignored){}}registrations.put(id,j);return j;}
+  private JSONObject registration(String id){if(registrations.containsKey(id))return registrations.get(id);JSONObject j=null;try{j=new JSONObject(new String(PresentationAssetBytes.read(context,"extended-wearables-v215/"+id+".json"),StandardCharsets.UTF_8));}catch(Exception extendedMissing){try{j=new JSONObject(new String(PresentationAssetBytes.read(context,"wearables-v212/registrations/"+id+".json"),StandardCharsets.UTF_8));}catch(Exception missing){try{j=new JSONObject(new String(PresentationAssetBytes.read(context,"source-registration/"+id+".json"),StandardCharsets.UTF_8));}catch(Exception ignored){}}}registrations.put(id,j);return j;}
   private Bitmap bitmap(String path){if(bitmaps.containsKey(path))return bitmaps.get(path);Bitmap b=null;try(java.io.InputStream in=context.getAssets().open("skill-presentation/"+path)){b=BitmapFactory.decodeStream(in);if(b!=null){b.prepareToDraw();bitmapLoads++;}}catch(Exception ignored){}bitmaps.put(path,b);return b;}
 }

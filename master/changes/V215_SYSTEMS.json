@@ -1,0 +1,45 @@
+{
+  "revision": "V215",
+  "status": "ACCEPTED",
+  "authority": "2026-10-21 current user explicit requests; Director single editor",
+  "before": {
+    "experience99": "residual after level thresholds; numeric balance absent in stats",
+    "temple": "portal labels and lobby/hub forward gates",
+    "inventory": "3 filters; 15 equipment slots",
+    "shield14": "appearance null (previous exact identity unresolved)",
+    "wings16": "unsupported back art, inventory-only ornament"
+  },
+  "after": {
+    "experience99": "refund all thresholds 1..98 exactly once at reaching99; retain overflow within existing4.2b cap; old99 saves one-time durable migration; pre-existing overcap retained",
+    "temple": "lobby guide only; hub actual door at17,23 walks toSeo; original hub exit27,26 returns; no portal drawings or tap shortcuts",
+    "inventory": "12 exact requested categories; exclusive wing slot; old ornament wing assignment migrates; ownership preserved",
+    "shield14": "exact boot.json original Korean source-label bindings; 깨진포보스방패 to 깨진포보스의방패 is explicit observed name variant",
+    "wings16": "source mg/wg back and matching mc/wc front layers registered at source fixed depth; no omitted-facing fallback",
+    "altar": "source video21 cut; UI-occluded corner has explicit ADAPTED geometry/color reconstruction; hidden original geometry remains unresolved"
+  },
+  "sourceFiles": [
+    "master/source/equipment/shields_v215/sources.json",
+    "master/source/equipment/wings_v215/sources.json",
+    "master/source/equipment/wings_v215/paired_layers.json",
+    "master/source/temple_v215/reference.json"
+  ],
+  "sourceUrls": [
+    "https://lod-dressup-2.web.app/data/boot.json",
+    "https://lod-dressup-2.web.app/data/list/cape.json",
+    "user Screen_Recording_20261021_092403_YouTube.mp4 at20-21seconds"
+  ],
+  "snapshots": "Original historical Master CSVs and previous screenshots/source archives retained unchanged. New originals and hashes retained separately. New shield appearance evidence supersedes earlier unresolved metadata without changing original facts/stats.",
+  "consumers": [
+    "RpgProgressionState",
+    "CampaignProgress",
+    "F5mSaveStore",
+    "CharacterVisualBinding",
+    "CharacterRenderer",
+    "SkillBodyRenderer",
+    "ItemWindow",
+    "GameView",
+    "TempleRoutes",
+    "TempleEntranceRenderer"
+  ],
+  "validation": "SystemsV215Test and affected native/system/performance regressions in focused and common CI. Exact source/build/APK/phone statuses pending."
+}

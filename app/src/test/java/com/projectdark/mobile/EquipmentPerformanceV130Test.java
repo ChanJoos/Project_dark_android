@@ -37,7 +37,7 @@ public class EquipmentPerformanceV130Test {
   FinalStats f=r.finalStats();assertEquals(20,f.magicDefense);assertEquals(80,CombatStatPipeline.resolveSkill(100,CombatStatPipeline.Channel.MAGIC,FinalStats.neutral(100,100),f).applied);
   r.unequip("방패");r.equip("IT_SHIELD_DEATHKNIGHT");assertEquals(Integer.valueOf(-500),r.itemDefinitions().get("IT_SHIELD_DEATHKNIGHT").statModifiers.get("HP"));assertEquals(Integer.valueOf(-500),r.itemDefinitions().get("IT_SHIELD_DEATHKNIGHT").statModifiers.get("MP"));assertEquals(30,r.finalStats().magicDefense);
   // An unverified wearable ID must not silently attach another shield's paper-doll.
-  assertNull(r.itemDefinitions().get("IT_SHIELD_DEATHKNIGHT").appearanceId);
+  assertEquals("ms016",r.itemDefinitions().get("IT_SHIELD_DEATHKNIGHT").appearanceId);
  }
  @Test public void allNamedShieldsAreOwnedSelectableAndHaveCorrectOriginalIcons()throws Exception{
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState s=ItemWindowReferenceTest.field(view,"state");SourceItemIconRegistry icons=new SourceItemIconRegistry(c);int count=0;

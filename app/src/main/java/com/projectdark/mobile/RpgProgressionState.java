@@ -139,6 +139,7 @@ public final class RpgProgressionState {
     items.put(id,new ItemDefinition(id,old.name,old.equipSlot,appearance,WEAPON_SLOT.equals(old.equipSlot)?AnimationAction.SWING:old.basicAttackAction,old.requiredLevel,old.allowedJobCodes,old.jobRestrictionResolved,old.attackElement,old.defenseElement,old.statModifiers,old.evidence));
     inventoryOnlyItems.remove(id);
   }
+  void installVisibleAccessory(String id,String slot,String appearance){ItemDefinition old=items.get(id);if(old==null)throw new IllegalStateException(id);items.put(id,new ItemDefinition(id,old.name,slot,appearance,old.basicAttackAction,old.requiredLevel,old.allowedJobCodes,old.jobRestrictionResolved,old.attackElement,old.defenseElement,old.statModifiers,old.evidence));inventoryOnlyItems.remove(id);}
   private static final int INVENTORY_STACK_LIMIT=999999; // safety ceiling only; per-item canonical stack limits remain PENDING.
   private final Map<String,ItemDefinition> items=new LinkedHashMap<>();
   private final Set<String> inventoryOnlyItems=new LinkedHashSet<>();
@@ -303,7 +304,7 @@ public final class RpgProgressionState {
     RecoveredWeaponCatalogV195.install(this);
     ExpandedVillageClothingV197.install(this);
     UnifiedItemCatalogV210.install(this);
-    RecoveredWearablesV212.install(this);
+    RecoveredWearablesV212.install(this);WingShieldV215.install(this);
     installUnifiedAliases();
     for(String id:ExpandedVillageClothingV197.IDS)inventory.put(id,1);
     for(String id:RecoveredWeaponCatalogV195.IDS)inventory.put(id,1);
@@ -536,7 +537,7 @@ public final class RpgProgressionState {
     int before=normalLevel==null?1:normalLevel;
     int level=before;long exp=normalExp==null?0L:normalExp;
     while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
-    normalLevel=level;normalExp=before<99&&level==99?Math.min(exp,TempleGrowthPolicy.EXP_CAP):exp;int gained=level-before;if(gained>0){for(int lv=before+1;lv<=level;lv++){baseMaxHp+=rollGrowth(con);baseMaxMp+=rollGrowth(wis);}statPoints+=gained*2;}return gained;
+    normalLevel=level;normalExp=before<99&&level==99?Math.min(TempleGrowthPolicy.EXP_CAP,Math.min(exp,TempleGrowthPolicy.EXP_CAP)+LevelExpCurve.totalTo99()):exp;int gained=level-before;if(gained>0){for(int lv=before+1;lv<=level;lv++){baseMaxHp+=rollGrowth(con);baseMaxMp+=rollGrowth(wis);}statPoints+=gained*2;}return gained;
   }
 
   /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
@@ -675,7 +676,7 @@ public final class RpgProgressionState {
 
   /** Replace saved ownership exactly, including an explicitly empty equipment set. */
   public boolean restoreOwnedItems(Map<String,Integer> owned,Map<String,String> equipped){
-    try{owned=canonicalQuantities(owned,true);equipped=canonicalEquipment(equipped);}catch(IllegalArgumentException invalid){return false;}
+    try{owned=canonicalQuantities(owned,true);equipped=canonicalEquipment(equipped);Map<String,String> migrated=new LinkedHashMap<>();for(Map.Entry<String,String> e:equipped.entrySet()){ItemDefinition d=items.get(e.getValue());String slot=d!=null&&"날개".equals(d.equipSlot)?"날개":e.getKey();if(migrated.putIfAbsent(slot,e.getValue())!=null){if(!"날개".equals(slot))return false;}}equipped=migrated;}catch(IllegalArgumentException invalid){return false;}
     for(Map.Entry<String,Integer> e:owned.entrySet())
       if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return false;
     Map<String,Integer> counts=new LinkedHashMap<>();
