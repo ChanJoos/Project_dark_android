@@ -1,15 +1,50 @@
+milles_temple_v213:
+  status: BUILD_HOST_NATIVE_VERIFIED_COMMON_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  runtime_source: 627efe679dfa77a4f3f6daa9e1e18cb4deace439
+  focused_run: 39580282429
+  artifact: 12336915112
+  native_suites: 10
+  native_tests: 46
+  common_push_run: 39580282386
+  common_pr_run: 39580290800
+  common_status: IN_PROGRESS
+  receipt: verification/TEMPLE_MILLES_V213_BUILD.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, docs/VILLAGE_CREATION_LESSONS.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/MILLES_SOURCE_STYLE_V101_CONTRACT.md, docs/MILLES_RIVER_STYLE_V102_CONTRACT.md, docs/MILLES_CHURCH_BENCH_V103_CONTRACT.md, master/source/temple_v211/reference.json, master/source/temple_v211/entrance_repair_v213.json, master/changes/V213_MILLES_TEMPLE.json]
+  physical_phone: PENDING
+  user_visual_acceptance: PENDING
+  previous_report: DEVICE_FAILED_USER_REPORTED_MISSING_PORTALS_NPC_AND_ENTRANCE_MISMATCH
+  source_topology: ADAPTED_THREE_ROOMS_ONLY_OTHER_DEITY_SOURCE_PENDING
+  install: SEPARATE_V213_TEST_PACKAGE_OWN_PROFILE_EXISTING_APP_RETAINED
+  next: FINISH_COMMON_CI_THEN_EXACT_APK_HANDSET_FEEDBACK_NO_RUNTIME_REBUILD
+
+inventory_repair_v212:
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
+  runtime_source: c9bda787ba95a26d418cf858e558eece8c63f81c
+  focused_run: 39568721180
+  native_tests: 53
+  common_status: SUCCESS
+  receipt: verification/INVENTORY_V212_BUILD.json
+  recovered_wearable_links: 1073
+  remaining_inventory_only: 47
+  repaired_icon_alpha: 60
+  phone_speed_root_cause: UNKNOWN_NOT_MEASURED
+
 post99_temple_v211:
-  status: DESIGN_PROPOSED_NOT_IMPLEMENTED
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_VISUAL_REJECTED_V213_REPAIR
   specification: design/POST99_TEMPLE_ADVANCEMENT_V211.md
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
-  requested_cap_policy: CLASSIC_4200000000_PROPOSAL
-  original_purchase_price: PENDING
-  user_report: LV99_EXP_NOT_ACCUMULATING
-  root_cause: UNKNOWN_NOT_REPRODUCED
-  runtime_changed: false
-  next: REPRODUCE_EXACT_APK_REWARD_HUD_SAVE_PATH
+  runtime_source: f59b71fab20c25e98a44a6ded27bf77b856799c2
+  focused_run: 39552593128
+  native_tests: 36
+  user_purchase_rule: EXACT_HP_5_TIMES_A_PLUS_B_MINUS_50_TIMES_A_MINUS_B_MP_10_TIMES_A_PLUS_B_MINUS_25_TIMES_A_MINUS_B
+  runtime_changed: true
+  receipt: verification/TEMPLE_V211_BUILD.json
+  superseded_visual_followup: milles_temple_v213
 
 item_catalog_v210:
   status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING

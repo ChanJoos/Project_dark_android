@@ -1,0 +1,268 @@
+{
+  "sourceCommit": "627efe679dfa77a4f3f6daa9e1e18cb4deace439",
+  "runId": "39580282429",
+  "build": {
+    "sourceCommit": "627efe679dfa77a4f3f6daa9e1e18cb4deace439",
+    "runId": "39580282429",
+    "builtAtKST": "2026-10-21T18:57:23.493413+09:00",
+    "apkSha256": "065a7d7376991b2c389a827a43ab07bf833f5ee11b8a7b386e0c0e1089caa179",
+    "apkBytes": 99047677,
+    "identity": {
+      "sourceCommit": "627efe679dfa77a4f3f6daa9e1e18cb4deace439",
+      "runId": "39580282429",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "V213 visible temple route portals and guide NPC, source light matte repair, varied existing Milles tree silhouettes, original grass and road fringes, static river ripple geometry; original interior tiles unchanged; host native and physical handset pending"
+  },
+  "manifest": {
+    "manifest": {
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile.v213test",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "application": {
+      "theme": 2130837504,
+      "label": "PROJECT DARK V213 TEST",
+      "debuggable": 4294967295,
+      "extractNativeLibs": 0
+    }
+  },
+  "signature": {
+    "file": "/workspace/scratch/ada883d05015/delivery/v213-delivery-native/delivery/PROJECT_DARK_v184_portals.apk",
+    "apkSha256": "065a7d7376991b2c389a827a43ab07bf833f5ee11b8a7b386e0c0e1089caa179",
+    "bytes": 99047677,
+    "v2SignatureVerified": true,
+    "v2ContentDigestVerified": true,
+    "signerCertificateSha256": "72c73fb3e513ef824e40a1b0428eb3c31a71b72dac9b0522e9fff9fb6910e08a"
+  },
+  "testSuites": 10,
+  "testCount": 46,
+  "tests": [
+    {
+      "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.InventoryRepairV212Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MillesReconstructionTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.TempleMillesV213Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.TempleV211Test",
+      "tests": "9",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.TownInteriorTest",
+      "tests": "8",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.world.MillesGroundMaterialTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.world.MillesSourceStyleTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "templeAssetHashes": {
+    "atlas.png": "03420c41f77342313540264c06df0eb02efde26763e0237ff97724cfe23e5a8a",
+    "entrance_platform.png": "858c9a4d9f1537e0cfbd5dae83fd67e4c727789d1af746fc51a94f5ea76d3dc8",
+    "entrance_arch_front.png": "c1892f505531c5367a69ec3f3cb481dbb8aacb3aa730a87a86cfcf12f3c5802c",
+    "entrance_arch_left.png": "a877d393c612f9ad5015e8d95c472eee5abea224f02dedaff3b2c6a11bed0bd2",
+    "entrance_arch_back.png": "3120669a73e7617ae5e78575b72f6bcf5fc955e0e853306b9bf34a3a7ec02508",
+    "atlas.json": "c66c99be4dbf2072d26e6d5806b4328d9b97bcb8a10f044413232c541170a6be",
+    "entrance_light.png": "8b58d690ee358dabc8e746a9566d9db5ae6f7a0e2bdd17589540c5300bbd58d0",
+    "entrance.json": "368abf2f29727dfc07a3678d1609dc0537c5f7543439b334df576676afe85024"
+  },
+  "unchangedWearableSourceFiles": 2146,
+  "originalInteriorAtlasUnchanged": true,
+  "phoneVerified": false,
+  "userVisualAcceptance": "PENDING",
+  "revision": "V213_MILLES_TEMPLE",
+  "status": "BUILD_HOST_NATIVE_VERIFIED_COMMON_PENDING",
+  "artifact": {
+    "id": 12336915112,
+    "zipSha256": "c301b649bd4c7740e0b28ec8538bb10a8ed6e15f0b8ccea979be2327190b517f",
+    "zipBytes": 118030372,
+    "run": 39580282429
+  },
+  "commonCI": {
+    "push": 39580282386,
+    "pullRequest": 39580290800,
+    "status": "IN_PROGRESS"
+  },
+  "mainSha": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "mainMerged": false,
+  "pullRequest": 197,
+  "branch": "codex/rucesion-coast-v157",
+  "nativeImages": [
+    {
+      "file": "god-hp-mp-menu.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "64ea8ce0bcdd4e8bf8a45bed9451f07d94810e416fcb28fbc03079fd9439e043"
+    },
+    {
+      "file": "river-bridge.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "e3e17604316fe547039f113f7859f67c0996cd63c75ecfc3a4f37e2c152f56d0"
+    },
+    {
+      "file": "south-residences.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "208dafc291edae0743bf0c6cd26615238b6e50e6c4454466141d2fd0c3672b53"
+    },
+    {
+      "file": "temple.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "8bd7536f87f7a9838ce53e3a554d8b24cd65956377291c104ff6c869094760d5"
+    },
+    {
+      "file": "entrance-full.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "562d6c9262949deecf9d2857d75a28233331d0ef42b884add2633f0996603fb3"
+    },
+    {
+      "file": "center.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "0e161f8e3f4d2a571e927ac7d4a205fe3a51ee534d496ef9d3f41dce934058a9"
+    },
+    {
+      "file": "east-waterside.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "8af6d65a81193f7ee89c245a7b912750534776c225813a3467d762b0db1d532a"
+    },
+    {
+      "file": "seo-npc-exit.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "8f97204a3e128790ddcc21018a64355a066dcc8337828744873756900c3f9184"
+    },
+    {
+      "file": "west-crafts.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "7c220834df474aa8ea1f78b66be496b5537e55e80d4aae4e0a090edcb26827ff"
+    },
+    {
+      "file": "hub-portal-guide.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "fcad5063e0aea782e0e578a01ca5d7a139ee289f2139a44307781eca307aae88"
+    },
+    {
+      "file": "lobby-portals-guide.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "345ad841c326984ca9f8a77c9b99f77869031d8a651e58ceec89bc1fda016741"
+    },
+    {
+      "file": "north-services.png",
+      "size": [
+        960,
+        540
+      ],
+      "sha256": "f3f2ba20f5e4a646894c25a00157e20c47f15e9667019328e60577eb83765fb9"
+    }
+  ],
+  "nativeVisualReview": "HOST_REVIEWED_12_IMAGES_USER_ACCEPTANCE_PENDING",
+  "packaging": {
+    "applicationId": "com.projectdark.mobile.v213test",
+    "label": "PROJECT DARK V213 TEST",
+    "separateFromV212": true,
+    "legacySaveMigration": false,
+    "existingAppDeletionRequired": false
+  },
+  "limitations": [
+    "Physical handset speed and OS process death are not verified.",
+    "Exterior village layout is adapted, not an exact current-server or full source-video recreation.",
+    "Far lower left-arch foot remains source-UI obscured; obscured pixels are clipped, not invented.",
+    "Only the retained three rooms/Seo are implemented; other deity rooms are not fabricated.",
+    "Existing building silhouettes/cabin sources retained; Milles terrain, tree variety, source material and shrine presentation changed."
+  ],
+  "verificationScope": [
+    "Real outdoor ground tap → lobby portal → hub portal → Seo NPC → HP and MP confirmations → all exits → checkpoint/new GameView restore/reentry",
+    "Exact user HP/MP formulas, first advancement, EXP cap and atomic rollback",
+    "Distinct original source pillars, source-grid and preserved interior atlas checks",
+    "Milles native lawn cache 32 entries/8652800bytes, pixel phase/chunk seams and departure release",
+    "Existing service reachability, scenery depth, river/bridge, shared movement, V212 inventory and save tests"
+  ]
+}

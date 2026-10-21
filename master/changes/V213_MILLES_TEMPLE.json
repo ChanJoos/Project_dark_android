@@ -1,11 +1,46 @@
 {
- "id":"V213_MILLES_TEMPLE",
- "status":"IMPLEMENTED_ANDROID_VERIFICATION_PENDING",
- "user_report":"DEVICE_FAILED_USER_REPORTED_ENTRANCE_AND_MISSING_PORTALS_NPC",
- "source":["master/source/temple_v211/reference.json","master/source/temple_v211/entrance_repair_v213.json","master/source/mine_v203/assets.json","master/source/mine_v205"],
- "before":["unmarked exact hub tile; hidden guide","incorrect exterior pillar cutout coordinates","mirrored lawn circles; per-frame river geometry scan"],
- "after":["visible forward/return source portal sprites and hub guide","source traced pillar masks and scale-matched feet; all arches inside world","retained original lawn/water/bank source materials; bounded cached lawn; static river geometry"],
- "preserved":["original interior tile cells and atlas","HP/MP exact user formula","all other towns and 0.60s movement","V212 inventory and save repairs"],
- "limits":["physical handset and user visual acceptance pending","left far arch foot source UI obscured; other deity rooms not fabricated","Milles exterior adapted arrangement; existing building source identities retained"],
- "verification":{"local_source_and_layout_audit":"PASS","intermediate_touch_purchase_restart":"PASS_39576342100","final_android":"PENDING"}
+  "id": "V213_MILLES_TEMPLE",
+  "status": "BUILD_HOST_NATIVE_VERIFIED_COMMON_PENDING",
+  "user_report": "DEVICE_FAILED_USER_REPORTED_ENTRANCE_AND_MISSING_PORTALS_NPC",
+  "source": [
+    "master/source/temple_v211/reference.json",
+    "master/source/temple_v211/entrance_repair_v213.json",
+    "master/source/mine_v203/assets.json",
+    "master/source/mine_v205"
+  ],
+  "before": [
+    "unmarked exact hub tile; hidden guide",
+    "incorrect exterior pillar cutout coordinates",
+    "mirrored lawn circles; per-frame river geometry scan"
+  ],
+  "after": [
+    "visible forward/return source portal sprites and hub guide",
+    "source traced pillar masks and scale-matched feet; all arches inside world",
+    "retained original lawn/water/bank source materials; bounded cached lawn; static river geometry",
+    "Source-gradient join removes winter/summer rectangular patch seams; separate V213 package preserves existing install"
+  ],
+  "preserved": [
+    "original interior tile cells and atlas",
+    "HP/MP exact user formula",
+    "all other towns and 0.60s movement",
+    "V212 inventory and save repairs"
+  ],
+  "limits": [
+    "physical handset and user visual acceptance pending",
+    "left far arch foot source UI obscured; other deity rooms not fabricated",
+    "Milles exterior adapted arrangement; existing building source identities retained"
+  ],
+  "verification": {
+    "local_source_and_layout_audit": "PASS",
+    "intermediate_touch_purchase_restart": "PASS_39576342100",
+    "final_android": "PASS_HOST_NATIVE",
+    "runtimeSource": "627efe679dfa77a4f3f6daa9e1e18cb4deace439",
+    "focusedRun": 39580282429,
+    "artifact": 12336915112,
+    "nativeSuites": 10,
+    "nativeTests": 46,
+    "commonPush": 39580282386,
+    "commonPR": 39580290800,
+    "commonStatus": "IN_PROGRESS"
+  }
 }
