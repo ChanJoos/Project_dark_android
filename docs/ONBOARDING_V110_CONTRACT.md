@@ -1,3 +1,7 @@
+## V210 source identity integration
+
+Unidentified shoe options are no longer fabricated. T04/T05 retain stable quest IDs/milestones and teach verified Epe purchase/equip; original source requirements and old completed progress are preserved. Purchase/equip receipts and guided shop selection canonicalize retained legacy IDs. Exact evidence: [V210 checkpoint](V210_ITEM_CATALOG_CHECKPOINT.md).
+
 # V110 guided Lv1–11 curriculum
 
 User explicitly accepted V109 device behavior, then requested separate, taught essentials, spread EXP to Lv11, and a usable quest journal. V109 combat/AUTO/Shortblade/Rescue/mouse acceptance is DEVICE_VERIFIED_USER_REPORTED for the reported scenarios. V110 is IMPLEMENTED / BUILD_VERIFIED / NATIVE_RUNTIME_VERIFIED_ROBOLECTRIC on exact source fadd41a7; [verification evidence](verification/ONBOARDING_V110_BUILD.json) records 96 passing focused tests and two successful full pipelines. V110 physical phone/user visual acceptance remains pending.
@@ -15,8 +19,8 @@ All added curriculum, rewards, stories and controls are PROJECT_ADAPTED_V110. Or
 |5|T02 첫 기술 배우기|Actual learned record, not preview availability|48000|
 |6|T03 기술을 손끝에|Owned beginner skill in a real quickslot|60500 / Lv5|
 |7|J01 직업별 첫 기술 실습|Three accepted matching actions; actual positive HP restoration for Cleric|78800|
-|8|T04 첫 장비 구매|Successful purchase of IT_TEST_SHOES_ML229|87800 / Lv6|
-|9|T05 가죽 신발 장착하기|Successful explicit leather-shoe equip|105000|
+|8|T04 에페 구매하기|Successful purchase of canonical IT_TEST_WEAPON_MW002 (300G)|87800 / Lv6|
+|9|T05 에페 장착하기|Actual canonical Epe equipped state|105000|
 |10|T06 회복 물약 구매|Successful purchase of small HP potion|122800 / Lv7|
 |11|T07 다친 몸 돌보기|Actual HP restoration by this potion|145000|
 |12|T08 마력 물약 구매|Successful purchase of MP potion|167800 / Lv8|
@@ -25,7 +29,7 @@ All added curriculum, rewards, stories and controls are PROJECT_ADAPTED_V110. Or
 |15|M04 자동 사냥 익히기|Three real target field-mouse defeats|300000 / Lv10|
 |16|M06 포테 숲길 답사|Actual forest map visit and report|378000 / Lv11|
 
-Turn-in grants max(0, milestone − total normal EXP already earned); it never sets a level, removes EXP, or lowers an overlevelled character. Display/reward toast quote the actual current amount. Extra early combat reduces the catch-up reward; levels already beyond the milestone remain. Original LevelExpCurve is unchanged. No filler hunting gate before Lv11. Every T quest has one action, not a composite boolean supply objective. T rewards do not flood inventory with HP/MP potion stacks. Gold budgets retain affordably paid first learning (50G), leather shoes (150G), HP20/MP25 and sale proceeds.
+Turn-in grants max(0, milestone − total normal EXP already earned); it never sets a level, removes EXP, or lowers an overlevelled character. Display/reward toast quote the actual current amount. Extra early combat reduces the catch-up reward; levels already beyond the milestone remain. Original LevelExpCurve is unchanged. No filler hunting gate before Lv11. Every T quest has one action, not a composite boolean supply objective. T rewards do not flood inventory with HP/MP potion stacks. Gold budgets retain affordably paid first learning (50G), source-backed Epe (300G), HP20/MP25 and sale proceeds.
 
 ## Manual learning and teaching
 

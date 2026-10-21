@@ -1,13 +1,26 @@
 item_catalog_v210:
-  status: IMPLEMENTED_NATIVE_CI_PENDING
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
-  base_runtime: 90845f57470ca994abce73db1ced38eb053d22a0
+  pull_request: 197
+  main_merged: false
+  runtime_source: 709dda2179042c66b292acb03a4a6275b2292a7a
+  validator_source: 72d3368db738464c4fe9e86742ae89dd988c9a23
+  focused_run: 39526757395
+  native_tests: 107
+  common_push_run: 39529789878
+  common_pr_run: 39529794836
+  common_status: SUCCESS
+  receipt: verification/ITEM_CATALOG_V210_BUILD.json
   user_rule: ORIGINAL_VARIANTS_REMAIN_DISTINCT_NO_IMAGE_BASED_UI_GROUPING
+  canonical_items: 1772
   source_named_identities: 1445
+  aliases_retired: 293
   synthetic_aliases_retired: 60
+  new_inventory_only: 1120
   source_only_wearable_motions: UNRESOLVED_EQUIP_BLOCKED
   physical_phone: PENDING
+  user_visual_acceptance: PENDING
 
 mine_hunt_repair_v209:
   status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING

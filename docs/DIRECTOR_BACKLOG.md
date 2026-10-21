@@ -1,3 +1,11 @@
+## 2026-10-21 V210 original item integration — build and host runtime verified
+
+1772 canonical inventory identities now use original source artwork; 293 compatibility aliases (including 60 synthetic training/campaign items) retire duplicate equipment without merging distinct original name/option variants. Bag, bank and equipped save IDs normalize before historical grants. Current User Master options win; unresolved facts remain pending. T04/T05 use verified Epe purchase/equip at 300G.
+
+Delivered runtime `709dda2179042c66b292acb03a4a6275b2292a7a`, focused run **39526757395 SUCCESS**, independently verified **107 tests / 17 suites / 0 failures**, artifact **12312893761**. Additional unchanged-runtime validators pass through `72d3368db738464c4fe9e86742ae89dd988c9a23`; full common push **39529789878 SUCCESS** and PR **39529794836 SUCCESS**. Reused prefix checks are individually proven with exact-input guards; skipped checks are not new execution evidence.
+
+APK `PROJECT_DARK_V210_TEST.apk`, built **2026-10-21 10:28:44 KST**, SHA256 `8fac11662da636af36c06567fac95afd964b47db044e5b933efc31eab696460e`. Branch `codex/rucesion-coast-v157`, PR197, unmerged candidate. Evidence: `verification/ITEM_CATALOG_V210_BUILD.json`; continuation: `docs/V210_ITEM_CATALOG_CHECKPOINT.md`. **1120 new source identities are inventory-only and equip-blocked**; original wearable motions/requirements, 2024 unnamed source records, physical handset and user visual acceptance remain unresolved. Preserve prior Mine/Horror runtime and approved movement. Next: handset review against this exact APK, then address reproduced findings; do not rebuild for documentation-only changes.
+
 ## 2026-10-21 V209 mine / weapon display repair — build and host native verified
 
 User rejected V208: installed APK SHA unknown; prior host PASS did not establish user visual acceptance. Missing labelled original Hell Sorcerer mns068 now replaces unsighted153. White/orange thief155 and red martial monk238 corrected; mage68/158 both drop mage robes. Priest robe sharing between those two casters is explicit mobile policy, not verified original priest ownership. Ten active appearances total, not ten guaranteed original Korean identities; first three soldier names remain descriptive. All server stats/rates remain unresolved mobile balance.

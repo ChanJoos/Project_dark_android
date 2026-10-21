@@ -1,0 +1,86 @@
+{
+  "sourceCommit": "709dda2179042c66b292acb03a4a6275b2292a7a",
+  "runId": "39526757395",
+  "builtAtKST": "2026-10-21T10:28:44.739076+09:00",
+  "apkSha256": "8fac11662da636af36c06567fac95afd964b47db044e5b933efc31eab696460e",
+  "apkBytes": 89711013,
+  "identity": {
+    "sourceCommit": "709dda2179042c66b292acb03a4a6275b2292a7a",
+    "runId": "39526757395",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V210 original item identity catalog, synthetic aliases retired, packed original inventory atlas, exact legacy inventory/equipment/bank migration and one-time grants; source-only wearable poses and handset remain unverified",
+  "verifiedV210PackagedFiles": 9,
+  "junit": {
+    "tests": 107,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": 17
+  },
+  "archiveSha256": "eb65818499d5fb30b2e0de01c2e9ea2cedf84a6dde504ee57cc1841891201ce6",
+  "census": {
+    "canonicalItems": 1772,
+    "compatibilityDefinitions": 2065,
+    "retiredAliases": 293,
+    "sourceNamedIdentities": 1445,
+    "weaponIcons": 295,
+    "atlasTextures": 1691,
+    "allInventoryArtPresent": true
+  },
+  "physicalPhone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "artifactId": 12312893761,
+  "artifactUrl": "https://github.com/ChanJoos/Project_dark_android/actions/runs/39526757395/artifacts/12312893761",
+  "sourceBranch": "codex/rucesion-coast-v157",
+  "pullRequest": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "implementationStatus": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED",
+  "signature": "CI_APKSIGNER_V2_PASS",
+  "deliveryFile": "PROJECT_DARK_V210_TEST.apk",
+  "sourceNamedNewInventoryOnly": 1120,
+  "originalUnnamedSourceRecords": 2024,
+  "limits": [
+    "Physical handset and user visual acceptance pending",
+    "New inventory-only identities lack confirmed wearable motion and/or original requirements; no fabricated functionality",
+    "Legacy resolved runtime requirements fill canonical gaps as a compatibility policy, not proof of all original-server job restrictions",
+    "Current User Master Epe R02857 uses15-20; retired V124 range20-30 retained historically but not duplicated in runtime",
+    "This is an unmerged PR197 candidate, not the current main APK",
+    "Five-job Lv41 checks use existing free-rest/placement fixtures between encounters; not handset or uninterrupted-field economy acceptance"
+  ],
+  "runtimeMainTree": "63e197e85f5adb91a0e63ffcdc9bd86e6fae735f",
+  "additionalValidators": [
+    {
+      "source": "2df70c54095df1966b1385bcca51d07bb8719497",
+      "focusedRun": 39528074378,
+      "scope": "ModernUiTest, exact unchanged app tree; 3 native window/font/input checks",
+      "status": "SUCCESS"
+    },
+    {
+      "source": "a7d607cb7fcca55a7e95f0d3a99ff806d215016a",
+      "focusedRun": 39528706367,
+      "scope": "F5mRestartPersistenceMatrixTest, exact unchanged app tree; 4 persistence checks",
+      "status": "SUCCESS"
+    },
+    {
+      "source": "5bec4505d3229f195bed83f08e45ed294170d71f",
+      "focusedRun": 39529039584,
+      "scope": "Restart and recording regressions, exact unchanged app tree; preserve original bracketed source names",
+      "status": "SUCCESS"
+    },
+    {
+      "source": "72d3368db738464c4fe9e86742ae89dd988c9a23",
+      "focusedRun": 39529789876,
+      "scope": "EquipmentStatsAndDetailsTest: 3 source option/equipment checks; exact unchanged app tree",
+      "status": "SUCCESS"
+    }
+  ],
+  "fullCommonCI": {
+    "status": "SUCCESS",
+    "validatorSource": "72d3368db738464c4fe9e86742ae89dd988c9a23",
+    "pushRun": 39529789878,
+    "pullRequestRun": 39529794836,
+    "reusePolicy": "Individually successful exact-input prefix steps only, guarded by unchanged runtime tree and restricted test/CI/document diffs."
+  }
+}

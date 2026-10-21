@@ -1,3 +1,7 @@
+## 2026-10-21 V210 accepted item identity and migration rules
+
+User authority: retire assistant-created equipment duplicates; keep original distinct names/options even with shared artwork. Current User Master numeric facts win. Resolved legacy restrictions fill canonical gaps only as compatibility policy, excluding invented IT_B_ conditions; this does not verify every original-server requirement. Canonicalize ownership/equipment/bank before historical grants to prevent duplicated quantities. New source identities without verified wearable motions/requirements stay inventory-only. Adapted T04/T05 keep IDs and progress but use known Epe at300G. Preserve original bracketed event names. Implemented runtime709dda21; focused107 checks and common39529789878/39529794836 pass. Physical handset/user visual acceptance pending. Full checkpoint: docs/V210_ITEM_CATALOG_CHECKPOINT.md.
+
 ## 2026-10-21 V209 mine / weapon display repair — build and host native verified
 
 User rejected V208: installed APK SHA unknown; prior host PASS did not establish user visual acceptance. Missing labelled original Hell Sorcerer mns068 now replaces unsighted153. White/orange thief155 and red martial monk238 corrected; mage68/158 both drop mage robes. Priest robe sharing between those two casters is explicit mobile policy, not verified original priest ownership. Ten active appearances total, not ten guaranteed original Korean identities; first three soldier names remain descriptive. All server stats/rates remain unresolved mobile balance.
