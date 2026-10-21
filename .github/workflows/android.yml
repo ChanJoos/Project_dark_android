@@ -132,6 +132,18 @@ jobs:
               assert job['head_sha']==baseline
               passed=[x['name'] for x in prefix]
               print('REUSING 15 verified prefix checks from',baseline,'run39399531451; changed:',changed)
+          item_base='709dda2179042c66b292acb03a4a6275b2292a7a'
+          subprocess.run(['git','fetch','--depth=1','origin',item_base],check=True)
+          item_changed=subprocess.check_output(['git','diff','--name-only',item_base,'HEAD'],text=True).splitlines()
+          item_allowed={'.github/workflows/android.yml','.github/workflows/rucesion-town-v156.yml','app/src/test/java/com/projectdark/mobile/ModernUiTest.java','master/MASTER_MANIFEST.md','master/changes/V210_UNIFIED_ITEM_IDENTITIES.json','verification/ITEM_CATALOG_V210_BUILD.json'}
+          if all(p in item_allowed or p.startswith('docs/') for p in item_changed):
+              assert subprocess.check_output(['git','rev-parse',item_base+':app/src/main'],text=True)==subprocess.check_output(['git','rev-parse','HEAD:app/src/main'],text=True)
+              req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39526763045/jobs',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+              item_job=next(j for j in json.load(urllib.request.urlopen(req))['jobs'] if j['id']==118983213666)
+              prefix=[x for x in item_job['steps'] if 9<=x['number']<22]
+              assert item_job['head_sha']==item_base and len(prefix)==13 and all(x['conclusion']=='success' for x in prefix)
+              passed=[x['name'] for x in prefix]
+              print('REUSING 13 verified V210 checks; failed ModernUiTest and all later steps are never reused',item_changed)
           with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('passed='+json.dumps(passed)+'\n')
           PYRESUME
       - name: Validate Master DB
