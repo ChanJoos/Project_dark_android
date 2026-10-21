@@ -833,7 +833,8 @@ public final class GameView extends View {
   private void mutedText(Canvas c,String s,float x,float y,float size){p.setTypeface(UiTheme.font(false));p.setTextSize(size);p.setColor(UiTheme.MUTED);c.drawText(NpcIdentity.text(s),x,y,p);}
   private void bar(Canvas c,float l,float t,float r,float b,int color,float ratio){ratio=Math.max(0,Math.min(1,ratio));p.setColor(0xCC171416);c.drawRoundRect(new RectF(l,t,r,b),(b-t)*.3f,(b-t)*.3f,p);p.setColor(color);c.drawRoundRect(new RectF(l,t,l+(r-l)*ratio,b),(b-t)*.3f,(b-t)*.3f,p);}
 
-  private void drawHud(Canvas c){drawTopLeftStatus(c);int statusIndex=0;for(SkillEffectState.Effect e:state.skillEffects().playerEffects()){if(statusIndex>=3)break;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(e.source);mutedText(c,(a==null?e.kind:a.name)+" "+Math.max(1,(int)Math.ceil(e.remaining))+"초",18,153+statusIndex++*12,8);}drawQuickQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawCombatCluster(c);}
+  private QuestJournalModel.HudProjection hudQuests;
+  private void drawHud(Canvas c){hudQuests=questJournalModel.hud(f5mQuest,quest2,inPoteField,state.rpg());drawTopLeftStatus(c);int statusIndex=0;for(SkillEffectState.Effect e:state.skillEffects().playerEffects()){if(statusIndex>=3)break;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(e.source);mutedText(c,(a==null?e.kind:a.name)+" "+Math.max(1,(int)Math.ceil(e.remaining))+"초",18,153+statusIndex++*12,8);}drawQuickQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawCombatCluster(c);}
   private void drawTopLeftStatus(Canvas c){
     float d=hudCenterOffset;Integer level=state.rpg().normalLevel();
     MobileHudStatus.draw(c,state,hudRightOffset);
@@ -848,7 +849,7 @@ public final class GameView extends View {
   }
   private void rightAlignedText(Canvas c,String value,float right,float baseline,float size){p.setTextSize(size);p.setTypeface(UiTheme.font(true));float width=p.measureText(value);text(c,value,right-width,baseline,size);}
   private void drawQuickQuest(Canvas c){
-    MobileHudQuest.draw(c,questJournalModel.rows(f5mQuest,quest2,inPoteField,state.rpg()),hudRightOffset);
+    MobileHudQuest.draw(c,hudQuests.rows,hudRightOffset);
   }
   private void touchQuickQuest(float x,float y){
     java.util.List<QuestJournalModel.Row> all=questJournalModel.rows(f5mQuest,quest2,inPoteField,state.rpg());
@@ -863,7 +864,7 @@ public final class GameView extends View {
   static float questIconX(float rightOffset){return UTILITY_X0+4*UTILITY_STEP+rightOffset;}
 private void drawQuestJournalIcon(Canvas c){
     float x=questIconX(hudRightOffset);MobileHudSkin.utility(c,"quest",x,UTILITY_Y0,questJournalOpen);
-    int n=questJournalModel.attention(questJournalModel.rows(f5mQuest,quest2,inPoteField,state.rpg()));if(n>0){p.setColor(0xffcba964);c.drawCircle(x+13,16,3,p);}
+    int n=hudQuests.attention;if(n>0){p.setColor(0xffcba964);c.drawCircle(x+13,16,3,p);}
     UiTheme.center(c,"퀘스트",x,51,6.5f,UiTheme.TEXT,false);
   }
   private void drawTarget(Canvas c){RuntimeState.Monster selected=combat.target();if(selected==null)return;c.save();c.translate(hudCenterOffset,0);panel(c,380,12,580,55);text(c,selected.name,397,31,9.5f);bar(c,397,39,563,48,0xffd63e49,selected.hp/(float)selected.maxHp);c.restore();}

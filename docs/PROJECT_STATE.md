@@ -1,3 +1,7 @@
+## 2026-10-21 V214 urgent phone lag diagnosis
+
+V213 DEVICE_FAILED_USER_REPORTED: severe whole-game lag, shield invisible; exterior reviewed by user. Director sole editor continues PR197. Removed two full quest-journal/reward/story projections per rendered frame in favor of one compact live HUD projection. Exact visual/content parity and paired host CPU/frame measurements pending CI. Named14shield definitions have null appearance IDs, so stats/icon-only; exact sprite identity remains unresolved. Do not assign substitute shields. See docs/V214_FRAME_PERFORMANCE_CHECKPOINT.md. Build/native/phone PENDING; do not certify handset speed from host timing.
+
 ## 2026-10-21 V213 temple routes and Milles — final CI closure — handset acceptance pending
 
 Runtime `627efe679dfa77a4f3f6daa9e1e18cb4deace439`, focused39580282429 **SUCCESS / 10suites / 46tests**, artifact12336915112. Independently verified archive CRC/SHA, APK v2 signature/content digest, manifest/package, embedded source/run, all temple outputs,2146retained wearable files and icon repairs.12native V213 images reviewed across all districts and actual route/service. Common PR artifact12338161312 adds18decoded standard/wide map, depth and legacy-source fixtures; landmarks and scenery-only overview reviewed. That overview fixture omits live actors/shrine injection; actual temple is verified in the GameView captures. Original room atlas/grid unchanged; user visual acceptance and physical handset remain PENDING.

@@ -35,7 +35,16 @@ final class QuestJournalModel {
   private static byte[] read(java.io.InputStream in)throws java.io.IOException{java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream();byte[] bytes=new byte[4096];for(int n;(n=in.read(bytes))!=-1;)out.write(bytes,0,n);return out.toByteArray();}
   void visitForest(F5mAdaptedPrologueQuest q,GrowthQuest2 g){if(q.state()==F5mAdaptedPrologueQuest.State.COMPLETED&&g.state()==GrowthQuest2.State.COMPLETED&&F5mSaveStore.writable())context.getSharedPreferences("project_dark_journal_v1",0).edit().putBoolean("forest_visited",true).commit();}
   List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest){return rows(q,g,inForest,null);}
-  List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest,RpgProgressionState rpg){
+  static final class HudProjection {
+    final List<Row> rows; final int attention;
+    HudProjection(List<Row> rows,int attention){this.rows=rows;this.attention=attention;}
+  }
+  HudProjection hud(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean forest,RpgProgressionState rpg){
+    List<Row> rows=project(q,g,forest,rpg,true);
+    return new HudProjection(MobileHudQuest.shown(rows),attention(rows));
+  }
+  List<Row> rows(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest,RpgProgressionState rpg){return project(q,g,inForest,rpg,false);}
+  private List<Row> project(F5mAdaptedPrologueQuest q,GrowthQuest2 g,boolean inForest,RpgProgressionState rpg,boolean hud){
     List<Row> out=new ArrayList<>();Status s=Status.valueOf(q.state()==F5mAdaptedPrologueQuest.State.RETURN_READY?"REPORT":q.state()==F5mAdaptedPrologueQuest.State.COMPLETED?"COMPLETE":q.state().name());
     String goal=s==Status.AVAILABLE?"제임스에게 여관 의뢰 받기":s==Status.ACTIVE?"여관 생쥐 처치":s==Status.REPORT?"여관의 벤저민에게 보고":"여관의 소란을 해결했습니다";
     out.add(new Row(q.questId(),"여관의 소란","밀레스 · 여관","제임스 → 벤저민","여관의 손님들이 생쥐 때문에 곤란해하고 있습니다. 제임스의 의뢰를 받아 여관 안을 살펴보세요.",goal,"EXP 7,500  ·  Gold 100  ·  훈련 증표 1","처음부터 받을 수 있습니다","완료 후: 제임스의 성장 훈련",s,q.currentCount(),q.requiredCount()));
@@ -49,6 +58,14 @@ final class QuestJournalModel {
     if(rpg!=null){List<CampaignProgress.Def> route=rpg.campaign().route(rpg.currentJobCode());for(int i=0;i<route.size();i++){
       CampaignProgress.Def d=route.get(i);if(d.kind.equals("EXTERNAL")||d.id.equals("M03")&&"COMMONER".equals(rpg.currentJobCode()))continue;
       CampaignProgress.Status cs=rpg.campaign().status(d,rpg);String objective=rpg.campaign().objective(d);
+      if(hud){
+        // HUD uses title/objective/status/count only. Do not format every future reward,
+        // reconstruct item maps or build journal instructions during every game frame.
+        if(!d.id.startsWith("T")&&(cs==CampaignProgress.Status.AVAILABLE||cs==CampaignProgress.Status.REPORT))
+          objective=NpcIdentity.forId(d.npc).name+"에게 "+(cs==CampaignProgress.Status.AVAILABLE?"의뢰 수락":"결과 보고");
+        out.add(new Row("CAMPAIGN_"+d.id,d.title,"","","",objective,"","","",Status.valueOf(cs.name()),cs==CampaignProgress.Status.COMPLETE?d.goal:rpg.campaign().count(d,rpg),d.goal));
+        continue;
+      }
       String reason=i==0?"처음부터 시작": "선행: "+route.get(i-1).title+(d.id.startsWith("T")?"":" · Lv"+d.level);
       if(cs==CampaignProgress.Status.AVAILABLE&&!d.id.startsWith("T")||cs==CampaignProgress.Status.REPORT&&!d.id.startsWith("T"))objective=NpcIdentity.forId(d.npc).name+"에게 "+(cs==CampaignProgress.Status.AVAILABLE?"의뢰 수락":"결과 보고");
       String next=i+1<route.size()?"다음: "+route.get(i+1).title:"이 장의 모험을 마쳤습니다";

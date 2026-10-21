@@ -106,7 +106,9 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[milles-temple-v213]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[frame-v214]"* ]]; then
+            gradle :app:testDebugUnitTest --tests '*FramePerformanceV214Test' --tests '*ContinuousMoveProfileTest' --tests '*QuestJournalTest' --tests '*MobileHudV135Test' --tests '*TempleMillesV213Test' --tests '*InventoryRepairV212Test' --tests '*F5mRestartPersistenceMatrixTest' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[milles-temple-v213]"* ]]; then
             python3 tools/assets/audit_milles_map_assets.py
             gradle :app:testDebugUnitTest --tests '*TempleMillesV213Test' --tests '*MillesGroundMaterialTest' --tests '*TempleV211Test' --tests '*TownInteriorTest' --tests '*MillesReconstructionTest' --tests '*MillesSourceStyleTest' --tests '*InventoryRepairV212Test' --tests '*GroundTapPathTest' --tests '*ContinuousMoveProfileTest' --tests '*F5mRestartPersistenceMatrixTest' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[temple-v211]"* ]]; then
