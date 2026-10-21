@@ -106,7 +106,9 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[rapid-assets-only]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[temple-v211]"* ]]; then
+            gradle :app:testDebugUnitTest --tests '*TempleV211Test' --tests '*TownInteriorTest' --tests '*CampaignProgressTest' --tests '*EquipmentStatsAndDetailsTest' --tests '*F5mRestartPersistenceMatrixTest' --tests '*HorrorCastleLoopV207Test' --tests '*MineHuntV209Test' :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[rapid-assets-only]"* ]]; then
             git fetch --depth=1 origin b300a5c3e2049e68b32a00a29b1f5396793b60d0
             while IFS= read -r changed; do
               case "$changed" in

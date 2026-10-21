@@ -16,7 +16,7 @@ android {
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile]
         }
     }
     testOptions {
@@ -224,3 +224,11 @@ tasks.register('generateMineHuntV208', Exec) {
  outputs.dir(layout.buildDirectory.dir('generated/mine-hunt-v208'))
 }
 tasks.named('preBuild').configure { dependsOn('generateMineHuntV208') }
+
+tasks.register('generateTempleV211', Exec) {
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/build_temple_v211.py', '--check'
+ inputs.files(rootProject.fileTree('master/source/temple_v211'), rootProject.file('tools/build_temple_v211.py'), rootProject.file('tools/horror_original_formats.py'), file('src/main/java/com/projectdark/mobile/world/TempleOriginalData.java'))
+ outputs.dir(layout.buildDirectory.dir('generated/temple-v211'))
+}
+tasks.named('preBuild').configure { dependsOn 'generateTempleV211' }

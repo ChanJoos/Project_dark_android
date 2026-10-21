@@ -158,6 +158,7 @@ public final class F5mSaveStore {
         .putInt("training_token_qty",quantity(r)).putInt("normal_level",r.normalLevel()).putLong("normal_exp",r.normalExp()).putLong("gold",r.gold())
         .putInt("str",r.str()).putInt("int",r.intel()).putInt("wis",r.wis()).putInt("con",r.con()).putInt("dex",r.dex()).putInt("stat_points",r.statPoints())
         .putLong("growth_random_state_v168",r.growthRandomState()).putInt("base_max_hp_v3",r.baseMaxHp()).putInt("base_max_mp_v3",r.baseMaxMp()).putLong("reward_sequence",r.consumedCombatSequence())
+        .putLong("temple_spent_exp_v211",r.spentGrowthExp()).putBoolean("first_advanced_v211",r.firstAdvanced())
         .putString("job_code_v4",r.currentJobCode()).putString("campaign_v1",r.campaign().snapshot().toString());
   }
   private static void grantCanonical(Map<String,Integer> owned,Map<String,Integer> bank,String id,int quantity){
@@ -265,6 +266,7 @@ public final class F5mSaveStore {
       staged.restoreStats(prefs.getInt("str",3),prefs.getInt("int",3),prefs.getInt("wis",3),prefs.getInt("con",3),prefs.getInt("dex",3),prefs.getInt("stat_points",0));
       staged.restoreGrowthRandomState(prefs.getLong("growth_random_state_v168",staged.growthRandomState()));
       staged.restoreBaseResources(prefs.getInt("base_max_hp_v3",staged.baseMaxHp()),prefs.getInt("base_max_mp_v3",staged.baseMaxMp()));
+      staged.restoreTempleGrowth(prefs.getLong("temple_spent_exp_v211",0L),prefs.getBoolean("first_advanced_v211",false));
       if(prefs.contains("campaign_v1")&&!staged.campaign().restore(new JSONObject(prefs.getString("campaign_v1",""))))throw new IllegalArgumentException("Invalid campaign");
       staged.restoreCombatSequence(prefs.getLong("reward_sequence",0));copyRpg(staged,r);
       if(!prefs.getBoolean("unified_items_granted_v210",false))prefs.edit().putBoolean("unified_items_granted_v210",true).putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString()).commit();
@@ -276,6 +278,7 @@ public final class F5mSaveStore {
     dest.restoreProgression(source.normalLevel(),source.normalExp());dest.restoreGold(source.gold());
     if(!dest.restoreJobCode(source.currentJobCode()))throw new IllegalArgumentException("Invalid job");
     dest.restoreStats(source.str(),source.intel(),source.wis(),source.con(),source.dex(),source.statPoints());
+    dest.restoreTempleGrowth(source.spentGrowthExp(),source.firstAdvanced());
     dest.restoreBaseResources(source.baseMaxHp(),source.baseMaxMp());dest.restoreGrowthRandomState(source.growthRandomState());
     if(!dest.restoreOwnedItems(source.inventory(),source.equipment()))throw new IllegalArgumentException("Invalid ownership");
     dest.restoreBank(source.bankGold(),source.bankInventory());

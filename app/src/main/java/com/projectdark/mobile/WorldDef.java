@@ -61,6 +61,7 @@ public final class WorldDef {
     monsterSpawns=Collections.unmodifiableList(m);
 
     List<PortalSpawn> p=new ArrayList<>();
+    p.add(new PortalSpawn("temple_door","milles_interior_temple_lobby",2080f,1104f,40f,"USER_VIDEO_TEMPLE_V211","ADAPTED_PLACEMENT_ORIGINAL_TEMPLE_ENTRY"));
     // Building exteriors stay fully solid. Entry is exclusively through front-door portal triggers.
     // Door threshold itself is the portal. Keep it wider than one player radius so diagonal tile stepping cannot skip the trigger.
     p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").y,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));

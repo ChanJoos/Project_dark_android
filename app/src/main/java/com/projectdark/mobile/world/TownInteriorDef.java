@@ -3,7 +3,7 @@ import android.graphics.RectF;
 import java.util.*;
 /** Authored isometric rooms; service anchors face the customer across one counter tile. */
 public final class TownInteriorDef {
- public enum Kind { REAGENT,EQUIPMENT,BANK,CHURCH,INN }
+ public enum Kind { REAGENT,EQUIPMENT,BANK,CHURCH,INN,TEMPLE }
  public static final float MIN_X=64,MAX_X=896,MIN_Y=0,MAX_Y=540;
  public static final class Prop {
   public final String asset;public final int u,v;public final float width,lift,sourceGroundX,sourceGroundY;public final boolean blocking;public final int cellsU,cellsV;
@@ -20,10 +20,11 @@ public final class TownInteriorDef {
  public final List<Prop> props;
  public final int columns,rows,npcU,npcV,customerU,customerV,counterV,counterStart,counterEnd;
  private TownInteriorDef(Kind k,String id,String title,String npc,String outfit,String door){
-  kind=k;mapId=id;this.title=title;npcId=com.projectdark.mobile.NpcIdentity.interiorKey(id,k.name());com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(npcId);npcName=profile.label();this.outfit=profile.outfit;doorId=door;
-  columns=k==Kind.INN&&id.startsWith("abel_")?17:k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=k==Kind.INN&&id.startsWith("abel_")?16:k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
-  npcU=k==Kind.INN&&id.startsWith("abel_")?10:k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=k==Kind.INN&&id.startsWith("abel_")?4:k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
-  counterV=npcV+2;customerU=npcU;customerV=counterV+1;
+  TempleOriginalData.Grid g=TempleOriginalData.get(id);
+  kind=k;mapId=id;this.title=title;npcId=com.projectdark.mobile.NpcIdentity.interiorKey(id,k.name());com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(npcId);npcName=k==Kind.TEMPLE?(id.endsWith("_seo")?"세오":"선진"):profile.label();this.outfit=profile.outfit;doorId=door;
+  columns=g!=null?g.width:k==Kind.INN&&id.startsWith("abel_")?17:k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=g!=null?g.height:k==Kind.INN&&id.startsWith("abel_")?16:k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
+  npcU=g!=null?g.npcU:k==Kind.INN&&id.startsWith("abel_")?10:k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=g!=null?g.npcV:k==Kind.INN&&id.startsWith("abel_")?4:k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
+  counterV=npcV+2;customerU=npcU;customerV=g!=null?npcV+1:counterV+1;
   counterStart=k==Kind.BANK?4:3;counterEnd=k==Kind.EQUIPMENT?11:k==Kind.BANK?8:10;
   List<Prop> p=new ArrayList<>();
   if(k==Kind.REAGENT||k==Kind.EQUIPMENT||k==Kind.BANK)for(int u=counterStart;u<=counterEnd;u++)p.add(new Prop("joined_counter",u,counterV,64));
@@ -91,19 +92,27 @@ if(k==Kind.INN&&id.startsWith("abel_interior_")){p.clear();
   new TownInteriorDef(Kind.BANK,"milles_interior_bank","밀레스 은행","은행원","mu0000026,mh004,ml230","general_shop_door"),
   new TownInteriorDef(Kind.CHURCH,"milles_interior_church","밀레스 성당","사제","mu0000015,mh003,ml230","church_door"),
   new TownInteriorDef(Kind.INN,"milles_interior_inn","밀레스 여관","메리 · 여관 주인","mu0000026,mh004,ml230","inn_door")));
+ public static final List<TownInteriorDef> TEMPLE=Collections.unmodifiableList(Arrays.asList(
+  new TownInteriorDef(Kind.TEMPLE,"milles_interior_temple_lobby","신전대기실","선진","","temple_door"),
+  new TownInteriorDef(Kind.TEMPLE,"milles_interior_temple_hub","신들의세계","선진","","temple_hub_door"),
+  new TownInteriorDef(Kind.TEMPLE,"milles_interior_temple_seo","세오신전","세오","","temple_seo_door")));
+
     public static final List<TownInteriorDef> ABEL = Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.REAGENT, "abel_interior_reagent", "아벨 시약상점", "시약상", "", "abel_reagent"), new TownInteriorDef(Kind.EQUIPMENT, "abel_interior_equipment", "아벨 무기상점", "무기상", "", "abel_equipment"), new TownInteriorDef(Kind.BANK, "abel_interior_bank", "아벨 은행", "은행원", "", "abel_bank"), new TownInteriorDef(Kind.CHURCH, "abel_interior_church", "아벨 교회", "사제", "", "abel_church"), new TownInteriorDef(Kind.INN, "abel_interior_inn", "아벨 여관", "여관 주인", "", "abel_inn")));
  public static final List<TownInteriorDef> RUCESION=Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_armor","뤼케시온 방어구상점","방어구상","","rucesion_armor"),new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_weapon","뤼케시온 무기상점","무기상","","rucesion_weapon"),new TownInteriorDef(Kind.REAGENT,"rucesion_interior_reagent","뤼케시온 시약상점","시약상","","rucesion_reagent"),new TownInteriorDef(Kind.BANK,"rucesion_interior_bank_a","뤼케시온 은행 A","은행원","","rucesion_bank_a"),new TownInteriorDef(Kind.BANK,"rucesion_interior_bank_b","뤼케시온 은행 B","은행원","","rucesion_bank_b"),new TownInteriorDef(Kind.INN,"rucesion_interior_inn","뤼케시온 여관","판","","rucesion_inn"),new TownInteriorDef(Kind.EQUIPMENT,"rucesion_interior_clothing","뤼케시온 의상점","체리","","rucesion_clothing")));
  public static final List<TownInteriorDef> MINE=Collections.unmodifiableList(Arrays.asList(new TownInteriorDef(Kind.INN,"mine_interior_inn","마인 여관","여관 주인","","mine_inn"),new TownInteriorDef(Kind.REAGENT,"mine_interior_reagent","마인 시약점","시약상","","mine_reagent")));
  public boolean isRegional(){return mapId.startsWith("mine_interior_")||isAbel()||mapId.startsWith("rucesion_interior_");}
  public boolean isAbel(){return mapId.startsWith("abel_interior_");}
- public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:RUCESION)if(d.mapId.equals(id))return d;for(TownInteriorDef d:MINE)if(d.mapId.equals(id))return d;return null;}
- public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;return null;}
+ public static TownInteriorDef forMap(String id){for(TownInteriorDef d:ALL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:TEMPLE)if(d.mapId.equals(id))return d;for(TownInteriorDef d:ABEL)if(d.mapId.equals(id))return d;for(TownInteriorDef d:RUCESION)if(d.mapId.equals(id))return d;for(TownInteriorDef d:MINE)if(d.mapId.equals(id))return d;return null;}
+ public static TownInteriorDef forDoor(String id){if(id!=null&&id.endsWith("_2"))id=id.substring(0,id.length()-2);for(TownInteriorDef d:ALL)if(d.doorId.equals(id))return d;for(TownInteriorDef d:TEMPLE)if(d.doorId.equals(id))return d;return null;}
  public static float x(int u,int v){return 480+32*(u-v);}public static float y(int u,int v){return 132+16*(u+v);}
- public float minX(){return isAbel()&&kind==Kind.INN?-64:MIN_X;}public float maxX(){return isAbel()&&kind==Kind.INN?1056:MAX_X;}public float maxY(){return isAbel()&&kind==Kind.INN?680:MAX_Y;}
+ public boolean isTemple(){return kind==Kind.TEMPLE;}
+ public TempleOriginalData.Grid original(){return TempleOriginalData.get(mapId);}
+ public float minY(){return isTemple()?-128:MIN_Y;}
+ public float minX(){if(isTemple())return 480-(rows-1)*32-64;return isAbel()&&kind==Kind.INN?-64:MIN_X;}public float maxX(){if(isTemple())return 480+(columns-1)*32+64;return isAbel()&&kind==Kind.INN?1056:MAX_X;}public float maxY(){if(isTemple())return 132+(columns+rows)*16+64;return isAbel()&&kind==Kind.INN?680:MAX_Y;}
  private int entryU(){return isAbel()&&kind==Kind.INN?13:kind==Kind.BANK?5:6;}
- public float spawnX(){return x(entryU(),rows-2);}public float spawnY(){return y(entryU(),rows-2);}public float exitX(){return x(entryU(),rows-1);}public float exitY(){return y(entryU(),rows-1);}
- public float npcX(){return x(npcU,npcV)-12;}public float npcY(){return y(npcU,npcV)-6;}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
- public boolean blocked(int u,int v){if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}
+ public float spawnX(){if(isTemple())return x(original().spawnU,original().spawnV);return x(entryU(),rows-2);}public float spawnY(){if(isTemple())return y(original().spawnU,original().spawnV);return y(entryU(),rows-2);}public float exitX(){if(isTemple())return x(original().exitU,original().exitV);return x(entryU(),rows-1);}public float exitY(){if(isTemple())return y(original().exitU,original().exitV);return y(entryU(),rows-1);}
+ public float npcX(){if(isTemple())return x(npcU,npcV);return x(npcU,npcV)-12;}public float npcY(){if(isTemple())return y(npcU,npcV);return y(npcU,npcV)-6;}public float customerX(){return x(customerU,customerV);}public float customerY(){return y(customerU,customerV);}
+ public boolean blocked(int u,int v){if(isTemple())return !original().walkable(u,v)||(!mapId.endsWith("_hub")&&u==npcU&&v==npcV);if(u<=0||v<=0||u>=columns||v>=rows)return true;if(u==npcU&&v==npcV)return true;if((kind==Kind.REAGENT||kind==Kind.EQUIPMENT||kind==Kind.BANK)&&v==counterV&&u>=counterStart&&u<=counterEnd)return true;for(Prop p:props)if(p.occupies(u,v))return true;return false;}
  public List<WorldMoveTargetController.TileCenter> navigationTiles(){List<WorldMoveTargetController.TileCenter> t=new ArrayList<>();for(int u=1;u<columns;u++)for(int v=1;v<rows;v++)if(!blocked(u,v))t.add(new WorldMoveTargetController.TileCenter(x(u,v),y(u,v)));return Collections.unmodifiableList(t);}
  public List<RectF> obstacles(){List<RectF> a=new ArrayList<>();for(int u=0;u<columns;u++)for(int v=0;v<rows;v++)if(blocked(u,v))a.add(new RectF(x(u,v)-3,y(u,v)-3,x(u,v)+3,y(u,v)+3));return a;}
  public int floor(int u,int v){return kind==Kind.REAGENT?1:kind==Kind.CHURCH?(u>=5&&u<=7?3:2):0;}

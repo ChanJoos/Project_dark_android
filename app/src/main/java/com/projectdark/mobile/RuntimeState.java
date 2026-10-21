@@ -181,8 +181,8 @@ public final class RuntimeState {
     if(d==null)throw new IllegalArgumentException("interior");
     if(WorldDef.ID.equals(currentMapId)){suspendedMillesMonsters.clear();suspendedMillesMonsters.addAll(monsters);suspendedMillesNpcs.clear();suspendedMillesNpcs.addAll(npcs);suspendedMillesObstacles.clear();suspendedMillesObstacles.addAll(obstacles);}
     currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();terrainIndex=null;obstacles.addAll(d.obstacles());
-    npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
-    currentMinX=d.minX();currentMaxX=d.maxX();currentMinY=d.MIN_Y;currentMaxY=d.maxY();
+    if(!d.mapId.endsWith("_temple_hub"))npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
+    currentMinX=d.minX();currentMaxX=d.maxX();currentMinY=d.minY();currentMaxY=d.maxY();
     player.spawnX=d.spawnX();player.spawnY=d.spawnY();player.x=player.spawnX;player.y=player.spawnY;
   }
   public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();terrainIndex=null;obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}

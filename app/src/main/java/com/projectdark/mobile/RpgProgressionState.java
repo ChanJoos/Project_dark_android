@@ -169,6 +169,29 @@ public final class RpgProgressionState {
   private Integer normalLevel=1;
   // EXP starts at zero and level-up uses only master/data/Level_EXP_Curve.csv thresholds.
   private Long normalExp=0L;
+  private long spentGrowthExp=0L;
+  private boolean firstAdvanced=false;
+  public long spentGrowthExp(){return spentGrowthExp;}
+  public boolean firstAdvanced(){return firstAdvanced;}
+  public void restoreTempleGrowth(long spent,boolean advanced){if(spent<0||advanced&&(normalLevel<99||"COMMONER".equals(currentJobCode)))throw new IllegalArgumentException("Invalid temple progression");spentGrowthExp=spent;firstAdvanced=advanced;if(advanced)progressionNode=ProgressionNode.FIRST_ADVANCEMENT;}
+  public TempleGrowthPolicy.Result buyTempleResource(TempleGrowthPolicy.Resource resource,int count){
+    if(normalLevel<99)return TempleGrowthPolicy.Result.LEVEL_REQUIRED;
+    if(TempleGrowthPolicy.hpRequired(currentJobCode)==0)return TempleGrowthPolicy.Result.JOB_REQUIRED;
+    long cost=TempleGrowthPolicy.quote(this,resource,count);if(cost<0)return TempleGrowthPolicy.Result.INVALID;
+    if(normalExp<cost)return TempleGrowthPolicy.Result.INSUFFICIENT_EXP;
+    if(spentGrowthExp>Long.MAX_VALUE-cost)return TempleGrowthPolicy.Result.INVALID;
+    normalExp-=cost;spentGrowthExp+=cost;if(resource==TempleGrowthPolicy.Resource.HP)baseMaxHp+=count*50;else baseMaxMp+=count*25;return TempleGrowthPolicy.Result.OK;
+  }
+  public TempleGrowthPolicy.Result advanceAtTemple(){
+    TempleGrowthPolicy.Result gate=TempleGrowthPolicy.eligibility(this);if(gate!=TempleGrowthPolicy.Result.OK)return gate;
+    if(spentGrowthExp>Long.MAX_VALUE-TempleGrowthPolicy.ADVANCEMENT_EXP)return TempleGrowthPolicy.Result.INVALID;
+    normalExp-=TempleGrowthPolicy.ADVANCEMENT_EXP;spentGrowthExp+=TempleGrowthPolicy.ADVANCEMENT_EXP;firstAdvanced=true;progressionNode=ProgressionNode.FIRST_ADVANCEMENT;return TempleGrowthPolicy.Result.OK;
+  }
+  private void creditExperience(long amount){
+    if(amount<=0)return;
+    if(normalLevel>=99){long room=Math.max(0,TempleGrowthPolicy.EXP_CAP-normalExp);normalExp+=Math.min(room,amount);return;}
+    normalExp=amount>Long.MAX_VALUE-normalExp?Long.MAX_VALUE:normalExp+amount;
+  }
   private Long gold=0L;
 
   public RpgProgressionState(){
@@ -482,7 +505,7 @@ public final class RpgProgressionState {
     for(Map.Entry<String,Integer> e:materials.entrySet()){int left=value(inventory,e.getKey())-e.getValue();if(left==0)inventory.remove(e.getKey());else inventory.put(e.getKey(),left);}
     return true;
   }
-  public int grantAdaptedReward(long exp,long goldAmount){if(exp>0)normalExp+=exp;if(goldAmount>0)gold+=goldAmount;return normalizeCanonicalLevel();}
+  public int grantAdaptedReward(long exp,long goldAmount){creditExperience(exp);if(goldAmount>0)gold+=goldAmount;return normalizeCanonicalLevel();}
 
   /** Restores durable progression without reflection, then normalizes against canonical Level_EXP_Curve. */
   public void restoreProgression(int level,long exp){
@@ -496,7 +519,7 @@ public final class RpgProgressionState {
     int before=normalLevel==null?1:normalLevel;
     int level=before;long exp=normalExp==null?0L:normalExp;
     while(level<99){Long required=LevelExpCurve.requiredForNext(level);if(required==null||exp<required)break;exp-=required;level++;}
-    normalLevel=level;normalExp=exp;int gained=level-before;if(gained>0){for(int lv=before+1;lv<=level;lv++){baseMaxHp+=rollGrowth(con);baseMaxMp+=rollGrowth(wis);}statPoints+=gained*2;}return gained;
+    normalLevel=level;normalExp=before<99&&level==99?Math.min(exp,TempleGrowthPolicy.EXP_CAP):exp;int gained=level-before;if(gained>0){for(int lv=before+1;lv<=level;lv++){baseMaxHp+=rollGrowth(con);baseMaxMp+=rollGrowth(wis);}statPoints+=gained*2;}return gained;
   }
 
   /** Pure requirement projection for UI/audits; it does not mutate player or item state. */
@@ -562,7 +585,7 @@ public final class RpgProgressionState {
       outcomes.put(hint.itemId,result);
       if(result==AutoLootResult.LOOTED)looted.put(hint.itemId,value(looted,hint.itemId)+hint.quantity);
     }
-    if(reward.exp!=null)normalExp+=reward.exp.longValue();
+    if(reward.exp!=null)creditExperience(reward.exp.longValue());
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,looted,outcomes,
         RewardSource.CANONICAL,"CANONICAL_MONSTER_REWARD",reward.expEvidence==null?null:reward.expEvidence.name()));
     trimRewardHistory();
