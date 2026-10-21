@@ -11,10 +11,12 @@ public final class TempleRoutes {
  private static List<Gate> create(TownInteriorDef d){
   if(!d.isTemple())return Collections.emptyList();
   List<Gate> gates=new ArrayList<>();
-  if(d.mapId.endsWith("_lobby"))gates.add(new Gate(9,5,"신들의 세계","milles_interior_temple_hub",false));
+  if(d.mapId.endsWith("_lobby"))gates.add(new Gate(5,6,"신들의 세계","milles_interior_temple_hub",false));
   if(d.mapId.endsWith("_hub"))gates.add(new Gate(25,23,"세오신전 · 체력/마력","milles_interior_temple_seo",false));
-  gates.add(new Gate(d.original().exitU,d.original().exitV,d.mapId.endsWith("_lobby")?"밀레스 마을":d.mapId.endsWith("_hub")?"신전대기실":"신들의 세계",null,true));
+  gates.add(new Gate(exitU(d),exitV(d),d.mapId.endsWith("_lobby")?"밀레스 마을":d.mapId.endsWith("_hub")?"신전대기실":"신들의 세계",null,true));
   return Collections.unmodifiableList(gates);
  }
+ public static int exitU(TownInteriorDef d){return d.mapId.endsWith("_temple_hub")?22:d.mapId.endsWith("_temple_seo")?9:d.original().exitU;}
+ public static int exitV(TownInteriorDef d){return d.mapId.endsWith("_temple_hub")?24:d.mapId.endsWith("_temple_seo")?7:d.original().exitV;}
  private TempleRoutes(){}
 }

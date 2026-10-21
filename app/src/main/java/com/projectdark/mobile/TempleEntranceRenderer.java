@@ -14,7 +14,7 @@ public final class TempleEntranceRenderer {
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Float.NEGATIVE_INFINITY,()->draw(c,"entrance_platform",-135,-69,255)));
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y-86*S,()->draw(c,"entrance_arch_back",-131,-159,255)));
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y+84*S,()->draw(c,"entrance_arch_front",184,-24,255)));
-  actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y+127*S,()->draw(c,"entrance_arch_left",-207,36,255)));
+  actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y+117*S,()->draw(c,"entrance_arch_left",-207,36,255)));
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y+7,()->draw(c,"entrance_light",-47,-215,220+(int)(12*Math.sin(clock*1.5)))));
  }
 }
