@@ -1,0 +1,468 @@
+{
+  "sourceCommit": "3ca35fe7e9eebf07ba12624919601ad158c23fd6",
+  "runId": "39617085802",
+  "builtAtKST": "2026-10-21T23:33:19.212986+09:00",
+  "apkSha256": "cfed9f8ef471f75d220d605a24541bafd324693009d7eff1d76676fba4f71ab7",
+  "apkBytes": 101661972,
+  "identity": {
+    "sourceCommit": "3ca35fe7e9eebf07ba12624919601ad158c23fd6",
+    "runId": "39617085802",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V218 direct live HUD potion quantities; paired previous full inventory projection and full live update/render/save profiles for Milles, Rucesion coast, Mine; handset pending",
+  "apkFile": "PROJECT_DARK_V218_TEST.apk",
+  "manifest": {
+    "manifest.versionCode": 184,
+    "manifest.versionName": "1.84-mobile-horror",
+    "manifest.compileSdkVersion": 35,
+    "manifest.compileSdkVersionCodename": "15",
+    "manifest.package": "com.projectdark.mobile.v218test",
+    "manifest.platformBuildVersionCode": 35,
+    "manifest.platformBuildVersionName": 15,
+    "uses-sdk.minSdkVersion": 26,
+    "uses-sdk.targetSdkVersion": 35,
+    "application.theme": 2130837504,
+    "application.label": "PROJECT DARK V218 TEST",
+    "application.debuggable": 4294967295,
+    "application.extractNativeLibs": 0
+  },
+  "artifactId": 12353092570,
+  "artifactZipSha256": "1fb75b6042b38b81491d2bf4e006f1a934b32667122417c7d3e757109f0cb825",
+  "native": {
+    "tests": 15,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.FramePerformanceV214Test",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.HudInventoryPerformanceV218Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.InventoryRepairV212Test",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "profiles": {
+    "paired-quantity": {
+      "environment": "same host, same ownership; not phone FPS",
+      "items": 1772,
+      "checksum": 180,
+      "previousTwoFullProjections": {
+        "p50ms": 3.519719,
+        "p95ms": 6.440545,
+        "p99ms": 11.736459,
+        "maxms": 11.736459
+      },
+      "directTwoLiveQuantities": {
+        "p50ms": 0.007865,
+        "p95ms": 0.017443,
+        "p99ms": 0.023785,
+        "maxms": 0.023785
+      }
+    },
+    "live-frames": {
+      "source": "3ca35fe7e9eebf07ba12624919601ad158c23fd6",
+      "environment": "Robolectric native CPU, real update+draw+live actors; not handset FPS",
+      "scenes": [
+        {
+          "map": "MILLES",
+          "population": 3,
+          "inventory": 1772,
+          "travel": 198.870312573086,
+          "updateIncludingCold": {
+            "p50ms": 0.170479,
+            "p95ms": 0.892511,
+            "p99ms": 1.131969,
+            "maxms": 6.199595
+          },
+          "drawIncludingCold": {
+            "p50ms": 11.798446,
+            "p95ms": 23.619465,
+            "p99ms": 28.799602,
+            "maxms": 1697.371305
+          },
+          "input": {
+            "p50ms": 1.461556,
+            "p95ms": 8.273889,
+            "p99ms": 8.273889,
+            "maxms": 8.273889
+          },
+          "autosave": {
+            "p50ms": 4.008484,
+            "p95ms": 22.94384,
+            "p99ms": 22.94384,
+            "maxms": 22.94384
+          },
+          "durableSaveGate": {
+            "p50ms": 0.015799,
+            "p95ms": 0.028023,
+            "p99ms": 0.051356,
+            "maxms": 0.323555
+          },
+          "updateDrawAndSaveIncludingCold": {
+            "p50ms": 12.063061,
+            "p95ms": 24.3756,
+            "p99ms": 31.014498,
+            "maxms": 1726.564794
+          }
+        },
+        {
+          "map": "MAP_RUCESION_COAST_1C",
+          "population": 65,
+          "inventory": 1772,
+          "travel": 226.11102059008326,
+          "updateIncludingCold": {
+            "p50ms": 0.300663,
+            "p95ms": 0.522288,
+            "p99ms": 1.177684,
+            "maxms": 2.068121
+          },
+          "drawIncludingCold": {
+            "p50ms": 5.195094,
+            "p95ms": 8.155386,
+            "p99ms": 9.418801,
+            "maxms": 79.214748
+          },
+          "input": {
+            "p50ms": 1.058361,
+            "p95ms": 1.834454,
+            "p99ms": 1.834454,
+            "maxms": 1.834454
+          },
+          "autosave": {
+            "p50ms": 2.97454,
+            "p95ms": 3.002961,
+            "p99ms": 3.002961,
+            "maxms": 3.002961
+          },
+          "durableSaveGate": {
+            "p50ms": 0.011141,
+            "p95ms": 0.021219,
+            "p99ms": 0.035476,
+            "maxms": 0.046438
+          },
+          "updateDrawAndSaveIncludingCold": {
+            "p50ms": 5.509673,
+            "p95ms": 8.692631,
+            "p99ms": 10.865218,
+            "maxms": 84.125119
+          }
+        },
+        {
+          "map": "MAP_MINE_HUNT_3",
+          "population": 100,
+          "inventory": 1772,
+          "travel": 226.96407286318518,
+          "updateIncludingCold": {
+            "p50ms": 0.249687,
+            "p95ms": 0.880518,
+            "p99ms": 2.286861,
+            "maxms": 32.229649
+          },
+          "drawIncludingCold": {
+            "p50ms": 8.203165,
+            "p95ms": 14.612201,
+            "p99ms": 15.585173,
+            "maxms": 62.581343
+          },
+          "input": {
+            "p50ms": 1.187784,
+            "p95ms": 2.466236,
+            "p99ms": 2.466236,
+            "maxms": 2.466236
+          },
+          "autosave": {
+            "p50ms": 3.86782,
+            "p95ms": 4.003045,
+            "p99ms": 4.003045,
+            "maxms": 4.003045
+          },
+          "durableSaveGate": {
+            "p50ms": 0.01081,
+            "p95ms": 0.019616,
+            "p99ms": 0.02155,
+            "maxms": 0.056886
+          },
+          "updateDrawAndSaveIncludingCold": {
+            "p50ms": 8.473831,
+            "p95ms": 15.490285,
+            "p99ms": 19.748987,
+            "maxms": 68.758475
+          }
+        }
+      ],
+      "twelveTripsEntryAndFirstDraw": {
+        "p50ms": 281.42695,
+        "p95ms": 307.524377,
+        "p99ms": 307.524377,
+        "maxms": 307.524377
+      }
+    }
+  },
+  "retainedV217Assets": 7599,
+  "signatureV2": "RSA_SIGNATURE_AND_1MIB_CONTENT_DIGEST_VERIFIED",
+  "handset": "PENDING: user reported unplayable lag; actual device FPS and full handset root cause not certified",
+  "referenceRecovered": {
+    "file": "Screen_Recording_20261021_205405_YouTube(2).mp4",
+    "bytes": 218970186,
+    "durationSeconds": 97.384062,
+    "sha256": "223c845d4c5287975701e45a76d4c4af93fc8552378fb1ea8be7ea7692dcc0e2",
+    "review": "actually decoded; wooden exterior/house, brick basement15; later caves are explicitly excluded dungeon1"
+  },
+  "commonFullRegression": {
+    "firstRun": 39617101084,
+    "firstJob": 119281027809,
+    "firstStatus": "FAILED_STALE_TEST_COUNT",
+    "failure": "AdaptedCampaignRewardTest expected 41 non-Horror/non-Mine species, but V217 added four DEATH species; actual45. Runtime quantity/save changes unrelated.",
+    "repairSource": "dd85e93626aa79d8af348cdc304e857217bda947",
+    "repair": "Keep exact41legacy count excluding DEATH, assert exact four DEATH identities and each EXP/Gold; no production change.",
+    "continuationRun": 39619025005,
+    "status": "SUCCESS_WITH_EXACT_PRODUCTION_PREFIX_REUSE",
+    "reusedPrefix": {
+      "run": 39617101084,
+      "job": 119281027809,
+      "steps": 15,
+      "status": "SUCCESS",
+      "guard": "Only reviewed test fixture/workflow/docs/verification differences; app/src/main tree and app/build.gradle blob must match runtime3ca35fe. Failed reward check and all later steps rerun.",
+      "remoteObservedSkippedSteps": 15
+    },
+    "productionTree": "c470423d987db59be67f462b53c0570ceaa42b03",
+    "buildGradleBlob": "07d18159e3a4ee8fdd7aecd11c9bbe4e214d3f90",
+    "continuationJob": 119287655065,
+    "repairedRewardStep": "PASSED",
+    "continuationStatus": "SUCCESS",
+    "successfulGradleInvocationsAcrossUnchangedProduction": 26,
+    "decodedLogProof": {
+      "source": "dd85e93626aa79d8af348cdc304e857217bda947",
+      "run": 39619025005,
+      "job": 119287655065,
+      "status": "SUCCESS_WITH_EXACT_PRODUCTION_PREFIX_REUSE",
+      "prefixSuccessfulGradleInvocations": 9,
+      "continuationSuccessfulGradleInvocations": 17,
+      "reuseLine": "2026-10-21T14:43:39.7633165Z REUSING 15 exact-app V218 prefix checks; reward-count failure and all later checks remain live ['.github/workflows/android.yml', '.github/workflows/rucesion-town-v156.yml', 'app/src/test/java/com/projectdark/mobile/AdaptedCampaignRewardTest.java']",
+      "buildFailures": 0,
+      "sourceFound": true
+    }
+  },
+  "savedDelivery": {
+    "file": "PROJECT_DARK_V218_TEST.apk",
+    "status": "SAVED",
+    "localMetadataApplied": true
+  },
+  "attachmentPathAudit": {
+    "status": "18_REPORTED_MISSING_IMAGE_PATHS_CURRENTLY_EXIST_AND_DECODE",
+    "causeOfEarlierAutomaticAttachmentErrors": "UNKNOWN; current readable files do not prove the attachment reader pipeline root cause",
+    "files": [
+      {
+        "file": "05-Screenshot_20260929_233857_NAVER.jpg",
+        "bytes": 2392591,
+        "format": "JPEG",
+        "size": [
+          4320,
+          2584
+        ],
+        "sha256": "b8f54ed129ac16cfbd9af773c2baddd1e8fa1c4f6e2cd27f70ec22ea7247e04f"
+      },
+      {
+        "file": "06-Screenshot_20260929_233816_NAVER.jpg",
+        "bytes": 3518109,
+        "format": "JPEG",
+        "size": [
+          4320,
+          3468
+        ],
+        "sha256": "d565d1fd2e8076a260ffc2e62976e23376e10b8310281c9d2795e51892ef32bd"
+      },
+      {
+        "file": "07-Screenshot_20260929_233811_NAVER.jpg",
+        "bytes": 299010,
+        "format": "JPEG",
+        "size": [
+          1080,
+          1285
+        ],
+        "sha256": "88b151a6a238b4df7a36556925bf50dcc3b2bad8915ef06ac9365f420475518d"
+      },
+      {
+        "file": "08-Screenshot_20260929_233847_NAVER.jpg",
+        "bytes": 841028,
+        "format": "JPEG",
+        "size": [
+          4292,
+          1116
+        ],
+        "sha256": "3bdb7caddac36e77178e62e666aa4f3bc264576d574c640a54c67f8a41668e0d"
+      },
+      {
+        "file": "09-Screenshot_20260929_233801_NAVER.jpg",
+        "bytes": 290165,
+        "format": "JPEG",
+        "size": [
+          1080,
+          1176
+        ],
+        "sha256": "34d995327a2ed0e31208306cb640cfa92d5d69cced94adbf7d1acdf91c524398"
+      },
+      {
+        "file": "10-Screenshot_20260929_233754_NAVER-1-.jpg",
+        "bytes": 276637,
+        "format": "JPEG",
+        "size": [
+          1080,
+          2340
+        ],
+        "sha256": "38dc895b132e045a7494b9a8b72c02326519c96ddb55dd888b4684daa00737d3"
+      },
+      {
+        "file": "11-Screenshot_20260929_233743_NAVER.jpg",
+        "bytes": 197365,
+        "format": "JPEG",
+        "size": [
+          1080,
+          2340
+        ],
+        "sha256": "df05de86e6d048a95fa5cf493cab7bcd83c8cd77e83314028e44152a5094416e"
+      },
+      {
+        "file": "12-Screenshot_20260930_052204_NAVER.jpg",
+        "bytes": 767276,
+        "format": "JPEG",
+        "size": [
+          4320,
+          1000
+        ],
+        "sha256": "d62a3c3f8548a5a49336f728c8c41f0517766c0a1b828656c1e9939ea230d4a4"
+      },
+      {
+        "file": "13-Screenshot_20260930_052212_NAVER.jpg",
+        "bytes": 1429231,
+        "format": "JPEG",
+        "size": [
+          4320,
+          1672
+        ],
+        "sha256": "314a09a635a86ca14f86fd8e0cafefb74e4d2f5c8c935e06c99b7b2c365e5980"
+      },
+      {
+        "file": "14-6.gif",
+        "bytes": 76347,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "1b551fa5703d2f21e04f2b23b4c4217a99017b57f388113aa889c0a33fd2b2f5"
+      },
+      {
+        "file": "15-4.gif",
+        "bytes": 210054,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "f7ece527f89b38b4aafc9a3a0054f5845ad1f3c770dc8dec94e4bcaec1314779"
+      },
+      {
+        "file": "16-7.gif",
+        "bytes": 91572,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "f964ed6c4768d01583ed2a7cf1694e19d3d76098b523a09a9b0cbf90d7c167d9"
+      },
+      {
+        "file": "17-8.gif",
+        "bytes": 99979,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "6ee8a93feb9875898ae4f9e980624b0e2070468b03344d764a95b053aec86d13"
+      },
+      {
+        "file": "18-5.gif",
+        "bytes": 48715,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "dd3d2ee7c3784af2e657948d0e5ee0e7d7a0935bf637bfb1a90cdef8b28746ae"
+      },
+      {
+        "file": "19-2.gif",
+        "bytes": 172225,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "ac874387f2d081c6977a567d1233a101416afcad51650917a9f3609f9dd0f79e"
+      },
+      {
+        "file": "20-3.gif",
+        "bytes": 445242,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "16899ea38d7f935a15cdcb243bbc97cb236f28cf1c35d8f7ff97f85d5059ade6"
+      },
+      {
+        "file": "21-gif",
+        "bytes": 312106,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "e8cd4b61f146635e6ef7965a4bebbe9b55ca3ceb8fcab15ce47b4e7c85e98fdc"
+      },
+      {
+        "file": "22-1.gif",
+        "bytes": 430404,
+        "format": "GIF",
+        "size": [
+          294,
+          235
+        ],
+        "sha256": "748d45cf33917bb79e4436d06ca59306b59601a50daf94eb1304a5d124818054"
+      }
+    ]
+  }
+}
