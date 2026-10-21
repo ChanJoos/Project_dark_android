@@ -33,25 +33,37 @@ public class HudInventoryPerformanceV218Test {
  }
  @Test public void actualHudNeverBuildsInventoryRowsAndPairedLookupProfilesKeepSameItems()throws Exception{
   GameView v=new GameView(c);v.layout(0,0,1536,864);RuntimeState s=TownInteriorTest.field(v,"state");RpgProgressionState r=s.rpg();r.enableEquipmentSandbox(true);assertTrue(r.inventory().size()>1500);
-  Field f=GameView.class.getDeclaredField("rpgPresentation");f.setAccessible(true);f.set(v,new RpgInventoryPresentation(){@Override public List<ItemRow> inventoryRows(RpgProgressionState ignored){throw new AssertionError("HUD rebuilt full inventory projection");}});
+  Field f=GameView.class.getDeclaredField("rpgPresentation");f.setAccessible(true);f.set(v,null); // Any HUD use of the full presentation would now fail.
   Bitmap b=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));b.recycle();
   String[] ids={r.quickHpPotionId(),"IT_B_MP_POTION"};long[] old=new long[80],now=new long[80];int checksum=0;
   for(int i=0;i<90;i++){long a=System.nanoTime();int x=previous(r,ids[0])+previous(r,ids[1]);long z=System.nanoTime();int y=quantity(v,ids[0])+quantity(v,ids[1]);long end=System.nanoTime();assertEquals(x,y);checksum+=y;if(i>=10){old[i-10]=z-a;now[i-10]=end-z;}}
   report("paired-quantity",new JSONObject().put("environment","same host, same ownership; not phone FPS").put("items",r.inventory().size()).put("checksum",checksum).put("previousTwoFullProjections",stats(old)).put("directTwoLiveQuantities",stats(now)));
+ }
+ @Test public void ordinaryHitsDoNotForceDiskCommitButDefeatDeathReviveAndRespawnStillDo()throws Exception{
+  GameView v=new GameView(c);RuntimeState s=TownInteriorTest.field(v,"state");assertTrue((Boolean)call(v,"checkpoint",new Class<?>[]{}));
+  for(int i=0;i<120;i++){s.damagePlayer(1);assertFalse((Boolean)call(v,"combatCheckpointRequired",new Class<?>[]{}));if(i%20==0){call(v,"autosave",new Class<?>[]{});s.player().hp=s.player().maxHp;}}
+  s.player().hp=37;call(v,"autosave",new Class<?>[]{});F5mSaveStore.install(c);GameView reopened=new GameView(c);RuntimeState loaded=TownInteriorTest.field(reopened,"state");assertEquals(37,loaded.player().hp);
+  // Rebind original runtime after the independent restore assertion.
+  F5mSaveStore.bindRuntime(s,TownInteriorTest.field(v,"f5mQuest"),TownInteriorTest.field(v,"quest2"));
+  for(CombatLedger.Type type:new CombatLedger.Type[]{CombatLedger.Type.MONSTER_DEFEATED,CombatLedger.Type.PLAYER_DEFEATED,CombatLedger.Type.PLAYER_REVIVED,CombatLedger.Type.MONSTER_RESPAWNED}){
+   s.ledger().add(type,"test","test",0);assertTrue(type.name(),(Boolean)call(v,"combatCheckpointRequired",new Class<?>[]{}));assertTrue((Boolean)call(v,"checkpoint",new Class<?>[]{}));assertFalse((Boolean)call(v,"combatCheckpointRequired",new Class<?>[]{}));s.ledger().add(CombatLedger.Type.MONSTER_HIT,"player","test",1);assertFalse((Boolean)call(v,"combatCheckpointRequired",new Class<?>[]{}));
+  }
+  s.player().hp=29;v.pause();F5mSaveStore.install(c);GameView paused=new GameView(c);assertEquals(29,((RuntimeState)TownInteriorTest.field(paused,"state")).player().hp);
  }
  @Test public void fullLiveFramesKeepAllActorsAndProfileMineCoastMillesAndTwelveTrips()throws Exception{
   GameView v=new GameView(c);v.layout(0,0,1536,864);RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().enableEquipmentSandbox(true);s.rpg().restoreProgression(99,0);
   Bitmap image=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(image);JSONArray scenes=new JSONArray();
   for(String id:new String[]{"MILLES","MAP_RUCESION_COAST_1C",MineHuntGeometry.ID}){
    if(!id.equals("MILLES")){if(!(Boolean)TownInteriorTest.field(v,"inPoteField"))call(v,"enterPoteField",new Class<?>[]{});call(v,"changeCampaignMap",new Class<?>[]{String.class,boolean.class},id,false);}
-   WorldRuntimeAdapter w=TownInteriorTest.field(v,id.equals("MILLES")?"worldAdapter":"poteFieldAdapter");int population=s.monsters().size();float originX=s.player().x,originY=s.player().y;long[] update=new long[240],draw=new long[240],input=new long[8],save=new long[4];double travel=0;
+   WorldRuntimeAdapter w=TownInteriorTest.field(v,id.equals("MILLES")?"worldAdapter":"poteFieldAdapter");int population=s.monsters().size();float originX=s.player().x,originY=s.player().y;long[] update=new long[240],draw=new long[240],input=new long[8],save=new long[4],total=new long[240],barrier=new long[240];double travel=0;
    for(int i=0;i<240;i++){
     if(i%30==0){long t=System.nanoTime();w.requestGroundWorld(originX+(i/30%2==0?160:-64),originY+(i/30%2==0?80:-32));input[i/30]=System.nanoTime()-t;}
     s.player().alive=true;s.player().hp=s.player().maxHp;float x=w.presentationPlayerX(),y=w.presentationPlayerY();long a=System.nanoTime();F5mSaveStore.beginFrame();try{call(v,"update",new Class<?>[]{float.class},.016f);}finally{F5mSaveStore.endFrame();}w.camera().follow(w.presentationPlayerX(),w.presentationPlayerY());long z=System.nanoTime();v.draw(canvas);long end=System.nanoTime();update[i]=z-a;draw[i]=end-z;travel+=Math.hypot(w.presentationPlayerX()-x,w.presentationPlayerY()-y);
-    if(i%60==0){long t=System.nanoTime();assertTrue(F5mSaveStore.autosaveActive());save[i/60]=System.nanoTime()-t;}
+    long saveStart=System.nanoTime();if((Boolean)call(v,"combatCheckpointRequired",new Class<?>[]{}))call(v,"checkpoint",new Class<?>[]{});barrier[i]=System.nanoTime()-saveStart;
+    if(i%60==0){long t=System.nanoTime();assertTrue(F5mSaveStore.autosaveActive());save[i/60]=System.nanoTime()-t;}total[i]=System.nanoTime()-a;
    }
    assertEquals(population,s.monsters().size());assertTrue(id+" actual travel "+travel,travel>20);if(id.equals(MineHuntGeometry.ID))assertEquals(100,population);
-   JSONObject row=new JSONObject().put("map",id).put("population",population).put("inventory",s.rpg().inventory().size()).put("travel",travel).put("updateIncludingCold",stats(update)).put("drawIncludingCold",stats(draw)).put("input",stats(input)).put("autosave",stats(save));scenes.put(row);
+   JSONObject row=new JSONObject().put("map",id).put("population",population).put("inventory",s.rpg().inventory().size()).put("travel",travel).put("updateIncludingCold",stats(update)).put("drawIncludingCold",stats(draw)).put("input",stats(input)).put("autosave",stats(save)).put("durableSaveGate",stats(barrier)).put("updateDrawAndSaveIncludingCold",stats(total));scenes.put(row);
    File shot=new File("build/reports/forest-performance/v218/"+id+".png");shot.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(shot)){assertTrue(image.compress(Bitmap.CompressFormat.PNG,100,out));}
   }
   long[] trips=new long[12];for(int i=0;i<12;i++){String id=(i&1)==0?"MAP_RUCESION_COAST_1C":MineHuntGeometry.ID;long a=System.nanoTime();call(v,"changeCampaignMap",new Class<?>[]{String.class,boolean.class},id,false);v.draw(canvas);trips[i]=System.nanoTime()-a;if((i&1)!=0){MineHuntRenderer r=TownInteriorTest.field(v,"mineHuntRenderer");assertTrue(r.floorEntries()<=32);assertTrue(r.floorBytes()<=8652800);assertEquals(100,s.monsters().size());}else{MineHuntRenderer r=TownInteriorTest.field(v,"mineHuntRenderer");assertEquals(0,r.floorEntries());assertEquals(0,r.atlasBytes());}}

@@ -122,7 +122,7 @@ public final class GameView extends View {
   private float feedbackClock=0,rewardClock=0;
   private FeedbackTone feedbackTone=FeedbackTone.INFO;
 
-  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=frameDeltaSeconds((n-last)/1000f,com.projectdark.mobile.world.AbelTownGeometry.contains(state.currentMapId()));last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(savedLedgerSequence!=state.ledger().sequence()){checkpoint();}else if(checkpointClock>=2f){autosave();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postOnAnimation(this);}};
+  private final Runnable loop=new Runnable(){@Override public void run(){if(!running)return;long n=SystemClock.uptimeMillis();float dt=frameDeltaSeconds((n-last)/1000f,com.projectdark.mobile.world.AbelTownGeometry.contains(state.currentMapId()));last=n;F5mSaveStore.beginFrame();try{update(dt);}finally{F5mSaveStore.endFrame();}checkpointClock+=dt;if(combatCheckpointRequired()){checkpoint();}else if(checkpointClock>=2f){autosave();}{WorldRuntimeAdapter active=activeWorld();camera=active.camera();camera.follow(active.presentationPlayerX(),active.presentationPlayerY());}invalidate();postOnAnimation(this);}};
 
   public GameView(Context c){this(c,false);}
   GameView(Context c,boolean initialSkillTestMode){super(c);final boolean freshEquipmentProfile=F5mSaveStore.freshEquipmentTestProfile();UiTheme.install(c);templeEntrance=new TempleEntranceRenderer(c);MobileHudArtwork.install(c);questJournalModel=new QuestJournalModel(c);townNpcRenderer=new TownNpcRenderer(c);innMouseRenderer=new InnMouseRenderer(c);itemWindow=new ItemWindow(c);combatSession.setSkillVisibility(this::skillTargetVisible);skillPresentation=new SkillPresentationCatalog(c);skillBodyRenderer=new SkillBodyRenderer(c,skillPresentation);chungryongWeapon=new ChungryongWeaponRenderer(c);skillVfx=new SkillVfxRenderer(c,skillPresentation);characterBodyIdentity=c.getSharedPreferences("project_dark_visual_v1",0).getString("body_identity","mm001");skillBook=SkillBook.load(c);skillBook.setTestAccess(initialSkillTestMode);combatSession.setSkillTestMode(initialSkillTestMode);skillVfx.testAccess=initialSkillTestMode;combatSession.setBasicHits(skillBook::basicHits);combatSession.setSkillProficiency(id->skillBook.testAccess()?100:skillBook.proficiency(id));
@@ -146,6 +146,14 @@ public final class GameView extends View {
     state.rpg().campaign().visit(state.currentMapId());state.rpg().campaign().observeBasics(state.rpg(),skillBook);
     // apply() is queued, not proof of disk durability. Only commit() clears save warnings.
     F5mSaveStore.autosaveActive();checkpointClock=0f;
+  }
+  private boolean combatCheckpointRequired(){
+    if(savedLedgerSequence==state.ledger().sequence())return false;
+    // Ordinary hit HP follows the existing periodic apply/pause commit path. Rewards,
+    // death, revive and respawn retain immediate durable checkpoints after frame consumers.
+    for(CombatLedger.Event e:state.ledger().snapshot())if(e.sequence>savedLedgerSequence
+        &&e.type!=CombatLedger.Type.PLAYER_HIT&&e.type!=CombatLedger.Type.MONSTER_HIT)return true;
+    return false;
   }
   private boolean checkpoint(){
     savedLedgerSequence=state.ledger().sequence();
