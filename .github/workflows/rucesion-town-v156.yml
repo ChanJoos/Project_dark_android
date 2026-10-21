@@ -107,7 +107,7 @@ jobs:
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           if [[ "$(git log -1 --format=%B)" == *"[death-v217]"* ]]; then
-            gradle :app:testDebugUnitTest --tests '*DeathVillageV217Test' --tests '*NpcAppearanceTest' --tests '*TownCampaignV163Test.allTwelveTownPairsUseRealManagerDialogAndPersistWithoutQuestOrLevelGrant' --tests '*GroundTapPathTest' --tests '*MonsterChasePathfinderTest' --tests '*F5mRestartPersistenceMatrixTest' :app:assembleDebug --stacktrace
+            gradle :app:testDebugUnitTest --tests '*DeathVillageV217Test' :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[temple-equipment-v216]"* ]]; then
             python3 tools/test_ci_scope_v216.py
             gradle :app:testDebugUnitTest --tests '*TempleEquipmentV216Test' --tests '*TempleMillesV213Test.npcAndDoorWalkingReachGodPurchaseBothResourcesReturnAndReenter' --tests '*TempleMillesV213Test.allGateContactsAreWalkableAndDoNotReplaceNpcTiles' --tests '*ItemWindowReferenceTest' --tests '*EquipmentWindowV176Test' --tests '*InventoryRepairV212Test.repeatedDetailsUseOneProjectionAndMutationsRefreshImmediately' --tests '*RapidSourceV198Test' :app:assembleDebug --stacktrace

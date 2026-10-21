@@ -21,7 +21,7 @@
   "app/src/main/java/com/projectdark/mobile/world/PoteCampaignMapDef.java": "682b6e635e4ff50bfa53b0a6b939d55586b3f8784bec28e4dc3f7602ccf9ec65",
   "app/src/main/java/com/projectdark/mobile/world/TempleRoutes.java": "ea9db42971c5209fb8ebc1895dec77e2ce4981b2d7328b7a716816af79fad35a",
   "app/src/main/java/com/projectdark/mobile/world/TownInteriorDef.java": "ffe1c825aed30423321d2a704386815b6488de937a08008d313292419bb7d4df",
-  "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "23719744c99163998c451eae35909e469c3f2dc9f5c48026bf94d9cbdd981c58",
+  "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "ba2f175f0360c0a95bfff5588fc66761dc5c50429360ac483003db0090876b30",
   "app/src/test/java/com/projectdark/mobile/NpcAppearanceTest.java": "4580668a85dc941f5f6efcc2170aa289c248b51bdd1fcf3530b837b9fb88c21a",
   "app/src/test/java/com/projectdark/mobile/SystemsV215Test.java": "56c620896eec1397071b4f3b2975cf546b5feb555ecf28ec2e004131461fa1b9",
   "app/src/test/java/com/projectdark/mobile/TempleEquipmentV216Test.java": "ad04be71da7e5736ecffc8f8449ee0317a5077eaa2026ece060ac17c98898ae6",
@@ -30,5 +30,5 @@
   "master/changes/V217_DEATH_VILLAGE.json": "d71c3121070fcfc574f2875fc4316ec0ef9561176e111a94d4dfa8b26edcac9d",
   "master/source/death_v217/original_sources.zip": "863085319fedd237633dbcc2ce241920023ab86301ee2c6a3d928af23f85f4db",
   "master/source/death_v217/reference.json": "86dce06c34271da5e9b195a14269ddc3e65b746e0b0ba452a7a6fdf90d38187e",
-  "tools/build_death_v217.py": "879ab5edbd219194318281f8a6975a7a9ab43b95fd647e70b5d4743f15e0645f"
+  "tools/build_death_v217.py": "47283fbaf747a53d5b9d538ff14821dca97aed846cece220161ade6b5d50b279"
 }

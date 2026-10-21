@@ -58,9 +58,14 @@ with zipfile.ZipFile(SRC/'original_sources.zip') as z:
  print('DEATH_ORIGINAL',len(entries),len(monsters))
 # Explicit mobile stairs use original adjacent stone floor pixels; no unseen original stair claim.
 from PIL import ImageDraw
-base=Image.open(OUT/'bg5253.png').convert('RGBA');stair=Image.new('RGBA',(64,60));draw=ImageDraw.Draw(stair)
+base=Image.open(OUT/'bg5253.png').convert('RGBA');stair=Image.new('RGBA',(64,64));draw=ImageDraw.Draw(stair)
 for step in range(6):
- y=40-step*6;draw.polygon([(2,y+14),(30,y),(58,y+14),(30,y+28)],fill=(27,24,20,255));stair.alpha_composite(base,(2,y-1))
+ x=4+step*4;y=46-step*7;top=[(x,y),(x+28,y+14),(x+36,y+10),(x+8,y-4)]
+ draw.polygon([(x,y),(x+28,y+14),(x+28,y+18),(x,y+4)],fill=(55,47,33,255))
+ mask=Image.new('L',(64,64));ImageDraw.Draw(mask).polygon(top,fill=255)
+ texture=Image.new('RGBA',(64,64));texture.alpha_composite(base,(x-2,y-13))
+ texture.putalpha(Image.composite(texture.getchannel('A'),Image.new('L',(64,64)),mask));stair.alpha_composite(texture)
+ draw=ImageDraw.Draw(stair);draw.line([(x,y),(x+28,y+14)],fill=(133,118,82,255),width=1)
 stair.save(OUT/'stairs.png')
 
 manifest['files']={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in sorted(OUT.glob('*.png'))}
