@@ -57,8 +57,11 @@ case 5307:return 5253;
 default:return id;}}
 public static final class Gate { public final String map,to,style;public final int u,v,arrivalU,arrivalV;Gate(String m,int u,int v,String to,int au,int av,String style){map=m;this.u=u;this.v=v;this.to=to;arrivalU=au;arrivalV=av;this.style=style;}}
 public static final List<Gate> GATES=Collections.unmodifiableList(Arrays.asList(
-new Gate("MAP_DEATH_LOBBY",27,10,"MAP_DEATH_FIELD",28,10,"portal"),
-new Gate("MAP_DEATH_FIELD",28,10,"MAP_DEATH_LOBBY",27,10,"portal"),
+new Gate("MAP_DEATH_LOBBY",8,0,"MAP_DEATH_FIELD",28,10,"portal"),
+new Gate("MAP_DEATH_LOBBY",9,0,"MAP_DEATH_FIELD",28,10,"portal"),
+new Gate("MAP_DEATH_LOBBY",10,0,"MAP_DEATH_FIELD",28,10,"portal"),
+new Gate("MAP_DEATH_LOBBY",11,0,"MAP_DEATH_FIELD",28,10,"portal"),
+new Gate("MAP_DEATH_FIELD",28,10,"MAP_DEATH_LOBBY",9,0,"portal"),
 new Gate("MAP_DEATH_FIELD",28,3,"MAP_DEATH_HOUSE_1",10,18,"door"),
 new Gate("MAP_DEATH_HOUSE_1",10,18,"MAP_DEATH_FIELD",28,3,"door"),
 new Gate("MAP_DEATH_FIELD",46,60,"MAP_DEATH_HOUSE_2",10,18,"door"),

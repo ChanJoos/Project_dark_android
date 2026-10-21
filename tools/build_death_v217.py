@@ -10,11 +10,16 @@ OUT.mkdir(parents=True,exist_ok=True)
 # Generated output only: remove stale sheets if the admitted roster shrinks.
 for stale in OUT.glob("*.png"):stale.unlink()
 ref=json.loads((SRC/'reference.json').read_text())
+repair=json.loads((ROOT/'master/source/death_v220/reference.json').read_text())
+ref['sourceMPFs']=repair['sourceMPFs']
 class Entries:
  def __init__(self,values):self.entries=values
  def __getitem__(self,k):return self.entries[k]
 with zipfile.ZipFile(SRC/'original_sources.zip') as z:
  entries={n:z.read(n) for n in z.namelist()}
+ with zipfile.ZipFile(ROOT/'master/source/death_v220/original_monsters.zip') as extra:
+  for n in extra.namelist():
+   blob=extra.read(n);assert hashlib.sha256(blob).hexdigest()==repair['files'][n],n;entries[n]=blob
  for n,digest in ref['files'].items():assert hashlib.sha256(entries[n]).hexdigest()==digest,n
  ia=Entries({n[3:]:b for n,b in entries.items() if n.startswith('ia/')})
  seo=Entries({n[4:]:b for n,b in entries.items() if n.startswith('seo/')})

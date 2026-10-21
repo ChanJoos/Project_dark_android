@@ -77,6 +77,9 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     CharacterRenderer.setPresentationWalkClock(0f);
   }
 
+  /** Temporary render-only full-map projection; always restore the exact live camera. */
+  public void withOverviewCamera(float width,float height,Runnable draw){WorldCameraTransform live=camera;try{camera=map!=null?map.newCamera(width,height):new WorldCameraTransform(sceneMinX,sceneMaxX,sceneMinY,sceneMaxY,width,height);camera.snapTo((sceneMinX+sceneMaxX)/2,(sceneMinY+sceneMaxY)/2);draw.run();}finally{camera=live;}}
+
   public RuntimeState runtime(){return runtime;}
   public WorldMapProjection map(){return map;}
   public WorldCameraTransform camera(){return camera;}

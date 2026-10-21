@@ -1,0 +1,20 @@
+{
+  "status": "ACCEPTED_USER_CHANGE_WITH_VISUAL_JOINS",
+  "userRequest": "remove travel controls; boundary portal8..11,0; minimap overview towns; correct recorded monsters",
+  "runtimeSource": "master/source/death_v220/reference.json",
+  "sourceBytes": "original_monsters.zip",
+  "beforeMPFs": [
+    137,
+    171,
+    175,
+    105
+  ],
+  "afterMPFs": [
+    166,
+    178,
+    175,
+    176
+  ],
+  "limits": "Nexon-hosted4509/4515 confirms zombie/Nikr house quest;722608/721717 lists spiders, Nikr, Wererat and WereratGuard; 175 Wererat join inferred from dagger-bearing rat appearance, not a client Korean name table. No invented ghost/slime names.",
+  "checks": "docs/V220_MAP_MONSTER_CHECKPOINT.md"
+}

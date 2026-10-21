@@ -251,7 +251,7 @@ public final class AdaptedMillesMapRenderer {
   }
 
   private static boolean visible(RectF rect,Canvas canvas){
-    return rect.right>=0&&rect.left<=canvas.getWidth()&&rect.bottom>=0&&rect.top<=canvas.getHeight();
+    Rect clip=canvas.getClipBounds();return rect.right>=clip.left&&rect.left<=clip.right&&rect.bottom>=clip.top&&rect.top<=clip.bottom;
   }
   private Rect opaqueBounds(String path,Bitmap image){
     if(opaqueBoundsCache.containsKey(path))return opaqueBoundsCache.get(path);
