@@ -1,3 +1,9 @@
+## 2026-10-21 V212 final CI closure — handset verification remains pending
+
+Runtime `c9bda787ba95a26d418cf858e558eece8c63f81c`: focused39568721180 **SUCCESS / 53tests**, full common push39568721140 **SUCCESS**, full common PR39568729484 **SUCCESS**. Exact delivered APK remains unchanged: built2026-10-21 17:27:08KST,99,011,745bytes,SHA256 `5ea628b0b4e441a56a222ac32b5bca2a5e492e9d9b50da26ea7e71a0369160a5`. Native source/artifact hashes and all2146wearable files independently verified. Documentation closure does not rebuild or relabel the APK. PR197 remains unmerged; main41fe6def unchanged.
+
+1073basic wearable appearances recovered;60icon alpha repairs; cached inventory projections and unchanged ownership JSON. 47items remain source-limited/unsupported. Among admitted sources,16omit some idle/walk frames and35omit contact frames; no complete-motion claim. All-item equip checks use the existing equipment sandbox, not original requirement certification. Physical phone whole-game speed/root cause, OSprocessdeath and user visual acceptance remain PENDING. Continue only with actual handset findings against this exact APK. Full receipt: verification/INVENTORY_V212_BUILD.json.
+
 ## 2026-10-21 V212 inventory/appearance repair — build and host native verified; phone/common pending
 
 Runtime `c9bda787ba95a26d418cf858e558eece8c63f81c`; focused Actions **39568721180 SUCCESS**, job119117271339/artifact12330179816. Independently parsed **10suites/53tests,0failures/errors/skips**. ZIP/APK CRC, digest/size/embedded source/run, all2146original wearable files and both icon-repair assets byte/hash match. Native composite reviewed. Same PR197 unmerged; main41fe6def unchanged.

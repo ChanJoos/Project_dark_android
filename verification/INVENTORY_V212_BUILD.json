@@ -96,7 +96,7 @@
   "run": 39568721180,
   "job": 119117271339,
   "archiveSha256": "253377c04fc2cfdd96d6bc8eb614a4f9b85912e50492acbb62a9da828732db68",
-  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_FULL_COMMON_VERIFIED_HANDSET_PENDING",
   "source": "c9bda787ba95a26d418cf858e558eece8c63f81c",
   "branch": "codex/rucesion-coast-v157",
   "pr": 197,
@@ -120,7 +120,9 @@
     "sourceRgbPreserved": true,
     "remainingInventoryOnly": 47,
     "sourceRejected": 26,
-    "unsupportedBackCape": 21
+    "unsupportedBackCape": 21,
+    "partialSourceIdleWalk": 16,
+    "partialSourceContact": 35
   },
   "performance": {
     "repeatedWindowDetails": "120 rounds x15lookups reuse one projection; inventory/equipment changes invalidate immediately",
@@ -144,12 +146,14 @@
     {
       "run": 39568721140,
       "event": "push",
-      "status": "in_progress"
+      "status": "completed",
+      "conclusion": "success"
     },
     {
       "run": 39568729484,
       "event": "pull_request",
-      "status": "in_progress"
+      "status": "completed",
+      "conclusion": "success"
     }
   ],
   "limits": [
@@ -157,7 +161,8 @@
     "47 source-limited/unsupported source identities remain inventory-only; missing original contact/walk poses are not fabricated",
     "Source-local alpha repair is adapted and manually inspected, not recovered native alpha; all retained source RGB preserved",
     "Native composite capture reviewed, not all1073items in every motion/handset visual acceptance",
-    "Legacy internal184/1.84labels retained; exact source/run/hash identify V212"
+    "Legacy internal184/1.84labels retained; exact source/run/hash identify V212",
+    "All1073wearables were equipped under the existing equipment sandbox with two-hand learning enabled; unresolved original job/gender/other requirements are not certified. 16sources omit idle/walk frames and35omit contact frames; source omissions remain explicit."
   ],
   "initialFailures": [
     {

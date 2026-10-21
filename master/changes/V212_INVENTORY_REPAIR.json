@@ -19,7 +19,11 @@
     "failures": 0,
     "handset": "PENDING",
     "wholeGameSpeed": "USER_REPORTED_ROOT_CAUSE_UNKNOWN",
-    "common": "IN_PROGRESS"
+    "common": {
+      "push": 39568721140,
+      "pullRequest": 39568729484,
+      "conclusion": "SUCCESS"
+    }
   },
   "limits": [
     "no physical handset FPS claim",
