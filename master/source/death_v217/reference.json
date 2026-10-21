@@ -488,7 +488,7 @@
     137,
     171,
     175,
-    176
+    105
   ],
   "debugFloorDonors": {
     "4695": 5198,
@@ -525,14 +525,14 @@
   "evidence": [
     "Nexon community4509 verifies outdoor zombie and house Nikr identity, not MPF number",
     "Original stone wall/floor/props matched 205939 video; five neighbouring source layouts reused with user topology",
-    "137 zombie visual; 171 hooded undead/175 wraith/176 slime source appearance, individual original Korean identities pending"
+    "137 zombie visual;171 hooded undead/175 ghoul/105 violet slime source appearances; Korean original name joins except zombie pending.105 violet slime fits visible purple silhouette;176 green tuft excluded after visual inspection."
   ],
   "files": {
     "hades/mns000.pal": "ecf05b101c09df6309f695c12d642fd8a8b725701a2bbfad309b0773d7701b76",
+    "hades/mns105.mpf": "375fa00aaead52c55f20efbfc85883e0f298a61c123d820189ad5311b492e01f",
     "hades/mns137.mpf": "3762d666db2c3b6a355c43264e2b8f2b28bcb99663944ececefd09b1df187155",
     "hades/mns171.mpf": "66fb576529e64d00bdcc3dd844ffa8ef7b7b646898d5df30bc63ca5492dfc9bc",
     "hades/mns175.mpf": "c7f437853cfd9e4e6096c36e639e3a2730722c8f2a88db613e4706b78630b321",
-    "hades/mns176.mpf": "2d999718549310d1f23c94311db6a1fc9e463d4fe14883b2974357a2e5643eb8",
     "ia/sotp.dat": "70bc628f47f530ee526168289085021d96ccba6c866d5314a20c8131b5f9cc82",
     "ia/stc0000.pal": "ecf05b101c09df6309f695c12d642fd8a8b725701a2bbfad309b0773d7701b76",
     "ia/stc00215.hpf": "d997c448d74da6587ea0c7e32dfdfa8d0b379bb3c162b9ccf21b1320fca62c2f",

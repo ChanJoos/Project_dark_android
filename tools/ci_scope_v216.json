@@ -11,7 +11,7 @@
   "app/src/main/java/com/projectdark/mobile/ItemWindow.java": "20edaa843ff363fc1cd201c83da1db1e6c1cc8bea19db6783b1682786da13638",
   "app/src/main/java/com/projectdark/mobile/MobileHudSkin.java": "d96842002407e16d1b362feb4f39557546b0b2b31fbcd16e2f0646031edddaf7",
   "app/src/main/java/com/projectdark/mobile/MonsterDefinitionRegistry.java": "19a616982e7c7f962c4ce668a37704f22365da1f52cabbe9bb9fdaad86a1f12b",
-  "app/src/main/java/com/projectdark/mobile/NpcIdentity.java": "d9c5b0015c10e65098589a427cace03b3f53a9542bf777873d69fac3bef086ae",
+  "app/src/main/java/com/projectdark/mobile/NpcIdentity.java": "64c989351e753e274a954c1b1a56994161dd7270185151e9990b957b699b80c7",
   "app/src/main/java/com/projectdark/mobile/RpgProgressionState.java": "daa12753a994eba6a0360e556130c6693c955f82842980d859bd1c51e419a10f",
   "app/src/main/java/com/projectdark/mobile/RuntimeState.java": "1d54e4f9bfcdc10783814020f281205700bb5024adc4126b984c21c71e6435f0",
   "app/src/main/java/com/projectdark/mobile/TownTravel.java": "a3a5e89b25df3d16d8f06a4bd221dc704d3d23527d86e54e2d1311eec53b0f7f",
@@ -28,7 +28,7 @@
   "app/src/test/java/com/projectdark/mobile/TempleMillesV213Test.java": "5bcfaa2a9fc20680568513946526da76b940ff7281c89719e2afd846c454e755",
   "master/MASTER_MANIFEST.md": "1ac9d2700d68b48847bc6a175198895d03ed6ff5b600df266d101a0076cc2ba7",
   "master/changes/V217_DEATH_VILLAGE.json": "d71c3121070fcfc574f2875fc4316ec0ef9561176e111a94d4dfa8b26edcac9d",
-  "master/source/death_v217/original_sources.zip": "b3b25cf67522b35cb0a37509588661f7ceea19b91cb0294e5972449cc8afb06f",
-  "master/source/death_v217/reference.json": "b86e157e8f706c36ead8ad91e24e613b2867bdcfe0c48803d608cdc1f9d1f8e1",
+  "master/source/death_v217/original_sources.zip": "863085319fedd237633dbcc2ce241920023ab86301ee2c6a3d928af23f85f4db",
+  "master/source/death_v217/reference.json": "86dce06c34271da5e9b195a14269ddc3e65b746e0b0ba452a7a6fdf90d38187e",
   "tools/build_death_v217.py": "879ab5edbd219194318281f8a6975a7a9ab43b95fd647e70b5d4743f15e0645f"
 }
