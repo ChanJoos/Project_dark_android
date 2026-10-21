@@ -1,0 +1,128 @@
+{
+  "sourceCommit": "3bf65b964c85696420c7a56b38825231f5ec795a",
+  "runId": "39693321115",
+  "builtAtKST": "2026-10-22T08:30:07.023216+09:00",
+  "apkSha256": "17652ec90bcbb6492c1c1f91f28262de25ac7c214a024cf50bec15a244f0b2cc",
+  "apkBytes": 101629572,
+  "identity": {
+    "sourceCommit": "3bf65b964c85696420c7a56b38825231f5ec795a",
+    "runId": "39693321115",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V221 map entrance selection through live walking and existing doors; corrected death pools, observed Sense HP and user750000EXP with exactly-once restart; unseen were-rat HP and all MP remain adapted; phone pending",
+  "package": "com.projectdark.mobile.v221test",
+  "label": "PROJECT DARK V221 TEST",
+  "artifactId": 12389098422,
+  "artifactSha256": "6280e941779b3ccd446c13354b7fa9049529c1eb851e7cc0cc291164dc35fa11",
+  "zipCrc": "PASS",
+  "apkSignatureV2": "PASS independent RSA+chunk digest+certificate match",
+  "chunks": 99,
+  "suites": [
+    {
+      "suite": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathMapV220Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathVillageV219Test",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathVillageV217Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathNavigationV221Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "tests": 27,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "phone": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pr": 197,
+  "priorFailure": {
+    "source": "be4bf25ca75510bf3430c5603ce900560de4d561",
+    "run": 39692798621,
+    "tests": 27,
+    "failed": 1,
+    "reason": "Selecting house1 released the lobby arrival latch and returned to lobby; corrected selection-specific latch without weakening test"
+  },
+  "nativeVisualReview": [
+    "v221-map-selected-house1.png",
+    "v221-map-selectable-lobby.png"
+  ],
+  "retainedDeathAssets": {
+    "packagedPngCount": 825,
+    "sourcePacksGeneratorAndGridDefinitions": "byte-identical to V220 source45936b9b",
+    "previousByteComparisonEvidence": "verification/DEATH_MAP_MONSTERS_V220_BUILD.json",
+    "currentHostTests": "48 original pose/render/alpha checks and ten scenes passed; no new asset generation"
+  },
+  "library": {
+    "library_file_id": "libfile_4b63368b0f648191b0d12e1cd59f025d",
+    "file_id": "file_00000000fc5081fda6082e43affdc234",
+    "filename": "PROJECT_DARK_V221_TEST.apk",
+    "metadataApplied": true
+  },
+  "commonScope": {
+    "runId": 39693329803,
+    "scopeJob": 119544587306,
+    "status": "SUCCESS",
+    "fullCompile": "intentionally SKIPPED; final main integration full regression pending"
+  },
+  "performance": {
+    "host12MapSwitchFrameMs": [
+      9.464309,
+      22.682111,
+      9.7367,
+      22.849484,
+      9.429807,
+      22.333694,
+      9.490258,
+      24.910405,
+      11.543883,
+      35.841756,
+      9.845594,
+      30.969851
+    ],
+    "atlasMaxBytes": 8847360,
+    "floorBoundBytes": 8652800,
+    "floorBoundEntries": 32,
+    "phoneFps": "NOT MEASURED"
+  }
+}

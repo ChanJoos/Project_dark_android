@@ -1,3 +1,13 @@
+## 2026-10-22 V221 검증 완료 — 지도 포탈 선택·배치·HP·750000EXP, 휴대폰 대기
+
+Runtime `3bf65b964c85696420c7a56b38825231f5ec795a`, focused Actions39693321115/job119544557697 SUCCESS. 7 suites **27 PASS/0 failure/error/skipped**, scope selector5 PASS. 실제7town/field views의 지도핀선택→기존길찾기/문전환, lobby→field→house1 fullupdate와live72몬스터, 다른목적지선택/명시적귀환의분리된arrival latch,10씬27gate·12왕복·48poses,3종각750000EXP 1회지급/재시작,HUD/ground/4slot/restart검사. 초기be4bf25c/run39692798621는27중1실패(house1선택시lobby로복귀), 선택포탈별latch수정으로같은검사27개통과. 기대값완화/몬스터삭제없음.
+
+APK **PROJECT DARK V221 TEST**, `com.projectdark.mobile.v221test` 별도후보. source3bf65b96/run39693321115; **2026-10-22 08:30:07 KST**,101629572bytes,SHA256 `17652ec90bcbb6492c1c1f91f28262de25ac7c214a024cf50bec15a244f0b2cc`. Artifact12389098422 ZIP SHA256 `6280e941779b3ccd446c13354b7fa9049529c1eb851e7cc0cc291164dc35fa11`. ZIP/APK CRC,embedded source/run,binarymanifest package/label,독립V2 RSA서명+99chunk contentdigest+certificate확인.825deathPNG포함,sourcepack/generator/grid는V220과byte동일;기존원본bytecompare근거재사용. 실제house1도착/선택가능로비지도native캡처직접검토. APK저장완료 libfile_4b63368b0f648191b0d12e1cd59f025d.
+
+최종배치 지상/집안 니크르+독거미,지하A–E 니크르+웨어렛+독거미,72/15/36유지. 니크르HP164926/독거미192707은영상최고관측HP기준calibration,원작미피격최대확정아님. 센스EXP237000/실제로그733772와사용자설정750000을구분. 웨어렛HP220000/MP240및기타미확인전투값은기존B/ADAPTED;영상센스에MP항목없음. 기존recall의웨어렛172875/니크르141008은현재영상에서미검증이므로반영안함. 상세계약 master/changes/V221_DEATH_NAVIGATION.json.
+
+Common39693329803/scope119544587306 SUCCESS,full compile의도적SKIPPED. 본27검사는관련호스트native검증이며최종main전체회귀/실기FPS/사용자시각수용주장아님. 12왕복host최대35.841756ms,atlas8,847,360bytes/32floorLRU bound PASS. IMPLEMENTED/BUILD VERIFIED/SCOPED HOST_NATIVE VERIFIED. **PHONE/USER_VISUAL PENDING**. PR197미병합/main41fe6def유지;별도앱/저장,자동이전없음. receipt verification/DEATH_NAVIGATION_V221_BUILD.json. 이후문서HEAD를APK소스로재라벨하지않으며무관한재빌드금지. 다음은exactV221휴대폰지도포탈선택/이동/사냥피드백.
+
 ## V221 선택 포탈별 도착 보호 보강
 
 Initial published source be4bf25c/run39692798621 remains under focused verification. Code review caught that selecting a different entrance while standing at the arrival gate must preserve the return latch; only explicit selection of that return destination releases it. Added both assertions to the existing new grouped-pin test. This production change requires a new exact-source focused run; it is not a duplicate no-change rebuild.
