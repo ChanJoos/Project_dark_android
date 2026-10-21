@@ -54,7 +54,8 @@ public final class AdaptedMillesMapRenderer {
   private final AssetManager assets;
   private final MillesSourceStyle sourceStyle;
   private final Paint grassPaint=new Paint();
-  private BitmapShader riverWaterShader;
+  private BitmapShader riverWaterShader,riverBankShader;
+  private final MillesGroundMaterial nativeGround;
   private final Path riverRipples=new Path();
   private final Paint roadFringePaint=new Paint();
   private final List<Path> roadOuter=buildRoadContours(27.5f);
@@ -68,7 +69,7 @@ public final class AdaptedMillesMapRenderer {
     soilPaint.setStyle(Paint.Style.FILL);soilEdgePaint.setStyle(Paint.Style.FILL);
     roadFringePaint.setAntiAlias(false);roadFringePaint.setColor(0x455d6633);
     for(int y=48;y<1600;y+=16)for(int x=-512;x<2304;x+=32){if(MillesRiverGeometry.distance(x,y)>MillesRiverGeometry.HALF_WIDTH-14||MillesRiverGeometry.bridgeDeck(x,y))continue;int k=(x*17+y*13)&31;if(k<=11)riverRipples.addRect(x,y,x+6+(k%3)*3,y+1,Path.Direction.CW);}
-    assets=findAssets();sourceStyle=new MillesSourceStyle(assets);placements=loadPlacements();
+    assets=findAssets();nativeGround=assets==null?null:new MillesGroundMaterial(assets);sourceStyle=new MillesSourceStyle(assets);placements=loadPlacements();
     List<SpritePlacement> ground=new ArrayList<>(),standing=new ArrayList<>();
     for(SpritePlacement value:placements){
       if("ground".equals(value.drawMode)||"tile".equals(value.drawMode))ground.add(value);else standing.add(value);
@@ -77,6 +78,7 @@ public final class AdaptedMillesMapRenderer {
     groundPlacements=Collections.unmodifiableList(ground);standingPlacements=Collections.unmodifiableList(standing);
   }
 
+  public int floorCacheEntries(){return nativeGround==null?0:nativeGround.entries();}public long floorCacheBytes(){return nativeGround==null?0:nativeGround.bytes();}public int floorBuilds(){return nativeGround==null?0:nativeGround.builds();}public void releaseFloor(){if(nativeGround!=null)nativeGround.release();}
   public int placementCount(){return placements.size();}
 
   public static final class DepthDraw {
@@ -126,6 +128,7 @@ public final class AdaptedMillesMapRenderer {
   }
 
   private void drawPlacement(Canvas canvas,WorldRuntimeAdapter world,SpritePlacement placement){
+    if((placement.asset.startsWith("vegetation/grass/")||placement.asset.startsWith("vegetation/flowers/"))&&com.projectdark.mobile.TempleEntranceRenderer.coversGround(placement.x,placement.y))return;
     Bitmap image=bitmap(placement.asset);if(image==null)return;
     WorldCameraTransform.Point foot=world.worldToScreen(placement.x,placement.y);
     if("door".equals(placement.drawMode)){
@@ -167,10 +170,10 @@ public final class AdaptedMillesMapRenderer {
     Path channel=MillesRiverGeometry.centerline();Paint p=new Paint();p.setAntiAlias(false);p.setStyle(Paint.Style.STROKE);p.setStrokeJoin(Paint.Join.ROUND);p.setStrokeCap(Paint.Cap.ROUND);
     canvas.save();canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
     p.setColor(0xff4b563a);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2+10);canvas.drawPath(channel,p);
-    p.setColor(0xff71694c);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2);canvas.drawPath(channel,p);
+    p.setColor(0xff71694c);p.setStrokeWidth(MillesRiverGeometry.BANK_WIDTH*2);if(riverBankShader==null)riverBankShader=sourceMaterial(bitmap("mine-v203/cliff_material.png"));p.setShader(riverBankShader);canvas.drawPath(channel,p);p.setShader(null);
     p.setColor(0xff234e59);p.setStrokeWidth(MillesRiverGeometry.HALF_WIDTH*2);canvas.drawPath(channel,p);
     p.setColor(0xff326570);p.setStrokeWidth((MillesRiverGeometry.HALF_WIDTH-5)*2);
-    if(riverWaterShader==null){Bitmap sourceWater=bitmap("water/lakes/OBJ_lake_main.png");if(sourceWater!=null){Bitmap water=Bitmap.createBitmap(sourceWater,175,130,60,30);riverWaterShader=new BitmapShader(water,Shader.TileMode.MIRROR,Shader.TileMode.MIRROR);}}
+    if(riverWaterShader==null){riverWaterShader=new BitmapShader(bitmap("mine-v205/water_flow.png"),Shader.TileMode.REPEAT,Shader.TileMode.REPEAT);android.graphics.Matrix m=new android.graphics.Matrix();m.setScale(8f/7f,8f/7f);riverWaterShader.setLocalMatrix(m);}
     p.setShader(riverWaterShader);
     canvas.drawPath(channel,p);p.setShader(null);
     // Quiet pixel ripples follow the actual water mask; never extend onto bank/deck.
@@ -185,6 +188,7 @@ public final class AdaptedMillesMapRenderer {
     shader.setLocalMatrix(nativePixels);return shader;
   }
   private void drawContinuousGrass(Canvas canvas,WorldRuntimeAdapter world){
+    if(nativeGround!=null){nativeGround.draw(canvas,world);return;}
     Bitmap grass=bitmap(GRASS_SURFACE);if(grass==null)return;
     grassPaint.setAntiAlias(false);grassPaint.setFilterBitmap(false);if(grassPaint.getShader()==null)grassPaint.setShader(sourceMaterial(grass));
     canvas.save();canvas.translate(-world.camera().cameraX(),-world.camera().cameraY());
@@ -265,9 +269,9 @@ public final class AdaptedMillesMapRenderer {
     // A clean material-only crop, excluding the building, actor, road and lamp.
     // The tiny mirrored swatch created conspicuous repeated circular patterns.
     if(image!=null&&path.equals(GRASS_SURFACE))image.prepareToDraw();
-    else if(image!=null)image=sourceStyle.replacement(image,path);
+    else if(image!=null&&!path.startsWith("mine-v"))image=sourceStyle.replacement(image,path);
     // Complete V103 supports must never pass through the old grass-key/short-foot mask.
-    if(image!=null&&!source.contains("bench_video_cutout"))image=sourceStyle.scenery(image,path);
+    if(image!=null&&!source.contains("bench_video_cutout")&&!path.startsWith("mine-v"))image=sourceStyle.scenery(image,path);
     bitmapCache.put(path,image);return image;
   }
   private static AssetManager findAssets(){
