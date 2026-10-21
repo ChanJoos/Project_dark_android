@@ -33,10 +33,10 @@ public class PoteRewardsV123Test {
     }
   }
   @Test public void departureGearBecomesUsableAtElevenWithoutReplacingCurrentOutfit()throws Exception{
-    for(String job:CampaignProgress.JOBS){RpgProgressionState r=reportReady("M06",job);Map<String,String> equipped=new LinkedHashMap<>(r.equipment());
+    for(String job:CampaignProgress.JOBS){RpgProgressionState r=reportReady("M06",job);Map<String,String> equipped=new LinkedHashMap<>(r.equipment());Map<String,Integer> owned=new LinkedHashMap<>(r.inventory());
       assertTrue(r.campaign().claim("M06",r));assertEquals(Integer.valueOf(11),r.normalLevel());assertEquals(equipped,r.equipment());
       for(String id:new String[]{"IT_B_CAMPAIGN_"+job+"_11","IT_B_CAMPAIGN_TOOL_"+job+"_11"}){
-        assertEquals(Integer.valueOf(1),r.inventory().get(id));assertEquals(RpgProgressionState.RequirementResult.MET,r.currentRequirements(id));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));
+        String canonical=RpgProgressionState.canonicalItemId(id);assertEquals(Integer.valueOf(owned.getOrDefault(canonical,0)+1),r.inventory().get(canonical));assertFalse(r.inventory().containsKey(id));assertEquals(RpgProgressionState.RequirementResult.MET,r.currentRequirements(id));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));
       }
     }
   }

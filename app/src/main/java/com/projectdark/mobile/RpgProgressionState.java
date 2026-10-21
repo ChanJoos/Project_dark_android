@@ -302,6 +302,18 @@ public final class RpgProgressionState {
     // These unidentified original silhouettes had invented DEX/AC. Keep source art, remove invented numbers.
     for(ItemDefinition d:new ArrayList<>(items.values()))if(d.name.startsWith("이름 미확인"))
       items.put(d.itemId,new ItemDefinition(d.itemId,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,null,Collections.emptySet(),false,null,null,Collections.emptyMap(),Evidence.PENDING));
+    // Canonical source rows may omit restrictions already verified on an original legacy
+    // registration. Carry those facts across the ID join before retiring the registration.
+    // Synthetic campaign/training conditions must never become original item authority.
+    for(Map.Entry<String,String> e:EquipmentIdentityV210.ALIASES.entrySet()){
+      if(e.getKey().startsWith("IT_B_"))continue;
+      ItemDefinition legacy=items.get(e.getKey()),target=items.get(e.getValue());
+      if(legacy==null||target==null||target.jobRestrictionResolved||!legacy.jobRestrictionResolved)continue;
+      items.put(target.itemId,new ItemDefinition(target.itemId,target.name,target.equipSlot,target.appearanceId,target.basicAttackAction,
+          target.requiredLevel!=null?target.requiredLevel:legacy.requiredLevel,legacy.allowedJobCodes,true,
+          target.attackElement!=null?target.attackElement:legacy.attackElement,target.defenseElement!=null?target.defenseElement:legacy.defenseElement,
+          target.statModifiers,target.evidence));
+    }
     for(Map.Entry<String,String> e:EquipmentIdentityV210.ALIASES.entrySet()){
       ItemDefinition d=items.get(e.getValue());if(d==null||!items.containsKey(e.getKey()))throw new IllegalStateException("Invalid canonical item alias "+e);
       items.put(e.getKey(),new ItemDefinition(e.getKey(),d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,d.statModifiers,d.evidence));

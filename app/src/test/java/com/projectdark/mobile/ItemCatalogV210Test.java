@@ -15,6 +15,19 @@ public class ItemCatalogV210Test {
   }assertEquals(60,synthetic);assertEquals("USER_ITEM_20261018_R05003",RpgProgressionState.canonicalItemId("IT_B_CAMPAIGN_TOOL_WARRIOR_65"));assertEquals("USER_ITEM_20261018_R05003",RpgProgressionState.canonicalItemId("IT_B_JOB_WARRIOR_WEAPON"));
   int before=r.inventory().get("USER_ITEM_20261018_R05003");assertEquals(RpgProgressionState.AutoLootResult.LOOTED,r.autoLootResolvedItem("IT_B_CAMPAIGN_TOOL_WARRIOR_65",1));assertEquals(Integer.valueOf(before+1),r.inventory().get("USER_ITEM_20261018_R05003"));assertFalse(r.inventory().containsKey("IT_B_CAMPAIGN_TOOL_WARRIOR_65"));
  }
+ @Test public void knownLegacyRequirementsSurviveCanonicalJoinButUnknownNewWearablesStayPending(){
+  RpgProgressionState r=new RpgProgressionState();
+  assertEquals(RpgProgressionState.RequirementResult.MET,r.currentRequirements("IT_TEST_WEAPON_MW002"));
+  assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_TEST_WEAPON_MW002"));
+  assertEquals(RpgProgressionState.canonicalItemId("IT_TEST_WEAPON_MW002"),r.equipment().get("무기"));
+  r.restoreProgression(41,0L);
+  for(String id:new String[]{"IT_NECK_FIRE_PEARL","IT_BELT_FIRE_LEATHER"}){
+   assertEquals(id,RpgProgressionState.RequirementResult.MET,r.currentRequirements(id));
+   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));
+  }
+  r.enableEquipmentSandbox(true);
+  for(String id:UnifiedItemCatalogV210.IDS)if(r.inventoryOnlyItem(id))assertEquals(id,RpgProgressionState.RequirementResult.PENDING,r.currentRequirements(id));
+ }
  @Test public void originalDeityVariantsKeepSeparateNamesStatsRowsAndBothRingSlots()throws Exception{
   RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);String base="USER_ITEM_20261018_R05424",setoa="USER_ITEM_20261018_R03440";Map<String,Integer> own=new LinkedHashMap<>();own.put(base,1);own.put(setoa,1);assertTrue(r.restoreOwnedItems(own,Collections.emptyMap()));assertNotEquals(RpgProgressionState.canonicalItemId(base),RpgProgressionState.canonicalItemId(setoa));assertFalse(InventoryGroupsV199.equivalent(r,base,setoa));assertEquals(2,new ItemWindow(c).rows(r).size());assertNotEquals(r.itemDefinitions().get(base).statModifiers,r.itemDefinitions().get(setoa).statModifiers);
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(base,"반지"));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(setoa,RpgProgressionState.RIGHT_RING_SLOT));assertEquals(base,r.equipment().get("반지"));assertEquals(setoa,r.equipment().get(RpgProgressionState.RIGHT_RING_SLOT));assertEquals(2,new ItemWindow(c).rows(r).size());
