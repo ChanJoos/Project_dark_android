@@ -5,7 +5,7 @@ public class InventoryRepairV212Test {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
  @Test public void recoveredNamedEquipmentHasRealRegisteredSourceFramesAndEquips(){
-  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);EquipmentVisualRegistry registry=new EquipmentVisualRegistry(c);int count=0;
+  RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);r.bindTwoHandLearning(()->true);EquipmentVisualRegistry registry=new EquipmentVisualRegistry(c);int count=0;
   for(String id:RecoveredWearablesV212.IDS){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(id);assertNotNull(id,d);assertNotNull(id,d.appearanceId);assertFalse(id,r.inventoryOnlyItem(id));EquipmentVisualRegistry.Visual v=registry.get(d.appearanceId);assertNotNull(id,v);assertNotNull(id,v.registration);
    for(CharacterRenderer.Direction dir:new CharacterRenderer.Direction[]{CharacterRenderer.Direction.NE,CharacterRenderer.Direction.NW,CharacterRenderer.Direction.SE,CharacterRenderer.Direction.SW}){SourceEquipmentRegistration.Frame f=v.registration.idle(dir,0);assertNotNull(id+dir,f);assertTrue(id,f.src.width()>0&&f.src.height()>0);boolean visible=false;for(int y=f.src.top;y<f.src.bottom&&!visible;y++)for(int x=f.src.left;x<f.src.right;x++)if(Color.alpha(v.atlas.getPixel(x,y))>0){visible=true;break;}assertTrue(id+dir,visible);}
    RpgProgressionState.EquipResult result=r.equip(id);assertTrue(id+result,result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED);count++;

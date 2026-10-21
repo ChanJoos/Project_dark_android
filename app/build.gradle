@@ -237,7 +237,7 @@ android.sourceSets.main.java.srcDir(layout.buildDirectory.dir('generated/wearabl
 tasks.register('recoverWearablesV212', Exec) {
  workingDir rootProject.projectDir
  commandLine 'python3', 'tools/recover_wearables_v212.py'
- inputs.files(rootProject.file('tools/recover_wearables_v212.py'),rootProject.file('master/source/items/wearables_v212.json'))
+ inputs.files(rootProject.file('tools/recover_wearables_v212.py'),rootProject.file('master/source/items/wearables_v212.json.gz'))
  outputs.dirs(layout.buildDirectory.dir('generated/wearables-v212'),layout.buildDirectory.dir('generated/wearables-java-v212'))
 }
 tasks.named('preBuild').configure { dependsOn 'recoverWearablesV212' }

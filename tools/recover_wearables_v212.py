@@ -1,11 +1,11 @@
 """Recover only exact named wearable sources; pin all original bytes before runtime admission."""
 from pathlib import Path
-import json,hashlib,io,urllib.request,concurrent.futures,sys,zipfile
+import gzip,json,hashlib,io,urllib.request,concurrent.futures,sys,zipfile
 from PIL import Image
 ROOT=Path(__file__).resolve().parents[1]
 OUT=ROOT/'app/build/generated/wearables-v212'
 CACHE=ROOT/'app/build/source-cache-v212'
-CONTRACT=ROOT/'master/source/items/wearables_v212.json'
+CONTRACT=ROOT/'master/source/items/wearables_v212.json.gz'
 KINDS={'무기':'weapon','갑옷':'armor','모자':'hair','신발':'shoes','방패':'shield'}
 def digest(b):return hashlib.sha256(b).hexdigest()
 def recover(spec):
@@ -39,18 +39,18 @@ def main():
    if not r['inventoryOnly'] or r['slot'] not in KINDS:continue
    a=Path(r['previewPath']).name.split('_')[0]
    specs.append(dict(itemId=r['itemId'],name=r['name'],appearanceId=a,kind=KINDS[r['slot']]))
- else:specs=json.loads(CONTRACT.read_text())['items']
+ else:specs=json.loads(gzip.decompress(CONTRACT.read_bytes()))['items']
  accepted=[];pending=[];OUT.mkdir(parents=True,exist_ok=True)
  with concurrent.futures.ThreadPoolExecutor(max_workers=12) as pool:
   for n,(result,data) in enumerate(pool.map(recover,specs),1):
    if data:
     accepted.append(result)
-    for directory,ext,tag in [('source-registration','.json','registration'),('wearable-atlases','.webp','atlas')]:
-     p=OUT/directory/(result['appearanceId']+ext);p.parent.mkdir(exist_ok=True);p.write_bytes(data[tag])
+    for directory,ext,tag in [('wearables-v212/registrations','.json','registration'),('wearables-v212/atlases','.webp','atlas')]:
+     p=OUT/directory/(result['appearanceId']+ext);p.parent.mkdir(parents=True,exist_ok=True);p.write_bytes(data[tag])
    else:pending.append(result)
    if n%100==0:print('RECOVERED',n,'/',len(specs),'accepted',len(accepted),'pending',len(pending),flush=True)
  if pin:
-  CONTRACT.parent.mkdir(parents=True,exist_ok=True);CONTRACT.write_text(json.dumps(dict(revision='V212_EXACT_NAMED_WEARABLE_RECOVERY',items=accepted,pending=pending,policy='Exact source-name/slot identity, complete original idle/walk; native missing contact frames stay absent. Source bytes SHA256-pinned; no preview enlargement, invented motion or fabricated stats.'),ensure_ascii=False,indent=2)+'\n')
+  CONTRACT.parent.mkdir(parents=True,exist_ok=True);CONTRACT.write_bytes(gzip.compress(json.dumps(dict(revision='V212_EXACT_NAMED_WEARABLE_RECOVERY',items=accepted,pending=pending),ensure_ascii=False,separators=(',',':')).encode(),mtime=0))
  else:
   failures=[x for x in pending if any(t in x['reason'] for t in ['urlopen','HTTP','timed out','source changed'])]
   assert not failures,failures[:3]

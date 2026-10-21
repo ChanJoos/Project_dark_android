@@ -53,7 +53,7 @@ final class SourceEquipmentRegistration {
     return null;
   }
   private static String read(Context c,String path)throws Exception{
-    InputStream in=c.getAssets().open(path);byte[] buf=new byte[8192];StringBuilder out=new StringBuilder();int n;
+    InputStream in;try{in=c.getAssets().open(path);}catch(java.io.FileNotFoundException missing){in=c.getAssets().open(path.replace("source-registration/","wearables-v212/registrations/"));}byte[] buf=new byte[8192];StringBuilder out=new StringBuilder();int n;
     while((n=in.read(buf))>0)out.append(new String(buf,0,n,StandardCharsets.UTF_8));in.close();return out.toString();
   }
 }
