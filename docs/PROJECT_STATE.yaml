@@ -1,9 +1,13 @@
 death_v217:
-  status: IMPLEMENTED_FOCUSED_CI_PENDING
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_REFERENCE_GAPS_PENDING
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
   base: 828406914d494a2354462c35ed858c0ce6c1b8e8
+  runtime_source: 037da0145022dade21701e635894c4de893c44f1
+  focused_run: 39613760032
+  artifact: 12352390155
+  receipt: verification/DEATH_V217_BUILD.json
   maps: 10
   source_pack: master/source/death_v217/original_sources.zip
   contract: master/changes/V217_DEATH_VILLAGE.json
