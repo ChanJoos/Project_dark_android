@@ -16,5 +16,11 @@
     176
   ],
   "limits": "Nexon-hosted4509/4515 confirms zombie/Nikr house quest;722608/721717 lists spiders, Nikr, Wererat and WereratGuard; 175 Wererat join inferred from dagger-bearing rat appearance, not a client Korean name table. No invented ghost/slime names.",
-  "checks": "docs/V220_MAP_MONSTER_CHECKPOINT.md"
+  "checks": "docs/V220_MAP_MONSTER_CHECKPOINT.md",
+  "runtimeCommit": "45936b9b65be6614e27d08a237e0450e3e718233",
+  "build": "VERIFIED",
+  "scopedNativeTests": 27,
+  "visual": "CODEX_REFERENCE_COMPARED_USER_PENDING",
+  "phone": "PENDING",
+  "receipt": "verification/DEATH_MAP_MONSTERS_V220_BUILD.json"
 }

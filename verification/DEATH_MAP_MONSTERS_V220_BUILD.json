@@ -1,0 +1,138 @@
+{
+  "apkSha256": "2fb460a5caf2cf8e31e2c1189043700e38fe3164ced53859e8b42cc5a613161f",
+  "apkBytes": 101628448,
+  "identity": {
+    "sourceCommit": "45936b9b65be6614e27d08a237e0450e3e718233",
+    "runId": "39685771102",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "manifest": {
+    "manifest.versionCode": 184,
+    "manifest.versionName": "1.84-mobile-horror",
+    "manifest.compileSdkVersion": 35,
+    "manifest.compileSdkVersionCodename": "15",
+    "manifest.package": "com.projectdark.mobile.v220test",
+    "manifest.platformBuildVersionCode": 35,
+    "manifest.platformBuildVersionName": 15,
+    "application.theme": 2130837504,
+    "application.label": "PROJECT DARK V220 TEST",
+    "application.debuggable": 4294967295,
+    "application.extractNativeLibs": 0
+  },
+  "signatureV2": {
+    "algorithm": "RSA_PKCS1_SHA256",
+    "contentDigest": "41f6915551f0e4e9a2b59042ec8e5ce2ffbc1740a1a4558b05ce365e9188d0b8",
+    "chunks": 99,
+    "certificateSha256": "34fd55aad88c5913ceeb5ce36fc376cf1dcaf319603eeecc678009ef2b0701f8",
+    "verified": true
+  },
+  "originalDeathAssetsCompared": 825,
+  "builtAtKST": "2026-10-22T07:25:44.664592+09:00",
+  "runtimeCommit": "45936b9b65be6614e27d08a237e0450e3e718233",
+  "workflowRun": "39685771102",
+  "workflowUrl": "https://github.com/ChanJoos/Project_dark_android/actions/runs/39685771102",
+  "artifactId": 12387036337,
+  "artifactZipSha256": "cb8522a34cf2d5fb8fb13c126afa7b312eb2f78d7b5d9acc8ad68765ea3e19dc",
+  "testSuites": [
+    {
+      "name": "com.projectdark.mobile.world.MillesSourceStyleTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "5.274"
+    },
+    {
+      "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "22.569"
+    },
+    {
+      "name": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "0.177"
+    },
+    {
+      "name": "com.projectdark.mobile.DeathMapV220Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "19.512"
+    },
+    {
+      "name": "com.projectdark.mobile.DeathVillageV219Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "10.347"
+    },
+    {
+      "name": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "16.588"
+    },
+    {
+      "name": "com.projectdark.mobile.DeathVillageV217Test",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "21.303"
+    },
+    {
+      "name": "com.projectdark.mobile.world.MillesGroundMaterialTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0",
+      "time": "4.718"
+    }
+  ],
+  "testsPassed": 27,
+  "testsFailed": 0,
+  "scopeSelectorTestsPassed": 5,
+  "build": "VERIFIED",
+  "runtime": "SCOPED_ROBOLECTRIC_NATIVE_VERIFIED",
+  "visual": "REFERENCE_COMPARED_BY_CODEX; USER_ACCEPTANCE_PENDING",
+  "phone": "PENDING",
+  "changes": [
+    "Removed DeathVillageGuide and all its travel controls; ordinary entrance labels remain informational",
+    "Lobby gate cells (8,0),(9,0),(10,0),(11,0); grouped arrival latch",
+    "Read-only original-art minimap overview, player arrow and entrance pins; one 1024x512 cache",
+    "Milles, Abel, Rucesion, Mine, Death lobby and field overview checked in native runtime",
+    "Original MPF166 zombie,178 Nikr,175 dagger-bearing rat,176 green spider; field/house/underground rosters separated"
+  ],
+  "limits": [
+    "No physical phone FPS or user visual acceptance claim",
+    "27 scoped Android tests plus 5 selector tests; not a full final-main regression",
+    "Korean Wererat/spider names joined by visual and Nexon-hosted lists, not decoded client Korean name table; no claim of verified original stats/drops",
+    "Reference unseen regions remain adapted from nearby original map geometry; no dungeon implemented"
+  ],
+  "nativeCaptureHashes": {
+    "v220-map-MAP_ABEL_TOWN.png": "42a3428e07ad85746c857d3e383d10a5b349d5bdedbb309562ceeb9499822339",
+    "v220-map-MAP_DEATH_FIELD.png": "fb9416749957ff7fabebf2cc7f1fe3306ad71bf80dc76071384077d2ca600a77",
+    "v220-map-MAP_DEATH_LOBBY.png": "29501f8d3d9b30c350ced2a365ac03b4e9f59f902dced012e82b158a590fd6e5",
+    "v220-map-MAP_MINE_TOWN.png": "5a6458543a395f11f2044c1d0ff3e7b2b2332453e05cf021bf7e21e0f3358b5c",
+    "v220-map-MAP_RUCESION_TOWN.png": "b132025811d2230ecfe398a35acfb1f041046bd47f28437a0eca058d56a7c9dc",
+    "v220-map-milles_runtime_proto.png": "d209572d9f4589df3c86ccf0a0ad819cd520c2649becbbf8772996543b209da2",
+    "v220-monsters-MAP_DEATH_FIELD.png": "e86eaad81890e181b1108a706fab2c24cf64bacda3215d843593548fe7977b7d",
+    "v220-monsters-MAP_DEATH_HOUSE_1.png": "2a8d1652de778a70d01f7b2e81dd60d91e0033439e3cf5cce4d5d607e1ac71f3",
+    "v220-monsters-MAP_DEATH_UNDER_C.png": "6620bed1ce6547d48a3e2307a2c763b34157a8c15acd927bdb4b4c038eb00ff1"
+  },
+  "deliveryImageHashes": {
+    "DEATH_MAP_V220.png": "6ed8fdb06fda279ff0279814bc7527eaa0422d90a4680ed06b3faaeaceb1092f",
+    "DEATH_MONSTERS_V220.png": "e6758466d2cf1965b4105bf177c83716b3355e6d4d5af0f0a20780b0dafc19d1"
+  }
+}
