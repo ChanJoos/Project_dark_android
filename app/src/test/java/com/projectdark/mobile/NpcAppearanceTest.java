@@ -21,7 +21,7 @@ public final class NpcAppearanceTest {
  private int[] pixels(Bitmap b){int[] a=new int[b.getWidth()*b.getHeight()];b.getPixels(a,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return a;}
  @Test public void allHumanNpcRoutesHaveDistinctRegisteredProfilesAndFutureDefaults(){
   Set<String> names=new HashSet<>(),outfits=new HashSet<>();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context());
-  assertEquals(43,NpcIdentity.ALL.size());
+  assertEquals(44,NpcIdentity.ALL.size());
   Set<String> registeredIds=new HashSet<>();
   for(NpcIdentity.Profile p:NpcIdentity.ALL)assertTrue("unique registered NPC "+p.id,registeredIds.add(p.id));
   assertTrue(registeredIds.contains("mine_town_travel"));

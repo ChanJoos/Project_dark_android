@@ -1,4 +1,4 @@
-"""Bounded V216 candidate gate from the last full-verified source.
+"""Bounded V216/V217 candidate gate from the last full-verified source.
 Only reviewed exact runtime blobs qualify; unknown changes fail back to full CI.
 Final integration uses manual full verification or the full-regression PR label.
 """
@@ -23,7 +23,7 @@ def classify(paths, hashes, expected, force_full=False):
                 return True, 'unreviewed blob: ' + p
         elif not (p.startswith('docs/') or p.startswith('verification/') or p in CONFIG):
             return True, 'unreviewed path: ' + p
-    return False, 'reviewed V216 temple/equipment scope; focused workflow required'
+    return False, 'reviewed V216/V217 temple/equipment/death-village scope; focused workflow required'
 
 def main():
     expected = json.loads((ROOT/'tools/ci_scope_v216.json').read_text())

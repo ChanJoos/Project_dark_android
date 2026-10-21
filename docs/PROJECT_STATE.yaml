@@ -1,3 +1,15 @@
+death_v217:
+  status: IMPLEMENTED_FOCUSED_CI_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  base: 828406914d494a2354462c35ed858c0ce6c1b8e8
+  maps: 10
+  source_pack: master/source/death_v217/original_sources.zip
+  contract: master/changes/V217_DEATH_VILLAGE.json
+  missing_reference: Screen_Recording_20261021_205405_YouTube.mp4
+  handset: PENDING
+  original_korean_monster_name_bindings: PENDING_EXCEPT_ZOMBIE
 milles_temple_v213:
   status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
   owner: ROOT_SINGLE_EDITOR

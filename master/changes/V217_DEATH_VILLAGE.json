@@ -1,0 +1,348 @@
+{
+  "status": "ACCEPTED",
+  "userDecision": "2026-10-21 explicit GitHub authorization; lobby, one outdoor map/three buildings, three small houses and five basements; no dungeon",
+  "base": "828406914d494a2354462c35ed858c0ce6c1b8e8",
+  "before": "No death-village runtime adapter",
+  "after": {
+    "maps": [
+      "MAP_DEATH_LOBBY",
+      "MAP_DEATH_FIELD",
+      "MAP_DEATH_HOUSE_1",
+      "MAP_DEATH_HOUSE_2",
+      "MAP_DEATH_HOUSE_3",
+      "MAP_DEATH_UNDER_A",
+      "MAP_DEATH_UNDER_B",
+      "MAP_DEATH_UNDER_C",
+      "MAP_DEATH_UNDER_D",
+      "MAP_DEATH_UNDER_E"
+    ],
+    "edges": [
+      {
+        "map": "MAP_DEATH_LOBBY",
+        "tile": [
+          27,
+          10
+        ],
+        "to": "MAP_DEATH_FIELD",
+        "arrival": [
+          12,
+          85
+        ],
+        "style": "portal"
+      },
+      {
+        "map": "MAP_DEATH_FIELD",
+        "tile": [
+          12,
+          85
+        ],
+        "to": "MAP_DEATH_LOBBY",
+        "arrival": [
+          27,
+          10
+        ],
+        "style": "portal"
+      },
+      {
+        "map": "MAP_DEATH_FIELD",
+        "tile": [
+          28,
+          3
+        ],
+        "to": "MAP_DEATH_HOUSE_1",
+        "arrival": [
+          10,
+          18
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_HOUSE_1",
+        "tile": [
+          10,
+          18
+        ],
+        "to": "MAP_DEATH_FIELD",
+        "arrival": [
+          28,
+          3
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_FIELD",
+        "tile": [
+          46,
+          60
+        ],
+        "to": "MAP_DEATH_HOUSE_2",
+        "arrival": [
+          10,
+          18
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_HOUSE_2",
+        "tile": [
+          10,
+          18
+        ],
+        "to": "MAP_DEATH_FIELD",
+        "arrival": [
+          46,
+          60
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_FIELD",
+        "tile": [
+          90,
+          43
+        ],
+        "to": "MAP_DEATH_HOUSE_3",
+        "arrival": [
+          10,
+          18
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_HOUSE_3",
+        "tile": [
+          10,
+          18
+        ],
+        "to": "MAP_DEATH_FIELD",
+        "arrival": [
+          90,
+          43
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_HOUSE_1",
+        "tile": [
+          3,
+          3
+        ],
+        "to": "MAP_DEATH_UNDER_A",
+        "arrival": [
+          11,
+          36
+        ],
+        "style": "stairs"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_A",
+        "tile": [
+          11,
+          36
+        ],
+        "to": "MAP_DEATH_HOUSE_1",
+        "arrival": [
+          3,
+          3
+        ],
+        "style": "stairs"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_A",
+        "tile": [
+          11,
+          3
+        ],
+        "to": "MAP_DEATH_UNDER_B",
+        "arrival": [
+          11,
+          36
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_B",
+        "tile": [
+          11,
+          36
+        ],
+        "to": "MAP_DEATH_UNDER_A",
+        "arrival": [
+          11,
+          3
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_B",
+        "tile": [
+          3,
+          4
+        ],
+        "to": "MAP_DEATH_UNDER_C",
+        "arrival": [
+          3,
+          11
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_C",
+        "tile": [
+          3,
+          11
+        ],
+        "to": "MAP_DEATH_UNDER_B",
+        "arrival": [
+          3,
+          4
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_B",
+        "tile": [
+          17,
+          4
+        ],
+        "to": "MAP_DEATH_UNDER_D",
+        "arrival": [
+          3,
+          12
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_D",
+        "tile": [
+          3,
+          12
+        ],
+        "to": "MAP_DEATH_UNDER_B",
+        "arrival": [
+          17,
+          4
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_C",
+        "tile": [
+          46,
+          12
+        ],
+        "to": "MAP_DEATH_UNDER_E",
+        "arrival": [
+          3,
+          6
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_E",
+        "tile": [
+          3,
+          6
+        ],
+        "to": "MAP_DEATH_UNDER_C",
+        "arrival": [
+          46,
+          12
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_D",
+        "tile": [
+          46,
+          12
+        ],
+        "to": "MAP_DEATH_UNDER_E",
+        "arrival": [
+          3,
+          15
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_E",
+        "tile": [
+          3,
+          15
+        ],
+        "to": "MAP_DEATH_UNDER_D",
+        "arrival": [
+          46,
+          12
+        ],
+        "style": "door"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_E",
+        "tile": [
+          46,
+          12
+        ],
+        "to": "MAP_DEATH_HOUSE_2",
+        "arrival": [
+          3,
+          3
+        ],
+        "style": "stairs"
+      },
+      {
+        "map": "MAP_DEATH_HOUSE_2",
+        "tile": [
+          3,
+          3
+        ],
+        "to": "MAP_DEATH_UNDER_E",
+        "arrival": [
+          46,
+          12
+        ],
+        "style": "stairs"
+      },
+      {
+        "map": "MAP_DEATH_HOUSE_3",
+        "tile": [
+          3,
+          3
+        ],
+        "to": "MAP_DEATH_UNDER_C",
+        "arrival": [
+          25,
+          3
+        ],
+        "style": "stairs"
+      },
+      {
+        "map": "MAP_DEATH_UNDER_C",
+        "tile": [
+          25,
+          3
+        ],
+        "to": "MAP_DEATH_HOUSE_3",
+        "arrival": [
+          3,
+          3
+        ],
+        "style": "stairs"
+      }
+    ],
+    "sourcePack": "master/source/death_v217/original_sources.zip",
+    "originalMapArchiveSha256": "e4fddca7a1a492caa84935061d279e7f302d5f28aa54b326b7deb0d203b10785",
+    "originalInstallerSha256": "dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093"
+  },
+  "evidence": "U topology; retained original map/HPF/MPF source bytes; 205939 stone interior video; Nexon community4509 identity context",
+  "adapted": [
+    "Five neighbouring original underground layouts with user topology",
+    "Lobby/outdoor source selection pending missing205405 video",
+    "Editor-labelled floor cells use same-family adjacent source material",
+    "Independent six-step staircase uses source stone texture; not a recovered original stair object",
+    "Four source monster species; only zombie named confidently, other Korean original names pending; no substituted identity claim",
+    "HP/EXP/Gold/AI/respawn are mobile test balance. No unverified item drops added"
+  ],
+  "sourceDataPolicy": "Existing master/data original snapshots unchanged",
+  "validation": "Static source hashes/bounds/graph then focused Android native build; handset/user visuals pending"
+}

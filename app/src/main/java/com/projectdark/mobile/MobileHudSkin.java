@@ -100,7 +100,7 @@ final class MobileHudSkin {
     final float cx=68,cy=73,r=49;ring(c,cx,cy,r+2,false);c.save();path.reset();path.addCircle(cx,cy,r-2,Path.Direction.CW);c.clipPath(path);
     String key=state.currentMapId()+":"+minX+":"+maxX+":"+minY+":"+maxY;
     if(mapTerrain==null||!key.equals(terrainKey)){
-      if(mapTerrain!=null)mapTerrain.recycle();mapTerrain=Bitmap.createBitmap(96,96,Bitmap.Config.ARGB_8888);Canvas terrain=new Canvas(mapTerrain);if(com.projectdark.mobile.world.MineHuntGeometry.contains(state.currentMapId())){MineHuntMinimapV209.drawTerrain(terrain,minX,minY,maxX,maxY);terrainKey=key;}else{terrain.drawColor(0xff625943);
+      if(mapTerrain!=null)mapTerrain.recycle();mapTerrain=Bitmap.createBitmap(96,96,Bitmap.Config.ARGB_8888);Canvas terrain=new Canvas(mapTerrain);if(com.projectdark.mobile.world.DeathVillageGeometry.contains(state.currentMapId())){DeathVillageMinimap.drawTerrain(terrain,state.currentMapId(),minX,minY,maxX,maxY);terrainKey=key;}else if(com.projectdark.mobile.world.MineHuntGeometry.contains(state.currentMapId())){MineHuntMinimapV209.drawTerrain(terrain,minX,minY,maxX,maxY);terrainKey=key;}else{terrain.drawColor(0xff625943);
       p.setStyle(Paint.Style.FILL);p.setColor(0xff3f4135);
       // Project the authored static collision footprints once per map, never live actors or paths.
       for(RectF o:state.obstacles())terrain.drawRect(map(o.left,minX,maxX,0,96),map(o.top,minY,maxY,0,96),map(o.right,minX,maxX,0,96),map(o.bottom,minY,maxY,0,96),p);

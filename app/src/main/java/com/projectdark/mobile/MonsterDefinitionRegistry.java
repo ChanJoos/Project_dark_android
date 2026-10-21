@@ -12,6 +12,7 @@ public final class MonsterDefinitionRegistry {
   private final Map<String,MonsterDefinition> definitions=new LinkedHashMap<>();
 
   public MonsterDefinitionRegistry(){
+ for(AbelCombatProfile p:DeathVillageMonsters.all())definitions.put(p.id,new MonsterDefinition(p.id,DeathVillageMonsters.NAMES[DeathVillageMonsters.type(p.id)],"죽음의마을",99,p.hp,p.exp,null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));
     for(AbelCombatProfile p:MineHuntMonsters.all())definitions.put(p.id,new MonsterDefinition(p.id,MineHuntMonsters.NAMES[MineHuntMonsters.type(p.id)],"카스마늄 광산",99,p.hp,p.exp,null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));
     for(AbelCombatProfile p:AbelCombatProfile.all())definitions.put(p.id,new MonsterDefinition(p.id,AbelCoastMonsters.name(p.id),"아벨 모바일 3써클",p.level,p.hp,p.exp,null,MonsterDefinition.Evidence.ADAPTED,MonsterDefinition.Status.PROTOTYPE_PENDING));
     for(AbelCombatProfile p:RucesionCombatProfiles.all())definitions.put(p.id,new MonsterDefinition(p.id,RucesionCoastMonsters.name(p.id),"뤼케시온해안 · 영상 기준 후보",RucesionCoastMonsters.observedLevel(p.id),null,null,null,MonsterDefinition.Evidence.U,MonsterDefinition.Status.PROTOTYPE_PENDING));

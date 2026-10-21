@@ -632,7 +632,7 @@ public final class RpgProgressionState {
     grantAdaptedReward(reward.exp,reward.gold);
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,
         mineLoot, mineOutcomes,
-        RewardSource.ADAPTED_CAMPAIGN,MineHuntMonsters.actor(e.targetId)?MineHuntMonsters.POLICY:AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone,reward.gold));
+        RewardSource.ADAPTED_CAMPAIGN,DeathVillageMonsters.actor(e.targetId)?DeathVillageMonsters.POLICY:MineHuntMonsters.actor(e.targetId)?MineHuntMonsters.POLICY:AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone,reward.gold));
     trimRewardHistory();
   }
 

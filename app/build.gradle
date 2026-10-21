@@ -5,8 +5,8 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v216test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V216 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v217test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V217 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
         versionCode 184
@@ -16,7 +16,7 @@ android {
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile, layout.buildDirectory.dir('generated/wearables-v212').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile, layout.buildDirectory.dir('generated/wearables-v212').get().asFile, layout.buildDirectory.dir('generated/death-v217').get().asFile]
         }
     }
     testOptions {
@@ -241,3 +241,13 @@ tasks.register('recoverWearablesV212', Exec) {
  outputs.dirs(layout.buildDirectory.dir('generated/wearables-v212'),layout.buildDirectory.dir('generated/wearables-java-v212'))
 }
 tasks.named('preBuild').configure { dependsOn 'recoverWearablesV212' }
+
+// Original Death Village tile/MPF source pack, generated offline and hash checked.
+tasks.register('generateDeathV217', Exec) {
+ inputs.files(rootProject.fileTree('master/source/death_v217'))
+ inputs.file(rootProject.file('tools/build_death_v217.py'))
+ outputs.dir(layout.buildDirectory.dir('generated/death-v217'))
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/build_death_v217.py'
+}
+tasks.named('preBuild').configure { dependsOn('generateDeathV217') }
