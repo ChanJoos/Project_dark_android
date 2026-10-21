@@ -19,7 +19,21 @@ a=np.array(video);b=np.array(aligned)
 ys,xs=np.mgrid[:360,:640];fit=(xs>330)&(xs<440)&(ys>251)&(ys<267)&(b[:,:,3]>0)
 ratio=np.median((a[:,:,:3].astype(float)[fit]+1)/(b[:,:,:3].astype(float)[fit]+1),axis=0);b[:,:,:3]=np.clip(b[:,:,:3]*ratio,0,255).astype(np.uint8);aligned=Image.fromarray(b)
 # Verified clean official-image coordinates cover these two video-only actor occlusions.
-for box in [(270,178,296,226),(295,142,333,189)]:video.paste(aligned.crop(box),box)
+# Match donor stone gradients to the live recording boundary. Rectangular winter-photo
+# pastes baked a bright right-angle patch into the platform; a local Poisson join
+# retains the verified source detail while matching the summer light at every edge.
+from scipy.sparse import lil_matrix
+from scipy.sparse.linalg import spsolve
+for box in [(270,178,296,226),(295,142,333,189)]:
+ target=np.array(video).astype(float);donor=np.array(aligned).astype(float);x0,y0,x1,y1=box;w=x1-x0;h=y1-y0;n=w*h;matrix=lil_matrix((n,n));rhs=np.zeros((n,3))
+ for yy in range(y0,y1):
+  for xx in range(x0,x1):
+   i=(yy-y0)*w+xx-x0;matrix[i,i]=4
+   for nx,ny in [(xx-1,yy),(xx+1,yy),(xx,yy-1),(xx,yy+1)]:
+    rhs[i]+=donor[yy,xx,:3]-donor[ny,nx,:3]
+    if x0<=nx<x1 and y0<=ny<y1:matrix[i,(ny-y0)*w+nx-x0]=-1
+    else:rhs[i]+=target[ny,nx,:3]
+ solved=spsolve(matrix.tocsr(),rhs).reshape(h,w,3);target[y0:y1,x0:x1,:3]=np.clip(solved,0,255);video=Image.fromarray(target.astype(np.uint8))
 repair=json.loads((src/'entrance_repair_v213.json').read_text())
 patchBytes=(src/'entrance_front_frame8.png').read_bytes();assert hashlib.sha256(patchBytes).hexdigest()==repair['patchSha256']
 patch=Image.open(io.BytesIO(patchBytes)).convert('RGBA');raw=Image.new('RGBA',video.size);raw.paste(patch,(600,220))
