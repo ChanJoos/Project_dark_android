@@ -1,3 +1,7 @@
+## 2026-10-21 V211 post99 temple and first advancement — design only
+
+User requested design of continued Lv99 EXP, EXP-funded permanent HP/MP at temple NPCs and first advancement. Specification: `design/POST99_TEMPLE_ADVANCEMENT_V211.md`. Historical42억 cap is a proposed classic policy; current live cap differs. Official2024notice4158 confirms five job thresholds/250m EXP, historical game7040 adds pure stats/MAX skills/advancement route. Temple roles supported by hosted player evidence, not an official operations specification. Exact purchase prices/materials remain PENDING; existing Master B formulas are not original facts. No runtime or APK change, no new build/runtime/visual PASS. User reports Lv99 EXP not accumulating; current code adds Long balances and HUD ratio is null at99, so root cause UNKNOWN until same-APK reproduction. Next implementation starts there. Temple artwork/topology, mastery support,5-job party policy and prior advancement-route activation hold remain unresolved. Keep existing branch/PR197 and validatedV210 APK.
+
 ## 2026-10-21 V210 original item integration — build and host runtime verified
 
 1772 canonical inventory identities now use original source artwork; 293 compatibility aliases (including 60 synthetic training/campaign items) retire duplicate equipment without merging distinct original name/option variants. Bag, bank and equipped save IDs normalize before historical grants. Current User Master options win; unresolved facts remain pending. T04/T05 use verified Epe purchase/equip at 300G.

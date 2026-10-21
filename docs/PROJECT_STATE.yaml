@@ -1,3 +1,16 @@
+post99_temple_v211:
+  status: DESIGN_PROPOSED_NOT_IMPLEMENTED
+  specification: design/POST99_TEMPLE_ADVANCEMENT_V211.md
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  requested_cap_policy: CLASSIC_4200000000_PROPOSAL
+  original_purchase_price: PENDING
+  user_report: LV99_EXP_NOT_ACCUMULATING
+  root_cause: UNKNOWN_NOT_REPRODUCED
+  runtime_changed: false
+  next: REPRODUCE_EXACT_APK_REWARD_HUD_SAVE_PATH
+
 item_catalog_v210:
   status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
   owner: ROOT_SINGLE_EDITOR
