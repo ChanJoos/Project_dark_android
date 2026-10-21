@@ -147,13 +147,22 @@ public final class F5mSaveStore {
     catch(IllegalArgumentException invalid){writable=false;}
   }
 
+  private RpgProgressionState serializedOwner;private long serializedInventoryRevision=-1,serializedEquipmentRevision=-1;
+  private String serializedInventory,serializedEquipment;private int ownershipSerializations;
+  int ownershipSerializationCount(){return ownershipSerializations;}
+  private void prepareOwnership(RpgProgressionState r){
+    if(serializedOwner!=r){serializedOwner=r;serializedInventoryRevision=-1;serializedEquipmentRevision=-1;}
+    if(serializedInventoryRevision!=r.inventoryRevision()){serializedInventory=new JSONObject(r.inventory()).toString();serializedInventoryRevision=r.inventoryRevision();ownershipSerializations++;}
+    if(serializedEquipmentRevision!=r.equipmentRevision()){serializedEquipment=new JSONObject(r.equipment()).toString();serializedEquipmentRevision=r.equipmentRevision();ownershipSerializations++;}
+  }
   private SharedPreferences.Editor writeRpg(SharedPreferences.Editor edit,RpgProgressionState r){
+    prepareOwnership(r);
     return edit.putInt("save_schema",SCHEMA)
         .putBoolean("unified_items_granted_v210",true)
         // A save authored by V94 already includes the one-time grant, even if the player removed it.
         .putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).putBoolean("horror_equipment_granted_v184",true).putBoolean("linked_items_granted_v185",true).putBoolean("linked_clothes_granted_v186",true).putBoolean("linked_food_granted_v187",true).putBoolean("sparse_weapons_granted_v188",true).putBoolean("linked_accessories_granted_v189",true).putBoolean("male_clothes_granted_v190",true).putBoolean("linked_belts_granted_v191",true).putBoolean("female_clothes_granted_v192",true).putBoolean("linked_accessories_granted_v193",true).putBoolean("linked_staffs_granted_v194",true).putBoolean("recovered_weapons_granted_v195",true).putBoolean("expanded_clothes_granted_v197",true)
-        .putString("inventory_v2",new JSONObject(r.inventory()).toString())
-        .putString("equipment_v2",new JSONObject(r.equipment()).toString())
+        .putString("inventory_v2",serializedInventory)
+        .putString("equipment_v2",serializedEquipment)
         .putLong("bank_gold_v84",r.bankGold()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString())
         .putInt("training_token_qty",quantity(r)).putInt("normal_level",r.normalLevel()).putLong("normal_exp",r.normalExp()).putLong("gold",r.gold())
         .putInt("str",r.str()).putInt("int",r.intel()).putInt("wis",r.wis()).putInt("con",r.con()).putInt("dex",r.dex()).putInt("stat_points",r.statPoints())

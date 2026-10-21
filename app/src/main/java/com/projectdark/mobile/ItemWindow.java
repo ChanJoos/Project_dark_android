@@ -22,15 +22,18 @@ final class ItemWindow {
   final Paint p=new Paint(Paint.ANTI_ALIAS_FLAG|Paint.FILTER_BITMAP_FLAG);
   final RpgInventoryPresentation presentation=new RpgInventoryPresentation();
   int page,filter,effectPage,effectPages=1;boolean details,effectDetails;String selectedSlot,hitItem,hitTargetSlot,detailItemId,pickedTargetSlot;
-  private RpgProgressionState cachedRpg;private Map<String,Integer> cachedOwned;private Map<String,String> cachedEquipment;
-  private Map<String,RpgProgressionState.ItemDefinition> cachedDefinitions;private String cachedJob;private Integer cachedLevel;private boolean cachedSandbox;
+  private long cachedInventoryRevision=-1,cachedEquipmentRevision=-1;
+  private int rowBuilds;int rowBuildCount(){return rowBuilds;}
+  private final Map<String,RpgInventoryPresentation.ItemRow> cachedById=new HashMap<>();
+  private RpgProgressionState cachedRpg;
+  private String cachedJob;private Integer cachedLevel;private boolean cachedSandbox;
   private List<RpgInventoryPresentation.ItemRow> cachedAll;private final Map<Integer,List<RpgInventoryPresentation.ItemRow>> cachedFilters=new HashMap<>();
   ItemWindow(Context context){try{JSONObject m=new JSONObject(new String(PresentationAssetBytes.read(context,"item-window/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("crops");Iterator<String> keys=m.keys();while(keys.hasNext()){String k=keys.next();Bitmap b=BitmapFactory.decodeStream(context.getAssets().open(m.getJSONObject(k).getString("path")));if(b==null)throw new IllegalStateException(k);images.put(k,b);}}catch(Exception e){throw new IllegalStateException("Item window skin unavailable",e);}for(String key:new String[]{"panel","slot"})try{Bitmap b=BitmapFactory.decodeStream(context.getAssets().open("equipment-window-v176/"+key+".png"));if(b==null)throw new IllegalStateException(key);equipmentImages.put(key,b);}catch(Exception e){throw new IllegalStateException("Equipment reference skin unavailable",e);}}
   static RectF cell(int i){float x=344+(i%10)*58,y=118+(i/10)*58;return new RectF(x,y,x+58,y+58);}
   static RectF slot(int i){float x=EQUIP_X+POS[i][0]*EQUIP_SCALE,y=EQUIP_Y+POS[i][1]*EQUIP_SCALE;return new RectF(x,y,x+69*EQUIP_SCALE,y+69*EQUIP_SCALE);}
   private List<RpgInventoryPresentation.ItemRow> allRows(RpgProgressionState r){
-    if(cachedRpg!=r||cachedAll==null||!cachedOwned.equals(r.inventory())||!cachedEquipment.equals(r.equipment())||!cachedDefinitions.equals(r.itemDefinitions())||!Objects.equals(cachedLevel,r.normalLevel())||!Objects.equals(cachedJob,r.currentJobCode())||cachedSandbox!=r.equipmentSandbox()){
-      cachedRpg=r;cachedOwned=new LinkedHashMap<>(r.inventory());cachedEquipment=new LinkedHashMap<>(r.equipment());cachedDefinitions=new LinkedHashMap<>(r.itemDefinitions());cachedLevel=r.normalLevel();cachedJob=r.currentJobCode();cachedSandbox=r.equipmentSandbox();cachedAll=InventoryGroupsV199.group(presentation.inventoryRows(r),r);cachedFilters.clear();
+    if(cachedRpg!=r||cachedAll==null||cachedInventoryRevision!=r.inventoryRevision()||cachedEquipmentRevision!=r.equipmentRevision()||!Objects.equals(cachedLevel,r.normalLevel())||!Objects.equals(cachedJob,r.currentJobCode())||cachedSandbox!=r.equipmentSandbox()){
+      cachedRpg=r;cachedInventoryRevision=r.inventoryRevision();cachedEquipmentRevision=r.equipmentRevision();rowBuilds++;cachedLevel=r.normalLevel();cachedJob=r.currentJobCode();cachedSandbox=r.equipmentSandbox();List<RpgInventoryPresentation.ItemRow> raw=presentation.inventoryRows(r);cachedById.clear();for(RpgInventoryPresentation.ItemRow row:raw)cachedById.put(row.itemId,row);cachedAll=InventoryGroupsV199.group(raw,r);cachedFilters.clear();
     }return cachedAll;
   }
   List<RpgInventoryPresentation.ItemRow> rows(RpgProgressionState r){List<RpgInventoryPresentation.ItemRow> all=allRows(r);if(filter==0)return all;List<RpgInventoryPresentation.ItemRow> out=cachedFilters.get(filter);if(out!=null)return out;out=new ArrayList<>();for(RpgInventoryPresentation.ItemRow row:all)if(filter==1&&row.equipSlot!=null&&!row.equipSlot.isEmpty()||filter==2&&(r.isConsumable(row.itemId)||r.isRecall(row.itemId)))out.add(row);cachedFilters.put(filter,out);return out;}
@@ -100,7 +103,7 @@ final class ItemWindow {
     }
   }
 
-  RpgInventoryPresentation.ItemRow find(RpgProgressionState r,String id){for(RpgInventoryPresentation.ItemRow row:presentation.inventoryRows(r))if(row.itemId.equals(id))return row;return null;}
+  RpgInventoryPresentation.ItemRow find(RpgProgressionState r,String id){if(id==null)return null;allRows(r);return cachedById.get(RpgProgressionState.canonicalItemId(id));}
   void card(Canvas c,RpgProgressionState r,RpgProgressionState.ItemDefinition d,RpgProgressionState.ItemDefinition old,RectF b,String title,Visuals v){
     panel(c,b,title);if(d==null){txt(c,"장착한 장비가 없습니다",b.left+26,b.top+95,13,0xffb7b2a4);return;}
     RpgInventoryPresentation.ItemRow row=find(r,d.itemId);if(row!=null)v.icon(c,row,b.left+15,b.top+42,48);fit(c,RpgInventoryPresentation.displayName(d.name),b.left+76,b.top+56,b.width()-115,15,0xffe4dccb);

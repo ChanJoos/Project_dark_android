@@ -1,0 +1,21 @@
+{
+  "id": "V212_INVENTORY_REPAIR",
+  "status": "ACCEPTED",
+  "evidence": "U",
+  "source": "2026-10-21 user device report: slowdown, missing equipped rendering and Rapid/food background fragments",
+  "before": "V210 inventory-only additions and repeated full inventory projections/socket artifacts",
+  "after": "Exact named source wearable binding; revision-cached projections and ownership serialization; source-local alpha repairs",
+  "impact": [
+    "ItemWindow",
+    "RpgProgressionState",
+    "F5mSaveStore",
+    "wearable source build",
+    "SourceItemIconRegistry"
+  ],
+  "verification": "PENDING_EXACT_SOURCE_CI",
+  "limits": [
+    "no physical handset FPS claim",
+    "no new stats/names/aliases",
+    "original missing contact poses remain explicit source omissions"
+  ]
+}

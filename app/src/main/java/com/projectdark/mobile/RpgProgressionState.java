@@ -123,12 +123,28 @@ public final class RpgProgressionState {
     }
   }
 
+  /** Mutable ownership is private; read-only clients invalidate projections in O(1). */
+  private static final class RevisionMap<V> extends LinkedHashMap<String,V> {
+    long revision;
+    @Override public V put(String key,V value){boolean existed=containsKey(key);V old=super.put(key,value);if(!existed||!java.util.Objects.equals(old,value))revision++;return old;}
+    @Override public V remove(Object key){boolean existed=containsKey(key);V old=super.remove(key);if(existed)revision++;return old;}
+    @Override public void clear(){if(!isEmpty()){super.clear();revision++;}}
+    @Override public void putAll(Map<? extends String,? extends V> values){for(Map.Entry<? extends String,? extends V> e:values.entrySet())put(e.getKey(),e.getValue());}
+    @Override public V putIfAbsent(String key,V value){V old=get(key);if(old==null)put(key,value);return old;}
+  }
+  public long inventoryRevision(){return inventory.revision;}
+  public long equipmentRevision(){return equipmentBySlot.revision;}
+  void bindRecoveredWearable(String id,String appearance){
+    ItemDefinition old=items.get(id);if(old==null||!inventoryOnlyItems.contains(id))return;
+    items.put(id,new ItemDefinition(id,old.name,old.equipSlot,appearance,WEAPON_SLOT.equals(old.equipSlot)?AnimationAction.SWING:old.basicAttackAction,old.requiredLevel,old.allowedJobCodes,old.jobRestrictionResolved,old.attackElement,old.defenseElement,old.statModifiers,old.evidence));
+    inventoryOnlyItems.remove(id);
+  }
   private static final int INVENTORY_STACK_LIMIT=999999; // safety ceiling only; per-item canonical stack limits remain PENDING.
   private final Map<String,ItemDefinition> items=new LinkedHashMap<>();
   private final Set<String> inventoryOnlyItems=new LinkedHashSet<>();
   private boolean equipmentSandbox;
-  private final Map<String,Integer> inventory=new LinkedHashMap<>();
-  private final Map<String,String> equipmentBySlot=new LinkedHashMap<>();
+  private final RevisionMap<Integer> inventory=new RevisionMap<>();
+  private final RevisionMap<String> equipmentBySlot=new RevisionMap<>();
   private final Map<String,Integer> baseStats=new LinkedHashMap<>();
   private final List<RewardResolution> rewardHistory=new ArrayList<>();
   private final CanonicalMonsterRewardCatalog monsterRewards=new CanonicalMonsterRewardCatalog();
@@ -287,6 +303,7 @@ public final class RpgProgressionState {
     RecoveredWeaponCatalogV195.install(this);
     ExpandedVillageClothingV197.install(this);
     UnifiedItemCatalogV210.install(this);
+    RecoveredWearablesV212.install(this);
     installUnifiedAliases();
     for(String id:ExpandedVillageClothingV197.IDS)inventory.put(id,1);
     for(String id:RecoveredWeaponCatalogV195.IDS)inventory.put(id,1);

@@ -16,7 +16,7 @@ android {
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile, layout.buildDirectory.dir('generated/wearables-v212').get().asFile]
         }
     }
     testOptions {
@@ -232,3 +232,12 @@ tasks.register('generateTempleV211', Exec) {
  outputs.dir(layout.buildDirectory.dir('generated/temple-v211'))
 }
 tasks.named('preBuild').configure { dependsOn 'generateTempleV211' }
+
+android.sourceSets.main.java.srcDir(layout.buildDirectory.dir('generated/wearables-java-v212'))
+tasks.register('recoverWearablesV212', Exec) {
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/recover_wearables_v212.py'
+ inputs.files(rootProject.file('tools/recover_wearables_v212.py'),rootProject.file('master/source/items/wearables_v212.json'))
+ outputs.dirs(layout.buildDirectory.dir('generated/wearables-v212'),layout.buildDirectory.dir('generated/wearables-java-v212'))
+}
+tasks.named('preBuild').configure { dependsOn 'recoverWearablesV212' }

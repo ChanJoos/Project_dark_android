@@ -9,7 +9,7 @@ import java.nio.charset.StandardCharsets;
 /** Both original bodies, fixed source root, shared layer transform and source-group equipment. */
 final class SkillBodyRenderer {
   private final Context context;private final SkillPresentationCatalog catalog;private final EquipmentVisualRegistry gear;
-  private final Map<String,Bitmap> bitmaps=new HashMap<>();private final Map<String,JSONObject> registrations=new HashMap<>();
+  private final Map<String,Bitmap> bitmaps=new HashMap<>();private final Map<String,JSONObject> registrations=new LinkedHashMap<String,JSONObject>(24,.75f,true){@Override protected boolean removeEldestEntry(Map.Entry<String,JSONObject> e){return size()>24;}};
   private final Map<String,CharacterSemanticRig.Anchors> rigs=new HashMap<>();
   private int rigBuilds,bitmapLoads;
   int rigBuildCount(){return rigBuilds;}
