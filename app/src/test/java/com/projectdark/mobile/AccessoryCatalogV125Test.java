@@ -16,12 +16,12 @@ public class AccessoryCatalogV125Test {
  static RpgProgressionState.ItemDefinition named(RpgProgressionState r,String name){for(RpgProgressionState.ItemDefinition d:r.itemDefinitions().values())if(d.name.equals(name))return d;throw new AssertionError(name);}
  @Test public void allEquipmentStartsOwnedInActualGameAndEveryIconDecodes()throws Exception{
   GameView view=new GameView(c);RpgProgressionState r=((RuntimeState)ItemWindowReferenceTest.field(view,"state")).rpg();
-  SourceItemIconRegistry registry=new SourceItemIconRegistry(c);int connected=0;
+  SourceItemIconRegistry registry=new SourceItemIconRegistry(c);int connected=0;Set<String> sourceIds=new HashSet<>();for(String id:r.itemDefinitions().keySet())if(id.startsWith("IT_SOURCE_"))sourceIds.add(RpgProgressionState.canonicalItemId(id));
   assertEquals(Integer.valueOf(1),r.normalLevel());assertEquals("COMMONER",r.currentJobCode());assertTrue(r.equipmentSandbox());
   assertEquals(r.canonicalItemDefinitions().keySet(),r.inventory().keySet());
   for(RpgProgressionState.ItemDefinition d:r.canonicalItemDefinitions().values())if(d.equippable()){
    assertTrue(d.itemId,r.inventory().get(d.itemId)>=(RpgProgressionState.pairedSlot(d.equipSlot)?2:1));assertEquals(d.itemId,r.inventoryOnlyItem(d.itemId)?RpgProgressionState.RequirementResult.PENDING:RpgProgressionState.RequirementResult.MET,r.currentRequirements(d.itemId));
-   if(d.itemId.startsWith("IT_SOURCE_")&&!d.name.startsWith("흑요석워리어")){assertNotNull(d.itemId,registry.get(d));connected++;}
+   if(sourceIds.contains(d.itemId)&&!d.name.startsWith("흑요석워리어")){assertNotNull(d.itemId,registry.get(d));connected++;}
   }
   for(String element:new String[]{"WATER","EARTH","WIND","FIRE"}){assertNotNull(element,registry.get(r.itemDefinitions().get("IT_NECK_"+element+"_PEARL")));assertNotNull(element,registry.get(r.itemDefinitions().get("IT_BELT_"+element+"_LEATHER")));}
   assertTrue(connected>=150);

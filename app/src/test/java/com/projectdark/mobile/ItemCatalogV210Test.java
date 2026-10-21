@@ -28,6 +28,14 @@ public class ItemCatalogV210Test {
   r.enableEquipmentSandbox(true);
   for(String id:UnifiedItemCatalogV210.IDS)if(r.inventoryOnlyItem(id))assertEquals(id,RpgProgressionState.RequirementResult.PENDING,r.currentRequirements(id));
  }
+ @Test public void normalJobAndCampaignGrantsNeverAutoEquipHigherLevelOriginals(){
+  RpgProgressionState r=new RpgProgressionState();r.restoreProgression(3,0L);
+  assertTrue(r.chooseInitialJob("WARRIOR"));String sword=RpgProgressionState.canonicalItemId("IT_B_JOB_WARRIOR_WEAPON");
+  assertEquals(Integer.valueOf(56),r.itemDefinitions().get(sword).requiredLevel);
+  assertNotEquals(sword,r.equipment().get("무기"));assertEquals(RpgProgressionState.EquipResult.REQUIREMENT_NOT_MET,r.equip(sword));
+  String armor=r.equipment().get("갑옷");assertTrue(r.grantCampaignGear(11));assertEquals(armor,r.equipment().get("갑옷"));
+  r.restoreProgression(11,0L);assertTrue(r.grantCampaignGear(11));assertEquals(RpgProgressionState.canonicalItemId("IT_B_CAMPAIGN_WARRIOR_11"),r.equipment().get("갑옷"));
+ }
  @Test public void originalDeityVariantsKeepSeparateNamesStatsRowsAndBothRingSlots()throws Exception{
   RpgProgressionState r=new RpgProgressionState();r.enableEquipmentSandbox(true);String base="USER_ITEM_20261018_R05424",setoa="USER_ITEM_20261018_R03440";Map<String,Integer> own=new LinkedHashMap<>();own.put(base,1);own.put(setoa,1);assertTrue(r.restoreOwnedItems(own,Collections.emptyMap()));assertNotEquals(RpgProgressionState.canonicalItemId(base),RpgProgressionState.canonicalItemId(setoa));assertFalse(InventoryGroupsV199.equivalent(r,base,setoa));assertEquals(2,new ItemWindow(c).rows(r).size());assertNotEquals(r.itemDefinitions().get(base).statModifiers,r.itemDefinitions().get(setoa).statModifiers);
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(base,"반지"));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equipToSlot(setoa,RpgProgressionState.RIGHT_RING_SLOT));assertEquals(base,r.equipment().get("반지"));assertEquals(setoa,r.equipment().get(RpgProgressionState.RIGHT_RING_SLOT));assertEquals(2,new ItemWindow(c).rows(r).size());

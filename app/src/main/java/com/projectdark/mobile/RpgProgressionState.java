@@ -343,7 +343,7 @@ public final class RpgProgressionState {
       registerItem(new ItemDefinition("IT_B_CAMPAIGN_TOOL_"+job+"_"+level,CampaignProgress.jobName(job)+(level==11?" 수련 도구":" 숙련 도구"),monk?"장갑":WEAPON_SLOT,monk?null:base.appearanceId,monk?null:base.basicAttackAction,level,jobSet(job),true,null,null,stats("DAM",level==11?4:level==26?9:level==41?15:level==56?22:28,magic?"INT":"STR",level==11?3:level==26?6:level==41?9:level==56?14:18,magic?"WIS":"CON",level==11?2:level==26?4:level==41?6:level==56?9:12),Evidence.ADAPTED));
     }
   }
-  public boolean grantCampaignGear(int level){String id=canonicalItemId("IT_B_CAMPAIGN_"+currentJobCode+"_"+level);if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;equipmentBySlot.put(ARMOR_SLOT,id);return true;}
+  public boolean grantCampaignGear(int level){String id=canonicalItemId("IT_B_CAMPAIGN_"+currentJobCode+"_"+level);if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;if(currentRequirements(id)==RequirementResult.MET)equipmentBySlot.put(ARMOR_SLOT,id);return true;}
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
   private static Map<String,Integer> stats(Object... kv){Map<String,Integer> out=new LinkedHashMap<>();for(int i=0;i+1<kv.length;i+=2)out.put((String)kv[i],(Integer)kv[i+1]);return out;}
   private void registerItem(ItemDefinition def){
@@ -460,8 +460,8 @@ public final class RpgProgressionState {
     String weapon="WARRIOR".equals(jobCode)?"IT_B_JOB_WARRIOR_WEAPON":"ROGUE".equals(jobCode)?"IT_B_JOB_ROGUE_WEAPON":"MAGE".equals(jobCode)?"IT_B_JOB_MAGE_WAND":"CLERIC".equals(jobCode)?"IT_B_JOB_CLERIC_WAND":null;
     String armor="WARRIOR".equals(jobCode)?"IT_B_JOB_WARRIOR_TUNIC":"ROGUE".equals(jobCode)?"IT_B_JOB_ROGUE_GARMENT":"MAGE".equals(jobCode)?"IT_B_JOB_MAGE_ROBE":"CLERIC".equals(jobCode)?"IT_B_JOB_CLERIC_ROBE":"IT_B_JOB_MONK_GI";
     weapon=canonicalItemId(weapon);armor=canonicalItemId(armor);
-    if(weapon==null)equipmentBySlot.remove(WEAPON_SLOT);else{inventory.put(weapon,Math.max(1,value(inventory,weapon)));equipmentBySlot.put(WEAPON_SLOT,weapon);}
-    inventory.put(armor,Math.max(1,value(inventory,armor)));equipmentBySlot.put(ARMOR_SLOT,armor);
+    if(weapon==null)equipmentBySlot.remove(WEAPON_SLOT);else{inventory.put(weapon,Math.max(1,value(inventory,weapon)));if(currentRequirements(weapon)==RequirementResult.MET)equipmentBySlot.put(WEAPON_SLOT,weapon);}
+    inventory.put(armor,Math.max(1,value(inventory,armor)));if(currentRequirements(armor)==RequirementResult.MET)equipmentBySlot.put(ARMOR_SLOT,armor);
     return true;
   }
   public boolean buySmallPotion(){return buyItem(B_SMALL_POTION_ITEM_ID,B_SMALL_POTION_PRICE);}
