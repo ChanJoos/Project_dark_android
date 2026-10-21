@@ -23,6 +23,7 @@ public final class RpgInteractionController {
 
   /** Select an owned item by canonical ID. Display names are deliberately not used as identity. */
   public boolean selectInventoryItem(RpgProgressionState rpg,String itemId){
+    itemId=RpgProgressionState.canonicalItemId(itemId);
     Integer quantity=rpg.inventory().get(itemId);
     if(quantity==null||quantity<=0){selectedInventoryItemId=null;lastEquipResult=null;return false;}
     selectedInventoryItemId=itemId;

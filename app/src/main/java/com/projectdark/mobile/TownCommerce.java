@@ -35,7 +35,10 @@ public final class TownCommerce {
   new Offer("IT_RING_REDJADE","홍옥반지","장신구",350,"레벨 11 · 공통 반지"),
   new Offer("IT_RING_GORU","고루반지","장신구",350,"레벨 11 · 마법사 / 성직자")));
  private static List<Offer> campaignEquipment(List<Offer> starter){List<Offer> out=new ArrayList<>(starter);out.add(new Offer("IT_B_POTE_SHOES","숲길 신발","방어구",600,"레벨 20 · AC -1 / DEX 3"));for(String element:new String[]{"WATER","WIND","EARTH","FIRE"}){String name="WATER".equals(element)?"바다":"WIND".equals(element)?"바람":"EARTH".equals(element)?"대지":"화염";out.add(new Offer("IT_NECK_"+element+"_PEARL",name+"의진주목걸이","장신구",400,"레벨 11 · 공격속성 "+name));out.add(new Offer("IT_BELT_"+element+"_LEATHER",name+"의가죽벨트","장신구",400,"레벨 11 · 방어속성 "+name));}for(String job:CampaignProgress.JOBS)for(int tier:new int[]{11,26,41,56,65}){out.add(new Offer("IT_B_CAMPAIGN_"+job+"_"+tier,CampaignProgress.jobName(job)+(tier==11?" 견습 장비":" 숙련 장비"),"방어구",tier==11?600:tier==26?1800:tier==41?4100:tier==56?6500:9500,"직업 의상 · 레벨 "+tier));out.add(new Offer("IT_B_CAMPAIGN_TOOL_"+job+"_"+tier,CampaignProgress.jobName(job)+(tier==11?" 수련 도구":" 숙련 도구"),job.equals("MARTIAL_ARTIST")?"장신구":"무기",tier==11?400:tier==26?1200:tier==41?2800:tier==56?4200:6000,"직업 전투 도구 · 레벨 "+tier));}return Collections.unmodifiableList(out);}
- public static List<Offer> offers(TownInteriorDef.Kind k){return k==TownInteriorDef.Kind.REAGENT?REAGENTS:k==TownInteriorDef.Kind.EQUIPMENT?EQUIPMENT:Collections.emptyList();}
+ public static List<Offer> offers(TownInteriorDef.Kind k){
+  if(k==TownInteriorDef.Kind.REAGENT)return REAGENTS;if(k!=TownInteriorDef.Kind.EQUIPMENT)return Collections.emptyList();
+  Map<String,Offer> out=new LinkedHashMap<>();for(Offer o:EQUIPMENT){String id=RpgProgressionState.canonicalItemId(o.id);out.putIfAbsent(id,new Offer(id,EquipmentIdentityV210.name(id,o.name),o.category,o.price,"능력치와 착용 조건은 장비 정보에서 확인"));}return Collections.unmodifiableList(new ArrayList<>(out.values()));
+ }
  /** Region-specific merchandise. Source identity/stats remain unchanged; prices and availability are mobile policy. */
  public static List<Offer> offers(TownInteriorDef room,RuntimeState state){
   if(room==null||state==null)return Collections.emptyList();
@@ -43,7 +46,7 @@ public final class TownCommerce {
   boolean weapon=room.doorId.equals("rucesion_weapon"),clothing=room.doorId.equals("rucesion_clothing");
   List<Offer> out=new ArrayList<>();Set<String> ids=new HashSet<>();
   if(!clothing)for(Offer o:offers(room.kind))if(weapon==o.category.equals("무기")){out.add(o);ids.add(o.id);}
-  for(RpgProgressionState.ItemDefinition d:state.rpg().itemDefinitions().values())if(d.name.startsWith("뤼케시온")&&d.equippable()){
+  for(RpgProgressionState.ItemDefinition d:state.rpg().canonicalItemDefinitions().values())if(d.name.startsWith("뤼케시온")&&d.equippable()&&!state.rpg().inventoryOnlyItem(d.itemId)){
    boolean sword="무기".equals(d.equipSlot),coat="갑옷".equals(d.equipSlot);
    if((weapon&&!sword)||(!weapon&&sword)||(clothing&&!coat)||!ids.add(d.itemId))continue;
    int level=d.requiredLevel==null?71:Math.max(1,d.requiredLevel);long price=coat?7100:Math.max(1000,level*100L);
@@ -51,18 +54,19 @@ public final class TownCommerce {
   }
   return Collections.unmodifiableList(out);
  }
- public static Offer find(TownInteriorDef room,RuntimeState state,String id){for(Offer o:offers(room,state))if(o.id.equals(id))return o;return null;}
+ public static Offer find(TownInteriorDef room,RuntimeState state,String id){id=RpgProgressionState.canonicalItemId(id);for(Offer o:offers(room,state))if(o.id.equals(id))return o;return null;}
  public static long sellPrice(TownInteriorDef room,RuntimeState state,String id){Offer o=find(room,state,id);return o==null?-1:"IT_REAGENT_EXCURANUM".equals(id)?0:o.price/2;}
  public static Result transact(RuntimeState state,TownInteriorDef room,Operation op,String id,int quantity,Durability durability){
   if(room==null)return Result.INVALID;
   Offer approved=find(room,state,id);if((op==Operation.BUY||op==Operation.SELL)&&approved==null)return Result.INVALID;
   return transactAuthorized(state,room.kind,op,id,quantity,durability,approved,sellPrice(room,state,id));
  }
- public static Offer find(TownInteriorDef.Kind k,String id){for(Offer o:offers(k))if(o.id.equals(id))return o;return null;}
+ public static Offer find(TownInteriorDef.Kind k,String id){id=RpgProgressionState.canonicalItemId(id);for(Offer o:offers(k))if(o.id.equals(id))return o;return null;}
  public static long sellPrice(String id){for(TownInteriorDef.Kind k:TownInteriorDef.Kind.values()){Offer o=find(k,id);if(o!=null)return "IT_REAGENT_EXCURANUM".equals(id)?0:o.price/2;}return -1;}
  public interface Durability {boolean save();}
  public static Result transact(RuntimeState state,TownInteriorDef.Kind kind,Operation op,String id,int quantity,Durability durability){return transactAuthorized(state,kind,op,id,quantity,durability,find(kind,id),sellPrice(id));}
  private static Result transactAuthorized(RuntimeState state,TownInteriorDef.Kind kind,Operation op,String id,int quantity,Durability durability,Offer approved,long salePrice){
+  id=RpgProgressionState.canonicalItemId(id);
   if(state==null||kind==null||op==null||durability==null||quantity<=0||quantity>999999)return Result.INVALID;
   RpgProgressionState r=state.rpg();Map<String,Integer> inv=new LinkedHashMap<>(r.inventory()),bank=new LinkedHashMap<>(r.bankInventory());Map<String,String> eq=new LinkedHashMap<>(r.equipment());Map<String,Integer> originalInv=new LinkedHashMap<>(inv),originalBank=new LinkedHashMap<>(bank);long gold=r.gold(),balance=r.bankGold();int hp=state.player().hp,mp=state.player().mp;org.json.JSONObject campaign=r.campaign().snapshot();
   if(op==Operation.BUY){Offer o=approved;if(o==null)return Result.INVALID;long total=o.price*quantity;if(gold<total)return Result.INSUFFICIENT_GOLD;if(r.autoLootResolvedItem(id,quantity)!=RpgProgressionState.AutoLootResult.LOOTED)return Result.FULL;r.restoreGold(gold-total);r.campaign().bought(id);}

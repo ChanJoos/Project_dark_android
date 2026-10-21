@@ -1,3 +1,14 @@
+item_catalog_v210:
+  status: IMPLEMENTED_NATIVE_CI_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  base_runtime: 90845f57470ca994abce73db1ced38eb053d22a0
+  user_rule: ORIGINAL_VARIANTS_REMAIN_DISTINCT_NO_IMAGE_BASED_UI_GROUPING
+  source_named_identities: 1445
+  synthetic_aliases_retired: 60
+  source_only_wearable_motions: UNRESOLVED_EQUIP_BLOCKED
+  physical_phone: PENDING
+
 mine_hunt_repair_v209:
   status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
   runtime_source: 90845f57470ca994abce73db1ced38eb053d22a0

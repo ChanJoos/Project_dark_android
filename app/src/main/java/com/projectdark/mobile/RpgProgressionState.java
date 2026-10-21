@@ -125,6 +125,7 @@ public final class RpgProgressionState {
 
   private static final int INVENTORY_STACK_LIMIT=999999; // safety ceiling only; per-item canonical stack limits remain PENDING.
   private final Map<String,ItemDefinition> items=new LinkedHashMap<>();
+  private final Set<String> inventoryOnlyItems=new LinkedHashSet<>();
   private boolean equipmentSandbox;
   private final Map<String,Integer> inventory=new LinkedHashMap<>();
   private final Map<String,String> equipmentBySlot=new LinkedHashMap<>();
@@ -262,6 +263,8 @@ public final class RpgProgressionState {
     LinkedStaffCatalogV194.install(this);
     RecoveredWeaponCatalogV195.install(this);
     ExpandedVillageClothingV197.install(this);
+    UnifiedItemCatalogV210.install(this);
+    installUnifiedAliases();
     for(String id:ExpandedVillageClothingV197.IDS)inventory.put(id,1);
     for(String id:RecoveredWeaponCatalogV195.IDS)inventory.put(id,1);
     for(String id:LinkedStaffCatalogV194.IDS)inventory.put(id,1);
@@ -281,7 +284,40 @@ public final class RpgProgressionState {
     inventory.put("IT_TEST_HAT_MH173",1);inventory.put("IT_TEST_HAT_MH174",1);
     inventory.put("IT_TEST_ARMOR_MU0000002",1);inventory.put("IT_TEST_ARMOR_MU0000003",1);
     equipmentBySlot.put(SHOES_SLOT,"IT_SHOES");equipmentBySlot.put(HEAD_SLOT,STARTER_HAT_ITEM_ID);equipmentBySlot.put(SHIELD_SLOT,STARTER_SHIELD_ITEM_ID);
+    for(String id:UnifiedItemCatalogV210.IDS)inventory.putIfAbsent(id,pairedSlot(items.get(id).equipSlot)?2:1);
+    Map<String,Integer> initial=canonicalQuantities(inventory,false);Map<String,String> initialEquipment=canonicalEquipment(equipmentBySlot);
+    inventory.clear();inventory.putAll(initial);equipmentBySlot.clear();equipmentBySlot.putAll(initialEquipment);
   }
+
+  /** One authoritative definition; retained IDs are compatibility aliases, not separate equipment. */
+  void registerUnifiedItem(String id,String name,String slot,String appearance,Integer level,Map<String,Integer> source,Evidence evidence,boolean inventoryOnly){
+    ItemDefinition old=items.get(id);
+    Map<String,Integer> values=source.isEmpty()&&old!=null?old.statModifiers:source;
+    items.put(id,new ItemDefinition(id,name,slot,old!=null?old.appearanceId:appearance,old!=null?old.basicAttackAction:appearance!=null&&WEAPON_SLOT.equals(slot)?AnimationAction.SWING:null,
+        level!=null?level:old!=null?old.requiredLevel:null,old!=null?old.allowedJobCodes:Collections.emptySet(),old!=null&&old.jobRestrictionResolved,
+        old!=null?old.attackElement:null,old!=null?old.defenseElement:null,values,evidence==Evidence.PENDING&&old!=null?old.evidence:evidence));
+    if(inventoryOnly)inventoryOnlyItems.add(id);
+  }
+  private void installUnifiedAliases(){
+    // These unidentified original silhouettes had invented DEX/AC. Keep source art, remove invented numbers.
+    for(ItemDefinition d:new ArrayList<>(items.values()))if(d.name.startsWith("이름 미확인"))
+      items.put(d.itemId,new ItemDefinition(d.itemId,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,null,Collections.emptySet(),false,null,null,Collections.emptyMap(),Evidence.PENDING));
+    for(Map.Entry<String,String> e:EquipmentIdentityV210.ALIASES.entrySet()){
+      ItemDefinition d=items.get(e.getValue());if(d==null||!items.containsKey(e.getKey()))throw new IllegalStateException("Invalid canonical item alias "+e);
+      items.put(e.getKey(),new ItemDefinition(e.getKey(),d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel,d.allowedJobCodes,d.jobRestrictionResolved,d.attackElement,d.defenseElement,d.statModifiers,d.evidence));
+    }
+  }
+  public static String canonicalItemId(String id){return EquipmentIdentityV210.canonical(id);}
+  public Map<String,ItemDefinition> canonicalItemDefinitions(){Map<String,ItemDefinition> out=new LinkedHashMap<>();for(ItemDefinition d:items.values())if(!EquipmentIdentityV210.alias(d.itemId))out.put(d.itemId,d);return Collections.unmodifiableMap(out);}
+  public boolean inventoryOnlyItem(String id){return inventoryOnlyItems.contains(canonicalItemId(id));}
+  private static Map<String,Integer> canonicalQuantities(Map<String,Integer> input,boolean sum){
+    Map<String,Integer> out=new LinkedHashMap<>();for(Map.Entry<String,Integer> e:input.entrySet()){
+      String id=canonicalItemId(e.getKey());Integer value=e.getValue();if(value==null||value<=0)throw new IllegalArgumentException("Invalid item quantity");
+      long n=sum?(long)out.getOrDefault(id,0)+value:Math.max(out.getOrDefault(id,0),value);
+      if(n>INVENTORY_STACK_LIMIT)throw new IllegalArgumentException("Canonical stack overflow");out.put(id,(int)n);
+    }return out;
+  }
+  private static Map<String,String> canonicalEquipment(Map<String,String> input){Map<String,String> out=new LinkedHashMap<>();for(Map.Entry<String,String> e:input.entrySet())out.put(e.getKey(),canonicalItemId(e.getValue()));return out;}
 
   private void registerCampaignEquipment(){
     registerItem(new ItemDefinition("IT_B_POTE_SHOES","숲길 신발",SHOES_SLOT,"ml230",20,jobSet(),true,null,null,stats("AC",-1,"DEX",3),Evidence.ADAPTED));
@@ -295,7 +331,7 @@ public final class RpgProgressionState {
       registerItem(new ItemDefinition("IT_B_CAMPAIGN_TOOL_"+job+"_"+level,CampaignProgress.jobName(job)+(level==11?" 수련 도구":" 숙련 도구"),monk?"장갑":WEAPON_SLOT,monk?null:base.appearanceId,monk?null:base.basicAttackAction,level,jobSet(job),true,null,null,stats("DAM",level==11?4:level==26?9:level==41?15:level==56?22:28,magic?"INT":"STR",level==11?3:level==26?6:level==41?9:level==56?14:18,magic?"WIS":"CON",level==11?2:level==26?4:level==41?6:level==56?9:12),Evidence.ADAPTED));
     }
   }
-  public boolean grantCampaignGear(int level){String id="IT_B_CAMPAIGN_"+currentJobCode+"_"+level;if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;equipmentBySlot.put(ARMOR_SLOT,id);return true;}
+  public boolean grantCampaignGear(int level){String id=canonicalItemId("IT_B_CAMPAIGN_"+currentJobCode+"_"+level);if(!items.containsKey(id)||autoLootResolvedItem(id,1)!=AutoLootResult.LOOTED)return false;equipmentBySlot.put(ARMOR_SLOT,id);return true;}
   private static Set<String> jobSet(String... jobs){return new LinkedHashSet<>(Arrays.asList(jobs));}
   private static Map<String,Integer> stats(Object... kv){Map<String,Integer> out=new LinkedHashMap<>();for(int i=0;i+1<kv.length;i+=2)out.put((String)kv[i],(Integer)kv[i+1]);return out;}
   private void registerItem(ItemDefinition def){
@@ -344,7 +380,7 @@ public final class RpgProgressionState {
   public boolean equipmentSandbox(){return equipmentSandbox;}
   public void enableEquipmentSandbox(boolean grant){
     equipmentSandbox=true;
-    if(grant)for(ItemDefinition d:items.values())inventory.put(d.itemId,Math.max(pairedSlot(d.equipSlot)?2:1,inventory.getOrDefault(d.itemId,0)));
+    if(grant)for(ItemDefinition d:canonicalItemDefinitions().values())inventory.put(d.itemId,Math.max(pairedSlot(d.equipSlot)?2:1,inventory.getOrDefault(d.itemId,0)));
   }
   public Map<String,ItemDefinition> itemDefinitions(){return Collections.unmodifiableMap(items);}
   public Map<String,Integer> inventory(){return Collections.unmodifiableMap(inventory);}
@@ -398,6 +434,7 @@ public final class RpgProgressionState {
   public Map<String,Integer> bankInventory(){return Collections.unmodifiableMap(bankInventory);}
   public boolean restoreBank(long balance,Map<String,Integer> deposited){
     if(balance<0||deposited==null)return false;
+    try{deposited=canonicalQuantities(deposited,true);}catch(IllegalArgumentException invalid){return false;}
     for(Map.Entry<String,Integer> e:deposited.entrySet())if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return false;
     bankGold=balance;bankInventory.clear();bankInventory.putAll(deposited);return true;
   }
@@ -410,6 +447,7 @@ public final class RpgProgressionState {
     progressionNode=ProgressionNode.BASIC_JOB;
     String weapon="WARRIOR".equals(jobCode)?"IT_B_JOB_WARRIOR_WEAPON":"ROGUE".equals(jobCode)?"IT_B_JOB_ROGUE_WEAPON":"MAGE".equals(jobCode)?"IT_B_JOB_MAGE_WAND":"CLERIC".equals(jobCode)?"IT_B_JOB_CLERIC_WAND":null;
     String armor="WARRIOR".equals(jobCode)?"IT_B_JOB_WARRIOR_TUNIC":"ROGUE".equals(jobCode)?"IT_B_JOB_ROGUE_GARMENT":"MAGE".equals(jobCode)?"IT_B_JOB_MAGE_ROBE":"CLERIC".equals(jobCode)?"IT_B_JOB_CLERIC_ROBE":"IT_B_JOB_MONK_GI";
+    weapon=canonicalItemId(weapon);armor=canonicalItemId(armor);
     if(weapon==null)equipmentBySlot.remove(WEAPON_SLOT);else{inventory.put(weapon,Math.max(1,value(inventory,weapon)));equipmentBySlot.put(WEAPON_SLOT,weapon);}
     inventory.put(armor,Math.max(1,value(inventory,armor)));equipmentBySlot.put(ARMOR_SLOT,armor);
     return true;
@@ -460,7 +498,7 @@ public final class RpgProgressionState {
     return RequirementResult.MET;
   }
 
-  public RequirementResult currentRequirements(String itemId){if(equipmentSandbox&&items.containsKey(itemId)&&items.get(itemId).equippable())return RequirementResult.MET;return evaluateRequirements(itemId,currentJobCode,normalLevel);}
+  public RequirementResult currentRequirements(String itemId){itemId=canonicalItemId(itemId);if(inventoryOnlyItem(itemId))return RequirementResult.PENDING;if(equipmentSandbox&&items.containsKey(itemId)&&items.get(itemId).equippable())return RequirementResult.MET;return evaluateRequirements(itemId,currentJobCode,normalLevel);}
 
   /**
    * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.
@@ -574,6 +612,7 @@ public final class RpgProgressionState {
   public UseResult useMillesRecall(RuntimeState runtime){int owned=inventory.getOrDefault(RECALL_MILLES_ITEM_ID,0);if(owned<=0)return UseResult.ITEM_NOT_OWNED;if(runtime==null||!runtime.player().alive)return UseResult.NO_EFFECT;if(owned==1)inventory.remove(RECALL_MILLES_ITEM_ID);else inventory.put(RECALL_MILLES_ITEM_ID,owned-1);return UseResult.USED;}
   public boolean grantB5SmallHpPotion(int quantity){return autoLootResolvedItem(B5_SMALL_HP_POTION_ITEM_ID,quantity)==AutoLootResult.LOOTED;}
   public AutoLootResult autoLootResolvedItem(String itemId,int quantity){
+    itemId=canonicalItemId(itemId);
     if(quantity<=0)return AutoLootResult.INVALID_QUANTITY;
     if(!items.containsKey(itemId))return AutoLootResult.INVALID_ITEM;
     int current=inventory.containsKey(itemId)?inventory.get(itemId):0;
@@ -584,6 +623,7 @@ public final class RpgProgressionState {
 
   /** Replace saved ownership exactly, including an explicitly empty equipment set. */
   public boolean restoreOwnedItems(Map<String,Integer> owned,Map<String,String> equipped){
+    try{owned=canonicalQuantities(owned,true);equipped=canonicalEquipment(equipped);}catch(IllegalArgumentException invalid){return false;}
     for(Map.Entry<String,Integer> e:owned.entrySet())
       if(!items.containsKey(e.getKey())||e.getValue()==null||e.getValue()<=0||e.getValue()>INVENTORY_STACK_LIMIT)return false;
     Map<String,Integer> counts=new LinkedHashMap<>();
@@ -605,6 +645,7 @@ public final class RpgProgressionState {
 
   /** Inventory chooses an available hand; explicit slot actions can replace/remove either hand. */
   public EquipResult equip(String itemId){
+    itemId=canonicalItemId(itemId);
     ItemDefinition def=items.get(itemId);if(def==null)return inventory.containsKey(itemId)?EquipResult.UNKNOWN_ITEM:EquipResult.ITEM_NOT_OWNED;
     String slot=def.equipSlot;
     if(pairedSlot(slot)){
@@ -617,9 +658,10 @@ public final class RpgProgressionState {
     }
     return equipToSlot(itemId,slot);
   }
-  public int equippedCount(String id){int n=0;for(String value:equipmentBySlot.values())if(value.equals(id))n++;return n;}
+  public int equippedCount(String id){id=canonicalItemId(id);int n=0;for(String value:equipmentBySlot.values())if(value.equals(id))n++;return n;}
   public EquipResult unequip(String slot){return equipmentBySlot.remove(slot)==null?EquipResult.UNKNOWN_ITEM:EquipResult.UNEQUIPPED;}
   public EquipResult equipToSlot(String itemId,String slot){
+    itemId=canonicalItemId(itemId);
     Integer owned=inventory.get(itemId);
     if(owned==null||owned<=0)return EquipResult.ITEM_NOT_OWNED;
     ItemDefinition def=items.get(itemId);
