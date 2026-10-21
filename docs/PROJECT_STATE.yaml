@@ -1,5 +1,5 @@
 milles_temple_v213:
-  status: BUILD_HOST_NATIVE_VERIFIED_COMMON_PENDING
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
@@ -10,7 +10,7 @@ milles_temple_v213:
   native_tests: 46
   common_push_run: 39580282386
   common_pr_run: 39580290800
-  common_status: IN_PROGRESS
+  common_status: SUCCESS
   receipt: verification/TEMPLE_MILLES_V213_BUILD.json
   required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, docs/VILLAGE_CREATION_LESSONS.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/MILLES_SOURCE_STYLE_V101_CONTRACT.md, docs/MILLES_RIVER_STYLE_V102_CONTRACT.md, docs/MILLES_CHURCH_BENCH_V103_CONTRACT.md, master/source/temple_v211/reference.json, master/source/temple_v211/entrance_repair_v213.json, master/changes/V213_MILLES_TEMPLE.json]
   physical_phone: PENDING
@@ -18,7 +18,7 @@ milles_temple_v213:
   previous_report: DEVICE_FAILED_USER_REPORTED_MISSING_PORTALS_NPC_AND_ENTRANCE_MISMATCH
   source_topology: ADAPTED_THREE_ROOMS_ONLY_OTHER_DEITY_SOURCE_PENDING
   install: SEPARATE_V213_TEST_PACKAGE_OWN_PROFILE_EXISTING_APP_RETAINED
-  next: FINISH_COMMON_CI_THEN_EXACT_APK_HANDSET_FEEDBACK_NO_RUNTIME_REBUILD
+  next: EXACT_APK_HANDSET_FEEDBACK_NO_RUNTIME_REBUILD
 
 inventory_repair_v212:
   status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING

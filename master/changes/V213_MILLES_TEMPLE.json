@@ -1,6 +1,6 @@
 {
   "id": "V213_MILLES_TEMPLE",
-  "status": "BUILD_HOST_NATIVE_VERIFIED_COMMON_PENDING",
+  "status": "BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING",
   "user_report": "DEVICE_FAILED_USER_REPORTED_ENTRANCE_AND_MISSING_PORTALS_NPC",
   "source": [
     "master/source/temple_v211/reference.json",
@@ -41,6 +41,7 @@
     "nativeTests": 46,
     "commonPush": 39580282386,
     "commonPR": 39580290800,
-    "commonStatus": "IN_PROGRESS"
+    "commonStatus": "SUCCESS",
+    "wideNativeArtifact": 12338161312
   }
 }

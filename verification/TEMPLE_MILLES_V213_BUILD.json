@@ -129,7 +129,7 @@
   "phoneVerified": false,
   "userVisualAcceptance": "PENDING",
   "revision": "V213_MILLES_TEMPLE",
-  "status": "BUILD_HOST_NATIVE_VERIFIED_COMMON_PENDING",
+  "status": "BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING",
   "artifact": {
     "id": 12336915112,
     "zipSha256": "c301b649bd4c7740e0b28ec8538bb10a8ed6e15f0b8ccea979be2327190b517f",
@@ -139,7 +139,8 @@
   "commonCI": {
     "push": 39580282386,
     "pullRequest": 39580290800,
-    "status": "IN_PROGRESS"
+    "status": "SUCCESS",
+    "sourceCommit": "627efe679dfa77a4f3f6daa9e1e18cb4deace439"
   },
   "mainSha": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
   "mainMerged": false,
@@ -264,5 +265,18 @@
     "Distinct original source pillars, source-grid and preserved interior atlas checks",
     "Milles native lawn cache 32 entries/8652800bytes, pixel phase/chunk seams and departure release",
     "Existing service reachability, scenery depth, river/bridge, shared movement, V212 inventory and save tests"
-  ]
+  ],
+  "nativeWideReview": {
+    "run": 39580290800,
+    "artifact": 12338161312,
+    "zipSha256": "fa3c5741482a64c1bac148575c735b64a9860f19bdb18b04268cf025bdf436fd",
+    "decodedImages": 18,
+    "reviewed": "STANDARD_WIDE_LANDMARKS_SCENERY_OVERVIEW_AND_FIXTURES",
+    "limits": "Scenery-only overview omits live actors/shrine injection; legacy v101 bench fixtures are not production V103 bench renders."
+  },
+  "delivery": {
+    "apk": "PROJECT_DARK_V213_TEST.apk",
+    "review": "PROJECT_DARK_V213_REVIEW.png",
+    "saved": true
+  }
 }
