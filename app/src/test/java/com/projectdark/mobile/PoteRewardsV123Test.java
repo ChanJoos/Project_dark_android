@@ -38,6 +38,7 @@ public class PoteRewardsV123Test {
       for(String id:new String[]{"IT_B_CAMPAIGN_"+job+"_11","IT_B_CAMPAIGN_TOOL_"+job+"_11"}){
         String canonical=RpgProgressionState.canonicalItemId(id);assertEquals(Integer.valueOf(owned.getOrDefault(canonical,0)+1),r.inventory().get(canonical));assertFalse(r.inventory().containsKey(id));RpgProgressionState.ItemDefinition original=r.itemDefinitions().get(canonical);
         if(original.requiredLevel!=null&&original.requiredLevel>11){assertEquals(RpgProgressionState.RequirementResult.LEVEL_NOT_MET,r.currentRequirements(id));if(canonical.equals(r.equipment().get(original.equipSlot)))r.unequip(original.equipSlot);assertEquals(RpgProgressionState.EquipResult.REQUIREMENT_NOT_MET,r.equip(id));r.restoreProgression(original.requiredLevel,0L);}
+        if(!original.jobRestrictionResolved||r.inventoryOnlyItem(canonical)){assertEquals(job+" "+original.name,RpgProgressionState.RequirementResult.PENDING,r.currentRequirements(id));assertEquals(RpgProgressionState.EquipResult.REQUIREMENT_PENDING,r.equip(id));r.restoreProgression(11,0L);continue;}
         assertEquals(job+" "+original.name,RpgProgressionState.RequirementResult.MET,r.currentRequirements(id));String slot=r.itemDefinitions().get(canonical).equipSlot;if(canonical.equals(r.equipment().get(slot)))r.unequip(slot);assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));assertEquals(canonical,r.equipment().get(slot));r.restoreProgression(11,0L);
       }
     }
