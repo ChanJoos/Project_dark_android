@@ -114,7 +114,19 @@ jobs:
             python3 tools/generate_skill_presentation.py
             python3 tools/generate_skill_abilities.py
             git diff --exit-code -- app/src/main/assets/skills app/src/main/assets/skill-presentation app/src/main/java/com/projectdark/mobile/SkillActionData.java app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_PRESENTATION_MAPPING.csv docs/SKILL_ABILITY_FORMULAS.csv docs/SKILL_ACTION_DECISIONS.csv master/source/martial_v230/reference.json
-            if [[ "$(git log -1 --format=%B)" == *"[v230-native-tail]"* ]]; then
+            if [[ "$(git log -1 --format=%B)" == *"[v230-visual-tail]"* ]]; then
+              git fetch --depth=1 origin 89078a3f122ba3fb540790c4a77e441c5d0d7ff5
+              python3 - <<'PYVISUAL230'
+          import subprocess
+          base='89078a3f122ba3fb540790c4a77e441c5d0d7ff5'
+          assert subprocess.check_output(['git','rev-parse',base+':app/src/main'],text=True)==subprocess.check_output(['git','rev-parse','HEAD:app/src/main'],text=True)
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/test/java/com/projectdark/mobile/MartialRepairV230Test.java','app/src/test/java/com/projectdark/mobile/MartialSevenV228Test.java'}
+          paths=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
+          assert all(p in allowed or p.startswith(('docs/','verification/')) for p in paths),paths
+          print('Identical runtime to89078a3f; place native visual fixtures near spawn instead of first map edge; rerun two normal-input/capture cases. Native reuse requires39747442663 XML proof.')
+          PYVISUAL230
+              gradle :app:testDebugUnitTest --tests '*MartialRepairV230Test.normalQuickslotCrossesUnselectedNpcOrLethalMonsterWithAttackPoseAndFinalFacing' --tests '*MartialSevenV228Test.allSixActiveSkillsUseRealNormalQuickslotsAndNativeRecipientOrCasterEffects' :app:assembleDebug --stacktrace
+            elif [[ "$(git log -1 --format=%B)" == *"[v230-native-tail]"* ]]; then
               git fetch --depth=1 origin caa7c5a4b2f91c55256f7fa925d1cd5186bb9833
               python3 - <<'PYGUARD230'
           import subprocess
