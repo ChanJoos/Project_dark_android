@@ -1,0 +1,126 @@
+{
+  "sourceCommit": "bd9bf2156c00bd4dd90f71613c00bacdf8afe6f5",
+  "runId": "39768250080",
+  "builtAtKST": "2026-10-22T20:12:19.080581+09:00",
+  "apkSha256": "9164089119925cf97a8b42ff8cce21f4534fd7586eabf6e4bbd92734e73348e2",
+  "apkBytes": 102330834,
+  "identity": {
+    "sourceCommit": "bd9bf2156c00bd4dd90f71613c00bacdf8afe6f5",
+    "runId": "39768250080",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V233 full source rogue FX envelopes;stab original contact;Hide brown crop;assassin .52 full core;native scoped and phone pending",
+  "artifactZipSha256": "44fd3818f424187720075627c76d82250951210d00a119a06b06f80c0ec58f5b",
+  "artifactId": 12420938311,
+  "nativeSuites": [
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillQuickslotApproachTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillPresentationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueVisualV233Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueRepairV232Test",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillFeedbackV231Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueReviewV229Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MartialSevenV228Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "nativePassed": 36,
+  "v2CertificateSha256": "1e397fa39206176c62e5694cd9e0172b69869997377102dc0633bdd7e6e5fa37",
+  "package": "com.projectdark.mobile.v233test",
+  "label": "PROJECT DARK V233 TEST",
+  "frozenV232AssetFilesVerified": 41,
+  "changedPackagedAssetsVerified": [
+    "app/src/main/assets/skill-presentation/captured/assassination.png",
+    "app/src/main/assets/skill-presentation/captured/assassination_jin.png",
+    "app/src/main/assets/skill-presentation/captured/manifest.json",
+    "app/src/main/assets/skill-presentation/rogue/4459f9eb02d24cbe.png",
+    "app/src/main/assets/skill-presentation/rogue/5599ff0303eba4ae.png",
+    "app/src/main/assets/skill-presentation/rogue/7290e6f0c6448723.png",
+    "app/src/main/assets/skill-presentation/rogue/74240a02e5a3ab10.png",
+    "app/src/main/assets/skill-presentation/rogue/b20a0224a0fd0a38.png",
+    "app/src/main/assets/skill-presentation/rogue/b397a45e949ffa87.png",
+    "app/src/main/assets/skill-presentation/rogue/b84e64bb25d05ea8.png",
+    "app/src/main/assets/skill-presentation/rogue/d3e88d3b9c127da5.png",
+    "app/src/main/assets/skill-presentation/rogue/d6f80c667eaee807.png",
+    "app/src/main/assets/skill-presentation/rogue/icons/9b814b35af34607b.png",
+    "app/src/main/assets/skill-presentation/rogue/manifest.json",
+    "app/src/main/assets/skill-presentation/rogue/references.json"
+  ],
+  "phone": "PENDING",
+  "fullRegression": "NOT_CLAIMED; prior unrelated Abel five-job equipment journey remains open",
+  "firstRun": {
+    "source": "d59fdb22f08b5015ced23e6dd5d64a2ee353e44b",
+    "run": 39767700326,
+    "result": "SCOPED_BUILD_NATIVE_SUCCESS; superseded by cleaned final assets"
+  },
+  "commonWorkflow": {
+    "run": 39768257316,
+    "status": "IN_PROGRESS_AT_HANDOFF_NOT_CLAIMED",
+    "scopeIssue": "workflow file expected hash stale, so full fallback launched; exact reviewed metadata repaired in closure; local classify FOCUSED plus5unitPASS",
+    "fullIntegration": "Still gated; prior Abel5job equipment journey unresolved"
+  },
+  "jobId": 119788997279,
+  "libraryFileId": "libfile_717f5066b1d48191a1fc4830325f2c3c",
+  "libraryFileObject": "file_00000000f2c881f69d3723eb1e22b6df",
+  "visualReview": [
+    "native all-source flare frame strip",
+    "native assassin .52 sphere stages",
+    "Hide book/quickslot",
+    "stab normal-input recipient contact",
+    "frozen martial and existing rogue icon APK byte comparison"
+  ]
+}

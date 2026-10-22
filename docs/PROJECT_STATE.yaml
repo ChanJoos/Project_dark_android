@@ -1,5 +1,9 @@
 rogue_visual_v233:
-  status: IMPLEMENTED_SCOPED_BUILD_NATIVE_PENDING
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: bd9bf2156c00bd4dd90f71613c00bacdf8afe6f5
+  focused_run: 39768250080
+  native_tests: 36
+  receipt: verification/ROGUE_VISUAL_V233_BUILD.json
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
