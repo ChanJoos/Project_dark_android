@@ -9,7 +9,7 @@ import org.robolectric.annotation.*;
 @RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
- @Test public void all221RuntimeRoutesAreExercisedWithoutTestModeOrImaginaryResources(){
+ @Test public void allCurrentRuntimeRoutesAreExercisedWithoutTestModeOrImaginaryResources(){
   int count=0,spells=0;
   for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all()){
    count++;SkillActionContract.Rule r=SkillActionContract.get(a.id);assertNotNull(a.id,r);
@@ -32,7 +32,7 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
    RuntimeCombatSession.FrameResult frame=session.tick(session.effectiveCastSeconds(a.id)+.001f);
    assertTrue(a.id+" contact",frame.events.stream().anyMatch(e->e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.actionId.equals(a.id)));
   }
-  assertEquals(221,count);assertEquals(141,spells);
+  assertEquals(222,count);assertEquals(143,spells);
  }
  @Test public void allSpellDefinitionsSeparateSharedCadenceFromExplicitReuse(){
   RuntimeCombatSession s=new RuntimeCombatSession(new RuntimeState(),(a,b)->true,(a,id)->true,a->true);

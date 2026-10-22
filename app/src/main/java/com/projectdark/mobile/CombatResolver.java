@@ -40,6 +40,7 @@ public final class CombatResolver {
     default boolean hasActionLineOfSight(String actor,String target,String action){return hasLineOfSight(actor,target);}
     default RejectReason actionReady(String actor,String target,String action,boolean begin){return null;}
     default int hitCount(String actor,String action){return 1;}
+    default int contactHitCount(String actor,String target,String action,int initial){return initial;}
     default float hitSpacing(String actor,String action){return 0;}
     default void prepareAction(String actor,String action){}
     default void finishAction(String actor,String action){}
@@ -84,6 +85,7 @@ public final class CombatResolver {
       while(activeByActor.get(p.a)==p&&p.applied<p.hits&&p.elapsed+1e-6f>=p.d.hitTime+p.applied*p.spacing){
       RejectReason r=validate(p.d,p.a,p.t,false);
       if(r!=null){cancel(p,r);continue;}
+      if(p.applied==0)p.hits=Math.max(1,port.contactHitCount(p.a,p.t,p.d.actionId,p.hits));
       List<String> recipients=new ArrayList<>(new java.util.LinkedHashSet<>(port.recipients(p.a,p.t,p.d.actionId)));
       for(String target:recipients){
       if(!port.targetAlive(target)||!port.hasActionLineOfSight(p.a,target,p.d.actionId))continue;

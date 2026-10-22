@@ -1,3 +1,12 @@
+martial_seven_v228:
+  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  accepted_contract: master/changes/V228_MARTIAL_SEVEN_SOURCE.json
+  source_video: libfile_2a630cf24fac81919793ba88d449ed0e
+  phone: PENDING
+
 worn_equipment_v225:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   owner: ROOT_SINGLE_EDITOR

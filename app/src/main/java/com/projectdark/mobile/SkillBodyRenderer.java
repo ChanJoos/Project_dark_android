@@ -60,6 +60,7 @@ final class SkillBodyRenderer {
     String[] parts=key.split("/");String group=parts[1];int index=Integer.parseInt(parts[2]);
     boolean mirror=!"02".equals(group)&&(p.direction==CharacterRenderer.Direction.NW||p.direction==CharacterRenderer.Direction.SW);
     float rootX=p.x,rootY=p.y+8f*SCALE;
+    if("JUMP_KICK".equals(motion))rootY-=jumpLift(phase);
     if("JUMP".equals(motion)){paint.setColor(0x50000000);c.drawOval(new RectF(p.x-7,p.y-2,p.x+7,p.y+2),paint);paint.setColor(Color.WHITE);rootY-=jumpLift(phase);}
     c.save();if(mirror)c.scale(-1,1,rootX,rootY);
     boolean jumpWeapon="JUMP".equals(motion)&&ChungryongWeaponRenderer.equipped(p.weaponVisualRef);

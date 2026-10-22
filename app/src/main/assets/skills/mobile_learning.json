@@ -3143,5 +3143,18 @@
     "items": {},
     "summary": "전투 검사에 사용하는 내부 스킬입니다.",
     "evidence": "B_TEST_ONLY"
+  },
+  "SK_무도가_035": {
+    "stats": {
+      "STR": 0,
+      "INT": 0,
+      "WIS": 0,
+      "CON": 0,
+      "DEX": 0
+    },
+    "gold": 0,
+    "items": {},
+    "summary": "승급 기본기술 · 재료 없음; 모바일 직업 조건 적용",
+    "evidence": "U+V_VIDEO_20261022"
   }
 }

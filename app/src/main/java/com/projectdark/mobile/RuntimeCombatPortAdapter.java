@@ -64,6 +64,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private java.util.function.IntSupplier basicHits=()->1;
   public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
   public int hitCount(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(5,basicHits.getAsInt())):1;}
+  public int contactHitCount(String actor,String target,String action,int initial){return "player".equals(actor)&&MartialSourceV228.MUYEONG.equals(action)?Math.max(1,recipients(actor,target,action).size()):initial;}
   public float hitSpacing(String actor,String action){return BasicAttackTiming.HIT_SPACING;}
   public void setVisible(java.util.function.Predicate<String> visible){this.visible=visible;}
   public boolean visible(String id){return isNpc(id)||visible.test(id);}
@@ -76,7 +77,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(r.pattern==SkillActionContract.Pattern.SINGLE)return visible(target)&&SkillActionContract.canStart(r,a.x,a.y,t.x,t.y,true)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SELF||r.pattern==SkillActionContract.Pattern.ALLY||r.pattern==SkillActionContract.Pattern.GROUP){out.add(actor);return out;}
     float tx=t.x,ty=t.y;float[] intent=directions.get(actor+":"+action);
-    if(intent==null&&MartialSkillPolicy.LINE.equals(action)&&(playerFacing!=null||actor.equals(target)))intent=MartialSkillPolicy.step(facing());
+    if(intent==null&&MartialSourceV228.line(action)&&(playerFacing!=null||actor.equals(target)))intent=MartialSkillPolicy.step(facing());
     if(intent!=null&&(r.pattern==SkillActionContract.Pattern.FRONT||r.pattern==SkillActionContract.Pattern.FRONT_BACK)){tx=a.x+intent[0];ty=a.y+intent[1];}
     for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,tx,ty,m.x,m.y,true)&&hasActionLineOfSight(actor,m.id,action))out.add(m.id);
     return out;

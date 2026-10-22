@@ -183,9 +183,9 @@ final class SkillActionData {
     {"SK_무도가_024", "연천단각", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "전방 인접 한 타일", "기술"},
     {"SK_무도가_025", "붕신선각", "ACTIVE", "AROUND", "1", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "시전자 둘레 여덟 타일; 자신 제외", "기술"},
     {"SK_무도가_026", "파천각", "ACTIVE", "CROSS", "2", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "PROJECT_ADAPTED_V83", "사용자 전체스킬 구현 요청: 선풍각 승급, 사방2칸 프로젝트 규칙; 원작 최대범위 미확정", "기술"},
-    {"SK_무도가_027", "트리플펀치", "LINKED", "FRONT", "1", "1", "PRESENTATION", "3", "0.14", "V", "독립 시전이 아닌 기본공격 연동 추가 타격", "기술"},
-    {"SK_무도가_028", "무영신공", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "같은 방향의 연속 세 타일", "기술"},
-    {"SK_무도가_029", "자기보호", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "자기 대상", "기술"},
+    {"SK_무도가_027", "트리플어택", "LINKED", "FRONT", "1", "1", "PRESENTATION", "3", "0.14", "V", "독립 시전이 아닌 기본공격 연동 추가 타격", "기술"},
+    {"SK_무도가_028", "무영신공", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.24", "V", "바라보는 방향 전방3칸. 첫 접촉 시 유효 대상 수만큼 각 대상 반복 타격. 피해/자원 공식은 기존 값 유지.", "마법"},
+    {"SK_무도가_029", "자기보호", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.24", "V", "자기 대상", "마법"},
     {"SK_공통_001", "기본공격", "ACTIVE", "SINGLE", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; USER_CONFIRMED_BASIC_SWING_WITHOUT_PARTICLE", "기술"},
     {"SK_공통_002", "문열기", "UTILITY", "UTILITY", "0", "0", "PRESENTATION", "1", "0.14", "UNRESOLVED_RUNTIME", "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지", "기술"},
     {"SK_공통_003", "탐색", "UTILITY", "UTILITY", "1", "1", "PRESENTATION", "1", "0.14", "UNRESOLVED_RUNTIME", "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지", "기술"},
@@ -224,5 +224,6 @@ final class SkillActionData {
     {"SK_마법사_057", "헬푸라", "UTILITY", "UTILITY", "0", "0", "PRESENTATION", "1", "0.24", "UNRESOLVED_RUNTIME", "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지", "마법"},
     {"SK_무도가_033", "경신공법", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "이동속도를 높힌다. (Speed+20%) · 이동속도/목적지 원작 서비스는 미구현.", "마법"},
     {"SK_무도가_034", "아지토", "UTILITY", "UTILITY", "0", "0", "PRESENTATION", "1", "0.14", "V", "소속된 국적의여관으로 순간이동 · 이동속도/목적지 원작 서비스는 미구현.", "마법"},
-  };
+    {"SK_무도가_035", "허공답보", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "U_LABELLED_VIDEO_V228", "전방3칸 이동 공격. 이형환위의 1칸 대상 넘기와 별개; 충돌/착지 검사 후 접촉 완료 때 이동.", "기술"},
+ };
 }

@@ -12,7 +12,7 @@ public class SkillCorrectionsV227Test {
  final ScreenMagicV201Test h=new ScreenMagicV201Test();
  @Before public void setup(){h.setup();}
  @Test public void holyBlowCannotBeLearnedAssignedPreviewedOrExecuted()throws Exception{
-  String id=SkillPolicyV227.HOLY_BLOW;SkillBook b=SkillBook.load(h.c);assertEquals(220,b.catalogSize());
+  String id=SkillPolicyV227.HOLY_BLOW;SkillBook b=SkillBook.load(h.c);assertEquals(221,b.catalogSize());
   assertFalse(b.list(true,false).stream().anyMatch(e->id.equals(e.id)));assertFalse(b.learn(id,0));assertFalse(b.assign(0,id));
   b.setTestAccess(true);assertFalse(b.learned(id));assertFalse(b.previewable(id));assertFalse(b.usable(id));b.restoreTestSlots(new String[]{id,"SK_성직자_013"});assertNull(b.slot(0));assertEquals("SK_성직자_013",b.slot(1));
   RuntimeState s=h.fixture();long gold=s.rpg().gold();assertFalse(new SkillAcquisition(b).learn(id,s.rpg()));assertEquals(gold,s.rpg().gold().longValue());

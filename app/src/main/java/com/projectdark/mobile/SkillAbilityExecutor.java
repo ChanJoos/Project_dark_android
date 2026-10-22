@@ -6,7 +6,7 @@ final class SkillAbilityExecutor {
  final RuntimeState state;final SkillEffectState fx;
  private final Map<String,SkillAbilityCatalog.Snapshot> snapshots=new HashMap<>();private final Set<String> charged=new HashSet<>();
  java.util.function.ToIntFunction<String> proficiency=id->100;java.util.function.DoubleSupplier random=Math::random;boolean testMode;
- Movement movement;String notice="";
+ Movement movement;String notice="";private float[] advanceLanding;
  private static final class Trap {float x,y,life=30;String id;int damage;Trap(float x,float y,String id,int d){this.x=x;this.y=y;this.id=id;damage=d;}}
  private final List<Trap> traps=new ArrayList<>();
  SkillAbilityExecutor(RuntimeState s){state=s;fx=s.skillEffects();}
@@ -17,7 +17,12 @@ final class SkillAbilityExecutor {
   RuntimeState.Player p=state.player();
   if(a.status.equals("TRANSFER"))return CombatResolver.RejectReason.TARGET_DEAD;
   if(a.status.equals("LEAP")&&MartialSkillPolicy.landings(state,target,movement).isEmpty())return CombatResolver.RejectReason.RANGE;
+  if(MartialSourceV228.ADVANCE.equals(id)){
+   if(begin)advanceLanding=MartialSourceV228.advanceLanding(state,target,movement);
+   if(advanceLanding==null||movement==null||fx.rooted("player")||!movement.canLeapPlayer(advanceLanding[0],advanceLanding[1]))return CombatResolver.RejectReason.RANGE;
+  }
   if(testMode&&!a.formula.equals("DARA"))return null;
+  if(MartialSourceV228.MUYEONG.equals(id)&&p.mp<=0)return CombatResolver.RejectReason.RESOURCE;
   if(!begin&&!a.resourceBurst())return null;
   if(a.formula.equals("CRASH")&&p.hp>Math.max(1,state.rpg().finalStats().maxHp*.02))return CombatResolver.RejectReason.RESOURCE;
   if(a.formula.equals("DARA")&&(p.mp<1440||p.hp<=1))return CombatResolver.RejectReason.RESOURCE;
@@ -31,7 +36,9 @@ final class SkillAbilityExecutor {
  }
  static int previewMp(SkillAbilityCatalog.Ability a,int current,boolean test){return test&&a!=null&&a.damage()&&!a.formula.equals("DARA")&&(a.resourceBurst()||a.formula.equals("METEOR")||a.formula.equals("HOLY_DRAGON"))?Math.max(50000,current):current;}
  void prepare(String actor,String id){if(!actor.equals("player"))return;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null)return;FinalStats stats=state.rpg().finalStats().withEffects(fx,"player");snapshots.put(id,new SkillAbilityCatalog.Snapshot(stats,state.player().hp,previewMp(a,state.player().mp,testMode),state.rpg().normalLevel()==null?1:state.rpg().normalLevel(),proficiency.applyAsInt(id),random.getAsDouble()<.25,ItemEffects.mpCost(state.rpg(),id,a.mpCost)));charged.remove(id);}
- void finish(String actor,String id){if(actor.equals("player")){snapshots.remove(id);charged.remove(id);}}
+ void finish(String actor,String id){if(actor.equals("player")){
+  if(MartialSourceV228.ADVANCE.equals(id)){if(charged.contains(id)&&advanceLanding!=null&&movement!=null)movement.leapPlayer(advanceLanding[0],advanceLanding[1]);advanceLanding=null;}
+  snapshots.remove(id);charged.remove(id);}}
  boolean snapCritical(String id){SkillAbilityCatalog.Snapshot x=snapshots.get(id);return x!=null&&x.critical;}
  int amount(String id,int fallback){refreshBurst(id);SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);SkillAbilityCatalog.Snapshot x=snapshots.get(id);return a==null||x==null?fallback:SkillAbilityCatalog.amount(a,x);}
  void refreshBurst(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);SkillAbilityCatalog.Snapshot x=snapshots.get(id);if(a!=null&&a.resourceBurst()&&x!=null&&!charged.contains(id))snapshots.put(id,new SkillAbilityCatalog.Snapshot(x.stats,state.player().hp,previewMp(a,state.player().mp,testMode),x.level,x.proficiency,x.critical,x.mpCost));}

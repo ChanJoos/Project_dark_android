@@ -4624,8 +4624,8 @@
     },
     "requirementStatus": "확인 필요",
     "legacy": "",
-    "evidence": "FAN-VERIFIED",
-    "source": "https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95"
+    "evidence": "U+V_VIDEO_20261022",
+    "source": "master/source/martial_v228/reference.json"
   },
   {
     "id": "SK_무도가_025",
@@ -4650,8 +4650,8 @@
     },
     "requirementStatus": "확인 필요",
     "legacy": "",
-    "evidence": "U+O",
-    "source": "https://lod.nexon.com/news/update/5095"
+    "evidence": "U+V_VIDEO_20261022",
+    "source": "master/source/martial_v228/reference.json"
   },
   {
     "id": "SK_무도가_026",
@@ -4676,17 +4676,17 @@
     },
     "requirementStatus": "확인 필요",
     "legacy": "",
-    "evidence": "O+U",
-    "source": "https://lod.nexon.com/news/update/5095"
+    "evidence": "U+V_VIDEO_20261022",
+    "source": "master/source/martial_v228/reference.json"
   },
   {
     "id": "SK_무도가_027",
-    "name": "트리플펀치",
+    "name": "트리플어택",
     "job": "무도가",
     "stage": "1차승급",
     "kind": "기술",
     "circle": "승급",
-    "effect": "트리플어택 계열 3타",
+    "effect": "기본공격 3회 타격; 구 표기 트리플펀치의 저장 ID 유지",
     "target": "적",
     "range": "기본공격 연동",
     "resource": "HP/MP/조건부 - 개별 확인",
@@ -4702,17 +4702,17 @@
     },
     "requirementStatus": "확인 필요",
     "legacy": "",
-    "evidence": "FAN-VERIFIED",
-    "source": "https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95"
+    "evidence": "U+V_VIDEO_20261022",
+    "source": "master/source/martial_v228/reference.json"
   },
   {
     "id": "SK_무도가_028",
     "name": "무영신공",
     "job": "무도가",
     "stage": "1차승급",
-    "kind": "기술",
+    "kind": "마법",
     "circle": "승급",
-    "effect": "전방 3칸 풍속성 고정 마법공격; 자료상 MP×4",
+    "effect": "전방3칸의 유효 대상 수만큼 각 대상에게 반복 타격; 기존 MP×4/풍속성 공식 유지",
     "target": "적",
     "range": "전방 3칸",
     "resource": "HP/MP/조건부 - 개별 확인",
@@ -4728,15 +4728,15 @@
     },
     "requirementStatus": "확인 필요",
     "legacy": "",
-    "evidence": "FAN-VERIFIED",
-    "source": "https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95"
+    "evidence": "U+V_VIDEO_20261022",
+    "source": "master/source/martial_v228/reference.json"
   },
   {
     "id": "SK_무도가_029",
     "name": "자기보호",
     "job": "무도가",
     "stage": "1차승급",
-    "kind": "기술",
+    "kind": "마법",
     "circle": "승급",
     "effect": "호르라마와 같은 보호 계열",
     "target": "자신",
@@ -4754,8 +4754,8 @@
     },
     "requirementStatus": "확인 필요",
     "legacy": "",
-    "evidence": "FAN-VERIFIED",
-    "source": "https://www.namu.moe/w/%EC%96%B4%EB%91%A0%EC%9D%98%20%EC%A0%84%EC%84%A4/%EA%B8%B0%EC%88%A0%EB%A7%88%EB%B2%95"
+    "evidence": "U+V_VIDEO_20261022",
+    "source": "master/source/martial_v228/reference.json"
   },
   {
     "id": "SK_공통_001",
@@ -5742,5 +5742,24 @@
     "legacy": "5,000 Gold · 선수과목 없음",
     "evidence": "FAN_SEO_2020",
     "source": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415456"
+  },
+  {
+    "id": "SK_무도가_035",
+    "name": "허공답보",
+    "job": "무도가",
+    "stage": "1차승급",
+    "kind": "기술",
+    "circle": "승급",
+    "effect": "전방3칸을 뛰어넘으며 공격. 이형환위와 별개.",
+    "target": "적",
+    "range": "전방3칸",
+    "resource": "기존 프로젝트 일반기술 MP0; 원작 자원 미확정",
+    "limit": "지형 경로와 착지 칸이 모두 유효해야 발동",
+    "requirements": "승급 기본기술. 영상상 재료/요구스탯 없음; 현재 모바일 직업 규칙 적용.",
+    "requirementValues": {},
+    "requirementStatus": "U+V",
+    "legacy": "",
+    "evidence": "U+V_VIDEO_20261022",
+    "source": "master/source/martial_v228/reference.json"
   }
 ]

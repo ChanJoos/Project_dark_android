@@ -6,7 +6,7 @@ import com.projectdark.mobile.world.WorldMoveTargetController.Direction;
 /** User-confirmed V173 facing/landing rules; no target search, approach or terrain bypass. */
 final class MartialSkillPolicy {
  static final String LEAP="SK_무도가_003",LINE="SK_무도가_009";
- static boolean facingOnly(String id){return LEAP.equals(id)||LINE.equals(id);}
+ static boolean facingOnly(String id){return LEAP.equals(id)||LINE.equals(id)||MartialSourceV228.MUYEONG.equals(id);}
  static float[] step(CharacterRenderer.Direction d){Direction a=Direction.valueOf(d.name());return new float[]{a.dx,a.dy};}
  static float[] position(RuntimeState s,String id){if("player".equals(id))return new float[]{s.player().x,s.player().y};for(RuntimeState.Monster m:s.monsters())if(m.alive&&m.id.equals(id))return new float[]{m.x,m.y};for(RuntimeState.Npc n:s.npcs())if(n.id.equals(id))return new float[]{n.x,n.y};return null;}
  static String frontTarget(RuntimeState s,String id,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){

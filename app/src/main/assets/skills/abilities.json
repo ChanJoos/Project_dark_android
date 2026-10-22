@@ -3421,7 +3421,7 @@
   },
   {
     "id": "SK_무도가_027",
-    "name": "트리플펀치",
+    "name": "트리플어택",
     "job": "무도가",
     "circle": 6,
     "kind": "PASSIVE",
@@ -3455,7 +3455,7 @@
     "allMp": false,
     "evidence": "MASTER_FORMULA_V",
     "source": "master/data/Skill_Formula_Research.csv + Skill_Damage_Model.csv",
-    "description": "MP ×4"
+    "description": "기존 MP×4/풍속성; 전방3칸 대상 N명에게 각각 N회 타격. MP 소모/수치는 기존 프로젝트 값으로 원작 미확정."
   },
   {
     "id": "SK_무도가_029",
@@ -4197,5 +4197,24 @@
     "evidence": "PROJECT_ADAPTED_V83",
     "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
     "description": "소속된 국적의여관으로 순간이동 · 14초"
+  },
+  {
+    "id": "SK_무도가_035",
+    "name": "허공답보",
+    "job": "무도가",
+    "circle": 6,
+    "kind": "DAMAGE",
+    "formula": "MARTIAL",
+    "coefficient": 2.912,
+    "status": "ADVANCE_3",
+    "mpCost": 0,
+    "cooldown": 3.5,
+    "cooldownEvidence": "RETAINED_ADAPTED_PENDING_ORIGINAL",
+    "cooldownSource": null,
+    "duration": 18,
+    "allMp": false,
+    "evidence": "U_VIDEO_BEHAVIOR_B_REUSED_MARTIAL_BALANCE_V228",
+    "source": "master/source/martial_v228/reference.json",
+    "description": "전방3칸 이동 공격; 지형/착지 차단 시 미발동. 피해 계수2.912/MP0/재사용3.5초는 기존 연천단각 프로젝트 값의 임시 재사용이며 원작 미확정."
   }
 ]

@@ -1,3 +1,11 @@
+## 2026-10-22 V228 무도가 일곱 스킬 영상 — 구현, 관련 검증 대기
+
+사용자 U 순서: 허공답보/트리플어택/연천단각/붕신선각/파천각/무영신공/자기보호. 원본29.118초 영상 Screen_Recording_20261022_140905_NAVER.mp4, libfile_2a630cf24fac81919793ba88d449ed0e. 아이콘7개·원본 접촉/시전자 FX7채널 추출. 원문 인물/바닥/HP바 제외, 알파·가림·원본GIF시간 미확정이며15fps 관측/근사 matting. 원본 영상 보존; seven crops/representative observations ZIP 및 SHA/crop/frame 등록 master/source/martial_v228/reference.json. AI 그림/대체 몬스터 생성 없음.
+
+신규 허공답보035: 전방3칸 이동 공격·착지와 지형경로 검사·접촉 완료 후 착지; 기존 이형환위003 유지. 트리플펀치027 저장 ID 유지하고 U 이름 트리플어택으로 변경, 기본공격3타 연동과 native punch pose/원본 접촉 FX 연결. 무영신공은 첫 접촉의 유효 대상 수 N만큼 각 대상 실제N회; 매 타격 생존/시야/형상 재검사, 추가 타격 자원 중복 지불 없음. 원문 승급마법 표기대로028/029 종류 교정·공통 마법 cadence 연결. 연천단각/붕신선각/파천각 기존 타일 범위·피해 계수, 자기보호 기존 보호 기능 유지. 허공답보 피해2.912/MP0/재사용3.5초는 기존 연천단각 임시값 재사용 B이며 원작 미확정. 원작 미확인 수치 새 확정 금지.
+
+accepted master/changes/V228_MARTIAL_SEVEN_SOURCE.json, base 생성기 후 tools/apply_martial_v228.py를 마지막으로 적용해 UI/ability/shape/presentation/learning 투영을 일치시킴. 원본 Master 스냅샷 보존. 전체 ID222/활성221, prototypes포함225. 검증: 일곱 스킬 네방향·3칸 이동/차단·N대상×N타격·실제 피해보호·기본3타·원본 아이콘/채널·정상 퀵슬롯/그리기·기존 스킬·저장 직접 영향11 suite 및 공통 actor concurrency audit와 APK 예정. IMPLEMENTED; BUILD/HOST_NATIVE/PHONE/VISUAL PENDING. 기존 PR197/main 미병합 후보.
+
 ## 2026-10-22 V227 스킬 자료 반영 — 관련 검증 완료
 
 소스 `b5c31494f93ddf1bd5a57a03c62a3c687a2ef063`, focused39723904568/job119643357176 SUCCESS: 7 suites **57 PASS/0 failure/error/skipped**, 범위 선택기5 PASS, common39723909532 범위검사 SUCCESS(전체회귀 아님). 홀리블로우 제거·습득/시전 차단·기존 저장에서 해당 ID만 정리 후 재복원, 세멜리아 단일/라그나로크 다수 피해와 원본 FX 대상 일치·동일 atlas·native draw, 두 아이콘의 스킬창/퀵슬롯 및 기존 스킬/저장 직접 영향 경로 검증. 최초91c02412/run39723711182는 새 테스트의 Long 비교 컴파일 오류; longValue 명시만 수정했으며 게임 코드 변경 없음.

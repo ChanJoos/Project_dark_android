@@ -74,7 +74,7 @@ public final class RuntimeCombatSession {
   public void setPlayerFacing(java.util.function.Supplier<CharacterRenderer.Direction> f){port.setPlayerFacing(f);}
   public CombatActionOrchestrator.Submission submitFacingMartial(String id){
     if(!MartialSkillPolicy.facingOnly(id))throw new IllegalArgumentException(id);
-    String target=MartialSkillPolicy.LINE.equals(id)?PLAYER_ID:port.frontTarget(id);
+    String target=MartialSourceV228.line(id)?PLAYER_ID:port.frontTarget(id);
     return submitPlayer(target==null?"NO_FRONT_ACTOR":target,id);
   }
   public void setSkillTestMode(boolean enabled){port.setSkillTestMode(enabled);}

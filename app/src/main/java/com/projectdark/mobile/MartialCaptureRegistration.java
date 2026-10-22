@@ -15,7 +15,7 @@ final class MartialCaptureRegistration {
    default:return new float[]{100,100};
   }
  }
- static boolean recipient(String id,boolean caster){SkillActionContract.Rule r=SkillActionContract.get(id);return !caster&&r!=null&&(r.damage()||!r.selfAnchored());}
+ static boolean recipient(String id,boolean caster){SkillActionContract.Rule r=SkillActionContract.get(id);return !caster&&!MartialSourceV228.PACHEON.equals(id)&&r!=null&&(r.damage()||!r.selfAnchored());}
  static boolean projectile(String id,boolean caster){return !caster&&(id.equals("SK_무도가_009")||id.equals("SK_무도가_015"));}
  private MartialCaptureRegistration(){}
 }

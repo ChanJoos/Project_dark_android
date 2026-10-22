@@ -1,0 +1,396 @@
+{
+  "skills": {
+    "SK_무도가_035": {
+      "name": "허공답보",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-035.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "131476379361e9c20e09136524cbb54b1d11bb0ad331ebcada53146dc43d53ab",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            59,
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "opaquePixelCounts": [
+            37,
+            37,
+            27,
+            30,
+            30,
+            37
+          ]
+        }
+      }
+    },
+    "SK_무도가_027": {
+      "name": "트리플어택",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-027.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "9bf5fa469dda7ae9c3230bb7d996ab208dbc4b820a6db31d5c581a6b6c6791f4",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            48,
+            49,
+            50,
+            51
+          ],
+          "opaquePixelCounts": [
+            3,
+            13,
+            13,
+            13
+          ]
+        }
+      }
+    },
+    "SK_무도가_024": {
+      "name": "연천단각",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-024.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "cb0e534d7df28061762ffc870b3175a2f6e018796e4c5eceafc53f83a58ba5b6",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157
+          ],
+          "opaquePixelCounts": [
+            20,
+            20,
+            567,
+            79,
+            79,
+            0,
+            30,
+            30,
+            30
+          ]
+        }
+      }
+    },
+    "SK_무도가_025": {
+      "name": "붕신선각",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-025.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "39920923580a2fb36b333f428d96da73ab3058c9a8262b2ad48e0e8b4c7b4dd2",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            149,
+            150
+          ],
+          "opaquePixelCounts": [
+            17,
+            17
+          ]
+        }
+      }
+    },
+    "SK_무도가_026": {
+      "name": "파천각",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-026.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 110,
+          "pivotY": 110,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "8df5db6eb38049b8ae985076ac6eed23c849021f457cb3748f90526991c957c4",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255,
+            256,
+            257,
+            258,
+            259,
+            260,
+            261,
+            262,
+            263,
+            264,
+            265,
+            266,
+            267,
+            268,
+            269,
+            270,
+            271,
+            272,
+            273
+          ],
+          "opaquePixelCounts": [
+            889,
+            323,
+            323,
+            182,
+            139,
+            139,
+            22,
+            0,
+            0,
+            5435,
+            5363,
+            5363,
+            5305,
+            5284,
+            5284,
+            5295,
+            5353,
+            5353,
+            5328,
+            5117,
+            5116,
+            5058,
+            498,
+            498,
+            445
+          ]
+        }
+      }
+    },
+    "SK_무도가_028": {
+      "name": "무영신공",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-028.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "NORMAL",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "6f5abc4fcd82bf41401c6c18d5f2f60826e2b6413117e12f4dc75c9dcf8d665a",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            249,
+            250,
+            251,
+            252,
+            253,
+            254,
+            255,
+            256,
+            257,
+            258,
+            259,
+            260
+          ],
+          "opaquePixelCounts": [
+            3,
+            48,
+            48,
+            732,
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            14,
+            14
+          ]
+        }
+      }
+    },
+    "SK_무도가_029": {
+      "name": "자기보호",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-029.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 110,
+          "pivotY": 110,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "7eb74470fc534f0b001f50ad96d7e1737af14a9a6072ac82c8a41ff78410e9f9",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            265,
+            266,
+            267,
+            268,
+            269,
+            270,
+            271,
+            272,
+            273,
+            274,
+            275,
+            276
+          ],
+          "opaquePixelCounts": [
+            442,
+            442,
+            1170,
+            1355,
+            1354,
+            1897,
+            1966,
+            1966,
+            1229,
+            701,
+            701,
+            86
+          ]
+        }
+      }
+    }
+  }
+}

@@ -15,7 +15,7 @@ final class SkillVfxRenderer {
   private final CurseSkullFx curseSkull;
   private final CapturedSkillFx.Sequence meteor;
   private static final int MAX_PULSES=1024;
-  boolean testAccess;
+  boolean testAccess;java.util.function.BooleanSupplier martialTriple=()->false;
   final List<Pulse> pulses=new ArrayList<>();private final Set<String> seen=new HashSet<>();private final Deque<String> history=new ArrayDeque<>();private final Paint p=new Paint();
   SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;try{meteor=new CapturedSkillFx.Sequence(c,new org.json.JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/screen-magic-v204/meteor.json"),java.nio.charset.StandardCharsets.UTF_8)));}catch(Exception ex){throw new IllegalStateException("Meteor original frames",ex);}captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);curseSkull=new CurseSkullFx(c);rogue=new ClassicSkillReference(c,"rogue");warrior=new ClassicSkillReference(c,"warrior");shared=new ClassicSkillReference(c,"shared");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
   void tick(float dt){float safe=Math.max(0,dt);for(Pulse f:pulses)f.age+=safe;pulses.removeIf(f->f.age>=f.duration);}
@@ -43,7 +43,7 @@ final class SkillVfxRenderer {
       if(Float.isFinite(dx)&&Float.isFinite(dy)&&Math.abs(dx)+Math.abs(dy)>.001f){actionDirections.put(e.actionSequence,new float[]{dx,dy});for(Pulse p:pulses)if(p.actionSequence==e.actionSequence)lockDirection(p);}
       releasedDirections.add(e.actionSequence);
     }
-    String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||SkillPolicyV227.retired(id)||id.equals("SK_공통_001")||MartialSkillPolicy.LEAP.equals(id))continue;
+    String id=e.actionId.startsWith("attack_proto_")?(martialTriple.getAsBoolean()?MartialSourceV228.TRIPLE:"SK_공통_001"):e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||SkillPolicyV227.retired(id)||id.equals("SK_공통_001")||MartialSkillPolicy.LEAP.equals(id))continue;
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
     boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&(e.hitSemantic!=CombatResolver.HitSemantic.MISS);
     if(!caster&&!target)continue;
@@ -71,7 +71,7 @@ final class SkillVfxRenderer {
       // Capture anchor records the example's pivot, not who receives a live attack.
       SkillActionContract.Rule liveRule=SkillActionContract.get(id);
       boolean martialRecipient=sourceSheet.equals("classic")&&id.startsWith("SK_무도가_")&&!caster&&liveRule!=null&&MartialCaptureRegistration.recipient(id,caster);
-      String anchor=(martialRecipient||!caster&&recipientFinisher(id))?e.targetId:channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor;
+      String anchor=(martialRecipient||!caster&&recipientFinisher(id))?e.targetId:channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor+((MartialSourceV228.MUYEONG.equals(id)||MartialSourceV228.TRIPLE.equals(id))?":"+e.sequence:"");
       if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
       float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
       Pulse sourcePulse=new Pulse(e.actionSequence,id,sourceSheet,0,anchor,caster,channel.sequence.duration,x,y);sourcePulse.directionX=a.x(e.targetId)-a.x(e.actorId);sourcePulse.directionY=a.y(e.targetId)-a.y(e.actorId);lockDirection(sourcePulse);pulses.add(sourcePulse);if(pulses.size()>MAX_PULSES)pulses.remove(0);continue;

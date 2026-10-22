@@ -23,6 +23,7 @@ final class ClassicSkillReference {
     if(doc.has("damageImpact"))damageImpact=new Channel(c,"RECIPIENT_DAMAGE",doc.getJSONObject("damageImpact"));
     Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=entries.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=new LinkedHashMap<>();Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}effects.put(id,result);}
     JSONArray rows=read(c,directory+"/references.json").getJSONArray("rows");for(int i=0;i<rows.length();i++){JSONObject row=rows.getJSONObject(i);if(!row.isNull("id"))references.put(row.getString("id"),row);}
+    if(directory.equals("classic")){JSONObject extra=read(c,"user-v228/manifest.json").getJSONObject("skills");Iterator<String> newIds=extra.keys();while(newIds.hasNext()){String id=newIds.next();JSONObject raw=extra.getJSONObject(id).getJSONObject("channels");Map<String,Channel> channels=new LinkedHashMap<>();Iterator<String> keys=raw.keys();while(keys.hasNext()){String key=keys.next();channels.put(key,new Channel(c,key,raw.getJSONObject(key)));}effects.put(id,channels);}}
     prewarmCenters();prepareBaekbo();
   }catch(Exception e){throw new IllegalStateException("Classic skill reference",e);}}
   private static JSONObject read(Context c,String path)throws Exception{return new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/"+path),StandardCharsets.UTF_8));}

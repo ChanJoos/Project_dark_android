@@ -18,7 +18,7 @@ public class SkillAbilityRuntimeTest {
  RuntimeState state()throws Exception{RuntimeState s=new RuntimeState();s.rpg().restoreStats(50,50,50,50,50,0);s.rpg().restoreProgression(80,0);s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=20000;s.player().mp=20000;s.player().x=s.player().y=0;List<RuntimeState.Monster> list=field(s,"monsters");list.clear();int i=0;for(float[] d:new float[][]{{32,16},{-32,-16},{32,-16},{-32,16},{64,0}})list.add(new RuntimeState.Monster("m"+i++,"fixture",d[0],d[1],1000000,"ADAPTED_TEST"));return s;}
  RuntimeCombatSession session(RuntimeState s){RuntimeCombatSession c=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);c.setSkillMovement(new SkillAbilityExecutor.Movement(){public boolean movePlayer(float x,float y){s.player().x=x;s.player().y=y;return true;}public boolean moveMonster(RuntimeState.Monster m,float x,float y){return false;}public boolean canLeapPlayer(float x,float y){return s.canPlayerOccupyActors(x,y);}public boolean leapPlayer(float x,float y){return movePlayer(x,y);}});return c;}
  @Test public void everyCatalogIdHasAnExplicitAbilityAndDamageScalesByRealStats()throws Exception{
-  assertEquals(221,SkillAbilityCatalog.all().size());RuntimeState s=state();FinalStats low=s.rpg().finalStats();s.rpg().restoreStats(99,99,99,99,99,0);FinalStats high=s.rpg().finalStats();int offensive=0,heals=0;
+  assertEquals(222,SkillAbilityCatalog.all().size());RuntimeState s=state();FinalStats low=s.rpg().finalStats();s.rpg().restoreStats(99,99,99,99,99,0);FinalStats high=s.rpg().finalStats();int offensive=0,heals=0;
   for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all()){
    assertNotNull(a.id,a.evidence);assertFalse(a.id,a.description.isEmpty());
    if(a.damage()||a.heal()){
@@ -26,7 +26,7 @@ public class SkillAbilityRuntimeTest {
     int h=SkillAbilityCatalog.amount(a,new SkillAbilityCatalog.Snapshot(high,40000,40000,99,100,false));
     assertTrue(a.id+" positive",n>0);assertTrue(a.id+" monotonic",h>=n);if(a.damage())offensive++;else heals++;
    }
-  }assertEquals(77,offensive);assertEquals(16,heals);
+  }assertEquals(78,offensive);assertEquals(16,heals);
   assertTrue(ordinary("SK_무도가_007",low)>ordinary("SK_무도가_002",low));assertTrue(ordinary("SK_마법사_026",low)>ordinary("SK_마법사_001",low));
  }
  int ordinary(String id,FinalStats s){return SkillAbilityCatalog.amount(SkillAbilityCatalog.get(id),new SkillAbilityCatalog.Snapshot(s,20000,20000,80,100,false));}
