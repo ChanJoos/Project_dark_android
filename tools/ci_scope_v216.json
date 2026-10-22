@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "a19dba2cc10f92a1046b52295e849ec57c5ede1d9a9cecab4aceb5b9c1b3568f",
+  ".github/workflows/rucesion-town-v156.yml": "a1887b49afdaf83fd2394ec9109d74983b1bddf3520cd13255672fd1700bf5ba",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -242,7 +242,7 @@
   "app/src/main/assets/skill-presentation/mage-v235/icons/048.png": "f8f3d7065ea5a7078bbe79085251e81f6e8252232ce1368d7759db9bd551cf39",
   "master/source/mage_v235/58ce4a3ac845ac11.png": "a17b19bf9499461c10104bd144d8487a372859cad75f317f11653bd9bd7ced23",
   "master/source/mage_v235/fd8dda65d891b133.png": "950705f3df3691d5cf761b3d96d4f83e63d04ff7a07bb00525c804b88bd15e6d",
-  "docs/V235_MAGE_SOURCES_CHECKPOINT.md": "89f5da5a31ff44377017ce0287cc824931115cf373321c7dc0822d546151151e",
+  "docs/V235_MAGE_SOURCES_CHECKPOINT.md": "e1c70a117170fb4d5d858cca84a47275a68480803703f0fa44d9a68d5d2945d1",
   "app/src/main/assets/skill-presentation/mage-v235/icons/023.png": "3c0d693fcd47efc2b1213f31e9cf60a26d1046d6224d87d3f2ea81ae4ee0fb00",
   "master/source/mage_v235/2421e68beca83b35.png": "25b33cac658833db1a2167cd0ee8779f7fbdf55fb7e6185eac639b6724c90f61",
   "app/src/main/assets/skill-presentation/mage-v235/icons/034.png": "cefcbd69bbc9ee13e5d87788700d9fd42a6fc4e2daef3da90a495e99152a4faf",
@@ -314,7 +314,7 @@
   "docs/DECISION_LOG.md": "af53b63a1d2a462201780bbaf9a03abb1ff7e65f5bcfb0a4a4e1562eaf081cfb",
   "app/src/main/assets/skill-presentation/mage-v235/icons/002.png": "25b33cac658833db1a2167cd0ee8779f7fbdf55fb7e6185eac639b6724c90f61",
   "master/source/mage_v235/c1ccd91ef882e695.png": "835ddc49ac6c7adb29203f241edd2880c87d32e12e575dc7eb4e1442ca7357e9",
-  "app/src/test/java/com/projectdark/mobile/MageSourcesV235Test.java": "1b0570ddcfef371fa57d77486eec32f052f0cf0963dfbf76875b6156d714050a",
+  "app/src/test/java/com/projectdark/mobile/MageSourcesV235Test.java": "6ff21ef8b86f63bafe8a3c798a01dae6870360c8f8dab5dcf5b6681733a9b820",
   "master/source/mage_v235/d29694fc21d1b6a4.png": "f0b83bda08da8471275eb2c2db7634ff931447bf8fea82b59de7ae0af73c8dfd",
   "app/src/main/assets/skill-presentation/mage-v235/icons/040.png": "be7c1528e1827616a7b619f8579cb05420f60bb84b7e500cf3b1e132ece8eb71"
 }
