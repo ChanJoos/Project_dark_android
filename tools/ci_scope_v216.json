@@ -85,7 +85,7 @@
   "app/src/test/java/com/projectdark/mobile/MartialMechanicsV173Test.java": "d2f8760e3e5413fbd25ea6b4f38ab985c6dfd8ef0d00d8aafe3e00a42261c084",
   "app/src/test/java/com/projectdark/mobile/MartialSevenV228Test.java": "a2bdf9aaf3e3fd0ee2c5065c802abd07711ed9a5dfb940b24057b0eb89254aab",
   "app/src/test/java/com/projectdark/mobile/SkillPresentationTest.java": "450aede62dbe590a70e797f9b659b034214fcf41cdbf36f1d8496e85c397af82",
-  "app/src/test/java/com/projectdark/mobile/SkillSpatialContractTest.java": "b7b1a1642ea7f5084405018f75be1670133b033e6e966110a536d18eb71f06bf",
+  "app/src/test/java/com/projectdark/mobile/SkillSpatialContractTest.java": "bbd16ff9c2bcc8ad43e495a94db837db78a11d8e5aa29e941522817610479d93",
   "app/src/test/java/com/projectdark/mobile/SkillWindowTest.java": "df9adcb72deace0c5c63e13871e5ff33d0076b6d07a40f0a422d4724f30b7d0c",
   "master/changes/V228_MARTIAL_SEVEN_SOURCE.json": "5c993a555a91947f2aae9cc9aa4c395c0d94e5b0fc12d93a85f21039201be43e",
   "master/source/martial_v228/observed_clips.zip": "4474e3a6041d98f156402f8bea84070fae03d325ce68c0246b31f5a2256001c8",
@@ -124,7 +124,7 @@
   "app/src/main/assets/skill-presentation/rogue/icons/ff61f1898349d45c.png": "7a1a97b0fd7954e91ccb922d2db613fffc067dcd3cdda92d5816b7c30136167b",
   "app/src/main/assets/skill-presentation/rogue/manifest.json": "e20556e5b4cc86fc6c977815c1c0ecc01120095bf32e1de4b978b16f5a8230da",
   "app/src/main/assets/skill-presentation/rogue/references.json": "c5aff6018c28b07c062cbcc58fac9ee7a3ae0248d2fd801e56535875d048fc1f",
-  "app/src/test/java/com/projectdark/mobile/RogueReviewV229Test.java": "39b500e3c5769a8caf76020e52fd8d7e32cb5f8608550f226ff774193a58c6e3",
+  "app/src/test/java/com/projectdark/mobile/RogueReviewV229Test.java": "77c29e5d6ff702fb313ee87f18b04eb79ff965e86f31a2bb0e03d4aed3607737",
   "app/src/test/java/com/projectdark/mobile/RogueSkillReferenceTest.java": "158e2fcd7aced4a87b76676a7af59bda352ed4b3d3a81b4945f7a6753af37123",
   "master/changes/V229_ROGUE_ARTICLE_REVIEW.json": "1338fb83427e11a85dacda31a4b6f60c2be7ab512f2bb034e0ae2a6505bcef05",
   "master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json": "1d0d6b40b4a7878e54fddba55b9d9c9add125f09683e26461ae6068f266e7c03",
@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "9953cc427a064c7d0aaade533e3874e3b7657ced387f44da1754e11409d28d63",
+  ".github/workflows/rucesion-town-v156.yml": "1f9e3403a9000cc2747c86bef719e76fe01baaccffb13da7be8154ebc08048a8",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -190,5 +190,6 @@
   "app/src/main/assets/skill-presentation/rogue/cfcd39e6a1fb7ca3.png": "476ebf93d83b2ecad7ab8d38f2cee4987b9868b739151abc632edecf667dfaba",
   "app/src/test/java/com/projectdark/mobile/RogueCombatV234Test.java": "5b5ef91919a72364fa5812362401578d17ddceb63f867288dd7636d6346a11ab",
   "master/changes/V234_ROGUE_COMBAT.json": "445611cfb34c669c7141c107e15b4e8d164381e2524ee90f907099608d550df5",
-  "tools/apply_rogue_v234.py": "829da03a4d1f0ea299b2ca05256bf3eb8c3574578c79faf5aaa13afa9016e7eb"
+  "tools/apply_rogue_v234.py": "829da03a4d1f0ea299b2ca05256bf3eb8c3574578c79faf5aaa13afa9016e7eb",
+  "docs/V234_ROGUE_COMBAT_CHECKPOINT.md": "39fb8e22c99c406271207f0f0ac10c53f452f992424fb081d7d01e1d7e71c3f3"
 }

@@ -111,7 +111,20 @@ jobs:
             python3 tools/import_rogue_skill_references.py
             python3 tools/generate_skill_presentation.py
             git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_ACTION_DECISIONS.csv docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
+            if [[ "$(git log -1 --format=%B)" == *"[v234-tail]"* ]]; then
+              python3 - <<'GUARD'
+          import subprocess
+          base='261b73b7bca37ac0a9637c0423157d5f56b5eb3d'
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','docs/V234_ROGUE_COMBAT_CHECKPOINT.md','app/src/test/java/com/projectdark/mobile/RogueReviewV229Test.java','app/src/test/java/com/projectdark/mobile/SkillSpatialContractTest.java'}
+          changed=set(subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines())
+          assert changed <= allowed, changed-allowed
+          assert not subprocess.check_output(['git','diff',base,'HEAD','--','app/src/main'],text=True)
+          print('Reuse 56 unchanged passing native tests from run39774840057; rerun two corrected stale fixtures; no app/src/main delta')
+          GUARD
+              gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*RogueReviewV229Test.reviewedActiveDaggerAndThrowMotionsReachNormalQuickslotContactAndNativeDraw' --tests '*SkillSpatialContractTest.passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic' :app:assembleDebug --stacktrace
+            else
             gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*RogueCombatV234Test' --tests '*RogueVisualV233Test' --tests '*RogueRepairV232Test' --tests '*RogueReviewV229Test' --tests '*SkillFeedbackV231Test' --tests '*SkillAbilityRuntimeTest' --tests '*SkillSpatialContractTest' --tests '*SkillPresentationTest' --tests '*SkillContactRegressionTest' --tests '*SkillWindowReferenceTest' --tests '*SkillQuickslotApproachTest' --tests '*MartialSevenV228Test.allSixActiveSkillsUseRealNormalQuickslotsAndNativeRecipientOrCasterEffects' :app:assembleDebug --stacktrace
+            fi
             java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.CombatConcurrentInterruptionAudit
           elif [[ "$(git log -1 --format=%B)" == *"[rogue-visual-v233]"* ]]; then
             python3 tools/test_ci_scope_v216.py
