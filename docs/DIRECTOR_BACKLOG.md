@@ -1,3 +1,9 @@
+## V229 installation certificate check — separate test package
+
+Native38 distinct cases PASS:36 retained from39742229094 plus2 corrected cases in39743018663/job119704636233 SUCCESS; source319f808ee4ffdb812f66d0c2fbe12fd1f5b029b3. Initial V229 APK built16:51:24KST,hashb0a127f6e79e22d6050310ea369f454c993879ee44098c0d5ca484957d24c46f is NOTDELIVERED: certificate SHA2568a49a6b4f782baa82c1d7e355ed983b88e5d548a0c755e3b79998852c8a91322 differs from deliveredV228cert5e16a582fb2f94d56112eb009f7330581602b11256a5137bfb0f54a70e6e0fc3. Same-package update would fail.
+
+Use com.projectdark.mobile.v229test for the candidate so V228 app/data stay installed. Do not instruct uninstalling the prior app or claim old saves transfer to a new package. Exactapp/src/main guard reuses38passed native cases; app/build.gradle guard permits only .v222test→.v229test suffix change, followed by assembleDebug and binary identity/signature/hash verification. Production appId unchanged. Stable CI signing for future updates remains a separate open item; no private signing material is committed. PHONE/VISUAL PENDING.
+
 ## V229 verification continuation — unchanged runtime
 
 Source cf9d47885efdbde2134174326d9f6ec81047f311, focused39742229094/job119701997499:38cases,36PASS/2FAIL. Native icon25×2surface pixel comparisons, two-ID durable restore, bothBODY/four-facing lunge/throw and existing direct UI/source/save regressions passed. Failed cases: normal shuriken fixture incorrectly placed target1tile despite existing minReach2; old UI assertion expected the now-superseded skill-window crop. Fixtures now use per-ID minReach/LOS and exact requested article pixels, preserving all pixel assertions. No runtime/asset bytes changed. Guarded tail reruns those2cases and previously unexecuted APK;36passed cases reused. PHONE/VISUAL PENDING.
