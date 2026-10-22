@@ -1,3 +1,7 @@
+## V222 host-only measurement API compile repair
+
+834cfd59/run39696857596 reached Java test compilation; Android test compile bootclasspath excludes java.desktop/java.management compile symbols. Production compiled. Test-only independent JDK Line2D oracle and ThreadMXBean allocation probe now use reflection against the actual host interfaces; no production behavior or assertions removed. Repeat exact-source baseline/after runtime verification next.
+
 ## V222 CI baseline checkout repair
 
 Published f98cb3df/run39696577345 stopped before Java compilation: checkout was shallow, so the exact V221 source used by git show was absent. Added explicit depth1 fetch of approved baseline3bf65b96 before the temporary before-phase. Trap restored final production; no runtime test or APK existed from that failed attempt. Common scope39696584605 succeeded. Production bytes unchanged; next exact-source focused run required.
