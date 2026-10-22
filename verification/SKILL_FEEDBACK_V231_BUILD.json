@@ -1,0 +1,118 @@
+{
+  "sourceCommit": "f037ca5779348b363d82424ca586eec3d99d32b3",
+  "runId": "39756016243",
+  "builtAtKST": "2026-10-22T18:34:46.759550+09:00",
+  "apkSha256": "7d6503a9d6eaa9149667844467813630898925ad2cbf98031caba6d5d4ddbd80",
+  "apkBytes": 101770509,
+  "identity": {
+    "sourceCommit": "f037ca5779348b363d82424ca586eec3d99d32b3",
+    "runId": "39756016243",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "Protection top arc restored;Muyeong1.9x;rogue001/007 alias,five brown icons,knee-forward e8..15;assassin1.3x;original Sense5rows/manual confirm/AUTO0.3s;shuriken throw/damage without particles",
+  "revision": "V231_SKILL_FEEDBACK_BUILD",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "artifactId": 12415867924,
+  "artifactZipSha256": "e1c496dfa43dada11d56b1e3aaf87a738f950a63b5777ee764c061e90f54b86f",
+  "package": "com.projectdark.mobile.v231test",
+  "label": "PROJECT DARK V231 TEST",
+  "separateInstall": true,
+  "oldSaveCopied": false,
+  "fullRegression": false,
+  "scopeRun": 39756027159,
+  "signature": "CI apksigner V2 PASS;local V2 public certificate fingerprint/ZIP CRC/hash/embedded identity/manifest verified",
+  "packagedProof": {
+    "matched": [
+      "assets/skill-presentation/captured/manifest.json",
+      "assets/skill-presentation/catalog.json",
+      "assets/skill-presentation/rogue/icons/53eb9b663e07ec9e.png",
+      "assets/skill-presentation/rogue/icons/5599ff0303eba4ae.png",
+      "assets/skill-presentation/rogue/icons/8b4f22023ba534ef.png",
+      "assets/skill-presentation/rogue/icons/cfcd39e6a1fb7ca3.png",
+      "assets/skill-presentation/rogue/icons/ff61f1898349d45c.png",
+      "assets/skill-presentation/rogue/manifest.json",
+      "assets/skill-presentation/rogue/references.json",
+      "assets/skill-presentation/user-v228/fx-029.png",
+      "assets/skill-presentation/user-v228/manifest.json"
+    ],
+    "v2CertificateSha256": "0e39f4ac09d843ba003e2ab026d277e6d417c8137c3d75f4900f7b324cc1fc1e"
+  },
+  "librarySave": {
+    "library_file_id": "libfile_79a9381e2880819183893c5b1731a4f1",
+    "file_id": "file_00000000761881f58bf9af5ad4a44983",
+    "local_path": "/workspace/scratch/fd2fa812be2a/v231-delivery/PROJECT_DARK_V231_TEST.apk",
+    "status": "succeeded"
+  },
+  "nativeVisualReview": [
+    "v231-sense-auto/manual",
+    "v231-shuriken-contact",
+    "v230-029/028 normal skills",
+    "v229-020 enlarged assassin",
+    "v229-source-motion both bodies/four facings"
+  ],
+  "limits": [
+    "Phone/user visual acceptance pending",
+    "Source inverse SCREEN alpha and per-facing original timing remain approximate",
+    "Separate v231test does not inherit old private app saves"
+  ],
+  "nativeSuites": [
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillQuickslotApproachTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillPresentationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillFeedbackV231Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MartialRepairV230Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueReviewV229Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MartialSevenV228Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "nativeCases": 27
+}
