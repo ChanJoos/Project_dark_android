@@ -69,6 +69,8 @@ public final class RuntimeCombatPortAdapterAudit {
 
     // A monster killing the player must publish PLAYER_DEFEATED only, never MONSTER_DEFEATED.
     state.revivePlayer();
+    // Revival restores spawn coordinates; put the combat fixture back in range.
+    state.player().x=monster.x;state.player().y=monster.y;
     state.player().hp=4;
     monster.alive=true;
     monster.hp=Math.max(1,monster.maxHp);

@@ -339,6 +339,6 @@
   "master/source/mage_video_v238/receipt.json": "96834c2129384881eb9b7a87861dff7c04430d868a13a2d1e28d6462efc93a7c",
   "tools/extract_mage_video_v238.py": "89c989188a5f2b38a4dc477c7b17939e4317ea17f95a4b78a7aead9d610612cd",
   "tools/check_mage_video_v238.py": "80eb316aaaa9203446343c01d1061a91aede21db9bae81c817ebc2e8c5288e84",
-  "app/src/main/java/com/projectdark/mobile/RuntimeCombatPortAdapterAudit.java": "10647da0b954b9aa7d8edef11b2fdb0f894fa675571e63e3d5f7000eaffed999",
+  "app/src/main/java/com/projectdark/mobile/RuntimeCombatPortAdapterAudit.java": "2da60e11533e26e8b4848bd5f6b8bf2d31c15e42ea05c5d2490ddabf2554d3e2",
   "app/src/main/java/com/projectdark/mobile/MonsterDefeatIdempotencyAudit.java": "84544740afa695bcef421ca405ba26cb71947bb1c82ef9ea5e94ad4f0fe32dff"
 }

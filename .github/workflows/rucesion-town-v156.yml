@@ -109,7 +109,21 @@ jobs:
           if [[ "$(git log -1 --format=%B)" == *"[mage-video-v238]"* ]]; then
             python3 tools/test_ci_scope_v216.py
             python3 tools/check_mage_video_v238.py
+            if [[ "$(git log -1 --format=%B)" == *"[v238-tail]"* ]]; then
+              git fetch --depth=1 origin 2c2fdfcdfc043ad0fceed3d3b640db7f6c9e8578
+              python3 - <<'GUARD238'
+          import subprocess
+          base='2c2fdfcdfc043ad0fceed3d3b640db7f6c9e8578'
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/main/java/com/projectdark/mobile/RuntimeCombatPortAdapterAudit.java','docs/V238_MAGE_VIDEO_CHECKPOINT.md'}
+          changed=set(subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines());assert changed<=allowed,changed-allowed
+          unchanged=['app/src/main/assets','app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java','app/src/test']
+          assert not subprocess.check_output(['git','diff',base,'HEAD','--']+unchanged,text=True)
+          print('Reuse37 native PASS from39803951433; one audit fixture reposition after revive; runtime FX/domain/assertions unchanged')
+          GUARD238
+              gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*MageVideoV238Test.sharedCombatAuditsRunWithAndroidRuntimeInsteadOfStubJar' :app:assembleDebug --stacktrace
+            else
             gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*MageVideoV238Test' --tests '*MageVisualV237Test.helphuraRetiresAndOldSaveSlotsAreCleanedPraboLivesInFifthCircle' --tests '*MageVisualV237Test.eightPromotionsRemoveRecordedActorMasksWithoutRepaintingSourceColorsAndRenderNative' --tests '*MageSourcesV235Test.all54GuideIconsOverrideBookAndQuickslotAndEveryDescriptionIsTheDisplayedText' --tests '*MageSourcesV235Test.allFourteenPromotionSpellsReachNormalQuickslotContactWithSourceEffectsAndCorrectAnchors' --tests '*SkillWindowTest' --tests '*SkillWindowReferenceTest' --tests '*SkillContactRegressionTest' --tests '*RogueAmnesiaV236Test' :app:assembleDebug --stacktrace
+            fi
           elif [[ "$(git log -1 --format=%B)" == *"[mage-visual-v237]"* ]]; then
             python3 tools/test_ci_scope_v216.py
             gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*MageVisualV237Test' --tests '*MageSourcesV235Test' --tests '*SkillWindowTest' --tests '*SkillWindowReferenceTest' --tests '*SkillContactRegressionTest' --tests '*RogueAmnesiaV236Test' :app:assembleDebug --stacktrace
