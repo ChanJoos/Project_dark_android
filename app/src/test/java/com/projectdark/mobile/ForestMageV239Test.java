@@ -10,8 +10,8 @@ public class ForestMageV239Test {
  @Test public void newPromotionChannelsKeepCasterRegistrationAndContinuousContacts()throws Exception{
   MageSourcesV235Test m=new MageSourcesV235Test();ClassicSkillReference r=new ClassicSkillReference(RuntimeEnvironment.getApplication());
   Bitmap grid=Bitmap.createBitmap(1000,650,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(grid);c.drawColor(0xff544b3e);
-  int row=0;for(int n:new int[]{39,41,42,51,52}){
-   ClassicSkillReference.Channel q=r.channel(m.mage(n),false);assertNotNull(q);assertTrue(q.sequence.durations.length>=10);
+  long videoBytes=0;int row=0;for(int n:new int[]{39,41,42,51,52}){
+   ClassicSkillReference.Channel q=r.channel(m.mage(n),false);assertNotNull(q);videoBytes+=q.sequence.atlas.getAllocationByteCount();assertTrue(q.sequence.durations.length>=10);
    java.util.Set<Integer> hashes=new java.util.HashSet<>();int[] pixels=new int[q.sequence.width*q.sequence.height];
    for(int f=0;f<q.sequence.durations.length;f++){q.sequence.atlas.getPixels(pixels,0,q.sequence.width,f%q.sequence.columns*q.sequence.width,f/q.sequence.columns*q.sequence.height,q.sequence.width,q.sequence.height);hashes.add(java.util.Arrays.hashCode(pixels));}
    assertTrue("Changing recorded frames "+n,hashes.size()>=4);
@@ -22,7 +22,7 @@ public class ForestMageV239Test {
     assertTrue("Shield stays by the source foot instead of dropping under it "+n+":"+bottom,bottom<146);
    }
    for(int f=0;f<8;f++)r.draw(c,q,q.sequence.duration*f/8f,65+f*125,70+row*125);row++;
-  }RogueRepairV232Test.save(grid,"v239-promotion-sequences");
+  }assertTrue("Five source atlases stay under11MB decoded "+videoBytes,videoBytes<=11000000L);RogueRepairV232Test.save(grid,"v239-promotion-sequences");
   // Existing costs/recipient/status rules must still be reached by ordinary quickslots.
   m.allFourteenPromotionSpellsReachNormalQuickslotContactWithSourceEffectsAndCorrectAnchors();
  }

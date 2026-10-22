@@ -57,13 +57,19 @@ def main():
   rgba=np.zeros((*raw.shape[:3],4),np.uint8)
   signal=np.clip((z-plate[None]-3)/(255-plate[None]).clip(20)*255,0,255).astype(np.uint8)
   rgba[:,:,:,:3]=signal;rgba[:,:,:,3]=keep.astype(np.uint8)*255;rgba[~keep]=0
+  # Trim transparent margins only; restore into the original registration to prove exact pixels.
+  ys,xs=np.where(rgba[:,:,:,3].max(axis=0)>0)
+  left,top,right,bottom=int(xs.min()),int(ys.min()),int(xs.max()+1),int(ys.max()+1)
+  full=rgba;rgba=full[:,top:bottom,left:right].copy();restored=np.zeros_like(full);restored[:,top:bottom,left:right]=rgba
+  assert np.array_equal(full,restored),(name,'nontransparent pixels lost during trim')
+  px-=left;py-=top;h,w=rgba.shape[1:3]
   count=len(rgba);cols=8;atlas=Image.new('RGBA',(cols*w,((count+cols-1)//cols)*h))
   for i,f in enumerate(rgba):atlas.paste(Image.fromarray(f),(i%cols*w,i//cols*h))
   dest=out/(name+'.png');atlas.save(dest)
   assert np.count_nonzero(rgba[:,:,:,3])>100,(name,'empty sequence')
   channel=dict(anchor='RECIPIENT',path='mage-v239/'+dest.name,width=w,height=h,columns=cols,durationsMs=[50]*count,pivotX=px,pivotY=py,scale=scale,blend='SCREEN',footOffsetY=0,sourceTiming='OBSERVED_CAPTURE_20FPS',atlasSha256=hashlib.sha256(dest.read_bytes()).hexdigest())
   skills[f'SK_마법사_{ident:03}']={'channels':{'RECIPIENT_CONTACT':channel}}
-  rows.append(dict(id=f'SK_마법사_{ident:03}',seconds=t,duration=d,crop=box,sourceSha256=source,visiblePixels=int(np.count_nonzero(rgba[:,:,:,3])),evidence='ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed'))
+  rows.append(dict(id=f'SK_마법사_{ident:03}',seconds=t,duration=d,crop=box,sourceSha256=source,visiblePixels=int(np.count_nonzero(rgba[:,:,:,3])),atlasTrim=[left,top,right,bottom],trimRestoration='EXACT_RGBA_PASS',decodedBytes=atlas.width*atlas.height*4,evidence='ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed'))
  (out/'manifest.json').write_text(json.dumps(dict(revision='USER_VIDEO_V239',skills=skills),ensure_ascii=False,indent=2)+'\n')
  src=ROOT/'master/source/mage_v239';src.mkdir(exist_ok=True)
  (src/'receipt.json').write_text(json.dumps(dict(source=a.video.name,sha256=source,sequences=rows,remaining='Other named debuffs and the first video lower-circle casts remain evidence inventory; no unsupported mechanical grants.'),ensure_ascii=False,indent=2)+'\n')

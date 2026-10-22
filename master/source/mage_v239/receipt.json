@@ -14,6 +14,14 @@
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
       "visiblePixels": 71630,
+      "atlasTrim": [
+        62,
+        96,
+        246,
+        284
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "decodedBytes": 3320832,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     },
     {
@@ -28,6 +36,14 @@
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
       "visiblePixels": 75724,
+      "atlasTrim": [
+        69,
+        85,
+        200,
+        286
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "decodedBytes": 2527776,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     },
     {
@@ -42,6 +58,14 @@
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
       "visiblePixels": 75539,
+      "atlasTrim": [
+        8,
+        50,
+        184,
+        220
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "decodedBytes": 1914880,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     },
     {
@@ -56,6 +80,14 @@
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
       "visiblePixels": 26390,
+      "atlasTrim": [
+        183,
+        67,
+        338,
+        224
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "decodedBytes": 1557440,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     },
     {
@@ -70,6 +102,14 @@
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
       "visiblePixels": 40636,
+      "atlasTrim": [
+        0,
+        31,
+        91,
+        256
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "decodedBytes": 1310400,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     }
   ],

@@ -1,3 +1,7 @@
+### Exact-pixel transparent-margin memory trim
+
+Measured five decoded V239 atlases49,299,200bytes; most pixels are transparent crop margins. Trim union bounds across every frame, subtract the same offset from pivots, and independently restore every RGBA frame into its original registration byte-for-byte. No visual/timing/cost/recipient change. New decoded total10,631,328bytes (38,667,872bytes/78.4% less); native new3 includes <=11MB assertion plus existing shield ground envelopes. All five atlases/manifest/recipe/receipt admitted by strict tail diff. Prior interim native passes do not certify this final APK; rerun direct3 and exact assemble/source/hash verification.
+
 ### Source foot registration correction after actual normal-contact review
 
 First-run normal quickslot captures51/52 exposed a genuine visual offset: the shield source pivot used torso190 while the RECIPIENT channel anchors at ground. Source actor feet are at cropY260. Correct both pivots to260 without changing source pixels/timing/rules; add actual native alpha-envelope checks proving the shield extends above the torso and ends within16logical pixels of ground. This supersedes the first V239 buff placement; final exact-source native/assemble remains required.
