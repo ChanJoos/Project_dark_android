@@ -1,0 +1,23 @@
+{
+  "id": "V227_SKILL_SOURCE_CORRECTIONS",
+  "status": "ACCEPTED",
+  "evidence": "master/source/skill_v227/reference.json",
+  "before": {
+    "activeSkills": 221,
+    "iconsConnected": 179,
+    "semelia": "adapted finisher"
+  },
+  "after": {
+    "activeSkills": 220,
+    "iconsConnected": 181,
+    "retired": "SK_성직자_020",
+    "semeliaFx": "SK_마법사_037 original recipient channel; SINGLE shape unchanged"
+  },
+  "save": "Version1 retained; old retired learned ID and slots safely discarded; invalid unknown IDs remain rejected transactionally.",
+  "validation": "PENDING scoped Android CI; handset pending",
+  "pending": [
+    "Martial article body not retrieved",
+    "Ambiguous rogue source animation identity",
+    "Original transfusion multiplayer functionality"
+  ]
+}

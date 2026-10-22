@@ -1,0 +1,60 @@
+{
+  "date": "2026-10-22",
+  "classification": "U user instructions + V community screenshots",
+  "attachments": [
+    {
+      "file": "02-1000060624.jpg",
+      "sha256": "ae08625422ebf59bc67e8afa3f3f2cf269cb7e5f4c96b1a74e82443876c7753e",
+      "skill": "SK_성직자_051",
+      "crop": [
+        30,
+        241,
+        94,
+        305
+      ],
+      "outputSize": [
+        40,
+        40
+      ],
+      "method": "source crop; LANCZOS; no generated pixels"
+    },
+    {
+      "file": "03-1000060622.jpg",
+      "sha256": "74dc379d23f7549cc66c414275531b0e60b3fad785be5e100ef345fad83edee7",
+      "skill": "SK_성직자_002",
+      "crop": [
+        30,
+        232,
+        94,
+        296
+      ],
+      "outputSize": [
+        40,
+        40
+      ],
+      "method": "source crop; LANCZOS; no generated pixels"
+    }
+  ],
+  "martial": {
+    "url": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/476136",
+    "status": "PENDING_BODY: web retrieval failed; public API unavailable; no inferred changes"
+  },
+  "rogue": {
+    "url": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450",
+    "retained": "master/source/skill_fx/naver_cafe_archive_20261001/245450.json",
+    "findings": [
+      "Existing original icon/GIF bindings for 찔러휘비기 and 두번찌르기 retained.",
+      "습격 section describes 기습 demonstration; do not relabel ambiguous GIF.",
+      "백슬래쉬 section lacks skill-table icon."
+    ]
+  },
+  "cleric": {
+    "holyBolt": "SK_성직자_013 retained; distinct from retired Holy Blow",
+    "bless": "Screenshot describes solo-dungeon attack; 100 MP and 2s delay are version evidence, not adopted as mobile balance or cast duration.",
+    "transfusion": "Screenshot says spend own HP10%, transfer10% of spent HP to another player; old 벨라르모 effect. Icon only; multiplayer transfer remains unsupported."
+  },
+  "user": [
+    "Retire Holy Blow SK_성직자_020 from active gameplay.",
+    "Semelia uses Ragnarok original effect on one monster; Ragnarok keeps per-monster screen recipients."
+  ]
+}

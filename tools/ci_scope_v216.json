@@ -1,5 +1,5 @@
 {
-  "app/build.gradle": "cedbbaa162adf273b6f19e22378f45fd9bdcdf43b7c829be86a4fe13b0dcecc2",
+  "app/build.gradle": "1f33e96cd20b91c0ddca6786efb86715ea36549702386ef757220d8448a4b2e8",
   "app/src/main/java/com/projectdark/mobile/DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
   "app/src/main/java/com/projectdark/mobile/DeathVillageRenderer.java": "dc4c5757fe6f93d463c7f79799abbc325f53058fcddd72f75818e6d4c943c7a3",
   "app/src/main/java/com/projectdark/mobile/DeathVillageTravel.java": "ab75b725f01382ac3c5a1a37e9d921c67376b358c48b71fc0c595b0d23f059d6",
@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "ea115d9d4fd2e166d2216d019d5d8544074ae6e616fe967bf7dd04423a4c6c00",
+  "master/MASTER_MANIFEST.md": "6af82f391771a8b47d4c99b1a01955583bd819abe365bfafb616586aed1e5a03",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -34,5 +34,20 @@
   "app/src/test/java/com/projectdark/mobile/WornEquipmentV225Test.java": "603b72ffccab83a7ef6610a803600b21b03a7aea93a33412c9c1f0273a5215dd",
   "app/src/test/java/com/projectdark/mobile/MineHuntV208Test.java": "4e2d65cf755cd6c7af439fc20a5474450ede4c646a1e119e3afc0545d494a7c9",
   "master/changes/V225_WORN_EQUIPMENT.json": "709c7e585fbdd56d84761fb9b48a6b8e355414115f2913ec1f52f5333f80d5b7",
-  "tools/reward_audit_v224.py": "8ca92d13e20ef2ce1f9866695888ba6b8cddeeb1b881607176720e9ea11e2101"
+  "tools/reward_audit_v224.py": "8ca92d13e20ef2ce1f9866695888ba6b8cddeeb1b881607176720e9ea11e2101",
+  "app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java": "938062a93adb175809f80034f2fe13d1759a984afdfecf944d0045e6daee0e1b",
+  "app/src/main/java/com/projectdark/mobile/SkillAbilityCatalog.java": "452d5d0cd42bd0fc0d66a0731d6ee7ea7d408beabc6a3520ca16d754a796b668",
+  "app/src/main/java/com/projectdark/mobile/SkillAcquisition.java": "ccaea0134aa38a8550c3367641ebd38873f5e937375be362897326648c5589e4",
+  "app/src/main/java/com/projectdark/mobile/SkillBook.java": "c5109d29083c9c44eb482d27e898538369f1513cb3f71b583146957de7d1a6bf",
+  "app/src/main/java/com/projectdark/mobile/SkillIconCatalog.java": "ff76c20b9f28ccd905966c172c10318ef76763eed5da6d2e2913ca6cc96ab65b",
+  "app/src/main/java/com/projectdark/mobile/SkillVfxRenderer.java": "0d463b04cd4bbf14ddd86acc9c47452e513a65adba2cabe3a1742ff91fc9c5f3",
+  "app/src/test/java/com/projectdark/mobile/SkillAbilityRuntimeTest.java": "c5c7ddfd772b40b3fe526c7e94d0cfa05d2486fc6db1b0a6f49baee6bb20b229",
+  "app/src/main/java/com/projectdark/mobile/SkillPolicyV227.java": "f4bad3a113d22551f0ec8ab5b7ffeaab7a910abe1d36ab6fa17368e185b755e2",
+  "app/src/test/java/com/projectdark/mobile/SkillCorrectionsV227Test.java": "1debc420dbb2fae1955bc0aa739d260e053756292d5b21a000ad801fc968cfa6",
+  "master/source/skill_v227/reference.json": "e4ac67a92661ecb9fa391961c3554d84ed2b3e4a17f9188d5b66870ea07b0655",
+  "master/changes/V227_SKILL_SOURCE_CORRECTIONS.json": "857e6ec66826264f77a584603afcdbbcaee8cd4e8f5ab9a49d530446ed0de7bf",
+  "tools/audit_skills_v226.py": "0040fa29994be23f871d862be3bca38c5ad9b2fd4b4c88dac624c1426d87afdc",
+  "app/src/main/assets/skill-presentation/user-v227/bless.png": "2b77faece47094fda2cf939677e364f6c5e0b304b6dc3c16ff2924653667d536",
+  "app/src/main/assets/skill-presentation/user-v227/transfusion.png": "cce097fd32226c0442323aa61d5062319d601f0c78db0d650726432ed43e22bf",
+  "app/src/main/assets/skill-presentation/user-v227/icons.json": "50c56d173113a9192d1268d5bcee5abd3282be40e91541da4963032fc2ff8880"
 }

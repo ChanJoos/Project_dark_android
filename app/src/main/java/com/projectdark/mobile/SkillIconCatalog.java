@@ -37,6 +37,8 @@ final class SkillIconCatalog {
       for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id"),path=row.getString("iconAssetPath");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/"+directory+"/"+path));if(icon==null)throw new IOException("Invalid classic icon: "+path);presentation.put(id,icon);index.putIfAbsent(id,-1);}
       }
       Bitmap meteorIcon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/screen-magic-v204/meteor-icon.png"));if(meteorIcon==null)throw new IOException("Meteor source icon");presentation.put("SK_마법사_043",meteorIcon);index.putIfAbsent("SK_마법사_043",-1);
+      JSONObject supplements=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/user-v227/icons.json"),StandardCharsets.UTF_8));
+      Iterator<String> ids=supplements.keys();while(ids.hasNext()){String id=ids.next();Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open(supplements.getString(id)));if(icon==null)throw new IOException("Invalid user skill icon "+id);presentation.put(id,icon);index.putIfAbsent(id,-1);}
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
   static String iconId(String id){return "SK_무도가_001".equals(id)?"SK_무도가_006":id;}

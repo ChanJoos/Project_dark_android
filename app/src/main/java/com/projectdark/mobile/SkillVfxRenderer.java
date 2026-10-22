@@ -24,7 +24,7 @@ final class SkillVfxRenderer {
   void clear(){pulses.clear();actionDirections.clear();directionTargets.clear();releasedDirections.clear();}
   private void lockDirection(Pulse p){float[] d=actionDirections.get(p.actionSequence);if(d!=null){p.directionX=d[0];p.directionY=d[1];}}
   /** Explicit test-only visual emission, independent from real Resolver hit feedback. */
-  void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||anchor==null||MartialSkillPolicy.LEAP.equals(id))return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>MAX_PULSES)pulses.remove(0);}
+  void preview(long seq,String id,boolean caster,String anchor,Anchors a){SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||SkillPolicyV227.retired(id)||anchor==null||MartialSkillPolicy.LEAP.equals(id))return;int row=caster?casterRow(v.caster):v.targetRow;if(row<0)return;float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))return;pulses.add(new Pulse(seq,id,caster?"caster":v.targetSheet,row,anchor,caster,caster?.30f:.48f,x,y));if(pulses.size()>MAX_PULSES)pulses.remove(0);}
   void consume(List<CombatResolver.Event> events,Anchors a){for(CombatResolver.Event e:events){
     if(!RuntimeCombatSession.PLAYER_ID.equals(e.actorId)){
       if(e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)){
@@ -43,7 +43,7 @@ final class SkillVfxRenderer {
       if(Float.isFinite(dx)&&Float.isFinite(dy)&&Math.abs(dx)+Math.abs(dy)>.001f){actionDirections.put(e.actionSequence,new float[]{dx,dy});for(Pulse p:pulses)if(p.actionSequence==e.actionSequence)lockDirection(p);}
       releasedDirections.add(e.actionSequence);
     }
-    String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||id.equals("SK_공통_001")||MartialSkillPolicy.LEAP.equals(id))continue;
+    String id=e.actionId.startsWith("attack_proto_")?"SK_공통_001":e.actionId;SkillPresentationCatalog.Entry v=catalog.get(id);if(v==null||SkillPolicyV227.retired(id)||id.equals("SK_공통_001")||MartialSkillPolicy.LEAP.equals(id))continue;
     if(e.type==CombatResolver.EventType.ACTION_CANCELLED){pulses.removeIf(f->f.actionSequence==e.actionSequence);continue;}
     boolean caster=e.type==CombatResolver.EventType.ACTION_STARTED,target=e.type==CombatResolver.EventType.HIT_FEEDBACK&&(e.hitSemantic!=CombatResolver.HitSemantic.MISS);
     if(!caster&&!target)continue;

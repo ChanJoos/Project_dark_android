@@ -42,7 +42,7 @@ public final class SkillBook {
   public boolean jobAllowed(String id){Entry e=get(id);return e!=null&&(testAccess||jobSource==null||e.jobMatches(jobSource.get()));}
   public boolean testAccess(){return testAccess;}
   public void setTestAccess(boolean value){testAccess=value;}
-  public boolean previewable(String id){Entry e=get(id);return e!=null&&!"검증용".equals(e.job);}
+  public boolean previewable(String id){Entry e=get(id);return e!=null&&!SkillPolicyV227.retired(id)&&!"검증용".equals(e.job);}
   public String[] testSlots(){return testSlots.clone();}
   public void restoreTestSlots(String[] values){for(int i=0;i<SLOT_COUNT;i++)testSlots[i]=values!=null&&i<values.length&&previewable(values[i])?values[i]:null;}
   public static SkillBook load(Context context){
@@ -72,12 +72,12 @@ public final class SkillBook {
   public Entry get(String id){return entries.get(id);}
   public Collection<Entry> entries(){return Collections.unmodifiableCollection(entries.values());}
   public int catalogSize(){int count=0;for(Entry e:entries.values())if(previewable(e.id))count++;return count;}
-  public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(e.magic()==magic&&(!"검증용".equals(e.job)||learned(e.id))&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
+  public List<Entry> list(boolean magic,boolean learnedOnly){List<Entry> result=new ArrayList<>();for(Entry e:entries.values())if(!SkillPolicyV227.retired(e.id)&&e.magic()==magic&&(!"검증용".equals(e.job)||learned(e.id))&&(!learnedOnly||learned(e.id)))result.add(e);return result;}
   public boolean owned(String id){return learned.containsKey(id);}
-  public boolean learned(String id){return testAccess&&previewable(id)||learned.containsKey(id);}
+  public boolean learned(String id){return !SkillPolicyV227.retired(id)&&(testAccess&&previewable(id)||learned.containsKey(id));}
   public int proficiency(String id){Integer v=learned.get(id);return v==null?0:v;}
   /** Called by a validated acquisition service. UI cannot grant skills. */
-  public boolean learn(String id,int proficiency){if(!entries.containsKey(id)||proficiency<0||proficiency>100)return false;learned.put(id,proficiency);if("SK_전사_010".equals(id)){learned.remove("SK_전사_009");for(int i=0;i<SLOT_COUNT;i++)if("SK_전사_009".equals(slots[i]))slots[i]="SK_전사_010";}return true;}
+  public boolean learn(String id,int proficiency){if(SkillPolicyV227.retired(id)||!entries.containsKey(id)||proficiency<0||proficiency>100)return false;learned.put(id,proficiency);if("SK_전사_010".equals(id)){learned.remove("SK_전사_009");for(int i=0;i<SLOT_COUNT;i++)if("SK_전사_009".equals(slots[i]))slots[i]="SK_전사_010";}return true;}
   public boolean usable(String id){Entry e=get(id);return e!=null&&learned(id)&&jobAllowed(id)&&(e.runtime!=null||testAccess&&previewable(id));}
   public int basicHits(){int hits=1;for(SkillActionContract.Rule r:SkillActionContract.all())if(r.mode.equals("LINKED")&&learned(r.id)&&jobAllowed(r.id))hits=Math.max(hits,r.hits);if(learned("SK_도적_031")&&jobAllowed("SK_도적_031"))hits++;return hits;}
   public String slot(int index){return index>=0&&index<SLOT_COUNT?(testAccess?testSlots:slots)[index]:null;}
@@ -91,9 +91,9 @@ public final class SkillBook {
     try{
       if(j.getInt("version")!=1)return false;
       JSONObject l=j.getJSONObject("learned");Map<String,Integer> next=new LinkedHashMap<>();
-      Iterator<String> it=l.keys();while(it.hasNext()){String id=it.next();Object v=l.get(id);if(get(id)==null||!(v instanceof Integer)||((Integer)v)<0||((Integer)v)>100)return false;next.put(id,(Integer)v);}
+      Iterator<String> it=l.keys();while(it.hasNext()){String id=it.next();Object v=l.get(id);if(get(id)==null||!(v instanceof Integer)||((Integer)v)<0||((Integer)v)>100)return false;if(!SkillPolicyV227.retired(id))next.put(id,(Integer)v);}
       JSONArray s=j.getJSONArray("slots");if(s.length()!=8&&s.length()!=SLOT_COUNT)return false;String[] nextSlots=new String[SLOT_COUNT];
-      for(int i=0;i<s.length();i++){if(s.isNull(i))continue;Object v=s.get(i);if(!(v instanceof String))return false;String id=(String)v;Entry e=get(id);if(e==null||!next.containsKey(id))return false;nextSlots[i]=id;}
+      for(int i=0;i<s.length();i++){if(s.isNull(i))continue;Object v=s.get(i);if(!(v instanceof String))return false;String id=(String)v;Entry e=get(id);if(e==null)return false;if(SkillPolicyV227.retired(id))continue;if(!next.containsKey(id))return false;nextSlots[i]=id;}
       learned.clear();learned.putAll(next);System.arraycopy(nextSlots,0,slots,0,SLOT_COUNT);return true;
     }catch(JSONException e){return false;}
   }

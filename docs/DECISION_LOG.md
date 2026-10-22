@@ -1,3 +1,11 @@
+## 2026-10-22 V227 스킬 자료 반영 — 구현, 관련 검증 대기
+
+U 홀리블로우(SK_성직자_020) 배움·목록·퀵슬롯·실행 제거; 원본 ID는 기존 저장 정리용 보존. 홀리볼트는 별개로 유지. 세멜리아는 라그나로크 원본 recipient 채널을 공유하며 SINGLE 한 대상, 라그나로크 SCREEN 다수 대상·기존 피해/자원 공식 유지. 첨부 원본에서 블레스·수혈 아이콘 추가. 전체 활성220개, 연결 아이콘181개; V226 감사는 당시221/179 역사 자료로 유지.
+
+도적245450 기존 보관 원문/아이콘/GIF 대조; 찔러휘비기·두번찌르기 연결 유지, 습격 본문의 기습 명칭 충돌 및 백슬래쉬 아이콘 미제공 미해결. 도가476136 본문 취득 실패: 내용 추측 변경 없음. 블레스 솔로던전·수혈 타인 HP 전달은 출처 기록과 현재 지원 범위를 분리. 근거 master/source/skill_v227/reference.json, accepted master/changes/V227_SKILL_SOURCE_CORRECTIONS.json.
+
+검증: 삭제/정상 습득·저장 복원, 세멜리아 단일 대 라그나로크 다수 실제 전투 이벤트/원본 FX, 아이콘, 스킬 UI·공유 실행·F5M 직접 영향 suite와 assembleDebug 예정. IMPLEMENTED; BUILD/HOST_NATIVE/PHONE/VISUAL PENDING. 기존 PR197/main 미병합 후보.
+
 ## 2026-10-22 V226 스킬 자료 부족 전수 감사 — 구현 전 자료 요청
 
 기준 HEAD93f7651818fd46552ca077ca667edeb2f96bd0b1 / 마지막 APK2fc3f37a. 전체221개 현재 loader/manifest/Java 대조: 아이콘 연결179/누락42(과거CSV174/47은 skin+Meteor override 미포함), 원작 이펙트 미확인32(ADAPTED 경로, 효과 완전 부재와 다름), 기능 미지원19SERVICE+수혈TRANSFER=20. NO_PARTICLE41에는 passive/linked/utility/body-only가 포함되므로 전체 이펙트 누락으로 보고하지 않음. 12개 caster 채널 저픽셀21~26, original BODY/4방향·무기/지팡이·타이밍·원작 수치 미확정도 별도.

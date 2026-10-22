@@ -26,8 +26,8 @@ final class ClassicSkillReference {
     prewarmCenters();prepareBaekbo();
   }catch(Exception e){throw new IllegalStateException("Classic skill reference",e);}}
   private static JSONObject read(Context c,String path)throws Exception{return new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/"+path),StandardCharsets.UTF_8));}
-  boolean has(String id){return effects.containsKey(id);}
-  Channel channel(String id,boolean start){Map<String,Channel> channels=effects.get(id);return channels==null?null:channels.get(start?"CASTER_START":"RECIPIENT_CONTACT");}
+  boolean has(String id){return effects.containsKey(SkillPolicyV227.effectSource(id));}
+  Channel channel(String id,boolean start){Map<String,Channel> channels=effects.get(SkillPolicyV227.effectSource(id));return channels==null?null:channels.get(start?"CASTER_START":"RECIPIENT_CONTACT");}
   void drawRegistered(Canvas canvas,Channel channel,float age,float x,float y,float pivotX,float pivotY,float dx,float dy,boolean projectile,int topCrop){
     CapturedSkillFx.Sequence s=channel.sequence;int frame=s.frame(age),col=frame%s.columns,row=frame/s.columns;
     canvas.save();

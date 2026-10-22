@@ -37,9 +37,9 @@ public class SkillAbilityRuntimeTest {
   assertEquals(0,SkillAbilityCatalog.amount(SkillAbilityCatalog.get("SK_마법사_043"),x));assertEquals(67600,ordinary("SK_전사_015",stats));
   assertEquals(0,CombatStatPipeline.resolveSkill(0,CombatStatPipeline.Channel.PHYSICAL,stats,stats).applied);
  }
- @Test public void all77DamageActionsActuallyReachTheResolverWithTheirOwnFormulas()throws Exception{
+ @Test public void allActiveDamageActionsActuallyReachTheResolverWithTheirOwnFormulas()throws Exception{
   Set<Integer> distinct=new HashSet<>();
-  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.damage()){
+  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.damage()&&a.supported()){
    RuntimeState s=state();RuntimeCombatSession c=session(s);SkillActionContract.Rule r=SkillActionContract.get(a.id);
    if(a.formula.equals("CRASH"))s.player().hp=1;
    s.skillEffects().put("player","SK_도적_011","STEALTH",1,30);
