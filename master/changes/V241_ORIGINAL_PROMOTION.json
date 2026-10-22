@@ -23,6 +23,6 @@
     "world",
     "save"
   ],
-  "validation": "tools/check_mage_v241.py PASS locally; native/build pending",
+  "validation": "7nativePASS/run39868184395/source296656066627ef40d3a5210ca2bc70e489bc3907; verification/PROMOTION_V241_BUILD.json",
   "device": "DEVICE_FAILED_USER_REPORTED on predecessor; new phone acceptance pending"
 }
