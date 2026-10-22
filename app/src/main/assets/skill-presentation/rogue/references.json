@@ -1,5 +1,5 @@
 {
-  "revision": "ROGUE_REVIEWED_CHANNELS_V1",
+  "revision": "ROGUE_SOURCE_BINDINGS_V229_USER_ARTICLE_ICONS",
   "rows": [
     {
       "id": "SK_공통_001",
@@ -485,6 +485,54 @@
       ]
     },
     {
+      "id": "SK_도적_029",
+      "iconAssetPath": "icons/b397a45e949ffa87.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/0fda2e7895c1fd720bac75eda57c6e1a85bf4d10560da7dea319c0cebec8b043.png",
+      "sourceSha256": "0fda2e7895c1fd720bac75eda57c6e1a85bf4d10560da7dea319c0cebec8b043",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 42,
+        "crop": [
+          0,
+          0,
+          37,
+          41
+        ],
+        "labelName": "백스탭",
+        "identityBasis": "User requests icons displayed in exact article section; original source label may be absent or reuse the lower skill label."
+      },
+      "crop": [
+        0,
+        0,
+        37,
+        41
+      ]
+    },
+    {
+      "id": "SK_도적_030",
+      "iconAssetPath": "icons/6f289fb7ff6429fc.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/9747e2fc786cd949f1fe32fb9fa255a3c46c2f0696b31858c3652b2de161f7ce.png",
+      "sourceSha256": "9747e2fc786cd949f1fe32fb9fa255a3c46c2f0696b31858c3652b2de161f7ce",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 40,
+        "crop": [
+          0,
+          0,
+          41,
+          41
+        ],
+        "labelName": "백슬래쉬",
+        "identityBasis": "User requests icons displayed in exact article section; original source label may be absent or reuse the lower skill label."
+      },
+      "crop": [
+        0,
+        0,
+        41,
+        41
+      ]
+    },
+    {
       "id": "SK_도적_032",
       "iconAssetPath": "icons/f93e2ab2c9e2a2f0.png",
       "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/47242545d1e3f6aba2dba85a929a3176d112efbab5d3d07305a0767f7c1f795f.png",
@@ -499,6 +547,32 @@
           43
         ],
         "labelName": "자물쇠열기"
+      },
+      "crop": [
+        2,
+        3,
+        42,
+        43
+      ]
+    },
+    {
+      "id": "SK_도적_027",
+      "iconAssetPath": "icons/53eb9b663e07ec9e.png",
+      "sourcePath": "master/source/skill_fx/naver_cafe_archive_20261001/media/273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d.png",
+      "sourceSha256": "273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d",
+      "sourceOrdinal": {
+        "articleId": 245450,
+        "imageIndex": 44,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ],
+        "labelName": "암살격진",
+        "identityBasis": "User requests icons displayed in exact article section; original source label may be absent or reuse the lower skill label.",
+        "visibleSourceLabel": "암살격",
+        "sectionHeading": "25. 암살격진"
       },
       "crop": [
         2,

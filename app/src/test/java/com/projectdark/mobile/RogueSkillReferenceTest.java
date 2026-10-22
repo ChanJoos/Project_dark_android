@@ -31,7 +31,7 @@ public class RogueSkillReferenceTest {
   assertEquals(SkillActionContract.Pattern.SCREEN,SkillActionContract.get("SK_도적_006").pattern);
  }
  @Test public void labelledIconsNeverBorrowBasicAttackOrSwapSenseTables()throws Exception{
-  ClassicSkillReference reference=new ClassicSkillReference(c,"rogue");assertEquals(22,reference.references.size());
+  ClassicSkillReference reference=new ClassicSkillReference(c,"rogue");assertEquals(25,reference.references.size());
   assertFalse(reference.references.containsKey("SK_도적_001"));
   assertEquals(0,reference.references.get("SK_공통_001").getJSONObject("sourceOrdinal").getInt("imageIndex"));
   assertEquals(1,reference.references.get("SK_도적_032").getJSONObject("sourceOrdinal").getInt("imageIndex"));

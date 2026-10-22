@@ -527,7 +527,7 @@
     },
     "gold": 1200,
     "items": {},
-    "summary": "자신을 알아차리지 못한 적에게 강한 피해를 줍니다.",
+    "summary": "대상이 모르게 갑자기 공격하는 4써클 기술입니다. 승급 기본기술인 기습과 별개입니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -639,7 +639,7 @@
     },
     "gold": 5000,
     "items": {},
-    "summary": "습격을 강화한 기술입니다. 자신을 알아차리지 못한 적을 공격합니다.",
+    "summary": "대상의 방어력을 낮추면서 불시에 공격하는 승급 기본기술입니다. 습격의 강화판으로 통합하지 않습니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "PROJECT_TIER_POLICY"
   },
