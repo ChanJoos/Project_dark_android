@@ -1,3 +1,7 @@
+## V222 dense fixture actual entrance repair
+
+61d21e9a/run39697181667: host geometry/allocation APIs now compile/run; 500 independent collision oracle test PASS. Dense fixture failed72→0 because it used a direct map setup with no inbound Gate, leaving the initial return gate unlatched; first full update returned to lobby. Set up Death scenes through their actual inbound Gate and assert exact map on every measured frame, keeping72/36/100 population assertions. No production change or assertion relaxation; re-run paired measurements with real entrance semantics.
+
 ## V222 host-only measurement API compile repair
 
 834cfd59/run39696857596 reached Java test compilation; Android test compile bootclasspath excludes java.desktop/java.management compile symbols. Production compiled. Test-only independent JDK Line2D oracle and ThreadMXBean allocation probe now use reflection against the actual host interfaces; no production behavior or assertions removed. Repeat exact-source baseline/after runtime verification next.

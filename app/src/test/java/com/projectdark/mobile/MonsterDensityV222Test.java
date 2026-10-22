@@ -33,7 +33,7 @@ public class MonsterDensityV222Test {
   Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(frame);JSONArray results=new JSONArray();
   HostAllocation allocation=new HostAllocation();String phase=System.getenv("PROJECT_DARK_PROFILE_PHASE");if(phase==null)phase="after";
   for(String id:new String[]{DeathVillageGeometry.FIELD,"MAP_DEATH_UNDER_C",MineHuntGeometry.ID}){
-   f.call(v,"changeCampaignMap",new Class<?>[]{String.class,boolean.class},id,false);WorldRuntimeAdapter w=f.field(v,"poteFieldAdapter");int population=s.monsters().size();assertEquals(id,DeathVillageGeometry.FIELD.equals(id)?72:MineHuntGeometry.ID.equals(id)?100:36,population);
+   if(DeathVillageGeometry.contains(id)){DeathVillageData.Gate inbound=DeathVillageData.GATES.stream().filter(g->g.to.equals(id)).findFirst().get();f.call(v,"changeCampaignMap",new Class<?>[]{String.class,boolean.class,DeathVillageData.Gate.class},id,false,inbound);}else f.call(v,"changeCampaignMap",new Class<?>[]{String.class,boolean.class},id,false);WorldRuntimeAdapter w=f.field(v,"poteFieldAdapter");int population=s.monsters().size();assertEquals(id,DeathVillageGeometry.FIELD.equals(id)?72:MineHuntGeometry.ID.equals(id)?100:36,population);
    // Gather a legal dense group without deleting actors or overlapping their starting footprints.
    List<WorldMoveTargetController.TileCenter> tiles=new ArrayList<>(w.navigationTiles());float px=s.player().x,py=s.player().y;tiles.sort(Comparator.comparingDouble(t->Math.hypot(t.x-px,t.y-py)));List<WorldMoveTargetController.TileCenter> assigned=new ArrayList<>();
    for(WorldMoveTargetController.TileCenter t:tiles){if(Math.hypot(t.x-px,t.y-py)<60)continue;boolean free=true;for(WorldMoveTargetController.TileCenter p:assigned)if(Math.hypot(t.x-p.x,t.y-p.y)<58){free=false;break;}if(free)assigned.add(t);if(assigned.size()==population)break;}
@@ -42,7 +42,7 @@ public class MonsterDensityV222Test {
    for(int i=0;i<6000;i++){RuntimeState.Monster m=s.monsters().get(i%population);if(s.canPlayerOccupyActors(m.x+80+(i%7),m.y+40))accepted++;}
    double queryMs=(System.nanoTime()-queryStart)/1e6;long queryAlloc=allocation.supported?allocation.read()-allocStart:-1;
    long[] update=new long[90],draw=new long[90];for(int i=0;i<90;i++){
-    s.player().alive=true;s.player().hp=s.player().maxHp;long start=System.nanoTime();F5mSaveStore.beginFrame();try{f.call(v,"update",new Class<?>[]{float.class},.016f);}finally{F5mSaveStore.endFrame();}long middle=System.nanoTime();v.draw(canvas);update[i]=middle-start;draw[i]=System.nanoTime()-middle;
+    s.player().alive=true;s.player().hp=s.player().maxHp;long start=System.nanoTime();F5mSaveStore.beginFrame();try{f.call(v,"update",new Class<?>[]{float.class},.016f);}finally{F5mSaveStore.endFrame();}long middle=System.nanoTime();assertEquals("real inbound gate must preserve dense scene",id,s.currentMapId());v.draw(canvas);update[i]=middle-start;draw[i]=System.nanoTime()-middle;
    }
    assertEquals(population,s.monsters().size());JSONObject row=new JSONObject().put("map",id).put("population",population).put("acceptedQueries",accepted).put("queries6000ms",queryMs).put("queryAllocatedBytes",queryAlloc).put("update90IncludingCold",HudInventoryPerformanceV218Test.stats(update)).put("draw90IncludingCold",HudInventoryPerformanceV218Test.stats(draw));results.put(row);
   }
