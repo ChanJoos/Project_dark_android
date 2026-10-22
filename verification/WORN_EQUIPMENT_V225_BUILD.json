@@ -1,0 +1,81 @@
+{
+  "revision": "V225_WORN_EQUIPMENT_BUILD",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "sourceCommit": "2fc3f37a64d594aeda2f4948ee4c77c578cd22ea",
+  "focusedRun": 39712550369,
+  "job": 119607033072,
+  "commonScopeRun": 39712554431,
+  "artifact": 12397298116,
+  "artifactZipSha256": "0402920509ed3c81c0a2e025bdb365d9cdd5b6db4d3ea7d40c5e091565573fb1",
+  "apk": {
+    "name": "PROJECT_DARK_V225_TEST.apk",
+    "package": "com.projectdark.mobile.v222test",
+    "label": "PROJECT DARK V225 TEST",
+    "builtAtKST": "2026-10-22T11:43:46.782944+09:00",
+    "bytes": 101632000,
+    "sha256": "7d942a92e266776d8fc7c331e7f67cfbb656c4fc56864dc62d5d0039c95321d7",
+    "signature": "CI apksigner: APK Signature Scheme v2 true; local archive/hash/embedded source and policy dex marker verified",
+    "libraryFileId": "libfile_b3080f863a148191b3b1168ca10e548f"
+  },
+  "suites": [
+    {
+      "suite": "com.projectdark.mobile.AdaptedCampaignRewardTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.HorrorCastleLoopV207Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MineHuntV208Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MineHuntV209Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.WornEquipmentV225Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "totalTests": 32,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "14 identified humanoid types / 23 item relations; worn gear direct inventory; caster gender correction; exactly-once reward and store reinstallation persistence; six related suites, not full regression",
+  "policy": "U worn equipment; V visual joins; B temporary weapon2%, armor/hat3.5%; each item1; original probability/quantity unresolved",
+  "initialFailure": {
+    "source": "f10034b8c06f4400ed050ff4cc9c674ed7be75d9",
+    "run": 39712041309,
+    "result": "31 PASS/1 FAIL; V208 prior-region comparison accidentally included later Death Village gold; comparison explicitly restricted to forest and coast. All production app bytes unchanged between first and successful candidate."
+  },
+  "limits": [
+    "Unidentified humanoid kits remain pending; see accepted change.",
+    "Other original quest/junk quantities and rates from V224 remain unresolved, not newly fabricated.",
+    "CI build_evidence scope fell through to generic legacy text; this receipt records the actual V225 scope.",
+    "No physical handset or new user visual acceptance."
+  ]
+}

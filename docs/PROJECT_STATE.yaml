@@ -1,3 +1,19 @@
+worn_equipment_v225:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  runtime_source: 2fc3f37a64d594aeda2f4948ee4c77c578cd22ea
+  focused_run: 39712550369
+  native_suites: 6
+  native_tests: 32
+  receipt: verification/WORN_EQUIPMENT_V225_BUILD.json
+  accepted_contract: master/changes/V225_WORN_EQUIPMENT.json
+  scope: 14 identified humanoid types / 23 worn-equipment relations
+  rates: B temporary weapon2pct armor_and_hat3_5pct; original unknown
+  remaining: Unidentified kits and other original reward probability/quantity and collection paths remain pending
+  phone: PENDING
+
 death_access_v223:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   owner: ROOT_SINGLE_EDITOR
