@@ -72,7 +72,8 @@ public class AllJobSkillSourceTest {
    ((CombatController)field(view,"combat")).selectTarget(monster);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(view,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(view,((SkillBook)field(view,"skillBook")).get(id));Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(view,("마법".equals(rule.kind)?((RuntimeCombatSession)field(view,"combatSession")).effectiveCastSeconds(id):rule.contact)+.001f);
    SkillVfxRenderer fx=field(view,"skillVfx");
-   if(Arrays.asList("SK_전사_009","SK_전사_011","SK_도적_003","SK_성직자_040","SK_성직자_012").contains(id)){
+   if(id.equals("SK_도적_003"))assertTrue("UserV231 shuriken is BODY/damage only",fx.pulses.isEmpty());
+   if(Arrays.asList("SK_전사_009","SK_전사_011","SK_성직자_040","SK_성직자_012").contains(id)){
     String wanted=id.startsWith("SK_전사_")?"warrior":id.startsWith("SK_도적_")?"rogue":id.equals("SK_성직자_040")?"classic":"curse-skull";
     assertTrue(id+" must use connected source through production input",fx.pulses.stream().anyMatch(p->p.sheet.equals(wanted)&&!p.caster));
     for(SkillVfxRenderer.Pulse pulse:fx.pulses)if(pulse.sheet.equals(wanted)){if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(state.monsters().stream().anyMatch(m->m.id.equals(pulse.anchor)));else assertEquals(id,id.equals("SK_전사_009")?"player":monster.id,pulse.anchor);}

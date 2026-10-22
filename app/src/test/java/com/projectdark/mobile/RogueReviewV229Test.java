@@ -16,7 +16,7 @@ public class RogueReviewV229Test {
  @Test public void all25ArticleIconsWinOnBookAndQuickslotsWithoutChangingOtherJobs()throws Exception{
   ClassicSkillReference refs=new ClassicSkillReference(h.c,"rogue");SkillIconCatalog icons=new SkillIconCatalog(h.c);assertEquals(25,refs.references.size());
   for(JSONObject row:refs.references.values()){
-   String id=row.getString("id");Bitmap source=BitmapFactory.decodeStream(h.c.getAssets().open("skill-presentation/rogue/"+row.getString("iconAssetPath")));
+   String id=row.getString("id");Bitmap source=BitmapFactory.decodeStream(h.c.getAssets().open("skill-presentation/rogue/"+refs.references.get(SkillIconCatalog.iconId(id)).getString("iconAssetPath")));
    Bitmap actual=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888),expected=actual.copy(Bitmap.Config.ARGB_8888,true);Paint p=new Paint();p.setFilterBitmap(true);new Canvas(expected).drawBitmap(source,null,new RectF(0,0,40,40),p);assertTrue(id,icons.drawSquare(new Canvas(actual),id,new RectF(0,0,40,40)));assertTrue(id+" must use exact article icon",expected.sameAs(actual));
    actual.eraseColor(Color.TRANSPARENT);expected.eraseColor(Color.TRANSPARENT);Canvas ec=new Canvas(expected);Path clip=new Path();clip.addRoundRect(new RectF(0,0,40,40),3,3,Path.Direction.CW);ec.clipPath(clip);int inset=Math.max(1,Math.round(Math.min(source.getWidth(),source.getHeight())*.12f));p.setFilterBitmap(false);ec.drawBitmap(source,new Rect(inset,inset,source.getWidth()-inset,source.getHeight()-inset),new RectF(0,0,40,40),p);assertTrue(icons.drawQuickslot(new Canvas(actual),id,new RectF(0,0,40,40)));assertTrue(id+" quickslot must use article glyph",expected.sameAs(actual));
   }
@@ -29,7 +29,7 @@ public class RogueReviewV229Test {
  @Test public void throwsNeverUseKickGroupAndStabsHaveEquippedLungeInBothBodiesAllFacings()throws Exception{
   SkillPresentationCatalog cat=new SkillPresentationCatalog(h.c);SkillBodyRenderer renderer=new SkillBodyRenderer(h.c,cat);renderer.prepare("mu0000001,mh172,ml228,ms001","mw002");Bitmap montage=Bitmap.createBitmap(960,640,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(montage);out.drawColor(0xff283528);int col=0;
   for(String motion:new String[]{"ROGUE_THROW","ROGUE_STAB"})for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-   String key=cat.frameKey(body,motion,d,1f/3f);assertTrue(key,key.contains(motion.equals("ROGUE_THROW")?"/e/":"/c/"));assertNotEquals(cat.frameKey(body,motion,d,0),key);
+   String key=cat.frameKey(body,motion,d,1f/3f);assertTrue(key,key.contains("/e/"));assertNotEquals(cat.frameKey(body,motion,d,0),key);
    CharacterRenderer.Pose pose=new CharacterRenderer.Pose(100,150,d,CharacterRenderer.State.SKILL,0,.2f,.5f,false,"mu0000001,mh172,ml228,ms001","mw002",null,CharacterRenderer.EffectFamily.SKILL);Bitmap image=Bitmap.createBitmap(200,200,Bitmap.Config.ARGB_8888);assertTrue(renderer.draw(new Canvas(image),pose,body,motion,1f/3f));boolean drawn=false;for(int y=0;y<200;y++)for(int x=0;x<200;x++)if(Color.alpha(image.getPixel(x,y))>0)drawn=true;assertTrue(key,drawn);out.drawBitmap(image,null,new Rect(col%8*120,col/8*320,col%8*120+120,col/8*320+160),null);col++;
   }
   File p=new File("build/reports/device-review/v229-source-motion.png");p.getParentFile().mkdirs();try(FileOutputStream f=new FileOutputStream(p)){montage.compress(Bitmap.CompressFormat.PNG,100,f);}

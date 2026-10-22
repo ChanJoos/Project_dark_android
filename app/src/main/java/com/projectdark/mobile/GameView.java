@@ -109,6 +109,7 @@ public final class GameView extends View {
 
   private float scale=1,ox,oy,vx,vy,hudRightOffset,hudCenterOffset,logicalViewportWidth=W;
   private float knobX=JOY_X,knobY=JOY_Y;
+  private final SenseMonsterWindow senseMonsterWindow=new SenseMonsterWindow();
   private int autoSkillCursor;
   private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen,autoAttackEnabled,questCollapsed=true,questJournalOpen,innDialogueOpen,chatExpanded;
   private float autoTargetHintClock;
@@ -173,7 +174,7 @@ public final class GameView extends View {
     if(observedGrowthLevel>=0&&level>observedGrowthLevel)showReward("레벨 "+level+" · 최대 HP +"+(r.baseMaxHp()-observedGrowthHp)+" · 최대 MP +"+(r.baseMaxMp()-observedGrowthMp));
     observedGrowthLevel=level;observedGrowthHp=r.baseMaxHp();observedGrowthMp=r.baseMaxMp();
   }
-  private void update(float dt){templeEntrance.tick(dt);
+  private void update(float dt){senseMonsterWindow.tick(dt,state);templeEntrance.tick(dt);
     CharacterVisualBinding renderVisuals=playerVisuals();skillBodyRenderer.prepare(renderVisuals.equipmentVisualRef(),renderVisuals.weaponVisualRef());
     observeLevelGrowth();
     state.rpg().campaign().observeBasics(state.rpg(),skillBook);
@@ -302,7 +303,8 @@ public final class GameView extends View {
     }
   }
   private void consumeSkillNotice(){String notice=combatSession.takeSkillNotice();if(notice.isEmpty())return;
-    if(notice.equals("TRAVEL_MARTIAL")){
+    if(notice.startsWith("SENSE_MONSTER:")){String target=notice.substring("SENSE_MONSTER:".length());for(RuntimeState.Monster m:state.monsters())if(m.id.equals(target)){senseMonsterWindow.show(state,m,autoAttackEnabled);break;}}
+    else if(notice.equals("TRAVEL_MARTIAL")){
       // Citizenship is not modelled: retain the explicit Milles adaptation, with a real safe inn endpoint.
       if(inReagentShop)leaveReagentShop();if(inPoteField)leavePoteField();
       state.player().x=WorldDef.PLAYER_SPAWN_X;state.player().y=WorldDef.PLAYER_SPAWN_Y;
@@ -343,7 +345,7 @@ public final class GameView extends View {
   private void useBookSkill(SkillBook.Entry entry){
     if(entry==null||isActing()||!state.player().alive)return;
     if(!skillBook.jobAllowed(entry.id)||!skillBook.usable(entry.id)){useBookSkillNow(entry);return;}
-    cancelSkillApproach();autoAttackEnabled=false;
+    cancelSkillApproach();if(!"SK_도적_002".equals(entry.id))autoAttackEnabled=false;
     if("SK_공통_001".equals(entry.id)||MartialSkillPolicy.facingOnly(entry.id)){useBookSkillNow(entry);return;}
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
     if(rule!=null&&rule.selfAnchored()){useBookSkillNow(entry);return;}
@@ -391,7 +393,7 @@ public final class GameView extends View {
     if(entry==null)return;
     if(!skillBook.jobAllowed(entry.id)){showFeedback(entry.job+" 전용 기술입니다",FeedbackTone.WARN);return;}
     if(!skillBook.usable(entry.id)){showFeedback(skillBook.learned(entry.id)?"이 기술의 전투 효과는 준비 중입니다":"먼저 기술을 습득하세요",FeedbackTone.WARN);return;}
-    if(!automatic)autoAttackEnabled=false;
+    if(!automatic&&!"SK_도적_002".equals(entry.id))autoAttackEnabled=false;
     if("SK_공통_001".equals(entry.id)){float remaining=skillActions.cooldown(entry.id);if(remaining>0)showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",remaining),FeedbackTone.WARN);else attack();return;}
     if(MartialSkillPolicy.facingOnly(entry.id)){
       if(isActing()||!state.player().alive)return;
@@ -528,7 +530,7 @@ public final class GameView extends View {
   static float logicalWidthForView(int width,int height){float fittedScale=Math.min(width/W,height/H);return fittedScale<=0?W:width/fittedScale;}
   static float rightHudOffsetForView(int width,int height){return Math.max(0f,logicalWidthForView(width,height)-W);}
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);logicalViewportWidth=logicalWidthForView(w,h);boolean wide=logicalViewportWidth>W+.01f;ox=wide?0:(w-W*scale)/2;oy=(h-H*scale)/2;hudRightOffset=wide?logicalViewportWidth-W:0;hudCenterOffset=hudRightOffset*.5f;worldAdapter.resizeViewport(logicalViewportWidth,H);if(poteFieldAdapter!=null)poteFieldAdapter.resizeViewport(logicalViewportWidth,H);camera=activeWorld().camera();if(reagentShopAdapter!=null)reagentShopAdapter.resizeViewport(logicalViewportWidth,H);}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){int worldSave=c.save();try{drawPoteWorld(c);}finally{c.restoreToCount(worldSave);}}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);if(worldMap.open)worldMap.draw(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),hudCenterOffset);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){int worldSave=c.save();try{drawPoteWorld(c);}finally{c.restoreToCount(worldSave);}}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);if(worldMap.open)worldMap.draw(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),hudCenterOffset);senseMonsterWindow.draw(c,hudCenterOffset);c.restore();}
 
   private WorldRuntimeAdapter activeWorld(){if(inReagentShop&&reagentShopAdapter!=null)return reagentShopAdapter;return inPoteField&&poteFieldAdapter!=null?poteFieldAdapter:worldAdapter;}
 
@@ -1092,6 +1094,7 @@ private void drawUtilityRail(Canvas c){
 
   public boolean onTouchEvent(MotionEvent e){float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;if(worldMap.open){if(e.getActionMasked()==MotionEvent.ACTION_DOWN)navigateMapEntrance(worldMap.touch(x,y,hudCenterOffset));return true;}if(templeWindow.isOpen())return handleReagentShopTouch(e,x,y);if(e.getActionMasked()==MotionEvent.ACTION_DOWN&&!questJournalOpen&&!MobileHudLayout.quest(hudRightOffset).contains(x,y)){questEntryPending=false;questExitPending=false;campaignAutoRoute=false;}if(questJournalOpen){QuestJournalWindow.Result r=questJournalWindow.motion(e.getActionMasked(),x,y,questJournalModel.rows(f5mQuest,quest2,inPoteField,state.rpg()),hudCenterOffset);if(r==QuestJournalWindow.Result.CLOSE)questJournalOpen=false;else if(r==QuestJournalWindow.Result.NAVIGATE){QuestJournalModel.Row selected=questJournalWindow.selected(questJournalModel.rows(f5mQuest,quest2,inPoteField,state.rpg()));questJournalOpen=false;QuestJournalModel.Row current=questJournalModel.current(f5mQuest,quest2,inPoteField,state.rpg());if(selected!=null&&current!=null&&selected.id.equals(current.id))autoNavigateQuest();else showFeedback("현재 의뢰부터 진행하세요",FeedbackTone.INFO);}return true;}if(e.getActionMasked()==MotionEvent.ACTION_DOWN&&circleHit(x,y,questIconX(hudRightOffset),UTILITY_Y0,UTILITY_R+2)){openQuestJournal();return true;}if(inPoteField&&townWindow.isOpen()){if(e.getActionMasked()==MotionEvent.ACTION_DOWN)townWindow.touch(x,y,hudCenterOffset,()->F5mSaveStore.writable()&&F5mSaveStore.checkpointActive());return true;}if(inReagentShop&&(innDialogueOpen||townWindow.isOpen()))return handleReagentShopTouch(e,x,y);if(skillWindow.open&&skillWindow.motion(e.getActionMasked(),x-hudCenterOffset,y))return true;if(inReagentShop&&e.getActionMasked()!=MotionEvent.ACTION_DOWN)return handleReagentShopTouch(e,x,y);switch(e.getActionMasked()){
     case MotionEvent.ACTION_DOWN:
+      if(senseMonsterWindow.touch(x-hudCenterOffset,y))return true;
       if(!state.player().alive&&skillWindow.open)skillWindow.close();
       if(skillWindow.open){if(circleHit(x,y,UTILITY_X0+UTILITY_STEP*3+hudRightOffset,UTILITY_Y0,UTILITY_R+4)){skillWindow.close();return true;}return skillWindow.touch(x-hudCenterOffset,y,skillActions);}
       if(statsOpen){float sx=x-hudCenterOffset;

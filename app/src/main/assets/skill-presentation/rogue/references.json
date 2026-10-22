@@ -275,7 +275,9 @@
         3,
         42,
         43
-      ]
+      ],
+      "displayTransform": "V231_DOUBLE_STAB_BROWN_PALETTE",
+      "displaySourceSha256": "62a8dfc6ce3d824ddd6d2846432340e01585f1766ccfe5a0c9b654c4cdc86a90"
     },
     {
       "id": "SK_도적_018",
@@ -344,7 +346,9 @@
         3,
         42,
         43
-      ]
+      ],
+      "displayTransform": "V231_DOUBLE_STAB_BROWN_PALETTE",
+      "displaySourceSha256": "273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d"
     },
     {
       "id": "SK_도적_021",
@@ -367,7 +371,9 @@
         3,
         42,
         43
-      ]
+      ],
+      "displayTransform": "V231_DOUBLE_STAB_BROWN_PALETTE",
+      "displaySourceSha256": "9614313f07717cb9643a328d5c2001b8d33d0aa9aec2ab58032ee09a39f20b32"
     },
     {
       "id": "SK_도적_022",
@@ -459,7 +465,9 @@
         3,
         42,
         43
-      ]
+      ],
+      "displayTransform": "V231_DOUBLE_STAB_BROWN_PALETTE",
+      "displaySourceSha256": "882e7b91e81cb0bf7db7240ceb9dd11bbbfa87d5062e218785b8f684399f293a"
     },
     {
       "id": "SK_도적_028",
@@ -579,7 +587,9 @@
         3,
         42,
         43
-      ]
+      ],
+      "displayTransform": "V231_DOUBLE_STAB_BROWN_PALETTE",
+      "displaySourceSha256": "273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d"
     }
   ]
 }

@@ -23,7 +23,7 @@ for n in ['035','027','024','025','026','028','029']:
   else:
    emission=np.clip(np.maximum(diff,0)/np.maximum(255-base,1),0,1)
    if n=='026':mask=(c[:,:,1]>c[:,:,0]+15)&(c[:,:,1]>c[:,:,2])&(diff[:,:,1]>12)&(xx>35)&(xx<145)&(yy>58)&(yy<128);pivot=[103,111]
-   else:mask=(diff.max(2)>10)&(((c[:,:,2]>c[:,:,1]+15)&(c[:,:,0]>c[:,:,1]+5))|((c.min(2)>220)&(diff.min(2)>10)))&(xx>40)&(xx<150)&(yy>35)&(yy<129);pivot=[103,92]
+   else:mask=(diff.max(2)>10)&(((c[:,:,2]>c[:,:,1]+15)&(c[:,:,0]>c[:,:,1]+5))|((c.min(2)>220)&(diff.min(2)>10)))&(xx>40)&(xx<150)&(yy>8)&(yy<129);pivot=[103,92]
    a=emission.max(2);a[~mask]=0;fg=np.clip(emission/np.maximum(a[:,:,None],.001)*255,0,255);rgba=np.dstack([fg,np.round(a*255)]).astype('uint8')
   rgba[rgba[:,:,3]==0]=0;tiles.append(Image.fromarray(rgba));durations.append(ds[i])
  tiles.append(Image.new('RGBA',(217,134)));durations.append(100)

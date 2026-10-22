@@ -235,7 +235,7 @@
           ],
           "pivotX": 128,
           "pivotY": 74,
-          "scale": 1.0,
+          "scale": 1.9,
           "blend": "NORMAL",
           "anchor": "RECIPIENT",
           "registration": "VISUAL_CENTER",
@@ -288,7 +288,7 @@
           "anchor": "CASTER",
           "registration": "VISUAL_CENTER",
           "footOffsetY": 0,
-          "atlasSha256": "deea767654630413746bd150f86ac84c94943760f693ff10e77d0c557ac25bf9",
+          "atlasSha256": "447c5094be41af420a19990b491ba80ad1722e46b7bd2ebc60a1599b50200131",
           "source": "master/source/martial_v230/029.gif",
           "frameIndices": [
             1,
@@ -304,14 +304,14 @@
           ],
           "opaquePixelCounts": [
             146,
-            1284,
-            2524,
-            3266,
-            3168,
-            3055,
-            2930,
-            2134,
-            1753,
+            1301,
+            2613,
+            3601,
+            3730,
+            3786,
+            3757,
+            3052,
+            2348,
             0
           ]
         }

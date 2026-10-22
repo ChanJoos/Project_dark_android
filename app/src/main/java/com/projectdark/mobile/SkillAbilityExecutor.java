@@ -90,7 +90,7 @@ final class SkillAbilityExecutor {
      notice=ok?a.name+" 성공":"이동할 타일이 막혀 있습니다";}break;
    case "DOOR":notice="DOOR";break;
    case "BASIC":notice="기본공격";break;
-   case "INSPECT":notice=m==null?"HP "+state.player().hp+" / MP "+state.player().mp:m.name+" · HP "+m.hp+" / "+m.maxHp;break;
+   case "INSPECT":if(id.equals("SK_도적_002")&&m!=null){notice="SENSE_MONSTER:"+m.id;break;}notice=m==null?"HP "+state.player().hp+" / MP "+state.player().mp:m.name+" · HP "+m.hp+" / "+m.maxHp;break;
    case "TRAP":traps.removeIf(t->t.x==state.player().x&&t.y==state.player().y);traps.add(new Trap(state.player().x,state.player().y,id,Math.max(1,state.rpg().finalStats().prototypePhysicalAttack()*2)));notice="함정 설치 · 30초 유지";break;
    case "FIND_TRAP":notice="주변 함정 "+traps.size()+"개";break;
    case "CLEAR_TRAP":traps.removeIf(t->SkillActionContract.distance(state.player().x,state.player().y,t.x,t.y)<=2);notice="주변 함정을 해체했습니다";break;
