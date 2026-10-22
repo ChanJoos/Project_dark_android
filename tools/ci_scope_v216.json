@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "5c8c78da114fa5dbfb8cc4935db874e20f9af7e6bd1487b6502543949e962a42",
+  "master/MASTER_MANIFEST.md": "afcef0f500fc3407da46302621e894b8a0cd0be3863f02e57f61d72dfd90186b",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -189,7 +189,7 @@
   "app/src/test/java/com/projectdark/mobile/SkillQuickslotApproachTest.java": "815a3b4685cb1a2211c6640a8a7b537b603b53d0351b6cb6be3fcaab2d5e1af1",
   "app/src/main/assets/skill-presentation/rogue/cfcd39e6a1fb7ca3.png": "476ebf93d83b2ecad7ab8d38f2cee4987b9868b739151abc632edecf667dfaba",
   "app/src/test/java/com/projectdark/mobile/RogueCombatV234Test.java": "5b5ef91919a72364fa5812362401578d17ddceb63f867288dd7636d6346a11ab",
-  "master/changes/V234_ROGUE_COMBAT.json": "445611cfb34c669c7141c107e15b4e8d164381e2524ee90f907099608d550df5",
+  "master/changes/V234_ROGUE_COMBAT.json": "a84528e92904149096de3669ccb828db6f5422216e8f2acf61646233356f7d67",
   "tools/apply_rogue_v234.py": "829da03a4d1f0ea299b2ca05256bf3eb8c3574578c79faf5aaa13afa9016e7eb",
-  "docs/V234_ROGUE_COMBAT_CHECKPOINT.md": "39fb8e22c99c406271207f0f0ac10c53f452f992424fb081d7d01e1d7e71c3f3"
+  "docs/V234_ROGUE_COMBAT_CHECKPOINT.md": "b7c1de78f96aa22c3b027d315ea4af99c6c6facff4afb279545fcb34549eed60"
 }

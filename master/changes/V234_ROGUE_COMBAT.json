@@ -38,5 +38,13 @@
     "all skill icons",
     "accepted martial",
     "IDs/save/movement"
-  ]
+  ],
+  "verification": {
+    "source": "003bea4871ac480c19ab217d6ebb352641a27a04",
+    "run": 39776318651,
+    "uniqueNativePassed": 58,
+    "runtimeEquivalentTo": "261b73b7bca37ac0a9637c0423157d5f56b5eb3d",
+    "receipt": "verification/ROGUE_COMBAT_V234_BUILD.json",
+    "phone": "PENDING"
+  }
 }

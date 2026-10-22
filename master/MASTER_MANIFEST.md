@@ -1,3 +1,13 @@
+## 2026-10-22 V234 후보 전달 완료 — 관련 고유 58 native PASS
+
+APK source `003bea4871ac480c19ab217d6ebb352641a27a04`, final Actions39776318651/job119816056867 SUCCESS; common scope39776328160 SUCCESS(compile SKIPPED). Runtime/assets byte-identical to261b73b:initial39774840057 executed58tests with56PASS/2stale-fixtureFAIL; exact-delta guarded final2methods PASS resolves both, composite58uniquePASS/0unresolvedfailures. New6V234tests allPASS including13normal OFF damage traces. All15normal rogue actions completed in corrected facing fixture. Concurrent interruption audit/compile/assemble/apksignerV2PASS. First test API compile failure and shallow-base guard failure are retained in receipt; no passing assertion was disabled. No full-suite or phone acceptance claimed.
+
+습격image23 original청백FX연결;per-IDsource색유지/공통damageimpact중복제거;암살20/27캡처배우윤곽제거(가려진영역은같은프레임반대측source표본의명시ADAPTED복원,rawGIF불변). Native색상grid/암살multi-phase/정상OFF015·020장면직접검토. 표창현재facing직선1~4최근접alivevisible몬스터1마리,선택된원거리대상우선/회전/접근/관통없음;begin/contact/visibility/LOS재검증. Damage13IDs独立expected==HP차감==popup;예시동일fixture습격867/암살63360. 일반ROGUE배율은기존ADAPTED수치이며원작확정아님. 기존무도가+도적icon등42packagedfiles는V233과바이트동일.
+
+PROJECT_DARK_V234_TEST.apk / com.projectdark.mobile.v234test / PROJECT DARK V234 TEST. Built2026-10-22 21:14:44KST,102327188bytes,SHA256 `51f3ce535dd8ee948cfc087f78d44abfd6cc8a44fd7c6b1f68eff496449f28e1`. Artifact12424901291/ZIPsha `0c25552275289cd90be18207509c3ca65d8a6191b7df3a298c7562c170e779ba`;initialnativeartifact12425015131/ZIPsha56d1d00f698f5353b4aa645c4803e64d23a0a6fce5840457df9c166ec4dfa743. DownloadedZIP/APKCRC/hash/embeddedSHA/run/binarypackage+label/changedassets/42frozenfiles/V2certificatechecked. CertificateSHA256bb70adeeb20a085461694ca14e85d16095fdd82e69c52495f02b9db1956214bc. Saved libfile_0fbaae6d1c288191bd603597f34a5962; receipt verification/ROGUE_COMBAT_V234_BUILD.json.
+
+IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_NATIVE VERIFIED. PHONE / USER_VISUAL PENDING. Separate-install candidate; no automatic old app-private save migration. PR197 unmerged/main41fe6def unchanged; previous unrelated Abel5-job gear journey remains open for full integration. NEXT:V234phonefeedback,then only reported affected fixes;do not rebuild identical source. This closure changes docs/evidence/scope hashes only;never relabel closureHEAD as APKsource.
+
 ## 2026-10-22 V234 도적 원본 색·습격·표창·피해 재검증 — 구현 완료/검증 대기
 
 DEVICE_FAILED_USER_REPORTED V233:습격만상이,공격색동일,표창전방1~4최근접1대상,피해연결의심,암살격잔상불필요. 원문245450 cachedHTML/media 직접재검토(웹open불가);습격image23미연결→청백원본채널,공통damageimpact겹침→원본도적채널위중복제거,원본같은001/007/014magenta유지/021cyan/022violet/023gold/028white/029warmwhite/030white. 암살027warm-only가삭제하던bluephase복원. 원본캡처배우/은신윤곽은같은프레임반대편의실제FXsample을silhouette안에재배치하는명시ADAPTED복원,scale.52유지;raw원본불변. 아이콘전체·무도가불변.
