@@ -5936,7 +5936,7 @@
       "targetAnchor": "TARGET",
       "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
       "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
-      "originalEffectVerified": true,
+      "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "전방3칸 이동 공격. 이형환위의 1칸 대상 넘기와 별개; 충돌/착지 검사 후 접촉 완료 때 이동."
     }

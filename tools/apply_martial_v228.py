@@ -11,6 +11,8 @@ def apply(rows,key):
 def save(path,d):path.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
 cat=apply(json.loads((A/'skills/catalog.json').read_text()),'catalog');save(A/'skills/catalog.json',cat)
 abilities=apply(json.loads((A/'skills/abilities.json').read_text()),'abilities');save(A/'skills/abilities.json',abilities)
+with (ROOT/'docs/SKILL_ABILITY_FORMULAS.csv').open('w',newline='') as f:
+ w=csv.DictWriter(f,fieldnames=list(abilities[0]),lineterminator='\n');w.writeheader();w.writerows(abilities)
 f=ROOT/'docs/SKILL_ACTION_DECISIONS.csv'
 with f.open() as src:reader=csv.DictReader(src);fields=reader.fieldnames;rules=apply(list(reader),'rules')
 with f.open('w',newline='') as out:w=csv.DictWriter(out,fieldnames=fields,lineterminator='\n');w.writeheader();w.writerows(rules)

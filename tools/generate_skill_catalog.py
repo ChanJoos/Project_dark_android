@@ -43,3 +43,7 @@ assert len({e['id'] for e in entries})==len(entries)
 p=root/'app/src/main/assets/skills/catalog.json' ;p.parent.mkdir(parents=True,exist_ok=True)
 p.write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(f'{len(entries)} skill catalog entries')
+
+# Accepted source-labelled martial overlay follows the legacy projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))

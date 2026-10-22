@@ -28,7 +28,7 @@ profiles={
 }
 decisions=list(csv.DictReader((ROOT/'docs/SKILL_ACTION_DECISIONS.csv').open()))
 decisions_by_id={r['id']:r for r in decisions}
-assert len(decisions_by_id)==len(catalog)==221
+assert len(decisions_by_id)==len(catalog)==222
 assert set(decisions_by_id)=={r['id'] for r in catalog}
 entries=[]
 for r in catalog:
@@ -60,3 +60,7 @@ for r in decisions:
 java='package com.projectdark.mobile;\n\n/** Generated from the reviewed per-ID decisions; do not infer rules from skill names. */\nfinal class SkillActionData {\n  static final String[][] ROWS={\n'+'\n'.join(data_rows)+'\n  };\n}\n'
 (ROOT/'app/src/main/java/com/projectdark/mobile/SkillActionData.java').write_text(java)
 print(f'{len(entries)} reviewed skill mappings; {len(manifest)} unchanged original body frames')
+
+# Accepted source-labelled martial overlay follows the legacy projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))

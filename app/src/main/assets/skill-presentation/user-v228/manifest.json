@@ -209,7 +209,7 @@
           "anchor": "CASTER",
           "registration": "VISUAL_CENTER",
           "footOffsetY": 0,
-          "atlasSha256": "8df5db6eb38049b8ae985076ac6eed23c849021f457cb3748f90526991c957c4",
+          "atlasSha256": "8f106604441360267d1228b271e078911edc3be2df1178e2901d84d00e346130",
           "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
           "frameIndices": [
             249,
@@ -239,7 +239,7 @@
             273
           ],
           "opaquePixelCounts": [
-            889,
+            437,
             323,
             323,
             182,

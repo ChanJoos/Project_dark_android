@@ -23,7 +23,7 @@ with zipfile.ZipFile(source/'observed_clips.zip','w',zipfile.ZIP_DEFLATED) as z:
   for c in frames:
    r,g,b=c[:,:,0],c[:,:,1],c[:,:,2];diff=c-base;delta=diff.max(2)>30
    cyan=(g>r+20)&(b>r+18)&(g>120);white=(c.min(2)>215)&(diff.min(2)>35)
-   if n=='026':mask=delta&(((b>r+15)&(b>g+5)&(b>130))|((g>r+20)&(b>r+10))|white)
+   if n=='026':mask=(xx>35)&(xx<180)&delta&(((b>r+15)&(b>g+5)&(b>130))|((g>r+20)&(b>r+10))|white)
    elif n=='029':mask=delta&(((b>130)&(r>g*1.25)&(b>g*1.3))|white);mask&=~((xx>98)&(xx<124)&(yy>57)&(yy<133))
    elif n=='028':mask=binary_fill_holes(binary_closing((r>65)&(r>g*1.6)&(g>8)&(b<r*.6)&(xx>125)&(xx<164)&(yy>67)&(yy<116),iterations=1))
    elif n=='025':mask=delta&(((g>r+25)&(g>b+10)&(g>130))|cyan|white)&(xx>112)&(xx<177)&(yy>45)&(yy<135)

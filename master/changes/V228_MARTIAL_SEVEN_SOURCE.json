@@ -51,9 +51,18 @@
         "name": "트리플어택"
       },
       "SK_무도가_028": {
-        "description": "기존 MP×4/풍속성; 전방3칸 대상 N명에게 각각 N회 타격. MP 소모/수치는 기존 프로젝트 값으로 원작 미확정."
+        "description": "기존 MP×4/풍속성; 전방3칸 대상 N명에게 각각 N회 타격. MP 소모/수치는 기존 프로젝트 값으로 원작 미확정.",
+        "cooldown": 0,
+        "cooldownEvidence": "PROJECT_SHARED_MAGIC_CADENCE_V228",
+        "cooldownSource": "master/changes/V228_MARTIAL_SEVEN_SOURCE.json",
+        "mpCost": 0
       },
-      "SK_무도가_029": {}
+      "SK_무도가_029": {
+        "cooldown": 0,
+        "cooldownEvidence": "PROJECT_SHARED_MAGIC_CADENCE_V228",
+        "cooldownSource": "master/changes/V228_MARTIAL_SEVEN_SOURCE.json",
+        "mpCost": 0
+      }
     },
     "rules": {
       "SK_무도가_024": {

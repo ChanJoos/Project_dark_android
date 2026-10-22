@@ -37,6 +37,8 @@ policy=json.loads((ROOT/'master/changes/V174_SKILL_TIMING.json').read_text())
 assert policy['status']=='ACCEPTED'
 timing={r['id']:r for r in policy['rows']}
 retained={r['id']:r for r in policy.get('kindCorrections',[])}
+# The accepted V228 new ability is projected by its own source overlay below.
+cat=[r for r in cat if r['id']!='SK_무도가_035']
 assert set(timing)=={r['id'] for r in cat}
 rows=[]
 for e in cat:
@@ -103,3 +105,7 @@ for r in rows:lines.append('  {'+','.join(json.dumps(str(r[k]).lower() if isinst
 lines+=[' };','}'];(ROOT/'app/src/main/java/com/projectdark/mobile/SkillAbilityData.java').write_text('\n'.join(lines)+'\n')
 from collections import Counter
 print(len(rows),Counter(r['kind'] for r in rows))
+
+# Accepted source-labelled martial overlay follows the legacy projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))

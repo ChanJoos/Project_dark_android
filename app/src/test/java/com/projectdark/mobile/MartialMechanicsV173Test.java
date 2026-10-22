@@ -46,7 +46,7 @@ public class MartialMechanicsV173Test {
    if(a.formula.equals("DARA")&&!test){assertEquals(1,s.player().hp);assertEquals(1,s.player().mp);}
    if(test&&!a.formula.equals("DARA")){if(!a.heal()&&!a.status.equals("DRAIN"))assertEquals(a.id+" preview HP",hp,s.player().hp);assertEquals(a.id+" preview MP",mp,s.player().mp);}
    audit.add(a.id+" "+a.name+" "+a.kind+" "+a.status+" test="+test);
-  }assertEquals(68,audit.size());File file=new File("build/reports/martial-v173/all-34-effects.txt");file.getParentFile().mkdirs();try(java.io.PrintWriter out=new java.io.PrintWriter(file)){audit.forEach(out::println);}
+  }assertEquals(70,audit.size());File file=new File("build/reports/martial-v173/all-34-effects.txt");file.getParentFile().mkdirs();try(java.io.PrintWriter out=new java.io.PrintWriter(file)){audit.forEach(out::println);}
  }
  @Test public void facingLeapCrossesMonsterOrNpcAndRejectsAbsentWrongSideAndBlockedLandings()throws Exception{
   for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(boolean npc:new boolean[]{false,true}){

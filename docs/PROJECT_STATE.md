@@ -1,3 +1,11 @@
+## 2026-10-22 V228 interrupted-run recovery — validation pending
+
+Resumed branch codex/rucesion-coast-v157 / PR197 at af19943c46052477f090f7e522f36f06a94122b7; main41fe6def unchanged. Last successful delivered skill candidate remains V227 b5c31494 / run39723904568, not V228. Original V228 focused39728790503 ran78 tests,7 failed; common39728795532 stopped on generated catalog drift before Android checks.
+
+Repair: accepted V228 overlay now runs after each legacy generator; catalog/learning/presentation/ability IDs and numeric policies reproduce. Two newly classified spells use shared cadence with zero explicit reuse, retaining existing MP0/coefficients/status duration (all original numeric values unresolved). Triple basic uses its three source contact bursts without an extra generic impact, and cross-job preview no longer enables martial FX. Facing-only Muyeong uses the magic cast clock. Pacheon source matte excludes captured page-edge columns; raw source unchanged. Native fixtures set level99 before job restore and SE facing, count35 martial IDs×2 modes and expect the supplied source channel.
+
+Verification scope: four generation passes/nine byte-identical projections; selector5 checks; seven-skill, existing martial mechanics, all-ability, skill UI, presentation/spatial/contact, V227 migration and F5M restart suites, plus concurrent interruption audit and assembleDebug. Reviewed exact-blob selector is updated for this bounded skill change; no full-suite or phone acceptance claimed. NEXT: resolve focused failures, verify exact source/run/APK/signature/hash, record receipt and deliver candidate. PHONE / USER_VISUAL PENDING.
+
 ## 2026-10-22 V228 무도가 일곱 스킬 영상 — 구현, 관련 검증 대기
 
 사용자 U 순서: 허공답보/트리플어택/연천단각/붕신선각/파천각/무영신공/자기보호. 원본29.118초 영상 Screen_Recording_20261022_140905_NAVER.mp4, libfile_2a630cf24fac81919793ba88d449ed0e. 아이콘7개·원본 접촉/시전자 FX7채널 추출. 원문 인물/바닥/HP바 제외, 알파·가림·원본GIF시간 미확정이며15fps 관측/근사 matting. 원본 영상 보존; seven crops/representative observations ZIP 및 SHA/crop/frame 등록 master/source/martial_v228/reference.json. AI 그림/대체 몬스터 생성 없음.

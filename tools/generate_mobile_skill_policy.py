@@ -233,3 +233,7 @@ for e in catalog:
 for id in ['skill_proto','kick_proto','cast_proto']:out[id]={'stats':{k:3 for k in keys},'gold':0,'items':{},'summary':'전투 검사에 사용하는 내부 스킬입니다.','evidence':'B_TEST_ONLY'}
 (assets/'mobile_learning.json').write_text(json.dumps(out,ensure_ascii=False,indent=2)+'\n')
 print('Mobile skill policies:',len(out))
+
+# Accepted source-labelled martial overlay follows the legacy projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))

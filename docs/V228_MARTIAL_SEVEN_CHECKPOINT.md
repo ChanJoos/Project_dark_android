@@ -1,0 +1,8 @@
+## 2026-10-22 V228 interrupted-run recovery — validation pending
+
+Resumed branch codex/rucesion-coast-v157 / PR197 at af19943c46052477f090f7e522f36f06a94122b7; main41fe6def unchanged. Last successful delivered skill candidate remains V227 b5c31494 / run39723904568, not V228. Original V228 focused39728790503 ran78 tests,7 failed; common39728795532 stopped on generated catalog drift before Android checks.
+
+Repair: accepted V228 overlay now runs after each legacy generator; catalog/learning/presentation/ability IDs and numeric policies reproduce. Two newly classified spells use shared cadence with zero explicit reuse, retaining existing MP0/coefficients/status duration (all original numeric values unresolved). Triple basic uses its three source contact bursts without an extra generic impact, and cross-job preview no longer enables martial FX. Facing-only Muyeong uses the magic cast clock. Pacheon source matte excludes captured page-edge columns; raw source unchanged. Native fixtures set level99 before job restore and SE facing, count35 martial IDs×2 modes and expect the supplied source channel.
+
+Verification scope: four generation passes/nine byte-identical projections; selector5 checks; seven-skill, existing martial mechanics, all-ability, skill UI, presentation/spatial/contact, V227 migration and F5M restart suites, plus concurrent interruption audit and assembleDebug. Reviewed exact-blob selector is updated for this bounded skill change; no full-suite or phone acceptance claimed. NEXT: resolve focused failures, verify exact source/run/APK/signature/hash, record receipt and deliver candidate. PHONE / USER_VISUAL PENDING.
+
