@@ -4,7 +4,7 @@ import java.util.*;
 public final class SkillAbilityCatalog {
  public static final class Ability {
   public final String id,name,job,kind,formula,status,evidence,description,cooldownEvidence,cooldownSource; public final int circle,mpCost;public final float cooldown,duration;public final double coefficient;public final boolean allMp;
-  Ability(String[] r){id=r[0];name=r[1];job=r[2];circle=Integer.parseInt(r[3]);kind=r[4];formula=r[5];coefficient=Double.parseDouble(r[6]);status=r[7];mpCost=Integer.parseInt(r[8]);cooldown=Float.parseFloat(r[9]);duration=Float.parseFloat(r[10]);allMp=Boolean.parseBoolean(r[11]);evidence=r[12];description=r[13];cooldownEvidence=r[14];cooldownSource=r[15];}
+  Ability(String[] r){id=r[0];name=r[1];job=r[2];circle="SK_마법사_053".equals(r[0])?5:Integer.parseInt(r[3]);kind=r[4];formula=r[5];coefficient=Double.parseDouble(r[6]);status=r[7];mpCost=Integer.parseInt(r[8]);cooldown=Float.parseFloat(r[9]);duration=Float.parseFloat(r[10]);allMp=Boolean.parseBoolean(r[11]);evidence=r[12];description=r[13];cooldownEvidence=r[14];cooldownSource=r[15];}
   public boolean damage(){return kind.equals("DAMAGE");}public boolean heal(){return kind.equals("HEAL");}public boolean supported(){return !SkillPolicyV227.retired(id)&&!kind.equals("SERVICE");}
   public boolean fixed(){return formula.equals("DALMA");}
   public boolean resourceBurst(){return allMp||Arrays.asList("DARA","CRASH","SOUL","ASSASSIN","ASSASSIN_PLUS","DALMA","HP_BURST","MP_BURST").contains(formula);}

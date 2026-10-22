@@ -1,3 +1,10 @@
+mage_visual_v237:
+  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  source_motion: PENDING_ORIGINAL_CONTINUOUS_REFERENCE
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  phone: PENDING
+
 mage_rogue_damage_v236:
   status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
   root_cause: CONFIRMED_GENERIC_COEFFICIENTS_AND_MISSING_AMNESIA_MULTIPLIER

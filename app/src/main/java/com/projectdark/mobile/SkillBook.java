@@ -15,7 +15,7 @@ public final class SkillBook {
     public final SkillDef runtime;
     private final JSONObject requirementValues;
     Entry(JSONObject j,SkillDef runtime){
-      id=j.optString("id");name=j.optString("name");job=j.optString("job");stage=j.optString("stage");kind=j.optString("kind");circle=j.optString("circle");effect=j.optString("effect");target=j.optString("target");range=j.optString("range");resource=j.optString("resource");limit=j.optString("limit");requirements=j.optString("requirements");requirementStatus=j.optString("requirementStatus");legacy=j.optString("legacy");evidence=j.optString("evidence");this.runtime=runtime;requirementValues=j.optJSONObject("requirementValues");
+      id=j.optString("id");name=j.optString("name");job=j.optString("job");stage=j.optString("stage");kind=j.optString("kind");circle="SK_마법사_053".equals(j.optString("id"))?"5":j.optString("circle");effect=j.optString("effect");target=j.optString("target");range=j.optString("range");resource=j.optString("resource");limit=j.optString("limit");requirements=j.optString("requirements");requirementStatus=j.optString("requirementStatus");legacy=j.optString("legacy");evidence=j.optString("evidence");this.runtime=runtime;requirementValues=j.optJSONObject("requirementValues");
     }
     public String requirementsFor(RpgProgressionState r){
       Map<String,String> jobs=new HashMap<>();jobs.put("전사","WARRIOR");jobs.put("도적","ROGUE");jobs.put("마법사","MAGE");jobs.put("성직자","CLERIC");jobs.put("무도가","MARTIAL_ARTIST");
