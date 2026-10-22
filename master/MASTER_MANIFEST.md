@@ -1,6 +1,6 @@
-## V240 포테 기본4만 — 사용자 범위 축소 / 검증 중
+## V240 포테 기본4 연결 — 빌드·관련 호스트 시전 검증
 
-USER: 하나씩 진행. 이번에는 포테 영상의 마레노001·테라미코003·플라모005·아듀로004만 연결. 기본4 연속20fps recipient contact 구현. 다른써클 바인딩·설명 수정은 이번 후보에서 제외/기존bytes유지. V239승급5/포테11·바닥/규칙 유지. 상세 docs/V240_BASIC_MAGE_CHECKPOINT.md. BUILD/NATIVE/PHONE/USER_VISUAL PENDING; main미통합/PR197후보.
+최종 USER범위: 마레노001·테라미코003·플라모005·아듀로004만. 영상20fps 접촉 sequence 연결. 다른써클 바인딩/설명은5b63b117 기존bytes와동일(scope guard PASS). runtime79527cd2cdb1c25f151ee6cb718c17711a010bcc, focused39863201513/job120118820656 SUCCESS, basic4정상quickslot/단일대상/MP1회 및 인접contact3·승급1 총5native PASS. 빌드2026-10-23 07:15:24 KST. APK provenance/검수 상세 docs/V240_BASIC_MAGE_CHECKPOINT.md 및 verification/POTE_BASIC4_V240_BUILD.json. PHONE/USER_VISUAL PENDING; PR197 OPEN/UNMERGED/main41fe6def. 문서closure를APK소스로재라벨하지않음. 다음은 이4종의휴대폰외형확인; 다른써클작업은사용자후속지시까지보류.
 
 ## V239 전달 완료 — 원본 포테11종·숲 바닥·마법5종 검증 후보
 

@@ -1,0 +1,132 @@
+{
+  "sourceCommit": "79527cd2cdb1c25f151ee6cb718c17711a010bcc",
+  "runId": "39863201513",
+  "apkBytes": 104760809,
+  "apkSha256": "5ec7ef38c0909af1d1da94f953cc14d6a437c663adf3b483623ba15fc1858a98",
+  "identity": {
+    "sourceCommit": "79527cd2cdb1c25f151ee6cb718c17711a010bcc",
+    "runId": "39863201513",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "package": "com.projectdark.mobile.v240test",
+  "label": "PROJECT DARK V240 TEST",
+  "packagedFilesCompared": 835,
+  "zipCRC": "PASS",
+  "v2Signature": [
+    {
+      "algorithm": "0x103",
+      "certificateSha256": "98a78cc2ec361436d8bc348d3eb60e5e966d8c4c81b7c6d2eb693d8ad87a36b0",
+      "contentChunks": 102,
+      "signatureVerified": true,
+      "contentDigestVerified": true
+    }
+  ],
+  "builtAtKST": "2026-10-23T07:15:24.884018+09:00",
+  "scope": "V240 Pote basic4 only: Mareno/Teramiko/Adyuro/Plamo continuous recipient contacts; normal single-target/MP and adjacent contact/promotion native checks; other-circle correction deferred by user; phone pending",
+  "nativeSuites": [
+    {
+      "name": "com.projectdark.mobile.ForestMageV239Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T22:13:47",
+      "hostname": "runnervm8k3b6",
+      "time": "33.313"
+    },
+    {
+      "name": "com.projectdark.mobile.MageBasicV240Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T22:14:21",
+      "hostname": "runnervm8k3b6",
+      "time": "14.25"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T22:14:36",
+      "hostname": "runnervm8k3b6",
+      "time": "26.775"
+    }
+  ],
+  "nativeCases": [
+    {
+      "name": "newPromotionChannelsKeepCasterRegistrationAndContinuousContacts",
+      "classname": "com.projectdark.mobile.ForestMageV239Test",
+      "time": "33.313"
+    },
+    {
+      "name": "basicFourReachNormalSingleContactWithChangingRecordedFramesAndOneMpCharge",
+      "classname": "com.projectdark.mobile.MageBasicV240Test",
+      "time": "14.25"
+    },
+    {
+      "name": "bothCrashersHavePeakEnergyBetweenActorsInEveryDirection",
+      "classname": "com.projectdark.mobile.SkillContactRegressionTest",
+      "time": "9.99"
+    },
+    {
+      "name": "fourCurseCrownsAreIncludedAndRenderWithoutTheOldCutoff",
+      "classname": "com.projectdark.mobile.SkillContactRegressionTest",
+      "time": "0.088"
+    },
+    {
+      "name": "damageAndVisibleRecipientEffectStartTogetherIncludingLethalDragon",
+      "classname": "com.projectdark.mobile.SkillContactRegressionTest",
+      "time": "16.697"
+    }
+  ],
+  "nativePassed": 5,
+  "zipBytes": 160250553,
+  "zipSha256": "09a1c6fe3068555ae80671dbe38c0e3589facb62793768c2df9ff5a7071ab5ce",
+  "focusedJob": 120118820656,
+  "focusedConclusion": "success",
+  "artifactId": 12463410826,
+  "artifactDigestExpected": "09a1c6fe3068555ae80671dbe38c0e3589facb62793768c2df9ff5a7071ab5ce",
+  "commonScopeRun": 39863210951,
+  "commonConclusion": "success",
+  "fullRegression": "NOT_RUN_SCOPED_CANDIDATE",
+  "phone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "merged": false,
+  "sourceScope": "Only Pote basic4; other-circle binding/description/domain/forest12-file SHA256 guard PASS",
+  "delivery": [
+    {
+      "name": "PROJECT_DARK_V240_TEST.apk",
+      "libraryFileId": "libfile_54a2bb0d81fc8191832ca173eb9fe5d2",
+      "localMetadataApplied": true
+    },
+    {
+      "name": "POTE_MAGIC4_V240_PREVIEW.png",
+      "libraryFileId": "libfile_4c744acd8da08191b9300898f187eb0a",
+      "localMetadataApplied": true
+    }
+  ],
+  "screenshots": [
+    {
+      "path": "v240-basic-normal-1.png",
+      "sha256": "6eb3240b30346e1682d4a908afe57599b9d93ca56ae9d3cf981eb9502655bd89"
+    },
+    {
+      "path": "v240-basic-normal-3.png",
+      "sha256": "0e048fdf847d3ab18fa364af6de08fa104f0e49747b59bb479a46c653e0896b9"
+    },
+    {
+      "path": "v240-basic-normal-4.png",
+      "sha256": "67fcc37bbe67caaffad564c8d3c0d1dced86780e3dea2391a09387073ea2c602"
+    },
+    {
+      "path": "v240-basic-normal-5.png",
+      "sha256": "7b2caea4c5c27e16dd7713fe4c9d0dd68ea6c828e626397c0a3d6bd07664ba2a"
+    }
+  ]
+}

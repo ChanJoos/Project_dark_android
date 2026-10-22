@@ -1,5 +1,5 @@
 {
-  "status": "IMPLEMENTED_PENDING_BUILD",
+  "status": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED",
   "userScope": "포테영상 마법4종만 일단 연결: 마레노 테라미코 플라모 아듀로",
   "ids": [
     "SK_마법사_001",
@@ -18,5 +18,8 @@
     "map and monsters",
     "combat/learning/save rules"
   ],
-  "deferred": "User-confirmed circle3/screen4 mapping correction; excluded from this candidate"
+  "deferred": "User-confirmed circle3/screen4 mapping correction; excluded from this candidate",
+  "runtimeSource": "79527cd2cdb1c25f151ee6cb718c17711a010bcc",
+  "verification": "verification/POTE_BASIC4_V240_BUILD.json",
+  "phone": "PENDING"
 }
