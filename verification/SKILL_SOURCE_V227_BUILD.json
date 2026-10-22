@@ -1,0 +1,89 @@
+{
+  "revision": "V227_SKILL_SOURCE_BUILD",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "sourceCommit": "b5c31494f93ddf1bd5a57a03c62a3c687a2ef063",
+  "focusedRun": 39723904568,
+  "job": 119643357176,
+  "commonScopeRun": 39723909532,
+  "artifactZipSha256": "09ecba8f170a82ab332d0bcb5c78eee783a72a44fedc10ecd78c7654635e4b85",
+  "apk": {
+    "name": "PROJECT_DARK_V227_TEST.apk",
+    "package": "com.projectdark.mobile.v222test",
+    "label": "PROJECT DARK V227 TEST",
+    "builtAtKST": "2026-10-22T13:47:53.197104+09:00",
+    "bytes": 101640172,
+    "sha256": "c9d9df550b527aa05ba55a7737c55f095bf62b560dbb7518b213c9bed2be4925",
+    "signature": "CI apksigner APK Signature Scheme v2 true; archive/hash/embedded source/run, manifest label/package, policy dex marker and exact supplemental icon bytes verified",
+    "libraryFileId": "libfile_f3cc083ea8e08191b65585dd515173e7"
+  },
+  "suites": [
+    {
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.projectdark.mobile.AllSkillRuntimeV138Test"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.projectdark.mobile.ScreenMagicV204Test"
+    },
+    {
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.projectdark.mobile.SkillAbilityRuntimeTest"
+    },
+    {
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.projectdark.mobile.SkillCorrectionsV227Test"
+    },
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.projectdark.mobile.SkillWindowReferenceTest"
+    },
+    {
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suite": "com.projectdark.mobile.SkillWindowTest"
+    }
+  ],
+  "totalTests": 57,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "scope": "V227 retired Holy Blow old-save migration, source Bless/Transfusion icons, Semelia single-recipient Ragnarok FX; martial body pending; phone pending",
+  "initialFailure": {
+    "source": "91c024125cc9b228685a22cd12476bd3f4ca1d04",
+    "run": 39723711182,
+    "reason": "New test boxed Long vs primitive assertion ambiguous; corrected explicit longValue. No game code change."
+  },
+  "limits": [
+    "Physical handset and user visual acceptance pending",
+    "Martial article476136 body not retrieved",
+    "Rogue 습격/기습 source naming conflict and 백슬래쉬 icon unresolved",
+    "Bless solo-dungeon behavior and transfusion multiplayer functionality not implemented by this icon patch"
+  ],
+  "artifact": 12402232938,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197
+}

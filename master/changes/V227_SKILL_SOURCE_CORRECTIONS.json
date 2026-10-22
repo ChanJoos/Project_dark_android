@@ -14,10 +14,11 @@
     "semeliaFx": "SK_마법사_037 original recipient channel; SINGLE shape unchanged"
   },
   "save": "Version1 retained; old retired learned ID and slots safely discarded; invalid unknown IDs remain rejected transactionally.",
-  "validation": "PENDING scoped Android CI; handset pending",
+  "validation": "57/57 scoped Android host/native tests and assembleDebug PASS; source b5c31494f93ddf1bd5a57a03c62a3c687a2ef063 run39723904568; handset pending",
   "pending": [
     "Martial article body not retrieved",
     "Ambiguous rogue source animation identity",
     "Original transfusion multiplayer functionality"
-  ]
+  ],
+  "verification": "verification/SKILL_SOURCE_V227_BUILD.json"
 }

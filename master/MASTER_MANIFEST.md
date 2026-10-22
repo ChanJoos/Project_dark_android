@@ -1,3 +1,11 @@
+## 2026-10-22 V227 스킬 자료 반영 — 관련 검증 완료
+
+소스 `b5c31494f93ddf1bd5a57a03c62a3c687a2ef063`, focused39723904568/job119643357176 SUCCESS: 7 suites **57 PASS/0 failure/error/skipped**, 범위 선택기5 PASS, common39723909532 범위검사 SUCCESS(전체회귀 아님). 홀리블로우 제거·습득/시전 차단·기존 저장에서 해당 ID만 정리 후 재복원, 세멜리아 단일/라그나로크 다수 피해와 원본 FX 대상 일치·동일 atlas·native draw, 두 아이콘의 스킬창/퀵슬롯 및 기존 스킬/저장 직접 영향 경로 검증. 최초91c02412/run39723711182는 새 테스트의 Long 비교 컴파일 오류; longValue 명시만 수정했으며 게임 코드 변경 없음.
+
+APK PROJECT DARK V227 TEST / com.projectdark.mobile.v222test, 빌드2026-10-22 **13:47:53 KST**,101640172bytes,SHA256 `c9d9df550b527aa05ba55a7737c55f095bf62b560dbb7518b213c9bed2be4925`, artifact12402232938. ZIP digest/CRC·APK CRC/hash·내장 source/run·manifest label/package·policy dex·아이콘 원본 바이트·CI APK V2서명 확인. 상세 verification/SKILL_SOURCE_V227_BUILD.json. 파일 libfile_f3cc083ea8e08191b65585dd515173e7. IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_NATIVE VERIFIED; PHONE/USER_VISUAL PENDING. main41fe6def/PR197미병합 후보, 이후 문서 HEAD를 APK 소스로 재라벨하지 않음.
+
+남은 자료: 도가476136 본문 접근 실패로 원문/아이콘 캡처 필요; 도적 습격/기습 본문 명칭 충돌과 백슬래쉬 아이콘 미제공 유지. 블레스 솔로던전 제한과 수혈 멀티플레이 전달 기능은 이번 원본 아이콘 연결로 구현된 것이 아님. 홀리볼트 유지, 기존 원본 스냅샷/V226 당시 감사 보존. 다음: 도가 본문 확보 후 기능/아이콘/시연 대조, 정확 후보 휴대폰 표시 확인.
+
 ## 2026-10-22 V227 스킬 자료 반영 — 구현, 관련 검증 대기
 
 U 홀리블로우(SK_성직자_020) 배움·목록·퀵슬롯·실행 제거; 원본 ID는 기존 저장 정리용 보존. 홀리볼트는 별개로 유지. 세멜리아는 라그나로크 원본 recipient 채널을 공유하며 SINGLE 한 대상, 라그나로크 SCREEN 다수 대상·기존 피해/자원 공식 유지. 첨부 원본에서 블레스·수혈 아이콘 추가. 전체 활성220개, 연결 아이콘181개; V226 감사는 당시221/179 역사 자료로 유지.
