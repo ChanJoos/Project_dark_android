@@ -16,10 +16,10 @@ public final class MineHuntMonsters {
  public static boolean actor(String id){return type(id)>=0;}
  public static AbelCombatProfile profile(String id){int t=type(id);return t<0?null:PROFILES.get(species(t));}
  public static Collection<AbelCombatProfile> all(){return Collections.unmodifiableCollection(PROFILES.values());}
- /** Source-confirmed/visually compatible worn-armor relations; probabilities are mobile-only. */
- public static String armor(String id){switch(type(id)){case 8:return "USER_ITEM_20261018_R01490";case 6:return "USER_ITEM_20261018_R01494";case 7:case 9:return "USER_ITEM_20261018_R01489";case 5:return "USER_ITEM_20261018_R01486";default:return null;}}
- public static List<String> armors(String id){String armor=armor(id);if(armor==null)return Collections.emptyList();return type(id)==7||type(id)==9?Arrays.asList(armor,"USER_ITEM_20261018_R01482"):Collections.singletonList(armor);}
- public static String weapon(String id){return type(id)==6?"USER_ITEM_20261018_R01533":type(id)==5?"USER_ITEM_20261018_R05502":null;}
+ /** Compatibility accessors project the single U worn-equipment catalog. */
+ public static String armor(String id){List<String> rows=armors(id);return rows.isEmpty()?null:rows.get(0);}
+ public static List<String> armors(String id){List<String> rows=new ArrayList<>();int t=type(id);if(t<0)return Collections.emptyList();for(WornEquipmentDropsV225.Drop drop:WornEquipmentDropsV225.forSpecies(species(t)))if(RpgProgressionState.ARMOR_SLOT.equals(drop.slot))rows.add(drop.itemId);return Collections.unmodifiableList(rows);}
+ public static String weapon(String id){int t=type(id);if(t<0)return null;for(WornEquipmentDropsV225.Drop drop:WornEquipmentDropsV225.forSpecies(species(t)))if(RpgProgressionState.WEAPON_SLOT.equals(drop.slot))return drop.itemId;return null;}
  public static int dropRoll(String actorId,long defeatSequence){long h=defeatSequence*0x9E3779B97F4A7C15L+actorId.hashCode();h^=h>>>33;h*=0xff51afd7ed558ccdL;h^=h>>>33;return (int)Math.floorMod(h,10000);}
  public static List<RuntimeState.Monster> spawn(){List<RuntimeState.Monster> out=new ArrayList<>();List<WorldMoveTargetController.TileCenter> cells=new ArrayList<>(CampaignWorld.connectedTiles(MineHuntGeometry.ID));Collections.shuffle(cells,new Random(208));
   List<WorldMoveTargetController.TileCenter> welcome=new ArrayList<>(cells);WorldMoveTargetController.TileCenter entry=MineHuntGeometry.entry();welcome.removeIf(at->Math.abs(at.x-entry.x)>420||Math.abs(at.y-entry.y)>170||Math.hypot(at.x-entry.x,at.y-entry.y)<180);welcome.sort(Comparator.comparingDouble(at->Math.hypot(at.x-entry.x,at.y-entry.y)));

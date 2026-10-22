@@ -1,3 +1,9 @@
+## 2026-10-22 V225 인간형 착용 장비 드롭 — 구현, 검증 대기
+
+U: 인간형의 실제 착용 무기/갑옷/모자를 드롭, 그 외 보상은 원작 근거. 단일 `WornEquipmentDropsV225` 14유형/23관계에서 기존 ID를 사용. 광산 캐스터 남녀 로브를 분리하고 무관한 성직자 로브 동시 드롭 제거; 그림록퀸 더브릴·헬씨프/나이트 투구·법사 후드 및 식별된 호러 장비 연결. 호러4속성은 외형별 공유, 직업/성별 임의 통합 금지. 원작2026호러드롭제거보다 사용자 착용장비 규칙을 이 관계에 한해 우선한다.
+
+확률은 기존 B 임시 무기2%/갑옷3.5% 유지, 모자3.5%는 구현 임시 선택; 원작 또는 사용자 지정 수치 아님. 각 품목 독립1개 추첨→기존 인벤 직접 지급, 처치 중복방지/저장 불변. 미식별 인간형 장비와 V224 기타 원작 퀘스트/잡템 확률은 PENDING; 신규 임의 보상 없음. 상세 `master/changes/V225_WORN_EQUIPMENT.json`. 6개 관련 suite와 assembleDebug 예정; 전체회귀/폰/시각 수용 주장 없음. main41fe6def/기존 PR197 유지.
+
 ## 2026-10-22 V222 검증 완료 — 원본 입구·지하문·웨어렛 HP·밀집 충돌 비용 수정 후보
 
 사용자 실기기 결함 신고 DEVICE_FAILED_USER_REPORTED/설치 SHA UNKNOWN 이력 유지. 새 후보 source `ae0c7ff69c130479c013ad831a6ff696efcb50ea`, focused run39698748694/job119562479699 SUCCESS; 관련13 suites **47 PASS/0 failure/0 error/0 skipped**, scope selector5 PASS. common39698755769 SUCCESS(범위검사; full compile 의도적skip). main41fe6def/기존PR197미병합; 최종main전체회귀는별도. IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_NATIVE VERIFIED; PHONE·USER_VISUAL ACCEPTANCE PENDING.

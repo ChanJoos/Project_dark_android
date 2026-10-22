@@ -1,5 +1,5 @@
 {
-  "app/build.gradle": "a69d1c4f463afbed04acc626fac423a3793290e938dfb97ad7270017adb02937",
+  "app/build.gradle": "cedbbaa162adf273b6f19e22378f45fd9bdcdf43b7c829be86a4fe13b0dcecc2",
   "app/src/main/java/com/projectdark/mobile/DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
   "app/src/main/java/com/projectdark/mobile/DeathVillageRenderer.java": "dc4c5757fe6f93d463c7f79799abbc325f53058fcddd72f75818e6d4c943c7a3",
   "app/src/main/java/com/projectdark/mobile/DeathVillageTravel.java": "ab75b725f01382ac3c5a1a37e9d921c67376b358c48b71fc0c595b0d23f059d6",
@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "0e8e21e0b76166b1dfa8f87d436c4a68dbd62f9b68f7467188a814a9fe943a45",
+  "master/MASTER_MANIFEST.md": "ea115d9d4fd2e166d2216d019d5d8544074ae6e616fe967bf7dd04423a4c6c00",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -27,5 +27,12 @@
   "app/src/main/java/com/projectdark/mobile/TownTravel.java": "e98c511299b147a7ba1afd24fa53996a5900c77a37548b31aaa4d6ff0c6d6987",
   "app/src/main/java/com/projectdark/mobile/TownTravelWindow.java": "ca65c8e590eb128c520e48f1143574f9e115507bf82846e61b7faebc533ba4d1",
   "app/src/test/java/com/projectdark/mobile/DeathAccessV223Test.java": "90c44084677c1697a4d391a3636beae1cace2d881bc85be7baeaf4c20588eef3",
-  "master/changes/V223_MINE_DEATH_ACCESS.json": "aa3e410342c58ca77ac108ae344bc64c5c68da289e9d434884892fcafa6bf38d"
+  "master/changes/V223_MINE_DEATH_ACCESS.json": "aa3e410342c58ca77ac108ae344bc64c5c68da289e9d434884892fcafa6bf38d",
+  "app/src/main/java/com/projectdark/mobile/WornEquipmentDropsV225.java": "a19c3cab21ed80b1ab936950e168394b64d619fc80e333add720ea90f6960092",
+  "app/src/main/java/com/projectdark/mobile/MineHuntMonsters.java": "049b6c35dd1803999d5526d911688a1d66b83f41a7c7e4c0cc3649ebe7117030",
+  "app/src/main/java/com/projectdark/mobile/RpgProgressionState.java": "01cabb71eda2eba553e36ea7a93b7b5b17d97adb3249d5c15e5af900255e19eb",
+  "app/src/test/java/com/projectdark/mobile/WornEquipmentV225Test.java": "603b72ffccab83a7ef6610a803600b21b03a7aea93a33412c9c1f0273a5215dd",
+  "app/src/test/java/com/projectdark/mobile/MineHuntV208Test.java": "b75d106b58cf6eaeacfa18f35b4f336706926fcb866e13421a4c01f5693f1024",
+  "master/changes/V225_WORN_EQUIPMENT.json": "709c7e585fbdd56d84761fb9b48a6b8e355414115f2913ec1f52f5333f80d5b7",
+  "tools/reward_audit_v224.py": "8ca92d13e20ef2ce1f9866695888ba6b8cddeeb1b881607176720e9ea11e2101"
 }

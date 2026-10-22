@@ -627,12 +627,15 @@ public final class RpgProgressionState {
   }
   private void applyCampaignReward(CombatLedger.Event e,AdaptedCampaignRewardCatalog.Reward reward){
     Map<String,Integer> mineLoot=new LinkedHashMap<>();Map<String,AutoLootResult> mineOutcomes=new LinkedHashMap<>();
-    for(String armor:MineHuntMonsters.armors(e.targetId))if(MineHuntMonsters.dropRoll(e.targetId+":"+armor,e.sequence)<350){AutoLootResult result=autoLootResolvedItem(armor,1);mineOutcomes.put(armor,result);if(result==AutoLootResult.LOOTED)mineLoot.put(armor,1);}
-    String weapon=MineHuntMonsters.weapon(e.targetId);if(weapon!=null&&MineHuntMonsters.dropRoll(e.targetId+":weapon",e.sequence)<200){AutoLootResult result=autoLootResolvedItem(weapon,1);mineOutcomes.put(weapon,result);if(result==AutoLootResult.LOOTED)mineLoot.put(weapon,1);}
+    List<WornEquipmentDropsV225.Drop> worn=WornEquipmentDropsV225.forSpecies(reward.monsterId);
+    for(WornEquipmentDropsV225.Drop drop:worn)if(drop.awarded(e.targetId,e.sequence)){
+      AutoLootResult result=autoLootResolvedItem(drop.itemId,1);mineOutcomes.put(drop.itemId,result);
+      if(result==AutoLootResult.LOOTED)mineLoot.put(drop.itemId,1);
+    }
     grantAdaptedReward(reward.exp,reward.gold);
     rewardHistory.add(new RewardResolution(e.sequence,e.targetId,RewardStatus.RESOLVED,reward.exp,
         mineLoot, mineOutcomes,
-        RewardSource.ADAPTED_CAMPAIGN,DeathVillageMonsters.actor(e.targetId)?DeathVillageMonsters.POLICY:MineHuntMonsters.actor(e.targetId)?MineHuntMonsters.POLICY:AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone,reward.gold));
+        RewardSource.ADAPTED_CAMPAIGN,!worn.isEmpty()?WornEquipmentDropsV225.POLICY:DeathVillageMonsters.actor(e.targetId)?DeathVillageMonsters.POLICY:MineHuntMonsters.actor(e.targetId)?MineHuntMonsters.POLICY:AdaptedCampaignRewardCatalog.POLICY_ID,"B+ADAPTED; zone="+reward.zone,reward.gold));
     trimRewardHistory();
   }
 
