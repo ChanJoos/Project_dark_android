@@ -21,5 +21,11 @@ public class MageVideoV238Test {
  @Test public void darkMarkUsesVideoAndRetainsSeventyCurseWithActualQuickslotContact()throws Exception{
   GameView v=m.actor(m.mage(46));RuntimeState s=m.h.field(v,"state");m.tap(v);m.contact(v);assertEquals(70,s.skillEffects().power(s.monsters().get(0).id,"CURSE"));SkillVfxRenderer fx=m.h.field(v,"skillVfx");for(SkillVfxRenderer.Pulse p:fx.pulses)if(p.id.equals(m.mage(46)))p.age=.65f;m.h.capture(v,"v238-dark-mark-normal-contact");
  }
- @Test public void sharedCombatAuditsRunWithAndroidRuntimeInsteadOfStubJar(){assertTrue(CombatV3PipelineAudit.verify());assertTrue(RuntimeCombatPortAdapterAudit.verify());assertTrue(MonsterAutoCombatBridgeAudit.verify());assertTrue(CombatConcurrentInterruptionAudit.verify());assertTrue(MonsterDefeatIdempotencyAudit.verify());}
+ @Test public void sharedCombatAuditsRunWithAndroidRuntimeInsteadOfStubJar(){java.util.List<String> failures=new java.util.ArrayList<>();
+   if(!CombatV3PipelineAudit.verify())failures.add("CombatV3PipelineAudit");
+   if(!RuntimeCombatPortAdapterAudit.verify())failures.add("RuntimeCombatPortAdapterAudit");
+   if(!MonsterAutoCombatBridgeAudit.verify())failures.add("MonsterAutoCombatBridgeAudit");
+   if(!CombatConcurrentInterruptionAudit.verify())failures.add("CombatConcurrentInterruptionAudit");
+   if(!MonsterDefeatIdempotencyAudit.verify())failures.add("MonsterDefeatIdempotencyAudit");
+   assertTrue(failures.toString(),failures.isEmpty());}
 }

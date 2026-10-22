@@ -124,7 +124,7 @@ def main():
   count,h,w,_=frames.shape;cols=min(8,count);rows=(count+cols-1)//cols;atlas=Image.new('RGBA',(cols*w,rows*h))
   for i,f in enumerate(frames):atlas.paste(Image.fromarray(f),(i%cols*w,i//cols*h))
   path=dest/(name+'.png');atlas.save(path)
-  channel=dict(path='mage-v238/'+path.name,atlasSha256=sha(path),width=w,height=h,columns=cols,durationsMs=[50]*count,pivotX=px,pivotY=py,scale=scale,blend='SCREEN',footOffsetY=0,sourceTiming='OBSERVED_CAPTURE_20FPS',sourceFrames=[dict(videoSha256=sha(a.video),timestampSeconds=round(start+i*.05,3),crop=box[i] if isinstance(box[0],list) else list(box)) for i in range(count)])
+  channel=dict(anchor='RECIPIENT',path='mage-v238/'+path.name,atlasSha256=sha(path),width=w,height=h,columns=cols,durationsMs=[50]*count,pivotX=px,pivotY=py,scale=scale,blend='SCREEN',footOffsetY=0,sourceTiming='OBSERVED_CAPTURE_20FPS',sourceFrames=[dict(videoSha256=sha(a.video),timestampSeconds=round(start+i*.05,3),crop=box[i] if isinstance(box[0],list) else list(box)) for i in range(count)])
   evidence.append(dict(id=sid,sourceFrameCount=count,sourceInterval=[start,round(start+count*.05,3)],crop=box,atlasSha256=sha(path),limitation='Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown.'))
   channels[sid]=dict(channels={'RECIPIENT_CONTACT':channel})
  manifest=dict(revision='USER_VIDEO_V238',sourceVideoSha256=sha(a.video),sourceVideoName=a.video.name,skills=channels,screenAliases={f'SK_마법사_{30+i:03d}':f'SK_마법사_{26+i:03d}' for i in range(4)})

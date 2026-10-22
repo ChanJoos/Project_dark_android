@@ -1,3 +1,6 @@
+### First exact CI diagnosis
+Sourceaa7c3010/run39802435794:38native,15PASS/23FAIL. Root cause reproduced: generated video channels omitted required anchor=RECIPIENT, so ClassicSkillReference initialization failed across23 UI/VFX paths; no assertion weakening. Added required schema field to manifest/generator and explicit checker guard. The first aggregate shared-audit assertion also failed; no five-audit PASS is claimed. Diagnosed obsolete adapter raw3/raw5 expectations after combat-v3 and empty-inventory assumption after starter gear. Fixture expectations now use independently resolved current FinalStats and unchanged inventory snapshot; all timing/ledger/idempotency assertions retained. Named aggregate diagnostics execute every audit. Rerun exact repaired initialization and affected38scope before delivering.
+
 ## V238 — supplied continuous Mage video candidate
 
 User2026-10-22: use Screen_Recording_20261022_225347_YouTube.mp4 for Dark Mark, four whole-screen elements and four circle4 single elements. Existing branch codex/rucesion-coast-v157 / PR197; main41fe6def unchanged.

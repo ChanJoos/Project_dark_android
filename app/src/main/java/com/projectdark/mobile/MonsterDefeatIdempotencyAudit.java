@@ -13,6 +13,7 @@ public final class MonsterDefeatIdempotencyAudit {
   public static boolean verify(){
     RpgProgressionState probe=new RpgProgressionState();
     CombatLedger ledger=new CombatLedger();
+    java.util.Map<String,Integer> beforeInventory=new java.util.LinkedHashMap<>(probe.inventory());
 
     // POTE_SPIRIT has a verified EXP reward entry. Its item drop remains unresolved, so this audit
     // checks exactly-once reward resolution without asserting a deterministic item emission.
@@ -37,6 +38,6 @@ public final class MonsterDefeatIdempotencyAudit {
     if(probe.rewardHistory().get(1).combatSequence<=first.combatSequence)return false;
 
     // No authoritative drop quantity/rate exists yet, so neither defeat may auto-loot an item.
-    return probe.inventory().isEmpty();
+    return probe.inventory().equals(beforeInventory);
   }
 }

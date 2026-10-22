@@ -7,7 +7,7 @@ m=json.loads((A/'mage-v238/manifest.json').read_text());r=json.loads((R/'master/
 assert m['sourceVideoSha256']==r['videoSha256'];assert not r['rawVideoCommitted']
 assert set(m['skills'])=={'SK_마법사_'+str(i).zfill(3) for i in [26,27,28,29,46]}
 for sid,data in m['skills'].items():
- q=data['channels']['RECIPIENT_CONTACT'];p=A/q['path'];assert hashlib.sha256(p.read_bytes()).hexdigest()==q['atlasSha256']
+ q=data['channels']['RECIPIENT_CONTACT'];assert q['anchor']=='RECIPIENT';p=A/q['path'];assert hashlib.sha256(p.read_bytes()).hexdigest()==q['atlasSha256']
  image=Image.open(p);assert image.mode=='RGBA'
  assert image.width==q['width']*q['columns'];assert image.height>=q['height']*((len(q['durationsMs'])+q['columns']-1)//q['columns'])
  assert len(q['durationsMs'])==len(q['sourceFrames'])>=5
