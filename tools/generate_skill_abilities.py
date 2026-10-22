@@ -114,3 +114,6 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v229.py"))
 
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v230.py"))
+
+# V236 user combat correction must follow older projections.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v236.py"))

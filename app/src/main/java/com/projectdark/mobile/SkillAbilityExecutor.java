@@ -78,7 +78,7 @@ final class SkillAbilityExecutor {
     notice="수혈할 그룹원이 없습니다";return status(0);
    case "BLESS_ALL":putStrong(target,id,"ARMOR",10,duration);putStrong(target,id,"HIT",30,duration);putStrong(target,id,"DAM",8,duration);fx.put(target,id,"PROTECT",30,duration);break;
    case "RESCUE":if(self){int before=state.player().hp;state.player().hp=Math.min(state.player().maxHp,Math.max(before,state.player().maxHp/10));power=state.player().hp-before;}break;
-   case "RESET_AGGRO":fx.put(target,id,"AGGRO_RESET",1,8);if(m!=null){state.cancelMonsterAttack(m);m.provoked=false;m.state=RuntimeState.Monster.State.IDLE;}break;
+   case "RESET_AGGRO":float resetSeconds=RogueSkillPolicy.AMNESIA.equals(id)?duration:8;fx.put(target,id,"AGGRO_RESET",1,resetSeconds);if(RogueSkillPolicy.AMNESIA.equals(id))fx.put(target,id,"AMNESIA",2,resetSeconds);if(m!=null){state.cancelMonsterAttack(m);m.provoked=false;m.state=RuntimeState.Monster.State.IDLE;}break;
    case "TAUNT":
     if(m!=null){fx.remove(target,"AGGRO_RESET");fx.put(target,id,"TAUNT",1,duration);m.state=RuntimeState.Monster.State.CHASE;notice=a.name+" · "+m.name+"이 당신을 추적합니다";}break;
    case "LEAP":

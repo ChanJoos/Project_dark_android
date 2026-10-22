@@ -443,7 +443,7 @@
     "circle": 1,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 1.07,
+    "coefficient": 2,
     "status": "",
     "mpCost": 0,
     "cooldown": 1.25,
@@ -451,9 +451,9 @@
     "cooldownSource": null,
     "duration": 8,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 1.07"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_002",
@@ -527,9 +527,9 @@
     "cooldownSource": null,
     "duration": 10,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "몬스터의 인식을 초기화/타겟 해제 · 10초"
+    "evidence": "USER_V236_DURATION_ADAPTED",
+    "source": "User20261022; duration existing project10s",
+    "description": "전방 직선 1~4칸 최근접 몬스터의 인식을 초기화. 10초간 비선공, 받는 피해 2배. 피격되어도 유지."
   },
   {
     "id": "SK_도적_006",
@@ -557,7 +557,7 @@
     "circle": 2,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 1.412,
+    "coefficient": 4,
     "status": "",
     "mpCost": 0,
     "cooldown": 1.7,
@@ -565,9 +565,9 @@
     "cooldownSource": null,
     "duration": 10,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 1.412"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 4 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_008",
@@ -690,7 +690,7 @@
     "circle": 4,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 2.072,
+    "coefficient": 8,
     "status": "",
     "mpCost": 0,
     "cooldown": 2.6,
@@ -698,9 +698,9 @@
     "cooldownSource": null,
     "duration": 14,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.072"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 8 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_015",
@@ -709,7 +709,7 @@
     "circle": 4,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 2.12,
+    "coefficient": 20,
     "status": "",
     "mpCost": 0,
     "cooldown": 2.6,
@@ -717,9 +717,9 @@
     "cooldownSource": null,
     "duration": 14,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.12"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 20 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_016",
@@ -823,7 +823,7 @@
     "circle": 6,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 2.852,
+    "coefficient": 10,
     "status": "",
     "mpCost": 0,
     "cooldown": 3.5,
@@ -831,9 +831,9 @@
     "cooldownSource": null,
     "duration": 18,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.852"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 10 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_022",
@@ -842,7 +842,7 @@
     "circle": 6,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 2.852,
+    "coefficient": 16,
     "status": "",
     "mpCost": 0,
     "cooldown": 3.5,
@@ -850,9 +850,9 @@
     "cooldownSource": null,
     "duration": 18,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.852"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 16 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_023",
@@ -861,7 +861,7 @@
     "circle": 6,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 2.852,
+    "coefficient": 50,
     "status": "",
     "mpCost": 0,
     "cooldown": 3.5,
@@ -869,9 +869,9 @@
     "cooldownSource": null,
     "duration": 18,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 2.852"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 50 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_024",
@@ -956,7 +956,7 @@
     "circle": 7,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 3.122,
+    "coefficient": 22,
     "status": "",
     "mpCost": 0,
     "cooldown": 3.95,
@@ -964,9 +964,9 @@
     "cooldownSource": null,
     "duration": 20,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 22 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_029",
@@ -975,7 +975,7 @@
     "circle": 7,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 3.122,
+    "coefficient": 21,
     "status": "",
     "mpCost": 0,
     "cooldown": 3.95,
@@ -983,9 +983,9 @@
     "cooldownSource": null,
     "duration": 20,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 21 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_030",
@@ -994,7 +994,7 @@
     "circle": 7,
     "kind": "DAMAGE",
     "formula": "ROGUE",
-    "coefficient": 3.122,
+    "coefficient": 18,
     "status": "",
     "mpCost": 0,
     "cooldown": 3.95,
@@ -1002,9 +1002,9 @@
     "cooldownSource": null,
     "duration": 20,
     "allMp": false,
-    "evidence": "PROJECT_ADAPTED_V83",
-    "source": "User 2026-10-02: author unprovided formulas by learning circle/stat requirements",
-    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 3.122"
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "source": "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json",
+    "description": "(무기 공격+STR×1.8+DEX×2.2+DAM) × 18 · 프로젝트 조정값"
   },
   {
     "id": "SK_도적_031",

@@ -401,9 +401,9 @@ public final class GameView extends View {
       if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 방향 전방 두 칸 안의 몬스터가 필요합니다",FeedbackTone.WARN);
       return;
     }
-    if(RogueSkillPolicy.shuriken(entry.id)){
+    if(RogueSkillPolicy.ray(entry.id)){
       if(isActing()||!state.player().alive)return;
-      CombatActionOrchestrator.Submission result=combatSession.submitFacingShuriken();
+      CombatActionOrchestrator.Submission result=combatSession.submitFacingRogueRay(entry.id);
       if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 직선 1~4칸의 몬스터가 필요합니다",FeedbackTone.WARN);
       return;
     }

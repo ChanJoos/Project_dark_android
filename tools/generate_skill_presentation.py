@@ -80,3 +80,6 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v234.py"))
 
 # User V235: source Mage icons/descriptions only; no acquisition import.
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_mage_v235.py"))
+
+# V236 user combat correction must follow older projections.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v236.py"))

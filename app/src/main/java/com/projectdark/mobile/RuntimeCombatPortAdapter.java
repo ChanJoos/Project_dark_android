@@ -34,9 +34,9 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   String frontTarget(String id){return MartialSkillPolicy.frontTarget(state,id,facing(),this::visible);}
   public String takeSkillNotice(){return abilities.takeNotice();}
   public CombatResolver.RejectReason actionReady(String actor,String target,String id,boolean begin){
-    if(!"player".equals(actor)&&"player".equals(target)&&state.skillEffects().hidden())return CombatResolver.RejectReason.CONTROL;
+    if(!"player".equals(actor)&&"player".equals(target)&&(state.skillEffects().hidden()||state.skillEffects().has(actor,"AGGRO_RESET")&&!state.skillEffects().has(actor,"TAUNT")))return CombatResolver.RejectReason.CONTROL;
     if("player".equals(actor)&&RogueSkillPolicy.sense(id)&&!RogueSkillPolicy.valid(state,target,facing(),this::visible))return CombatResolver.RejectReason.RANGE;
-    if("player".equals(actor)&&RogueSkillPolicy.shuriken(id)&&!RogueSkillPolicy.validShuriken(state,target,facing(),this::visible))return CombatResolver.RejectReason.RANGE;
+    if("player".equals(actor)&&RogueSkillPolicy.ray(id)&&!RogueSkillPolicy.validRay(state,id,target,facing(),this::visible))return CombatResolver.RejectReason.RANGE;
     if(begin&&"player".equals(actor)&&MagicTimingPolicy.managed(id)&&spellIntervalRemaining>0)return CombatResolver.RejectReason.ACTION_BUSY;
     if("player".equals(actor)&&isNpc(target)&&!MartialSkillPolicy.leap(id))return CombatResolver.RejectReason.TARGET_DEAD;
     if("player".equals(actor)&&MartialSkillPolicy.leap(id)&&playerFacing!=null&&!java.util.Objects.equals(target,frontTarget(id)))return CombatResolver.RejectReason.RANGE;
@@ -77,7 +77,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     Position a=position(actor),t=position(target);java.util.List<String> out=new java.util.ArrayList<>();
     if(a==null||t==null)return out;
     if(MartialSkillPolicy.leap(action))return targetAlive(target)?java.util.Collections.singletonList(target):out;
-    if(RogueSkillPolicy.shuriken(action))return RogueSkillPolicy.validShuriken(state,target,facing(),this::visible)?java.util.Collections.singletonList(target):out;
+    if(RogueSkillPolicy.ray(action))return RogueSkillPolicy.validRay(state,action,target,facing(),this::visible)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SINGLE)return visible(target)&&SkillActionContract.canStart(r,a.x,a.y,t.x,t.y,true)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SELF||r.pattern==SkillActionContract.Pattern.ALLY||r.pattern==SkillActionContract.Pattern.GROUP){out.add(actor);return out;}
     float tx=t.x,ty=t.y;float[] intent=directions.get(actor+":"+action);

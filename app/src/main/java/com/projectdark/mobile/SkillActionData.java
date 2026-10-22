@@ -1,6 +1,6 @@
 package com.projectdark.mobile;
 
-/** Generated from the reviewed per-ID decisions; do not infer rules from skill names. */
+/** Generated reviewed action decisions. */
 final class SkillActionData {
   static final String[][] ROWS={
     {"SK_전사_001", "숏블레이드", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "전방 인접 한 타일", "기술"},
@@ -30,7 +30,7 @@ final class SkillActionData {
     {"SK_도적_002", "센스몬스터", "ACTIVE", "SINGLE", "2", "1", "PRESENTATION", "1", "0.14", "U_V232_FACING_TWO_TILES", "바라보는 방향 전방 1~2칸 몬스터만 확인. 자동 접근·회전하지 않음; 가림/이동 대상 접촉 시 재검증.", "기술"},
     {"SK_도적_003", "표창날리기", "ACTIVE", "SINGLE", "4", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "U_V234_FACING_RAY_NEAREST_1_TO_4", "현재 바라보는 직선 1~4칸의 가장 가까운 몬스터 1마리. 자동 접근/회전/관통 없음.", "기술"},
     {"SK_도적_004", "밀기", "UTILITY", "SINGLE", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단.", "기술"},
-    {"SK_도적_005", "아무네지아", "ACTIVE", "SINGLE", "4", "2", "PRESENTATION", "1", "0.14", "V_NONADJACENT_MAX_UNRESOLVED_ADAPTED4", "인접 대상 사용 불가: 최소 두 타일 거리. 최대4칸은 프로젝트 임시 상한.", "기술"},
+    {"SK_도적_005", "아무네지아", "ACTIVE", "SINGLE", "4", "1", "PRESENTATION", "1", "0.14", "USER_V236_SAME_RAY_AS_SHURIKEN", "현재 바라보는 직선1~4칸 최근접 단일 몬스터. 접근/회전 없음.10초 비선공 및 받는피해2배(지속시간은프로젝트값).", "기술"},
     {"SK_도적_006", "연막탄터뜨리기", "ACTIVE", "SCREEN", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문에서 화면 내 모든 몬스터 확인, 맵 전체 여부는 미확정. 시험 모드 화면 범위만 적용.", "기술"},
     {"SK_도적_007", "찔러휘비기", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "전방 인접 한 타일", "기술"},
     {"SK_도적_008", "더블어택", "LINKED", "FRONT", "1", "1", "PRESENTATION", "2", "0.14", "V", "독립 시전이 아닌 기본공격 연동 추가 타격", "기술"},

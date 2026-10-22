@@ -1,3 +1,10 @@
+mage_rogue_damage_v236:
+  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  root_cause: CONFIRMED_GENERIC_COEFFICIENTS_AND_MISSING_AMNESIA_MULTIPLIER
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  phone: PENDING
+
 mage_sources_v235:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   runtime_source: 14f50075a08123740273626d5c62108a4c023420

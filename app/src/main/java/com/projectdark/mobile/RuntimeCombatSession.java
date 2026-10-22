@@ -78,7 +78,8 @@ public final class RuntimeCombatSession {
     return submitPlayer(target==null?"NO_FRONT_ACTOR":target,id);
   }
   public CombatActionOrchestrator.Submission submitFacingSense(){String target=RogueSkillPolicy.frontTarget(state,port.facing(),port::visible);return submitPlayer(target==null?"NO_FRONT_MONSTER":target,RogueSkillPolicy.SENSE);}
-  public CombatActionOrchestrator.Submission submitFacingShuriken(){String target=RogueSkillPolicy.frontTarget(state,RogueSkillPolicy.SHURIKEN,port.facing(),port::visible);return submitPlayer(target==null?"NO_FRONT_MONSTER":target,RogueSkillPolicy.SHURIKEN);}
+  public CombatActionOrchestrator.Submission submitFacingShuriken(){return submitFacingRogueRay(RogueSkillPolicy.SHURIKEN);}
+  public CombatActionOrchestrator.Submission submitFacingRogueRay(String id){if(!RogueSkillPolicy.ray(id))throw new IllegalArgumentException(id);String target=RogueSkillPolicy.frontTarget(state,id,port.facing(),port::visible);return submitPlayer(target==null?"NO_FRONT_MONSTER":target,id);}
   public float[] takeAdvanceFacing(){float[] d=port.abilities.completedAdvanceFacing;port.abilities.completedAdvanceFacing=null;return d;}
   public void setSkillTestMode(boolean enabled){port.setSkillTestMode(enabled);}
   public void setSkillProficiency(java.util.function.ToIntFunction<String> p){port.setSkillProficiency(p);}
