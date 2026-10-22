@@ -41,11 +41,11 @@ public class MonsterDensityV222Test {
    long allocStart=allocation.read();long queryStart=System.nanoTime();int accepted=0;
    for(int i=0;i<6000;i++){RuntimeState.Monster m=s.monsters().get(i%population);if(s.canPlayerOccupyActors(m.x+80+(i%7),m.y+40))accepted++;}
    double queryMs=(System.nanoTime()-queryStart)/1e6;long queryAlloc=allocation.supported?allocation.read()-allocStart:-1;
-   long[] update=new long[90],draw=new long[90];for(int i=0;i<90;i++){
+   int frames=phase.equals("before")?0:90;long[] update=new long[frames],draw=new long[frames];for(int i=0;i<frames;i++){
     s.player().alive=true;s.player().hp=s.player().maxHp;long start=System.nanoTime();F5mSaveStore.beginFrame();try{f.call(v,"update",new Class<?>[]{float.class},.016f);}finally{F5mSaveStore.endFrame();}long middle=System.nanoTime();assertEquals("real inbound gate must preserve dense scene",id,s.currentMapId());v.draw(canvas);update[i]=middle-start;draw[i]=System.nanoTime()-middle;
    }
-   assertEquals(population,s.monsters().size());JSONObject row=new JSONObject().put("map",id).put("population",population).put("acceptedQueries",accepted).put("queries6000ms",queryMs).put("queryAllocatedBytes",queryAlloc).put("update90IncludingCold",HudInventoryPerformanceV218Test.stats(update)).put("draw90IncludingCold",HudInventoryPerformanceV218Test.stats(draw));results.put(row);
+   assertEquals(population,s.monsters().size());JSONObject row=new JSONObject().put("map",id).put("population",population).put("acceptedQueries",accepted).put("queries6000ms",queryMs).put("queryAllocatedBytes",queryAlloc).put("fullFrames",frames).put("update90IncludingCold",frames==0?JSONObject.NULL:HudInventoryPerformanceV218Test.stats(update)).put("draw90IncludingCold",frames==0?JSONObject.NULL:HudInventoryPerformanceV218Test.stats(draw));results.put(row);
   }
-  frame.recycle();JSONObject report=new JSONObject().put("phase",phase).put("scope","same current map/spawn/HP; only RuntimeState and species parsing compared to V221; host CPU, not phone FPS").put("scenes",results);File out=new File("build/reports/forest-performance/v222/"+phase+"-density.json");out.getParentFile().mkdirs();try(FileWriter writer=new FileWriter(out)){writer.write(report.toString(2));}System.out.println("V222_DENSITY "+report);
+  frame.recycle();JSONObject report=new JSONObject().put("phase",phase).put("scope","same current map/spawn/HP; only RuntimeState and species parsing compared to V221; paired queries, full AI frames after only; host CPU, not phone FPS").put("scenes",results);File out=new File("build/reports/forest-performance/v222/"+phase+"-density.json");out.getParentFile().mkdirs();try(FileWriter writer=new FileWriter(out)){writer.write(report.toString(2));}System.out.println("V222_DENSITY "+report);
  }
 }

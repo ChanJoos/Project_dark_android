@@ -108,6 +108,16 @@ jobs:
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           if [[ "$(git log -1 --format=%B)" == *"[death-repair-v222]"* ]]; then
             python3 tools/test_ci_scope_v216.py
+            python3 - <<'PY'
+          import urllib.request,json,os
+          base='https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/39697696611'
+          headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
+          run=json.load(urllib.request.urlopen(urllib.request.Request(base,headers=headers)))
+          assert run['head_sha']=='31cfe95bff9c13e511ded6d1431669dc603f7a6b'
+          if run['status']!='completed':
+              with urllib.request.urlopen(urllib.request.Request(base+'/cancel',data=b'',headers=headers,method='POST')) as response:print('BOUNDED_SUPERSEDED_PROFILE_CANCEL',response.status)
+          else:print('PREVIOUS_PROFILE_ALREADY_FINISHED',run['conclusion'])
+          PY
             git fetch --depth=1 origin 3bf65b964c85696420c7a56b38825231f5ec795a
             baseline_dir=$(mktemp -d)
             cp app/src/main/java/com/projectdark/mobile/RuntimeState.java "$baseline_dir/RuntimeState.java"

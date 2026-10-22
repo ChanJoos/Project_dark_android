@@ -22,6 +22,6 @@
   "app/src/main/java/com/projectdark/mobile/PoteForestMonsterShowcase.java": "36e2a5d62c5ddb619874f6f8019db9a5293196c92d8322b3cf3fd5ddb3c817b1",
   "app/src/main/java/com/projectdark/mobile/RuntimeState.java": "0f50bb37b91a609ad56473e6355908a4c8fa0bcbe332313ee0c1a217c7b3a748",
   "app/src/test/java/com/projectdark/mobile/DeathRepairV222Test.java": "ab918d16612e061b38bd174909204b2cb4ffb7d3cc50c357645bd0ca4046b12a",
-  "app/src/test/java/com/projectdark/mobile/MonsterDensityV222Test.java": "54b0c671c7a427700835518e144c80e6fc8415a98ab51a3a1e0d28d290e00adc",
+  "app/src/test/java/com/projectdark/mobile/MonsterDensityV222Test.java": "5c6c94da0c8f1d483c216a07405441252f867444a381f63ae582848fff07e7a9",
   "master/changes/V222_ENTRY_DOORS_DENSITY.json": "8f75df324d2a502bfc8e993a0f5bba65072b404dde913c2bc4fa8ab6340fe185"
 }

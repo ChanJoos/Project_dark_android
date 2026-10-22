@@ -1,3 +1,7 @@
+## V222 bounded comparison methodology
+
+31cfe95b/run39697696611 continued over8minutes in the combined before+after step, with no live log availability. Bound old-code comparison to identical6000 actor queries/population/point-and-segment oracle; retain all90 real dense AI/update/draw frames and map/population assertions for final production. This compares hotspot CPU/allocation only; do NOT claim before/after whole-game FPS or frame delta. Superseded run cancellation is guarded by exact oldSHA and only performed if still running; retain any completed artifact as historical evidence. No production bytes or requested-feature assertions changed.
+
 ## V222 dense fixture actual entrance repair
 
 61d21e9a/run39697181667: host geometry/allocation APIs now compile/run; 500 independent collision oracle test PASS. Dense fixture failed72→0 because it used a direct map setup with no inbound Gate, leaving the initial return gate unlatched; first full update returned to lobby. Set up Death scenes through their actual inbound Gate and assert exact map on every measured frame, keeping72/36/100 population assertions. No production change or assertion relaxation; re-run paired measurements with real entrance semantics.
