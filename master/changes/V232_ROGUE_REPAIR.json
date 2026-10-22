@@ -24,7 +24,8 @@
       0.3333333333333333,
       0.7,
       0.85
-    ]
+    ],
+    "idleEdges": true
   },
   "source": "master/source/rogue_v232/reference.json",
   "rules": {
@@ -41,5 +42,6 @@
     "Sense source frame texture/header/scroll/Close retained; dynamic text is runtime typography",
     "Hide blocks new and pending incoming monster actions while active;dealing damage still ends existing stealth rule",
     "Source monster stats not invented;live runtime data displayed"
-  ]
+  ],
+  "sourcePreparationRecovery": "Actual IDLE before .15 and after .70; source GIF idle/contact/contact/idle, no overhead weapon-ready substitute"
 }

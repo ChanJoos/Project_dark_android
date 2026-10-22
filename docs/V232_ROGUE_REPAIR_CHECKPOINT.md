@@ -1,3 +1,13 @@
+## V232 源姿勢 준비/회복 직접 검토
+
+첫 native4phase strip을원문GIFidle/contact/contact/idle과비교:contact c8/c13은맞지만준비/회복c4overhead는원문과다름. 명시profile idleEdges만추가,준비<.15/회복>=.70은기존원본IDLEsource재사용. 도적만해당하며다른profile/png/frame/skill수치불변. 이시각변경은RogueRepairpose+RogueReviewbothBODY4facing/14normalinput추가2case로검증. Tail exactdelta guard expands only this flag/frameKey optional lookup and Rogue basicpredicate.56distinct relevantcasesexpected;oldAbelgearfixturefailureseparate.
+
+## V232 첫 네이티브 결과와 한정 후속 검증
+
+Source4e9ca525/run39761907202:57cases54PASS/3FAIL. Source pose key/native strip, Sense directional1..2/livewall+visibility/originalframe/auto.3/manual, Hide normal80alpha/queued+newphysicalmagic+taunt/expiry,trap1alias+031save retirement all passed except sourcepose case's final Rogue basicTHRUST assertion. Runtime missing one early THRUST→ROGUE_STAB predicate (learned skill routes alreadycorrect);add predicate only. allSupportedStatuses test wrongly dispatches retired031;filter supported status IDs,keeping original unsupported catalog/ID for migration. Rerun those2cases and unexecuted APK/concurrency under exact-main-delta guard;reuse54PASS after XML verification.
+
+Third failure AbelCombatV153 five-job Lv70journey at gear(s,41),before anycombat:WARRIOR/MARTIAL aliases equip toggles UNEQUIPPED,ROGUE/MAGE/CLERICREQUIREMENT_PENDING. Test/RpgProgressionState/TownCommerce anditemassets unchanged from3c2abf11;this is the retained legacy fixture's conflict with canonical item requirements/aliases,not caused by rogue motion/sense/hide. Do not bypasssource requirements,changeequipment balance,orclaimfull regression. Leave this unrelated broaderjourney FAILED/blocked for separate work/finalintegration;the otherAbelcombatcasesPASS. Applicable V232nativeexpected56distinctPASS aftertail;phonepending.
+
 ## 2026-10-22 V232 도적 실기기 정정 — 구현·검증 대기
 
 USER_VISUAL_ACCEPTED: V231 무도가 모든 스킬 통과. 해당 BODY/FX/icon/숫자 파일 그대로 유지. DEVICE_FAILED_USER_REPORTED: 도적 e8..15는 활 모션;기존 c14..23은 양발 벌림. 첨부1000060674.mp4(3.294s)와 원문245450 보관GIF21의4frames를 직접 비교해 손을 낮추고 한쪽 무릎을 굽히는 c8(back)/c13(front) contact로 연결, jumping c9/c12 제외. 준비/회복 및 시간은project phase selection;새BODY 생성 없음. 도적 기본 단검THRUST만 같은pose로연결,전사/타직업기본불변. 원본 근거 master/source/rogue_v232/reference.json.

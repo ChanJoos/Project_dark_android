@@ -111,7 +111,13 @@ jobs:
             python3 tools/import_rogue_skill_references.py
             python3 tools/generate_skill_presentation.py
             git diff --exit-code -- app/src/main/assets/skill-presentation docs/SKILL_ACTION_DECISIONS.csv docs/SKILL_PRESENTATION_MAPPING.csv app/src/main/java/com/projectdark/mobile/SkillActionData.java
+            if [[ "$(git log -1 --format=%B)" == *"[v232-tail]"* ]]; then
+              git fetch --depth=1 origin 4e9ca5253f6d78e7a733df584672bf2e178d3f14 3c2abf110f599eef535d82cc709e6108deb2141c
+              python3 tools/verify_v232_tail.py
+              gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*RogueRepairV232Test.originalBentKneeContactReplacesBowAndWideLungeForEveryRogueStabBothBodiesAllFacings' --tests '*SkillAbilityRuntimeTest.allSupportedStatusesAreReachableThroughProductionEffectDispatch' --tests '*RogueReviewV229Test.throwsNeverUseKickGroupAndStabsHaveEquippedLungeInBothBodiesAllFacings' --tests '*RogueReviewV229Test.reviewedActiveDaggerAndThrowMotionsReachNormalQuickslotContactAndNativeDraw' :app:assembleDebug --stacktrace
+            else
             gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*RogueRepairV232Test' --tests '*SkillTestModeTest.realActivityDefaultsToAllLearnedAndPreferenceSurvivesRestart' --tests '*SkillFeedbackV231Test' --tests '*RogueReviewV229Test' --tests '*SkillCorrectionsV227Test' --tests '*SkillAbilityRuntimeTest' --tests '*SkillPresentationTest' --tests '*SkillWindowReferenceTest' --tests '*SkillQuickslotApproachTest' --tests '*AbelCombatV153Test' --tests '*F5mRestartPersistenceMatrixTest' --tests '*MartialSevenV228Test.allSixActiveSkillsUseRealNormalQuickslotsAndNativeRecipientOrCasterEffects' :app:assembleDebug --stacktrace
+            fi
             java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.CombatConcurrentInterruptionAudit
           elif [[ "$(git log -1 --format=%B)" == *"[skill-feedback-v231]"* ]]; then
             python3 tools/test_ci_scope_v216.py

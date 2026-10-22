@@ -11,6 +11,7 @@ public final class WeaponCombatProfile {
   return THRUST.contains(d.appearanceId)?AnimationAction.THRUST:d.basicAttackAction==null?AnimationAction.PUNCH:d.basicAttackAction;
  }
  public static String motion(RpgProgressionState r,String requested){
+  if("THRUST".equals(requested)&&"ROGUE".equals(r.currentJobCode()))return "ROGUE_STAB";
   if(!"SWING".equals(requested)&&!"EQUIPPED_BASIC".equals(requested))return requested;
   RpgProgressionState.ItemDefinition d=r.equippedDefinition(RpgProgressionState.WEAPON_SLOT);
   if(d==null)return "PUNCH";

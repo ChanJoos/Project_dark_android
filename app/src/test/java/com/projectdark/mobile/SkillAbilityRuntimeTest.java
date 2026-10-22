@@ -94,7 +94,7 @@ public class SkillAbilityRuntimeTest {
   SkillBook b=SkillBook.load(context);b.learn("SK_전사_009",50);b.assign(0,"SK_전사_009");b.learn("SK_전사_010",0);assertFalse(b.learned("SK_전사_009"));assertEquals("SK_전사_010",b.slot(0));
  }
  @Test public void allSupportedStatusesAreReachableThroughProductionEffectDispatch()throws Exception{
-  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.kind.equals("STATUS")){
+  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.kind.equals("STATUS")&&a.supported()){
    RuntimeState s=state();RuntimeCombatSession c=session(s);SkillActionContract.Rule r=SkillActionContract.get(a.id);
    if(r.minReach>1){s.monsters().get(0).x=32*r.minReach;s.monsters().get(0).y=16*r.minReach;}
    if(a.status.equals("BASIC"))continue;
