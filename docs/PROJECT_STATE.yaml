@@ -1,5 +1,11 @@
 mage_sources_v235:
-  status: IMPLEMENTING
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 14f50075a08123740273626d5c62108a4c023420
+  focused_run: 39781578591
+  native_runs: [39780260125, 39781578591]
+  native_unique_passed: 51
+  receipt: verification/MAGE_SOURCES_V235_BUILD.json
+  library_file_id: libfile_8837a46696348191b967a572d7bf7a9c
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197

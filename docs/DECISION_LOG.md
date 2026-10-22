@@ -1,3 +1,11 @@
+## 2026-10-22 V235 verified closure
+
+APK source `14f50075a08123740273626d5c62108a4c023420`; focused Actions39781578591/job119833904043 SUCCESS, common scope39781590537 SUCCESS(compile SKIPPED). Initial source55ca33f/run39780260125:51tests,50PASS/1MP시점 test-premiseFAIL. Final tail corrects assertion to existing cast-start charge then no duplicate contact charge; all4screen elements PASS. Strict diff proves app/src/main unchanged, composite51uniquePASS/0unresolvedfailures. 54 exact source icons on book/quickslot and descriptions,12lower-image sources,14normal promotion contacts including046sigil,screen contacts/MP/dead+offscreen exclusion and affected adjacent paths verified. Full suite and phone acceptance NOT claimed.
+
+Downloaded artifact12426962921 ZIP SHA256 `90f47e719b96a42c8cc17781b32a4a4325f17a084d9775ba49cd63bfa430ad21`; APK102557610bytes SHA256 `b6add9366630d74ae371fb3e6e19907fa39b7cabd93ad6d4500d8f928058ca89`; built **2026-10-22 21:52:32 Asia/Seoul**. Embedded source/run,CRC,V2signature,all54exact source PNGs,catalog222 unchanged core,learning acquisition unchanged core,and631 prior V234 presentation files independently verified. Package com.projectdark.mobile.v235test / PROJECT DARK V235 TEST. Receipt `verification/MAGE_SOURCES_V235_BUILD.json`; delivery Library libfile_8837a46696348191b967a572d7bf7a9c.
+
+IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED. Host captures reviewed:54icons,browser-description043,dedicated046sigil,screen-water. Source captures retain project hold/fade timing; original continuous cadence unresolved. Acquisition resources were NOT imported; preexisting gameplay numerical values remain unchanged. PHONE/USER_VISUAL PENDING. PR197 unmerged;main41fe6def unchanged. Existing unrelated Abel5-job gear journey remains for final integration. NEXT: user phone check, then scoped response to concrete report; no duplicate unchanged tests/build for this documentation closure.
+
 ## 2026-10-22 V235 사용자 마법사 원문 적용 범위
 
 429943의54아이콘/설명만게임presentation에반영하고습득금전·재료·선행조건은가져오지않는다. 기존학습/시전/피해수치는유지한다.221564의각속성아래3개만사용하고화면전체마법4종은각third단일효과를모든livevisiblerecipient에적용한다.254766의어둠의각인은공통해골재사용대상에서제외해별도원본각인을사용한다. source14promotion은동일원본보존.원문미수록3개기존유지,stableID030마네나로유지. source54guide에는비용열자체없음.근거master/changes/V235_MAGE_SOURCES.json;검증진행중/phone미확인.

@@ -41,5 +41,12 @@
     "Guide is description import only; existing mechanics beyond explicitly requested screen FX stay unchanged"
   ],
   "base": "4cc554d2400671d03aceaf0c3e9b8354fd87675e",
-  "darkMarkFix": "SK_마법사_046 was intercepted by generic red skull despite dedicated original sigil being retained. Route source254766 frames29..34 through classic; retain curse70 mechanics."
+  "darkMarkFix": "SK_마법사_046 was intercepted by generic red skull despite dedicated original sigil being retained. Route source254766 frames29..34 through classic; retain curse70 mechanics.",
+  "verification": {
+    "receipt": "verification/MAGE_SOURCES_V235_BUILD.json",
+    "source": "14f50075a08123740273626d5c62108a4c023420",
+    "focusedRun": 39781578591,
+    "uniqueNativePasses": 51,
+    "phone": "PENDING"
+  }
 }
