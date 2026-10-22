@@ -38,9 +38,17 @@ def main():
    l=min(-f['pivot'][0] for f in frames);t=min(-f['pivot'][1] for f in frames);r=max(f['sourceShape'][0]-f['pivot'][0] for f in frames);b=max(f['sourceShape'][1]-f['pivot'][1] for f in frames)
    px=2-l;py=2-t;w=r-l+4;h=b-t+4;cols=8;atlas=Image.new('RGBA',(cols*w,((len(frames)+cols-1)//cols)*h));records=[]
    for i,f in enumerate(frames):
+    original_rgba_sha=sha(f['rgba'].tobytes());corrections=[]
+    if n==252 and i==1:
+     # This isolated flat scanline is present in the original file, absent in footage.
+     # Keep raw bytes; remove only this demonstrated display artifact, never FX texture.
+     assert f['sourceShape']==[240,180] and np.all(f['rgba'][0,:,:3]==[24,28,24])
+     assert not f['rgba'][1:20,:,3].any()
+     f['rgba'][0]=0
+     corrections=[dict(kind='ADAPTED_UNIFORM_SOURCE_SCANLINE_REMOVAL',rectangle=[0,0,240,1],sourceRgb=[24,28,24],evidence='Isolated source row,20 subsequent empty rows, absent in supplied animation; native review rejected line')]
     x=px-f['pivot'][0];y=py-f['pivot'][1];fw,fh=f['sourceShape'];atlas.paste(Image.fromarray(f['rgba']),(i%cols*w+x,i//cols*h+y))
     assert np.array_equal(np.array(atlas.crop((i%cols*w+x,i//cols*h+y,i%cols*w+x+fw,i//cols*h+y+fh))),f['rgba'])
-    records.append(dict(frame=i,sourceShape=f['sourceShape'],sourcePivot=f['pivot'],placement=[x,y],rowPitch=f['pitch'],rgbSha256=f['rgbSha256'],rgbaSha256=sha(f['rgba'].tobytes())))
+    records.append(dict(frame=i,sourceShape=f['sourceShape'],sourcePivot=f['pivot'],placement=[x,y],rowPitch=f['pitch'],rgbSha256=f['rgbSha256'],sourceRgbaSha256=original_rgba_sha,displayCorrections=corrections,rgbaSha256=sha(f['rgba'].tobytes())))
    dest=OUT/(name+'.png');atlas.save(dest);decoded+=atlas.width*atlas.height*4
    q=dict(anchor='RECIPIENT',path='mage-v242/'+dest.name,width=w,height=h,columns=cols,durationsMs=[ms]*len(frames),pivotX=px,pivotY=py,scale=1,blend='SCREEN',filterBitmap=False,footOffsetY=0,sourceTiming='ORIGINAL_EFA_HEADER_INTERVAL',atlasSha256=sha(dest.read_bytes()))
    skills[f'SK_마법사_{sid:03}']={'channels':{'RECIPIENT_CONTACT':q}}

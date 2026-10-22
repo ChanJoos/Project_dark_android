@@ -19,6 +19,11 @@ with zipfile.ZipFile(S/'original_effects.zip') as z:
    fw,fh=f['sourceShape'];pixels=np.frombuffer(data[:v[8]],'<u2').reshape(fh,v[6]//2)[:,:fw].astype(np.uint32)
    rgb=np.stack(((pixels//2048)*255//31,((pixels//32)%64)*255//63,(pixels%32)*255//31),axis=-1).astype(np.uint8)
    expected=np.dstack((rgb,np.where(pixels!=0,255,0).astype(np.uint8)));assert sha(rgb.tobytes())==f['rgbSha256']
+   assert sha(expected.tobytes())==f['sourceRgbaSha256']
+   if f['displayCorrections']:
+    assert rec['source']=='efct252.efa' and j==1 and len(f['displayCorrections'])==1
+    assert np.all(pixels[0]==0x18e3) and not np.any(pixels[1:20])
+    assert f['displayCorrections'][0]['rectangle']==[0,0,240,1];expected[0]=0
    x,y=f['placement'];ox=j%q['columns']*q['width'];oy=j//q['columns']*q['height'];actual=np.array(im.crop((ox+x,oy+y,ox+x+fw,oy+y+fh)))
    assert np.array_equal(actual,expected),(rec['id'],j);assert sha(expected.tobytes())==f['rgbaSha256'];assert [v[10],v[11]]==f['sourcePivot']
    cell=np.array(im.crop((ox,oy,ox+q['width'],oy+q['height'])))

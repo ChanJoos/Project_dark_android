@@ -1,0 +1,9 @@
+{
+  "reason": "Native QA rejects an isolated uniform source scanline",
+  "source": "efct252.efa/frame1",
+  "originalRow": "240pixels of0x18e3 atrow0;next20rowsblank",
+  "correction": "Remove only originalrow0 in display; preserve all other source pixels and retained rawEFA",
+  "evidence": "Native sequence grid showed line; supplied footage has no such detached line",
+  "initial": "sourcef7f023ad/run39870628943 eighttestsPASS; visualcandidate lineREJECTED",
+  "tailScope": "all4sourceframes/render/padding/interval/alias plus earthnormalSINGLE/SCREEN; reuse exact unchanged eight-case initial evidence"
+}

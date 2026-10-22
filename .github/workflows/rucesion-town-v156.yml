@@ -110,7 +110,19 @@ jobs:
             git fetch --depth=1 origin e0b38a12684b4086fb80297f1a5906f54dce97c3
             python3 tools/check_mage_v242.py
             python3 tools/test_ci_scope_v216.py
+            if [[ "$(git log -1 --format=%B)" == *"[v242-scanline-tail]"* ]]; then
+              git fetch --depth=1 origin f7f023addb145f756deb88534276818a2cbf509d
+              python3 - <<'V242TAIL'
+          import subprocess
+          changed=subprocess.check_output(['git','diff','--name-only','f7f023addb145f756deb88534276818a2cbf509d','HEAD','--','app/src/main'],text=True).splitlines()
+          assert set(changed)=={'app/src/main/assets/skill-presentation/mage-v242/earth.png','app/src/main/assets/skill-presentation/mage-v242/manifest.json'},changed
+          assert not subprocess.check_output(['git','diff','f7f023addb145f756deb88534276818a2cbf509d','HEAD','--','app/src/main/java','app/build.gradle'],text=True)
+          print('Reuse unchanged eight-case first run39870628943; rerun all-frame source/render and earth SINGLE/SCREEN after isolated source-row correction')
+          V242TAIL
+              gradle --no-daemon :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests 'com.projectdark.mobile.MageCircle4V242Test.allEfaFramesUseOriginalIntervalsFullEnvelopeAndShareOneAtlasWithScreen' --tests 'com.projectdark.mobile.MageCircle4V242Test.earthSingleAndScreenRemainCorrectAfterSourceScanlineRepair' :app:assembleDebug
+            else
             gradle --no-daemon :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests 'com.projectdark.mobile.MageCircle4V242Test' --tests 'com.projectdark.mobile.MageBasicV240Test' --tests 'com.projectdark.mobile.MagePromotionV241Test.originalDarkSealRetainsCurse70AndAllPromotionQuickslotsReachExpectedRecipients' --tests 'com.projectdark.mobile.SkillContactRegressionTest' :app:assembleDebug
+            fi
           elif [[ "$(git log -1 --format=%B)" == *"[mage-promotion-v241]"* ]]; then
             git fetch --depth=1 origin 79527cd2cdb1c25f151ee6cb718c17711a010bcc
             python3 tools/check_mage_v241.py
@@ -574,6 +586,7 @@ jobs:
           if '[mage-basic-v240]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V240 Pote basic4 only: Mareno/Teramiko/Adyuro/Plamo continuous recipient contacts; normal single-target/MP and adjacent contact/promotion native checks; other-circle correction deferred by user; phone pending'
           if '[mage-promotion-v241]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V241 eight complete original EPF promotions: per-frame pixel equality/whole-envelope/no tile crop, original Dark Mark CURSE70,14normal promotion quickslots, unchanged Pote basic4 and adjacent contact; phone visual pending'
           if '[mage-circle4-v242]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V242 four original EFA circle4 sequences, exact RGB565/frameinterval/foot/fullbounds;4normal singles and4screen casts, oneMPcharge, contact death/visibility recheck; retained basic4,14promotion contacts and adjacent contact; phone visual pending'
+          if '[v242-scanline-tail]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V242 final source isolated earth scanline display correction; final2native all-source frame/pixel/timing/alias bounds and earthnormal SINGLE/SCREEN; reuse unchanged first8cases from39870628943 through exact runtime delta guard; phone visual pending'
           Path('delivery/build_evidence.json').write_text(json.dumps(report,indent=2)+'\n')
           print(json.dumps(report))
           PY
