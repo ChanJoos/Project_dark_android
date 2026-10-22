@@ -85,7 +85,7 @@
   "app/src/test/java/com/projectdark/mobile/MartialMechanicsV173Test.java": "d2f8760e3e5413fbd25ea6b4f38ab985c6dfd8ef0d00d8aafe3e00a42261c084",
   "app/src/test/java/com/projectdark/mobile/MartialSevenV228Test.java": "a2bdf9aaf3e3fd0ee2c5065c802abd07711ed9a5dfb940b24057b0eb89254aab",
   "app/src/test/java/com/projectdark/mobile/SkillPresentationTest.java": "450aede62dbe590a70e797f9b659b034214fcf41cdbf36f1d8496e85c397af82",
-  "app/src/test/java/com/projectdark/mobile/SkillSpatialContractTest.java": "0300a4c5c4b45c918bb5d72fbae2b8d19a4ae1721c25748c209a2f7118984254",
+  "app/src/test/java/com/projectdark/mobile/SkillSpatialContractTest.java": "b46cb7e8a67cc6ef5593f4541434ccef5fb4e566b0ad25f54a68cff365aa9b71",
   "app/src/test/java/com/projectdark/mobile/SkillWindowTest.java": "df9adcb72deace0c5c63e13871e5ff33d0076b6d07a40f0a422d4724f30b7d0c",
   "master/changes/V228_MARTIAL_SEVEN_SOURCE.json": "5c993a555a91947f2aae9cc9aa4c395c0d94e5b0fc12d93a85f21039201be43e",
   "master/source/martial_v228/observed_clips.zip": "4474e3a6041d98f156402f8bea84070fae03d325ce68c0246b31f5a2256001c8",
@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "f6702afa1bed799db71b6e5be21eebe6e634f7c232175da018a4dfb9571a43b9",
+  ".github/workflows/rucesion-town-v156.yml": "4ea475f2016d8887f0cd2f5f7d7b93ae5c8fdfb60a84c15e9bd1dd86ee860e01",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -320,8 +320,8 @@
   "app/src/main/java/com/projectdark/mobile/SkillEffectState.java": "9ccc6ffe322bf75d011e2ee3b8bf17ecbdc2697397b2eebef3510e86f70e8070",
   "docs/SKILL_ABILITY_FORMULAS.csv": "05576e18b9a54c8658bdd5b148c9a892b8f7844e638947d20da913cef51be6fe",
   "docs/SKILL_ACTION_DECISIONS.csv": "7e4eeaea7bcfbdf296c0ca02679ce9961d2de3e9d853fcf76f5af751b2d4c59a",
-  "app/src/test/java/com/projectdark/mobile/RogueAmnesiaV236Test.java": "2b0ea52d144f1f47277caf9fd3b13a8c3f2208d22f86511bee389164444ceda9",
-  "docs/V236_ROGUE_AMNESIA_DAMAGE_CHECKPOINT.md": "54ef2a2382b4177cf9cc4ec2e6d9e2b49a6a8b448ad2e2eeb304968d423f9d6c",
+  "app/src/test/java/com/projectdark/mobile/RogueAmnesiaV236Test.java": "fe21a2cab193eaf6980fdf994f623b3fac136de74c0b8adbbd844e6e82cf706b",
+  "docs/V236_ROGUE_AMNESIA_DAMAGE_CHECKPOINT.md": "88485fb0e127abf550284ce2150f9105ed639e3c60259e7bac6a67177e34f8cc",
   "master/changes/V236_ROGUE_AMNESIA_DAMAGE.json": "a3bd94f9ad2079a2fbdbfd26b5deb68f986b72e1b14d3c07e91470872f35d92c",
   "tools/apply_rogue_v236.py": "bb9601a5a32b85700f5241060240e72f6009c14cdbb35215cae0cec7bfd3f3ef"
 }

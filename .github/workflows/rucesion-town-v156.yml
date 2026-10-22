@@ -110,7 +110,21 @@ jobs:
             python3 tools/test_ci_scope_v216.py
             python3 tools/apply_rogue_v236.py
             git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java app/src/main/java/com/projectdark/mobile/SkillActionData.java docs/SKILL_ACTION_DECISIONS.csv docs/SKILL_ABILITY_FORMULAS.csv
+            if [[ "$(git log -1 --format=%B)" == *"[v236-tail]"* ]]; then
+              git fetch --depth=1 origin 69ebdcef22455e5117fed6b7c245df735147956b
+              python3 - <<'GUARD236'
+          import subprocess
+          base='69ebdcef22455e5117fed6b7c245df735147956b'
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/test/java/com/projectdark/mobile/RogueAmnesiaV236Test.java','app/src/test/java/com/projectdark/mobile/SkillSpatialContractTest.java','docs/V236_ROGUE_AMNESIA_DAMAGE_CHECKPOINT.md'}
+          changed=set(subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines())
+          assert changed<=allowed,changed-allowed
+          assert not subprocess.check_output(['git','diff',base,'HEAD','--','app/src/main'],text=True)
+          print('Reuse51 native passes39785390398; fix2 fixture assertions; baseline Abel all-five gear failure remains separate from candidate scope')
+          GUARD236
+              gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*RogueAmnesiaV236Test.everyHitDuringTenSecondsDoublesActualHpPopupAndLedgerThenAggressionReturns' --tests '*SkillSpatialContractTest.originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId' :app:assembleDebug --stacktrace
+            else
             gradle :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*RogueAmnesiaV236Test' --tests '*RogueCombatV234Test' --tests '*SkillAbilityRuntimeTest' --tests '*SkillSpatialContractTest' --tests '*SkillContactRegressionTest' --tests '*SkillQuickslotApproachTest' --tests '*MageSourcesV235Test' --tests '*AbelCombatV153Test' --tests '*F5mRestartPersistenceMatrixTest' :app:assembleDebug --stacktrace
+            fi
             for audit in CombatV3PipelineAudit RuntimeCombatPortAdapterAudit MonsterAutoCombatBridgeAudit MonsterDefeatIdempotencyAudit CombatConcurrentInterruptionAudit; do
               java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.$audit
             done

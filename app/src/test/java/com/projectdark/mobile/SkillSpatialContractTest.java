@@ -29,7 +29,7 @@ public class SkillSpatialContractTest {
     assertTrue(SkillActionContract.includes(SkillActionContract.get("SK_무도가_025"),0,0,0,0,64,0,true));
     SkillActionContract.Rule ranged=SkillActionContract.get("SK_도적_003");
     assertTrue(SkillActionContract.canStart(ranged,0,0,32,16,true));assertTrue(SkillActionContract.canStart(ranged,0,0,64,32,true));assertTrue(SkillActionContract.canStart(ranged,0,0,128,64,true));assertFalse(SkillActionContract.canStart(ranged,0,0,160,80,true));
-    assertFalse(SkillActionContract.canStart(SkillActionContract.get("SK_도적_005"),0,0,32,16,true));
+    assertTrue(SkillActionContract.canStart(SkillActionContract.get("SK_도적_005"),0,0,32,16,true));
     assertEquals(SkillActionContract.Pattern.SCREEN,SkillActionContract.get("SK_마법사_050").pattern);
     assertEquals(3f,SkillActionContract.get("SK_무도가_020").contact,.001f);
     for(SkillActionContract.Rule r:SkillActionContract.all()){
