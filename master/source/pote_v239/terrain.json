@@ -1,0 +1,28 @@
+{
+  "revision": "V239_CAPTURE_QUILT",
+  "evidence": "ADAPTED_SOURCE_MATERIAL; topology retained, not original full map",
+  "sourceName": "Screen_Recording_20261023_000206_YouTube.mp4",
+  "sourceSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+  "seconds": 35,
+  "boxes": [
+    [
+      755,
+      580,
+      883,
+      676
+    ],
+    [
+      1250,
+      573,
+      1378,
+      669
+    ],
+    [
+      1310,
+      650,
+      1438,
+      746
+    ]
+  ],
+  "sha256": "1bbfc0f1c606749506e8e114bb5d87cab40c52f1034d3837fc14a57e21e2c476"
+}

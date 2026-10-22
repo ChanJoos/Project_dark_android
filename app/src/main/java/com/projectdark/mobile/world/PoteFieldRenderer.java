@@ -37,7 +37,7 @@ import java.util.Map;
 public final class PoteFieldRenderer {
   public static final String STATUS="POTE_FOREST_REFERENCE_GROUND_V10";
   private static final float TILE_W=64f,TILE_H=32f;
-  private static final String SOIL_TEXTURE="reference_v113/forest_floor.png";
+  private static final String SOIL_TEXTURE="reference_v239/forest_floor.png";
   private static final String TRAIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private final Paint pixel=new Paint();
   private final Paint soilPaint=new Paint();
@@ -82,7 +82,7 @@ public final class PoteFieldRenderer {
     PoteMonsterMotion.sample(m.id,state,PoteForestMonsterShowcase.attackProgress(m),m.animationClock,m.hitFlash,motion);
     String key=PoteForestMonsterShowcase.assetPath(m.id,motion.pose,d);float[] center=visualCenters.get(key);Bitmap source=cache.get(key);if(center==null||source==null)return false;
     String family=PoteForestMonsterShowcase.species(m.id);float h=PoteForestMonsterShowcase.bodyHeight(m.id),w=PoteForestMonsterShowcase.bodyWidth(m.id)*source.getWidth()/Math.max(1f,source.getHeight());
-    float inset=family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
+    float inset=PoteForestMonsterShowcase.originalPote(m.id)?h*20f/96f:family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
     out[0]=m.x+facingX(d)*(motion.lunge-motion.recoil)+(center[0]-.5f)*w;
     out[1]=m.y+facingY(d)*(motion.lunge-motion.recoil)-motion.lift-h+inset+center[1]*h;return true;
   }
@@ -172,7 +172,7 @@ public final class PoteFieldRenderer {
     PoteMonsterMotion.sample(id,state,progress,clock,hitRemaining,motion);
     String family=PoteForestMonsterShowcase.species(id);
     // Aliased back idle and walk must share the same rasterization as well as the same art.
-    if("idle".equals(state)&&("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
+    if(!PoteForestMonsterShowcase.originalPote(id)&&"idle".equals(state)&&("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
         &&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE))motion.articulated=true;
     String name=PoteForestMonsterShowcase.assetPath(id,motion.pose,direction);
     if(name==null)return;
@@ -194,7 +194,7 @@ public final class PoteFieldRenderer {
       }
     }
     float cx=anchorX,cy=anchorY-motion.lift;
-    float groundInset=family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
+    float groundInset=PoteForestMonsterShowcase.originalPote(id)?h*20f/96f:family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
     if(motion.articulated){
       // One reusable 35-vertex mesh: opposing lower-limb beats and upper-body lean.

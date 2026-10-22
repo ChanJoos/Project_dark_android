@@ -1,0 +1,184 @@
+{
+  "revision": "USER_VIDEO_V239",
+  "skills": {
+    "SK_마법사_051": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v239/delis.png",
+          "width": 400,
+          "height": 400,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 165,
+          "pivotY": 190,
+          "scale": 0.35,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "ad54ee91f9caf8331d3126286a24ef32d7b271617c337c4af765831f77e9298a"
+        }
+      }
+    },
+    "SK_마법사_052": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v239/fortress.png",
+          "width": 400,
+          "height": 400,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 165,
+          "pivotY": 190,
+          "scale": 0.35,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "d1ea61f1a89c4635eecd9c237f30b06bb1e4f2d58ba52b8cb76a44cf8d31a7b1"
+        }
+      }
+    },
+    "SK_마법사_039": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v239/ice.png",
+          "width": 260,
+          "height": 350,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 115,
+          "pivotY": 270,
+          "scale": 0.35,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "0e338c73a5bd6256f753e3fe9c5f0c0639b8bbea9275c14382cc88e500d72e38"
+        }
+      }
+    },
+    "SK_마법사_041": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v239/storm.png",
+          "width": 360,
+          "height": 330,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 170,
+          "pivotY": 220,
+          "scale": 0.3,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "c2c1b1697a78ca8d92386d35bf668e19480c32d4117a055fc74a991192257ddc"
+        }
+      }
+    },
+    "SK_마법사_042": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v239/flare.png",
+          "width": 230,
+          "height": 350,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 110,
+          "pivotY": 270,
+          "scale": 0.35,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "13bac9018f797287bbc5ad4440a16b714e7502b1418a971c2c9c91e23e7cf628"
+        }
+      }
+    }
+  }
+}

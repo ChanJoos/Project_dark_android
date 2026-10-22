@@ -27,6 +27,11 @@ public final class PoteForestMonsterShowcase {
     art.put("POTE_SPIRIT","campaign_v3/brown_pote_spirit");
     art.put("POTE_STRONG_GNOLL","campaign_v1/gnoll");art.put("POTE_STRONG_WOLFRIDER","campaign_v1/wolf_rider");art.put("POTE_STRONG_TREANT","campaign_v1/trant");art.put("POTE_CAMPAIGN_ELITE_GNOLL","campaign_v1/gnoll");
     art.replaceAll((id,key)->"campaign_v3/"+key.substring(key.lastIndexOf('/')+1));
+    // V239: original MPF pose samples, calibrated in native logical pixels.
+    for(String family:new String[]{"red_pamfet","green_pamfet","purple_pamfet","silver_pamfet","trant","lycanthrope","gnoll","wolf_rider","antlion","ant_giant","silver_wolf"}){
+      final String old="campaign_v3/"+family, replacement="original_v239/"+family;
+      art.replaceAll((id,key)->old.equals(key)?replacement:key);
+    }
     art.put("ABEL_TURTLE","abel_v161/turtle");art.put("ABEL_ARKPUS","abel_v161/arkpus");
     art.put("ABEL_PONG","abel_v161/pong");art.put("ABEL_CATERPILLAR","abel_v161/caterpillar");
     art.put("ABEL_OBS_SLATE","abel_v161/slate");art.put("ABEL_GRAB","abel_v142/armored");
@@ -43,7 +48,8 @@ public final class PoteForestMonsterShowcase {
   public static List<String> monsterIds(){return IDS;}
   // V161 calibrates occupied silhouette against the same-frame source player.
   public static float bodyWidth(String id){String s=species(id);float calibrated=s==null?-1:AbelSpriteCalibration.width(s);if(calibrated>0)return calibrated;return s!=null&&s.endsWith("KOATL")?104f:bodyHeight(id);}
-  public static float bodyHeight(String id){String s=species(id);float calibrated=s==null?-1:AbelSpriteCalibration.height(s);if(calibrated>0)return calibrated;if("LYK_ARIEL".equals(s))return 110f;if("LYK_TYRANT".equals(s))return 95f;if("LYK_KOATL".equals(s))return 84f;if("LYK_ELECT_KOATL".equals(s))return 84f;if("LYK_PLANT_ARKPUS".equals(s)||"LYK_ARKPUS".equals(s))return 84f;if("LYK_BLUE_HACON".equals(s))return 72f;if("LYK_RED_HACON".equals(s))return 72f;if(s!=null&&s.startsWith("LYK_"))return 64f;if(s!=null&&s.startsWith("ABEL_KINGARK"))return 210f;if("ABEL_GAS".equals(s)||"ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_GRAB".equals(s))return 52f;if("ABEL_PONG".equals(s))return 54f;if("ABEL_CATERPILLAR".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 52f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
+  public static boolean originalPote(String id){String key=ART.get(species(id));return key!=null&&key.startsWith("original_v239/");}
+  public static float bodyHeight(String id){if(originalPote(id))return 96f;String s=species(id);float calibrated=s==null?-1:AbelSpriteCalibration.height(s);if(calibrated>0)return calibrated;if("LYK_ARIEL".equals(s))return 110f;if("LYK_TYRANT".equals(s))return 95f;if("LYK_KOATL".equals(s))return 84f;if("LYK_ELECT_KOATL".equals(s))return 84f;if("LYK_PLANT_ARKPUS".equals(s)||"LYK_ARKPUS".equals(s))return 84f;if("LYK_BLUE_HACON".equals(s))return 72f;if("LYK_RED_HACON".equals(s))return 72f;if(s!=null&&s.startsWith("LYK_"))return 64f;if(s!=null&&s.startsWith("ABEL_KINGARK"))return 210f;if("ABEL_GAS".equals(s)||"ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_GRAB".equals(s))return 52f;if("ABEL_PONG".equals(s))return 54f;if("ABEL_CATERPILLAR".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 52f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){if(id==null)return null;int separator=id.indexOf('#');return separator<0?id:id.substring(0,separator);}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}
   public static String artKey(String id){
@@ -86,13 +92,13 @@ public final class PoteForestMonsterShowcase {
     // V122 visual audit: back-facing antlion heads were labeled with opposite diagonals.
     // Preserve source bytes and resolve presentation only; canonical movement stays untouched.
     String family=species(monsterId);
-    if("POTE_ANTLION".equals(family)&&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE)){
+    if(!originalPote(monsterId)&&"POTE_ANTLION".equals(family)&&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE)){
       direction=direction==CharacterRenderer.Direction.NW?CharacterRenderer.Direction.NE:CharacterRenderer.Direction.NW;
       if("attack".equals(pose))pose="idle"; // Existing back attack art turns its head toward the viewer.
     }
     // Back-view tree/giant-ant idle silhouettes differ from the applied walking direction.
     // Use the same authored back silhouette across idle/walk; runtime gait provides movement.
-    if(("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
+    if(!originalPote(monsterId)&&("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
         &&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE)
         &&"idle".equals(pose))pose="walk";
     String dir;

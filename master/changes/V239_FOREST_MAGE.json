@@ -1,0 +1,35 @@
+{
+  "id": "V239_FOREST_MAGE",
+  "status": "ACCEPTED_CANDIDATE_IMPLEMENTATION",
+  "userRequest": "Additional magic footage; improve Pote maps and monsters from first clip",
+  "base": "ba495f25ae0fad2a136d3401941fdded51dfc51f",
+  "sourceRecords": [
+    "master/source/pote_v239/reference.json",
+    "master/source/pote_v239/poses.json",
+    "master/source/pote_v239/terrain.json",
+    "master/source/mage_v239/receipt.json"
+  ],
+  "before": "Generated Pote pose families, old soil; promotion source stills",
+  "after": "11 retained original MPF sampled-pose families, captured soil,5 continuous contact sequences",
+  "preserved": [
+    "source snapshots",
+    "spirit/mantis assets",
+    "Mareno",
+    "V238 videos",
+    "combat/learning values",
+    "map topology",
+    "population",
+    "live collision",
+    "save",
+    "cache budget"
+  ],
+  "unresolved": [
+    "Korean indexed name table",
+    "3 independent labelled references",
+    "occluded magic pixels",
+    "full native monster animation",
+    "remaining spells",
+    "phone and visual acceptance"
+  ],
+  "verification": "PENDING exact CI / composited screenshot review; focused scope in checkpoint"
+}

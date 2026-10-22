@@ -34,6 +34,9 @@ public final class PoteMonsterMotion {
       }
       out.articulated=true;
     }else out.lift=(float)Math.sin(clock*4.5f)*.35f;
+    // Original poses contain articulated limbs and source attack shapes already.
+    // Translate at contact; do not rubber-sheet those indexed pixels.
+    if(PoteForestMonsterShowcase.originalPote(id)){out.articulated=false;out.lift=out.lean=out.stride=0f;}
     if(hitRemaining>0f){
       float age=.14f-Math.min(.14f,hitRemaining);
       out.recoil=2.2f*(float)Math.sin(Math.PI*clamp(age/.14f));

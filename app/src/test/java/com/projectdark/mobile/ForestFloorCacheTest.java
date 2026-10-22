@@ -40,9 +40,9 @@ public class ForestFloorCacheTest {
   w=world("MAP_POTE_03");w.camera().snapTo(1500,800);cached(r,canvas,w);assertEquals("MAP_POTE_03",ForestPixelCacheTest.field(r,"floorMap"));assertTrue(((Map<?,?>)ForestPixelCacheTest.field(r,"floorChunks")).size()<=6);
   System.out.println("FLOOR_RETAINED_PIXEL_BYTES_MAX="+(32*260*260*4)+"; STATIC_REPEAT_FRAMES=100; REBUILDS=0");
  }
- // Frozen V115 fe8dc5d2 ground renderer, independent of the chunk implementation.
+ // Frozen V115 raster algorithm with the intentionally replaced V239 material; independent of chunk implementation.
  private static class LegacyFloor {
-  final Paint pixel=new Paint(),soilPaint=new Paint();final Matrix texturePhase=new Matrix();final PoteFieldRenderer sources=new PoteFieldRenderer();final Map<String,BitmapShader> shaders=new HashMap<>();final String SOIL_TEXTURE="reference_v113/forest_floor.png";
+  final Paint pixel=new Paint(),soilPaint=new Paint();final Matrix texturePhase=new Matrix();final PoteFieldRenderer sources=new PoteFieldRenderer();final Map<String,BitmapShader> shaders=new HashMap<>();final String SOIL_TEXTURE="reference_v239/forest_floor.png";
   LegacyFloor(){
    // Freeze the V115 constructor as well as its draw methods; platform Paint defaults are not the contract.
    pixel.setAntiAlias(false);pixel.setFilterBitmap(false);pixel.setDither(false);

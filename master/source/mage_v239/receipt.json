@@ -1,0 +1,77 @@
+{
+  "source": "Screen_Recording_20261022_235706_YouTube.mp4",
+  "sha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
+  "sequences": [
+    {
+      "id": "SK_마법사_051",
+      "seconds": 51.35,
+      "duration": 1.15,
+      "crop": [
+        780,
+        180,
+        400,
+        400
+      ],
+      "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
+      "visiblePixels": 118027,
+      "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
+    },
+    {
+      "id": "SK_마법사_052",
+      "seconds": 56.9,
+      "duration": 1.15,
+      "crop": [
+        780,
+        180,
+        400,
+        400
+      ],
+      "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
+      "visiblePixels": 162905,
+      "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
+    },
+    {
+      "id": "SK_마법사_039",
+      "seconds": 62.25,
+      "duration": 0.6,
+      "crop": [
+        900,
+        80,
+        260,
+        350
+      ],
+      "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
+      "visiblePixels": 75539,
+      "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
+    },
+    {
+      "id": "SK_마법사_041",
+      "seconds": 70.3,
+      "duration": 0.55,
+      "crop": [
+        800,
+        130,
+        360,
+        330
+      ],
+      "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
+      "visiblePixels": 29586,
+      "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
+    },
+    {
+      "id": "SK_마법사_042",
+      "seconds": 78.4,
+      "duration": 0.55,
+      "crop": [
+        820,
+        80,
+        230,
+        350
+      ],
+      "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
+      "visiblePixels": 31445,
+      "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
+    }
+  ],
+  "remaining": "Other named debuffs and the first video lower-circle casts remain evidence inventory; no unsupported mechanical grants."
+}
