@@ -1,0 +1,296 @@
+{
+  "videoSha256": "cd75a898f83363bbff89ee3bd67deef6e206ee4cd9a826ce3d7a5340c0715cb3",
+  "videoName": "Screen_Recording_20261022_225347_YouTube.mp4",
+  "videoDuration": 19.896833,
+  "rawVideoCommitted": false,
+  "extraction": "Recipient HP-bar tracking, inverse SCREEN and source-color gates. Dark red source sequence; bilateral visible lobe reflection for occluded element regions is ADAPTED.",
+  "effects": [
+    {
+      "id": "SK_마법사_026",
+      "sourceFrameCount": 10,
+      "sourceInterval": [
+        13.8,
+        14.3
+      ],
+      "crop": [
+        [
+          267,
+          1042,
+          180,
+          180
+        ],
+        [
+          267,
+          1042,
+          180,
+          180
+        ],
+        [
+          254,
+          1042,
+          180,
+          180
+        ],
+        [
+          254,
+          1042,
+          180,
+          180
+        ],
+        [
+          254,
+          1042,
+          180,
+          180
+        ],
+        [
+          254,
+          1042,
+          180,
+          180
+        ],
+        [
+          254,
+          1040,
+          180,
+          180
+        ],
+        [
+          254,
+          1040,
+          180,
+          180
+        ],
+        [
+          254,
+          1040,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ]
+      ],
+      "atlasSha256": "d3c0f903e36b8baaf1bff19dc815fc82fb22db66856c980884e5d8048832a946",
+      "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
+    },
+    {
+      "id": "SK_마법사_027",
+      "sourceFrameCount": 9,
+      "sourceInterval": [
+        15.05,
+        15.5
+      ],
+      "crop": [
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ],
+        [
+          294,
+          1060,
+          180,
+          180
+        ]
+      ],
+      "atlasSha256": "c4823e3d148527760cdf1e59b6160d4b9658d1f69b04e108b37e8ebdc2f3c7de",
+      "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
+    },
+    {
+      "id": "SK_마법사_028",
+      "sourceFrameCount": 5,
+      "sourceInterval": [
+        13.42,
+        13.67
+      ],
+      "crop": [
+        [
+          208,
+          1017,
+          180,
+          180
+        ],
+        [
+          208,
+          1017,
+          180,
+          180
+        ],
+        [
+          208,
+          1017,
+          180,
+          180
+        ],
+        [
+          218,
+          1022,
+          180,
+          180
+        ],
+        [
+          229,
+          1027,
+          180,
+          180
+        ]
+      ],
+      "atlasSha256": "a05dca8943a5e4764b338c725b488e2d5df58226f2a5866e96e8f597e5573b81",
+      "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
+    },
+    {
+      "id": "SK_마법사_029",
+      "sourceFrameCount": 12,
+      "sourceInterval": [
+        14.3,
+        14.9
+      ],
+      "crop": [
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          254,
+          1038,
+          180,
+          180
+        ],
+        [
+          262,
+          1044,
+          180,
+          180
+        ],
+        [
+          262,
+          1044,
+          180,
+          180
+        ],
+        [
+          272,
+          1050,
+          180,
+          180
+        ],
+        [
+          274,
+          1050,
+          180,
+          180
+        ]
+      ],
+      "atlasSha256": "86a4749a8453770fc317c02d96bba1dc1d98acb013492d885697e2f65f2238f5",
+      "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
+    },
+    {
+      "id": "SK_마법사_046",
+      "sourceFrameCount": 26,
+      "sourceInterval": [
+        4.2,
+        5.5
+      ],
+      "crop": [
+        235,
+        950,
+        390,
+        480
+      ],
+      "atlasSha256": "7d36eaf2fdf9da642f2d23988837afdceba9155f345cfd677230bcf69096c21f",
+      "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
+    }
+  ],
+  "mapping": "Names matched against retained labelled article221564 lower-third captures. Video has no spell-name captions; mapping is visual correspondence, not OCR.",
+  "scope": "Single dark mark;4circle four single-target spells;existing screen4 aliases reuse same sequences per live recipient. No new advancement/whole-dark-mark ability.",
+  "limitations": [
+    "Input includes several cuts, target motion, compressed spell frames and overlapping name/damage UI. No recovered native original atlas claim.",
+    "Element identities visually matched to retained labelled221564 stills. Four circle4 single spells reuse these user-authorized screen visual sequences; no mechanics or numerical balance change.",
+    "Raw recording is not uploaded. Only extracted effect atlases, exact crop/time/hash receipt and extraction recipe are committed."
+  ]
+}

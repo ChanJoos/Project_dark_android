@@ -1,3 +1,17 @@
+## V238 — supplied continuous Mage video candidate
+
+User2026-10-22: use Screen_Recording_20261022_225347_YouTube.mp4 for Dark Mark, four whole-screen elements and four circle4 single elements. Existing branch codex/rucesion-coast-v157 / PR197; main41fe6def unchanged.
+
+5 continuous captured sequences replace one-still hold/fade and the prior procedural Dark Mark. Existing SkillPolicy screen30..33 aliases still point to26..29 so each affected living visible recipient gets one source pulse. Single26..29 keeps one target. Dark046 retains CURSE70 and single-target contract; the video's newer whole-Dark-Mark skill is NOT added. Shared damage/MP/learning fields, Mareno001 and approved Martial untouched. Source frame/crop/hash receipt master/source/mage_video_v238/receipt.json; raw private recording not committed.
+
+Visual correspondence to labelled221564:water white/lilac star,earth grey dust,wind cyan circular electric burst,fire yellow flare. Captured targets move and flash white; tracker, inverse SCREEN and hue masks remove actor/UI. Some element lobes are reflected from visible same-frame pixels. Occluded native animation is still unknown; this is ADAPTED video reconstruction and visual acceptance is PENDING. No claim of exact original pixels behind occluders.
+
+Predecessor source9d0ffcf8/run39796133006 compiled, passed configured native tests and assembled APK, then failed RuntimeCombatPortAdapterAudit launched against Android stub jar (RectF Stub). Current five verify() audits run in Robolectric native test instead, without weakening assertions. Prior CLI failure remains recorded.
+
+Verification scope: new5tests (changing frame hashes, normal single contacts/cost/one target, screen four recipient recheck/single cost, normal DarkMarkCURSE70, five shared audits in Android); retained V2378-channel cleanup and retirement/save,54icons/14promotion,UI/contact and7Amnesia. Focused compile/native/assemble/exact APK verification pending; phone/user visual PENDING. No main integration/full-suite PASS claim.
+
+Next: inspect exact current CI, source/runtime screenshots and APK source/run/time/hash/signature. Preserve successful unchanged evidence; fix only observed failures.
+
 ## 2026-10-22 V237 마법사 시각 재거절 — 승급 품질 정정 / 원작 연속 영상 필요
 
 DEVICE_FAILED_USER_REPORTED:마레노외모든마법이원작과다름. 승급4속성/속성강화/매직프로텍션/델리스/포트리스는비슷하지만캡처배우잔상·품질문제. 어둠의각인재제작,헬푸라삭제,프라보5circle. V235 source54icon/description및channel연결PASS는원작애니메이션재현/사용자시각수락이아님을정정. 22156424개/22155521개/25476645개는모두still이며,단일capture4hold/fade는원작motion아님. 첨부9GIF는도적/무도가;03영상Milles걷기/04영상초보전투라해당마법의완전한연속근거없음.

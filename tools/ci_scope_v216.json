@@ -1,5 +1,5 @@
 {
-  "app/build.gradle": "ca3d82ebd2a5c3b878f26fcb2ea18abf6e8b69b0063f72800a06aaae8df7a137",
+  "app/build.gradle": "0d6a13e91796b34c8cfd8ba4955d37516a02d7c9deea2efa6f5d7ba4bfc7d42f",
   "app/src/main/java/com/projectdark/mobile/DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
   "app/src/main/java/com/projectdark/mobile/DeathVillageRenderer.java": "dc4c5757fe6f93d463c7f79799abbc325f53058fcddd72f75818e6d4c943c7a3",
   "app/src/main/java/com/projectdark/mobile/DeathVillageTravel.java": "ab75b725f01382ac3c5a1a37e9d921c67376b358c48b71fc0c595b0d23f059d6",
@@ -35,7 +35,7 @@
   "app/src/test/java/com/projectdark/mobile/MineHuntV208Test.java": "4e2d65cf755cd6c7af439fc20a5474450ede4c646a1e119e3afc0545d494a7c9",
   "master/changes/V225_WORN_EQUIPMENT.json": "709c7e585fbdd56d84761fb9b48a6b8e355414115f2913ec1f52f5333f80d5b7",
   "tools/reward_audit_v224.py": "8ca92d13e20ef2ce1f9866695888ba6b8cddeeb1b881607176720e9ea11e2101",
-  "app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java": "f4af132a77d9704113ef87922eed5abfb24b6378b121c47af55c9502eef7d222",
+  "app/src/main/java/com/projectdark/mobile/ClassicSkillReference.java": "4f099e3344a116c63ec28639ea2d6612850dbc5589bc3222457c6449e13d5f2c",
   "app/src/main/java/com/projectdark/mobile/SkillAbilityCatalog.java": "16fa2dbd3d9e8135daa8dea8aa9283dc37a10b4989bf936b3375dae0126547b5",
   "app/src/main/java/com/projectdark/mobile/SkillAcquisition.java": "ccaea0134aa38a8550c3367641ebd38873f5e937375be362897326648c5589e4",
   "app/src/main/java/com/projectdark/mobile/SkillBook.java": "0201d056f1c8b1899eec488e4b2d2f1c64eaf3b4004700d7ec188495e783564e",
@@ -327,5 +327,16 @@
   "app/src/main/java/com/projectdark/mobile/MageDarkMarkV237.java": "b41497d0be9accf1b49efd3efdc3d06c37e695f9b2d9e470f910e21ae1447b86",
   "app/src/test/java/com/projectdark/mobile/MageVisualV237Test.java": "df35bf6db43ac6e170430876c3fd1797422dbe52fd6983af2e492cc6c4edf589",
   "docs/V237_MAGE_VISUAL_CHECKPOINT.md": "eb6750a2ef19270b5f1a4cc1631b6108f8975e45ee283f50a21d2642d9c4afae",
-  "master/changes/V237_MAGE_VISUAL_FEEDBACK.json": "d8fc7331cd410eed5c89cb22de6b536f2552469b8f26839effa80ff80232e1f9"
+  "master/changes/V237_MAGE_VISUAL_FEEDBACK.json": "d8fc7331cd410eed5c89cb22de6b536f2552469b8f26839effa80ff80232e1f9",
+  "app/src/main/assets/skill-presentation/mage-v238/dark-mark.png": "7d36eaf2fdf9da642f2d23988837afdceba9155f345cfd677230bcf69096c21f",
+  "app/src/main/assets/skill-presentation/mage-v238/earth.png": "c4823e3d148527760cdf1e59b6160d4b9658d1f69b04e108b37e8ebdc2f3c7de",
+  "app/src/main/assets/skill-presentation/mage-v238/fire.png": "86a4749a8453770fc317c02d96bba1dc1d98acb013492d885697e2f65f2238f5",
+  "app/src/main/assets/skill-presentation/mage-v238/manifest.json": "6a1e39c49d99b2313f2f26465d7e1de10b2754e7313b97410543d61506d6dfac",
+  "app/src/main/assets/skill-presentation/mage-v238/water.png": "d3c0f903e36b8baaf1bff19dc815fc82fb22db66856c980884e5d8048832a946",
+  "app/src/main/assets/skill-presentation/mage-v238/wind.png": "a05dca8943a5e4764b338c725b488e2d5df58226f2a5866e96e8f597e5573b81",
+  "app/src/test/java/com/projectdark/mobile/MageVideoV238Test.java": "094a61ed19f5ff82808d5e0913a84ca1de3fe6f749d308b6ea3c6ae24a9d5200",
+  "master/changes/V238_MAGE_VIDEO.json": "05b0e6260c224a5c7759c891fc7472d41f05cde0cc85cc52b21205f3e66b1802",
+  "master/source/mage_video_v238/receipt.json": "96834c2129384881eb9b7a87861dff7c04430d868a13a2d1e28d6462efc93a7c",
+  "tools/extract_mage_video_v238.py": "7be17a6e7e12f106b7c3cb9ca784d424b8c6fd6e12e40f49aa32259fac25c0f4",
+  "tools/check_mage_video_v238.py": "2e3d554888342a74235a9df65ed66c2e4c8f85be1125cfe2dee75ac36fdb33b6"
 }
