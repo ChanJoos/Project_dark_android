@@ -6,7 +6,7 @@
   "extraction": "Tracked source recipients, inverse SCREEN and color/UI masks; water visible asymmetric lobes preserved; earth visible outward lobe reflected; fire growth reconstructed from a fully exposed later source flare frame; dark red source frames.",
   "effects": [
     {
-      "id": "SK_마법사_026",
+      "id": "SK_마법사_013",
       "sourceFrameCount": 10,
       "sourceInterval": [
         13.8,
@@ -78,7 +78,7 @@
       "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
     },
     {
-      "id": "SK_마법사_027",
+      "id": "SK_마법사_014",
       "sourceFrameCount": 9,
       "sourceInterval": [
         15.05,
@@ -144,7 +144,7 @@
       "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
     },
     {
-      "id": "SK_마법사_028",
+      "id": "SK_마법사_015",
       "sourceFrameCount": 5,
       "sourceInterval": [
         13.42,
@@ -186,7 +186,7 @@
       "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
     },
     {
-      "id": "SK_마법사_029",
+      "id": "SK_마법사_016",
       "sourceFrameCount": 12,
       "sourceInterval": [
         14.3,
@@ -286,8 +286,8 @@
       "limitation": "Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown."
     }
   ],
-  "mapping": "Names matched against retained labelled article221564 lower-third captures. Video has no spell-name captions; mapping is visual correspondence, not OCR.",
-  "scope": "Single dark mark;4circle four single-target spells;existing screen4 aliases reuse same sequences per live recipient. No new advancement/whole-dark-mark ability.",
+  "mapping": "USER_CONFIRMED_V240: previous footage circle4 whole elements use circle3 single-element FX013..016; old visual match to026..029 was incorrect.",
+  "scope": "Dark046 unchanged; circle3 single013..016; screen030..033 aliases. Circle4 singles026..029 independent classic reference restored.",
   "samplingUncertaintyMs": 50,
   "limitations": [
     "Video occlusion/compression cannot recover complete native source frames. Earth lobe and early fire phase reconstructed (ADAPTED); no native-exact claim.",

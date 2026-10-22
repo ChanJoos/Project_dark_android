@@ -6,8 +6,8 @@ final class SkillPolicyV227 {
   static boolean retired(String id){return HOLY_BLOW.equals(id)||"SK_도적_031".equals(id)||"SK_마법사_057".equals(id);}
   static String effectSource(String id){
     if(SEMELIA.equals(id))return RAGNAROK;
-    // User V235: each screen element casts its third-tier source on every recipient.
-    switch(id){case "SK_마법사_030":return "SK_마법사_026";case "SK_마법사_031":return "SK_마법사_027";case "SK_마법사_032":return "SK_마법사_028";case "SK_마법사_033":return "SK_마법사_029";default:return id;}
+    // User correction V240: circle4 screen attacks reuse circle3 single-element effects.
+    switch(id){case "SK_마법사_030":return "SK_마법사_013";case "SK_마법사_031":return "SK_마법사_014";case "SK_마법사_032":return "SK_마법사_015";case "SK_마법사_033":return "SK_마법사_016";default:return id;}
   }
   private SkillPolicyV227(){}
 }

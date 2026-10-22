@@ -1,3 +1,7 @@
+## V240 기본4·3써클 단일/4써클 전체 대응 정정 — 검증 중
+
+사용자 명시: 포테 영상은 마레노001·테라미코003·아듀로004·플라모005, 이전 영상은4써클전체030..033이며3써클단일013..016 이펙트 공유. V238의026..029 바인딩은 오판, V239의기본4미적용을 정정. basic4연속영상/013..016재바인딩/전체alias수정 구현후 검증중. V239승급5/포테11·바닥 유지. 피해·MP·대상·학습·저장 불변. 상세 docs/V240_BASIC_MAGE_CHECKPOINT.md. BUILD/NATIVE/PHONE/USER_VISUAL PENDING; main미통합/PR197후보.
+
 ## V239 전달 완료 — 원본 포테11종·숲 바닥·마법5종 검증 후보
 
 Runtime `511688e412fc05b1925b307d4770f1a966f67d6f`, focused Actions39857975662/job120101026413 SUCCESS, artifact12461495013. 최종3native PASS + 엄격한변경가드로 first f75761af/run39854786767의 unchanged31PASS 재사용 = 고유34PASS/0미해결실패. CI selector6PASS, common scope39857984377 SUCCESS/full compile 의도적SKIP. 컴파일/assemble/관련호스트native검증이며 전체회귀/main/휴대폰수용은 아님.

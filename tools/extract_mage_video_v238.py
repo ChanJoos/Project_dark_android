@@ -55,7 +55,7 @@ def main():
   x,y,w=min(candidates);left=x-64;top=y+10
   assert left>=0 and top+180<=f.shape[0]
   aligned.append(f[top:top+180,left:left+180]);positions.append([wide[0]+left,wide[1]+top,180,180])
- Image.fromarray(aligned[16]).resize((540,540)).save('/workspace/scratch/2f4d45a68334/video-review/aligned.png')
+ # Debug previews belong outside the repository; atlas bytes are unchanged by V240.
  aligned=np.stack(aligned);plate=np.percentile(aligned,20,axis=0)
  # Explicit original-recipient silhouette mask. Occluded FX is unknown, not filled.
  r,g,b=plate[:,:,0],plate[:,:,1],plate[:,:,2]
@@ -63,7 +63,7 @@ def main():
  actor[:5]=False
  labels,n=ndimage.label(actor);sizes=np.bincount(labels.ravel());sizes[0]=0
  actor=labels==sizes.argmax();actor=ndimage.binary_dilation(actor,iterations=1)
- spec=[('water',26,13.80,.50),('earth',27,15.05,.45),('wind',28,13.42,.24),('fire',29,14.30,.60)]
+ spec=[('water',13,13.80,.50),('earth',14,15.05,.45),('wind',15,13.42,.24),('fire',16,14.30,.60)]
  channels={};evidence=[];qa=[]
  for name,num,start,duration in spec:
   first=round((start-13.42)*20);count=round(duration*20);raw=aligned[first:first+count]
@@ -132,12 +132,12 @@ def main():
   channel=dict(anchor='RECIPIENT',path='mage-v238/'+path.name,atlasSha256=sha(path),width=w,height=h,columns=cols,durationsMs=[50]*count,pivotX=px,pivotY=py,scale=scale,blend='SCREEN',footOffsetY=0,sourceTiming='OBSERVED_CAPTURE_20FPS',sourceFrames=[dict(videoSha256=sha(a.video),timestampSeconds=round(start+i*.05,3),crop=box[i] if isinstance(box[0],list) else list(box)) for i in range(count)])
   evidence.append(dict(id=sid,sourceFrameCount=count,sourceInterval=[start,round(start+count*.05,3)],crop=box,atlasSha256=sha(path),limitation='Video-derived pixels and observed timing. Filmed recipient silhouettes/UI removed; source particle lobe registered to the recipient. Bilateral lobes occluded by filmed actors are reflected from a visible same-frame lobe (ADAPTED reconstruction). This reconstruction is ADAPTED; occluded originals remain unknown.'))
   channels[sid]=dict(channels={'RECIPIENT_CONTACT':channel})
- manifest=dict(revision='USER_VIDEO_V238',sourceVideoSha256=sha(a.video),sourceVideoName=a.video.name,skills=channels,screenAliases={f'SK_마법사_{30+i:03d}':f'SK_마법사_{26+i:03d}' for i in range(4)})
+ manifest=dict(revision='USER_VIDEO_V238',sourceVideoSha256=sha(a.video),sourceVideoName=a.video.name,skills=channels,screenAliases={f'SK_마법사_{30+i:03d}':f'SK_마법사_{13+i:03d}' for i in range(4)})
  (dest/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
  source=R/'master/source/mage_video_v238';source.mkdir(parents=True,exist_ok=True)
- (source/'receipt.json').write_text(json.dumps(dict(videoSha256=sha(a.video),videoName=a.video.name,videoDuration=19.896833,rawVideoCommitted=False,extraction='inverse SCREEN from static temporal/background plate; source-color gates reject bodies and labels; no generative imagery',effects=evidence,mapping='Names matched against retained labelled article221564 lower-third captures. Video has no spell-name captions; mapping is visual correspondence, not OCR.',scope='Single dark mark;4circle four single-target spells;existing screen4 aliases reuse same sequences per live recipient. No new advancement/whole-dark-mark ability.'),ensure_ascii=False,indent=2)+'\n')
+ (source/'receipt.json').write_text(json.dumps(dict(videoSha256=sha(a.video),videoName=a.video.name,videoDuration=19.896833,rawVideoCommitted=False,extraction='inverse SCREEN from static temporal/background plate; source-color gates reject bodies and labels; no generative imagery',effects=evidence,mapping='USER_CONFIRMED_V240: supplied whole-circle4 footage is also circle3 single-element FX.',scope='Single dark mark;USER_CONFIRMED_V240 circle3 four single-target spells;existing screen4 aliases reuse same sequences per live recipient. No new advancement/whole-dark-mark ability.'),ensure_ascii=False,indent=2)+'\n')
  # Disposable QA strips over mid grey for source/occlusion review.
- out=Path('/workspace/scratch/2f4d45a68334/video-review');out.mkdir(exist_ok=True)
+ out=R.parent/'review/v238-reextract';out.mkdir(exist_ok=True)
  for name,frames in qa:
   count,h,w,_=frames.shape;thumb=140 if name!='dark-mark' else 170
   samples=list(range(0,count,max(1,count//8)))[:8];grid=Image.new('RGB',(thumb*len(samples),thumb+22),'#54585b');d=ImageDraw.Draw(grid)

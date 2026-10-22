@@ -1,0 +1,22 @@
+{
+  "status": "ACCEPTED_USER_MAPPING_IMPLEMENTED_PENDING_BUILD",
+  "before": "V238 wrongly attached previous footage to circle4 singles026..029; Pote basic4 pending.",
+  "after": "Pote basic4 recorded contacts001/003/004/005; previous footage circle3 singles013..016 = circle4 screen030..033;026..029 independent classic restored.",
+  "reason": "User explicitly corrected footage correspondence and missing scope.",
+  "evidence": "User Korean correction 2026-10-23: 포테의숲 준게 마레노 테라미코 플라모 아듀로 ... 그 전에 준 건4써클 전체 ...3써클 단일 속성 마법 이펙트",
+  "source": "master/source/mage_v240/receipt.json;master/source/mage_video_v238/receipt.json",
+  "consumers": [
+    "SkillPolicyV227.effectSource",
+    "ClassicSkillReference.loadMageVideoV240"
+  ],
+  "unchanged": [
+    "damage formulas",
+    "MP",
+    "targeting",
+    "learning",
+    "save",
+    "forest/map",
+    "promotion5"
+  ],
+  "validation": "Source guards; MageBasicV240Test/MageVideoV238Test/MageSourcesV235Test/ForestMageV239Test promotion; phone pending"
+}

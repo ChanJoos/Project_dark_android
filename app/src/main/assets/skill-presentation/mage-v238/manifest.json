@@ -3,7 +3,7 @@
   "sourceVideoSha256": "cd75a898f83363bbff89ee3bd67deef6e206ee4cd9a826ce3d7a5340c0715cb3",
   "sourceVideoName": "Screen_Recording_20261022_225347_YouTube.mp4",
   "skills": {
-    "SK_마법사_026": {
+    "SK_마법사_013": {
       "channels": {
         "RECIPIENT_CONTACT": {
           "anchor": "RECIPIENT",
@@ -135,7 +135,7 @@
         }
       }
     },
-    "SK_마법사_027": {
+    "SK_마법사_014": {
       "channels": {
         "RECIPIENT_CONTACT": {
           "anchor": "RECIPIENT",
@@ -256,7 +256,7 @@
         }
       }
     },
-    "SK_마법사_028": {
+    "SK_마법사_015": {
       "channels": {
         "RECIPIENT_CONTACT": {
           "anchor": "RECIPIENT",
@@ -333,7 +333,7 @@
         }
       }
     },
-    "SK_마법사_029": {
+    "SK_마법사_016": {
       "channels": {
         "RECIPIENT_CONTACT": {
           "anchor": "RECIPIENT",
@@ -797,9 +797,10 @@
     }
   },
   "screenAliases": {
-    "SK_마법사_030": "SK_마법사_026",
-    "SK_마법사_031": "SK_마법사_027",
-    "SK_마법사_032": "SK_마법사_028",
-    "SK_마법사_033": "SK_마법사_029"
-  }
+    "SK_마법사_030": "SK_마법사_013",
+    "SK_마법사_031": "SK_마법사_014",
+    "SK_마법사_032": "SK_마법사_015",
+    "SK_마법사_033": "SK_마법사_016"
+  },
+  "mappingCorrection": "USER_CONFIRMED_V240: circle3 singles013..016 and circle4 screen030..033;026..029 retain independent classic reference."
 }
