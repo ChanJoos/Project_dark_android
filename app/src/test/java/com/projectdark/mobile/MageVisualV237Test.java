@@ -7,7 +7,7 @@ public class MageVisualV237Test {
  final ScreenMagicV201Test h=new ScreenMagicV201Test();
  @Before public void setup(){h.setup();}
  @Test public void helphuraRetiresAndOldSaveSlotsAreCleanedPraboLivesInFifthCircle()throws Exception{
-  SkillBook b=new SkillBook(h.c);assertEquals("5",b.get("SK_마법사_053").circle);assertEquals(5,SkillAbilityCatalog.get("SK_마법사_053").circle);assertTrue(SkillPolicyV227.retired("SK_마법사_057"));assertFalse(b.learn("SK_마법사_057",100));assertFalse(b.previewable("SK_마법사_057"));assertFalse(b.list(true,false).stream().anyMatch(e->e.id.equals("SK_마법사_057")));
+  SkillBook b=SkillBook.load(h.c);assertEquals("5",b.get("SK_마법사_053").circle);assertEquals(5,SkillAbilityCatalog.get("SK_마법사_053").circle);assertTrue(SkillPolicyV227.retired("SK_마법사_057"));assertFalse(b.learn("SK_마법사_057",100));assertFalse(b.previewable("SK_마법사_057"));assertFalse(b.list(true,false).stream().anyMatch(e->e.id.equals("SK_마법사_057")));
   JSONObject save=b.snapshot();save.getJSONObject("learned").put("SK_마법사_057",100);save.getJSONArray("slots").put(0,"SK_마법사_057");assertTrue(b.restore(save));assertFalse(b.learned("SK_마법사_057"));assertFalse(b.snapshot().getJSONObject("learned").has("SK_마법사_057"));assertTrue(b.snapshot().getJSONArray("slots").isNull(0));
  }
  @Test public void eightPromotionsRemoveRecordedActorMasksWithoutRepaintingSourceColorsAndRenderNative()throws Exception{
