@@ -15,7 +15,7 @@ public class SkillCorrectionsV227Test {
   String id=SkillPolicyV227.HOLY_BLOW;SkillBook b=SkillBook.load(h.c);assertEquals(220,b.catalogSize());
   assertFalse(b.list(true,false).stream().anyMatch(e->id.equals(e.id)));assertFalse(b.learn(id,0));assertFalse(b.assign(0,id));
   b.setTestAccess(true);assertFalse(b.learned(id));assertFalse(b.previewable(id));assertFalse(b.usable(id));b.restoreTestSlots(new String[]{id,"SK_성직자_013"});assertNull(b.slot(0));assertEquals("SK_성직자_013",b.slot(1));
-  RuntimeState s=h.fixture();long gold=s.rpg().gold();assertFalse(new SkillAcquisition(b).learn(id,s.rpg()));assertEquals(gold,s.rpg().gold());
+  RuntimeState s=h.fixture();long gold=s.rpg().gold();assertFalse(new SkillAcquisition(b).learn(id,s.rpg()));assertEquals(gold,s.rpg().gold().longValue());
   RuntimeCombatSession session=new RuntimeCombatSession(s,(a,t)->true,(a,key)->true,a->true);int mp=s.player().mp;
   assertFalse(session.submitPlayer("area0",id).accepted());assertEquals(mp,s.player().mp);assertEquals(1000000,s.monsters().get(0).hp);
   SkillVfxRenderer fx=new SkillVfxRenderer(h.c,new SkillPresentationCatalog(h.c));fx.preview(1,id,false,"area0",anchors(s));assertTrue(fx.pulses.isEmpty());
