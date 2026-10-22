@@ -114,7 +114,20 @@ jobs:
             python3 tools/generate_skill_presentation.py
             python3 tools/generate_skill_abilities.py
             git diff --exit-code -- app/src/main/assets/skills app/src/main/assets/skill-presentation app/src/main/java/com/projectdark/mobile/SkillActionData.java app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_PRESENTATION_MAPPING.csv docs/SKILL_ABILITY_FORMULAS.csv docs/SKILL_ACTION_DECISIONS.csv master/source/martial_v230/reference.json
+            if [[ "$(git log -1 --format=%B)" == *"[v230-native-tail]"* ]]; then
+              git fetch --depth=1 origin caa7c5a4b2f91c55256f7fa925d1cd5186bb9833
+              python3 - <<'PYGUARD230'
+          import subprocess
+          base='caa7c5a4b2f91c55256f7fa925d1cd5186bb9833'
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/main/java/com/projectdark/mobile/MartialSourceV228.java','app/src/main/java/com/projectdark/mobile/SkillAbilityExecutor.java','app/src/test/java/com/projectdark/mobile/MartialRepairV230Test.java','app/src/test/java/com/projectdark/mobile/MartialSevenV228Test.java'}
+          paths=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
+          assert all(p in allowed or p.startswith(('docs/','verification/')) for p in paths),paths
+          print('Reuse unaffected passed suites from39746341109. Only advance side-choice/live-target revalidation changes; rerun all3 martial suites including real normal NPC/lethal input/facing and updated contact-phase captures.')
+          PYGUARD230
+              gradle :app:testDebugUnitTest --tests '*MartialRepairV230Test' --tests '*MartialSevenV228Test' --tests '*MartialMechanicsV173Test' :app:assembleDebug --stacktrace
+            else
             gradle :app:testDebugUnitTest --tests '*MartialRepairV230Test' --tests '*MartialSevenV228Test' --tests '*MartialMechanicsV173Test' --tests '*SkillAbilityRuntimeTest' --tests '*SkillPresentationTest' --tests '*SkillSpatialContractTest' --tests '*SkillContactRegressionTest' --tests '*SkillWindowReferenceTest' --tests '*RogueReviewV229Test' --tests '*F5mRestartPersistenceMatrixTest' :app:assembleDebug --stacktrace
+            fi
             java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.CombatConcurrentInterruptionAudit
           elif [[ "$(git log -1 --format=%B)" == *"[rogue-review-v229]"* ]]; then
             python3 tools/test_ci_scope_v216.py

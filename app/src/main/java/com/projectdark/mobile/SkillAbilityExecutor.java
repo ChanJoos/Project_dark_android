@@ -18,7 +18,10 @@ final class SkillAbilityExecutor {
   if(a.status.equals("TRANSFER"))return CombatResolver.RejectReason.TARGET_DEAD;
   if(a.status.equals("LEAP")&&MartialSkillPolicy.landings(state,target,movement).isEmpty())return CombatResolver.RejectReason.RANGE;
   if(MartialSourceV228.ADVANCE.equals(id)){
-   if(begin){advanceLanding=MartialSourceV228.advanceLanding(state,target,movement);advanceTarget=MartialSkillPolicy.position(state,target);completedAdvanceFacing=null;}
+   float[] current=MartialSkillPolicy.position(state,target);
+   if(begin||current==null||advanceTarget==null||!MartialSkillPolicy.same(current[0],current[1],advanceTarget[0],advanceTarget[1])||advanceLanding==null||movement==null||!movement.canLeapPlayer(advanceLanding[0],advanceLanding[1])){
+    advanceLanding=MartialSourceV228.advanceLanding(state,target,movement,random.getAsDouble());advanceTarget=current;if(begin)completedAdvanceFacing=null;
+   }
    if(advanceLanding==null||movement==null||fx.rooted("player")||!movement.canLeapPlayer(advanceLanding[0],advanceLanding[1]))return CombatResolver.RejectReason.RANGE;
   }
   if(testMode&&!a.formula.equals("DARA"))return null;

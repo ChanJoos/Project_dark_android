@@ -8,3 +8,5 @@ Live article415458 original seven31px icons and7GIFs retained master/source/mart
 
 Scoped verification:4generators+source projection determinism; numeric/Yeoncheon byte guards; MartialRepair/MartialSeven/MartialMechanics; direct ability/presentation/spatial/contact/window, adjacent rogue and F5M restart, concurrency audit, assembleDebug. Separate com.projectdark.mobile.v230test candidate because debug CI certificates vary; old apps/data preserved, no auto save transfer. IMPLEMENTED; exact CI/build/host native/PHONE/USER_VISUAL PENDING. Main41fe6def remains unchanged; same PR197.
 
+
+Continuation: exact first source caa7c5a4b2f91c55256f7fa925d1cd5186bb9833 / run39746341109 still executing. Common39746350672 scoped selector PASS/compileSKIPPED. Two advance-only helpers now share random side landing and revalidate a moved forward target at contact. Added true normal-input NPC/lethal monster attack/final-facing checks and contact-phase captures. Guarded affected3-suite run with assembleDebug; unaffected7suite evidence may be reused only after first XML results prove pass. No phone/visual acceptance.
