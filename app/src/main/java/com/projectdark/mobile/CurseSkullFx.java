@@ -14,7 +14,7 @@ final class CurseSkullFx {
       case "SK_마법사_002":case "SK_마법사_047":return 0;
       case "SK_마법사_011":case "SK_성직자_012":case "SK_마법사_048":return 1;
       case "SK_마법사_024":case "SK_마법사_049":return 2;
-      case "SK_마법사_053":case "SK_마법사_050":case "SK_마법사_046":return 3;
+      case "SK_마법사_053":case "SK_마법사_050":return 3;
       default:return -1;
     }
   }

@@ -30,6 +30,8 @@ public final class SkillBook {
   private final LinkedHashMap<String,Entry> entries=new LinkedHashMap<>();
   private final LinkedHashMap<String,Integer> learned=new LinkedHashMap<>();
   private final Map<String,String> captureConditions=new LinkedHashMap<>();
+  private final Map<String,String> sourceDescriptions=new LinkedHashMap<>();
+  String sourceDescription(String id){return sourceDescriptions.get(id);}
   private JSONObject learningPolicy;
   JSONObject learningPolicy(String id){return learningPolicy==null?null:learningPolicy.optJSONObject(id);}
   public String summary(String id){JSONObject row=learningPolicy(id);return row==null?"":row.optString("summary");}
@@ -60,6 +62,8 @@ public final class SkillBook {
         book.learningPolicy=new JSONObject(new String(raw.toByteArray(),StandardCharsets.UTF_8));
         for(String id:book.entries.keySet())if(book.learningPolicy.optJSONObject(id)==null)throw new IllegalStateException("missing mobile learning policy: "+id);
       }
+      JSONObject mageGuide=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/mage-v235/references.json"),StandardCharsets.UTF_8));JSONArray mageRows=mageGuide.getJSONArray("rows");
+      for(int i=0;i<mageRows.length();i++){JSONObject row=mageRows.getJSONObject(i);String id=row.getString("id");if(!book.entries.containsKey(id))throw new IllegalStateException("unknown Mage source ID");book.sourceDescriptions.put(id,row.getString("description"));}
       for(SkillDef d:new SkillDef[]{SkillDef.SKILL_PROTO,SkillDef.KICK_PROTO,SkillDef.CAST_PROTO}){
         JSONObject j=new JSONObject().put("id",d.id).put("name",d==SkillDef.CAST_PROTO?"시험 마법":d==SkillDef.KICK_PROTO?"시험 발차기":"시험 기술")
           .put("job","검증용").put("kind",d.actionClass==SkillDef.ActionClass.MAGIC?"마법":"기술").put("stage","B 테스트")

@@ -52,9 +52,9 @@ public class SkillSpatialContractTest {
       for(RuntimeState.Monster m:s.monsters())assertEquals(ids[k]+" "+m.id,want.contains(m.id),m.hp<100);
       SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));fx.consume(events,anchors(s));fx.consume(events,anchors(s));
       assertEquals(ids[k]+" skill recipients",want.size(),fx.pulses.stream().filter(p->!p.caster&&!p.sheet.equals("impact")).count());
-      assertEquals(ids[k]+" source rogue FX must not receive a shared recolouring overlay",ids[k].startsWith("SK_도적_")?0:want.size(),fx.pulses.stream().filter(p->p.sheet.equals("impact")).count());
+      assertEquals(ids[k]+" source rogue FX must not receive a shared recolouring overlay",ids[k].startsWith("SK_도적_")||ids[k].equals("SK_마법사_043")?0:want.size(),fx.pulses.stream().filter(p->p.sheet.equals("impact")).count());
       Set<String> impactAnchors=new HashSet<>();for(SkillVfxRenderer.Pulse p:fx.pulses)if(p.sheet.equals("impact")){assertFalse(p.caster);impactAnchors.add(p.anchor);}
-      assertEquals(ids[k]+" impact anchors",ids[k].startsWith("SK_도적_")?Collections.emptySet():want,impactAnchors);
+      assertEquals(ids[k]+" impact anchors",ids[k].startsWith("SK_도적_")||ids[k].equals("SK_마법사_043")?Collections.emptySet():want,impactAnchors);
     }
   }
   @Test public void targetMovesWallsAndViewportAreRecheckedAtContact(){

@@ -1,3 +1,7 @@
+## 2026-10-22 V235 사용자 마법사 원문 적용 범위
+
+429943의54아이콘/설명만게임presentation에반영하고습득금전·재료·선행조건은가져오지않는다. 기존학습/시전/피해수치는유지한다.221564의각속성아래3개만사용하고화면전체마법4종은각third단일효과를모든livevisiblerecipient에적용한다.254766의어둠의각인은공통해골재사용대상에서제외해별도원본각인을사용한다. source14promotion은동일원본보존.원문미수록3개기존유지,stableID030마네나로유지. source54guide에는비용열자체없음.근거master/changes/V235_MAGE_SOURCES.json;검증진행중/phone미확인.
+
 ## 2026-10-22 U — 무도가 전체 통과·도적 한정 정정
 
 USER_VISUAL_ACCEPTED: V231 무도가 모든 스킬 통과. 해당 BODY/FX/icon/숫자 파일 그대로 유지. DEVICE_FAILED_USER_REPORTED: 도적 e8..15는 활 모션;기존 c14..23은 양발 벌림. 첨부1000060674.mp4(3.294s)와 원문245450 보관GIF21의4frames를 직접 비교해 손을 낮추고 한쪽 무릎을 굽히는 c8(back)/c13(front) contact로 연결, jumping c9/c12 제외. 준비/회복 및 시간은project phase selection;새BODY 생성 없음. 도적 기본 단검THRUST만 같은pose로연결,전사/타직업기본불변. 원본 근거 master/source/rogue_v232/reference.json.

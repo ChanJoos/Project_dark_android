@@ -242,3 +242,6 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v229.py"))
 
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v230.py"))
+
+# User V235: source Mage icons/descriptions only; no acquisition import.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_mage_v235.py"))

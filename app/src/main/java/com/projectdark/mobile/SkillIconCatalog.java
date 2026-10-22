@@ -42,6 +42,8 @@ final class SkillIconCatalog {
       Bitmap meteorIcon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/screen-magic-v204/meteor-icon.png"));if(meteorIcon==null)throw new IOException("Meteor source icon");presentation.put("SK_마법사_043",meteorIcon);index.putIfAbsent("SK_마법사_043",-1);
       for(String folder:new String[]{"user-v227","user-v228"}){JSONObject supplements=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/"+folder+"/icons.json"),StandardCharsets.UTF_8));
       Iterator<String> ids=supplements.keys();while(ids.hasNext()){String id=ids.next();Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open(supplements.getString(id)));if(icon==null)throw new IOException("Invalid user skill icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}}
+      JSONObject mageGuide=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/mage-v235/references.json"),StandardCharsets.UTF_8));JSONArray mageRows=mageGuide.getJSONArray("rows");
+      for(int i=0;i<mageRows.length();i++){JSONObject row=mageRows.getJSONObject(i);String id=row.getString("id");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/mage-v235/"+row.getString("iconAssetPath")));if(icon==null)throw new IOException("Mage guide icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
   static String iconId(String id){return "SK_도적_012".equals(id)?"SK_도적_017":"SK_도적_001".equals(id)?"SK_도적_007":"SK_무도가_001".equals(id)?"SK_무도가_006":id;}

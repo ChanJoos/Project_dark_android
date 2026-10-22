@@ -77,3 +77,6 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v232.py"))
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v233.py"))
 
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v234.py"))
+
+# User V235: source Mage icons/descriptions only; no acquisition import.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_mage_v235.py"))

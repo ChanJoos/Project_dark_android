@@ -1,3 +1,11 @@
+## 2026-10-22 V235 마법사 원문 아이콘·설명·속성 FX — 구현 완료/관련 검증 대기
+
+User429943:아이콘·설명54개만수입;필요준비물/금전/선수과목열제외,삭제추천미수입. 실제Browser DOM+기존문서화public gateway대조;master/source/mage_v235/guide.json은filtered54records만보관. 원문placeholder2개는아이콘filename+본문으로데프레코/소루마확정. 미수록클리멘스/아지토/헬푸라기존유지. SkillIconCatalog최종54override로메테오도요청아이콘우선;SkillWindow.descriptionFor가지원스킬에서도원문설명선택. Source54PNG바이트그대로사용;rawglyph,타직업,원본BODY불변. learning.core/catalog.core SHA로summary/effect외모든field불변검사;습득gold/items/stats,MP/HP피해/시전수치불변.
+
+221564:기존12single source가이미각속성아래3개(3..5/9..11/15..17/21..23)임을확인해재생성안함. 누락된screen030..033만각third026..029의동일Channel을재사용;화면내모든alive visible recipient에게기존SCREEN Resolver로발동/contact재검증·단일비용·단일FX. 사용자마레나로는기존마네나로ID030로보존. 254766:14promotion source보관확인;046어둠의각인은공통빨강skull분기가고유원본각인을가리던누락수정,저주70mechanics불변. 매핑된mage 원본에공통whiteimpact중복제거. Still captures의hold/fade는기존PROJECT timing이며원작연속animationcadence주장금지.
+
+Affected:SkillIconCatalog/SkillBook/SkillWindow,SkillPolicyV227 sourcealias,CurseSkullFx046분기,SkillVfxRenderer원본mage채널;skills catalog.effect/mobile_learning.summary와신규54icons/source refs. 검사:새MageSourcesV235Test5건(54icons양surface+표시설명,12lowerrow+4exactalias,4정상OFFscreen다중target/비용/가시성/접촉,14정상promotion),관련Window/Reference/Presentation/Spatial/Contact,screen/meteo/curse4종108recipient+046고유각인/해제,Ragnarok/Semelia,도적13정상damage·25icons,승인무도가6active. Shared UI/FX직접경로만검사하며무관map/EXP/fullsuite강제안함. Local deterministic生成+acquisition/core guards+YAML/shell+diff PASS;exactCI/native/APKpending. PR197unmerged/main41fe6def유지. NEXT:exactsource CI/native검토/APKprovenance;phonePENDING.
+
 ## 2026-10-22 V234 후보 전달 완료 — 관련 고유 58 native PASS
 
 APK source `003bea4871ac480c19ab217d6ebb352641a27a04`, final Actions39776318651/job119816056867 SUCCESS; common scope39776328160 SUCCESS(compile SKIPPED). Runtime/assets byte-identical to261b73b:initial39774840057 executed58tests with56PASS/2stale-fixtureFAIL; exact-delta guarded final2methods PASS resolves both, composite58uniquePASS/0unresolvedfailures. New6V234tests allPASS including13normal OFF damage traces. All15normal rogue actions completed in corrected facing fixture. Concurrent interruption audit/compile/assemble/apksignerV2PASS. First test API compile failure and shallow-base guard failure are retained in receipt; no passing assertion was disabled. No full-suite or phone acceptance claimed.
