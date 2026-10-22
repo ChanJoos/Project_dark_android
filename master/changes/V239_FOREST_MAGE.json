@@ -1,6 +1,6 @@
 {
   "id": "V239_FOREST_MAGE",
-  "status": "ACCEPTED_CANDIDATE_IMPLEMENTATION",
+  "status": "ACCEPTED_CANDIDATE_IMPLEMENTED_VERIFIED",
   "userRequest": "Additional magic footage; improve Pote maps and monsters from first clip",
   "base": "ba495f25ae0fad2a136d3401941fdded51dfc51f",
   "sourceRecords": [
@@ -31,5 +31,9 @@
     "remaining spells",
     "phone and visual acceptance"
   ],
-  "verification": "PENDING exact CI / composited screenshot review; focused scope in checkpoint"
+  "verification": "BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "sourceCommit": "511688e412fc05b1925b307d4770f1a966f67d6f",
+  "receipt": "verification/FOREST_MAGE_V239_BUILD.json",
+  "phone": "PENDING",
+  "userVisualAcceptance": "PENDING"
 }

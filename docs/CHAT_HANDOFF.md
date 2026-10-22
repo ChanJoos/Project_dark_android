@@ -1,3 +1,13 @@
+## V239 전달 완료 — 원본 포테11종·숲 바닥·마법5종 검증 후보
+
+Runtime `511688e412fc05b1925b307d4770f1a966f67d6f`, focused Actions39857975662/job120101026413 SUCCESS, artifact12461495013. 최종3native PASS + 엄격한변경가드로 first f75761af/run39854786767의 unchanged31PASS 재사용 = 고유34PASS/0미해결실패. CI selector6PASS, common scope39857984377 SUCCESS/full compile 의도적SKIP. 컴파일/assemble/관련호스트native검증이며 전체회귀/main/휴대폰수용은 아님.
+
+11MPF원본/132idle-walk-attack pose samples, capturedsoil, 아이스블러스트·플레쉬스톰·플레어·델리스펠라스·포트리스 연속접촉영상을 적용. 촬영무기별잔상/옆대상조각 제거, 방어막foot260등록 및 native몸통~지면envelope검사. 원본별이름/HP를 paddedcanvas와분리. 12맵왕복 현재4state monster<=35,389,440bytes/각<=60textures/floor<=32chunk. 새5FX blankmargin만trim:49,299,200→10,631,328bytes, 모든frame 원등록에restore한RGBA동일성PASS. 전체게임메모리/FPS78%개선 주장이 아님. 새shader캐시/livecollision/AI/개체수/보상/save/마레노/기존V238/승인정령·맨티스 유지.
+
+APK PROJECT_DARK_V239_TEST.apk / com.projectdark.mobile.v239test, **2026-10-23 06:35:05 KST** 빌드,104560713bytes,SHA256 `b2cfb71373b2dceab82e50df9b58bdb385589999f88fa43f0491e4aac7f9f231`. ZIP SHA2569e9b15b7eaa8f8c1ced9fd14f81b05130a6849e7d7ede170a329fdd2c24713f2. Embedded source/run, binarymanifest package/label/version,830packaged file bytes, ZIPCRC, 독립APK V2 RSA서명+102chunk contentdigest PASS. APK·실제A화면·132pose비교그리드 저장완료(metadata applied). 상세 `verification/FOREST_MAGE_V239_BUILD.json`.
+
+IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED. PHONE/USER_VISUAL_ACCEPTANCE PENDING. 남은것: 미적용일반마법/디버프연속영상, 원본전체monster다중frame재생, Koreanname-index/3독립참조, 가려진FX픽셀. topology는기존adapted이며원작전체맵복구주장없음. 최초common39854794744의 source-guide catalog재생성 불일치는 최종main통합에남음; 새scope수정이그문제를수정한것으로주장하지않음. PR197 OPEN/UNMERGED, main41fe6def 그대로. 이후문서HEAD를APK소스로재라벨금지. 다음: exactV239 휴대폰 포테·마법 외형/동작 피드백, 또는 남은 명시일감부터 재개; 불변소스 재생성/재빌드 금지.
+
 ## V239 — 추가 마법 영상 / 포테 원본 외형 개선 후보 (2026-10-23)
 
 Director 단일 편집. 기존 branch `codex/rucesion-coast-v157` / PR197 유지, main `41fe6def5120b6c33b58f609e52fbaf2ead700ee`. 마지막 성공 V238 runtime `dc6f1426b61a1584bd819ceed312e82b42002514`, run39806023052; 문서HEAD ba495f2에서 재개. V238 재빌드/검사 반복 없음.
