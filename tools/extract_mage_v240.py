@@ -51,6 +51,6 @@ def main():
   for j,i in enumerate(np.linspace(0,count-1,8).astype(int)):
    im=Image.fromarray(rgba[i]);im.thumbnail((140,140));preview.paste(im,(j*140,row*170+25),im)
  (out/'manifest.json').write_text(json.dumps(dict(revision='USER_CORRECTION_V240',sourceVideo=a.video.name,sourceSha256=digest,skills=skills),ensure_ascii=False,indent=2)+'\n')
- source=R/'master/source/mage_v240';source.mkdir(exist_ok=True);(source/'receipt.json').write_text(json.dumps(dict(videoName=a.video.name,videoSha256=digest,mappingAuthority='User explicitly identifies Pote footage basic4 and previous footage circle4 screen = circle3 singles.',effects=receipt),ensure_ascii=False,indent=2)+'\n')
+ source=R/'master/source/mage_v240';source.mkdir(exist_ok=True);(source/'receipt.json').write_text(json.dumps(dict(videoName=a.video.name,videoSha256=digest,mappingAuthority='User explicitly requests only Pote basic4: Mareno/Teramiko/Plamo/Adyuro. Other-circle corrections deferred.',effects=receipt),ensure_ascii=False,indent=2)+'\n')
  review=R.parent/'review/v240';review.mkdir(parents=True,exist_ok=True);preview.save(review/'basic4-source.png');print(receipt)
 if __name__=='__main__':main()
