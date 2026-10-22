@@ -1,3 +1,11 @@
+## 2026-10-22 23:36 KST — V237 resumed; compile fixture fixed, runner allocation pending
+
+Resume source `c0b1875ae2e6f7bd06ddb24a10eede72d9d2e81d`; current source `9d0ffcf8f3e7e34fddb3e131928ec0e535978a00`, branch `codex/rucesion-coast-v157`, PR197 unmerged; main `41fe6def5120b6c33b58f609e52fbaf2ead700ee` unchanged. Previous focused run39788245279/job119857024965 failed before native execution: MageVisualV237Test called nonexistent SkillBook(Context). Corrected to existing SkillBook.load(Context), without changing runtime/assets or assertions.
+
+Local git diff --check, scope-policy5 tests and tools/check_mage_v235.py PASS (54 exact icons/descriptions, no acquisition/numeric import,12 lower routes/14 retained promotion sources). No local Android SDK/Gradle; no local Android build/native verification. Exact-source focused run39796133006/job119883722838 and common scope39796144178 remain QUEUED awaiting GitHub hosted runners; no job steps started at this checkpoint. This is an external execution wait, not a repeated code failure. New APK NOT BUILT/NOT DELIVERED. V235 receipt remains last delivered candidate, not V237 evidence.
+
+Next: inspect existing run39796133006; do not start a duplicate run. Once allocated, verify3 new visual/retirement tests, MageSources/Window/Reference/Contact and7 Amnesia tests plus5 shared-combat audits; diagnose actual failures, inspect native captures, verify exact APK source/run/time/hash/signature and deliver. Phone/user visual acceptance remains PENDING; remaining original Mage continuous motions require labelled full-cast footage. Previously accepted Martial and Mareno assets unchanged. Prior V236 unrelated Abel gear-journey failure remains open for integration; no full-suite pass claimed.
+
 ## 2026-10-22 V237 마법사 시각 재거절 — 승급 품질 정정 / 원작 연속 영상 필요
 
 DEVICE_FAILED_USER_REPORTED:마레노외모든마법이원작과다름. 승급4속성/속성강화/매직프로텍션/델리스/포트리스는비슷하지만캡처배우잔상·품질문제. 어둠의각인재제작,헬푸라삭제,프라보5circle. V235 source54icon/description및channel연결PASS는원작애니메이션재현/사용자시각수락이아님을정정. 22156424개/22155521개/25476645개는모두still이며,단일capture4hold/fade는원작motion아님. 첨부9GIF는도적/무도가;03영상Milles걷기/04영상초보전투라해당마법의완전한연속근거없음.
