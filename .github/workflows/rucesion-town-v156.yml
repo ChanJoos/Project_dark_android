@@ -114,7 +114,20 @@ jobs:
             python3 tools/generate_skill_presentation.py
             python3 tools/generate_skill_abilities.py
             git diff --exit-code -- app/src/main/assets/skills app/src/main/assets/skill-presentation app/src/main/java/com/projectdark/mobile/SkillActionData.java app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_PRESENTATION_MAPPING.csv docs/SKILL_ABILITY_FORMULAS.csv docs/SKILL_ACTION_DECISIONS.csv master/source/martial_v230/reference.json
-            if [[ "$(git log -1 --format=%B)" == *"[v230-visual-tail]"* ]]; then
+            if [[ "$(git log -1 --format=%B)" == *"[v230-anchor-tail]"* ]]; then
+              git fetch --depth=1 origin cec835b613ae1578fad3fa819fe31d9531ef07d6
+              python3 - <<'PYANCHOR230'
+          import subprocess,json
+          from pathlib import Path
+          base='cec835b613ae1578fad3fa819fe31d9531ef07d6'
+          file='app/src/main/assets/skill-presentation/user-v228/manifest.json'
+          old=json.loads(subprocess.check_output(['git','show',base+':'+file],text=True));new=json.loads(Path(file).read_text());ch=old['skills']['SK_무도가_029']['channels']['RECIPIENT_CONTACT'];ch['pivotX']=103;ch['pivotY']=92;assert old==new
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','tools/build_martial_v230.py',file,'app/src/test/java/com/projectdark/mobile/MartialRepairV230Test.java'}
+          paths=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines();assert all(p in allowed or p.startswith(('docs/','verification/')) for p in paths),paths
+          print('Reuse55 native cases from39746341109 +39747442663;2 normal visual cases39747755348. Sole runtime delta is protection source-foot registration103,92. Rerun source geometry and normal6active capture cases.')
+          PYANCHOR230
+              gradle :app:testDebugUnitTest --tests '*MartialRepairV230Test.exactSourceIconsAndCompleteSourceFxRenderAndFade' --tests '*MartialSevenV228Test.allSixActiveSkillsUseRealNormalQuickslotsAndNativeRecipientOrCasterEffects' :app:assembleDebug --stacktrace
+            elif [[ "$(git log -1 --format=%B)" == *"[v230-visual-tail]"* ]]; then
               git fetch --depth=1 origin 89078a3f122ba3fb540790c4a77e441c5d0d7ff5
               python3 - <<'PYVISUAL230'
           import subprocess
