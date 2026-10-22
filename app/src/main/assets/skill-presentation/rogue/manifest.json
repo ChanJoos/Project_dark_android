@@ -160,12 +160,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
           "sourceSha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
-          "atlasSha256": "c0e41c176195bf05e062293eded8ba81d5e02b280b315a9e122e375305536663",
+          "atlasSha256": "1f85abf559b4e1da85962f00f37e0910254280bc9df0a2440781e321e6933c90",
           "opaquePixelCounts": [
-            948,
-            994,
-            675,
-            0
+            1319,
+            1242,
+            632,
+            18
           ],
           "review": {
             "articleId": 245450,
@@ -186,6 +186,23 @@
             "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
             "rejectWarmActorPixels": true,
             "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              52,
+              35,
+              125,
+              112
+            ],
+            "restoredLeftPixels": [
+              429,
+              352,
+              112,
+              18
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -216,12 +233,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f.gif",
           "sourceSha256": "9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f",
-          "atlasSha256": "bbfb32e12454a9c6fe9c4e3fd5731016e797a39e41262f1332751e11cd1005f3",
+          "atlasSha256": "03cf618422e040646f6b51fee2eb78cbd8cbfd2997f52468f8de85d8cd6670d4",
           "opaquePixelCounts": [
-            0,
-            940,
-            207,
-            0
+            18,
+            1119,
+            127,
+            18
           ],
           "review": {
             "articleId": 245450,
@@ -242,6 +259,23 @@
             "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
             "rejectWarmActorPixels": true,
             "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              52,
+              35,
+              125,
+              112
+            ],
+            "restoredLeftPixels": [
+              18,
+              309,
+              16,
+              18
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -292,12 +326,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b.gif",
           "sourceSha256": "b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b",
-          "atlasSha256": "1aeb4b209309d7f7b3a769ab0e12f5d727d0a25d7c0fa615b005d311a5447112",
+          "atlasSha256": "bf09f95ce27b53753c6021340b00e998cf91a84e7e778095fd31de1f4466476f",
           "opaquePixelCounts": [
-            964,
-            1206,
-            10,
-            10
+            1374,
+            1347,
+            0,
+            0
           ],
           "review": {
             "articleId": 245450,
@@ -318,6 +352,23 @@
             "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
             "rejectWarmActorPixels": true,
             "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              44,
+              28,
+              140,
+              133
+            ],
+            "restoredLeftPixels": [
+              547,
+              475,
+              0,
+              0
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -348,12 +399,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8.gif",
           "sourceSha256": "332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8",
-          "atlasSha256": "57996ee2ad9360ac7ae53e08a7b467f18cc582dae5c5e89d6a8d1291d5a0b36a",
+          "atlasSha256": "4d0431f999b1e8c9493c59e32f3b6583002972c9b27547cdc1c4d8f02f03d392",
           "opaquePixelCounts": [
-            1122,
-            2000,
-            2,
-            12
+            1636,
+            2910,
+            0,
+            0
           ],
           "review": {
             "articleId": 245450,
@@ -374,6 +425,23 @@
             "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
             "rejectWarmActorPixels": true,
             "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              44,
+              28,
+              140,
+              133
+            ],
+            "restoredLeftPixels": [
+              611,
+              1087,
+              0,
+              0
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -404,12 +472,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa.gif",
           "sourceSha256": "25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa",
-          "atlasSha256": "0789169ea5276e667ad236418dfea0a65fecb9c68362edf0b0bb939d3b687c79",
+          "atlasSha256": "96e24adc11a9b1ffee750a84a233fdb9c3fc07357b63c8c7de934cca3f43209b",
           "opaquePixelCounts": [
-            3,
-            511,
-            660,
-            3
+            28,
+            396,
+            397,
+            28
           ],
           "review": {
             "articleId": 245450,
@@ -430,6 +498,23 @@
             "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
             "rejectWarmActorPixels": false,
             "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              58,
+              40,
+              125,
+              118
+            ],
+            "restoredLeftPixels": [
+              28,
+              142,
+              124,
+              28
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -460,10 +545,10 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983.gif",
           "sourceSha256": "116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983",
-          "atlasSha256": "fd0fcb513893d3ac73bae5766d1221a8a4e9ac96b5fedafde42270e51c8594fb",
+          "atlasSha256": "f1a47decae536aa42d91e747a6d4dc63fef6dd7de408cc9d8435926c592905e9",
           "opaquePixelCounts": [
-            141,
-            228,
+            100,
+            191,
             0,
             0
           ],
@@ -486,6 +571,23 @@
             "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
             "rejectWarmActorPixels": true,
             "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              61,
+              30,
+              124,
+              118
+            ],
+            "restoredLeftPixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -518,13 +620,13 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70.gif",
           "sourceSha256": "8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70",
-          "atlasSha256": "c074edea67f30c6505ec828ec5bf9be1ff61f0fd7aaed247352a3908a2950962",
+          "atlasSha256": "5c61017451eb56b97e562dbf00e96fafd99b75f16857c7802e440dab9a29294e",
           "opaquePixelCounts": [
-            0,
-            374,
-            393,
-            65,
-            0
+            30,
+            278,
+            222,
+            47,
+            30
           ],
           "review": {
             "articleId": 245450,
@@ -545,6 +647,24 @@
             "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
             "rejectWarmActorPixels": false,
             "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              57,
+              25,
+              129,
+              98
+            ],
+            "restoredLeftPixels": [
+              30,
+              46,
+              41,
+              38,
+              30
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -575,12 +695,12 @@
           "anchor": "CASTER",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50.gif",
           "sourceSha256": "e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50",
-          "atlasSha256": "d6362c1f42943e1ffc13ba4c204b581288376a21a99a27fba0fcf6f772e6c38a",
+          "atlasSha256": "42ddc8fe5a6112256b43fa0fd3d789e7d366c4ccfe217f2038a1cee0b5d9371f",
           "opaquePixelCounts": [
-            26,
-            115,
-            291,
-            248
+            58,
+            101,
+            297,
+            254
           ],
           "review": {
             "articleId": 245456,
@@ -609,6 +729,23 @@
             "limitations": "Caster body masked; one source facing, project-selected BODY registration.",
             "rejectWarmActorPixels": false,
             "yellowOnly": true
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              20,
+              36,
+              105,
+              114
+            ],
+            "restoredLeftPixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -639,12 +776,12 @@
           "anchor": "CASTER",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f.gif",
           "sourceSha256": "d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f",
-          "atlasSha256": "464c53df0cc61e25a2a61bfc94d208fea45e43259cdbb8d492b06c69f71a4dd6",
+          "atlasSha256": "16582c4ac7b9bab3755b632518ea38d116688a03e2c147940db8bb7d8e4f39c7",
           "opaquePixelCounts": [
-            0,
-            1,
-            564,
-            510
+            59,
+            99,
+            848,
+            252
           ],
           "review": {
             "articleId": 245456,
@@ -673,6 +810,23 @@
             "limitations": "Caster body masked; one source facing, project-selected BODY registration.",
             "rejectWarmActorPixels": false,
             "yellowOnly": true
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              15,
+              30,
+              115,
+              114
+            ],
+            "restoredLeftPixels": [
+              0,
+              0,
+              0,
+              0
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
           }
         }
       }
@@ -771,6 +925,80 @@
           }
         }
       }
+    },
+    "SK_도적_001": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/74240a02e5a3ab10.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 82,
+          "pivotY": 100,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
+          "sourceSha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
+          "atlasSha256": "1f85abf559b4e1da85962f00f37e0910254280bc9df0a2440781e321e6933c90",
+          "opaquePixelCounts": [
+            1319,
+            1242,
+            632,
+            18
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 13,
+            "channel": "RECIPIENT_CONTACT",
+            "anchor": "RECIPIENT",
+            "pivot": [
+              82,
+              100
+            ],
+            "region": [
+              77,
+              47,
+              115,
+              104
+            ],
+            "baseline": "TEMPORAL_MIN",
+            "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
+            "rejectWarmActorPixels": true,
+            "yellowOnly": false
+          },
+          "displayRepair": {
+            "revision": "V233_SOURCE_CHROMA_FULL_ENVELOPE",
+            "region": [
+              52,
+              35,
+              125,
+              112
+            ],
+            "restoredLeftPixels": [
+              429,
+              352,
+              112,
+              18
+            ],
+            "noRectangularActorHole": true,
+            "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
+          }
+        }
+      },
+      "displayPolicy": "USER_V233_STAB_SAME_DAGGER_CONTACT"
     }
   }
 }

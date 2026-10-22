@@ -591,6 +591,19 @@
       ],
       "displayTransform": "V231_DOUBLE_STAB_BROWN_PALETTE",
       "displaySourceSha256": "273929a59a5d6fc96f07db19b5805a4e8b1ba6b5db131c811722ab9e9e8a089d"
+    },
+    {
+      "id": "SK_도적_011",
+      "iconAssetPath": "icons/9b814b35af34607b.png",
+      "sourcePath": "app/src/main/assets/skills/source_icons.png",
+      "sourceSha256": "00b47e5841884d5a4446aab68152b03da990c61bb517a31b368d77ee90356d07",
+      "crop": [
+        320,
+        320,
+        360,
+        355
+      ],
+      "displayTransform": "V233_HIDE_REMOVE_WHITE_CAPTURE_MARGIN_AND_BROWN_PALETTE"
     }
   ]
 }

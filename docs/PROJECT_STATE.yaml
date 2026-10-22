@@ -1,3 +1,12 @@
+rogue_visual_v233:
+  status: IMPLEMENTED_SCOPED_BUILD_NATIVE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/DATA_CONSUMPTION_CONTRACT.md, master/MASTER_MANIFEST.md, master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json, master/source/skill_fx/naver_401229/assassination.gif, master/source/skill_fx/naver_401229/assassination_jin.gif, app/src/main/assets/skills/source_icons.json, master/changes/V233_ROGUE_VISUAL.json]
+  accepted_martial: USER_VISUAL_ACCEPTED_UNCHANGED
+  phone: PENDING
+
 martial_seven_v228:
   status: IMPLEMENTED_BUILD_NATIVE_PENDING
   owner: ROOT_SINGLE_EDITOR
