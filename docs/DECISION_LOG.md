@@ -1,3 +1,7 @@
+## 2026-10-22 U — V230 무도가 동작·원본 표시 정정
+
+허공답보는 전방1~3칸 몬스터/NPC가 있어야 이형환위와 같은 대상 넘기/대상 뒤 또는 좌우 착지를 하며 공격하고 마지막에 대상을 바라본다. 기존 이형환위 인접 범위는 유지. 연천단각 동작/FX 통과 유지. 붕신선각은 붕각 SIDE_KICK 모션. 파천각은 주변 네 방향 공격이며 시연의 파란 몬스터를 이펙트로 출력하지 않는다. 일곱 아이콘은 다른 무도가와 같은 원본 배경·투명 바깥 모서리. 무영신공/자기보호 원문 GIF 재검토, 원본 숫자 미확정 상태 유지. Implementation/evidence: master/changes/V230_MARTIAL_REPAIR.json, docs/V230_MARTIAL_REPAIR_CHECKPOINT.md, verification/MARTIAL_REPAIR_V230_BUILD.json.55distinct host-nativePASS,phone/user visualPENDING. Source GIF inverse-SCREEN alpha remains approximate; source pixels/provenance retained.
+
 ## 2026-10-22 V228 무도가 일곱 스킬 영상 — 구현, 관련 검증 대기
 
 사용자 U 순서: 허공답보/트리플어택/연천단각/붕신선각/파천각/무영신공/자기보호. 원본29.118초 영상 Screen_Recording_20261022_140905_NAVER.mp4, libfile_2a630cf24fac81919793ba88d449ed0e. 아이콘7개·원본 접촉/시전자 FX7채널 추출. 원문 인물/바닥/HP바 제외, 알파·가림·원본GIF시간 미확정이며15fps 관측/근사 matting. 원본 영상 보존; seven crops/representative observations ZIP 및 SHA/crop/frame 등록 master/source/martial_v228/reference.json. AI 그림/대체 몬스터 생성 없음.
