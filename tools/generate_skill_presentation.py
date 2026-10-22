@@ -75,3 +75,5 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_skill_feedback_v231.py
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v232.py"))
 
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v233.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v234.py"))

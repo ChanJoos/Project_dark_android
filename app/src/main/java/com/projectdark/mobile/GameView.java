@@ -345,7 +345,7 @@ public final class GameView extends View {
   private void useBookSkill(SkillBook.Entry entry){
     if(entry==null||isActing()||!state.player().alive)return;
     if(!skillBook.jobAllowed(entry.id)||!skillBook.usable(entry.id)){useBookSkillNow(entry);return;}
-    cancelSkillApproach();if(RogueSkillPolicy.sense(entry.id)){useBookSkillNow(entry);return;}autoAttackEnabled=false;
+    cancelSkillApproach();if(RogueSkillPolicy.facingOnly(entry.id)){useBookSkillNow(entry);return;}autoAttackEnabled=false;
     if("SK_공통_001".equals(entry.id)||MartialSkillPolicy.facingOnly(entry.id)){useBookSkillNow(entry);return;}
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
     if(rule!=null&&rule.selfAnchored()){useBookSkillNow(entry);return;}
@@ -399,6 +399,12 @@ public final class GameView extends View {
       if(isActing()||!state.player().alive)return;
       CombatActionOrchestrator.Submission result=combatSession.submitFacingSense();
       if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 방향 전방 두 칸 안의 몬스터가 필요합니다",FeedbackTone.WARN);
+      return;
+    }
+    if(RogueSkillPolicy.shuriken(entry.id)){
+      if(isActing()||!state.player().alive)return;
+      CombatActionOrchestrator.Submission result=combatSession.submitFacingShuriken();
+      if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 직선 1~4칸의 몬스터가 필요합니다",FeedbackTone.WARN);
       return;
     }
     if(MartialSkillPolicy.facingOnly(entry.id)){

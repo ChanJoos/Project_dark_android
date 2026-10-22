@@ -28,7 +28,7 @@ public class SkillSpatialContractTest {
     assertFalse(SkillActionContract.includes(SkillActionContract.get("SK_전사_006"),0,0,0,0,64,0,true));
     assertTrue(SkillActionContract.includes(SkillActionContract.get("SK_무도가_025"),0,0,0,0,64,0,true));
     SkillActionContract.Rule ranged=SkillActionContract.get("SK_도적_003");
-    assertFalse(SkillActionContract.canStart(ranged,0,0,32,16,true));assertTrue(SkillActionContract.canStart(ranged,0,0,64,32,true));assertTrue(SkillActionContract.canStart(ranged,0,0,128,64,true));assertFalse(SkillActionContract.canStart(ranged,0,0,160,80,true));
+    assertTrue(SkillActionContract.canStart(ranged,0,0,32,16,true));assertTrue(SkillActionContract.canStart(ranged,0,0,64,32,true));assertTrue(SkillActionContract.canStart(ranged,0,0,128,64,true));assertFalse(SkillActionContract.canStart(ranged,0,0,160,80,true));
     assertFalse(SkillActionContract.canStart(SkillActionContract.get("SK_도적_005"),0,0,32,16,true));
     assertEquals(SkillActionContract.Pattern.SCREEN,SkillActionContract.get("SK_마법사_050").pattern);
     assertEquals(3f,SkillActionContract.get("SK_무도가_020").contact,.001f);
@@ -52,9 +52,9 @@ public class SkillSpatialContractTest {
       for(RuntimeState.Monster m:s.monsters())assertEquals(ids[k]+" "+m.id,want.contains(m.id),m.hp<100);
       SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));fx.consume(events,anchors(s));fx.consume(events,anchors(s));
       assertEquals(ids[k]+" skill recipients",want.size(),fx.pulses.stream().filter(p->!p.caster&&!p.sheet.equals("impact")).count());
-      assertEquals(ids[k]+" damage impacts",want.size(),fx.pulses.stream().filter(p->p.sheet.equals("impact")).count());
+      assertEquals(ids[k]+" source rogue FX must not receive a shared recolouring overlay",ids[k].startsWith("SK_도적_")?0:want.size(),fx.pulses.stream().filter(p->p.sheet.equals("impact")).count());
       Set<String> impactAnchors=new HashSet<>();for(SkillVfxRenderer.Pulse p:fx.pulses)if(p.sheet.equals("impact")){assertFalse(p.caster);impactAnchors.add(p.anchor);}
-      assertEquals(ids[k]+" impact anchors",want,impactAnchors);
+      assertEquals(ids[k]+" impact anchors",ids[k].startsWith("SK_도적_")?Collections.emptySet():want,impactAnchors);
     }
   }
   @Test public void targetMovesWallsAndViewportAreRecheckedAtContact(){

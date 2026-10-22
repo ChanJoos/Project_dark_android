@@ -1,0 +1,42 @@
+{
+  "id": "V234_ROGUE_COMBAT",
+  "status": "ACCEPTED",
+  "feedback": "V233 Seupgyeok wrong/skill colours same;throw forward1..4 nearest single;damage疑義;assassin source actor unwanted",
+  "sourceArticle": {
+    "url": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450",
+    "retainedSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245450.json",
+    "seupgyeokImage": 23,
+    "liveWeb": "unavailable via search open; retained original HTML/media directly reviewed"
+  },
+  "colours": {
+    "001/007/014": "original shared magenta family",
+    "015": "source blue/white",
+    "021": "source cyan",
+    "022": "source violet",
+    "023": "source gold",
+    "028": "source white line",
+    "029": "source warm white",
+    "030": "source white glint",
+    "020": "source orange/red-white sphere",
+    "027": "source pink/red-white then blue orb and gold star"
+  },
+  "shuriken": {
+    "range": [
+      1,
+      4
+    ],
+    "direction": "current facing straight ray only",
+    "target": "nearest single living visible monster",
+    "approach": false,
+    "autoTurn": false,
+    "piercing": false,
+    "fx": "body throw and damage only"
+  },
+  "actorCleanup": "Explicit ADAPTED same-frame opposite-side real source sample copy inside capture actor silhouette. No actor outline or foreign body. Scale .52 retained. Raw GIFs immutable.",
+  "damage": "Trace existing per-ID formula -> shared defense/element pipeline -> actual HP/popup. Do not silently change authored coefficients; ordinary ROGUE coefficients remain ADAPTED; assassin anchors retained.",
+  "preserve": [
+    "all skill icons",
+    "accepted martial",
+    "IDs/save/movement"
+  ]
+}

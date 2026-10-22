@@ -1,15 +1,20 @@
 package com.projectdark.mobile;
 /** UserV232: Sense never rotates or approaches. Only the facing ray's first two monster cells. */
 final class RogueSkillPolicy {
- static final String SENSE="SK_도적_002";
+ static final String SENSE="SK_도적_002",SHURIKEN="SK_도적_003";
+ static boolean shuriken(String id){return SHURIKEN.equals(id);}
+ static boolean facingOnly(String id){return sense(id)||shuriken(id);}
+ static int reach(String action){return shuriken(action)?4:2;}
  static boolean sense(String id){return SENSE.equals(id);}
  static boolean valid(RuntimeState s,String id,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){
   if(id==null||!visible.test(id))return false;float[] d=MartialSkillPolicy.step(facing);
   for(RuntimeState.Monster m:s.monsters())if(m.alive&&id.equals(m.id))for(int n=1;n<=2;n++)if(MartialSkillPolicy.same(s.player().x+d[0]*n,s.player().y+d[1]*n,m.x,m.y))return true;
   return false;
  }
- static String frontTarget(RuntimeState s,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){
-  float[] d=MartialSkillPolicy.step(facing);for(int n=1;n<=2;n++)for(RuntimeState.Monster m:s.monsters())if(m.alive&&visible.test(m.id)&&MartialSkillPolicy.same(s.player().x+d[0]*n,s.player().y+d[1]*n,m.x,m.y))return m.id;return null;
+ static String frontTarget(RuntimeState s,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){return frontTarget(s,SENSE,facing,visible);}
+ static boolean validShuriken(RuntimeState s,String target,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){return target!=null&&target.equals(frontTarget(s,SHURIKEN,facing,visible));}
+ static String frontTarget(RuntimeState s,String action,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){
+  float[] d=MartialSkillPolicy.step(facing);for(int n=1;n<=reach(action);n++)for(RuntimeState.Monster m:s.monsters())if(m.alive&&visible.test(m.id)&&MartialSkillPolicy.same(s.player().x+d[0]*n,s.player().y+d[1]*n,m.x,m.y))return m.id;return null;
  }
  private RogueSkillPolicy(){}
 }

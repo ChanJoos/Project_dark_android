@@ -34,13 +34,8 @@ public class SkillQuickslotApproachTest {
     List<CombatResolver.Event> events=session.tick(.2f).events;assertEquals(1,events.stream().filter(e->e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.actionId.equals(rule.id)).count());
     tickPending(view,.1f);assertTrue(session.tick(.2f).events.isEmpty());
   }
-  @Test public void shurikenRetreatsRatherThanCastingAdjacentAndDirectInputCancels()throws Exception{
-    GameView view=new GameView(c);view.layout(0,0,960,540);view.setSkillTestMode(true);RuntimeState s=field(view,"state");WorldRuntimeAdapter world=field(view,"worldAdapter");
-    RuntimeState.Monster target=s.monsters().get(0);s.player().x=target.x-32;s.player().y=target.y-16;world.snapCameraToPlayer();((CombatController)field(view,"combat")).selectTarget(target);
-    SkillBook book=field(view,"skillBook");use(view,book.get("SK_도적_003"));SkillApproachController pending=field(view,"skillApproach");assertEquals("SK_도적_003",pending.skillId);
-    assertFalse(((RuntimeCombatSession)field(view,"combatSession")).playerActionActive());
-    for(int n=0;n<100&&pending.skillId!=null;n++){world.tickNavigation(.1f);tickPending(view,.1f);}
-    assertNull(pending.skillId);assertEquals("SK_도적_003",field(view,"activeSkillVisualId"));assertTrue(SkillActionContract.canStart(SkillActionContract.get("SK_도적_003"),s.player().x,s.player().y,target.x,target.y,true));
+  @Test public void shurikenAllowsAdjacentWithoutRetreatAndDirectInputCancelsOtherApproach()throws Exception{
+    SkillFeedbackV231Test f=new SkillFeedbackV231Test();f.setup();GameView view=f.actor("SK_도적_003",false);RuntimeState s=field(view,"state");RuntimeState.Monster target=s.monsters().get(0);SkillApproachController pending=field(view,"skillApproach");assertNull(pending.skillId);assertTrue(((RuntimeCombatSession)field(view,"combatSession")).playerActionActive());assertEquals(1,SkillActionContract.distance(s.player().x,s.player().y,target.x,target.y));assertEquals("SK_도적_003",field(view,"activeSkillVisualId"));
     GameView other=new GameView(c);other.layout(0,0,960,540);other.setSkillTestMode(true);SkillApproachController intent=field(other,"skillApproach");intent.begin("SK_전사_001",target.id);tap(other,92,454);assertNull(intent.skillId);
   }
   @Test public void shortestRouteRejectsBlockedGoalAndRetainsFourDirections(){

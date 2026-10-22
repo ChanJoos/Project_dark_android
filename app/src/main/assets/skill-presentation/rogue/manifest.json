@@ -999,6 +999,53 @@
         }
       },
       "displayPolicy": "USER_V233_STAB_SAME_DAGGER_CONTACT"
+    },
+    "SK_도적_015": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "rogue/cfcd39e6a1fb7ca3.png",
+          "width": 130,
+          "height": 130,
+          "columns": 4,
+          "durationsMs": [
+            150,
+            150,
+            150,
+            150
+          ],
+          "frameIndices": [
+            0,
+            1,
+            2,
+            3
+          ],
+          "pivotX": 61,
+          "pivotY": 97,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d.gif",
+          "sourceSha256": "64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d",
+          "atlasSha256": "476ebf93d83b2ecad7ab8d38f2cee4987b9868b739151abc632edecf667dfaba",
+          "opaquePixelCounts": [
+            15,
+            469,
+            94,
+            13
+          ],
+          "review": {
+            "articleId": 245450,
+            "imageIndex": 23,
+            "region": [
+              35,
+              35,
+              93,
+              106
+            ],
+            "evidence": "LABELLED_SEUPGYEOK_BLUE_WHITE_ORIGINAL_CONTACT_NOT_ADAPTED_AMBUSH"
+          }
+        }
+      }
     }
   }
 }

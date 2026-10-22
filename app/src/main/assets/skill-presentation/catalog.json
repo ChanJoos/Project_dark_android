@@ -2655,7 +2655,7 @@
       "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "최대4칸, 붙어서 사용 불가. 타일 거리 측정 방식은 프로젝트 Chebyshev 기준."
+      "note": "현재 바라보는 직선 1~4칸, 가장 가까운 단일 몬스터"
     },
     {
       "id": "SK_도적_004",
@@ -2856,7 +2856,7 @@
       "targetRow": -1,
       "targetAnchor": "TARGET",
       "poseEvidence": "USER_V232_GIF_MATCH_C8_C13_PROJECT_TIMING",
-      "effectEvidence": "ADAPTED_ART_ORIGINAL_PIXELS_UNRESOLVED",
+      "effectEvidence": "FAN_LABELLED_ARTICLE245450_IMAGE23_BLUE_WHITE_SOURCE_V234",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
       "note": "전방 인접 한 타일"

@@ -1,3 +1,12 @@
+rogue_combat_v234:
+  status: IMPLEMENTED_SCOPED_BUILD_NATIVE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/changes/V234_ROGUE_COMBAT.json, master/source/skill_fx/naver_cafe_archive_20261001/245450.json, master/source/skill_fx/naver_cafe_archive_20261001/media.json, master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json, tools/apply_rogue_v233.py, app/src/main/java/com/projectdark/mobile/SkillAbilityData.java, app/src/main/java/com/projectdark/mobile/SkillAbilityCatalog.java]
+  accepted_martial: USER_VISUAL_ACCEPTED_UNCHANGED
+  phone: PENDING
+
 rogue_visual_v233:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   runtime_source: bd9bf2156c00bd4dd90f71613c00bacdf8afe6f5
