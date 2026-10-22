@@ -1,3 +1,7 @@
+### Source foot registration correction after actual normal-contact review
+
+First-run normal quickslot captures51/52 exposed a genuine visual offset: the shield source pivot used torso190 while the RECIPIENT channel anchors at ground. Source actor feet are at cropY260. Correct both pivots to260 without changing source pixels/timing/rules; add actual native alpha-envelope checks proving the shield extends above the torso and ends within16logical pixels of ground. This supersedes the first V239 buff placement; final exact-source native/assemble remains required.
+
 ## V239 first candidate verified; final label/cache tail pending
 
 Source `f75761af002cd7ca9c63ab2a6b7c581c7e1d40aa`, focused run39854786767/job120090048845 SUCCESS; artifact12459272320, ZIP SHA25651cb3c2e20e7e333ff726f1396f991844440b0b1022be20c73685ebc64388272. 9suites/34PASS/0failure/error/skipped independently parsed; actual GameView A/B/C and132pose/5sequence native grids inspected; no phone acceptance. Follow-up changes only occupied-silhouette name/HP offsets, explicit12-trip bitmap/cache budget assertions, and CI selection maintenance. Pote original assets/core rules unchanged. Native review rejected filmed weapon-star residue and adjacent-recipient fragments: four V239 FX atlases/manifest/recipe/source receipt revised; ice bytes unchanged. Source occlusions remain transparent. Strict tail guard checks exact GameView substitutions and reuses31 unchanged native results; rerun3direct render/magic tests,6CI selector tests,APK exact source.

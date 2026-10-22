@@ -35,7 +35,7 @@
             50
           ],
           "pivotX": 165,
-          "pivotY": 190,
+          "pivotY": 260,
           "scale": 0.35,
           "blend": "SCREEN",
           "footOffsetY": 0,
@@ -77,7 +77,7 @@
             50
           ],
           "pivotX": 165,
-          "pivotY": 190,
+          "pivotY": 260,
           "scale": 0.35,
           "blend": "SCREEN",
           "footOffsetY": 0,

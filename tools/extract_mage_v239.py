@@ -15,8 +15,8 @@ def main():
  p=argparse.ArgumentParser();p.add_argument('video',type=Path);a=p.parse_args()
  out=ROOT/'app/src/main/assets/skill-presentation/mage-v239';out.mkdir(exist_ok=True)
  source=hashlib.sha256(a.video.read_bytes()).hexdigest();skills={};rows=[]
- specs=[(51,'delis',51.35,1.15,(780,180,400,400),165,190,.35),
-        (52,'fortress',56.9,1.15,(780,180,400,400),165,190,.35),
+ specs=[(51,'delis',51.35,1.15,(780,180,400,400),165,260,.35),
+        (52,'fortress',56.9,1.15,(780,180,400,400),165,260,.35),
         (39,'ice',62.25,.60,(900,80,260,350),115,270,.35),
         (41,'storm',70.30,.55,(800,130,360,330),260,200,.30),
         (42,'flare',78.40,.55,(820,80,230,350),55,210,.35)]

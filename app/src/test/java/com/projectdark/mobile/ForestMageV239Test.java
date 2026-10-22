@@ -15,6 +15,12 @@ public class ForestMageV239Test {
    java.util.Set<Integer> hashes=new java.util.HashSet<>();int[] pixels=new int[q.sequence.width*q.sequence.height];
    for(int f=0;f<q.sequence.durations.length;f++){q.sequence.atlas.getPixels(pixels,0,q.sequence.width,f%q.sequence.columns*q.sequence.width,f/q.sequence.columns*q.sequence.height,q.sequence.width,q.sequence.height);hashes.add(java.util.Arrays.hashCode(pixels));}
    assertTrue("Changing recorded frames "+n,hashes.size()>=4);
+   if(n==51||n==52){
+    Bitmap envelope=Bitmap.createBitmap(200,180,Bitmap.Config.ARGB_8888);r.draw(new Canvas(envelope),q,q.sequence.duration*.5f,100,130);
+    int top=180,bottom=-1;for(int y=0;y<180;y++)for(int x=0;x<200;x++)if(Color.alpha(envelope.getPixel(x,y))>24){top=Math.min(top,y);bottom=Math.max(bottom,y);}
+    assertTrue("Shield surrounds the torso above the ground "+n+":"+top,top<85);
+    assertTrue("Shield stays by the source foot instead of dropping under it "+n+":"+bottom,bottom<146);
+   }
    for(int f=0;f<8;f++)r.draw(c,q,q.sequence.duration*f/8f,65+f*125,70+row*125);row++;
   }RogueRepairV232Test.save(grid,"v239-promotion-sequences");
   // Existing costs/recipient/status rules must still be reached by ordinary quickslots.
