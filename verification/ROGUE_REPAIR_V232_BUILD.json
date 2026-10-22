@@ -1,0 +1,142 @@
+{
+  "sourceCommit": "2d8aed12f3432cba1566ad537681165106b40f66",
+  "runId": "39763441450",
+  "builtAtKST": "2026-10-22T19:32:14.706307+09:00",
+  "apkSha256": "5ff7bba1cb6afc3790076c4eb81aef40d195be4539a0291ff93ba77ae1eb121d",
+  "apkBytes": 102028166,
+  "identity": {
+    "sourceCommit": "2d8aed12f3432cba1566ad537681165106b40f66",
+    "runId": "39763441450",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V232 source bent-knee dagger contact;frozen icons except trap1 alias and Slash brown;retire installed trap;Hide ghost/queued and new incoming attacks blocked;original Sense frame/facing1..2/AUTO0.3s;martial USER_ACCEPTED unchanged;phone pending",
+  "artifactId": 12418877755,
+  "artifactZipSha256": "260bcdd3fa5aad750ae420105bd35880ab212b87c2fd82815ece48e56f2b076d",
+  "jobId": 119772990677,
+  "commonScopeRun": 39763449606,
+  "libraryFileId": "libfile_d764ca7ad6248191ae4cf44a08527557",
+  "status": "IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_NATIVE VERIFIED; PHONE PENDING",
+  "initialRun": {
+    "source": "4e9ca5253f6d78e7a733df584672bf2e178d3f14",
+    "run": 39761907202,
+    "artifact": 12419265496,
+    "zipSha256": "8af62271ff5732af7cebfa87d9aff971a92ebb434463fdc63c35ec86847e619e",
+    "passed": [
+      "com.projectdark.mobile.AbelCombatV153Test.actualGameViewShowsMonsterCastParticlesAndLevelWithoutTestAccess",
+      "com.projectdark.mobile.AbelCombatV153Test.rootedPlacementDoesNotCrashOrPermitWalking",
+      "com.projectdark.mobile.AbelCombatV153Test.rangedBossApproachEndsInsideActualFollowCamera",
+      "com.projectdark.mobile.AbelCombatV153Test.profilesBindEverySpeciesAndSourceRewardsRemainSeparate",
+      "com.projectdark.mobile.AbelCombatV153Test.respawnWaitsForAnUnoccupiedSpawnTile",
+      "com.projectdark.mobile.AbelCombatV153Test.magicUsesRealWindupMpLosControlAndSavedStatusAndBossRecoversOnlyOnce",
+      "com.projectdark.mobile.SkillQuickslotApproachTest.movingTargetReplansItsReservedTileBeforeCasting",
+      "com.projectdark.mobile.SkillQuickslotApproachTest.deadTargetAndPauseCancelWithoutCharging",
+      "com.projectdark.mobile.SkillQuickslotApproachTest.oneTapWalksToLegalTileAndChargesExactlyOnce",
+      "com.projectdark.mobile.SkillQuickslotApproachTest.productionFrameLoopApproachesAndCastsInBothMaps",
+      "com.projectdark.mobile.SkillQuickslotApproachTest.shurikenRetreatsRatherThanCastingAdjacentAndDirectInputCancels",
+      "com.projectdark.mobile.SkillQuickslotApproachTest.shortestRouteRejectsBlockedGoalAndRetainsFourDirections",
+      "com.projectdark.mobile.SkillCorrectionsV227Test.holyBlowCannotBeLearnedAssignedPreviewedOrExecuted",
+      "com.projectdark.mobile.SkillCorrectionsV227Test.semeliaUsesSameOriginalAtlasOnOneRecipientWhileRagnarokHitsEveryVisibleMonster",
+      "com.projectdark.mobile.SkillCorrectionsV227Test.oldSaveDropsOnlyRetiredSkillAndKeepsTransactionalValidationAcrossRestart",
+      "com.projectdark.mobile.SkillCorrectionsV227Test.screenshotIconsRenderInBookAndQuickslots",
+      "com.projectdark.mobile.SkillPresentationTest.allCatalogIdsAndBothBodiesHaveBoundedDirectionalFrames",
+      "com.projectdark.mobile.SkillPresentationTest.twoChannelsAreSeparatedDeduplicatedAndCancelled",
+      "com.projectdark.mobile.SkillPresentationTest.realFieldSkillInputDrivesCasterThenHitAndHealRecipient",
+      "com.projectdark.mobile.SkillPresentationTest.originalFramesAndCurrentEquipmentRenderForEachGenderDirectionPose",
+      "com.projectdark.mobile.RogueRepairV232Test.trapFindOneDuplicatesTwoOnBothSurfacesAndRetiredTrapMigratesOutWithoutTouchingOthers",
+      "com.projectdark.mobile.RogueRepairV232Test.hideFromNormalInputFadesEntireEquippedActorAndRestoresAfterExpiry",
+      "com.projectdark.mobile.RogueRepairV232Test.hideBlocksQueuedAndNewPhysicalMagicAttacksEvenUnderTauntThenAllowsAfterExpiry",
+      "com.projectdark.mobile.RogueRepairV232Test.sourceSenseFrameRetainsOriginalHeaderBordersScrollAndClosePixels",
+      "com.projectdark.mobile.RogueRepairV232Test.senseUsesOnlyFacingFirstTwoCellsAndNeverTurnsOrApproaches",
+      "com.projectdark.mobile.RogueRepairV232Test.senseRechecksLiveTargetVisibilityAndWallAtContactAndChoosesNearestFront",
+      "com.projectdark.mobile.SkillTestModeTest.realActivityDefaultsToAllLearnedAndPreferenceSurvivesRestart",
+      "com.projectdark.mobile.SkillFeedbackV231Test.protectionIncludesOriginalUpperGlowAndSphereExceedsBodyWithLargerAssassinRing",
+      "com.projectdark.mobile.SkillFeedbackV231Test.stabAliasesHwiBigiAndRequestedIconsUseDoubleStabBrownFamily",
+      "com.projectdark.mobile.SkillFeedbackV231Test.manualSenseWaitsForConfirmationAndDoesNotLeakAcrossMaps",
+      "com.projectdark.mobile.SkillFeedbackV231Test.senseUsesOriginalFiveRowsAndAutoExpiresAfterThreeTenthsWithoutStoppingAttack",
+      "com.projectdark.mobile.SkillFeedbackV231Test.shurikenNormalInputThrowsAndDamagesAtContactWithoutAnyParticle",
+      "com.projectdark.mobile.RogueReviewV229Test.reviewedActiveDaggerAndThrowMotionsReachNormalQuickslotContactAndNativeDraw",
+      "com.projectdark.mobile.RogueReviewV229Test.seupgyeokAndGiseupRetainDistinctIconsDescriptionsLevelsSlotsAndDurableIds",
+      "com.projectdark.mobile.RogueReviewV229Test.all25ArticleIconsWinOnBookAndQuickslotsWithoutChangingOtherJobs",
+      "com.projectdark.mobile.RogueReviewV229Test.throwsNeverUseKickGroupAndStabsHaveEquippedLungeInBothBodiesAllFacings",
+      "com.projectdark.mobile.MartialSevenV228Test.allSixActiveSkillsUseRealNormalQuickslotsAndNativeRecipientOrCasterEffects",
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.activeZeroOfOneRestores",
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.returnReadyOneOfOneRestores",
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.completedTurnInRestoresAndCannotDuplicateReward",
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.rpgRewardEquipmentStatsAndProgressionRestore",
+      "com.projectdark.mobile.SkillWindowReferenceTest.latestSquareIconUsesExactReferenceCropPixels",
+      "com.projectdark.mobile.SkillWindowReferenceTest.originalPanelsAndAllCatalogItemsRemainReachableThroughProductionInput",
+      "com.projectdark.mobile.SkillWindowReferenceTest.realScrollClipsHitsAndNeverMovesTheWorld",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.suppliedClassicAnchorsAreExactAndThresholdsNeverBecomeMinimumOneDamage",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.persistedTimedBuffSurvivesRealGameViewRestartAndRegularRegenSurvivesHit",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.statusRoundTripRetainsRemainingDurationWithoutMutatingBaseStats",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.completeDefenseBlocksPhysicalButMagicStillHitsAndDalmaIgnoresDefense",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.spinQuickslotStartsWithoutSelectionFacingOrApproachAndHitsOnlyFourNeighbors",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.areaUltimateChargesOnceUsesOneResourceSnapshotAndNoTargetCostsNothing",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.everyCatalogIdHasAnExplicitAbilityAndDamageScalesByRealStats",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.cursesBuffsFreezePoisonDispelAndExpiryChangeRealCombat",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.allActiveDamageActionsActuallyReachTheResolverWithTheirOwnFormulas",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.daraWaitsThenUsesReleaseResourcesOnceAndCancellationDoesNotDrain"
+    ],
+    "failed": [
+      "com.projectdark.mobile.AbelCombatV153Test.allFiveNormalJobsUsePaidEquipmentLearnedSkillsAndConsecutiveLiveAiHuntsToLevel70",
+      "com.projectdark.mobile.RogueRepairV232Test.originalBentKneeContactReplacesBowAndWideLungeForEveryRogueStabBothBodiesAllFacings",
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.allSupportedStatusesAreReachableThroughProductionEffectDispatch"
+    ]
+  },
+  "tail": {
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.RogueRepairV232Test",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.RogueReviewV229Test",
+        "tests": "2",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      },
+      {
+        "name": "com.projectdark.mobile.SkillAbilityRuntimeTest",
+        "tests": "1",
+        "failures": "0",
+        "errors": "0",
+        "skipped": "0"
+      }
+    ],
+    "latestCases": {
+      "com.projectdark.mobile.RogueRepairV232Test.originalBentKneeContactReplacesBowAndWideLungeForEveryRogueStabBothBodiesAllFacings": true,
+      "com.projectdark.mobile.RogueReviewV229Test.reviewedActiveDaggerAndThrowMotionsReachNormalQuickslotContactAndNativeDraw": true,
+      "com.projectdark.mobile.RogueReviewV229Test.throwsNeverUseKickGroupAndStabsHaveEquippedLungeInBothBodiesAllFacings": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.allSupportedStatusesAreReachableThroughProductionEffectDispatch": true
+    },
+    "distinctApplicable": 56,
+    "unresolvedApplicableFailures": 0,
+    "excludedUnrelatedFailure": "com.projectdark.mobile.AbelCombatV153Test.allFiveNormalJobsUsePaidEquipmentLearnedSkillsAndConsecutiveLiveAiHuntsToLevel70"
+  },
+  "packaged": {
+    "identity": {
+      "sourceCommit": "2d8aed12f3432cba1566ad537681165106b40f66",
+      "runId": "39763441450",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "package": "com.projectdark.mobile.v232test",
+    "label": "PROJECT DARK V232 TEST",
+    "changedAssetsMatched": [
+      "assets/skill-presentation/catalog.json",
+      "assets/skill-presentation/rogue-v232/sense-frame.json",
+      "assets/skill-presentation/rogue-v232/sense-frame.png",
+      "assets/skill-presentation/rogue/icons/b20a0224a0fd0a38.png",
+      "assets/skill-presentation/rogue/references.json"
+    ],
+    "martialFilesIdenticalToV231": 16,
+    "rogueIconsComparedToV231": 25,
+    "onlyChangedIcon": "assets/skill-presentation/rogue/icons/b20a0224a0fd0a38.png",
+    "v2CertificateSha256": "118503aa3a09e65c7e1f1c52911c36e404bbada1a1cd1b2acf91f83d966ce615"
+  }
+}
