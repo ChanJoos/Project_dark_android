@@ -1,3 +1,7 @@
+## V228 native-tail recovery
+
+Runtime a5639b4b5774541497e12bbc1c9e6e2fdfdbd9ac / run39735723474:78 tests,77 PASS/1 FAIL. The sole failure was the new Pacheon fixture asserting both source-caster FX and real recipient-damage impact share the caster anchor. Source channels and real damage feedback intentionally use distinct anchors. Test now requires classic caster anchors and actual recipient impact separately. No app/src/main bytes changed. Guarded continuation reuses77 passed cases, reruns failed six-skill normal-input test, then runs previously unexecuted concurrency audit/APK. Generation9 projections, source7 hashes/corners and scope5 PASS. Phone/visual pending.
+
 ## 2026-10-22 V228 interrupted-run recovery — validation pending
 
 Resumed branch codex/rucesion-coast-v157 / PR197 at af19943c46052477f090f7e522f36f06a94122b7; main41fe6def unchanged. Last successful delivered skill candidate remains V227 b5c31494 / run39723904568, not V228. Original V228 focused39728790503 ran78 tests,7 failed; common39728795532 stopped on generated catalog drift before Android checks.
