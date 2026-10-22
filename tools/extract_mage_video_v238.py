@@ -101,9 +101,14 @@ def main():
   # Reconstruct occluded bilateral lobes from the visible same-frame counterpart.
   # This is explicitly adapted capture reconstruction, not recovered hidden pixels.
   if name=='fire':
-   rgba[:,:,86:133]=rgba[:,:,133:180][:,:,::-1]
-  if name=='water':
-   rgba[:,:,111:152]=rgba[:,:,70:111][:,:,::-1]
+   # The later source frame exposes the whole flare. Reconstruct its filmed
+   # growth phase from that real texture, avoiding a reflected actor-shaped hole.
+   peak=rgba[min(8,len(rgba)-1)].copy()
+   for k in range(min(7,len(rgba))):
+    scale=.28+.72*k/6;im=Image.fromarray(peak);nw=round(180*scale);nh=round(180*scale)
+    im=im.resize((nw,nh),Image.Resampling.BILINEAR);frame=Image.new('RGBA',(180,180));frame.paste(im,(round(133-133*scale),round(75-75*scale)));rgba[k]=np.array(frame)
+  # Water retains the asymmetric visible source lobes, with no mirrored body.
+
   if name=='earth':
    rgba[:,:,72:134]=rgba[:,:,10:72][:,:,::-1]
   # Recorded combat labels are red; reject their residual antialiased edge.

@@ -6,8 +6,9 @@
     "SK_마법사_026": {
       "channels": {
         "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
           "path": "mage-v238/water.png",
-          "atlasSha256": "d3c0f903e36b8baaf1bff19dc815fc82fb22db66856c980884e5d8048832a946",
+          "atlasSha256": "49770f5491a7cdb08c49ac1d9f39143c4470694628fadf4e5b098847a82aba1f",
           "width": 180,
           "height": 180,
           "columns": 8,
@@ -130,14 +131,14 @@
                 180
               ]
             }
-          ],
-          "anchor": "RECIPIENT"
+          ]
         }
       }
     },
     "SK_마법사_027": {
       "channels": {
         "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
           "path": "mage-v238/earth.png",
           "atlasSha256": "c4823e3d148527760cdf1e59b6160d4b9658d1f69b04e108b37e8ebdc2f3c7de",
           "width": 180,
@@ -251,14 +252,14 @@
                 180
               ]
             }
-          ],
-          "anchor": "RECIPIENT"
+          ]
         }
       }
     },
     "SK_마법사_028": {
       "channels": {
         "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
           "path": "mage-v238/wind.png",
           "atlasSha256": "a05dca8943a5e4764b338c725b488e2d5df58226f2a5866e96e8f597e5573b81",
           "width": 180,
@@ -328,16 +329,16 @@
                 180
               ]
             }
-          ],
-          "anchor": "RECIPIENT"
+          ]
         }
       }
     },
     "SK_마법사_029": {
       "channels": {
         "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
           "path": "mage-v238/fire.png",
-          "atlasSha256": "86a4749a8453770fc317c02d96bba1dc1d98acb013492d885697e2f65f2238f5",
+          "atlasSha256": "56c196d5c29b6f30522a92d4a95a42317d3d07e65f2696ade84e9d004593822f",
           "width": 180,
           "height": 180,
           "columns": 8,
@@ -482,14 +483,14 @@
                 180
               ]
             }
-          ],
-          "anchor": "RECIPIENT"
+          ]
         }
       }
     },
     "SK_마법사_046": {
       "channels": {
         "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
           "path": "mage-v238/dark-mark.png",
           "atlasSha256": "7d36eaf2fdf9da642f2d23988837afdceba9155f345cfd677230bcf69096c21f",
           "width": 390,
@@ -790,8 +791,7 @@
                 480
               ]
             }
-          ],
-          "anchor": "RECIPIENT"
+          ]
         }
       }
     }

@@ -1,3 +1,6 @@
+### Visual cleanup after native review
+Actual GameView renders confirm recipient alignment and independent screen recipients. Native sequence review rejected reflected water/fire lobes. Preserve unmirrored water capture; early fire growth now uses the wholly exposed later source flare texture instead of mirrored actor holes. This fire growth reconstruction and earth reflection remain ADAPTED, not hidden native-frame recovery. New exact source reruns5video/contact/audits+3adjacent-contact cases and builds APK;30unchanged UI/promotion/retirement/Amnesia passes reused under strict diff guard. User phone/visual pending.
+
 ### V238 final audit fixture tail
 Source2c2fdfcd/run39803951433:38executed,37PASS/1FAIL. All four new visual/contact tests, UI, promotion, retirement and Amnesia passed. Aggregate executes all5 audits:4PASS; only RuntimeCombatPortAdapterAudit FALSE. Reproduced fixture defect:revivePlayer restores620,560 but the target remains near1315,715, outside100range. Reposition fixture after revive; preserve death/ledger assertions. No actual gameplay/FX/assets changed. Tail guard proves only fixture/workflow/scope/checkpoint diff; rerun failed aggregate + APK, reuse37same-source passing native tests.
 
