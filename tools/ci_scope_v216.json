@@ -32,7 +32,7 @@
   "app/src/main/java/com/projectdark/mobile/MineHuntMonsters.java": "049b6c35dd1803999d5526d911688a1d66b83f41a7c7e4c0cc3649ebe7117030",
   "app/src/main/java/com/projectdark/mobile/RpgProgressionState.java": "01cabb71eda2eba553e36ea7a93b7b5b17d97adb3249d5c15e5af900255e19eb",
   "app/src/test/java/com/projectdark/mobile/WornEquipmentV225Test.java": "603b72ffccab83a7ef6610a803600b21b03a7aea93a33412c9c1f0273a5215dd",
-  "app/src/test/java/com/projectdark/mobile/MineHuntV208Test.java": "b75d106b58cf6eaeacfa18f35b4f336706926fcb866e13421a4c01f5693f1024",
+  "app/src/test/java/com/projectdark/mobile/MineHuntV208Test.java": "4e2d65cf755cd6c7af439fc20a5474450ede4c646a1e119e3afc0545d494a7c9",
   "master/changes/V225_WORN_EQUIPMENT.json": "709c7e585fbdd56d84761fb9b48a6b8e355414115f2913ec1f52f5333f80d5b7",
   "tools/reward_audit_v224.py": "8ca92d13e20ef2ce1f9866695888ba6b8cddeeb1b881607176720e9ea11e2101"
 }
