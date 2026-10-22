@@ -1,0 +1,2512 @@
+{
+  "revision": "V241",
+  "source": "https://s3.amazonaws.com/kru-downloads/da/DarkAges741single.exe",
+  "installerSha256": "dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093",
+  "archive": "roh.dat",
+  "sourceFiles": {
+    "eff000.pal": "4496b635758b9ebad458b4d614b0bbd47325136269ad34974bf266ecb3625ad0",
+    "effpal.tbl": "39e23f9396472d8113b5d7808be1f0d0eef408f58ae9df953a3a77b1cefc1ada",
+    "effect.tbl": "48eda7d2181b85b98c0b04528f8bee1fdab65a1c231ce1c431798e870e800d1e",
+    "efct101.epf": "322af7e7021e46fb3bcc507e140c3cd3ba2e0b57662d4f2b19bc2bb07192a791",
+    "efct101.tbl": "11442ca9846e58ec65121f3eeb561dc90f2042a1e88d784b1763043657274ac2",
+    "efct103.epf": "00d9bbe208d649ec7d71ba4dd7a3bb721ba672a2c8285d4e15146a4aeb1ec26d",
+    "efct103.tbl": "f09448c4bfb3c05d3d934a442ab9cc869a2bf43d2b028a67d92d82f4ae2580a6",
+    "efct097.epf": "bf15ba7b6637e1f02da730b353aa9971b8e94d69e91cd57afec2bbd3fbba8524",
+    "efct097.tbl": "cbea542dedf141427b64fbb7e768791706798ca39af6e368b3be53f2fd5f7e37",
+    "efct102.epf": "5deafc15ff2ad2c84d255f9b0bf57479db6fc3a53da9417cb17a583582b2f9de",
+    "efct102.tbl": "3a8d8c351b62cc3d5a75070c6d7caf1d8ed5a5ab8a0916243feae4dba999b877",
+    "efct087.epf": "1722f580f224f51c8151653be1424621d6b6dd3cf9ae33e0bc41ef6734098fe7",
+    "efct087.tbl": "c07f8d89e8af76bfae3479ebe804411a665f8ae45184cc2725e0b5a5e5229a50",
+    "efct104.epf": "aa93aea5f67914c89fbb1dfcda5c75ea911938c886b6bc2d0edaa1a776a35a5d",
+    "efct104.tbl": "a22c41844340ec7dd94f410688605ba423a5fd988a18c5794948c4dce96b6ad6",
+    "efct157.epf": "c392bd4e6a1e15b3733ffbf0d7a1579f177ca5a421dd66ebcb986360a17faf58",
+    "efct157.tbl": "c2bdf0babe5e1049dc18428b0c2adb37e076d1cf3a1d0b9bf96e1fab87132193",
+    "efct091.epf": "85a7b5bde03401043f67e7e6e0007f94510235c64919e8dc463b7e80b8a6a737",
+    "efct091.tbl": "2b2a5b2a80afea1e213238a5bbea2de6b2854eff19c8a325954c409a64867a0e"
+  },
+  "video": "Screen_Recording_20261022_235706_YouTube.mp4",
+  "videoSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
+  "mapping": "Visual correspondence to user recording and labelled retained254766; original US client bytes, Korean spell identity supported by footage; third independent reference PENDING_REFERENCE.",
+  "decodedBytes": 9998048,
+  "sequences": [
+    {
+      "id": "SK_마법사_039",
+      "source": "efct101.epf",
+      "playbackOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14
+      ],
+      "sourcePivotTable": "efct101.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            6,
+            36,
+            111,
+            141
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            7,
+            33
+          ],
+          "rgbaSha256": "b4755435249af1ce2e20b9624fe22e84aaf4668fc9fa2e925094ea6848686c6e"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            41,
+            75,
+            76,
+            132
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            42,
+            72
+          ],
+          "rgbaSha256": "5a645c8b2544f151ea81ca0bc6587a048de9353d2eb5700376c9151421b41843"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            51,
+            85,
+            64,
+            132
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            52,
+            82
+          ],
+          "rgbaSha256": "f4696b4d9d4fa9edb9c3f8593dbfa6877a3c67fcc01ebb0d5c9010421927f1b8"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            45,
+            17,
+            73,
+            132
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            46,
+            14
+          ],
+          "rgbaSha256": "2c0cecbe0bdd3adae3a3bf4cf218fd4fa6172a9eff09bab7be7382918543cdd5"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            28,
+            60,
+            88,
+            132
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            29,
+            57
+          ],
+          "rgbaSha256": "ddd3fada885f604ecdf77bad685692095d4c092cd7468d46f2b68d1c7b2313d3"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            17,
+            49,
+            98,
+            136
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            18,
+            46
+          ],
+          "rgbaSha256": "1277d6f745c86a7fe96e18360d7a32ed50f184fb8e284a100afbd93371eae5e9"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            17,
+            47,
+            95,
+            137
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            18,
+            44
+          ],
+          "rgbaSha256": "ed97a6254b579cc44a84e33b809bfc62de05fe431b693ebd62de7da732c02bfe"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            12,
+            40,
+            98,
+            139
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            13,
+            37
+          ],
+          "rgbaSha256": "5c72fd0dbcf49de8dc0b707a6139fe71445b57f58583a1f5b19f90790b363290"
+        },
+        {
+          "frame": 8,
+          "sourceBounds": [
+            1,
+            26,
+            113,
+            139
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            2,
+            23
+          ],
+          "rgbaSha256": "63afada01182404de9ede973208b17104fa19ba2009ca04e38aae7f1d3cf51ed"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            1,
+            24,
+            113,
+            139
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            2,
+            21
+          ],
+          "rgbaSha256": "6304b26fbb644650f24d2a202e6003cba10700da4a03c4a7decdca487d0a3a8c"
+        },
+        {
+          "frame": 10,
+          "sourceBounds": [
+            1,
+            22,
+            113,
+            139
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            2,
+            19
+          ],
+          "rgbaSha256": "8ee0a4ba92209bd72c83d31c8fe61d877a38c4683a1dca8ef6cdf9043099c264"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            1,
+            19,
+            113,
+            139
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            2,
+            16
+          ],
+          "rgbaSha256": "acbb256776e9189bf7c83717938f4c11bed1142bc5738061761d74cb86347ea8"
+        },
+        {
+          "frame": 12,
+          "sourceBounds": [
+            1,
+            29,
+            109,
+            139
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            2,
+            26
+          ],
+          "rgbaSha256": "a208e8d5f5519d72aa8ffdb59845764e585f579aa4ad9e560d913b94decce3db"
+        },
+        {
+          "frame": 13,
+          "sourceBounds": [
+            13,
+            9,
+            106,
+            139
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            14,
+            6
+          ],
+          "rgbaSha256": "1d33358279041764948ad3538c75536689a3752d9fdd5bc1086583fa9e51ef17"
+        },
+        {
+          "frame": 14,
+          "sourceBounds": [
+            2,
+            5,
+            113,
+            151
+          ],
+          "sourcePivot": [
+            58,
+            128
+          ],
+          "placement": [
+            3,
+            2
+          ],
+          "rgbaSha256": "23186ebf91c016c3355734e375cf77aa133269e3b718b4931ccdde9cd51ea74a"
+        }
+      ],
+      "originalCanvas": [
+        119,
+        153
+      ],
+      "decodedBytes": 1113600,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 35048,
+      "videoEvidence": [
+        62.1,
+        62.95
+      ]
+    },
+    {
+      "id": "SK_마법사_040",
+      "source": "efct103.epf",
+      "playbackOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7,
+        8,
+        8,
+        9,
+        9,
+        10,
+        10,
+        11,
+        11,
+        11
+      ],
+      "sourcePivotTable": "efct103.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            78,
+            86,
+            148,
+            107
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            79,
+            87
+          ],
+          "rgbaSha256": "829f3e2c6bdb6c94b136daf0c3e2552ffb945b4f40bf0e351c51ca063778bf8e"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            24,
+            77,
+            150,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            25,
+            78
+          ],
+          "rgbaSha256": "0706637b9e9afb2555f094d3f847f782cb05622a505f27baa88d7a12645a0cc6"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            21,
+            74,
+            162,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            22,
+            75
+          ],
+          "rgbaSha256": "ce8018c533e484a8bf0a9c62b2bdf22fdf4b99b214020dd253e050cbc8d92fce"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            10,
+            72,
+            155,
+            108
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            11,
+            73
+          ],
+          "rgbaSha256": "48ae79e3937933c7e8bcf28cfba730e7d2ad24ed8d56874402600d8a6f520a00"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            17,
+            69,
+            162,
+            107
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            18,
+            70
+          ],
+          "rgbaSha256": "f3fcf104c16994140de76b3a1e1f1b1be5149ecbd9ac00302f8e855a81b9fc44"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            10,
+            35,
+            167,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            11,
+            36
+          ],
+          "rgbaSha256": "e08c04a6ea1c3a33551358414697ae1144ec69dc1cfd112522b1eb039cdf2dea"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            10,
+            35,
+            167,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            11,
+            36
+          ],
+          "rgbaSha256": "e08c04a6ea1c3a33551358414697ae1144ec69dc1cfd112522b1eb039cdf2dea"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            2,
+            34,
+            171,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            3,
+            35
+          ],
+          "rgbaSha256": "6e4a4d8a6920ee43f92451f82a8b69b2f7237058aa621b1d68eead60129b93e9"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            2,
+            34,
+            171,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            3,
+            35
+          ],
+          "rgbaSha256": "6e4a4d8a6920ee43f92451f82a8b69b2f7237058aa621b1d68eead60129b93e9"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            1,
+            31,
+            171,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            2,
+            32
+          ],
+          "rgbaSha256": "4258ec20d72a7116b4d19b10dce162ba12915ae3c9c6b749f55e5f96231f243c"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            1,
+            31,
+            171,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            2,
+            32
+          ],
+          "rgbaSha256": "4258ec20d72a7116b4d19b10dce162ba12915ae3c9c6b749f55e5f96231f243c"
+        },
+        {
+          "frame": 8,
+          "sourceBounds": [
+            1,
+            1,
+            154,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rgbaSha256": "21d21ff36cb5807028fa2ce51b7101fd15b539dc7e4a782514874972988a47ba"
+        },
+        {
+          "frame": 8,
+          "sourceBounds": [
+            1,
+            1,
+            154,
+            109
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rgbaSha256": "21d21ff36cb5807028fa2ce51b7101fd15b539dc7e4a782514874972988a47ba"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            18,
+            1,
+            129,
+            110
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            19,
+            2
+          ],
+          "rgbaSha256": "10b5039e197581a81de283306b3138cb2029e51c3e87392784ff4933288036f0"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            18,
+            1,
+            129,
+            110
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            19,
+            2
+          ],
+          "rgbaSha256": "10b5039e197581a81de283306b3138cb2029e51c3e87392784ff4933288036f0"
+        },
+        {
+          "frame": 10,
+          "sourceBounds": [
+            26,
+            40,
+            137,
+            110
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            27,
+            41
+          ],
+          "rgbaSha256": "41edf89bcfa584c3a96dcb83e41546ff27527d97fedf9f51cc1233f3d39ee965"
+        },
+        {
+          "frame": 10,
+          "sourceBounds": [
+            26,
+            40,
+            137,
+            110
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            27,
+            41
+          ],
+          "rgbaSha256": "41edf89bcfa584c3a96dcb83e41546ff27527d97fedf9f51cc1233f3d39ee965"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            78,
+            51,
+            145,
+            110
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            79,
+            52
+          ],
+          "rgbaSha256": "eabd8a6bd52beb74f2f82c93aa23e4a2f448c44a84f68b21e68b471e2b766c6c"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            78,
+            51,
+            145,
+            110
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            79,
+            52
+          ],
+          "rgbaSha256": "eabd8a6bd52beb74f2f82c93aa23e4a2f448c44a84f68b21e68b471e2b766c6c"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            78,
+            51,
+            145,
+            110
+          ],
+          "sourcePivot": [
+            85,
+            97
+          ],
+          "placement": [
+            79,
+            52
+          ],
+          "rgbaSha256": "eabd8a6bd52beb74f2f82c93aa23e4a2f448c44a84f68b21e68b471e2b766c6c"
+        }
+      ],
+      "originalCanvas": [
+        173,
+        112
+      ],
+      "decodedBytes": 1887552,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 54119,
+      "videoEvidence": [
+        85,
+        88
+      ]
+    },
+    {
+      "id": "SK_마법사_041",
+      "source": "efct097.epf",
+      "playbackOrder": [
+        0,
+        1,
+        2,
+        3,
+        4
+      ],
+      "sourcePivotTable": "efct097.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            7,
+            77,
+            181,
+            140
+          ],
+          "sourcePivot": [
+            93,
+            142
+          ],
+          "placement": [
+            2,
+            77
+          ],
+          "rgbaSha256": "b0df5f73cddcdfa7d3858b4376c6f4b55d97caf1873c32214648156979d7d219"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            7,
+            56,
+            143,
+            149
+          ],
+          "sourcePivot": [
+            93,
+            142
+          ],
+          "placement": [
+            2,
+            56
+          ],
+          "rgbaSha256": "975a39a4f437f3fcc79764c0f81b187f2a2c6e7d1c0e75ce7504908c850c56f5"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            26,
+            2,
+            175,
+            170
+          ],
+          "sourcePivot": [
+            93,
+            142
+          ],
+          "placement": [
+            21,
+            2
+          ],
+          "rgbaSha256": "1ee25ec82e727d5286ea3acb3b827b6e7ab90c410d87145a4d31e416aab80da1"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            32,
+            12,
+            172,
+            157
+          ],
+          "sourcePivot": [
+            93,
+            142
+          ],
+          "placement": [
+            27,
+            12
+          ],
+          "rgbaSha256": "7d2eef8915466b17bae2a48271a2aed59bc172ba7565323418585e8fcc2afac6"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            37,
+            56,
+            142,
+            156
+          ],
+          "sourcePivot": [
+            93,
+            142
+          ],
+          "placement": [
+            32,
+            56
+          ],
+          "rgbaSha256": "dc6a926e58e499121d813c6609f486118ded90924675001add9b9f908fac3a4c"
+        }
+      ],
+      "originalCanvas": [
+        189,
+        172
+      ],
+      "decodedBytes": 979712,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 14163,
+      "videoEvidence": [
+        70.3,
+        70.85
+      ]
+    },
+    {
+      "id": "SK_마법사_042",
+      "source": "efct102.epf",
+      "playbackOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11
+      ],
+      "sourcePivotTable": "efct102.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            33,
+            209,
+            81,
+            254
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            34,
+            210
+          ],
+          "rgbaSha256": "1d922cea157204adbc66fb0e3164c25c47a5872488cc672b0a08dcff0190219e"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            32,
+            206,
+            71,
+            256
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            33,
+            207
+          ],
+          "rgbaSha256": "6c2d431bc1d609e54d7ea7c4c8f89f97db2b139a6c328d1bf28b1f46e26ced69"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            27,
+            210,
+            88,
+            259
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            28,
+            211
+          ],
+          "rgbaSha256": "9699ed57bc75193d9f52c3210275079c2d484738ef8af4ab2ddaee922051a6c8"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            28,
+            203,
+            76,
+            259
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            29,
+            204
+          ],
+          "rgbaSha256": "aebfdf8250b726eb510459d4ce45bd42de28db96bbb8727ec31e5f0929adbf2c"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            27,
+            210,
+            85,
+            257
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            28,
+            211
+          ],
+          "rgbaSha256": "f37a8c801815c81c7565f4fde10fa228efd2154ff7fe80e8a3067bf0f5dcf6d6"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            20,
+            194,
+            86,
+            253
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            21,
+            195
+          ],
+          "rgbaSha256": "2f73d1e0820e159561c9f8237e0f76d9178e7049de0d545c3891ec6a8f40bc49"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            16,
+            166,
+            89,
+            253
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            17,
+            167
+          ],
+          "rgbaSha256": "c2ee7076656e30a573580d381d430ed4a900c398fc34dce9d246686294003bf3"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            1,
+            163,
+            109,
+            253
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            2,
+            164
+          ],
+          "rgbaSha256": "d4e67f27d51e8635b1d3f9229c891fc32fdec243f465a0fb5d72b802756e893e"
+        },
+        {
+          "frame": 8,
+          "sourceBounds": [
+            1,
+            146,
+            107,
+            259
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            2,
+            147
+          ],
+          "rgbaSha256": "380d655d17e807c972e508c09e6fc795730e874251c8fcabf00417103d4d3a0f"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            2,
+            138,
+            101,
+            253
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            3,
+            139
+          ],
+          "rgbaSha256": "7d3d9bdb58fa9963fc02a87503835824427f9f58b3f6e1173d6bc10eb144ecf1"
+        },
+        {
+          "frame": 10,
+          "sourceBounds": [
+            21,
+            74,
+            85,
+            253
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            22,
+            75
+          ],
+          "rgbaSha256": "bbb3a1b33bb8288164011407547e9a9115e737abb4df304ae5440943d099bb03"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            16,
+            1,
+            86,
+            253
+          ],
+          "sourcePivot": [
+            54,
+            251
+          ],
+          "placement": [
+            17,
+            2
+          ],
+          "rgbaSha256": "5c48a221ae8ff55b2b02fbe56b516bb56baabe817513c83ba73f6ae218509244"
+        }
+      ],
+      "originalCanvas": [
+        111,
+        266
+      ],
+      "decodedBytes": 1878016,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 25461,
+      "videoEvidence": [
+        78.4,
+        79
+      ]
+    },
+    {
+      "id": "SK_마법사_045",
+      "source": "efct087.epf",
+      "playbackOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12,
+        13,
+        14,
+        15,
+        16,
+        17
+      ],
+      "sourcePivotTable": "efct087.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            21,
+            74,
+            92,
+            107
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            21,
+            75
+          ],
+          "rgbaSha256": "b3af677f2768f796b3fa15571a976a43aa0221f0d7e99ec62589f42718c50224"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            9,
+            66,
+            99,
+            106
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            9,
+            67
+          ],
+          "rgbaSha256": "859311f86e12e5b541fd69d6c5f51efe4fdc8c569fb74413e9601f2e401c6539"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            4,
+            59,
+            109,
+            108
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            60
+          ],
+          "rgbaSha256": "1280a09d72639350793db3a1a0ef71042dcacf6707479f6034e5ffc5bad37af9"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            2,
+            29,
+            109,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            30
+          ],
+          "rgbaSha256": "d8c43aed280495ba5d68676034e65e533e790c24aa518d3c73943ddf0f0b2b01"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            2,
+            12,
+            109,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            13
+          ],
+          "rgbaSha256": "cc5b1a788bb76cf8c811b46b59ef40311397c2955addbf1b8bba9952366b4e88"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            2,
+            12,
+            107,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            13
+          ],
+          "rgbaSha256": "1b1c6332447c2a5cfe9a678a5ecf2299a57999b953803d0c65d1ea56793e23f6"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            2,
+            12,
+            107,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            13
+          ],
+          "rgbaSha256": "cdbfee45b37fe7895afc474e70530acff2779ca23726cd126415afbb3b163c40"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            2,
+            12,
+            107,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            13
+          ],
+          "rgbaSha256": "61b13507e05dfaa26281152d6bc680d2c41dbfda555a6488b9b2c60636332087"
+        },
+        {
+          "frame": 8,
+          "sourceBounds": [
+            2,
+            12,
+            107,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            13
+          ],
+          "rgbaSha256": "84c7451f812b33779f396c6f2ebedf25a258a6943cfcb1ca1a276e047f1c11d6"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            2,
+            12,
+            107,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            13
+          ],
+          "rgbaSha256": "76903993f908091a1b577fc33b09a0db263068df03d0cc4ecdb58efbbf345546"
+        },
+        {
+          "frame": 10,
+          "sourceBounds": [
+            8,
+            23,
+            107,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            8,
+            24
+          ],
+          "rgbaSha256": "b910adb770d5fe59e5cf84976d4456d0004488242cec148156cdca472e13a26b"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            7,
+            23,
+            109,
+            109
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            7,
+            24
+          ],
+          "rgbaSha256": "82365e288b2f793698031e0d08b86d58f73a57838f3dc14e64948fd52a2b48e5"
+        },
+        {
+          "frame": 12,
+          "sourceBounds": [
+            9,
+            23,
+            101,
+            109
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            9,
+            24
+          ],
+          "rgbaSha256": "f27c68f27cab7b50c6ea5fb87085fc7ea772e8ce3eaac37c89dbef4f550493cd"
+        },
+        {
+          "frame": 13,
+          "sourceBounds": [
+            11,
+            23,
+            102,
+            109
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            11,
+            24
+          ],
+          "rgbaSha256": "90c35659857d909300b1b52bd8d6171003aed4b06c3a5cdb0922331837dba9a2"
+        },
+        {
+          "frame": 14,
+          "sourceBounds": [
+            28,
+            23,
+            87,
+            106
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            28,
+            24
+          ],
+          "rgbaSha256": "371e182dc60fdfba5bfcded2f2a0bcbedb81f0e9829ebfd54f043e38d4565a9f"
+        },
+        {
+          "frame": 15,
+          "sourceBounds": [
+            27,
+            19,
+            86,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            27,
+            20
+          ],
+          "rgbaSha256": "c93cc60c4d1ddb5612d2ba9434a6e2d29c38325b2d0527c16401b3854adcca2a"
+        },
+        {
+          "frame": 16,
+          "sourceBounds": [
+            15,
+            7,
+            99,
+            108
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            15,
+            8
+          ],
+          "rgbaSha256": "2e35964d3ed0c28ea4cad5feb28ebe36e49401e3b48c6ed53443d22e2a0f3af8"
+        },
+        {
+          "frame": 17,
+          "sourceBounds": [
+            9,
+            1,
+            101,
+            99
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            9,
+            2
+          ],
+          "rgbaSha256": "0c8556ec9b5fe2516fb4acfdca77f28380cef1bb888620ec88e6b631859b9873"
+        }
+      ],
+      "originalCanvas": [
+        111,
+        112
+      ],
+      "decodedBytes": 1204128,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 49232,
+      "videoEvidence": [
+        46,
+        47.5
+      ]
+    },
+    {
+      "id": "SK_마법사_046",
+      "source": "efct104.epf",
+      "playbackOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        9,
+        10,
+        11,
+        12,
+        12,
+        12,
+        13,
+        13,
+        14,
+        14,
+        15,
+        15,
+        16,
+        16
+      ],
+      "sourcePivotTable": "efct104.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "609a47ffb4f7af12242e542a224e26c4e7031634e357a06c0cf46c90e6ce2b5e"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            190
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "fd194c4f3c1ad1ae3584e01e1c1905c603e7e606f03e30202ffc12960b1b932a"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            178
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "fe86f0576c23b6f8233e17f6f348d66418a40cac36e7871a0813124ef249a352"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            16,
+            94,
+            92,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "684cb23df1045f6a33da6f4ff0801afe97ff0a8f43d059b695d38283aa210ca7"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "ebb7010ed2f6cf80fffa96ecd87a21b8f3f206ba45a9fc8433dbaebf709521ea"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "ebb7010ed2f6cf80fffa96ecd87a21b8f3f206ba45a9fc8433dbaebf709521ea"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "5b5a9f1a072fd0a0075d01e49d532348736aa756d2fbabc5b207bb4957231f98"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "494354e392159424069598e36066a2c89a6fa4b6e2acfe32dfd20de9609ca047"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "eef717b9636b6cc5ba645b30382e0eaa539100e65446507fd2fb998854d44666"
+        },
+        {
+          "frame": 8,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "fe60ae51b11034881acdb3b1408c5ccff144ffc43a2b7470f2120546fbd3f927"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "814d715d0c7ec04e95920ac84d2572e256198444a73843a0fd13021792f84d33"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "814d715d0c7ec04e95920ac84d2572e256198444a73843a0fd13021792f84d33"
+        },
+        {
+          "frame": 10,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "a94e98fa68be4cc8baa1bb3c5097dd1b7247a8f50f17a421291ad10610d7e920"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            16,
+            12,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            12
+          ],
+          "rgbaSha256": "738baa4daca9e5f2c8d6c172f1c9df7098a9e876b5edcdcd10adae72ebec5034"
+        },
+        {
+          "frame": 12,
+          "sourceBounds": [
+            16,
+            12,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            12
+          ],
+          "rgbaSha256": "673cbdb89cae212659389b210742c39c954f27654f7f70e241f5b7999b022134"
+        },
+        {
+          "frame": 12,
+          "sourceBounds": [
+            16,
+            12,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            12
+          ],
+          "rgbaSha256": "673cbdb89cae212659389b210742c39c954f27654f7f70e241f5b7999b022134"
+        },
+        {
+          "frame": 12,
+          "sourceBounds": [
+            16,
+            12,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            12
+          ],
+          "rgbaSha256": "673cbdb89cae212659389b210742c39c954f27654f7f70e241f5b7999b022134"
+        },
+        {
+          "frame": 13,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "1afca2ec5982026d0ce1dc0469e7df6dd2c8280e23436e70e7ef642a10a86fc1"
+        },
+        {
+          "frame": 13,
+          "sourceBounds": [
+            16,
+            94,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            94
+          ],
+          "rgbaSha256": "1afca2ec5982026d0ce1dc0469e7df6dd2c8280e23436e70e7ef642a10a86fc1"
+        },
+        {
+          "frame": 14,
+          "sourceBounds": [
+            16,
+            33,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            33
+          ],
+          "rgbaSha256": "1cf0a7400fa758e0fc7c1a729dfc914acb15ba54a07b665ae434fa2d7aab0046"
+        },
+        {
+          "frame": 14,
+          "sourceBounds": [
+            16,
+            33,
+            93,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            2,
+            33
+          ],
+          "rgbaSha256": "1cf0a7400fa758e0fc7c1a729dfc914acb15ba54a07b665ae434fa2d7aab0046"
+        },
+        {
+          "frame": 15,
+          "sourceBounds": [
+            27,
+            9,
+            81,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            13,
+            9
+          ],
+          "rgbaSha256": "ce08d869632b0ac45d90a98fb892cab2a37657926d7e72bad8965588977e709b"
+        },
+        {
+          "frame": 15,
+          "sourceBounds": [
+            27,
+            9,
+            81,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            13,
+            9
+          ],
+          "rgbaSha256": "ce08d869632b0ac45d90a98fb892cab2a37657926d7e72bad8965588977e709b"
+        },
+        {
+          "frame": 16,
+          "sourceBounds": [
+            42,
+            2,
+            67,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            28,
+            2
+          ],
+          "rgbaSha256": "52e69ca8c6d9bded9807b9fa04d7898d79bd56ff7c967a15f64c4da05cf737e9"
+        },
+        {
+          "frame": 16,
+          "sourceBounds": [
+            42,
+            2,
+            67,
+            180
+          ],
+          "sourcePivot": [
+            54,
+            178
+          ],
+          "placement": [
+            28,
+            2
+          ],
+          "rgbaSha256": "52e69ca8c6d9bded9807b9fa04d7898d79bd56ff7c967a15f64c4da05cf737e9"
+        }
+      ],
+      "originalCanvas": [
+        111,
+        193
+      ],
+      "decodedBytes": 1990656,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 69820,
+      "videoEvidence": [
+        38.7,
+        40.65
+      ]
+    },
+    {
+      "id": "SK_마법사_051",
+      "source": "efct157.epf",
+      "playbackOrder": [
+        0,
+        0,
+        1,
+        1,
+        2,
+        2,
+        3,
+        4,
+        5,
+        5,
+        6,
+        6,
+        7,
+        7
+      ],
+      "sourcePivotTable": "efct157.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "9cba1eb51fe7c088a1c76fb973af6c7d81237813606da5716a92e8c2143bfc65"
+        },
+        {
+          "frame": 0,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "9cba1eb51fe7c088a1c76fb973af6c7d81237813606da5716a92e8c2143bfc65"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "50d2da6df394f6fa4ff8478bf6a0bf5c2da18258a71ff298b2dd5919a630386e"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "50d2da6df394f6fa4ff8478bf6a0bf5c2da18258a71ff298b2dd5919a630386e"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "988492a54ce6a2f072b5e645542989c182f46a726805db71dc46a800d2d2fb47"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "988492a54ce6a2f072b5e645542989c182f46a726805db71dc46a800d2d2fb47"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            5,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rgbaSha256": "fa3b27c87ddf3857af0340c947baa9c9be927dc18a46df99c3756f31891cf924"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "2e0522eda8b79b9a09a1ab856b40d0a3f6e569b3e38790d0bcd1eb5a523e3687"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            14,
+            28,
+            101,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "c635e308929641e35dcb17bff1d11840114223a55a4bf00a68c2014356bb91bc"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            14,
+            28,
+            101,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "c635e308929641e35dcb17bff1d11840114223a55a4bf00a68c2014356bb91bc"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "9074bfe02a2fd6ebe9103c0ddb7f848e018421f3e66ba74938289bd76f02c2ed"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "9074bfe02a2fd6ebe9103c0ddb7f848e018421f3e66ba74938289bd76f02c2ed"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "9cba1eb51fe7c088a1c76fb973af6c7d81237813606da5716a92e8c2143bfc65"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            14,
+            28,
+            95,
+            109
+          ],
+          "sourcePivot": [
+            54,
+            97
+          ],
+          "placement": [
+            11,
+            2
+          ],
+          "rgbaSha256": "9cba1eb51fe7c088a1c76fb973af6c7d81237813606da5716a92e8c2143bfc65"
+        }
+      ],
+      "originalCanvas": [
+        111,
+        112
+      ],
+      "decodedBytes": 544000,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 15322,
+      "videoEvidence": [
+        51.35,
+        52.5
+      ]
+    },
+    {
+      "id": "SK_마법사_052",
+      "source": "efct091.epf",
+      "playbackOrder": [
+        0,
+        1,
+        2,
+        3,
+        4,
+        5,
+        6,
+        7,
+        8,
+        9,
+        10,
+        11,
+        12
+      ],
+      "sourcePivotTable": "efct091.tbl",
+      "frames": [
+        {
+          "frame": 0,
+          "sourceBounds": [
+            22,
+            22,
+            86,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rgbaSha256": "0f08a69bc1b251dd074508d1e6b3ed24d50c0098fe46e5c5cab45dcf2a1f9028"
+        },
+        {
+          "frame": 1,
+          "sourceBounds": [
+            26,
+            25,
+            83,
+            108
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            6,
+            5
+          ],
+          "rgbaSha256": "ba14abce968a050fc887ccb010cd24a9ec7bddb86f6d66abf7e96f4b704143f6"
+        },
+        {
+          "frame": 2,
+          "sourceBounds": [
+            25,
+            24,
+            84,
+            109
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            5,
+            4
+          ],
+          "rgbaSha256": "b67e111f15f3569defb7beeef5a2f2de39d8ab080affcbd8752a785863f17949"
+        },
+        {
+          "frame": 3,
+          "sourceBounds": [
+            24,
+            23,
+            85,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            3
+          ],
+          "rgbaSha256": "5eebd4316152a2b2876910386f6010a1b6d9eae4897ebba62834e541a1336881"
+        },
+        {
+          "frame": 4,
+          "sourceBounds": [
+            24,
+            23,
+            85,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            3
+          ],
+          "rgbaSha256": "3152359ee2a84fe465879530165af4698b56cd71aef2299024d0c385977cb871"
+        },
+        {
+          "frame": 5,
+          "sourceBounds": [
+            24,
+            23,
+            85,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            3
+          ],
+          "rgbaSha256": "a0f08c590bc9560429037f96998e277f8dbb169ae2491104c417462d9c69dd26"
+        },
+        {
+          "frame": 6,
+          "sourceBounds": [
+            24,
+            23,
+            85,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            3
+          ],
+          "rgbaSha256": "160bddb2150803df346b04ab0a7fadb9a66b29b5517c5546301b374a1870bc2a"
+        },
+        {
+          "frame": 7,
+          "sourceBounds": [
+            24,
+            23,
+            85,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            3
+          ],
+          "rgbaSha256": "c37352e1105ab1701f8aa450a7903587d184271f0ab88a2983f565d556ca7566"
+        },
+        {
+          "frame": 8,
+          "sourceBounds": [
+            24,
+            23,
+            85,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            3
+          ],
+          "rgbaSha256": "59fb7dbb03cb8685b36cefceba91fc6e533ecce5cbe4f3f209762ebdc6b9896c"
+        },
+        {
+          "frame": 9,
+          "sourceBounds": [
+            24,
+            23,
+            85,
+            110
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            4,
+            3
+          ],
+          "rgbaSha256": "5eebd4316152a2b2876910386f6010a1b6d9eae4897ebba62834e541a1336881"
+        },
+        {
+          "frame": 10,
+          "sourceBounds": [
+            25,
+            24,
+            84,
+            109
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            5,
+            4
+          ],
+          "rgbaSha256": "b67e111f15f3569defb7beeef5a2f2de39d8ab080affcbd8752a785863f17949"
+        },
+        {
+          "frame": 11,
+          "sourceBounds": [
+            25,
+            25,
+            84,
+            108
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            5,
+            5
+          ],
+          "rgbaSha256": "5e7e1ad9ee8f0fd3b235fe7bbd667be42c802691b2595b0a2b347437ad49d53e"
+        },
+        {
+          "frame": 12,
+          "sourceBounds": [
+            26,
+            25,
+            83,
+            108
+          ],
+          "sourcePivot": [
+            55,
+            97
+          ],
+          "placement": [
+            6,
+            5
+          ],
+          "rgbaSha256": "bf2cd52b67a72fb359b910aac42e7aef72b596d0a7a789f2a9abd91d8c2575c0"
+        }
+      ],
+      "originalCanvas": [
+        111,
+        112
+      ],
+      "decodedBytes": 400384,
+      "pixelRestoration": "EXACT_RGBA_PASS",
+      "sourcePixelCount": 14424,
+      "videoEvidence": [
+        56.9,
+        58.05
+      ]
+    }
+  ],
+  "unchanged": "Element reinforcement044 remains prior source: no certain original animation identity. Other spells, gameplay rules, Pote basic4 and hunting maps unchanged."
+}

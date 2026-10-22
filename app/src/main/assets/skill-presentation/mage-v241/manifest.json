@@ -1,0 +1,295 @@
+{
+  "revision": "ORIGINAL_PROMOTION_V241",
+  "skills": {
+    "SK_마법사_039": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/ice.png",
+          "width": 116,
+          "height": 150,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 59,
+          "pivotY": 125,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "cb334a56fcc006b4cd15d2494c1b9cfa371a1f34ea705e9c437d6ca457fd89bb"
+        }
+      }
+    },
+    "SK_마법사_040": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/quake.png",
+          "width": 174,
+          "height": 113,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 86,
+          "pivotY": 98,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "fbb9d0cd74759fc402f47e517479b6b6da387b73d276e81bbfb07c82f0982f69"
+        }
+      }
+    },
+    "SK_마법사_041": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/storm.png",
+          "width": 178,
+          "height": 172,
+          "columns": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "pivotX": 88,
+          "pivotY": 142,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "8697eb69b7c08275920635b23af8a487d70ec141de09239a44318427fd494d72"
+        }
+      }
+    },
+    "SK_마법사_042": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/flare.png",
+          "width": 112,
+          "height": 262,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 55,
+          "pivotY": 252,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "a33bc4ab3f443aa062a14533f0726867bbdfb16bef070f96d8a4a514725ec4d7"
+        }
+      }
+    },
+    "SK_마법사_045": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/protection.png",
+          "width": 111,
+          "height": 113,
+          "columns": 8,
+          "durationsMs": [
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65,
+            65
+          ],
+          "pivotX": 55,
+          "pivotY": 98,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "098911739000f8e7dd82d1c1c9bf2077db3ee46624806071d4b397e261712116"
+        }
+      }
+    },
+    "SK_마법사_046": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/dark-mark.png",
+          "width": 81,
+          "height": 192,
+          "columns": 8,
+          "durationsMs": [
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78,
+            78
+          ],
+          "pivotX": 40,
+          "pivotY": 178,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "ca69c90769dfba3d0bd0909f49d5e8e1032721873952afdfd77e84dad2798657"
+        }
+      }
+    },
+    "SK_마법사_051": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/delis.png",
+          "width": 100,
+          "height": 85,
+          "columns": 8,
+          "durationsMs": [
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80,
+            80
+          ],
+          "pivotX": 51,
+          "pivotY": 71,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "18b241a7cfa9c97b96e70ccf00cb4930be9e51c59ca345c25af40de679be7ff1"
+        }
+      }
+    },
+    "SK_마법사_052": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v241/fortress.png",
+          "width": 68,
+          "height": 92,
+          "columns": 8,
+          "durationsMs": [
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85,
+            85
+          ],
+          "pivotX": 35,
+          "pivotY": 77,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "sourceTiming": "ORIGINAL_FRAME_ORDER_VIDEO_CALIBRATED_PROJECT_TICK",
+          "atlasSha256": "16f301077ca178708b8f43418cc6d4fb5c24ee9bc96f6826d140e87fe280c736"
+        }
+      }
+    }
+  }
+}

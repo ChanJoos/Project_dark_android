@@ -25,7 +25,7 @@ final class ClassicSkillReference {
     Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=entries.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=new LinkedHashMap<>();Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}effects.put(id,result);}
     JSONArray rows=read(c,directory+"/references.json").getJSONArray("rows");for(int i=0;i<rows.length();i++){JSONObject row=rows.getJSONObject(i);if(!row.isNull("id"))references.put(row.getString("id"),row);}
     if(directory.equals("classic")){JSONObject extra=read(c,"user-v228/manifest.json").getJSONObject("skills");Iterator<String> newIds=extra.keys();while(newIds.hasNext()){String id=newIds.next();JSONObject raw=extra.getJSONObject(id).getJSONObject("channels");Map<String,Channel> channels=new LinkedHashMap<>();Iterator<String> keys=raw.keys();while(keys.hasNext()){String key=keys.next();channels.put(key,new Channel(c,key,raw.getJSONObject(key)));}effects.put(id,channels);}}
-    if(directory.equals("classic")){prepareMageV237();loadMageVideoV238(c);loadMageVideoV239(c);loadMageVideoV240(c);}prewarmCenters();prepareBaekbo();
+    if(directory.equals("classic")){prepareMageV237();loadMageVideoV238(c);loadMageVideoV239(c);loadMageVideoV240(c);loadOriginalPromotionV241(c);}prewarmCenters();prepareBaekbo();
   }catch(Exception e){throw new IllegalStateException("Classic skill reference",e);}}
   private static JSONObject read(Context c,String path)throws Exception{return new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/"+path),StandardCharsets.UTF_8));}
   boolean has(String id){return effects.containsKey(SkillPolicyV227.effectSource(id));}
@@ -60,6 +60,11 @@ final class ClassicSkillReference {
   }
   private void loadMageVideoV240(Context c)throws Exception{
     JSONObject skills=read(c,"mage-v240/manifest.json").getJSONObject("skills");
+    Iterator<String> ids=skills.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=skills.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=effects.computeIfAbsent(id,k->new LinkedHashMap<>());Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}}
+  }
+  /** Complete source frames, registered to source foot; no capture matte or tile crop. */
+  private void loadOriginalPromotionV241(Context c)throws Exception{
+    JSONObject skills=read(c,"mage-v241/manifest.json").getJSONObject("skills");
     Iterator<String> ids=skills.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=skills.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=effects.computeIfAbsent(id,k->new LinkedHashMap<>());Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}}
   }
   private Bitmap baekbo;private final java.util.List<Rect> baekboFrames=new ArrayList<>();
