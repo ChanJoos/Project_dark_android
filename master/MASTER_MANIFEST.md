@@ -1,3 +1,6 @@
+## V238 supplied Mage video — verified candidate
+Source dc6f1426b61a1584bd819ceed312e82b42002514 / run39806023052 / artifact12437692690.38unique scoped nativePASS (8final+30unchanged), APKsignature/hash/source and all691presentation files independentlyverified. Source receipt master/source/mage_video_v238/receipt.json; accepted projection master/changes/V238_MAGE_VIDEO.json; delivery verification/MAGE_VIDEO_V238_BUILD.json. Five captured sequences drive Dark046, circle4single026..029 and screen030..033 aliases. Mareno/Martial/domain numbers retained. Earth lobe/fire growth are ADAPTED due video occlusion; no raw video admitted. Phone/user visualPENDING;main unmerged.
+
 ## 2026-10-22 V237 마법사 시각 재거절 — 승급 품질 정정 / 원작 연속 영상 필요
 
 DEVICE_FAILED_USER_REPORTED:마레노외모든마법이원작과다름. 승급4속성/속성강화/매직프로텍션/델리스/포트리스는비슷하지만캡처배우잔상·품질문제. 어둠의각인재제작,헬푸라삭제,프라보5circle. V235 source54icon/description및channel연결PASS는원작애니메이션재현/사용자시각수락이아님을정정. 22156424개/22155521개/25476645개는모두still이며,단일capture4hold/fade는원작motion아님. 첨부9GIF는도적/무도가;03영상Milles걷기/04영상초보전투라해당마법의완전한연속근거없음.

@@ -1,3 +1,13 @@
+## V238 verified candidate delivered — exact source and scoped evidence
+
+Source `dc6f1426b61a1584bd819ceed312e82b42002514`; Actions39806023052/job119919334706 SUCCESS, artifact12437692690. Five video/runtime/audit tests +three adjacent-contact tests PASS on final source. Strict reviewed diff reuses30 unchanged UI/promotion/retirement/Amnesia cases from2c2fdfcd/run39803951433:38 unique test identities,0unresolved failures. Five shared audit verifiers allPASS inside Android. Not a full-suite/main/phone pass.
+
+APK `PROJECT_DARK_V238_TEST.apk`, packagecom.projectdark.mobile.v238test; built2026-10-23 00:37:19 Asia/Seoul;103624802bytes; SHA256 `83f3b3b9e809a0bcec1ed64055b74dc612f2b21cbf2a456cd01d450110ff69f5`. Artifact ZIP151154118bytes, SHA256ed7d6aec46d587106e811c56e99a14f2f90f836dca5c7aa11cc88700ca15fa93. Independently verified ZIP CRC, embedded source/run,manifest package, all691 presentation file bytes, APK v2 RSA signature AND signed content digest. Receipt `verification/MAGE_VIDEO_V238_BUILD.json`.
+
+IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED. Dark046 source video sequence; fourcircle4 singles026..029 and four screen aliases030..033 with normal contacts/single MP/recipient recheck. Dark CURSE70 and single-target contract preserved; no new whole-Dark-Mark progression ability. Preserved Mareno001, approved Martial and domain values. Source clip is not uploaded. Source crop/time/hash recorded.
+
+Final native sequence grid and GameView contact registration reviewed. Water reflection removed after rejection; fire early growth uses a wholly visible later source flare. Earth lobe reflection and fire growth are ADAPTED reconstruction; obscured native pixels/compressed edges still unknown. Visual quality is a candidate, NOT USER_VISUAL_ACCEPTED. Physical handset PENDING. User can inspect this exact APK; resume from this SHA/receipt without rebuilding unchanged work. Same PR197 unmerged;main41fe6def unchanged. Old V237/firstV238 pending/failure notes are historical and superseded where resolved; unrelated Abel gear integration issue remains open.
+
 ### Visual cleanup after native review
 Actual GameView renders confirm recipient alignment and independent screen recipients. Native sequence review rejected reflected water/fire lobes. Preserve unmirrored water capture; early fire growth now uses the wholly exposed later source flare texture instead of mirrored actor holes. This fire growth reconstruction and earth reflection remain ADAPTED, not hidden native-frame recovery. New exact source reruns5video/contact/audits+3adjacent-contact cases and builds APK;30unchanged UI/promotion/retirement/Amnesia passes reused under strict diff guard. User phone/visual pending.
 

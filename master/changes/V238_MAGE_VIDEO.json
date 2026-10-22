@@ -15,6 +15,9 @@
   ],
   "mechanics": "UNCHANGED",
   "evidence": "USER_REQUEST + VIDEO_OBSERVATION; occlusion reconstruction ADAPTED",
-  "verification": "PENDING",
-  "phone": "PENDING"
+  "verification": "BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "phone": "PENDING",
+  "sourceCommit": "dc6f1426b61a1584bd819ceed312e82b42002514",
+  "receipt": "verification/MAGE_VIDEO_V238_BUILD.json",
+  "visualAcceptance": "PENDING"
 }
