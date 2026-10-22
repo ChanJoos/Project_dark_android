@@ -20,7 +20,8 @@ final class MartialSkillPolicy {
  static boolean same(float x,float y,float a,float b){return Math.abs(x-a)<.1f&&Math.abs(y-b)<.1f;}
  static List<float[]> landings(RuntimeState s,String target,SkillAbilityExecutor.Movement movement){
   List<float[]> out=new ArrayList<>();float[] p=position(s,target);if(p==null||movement==null||s.skillEffects().rooted("player"))return out;
-  Direction d=Direction.between(s.player().x,s.player().y,p[0],p[1]);if(d==null)return out;
+  int distance=SkillActionContract.distance(s.player().x,s.player().y,p[0],p[1]);if(distance<1||distance==Integer.MAX_VALUE)return out;
+  Direction d=Direction.between(0,0,(p[0]-s.player().x)/distance,(p[1]-s.player().y)/distance);if(d==null)return out;
   float x=p[0]+d.dx,y=p[1]+d.dy;
   if(movement.canLeapPlayer(x,y)){out.add(new float[]{x,y});return out;}
   float lx=d.dy*2,ly=-d.dx/2;

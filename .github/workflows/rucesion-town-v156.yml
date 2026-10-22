@@ -119,7 +119,7 @@ jobs:
               python3 - <<'PYGUARD230'
           import subprocess
           base='caa7c5a4b2f91c55256f7fa925d1cd5186bb9833'
-          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/main/java/com/projectdark/mobile/MartialSourceV228.java','app/src/main/java/com/projectdark/mobile/SkillAbilityExecutor.java','app/src/test/java/com/projectdark/mobile/MartialRepairV230Test.java','app/src/test/java/com/projectdark/mobile/MartialSevenV228Test.java'}
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/main/java/com/projectdark/mobile/MartialSourceV228.java','app/src/main/java/com/projectdark/mobile/MartialSkillPolicy.java','app/src/main/java/com/projectdark/mobile/SkillAbilityExecutor.java','app/src/test/java/com/projectdark/mobile/MartialRepairV230Test.java','app/src/test/java/com/projectdark/mobile/MartialSevenV228Test.java'}
           paths=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
           assert all(p in allowed or p.startswith(('docs/','verification/')) for p in paths),paths
           print('Reuse unaffected passed suites from39746341109. Only advance side-choice/live-target revalidation changes; rerun all3 martial suites including real normal NPC/lethal input/facing and updated contact-phase captures.')

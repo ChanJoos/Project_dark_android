@@ -10,3 +10,5 @@ Scoped verification:4generators+source projection determinism; numeric/Yeoncheon
 
 
 Continuation: exact first source caa7c5a4b2f91c55256f7fa925d1cd5186bb9833 / run39746341109 still executing. Common39746350672 scoped selector PASS/compileSKIPPED. Two advance-only helpers now share random side landing and revalidate a moved forward target at contact. Added true normal-input NPC/lethal monster attack/final-facing checks and contact-phase captures. Guarded affected3-suite run with assembleDebug; unaffected7suite evidence may be reused only after first XML results prove pass. No phone/visual acceptance.
+
+First native results39746341109:53cases,51PASS/2FAIL. Both failures reproduce 2~3tile advance: shared WorldMoveTargetController.Direction.between accepts only unit tile displacement. Landing direction now normalizes distance before the shared target-back/side calculation; base adjacent leap stays equivalent. Exact first XML/digest retained;7 unaffected suites (34cases) may be reused after counting. Run39747189716 used the intermediate905c3223 and is superseded by this normalization, not delivered.
