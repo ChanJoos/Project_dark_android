@@ -1,9 +1,12 @@
 death_access_v223:
-  status: IMPLEMENTING
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
   required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/V222_ENTRY_DOORS_DENSITY_CHECKPOINT.md, app/src/main/java/com/projectdark/mobile/TownTravel.java, app/src/main/java/com/projectdark/mobile/TownTravelWindow.java]
+  runtime_source: f79f354459007d6fe2cc214319db7dba278ebbd7
+  focused_run: 39702647619
+  receipt: verification/DEATH_ACCESS_V223_BUILD.json
   scope: Death lobby offered only by existing Mine town travel NPC Arthur; house monster addition excluded
   phone: PENDING
 

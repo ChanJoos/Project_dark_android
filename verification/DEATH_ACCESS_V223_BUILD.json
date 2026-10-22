@@ -1,0 +1,82 @@
+{
+  "sourceCommit": "f79f354459007d6fe2cc214319db7dba278ebbd7",
+  "runId": "39702647619",
+  "builtAtKST": "2026-10-22T10:00:37.350553+09:00",
+  "apkSha256": "9d90c357c819ce565e9d98fb69c564a78fe9a06da4f04064dc93c26d43d05f62",
+  "apkBytes": 101630380,
+  "identity": {
+    "sourceCommit": "f79f354459007d6fe2cc214319db7dba278ebbd7",
+    "runId": "39702647619",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V223 Death lobby entry only from Mine town NPC Arthur; Milles direct menu removed; same maps, monsters, combat and save schema; phone pending",
+  "suites": [
+    {
+      "suite": "com.projectdark.mobile.DeathAccessV223Test",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathMapV220Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathNavigationV221Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathVillageV217Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MineTownV203Test",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "tests": 23,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "artifactId": 12394245326,
+  "artifactSha256": "829338888023c3277f4b34780318098a1ffe9a42e3400d9c31c6920e4761fd15",
+  "jobId": 119575266975,
+  "commonScope": {
+    "runId": 39702654080,
+    "result": "SUCCESS",
+    "fullRegression": "not run; final main integration pending"
+  },
+  "phone": "PENDING",
+  "mainMerged": false,
+  "package": "com.projectdark.mobile.v222test",
+  "label": "PROJECT DARK V223 TEST",
+  "install": "Updates existing V222 test package; keeps same signing identity workflow and private profile",
+  "verified": [
+    "artifact ZIP SHA256 and CRC",
+    "APK SHA256 and embedded exact source/run",
+    "binary manifest package and V223 label",
+    "CI apksigner verify --verbose: APK V2 signature PASS",
+    "actual Mine NPC dialogue input to lobby; return/re-entry and preference-store reinstall restore",
+    "native Mine destination menu and lobby arrival screenshots reviewed"
+  ],
+  "library": {
+    "library_file_id": "libfile_b9f902348fd88191ade855a105ef1644",
+    "file_id": "file_00000000e34081f5bcec4d01c5175022",
+    "filename": "PROJECT_DARK_V223_TEST.apk",
+    "metadataApplied": true
+  }
+}
