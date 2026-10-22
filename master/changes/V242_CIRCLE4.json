@@ -1,0 +1,31 @@
+{
+  "revision": "V242",
+  "status": "ACCEPTED",
+  "userDecision": "080624 supplied video four full-screen4circle effects reused for4circle single, apply V241 lessons",
+  "before": "V238 capture-matte circle4 sequences with erased/occluded pixels",
+  "after": "4 complete original EFA sequences236/252/242/239 with nativeheaderinterval/pivot/selfalpha and shared single/screen source",
+  "ids": [
+    "SK_마법사_026",
+    "SK_마법사_027",
+    "SK_마법사_028",
+    "SK_마법사_029",
+    "SK_마법사_030",
+    "SK_마법사_031",
+    "SK_마법사_032",
+    "SK_마법사_033"
+  ],
+  "unchanged": [
+    "basic4",
+    "V241promotions",
+    "circle3",
+    "stats",
+    "damage",
+    "MP",
+    "learning",
+    "world",
+    "save"
+  ],
+  "validation": "tools/check_mage_v242.py PASS; native/build pending",
+  "device": "PHONE/USER_VISUAL PENDING",
+  "lessons": "docs/MAGIC_FX_LESSONS.md"
+}

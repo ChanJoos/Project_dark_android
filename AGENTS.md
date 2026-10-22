@@ -39,3 +39,6 @@ Before creating or changing any hunting map, read `docs/HUNT_MAP_PERFORMANCE_LES
 - Documentation-only changes need content/link/diff checks, not game regression or a new APK. Preserve exact source/run/artifact/hash proof for APK delivery.
 - CI configuration and this policy are separate: never claim a documentation edit optimized CI. V216 implements and remotely verifies one exact reviewed-blob scope profile and removes common feature-push/PR full duplication (scope run39604868913; focused39604859782). Unreviewed runtime bytes fall back to full CI. Select/review a suitable profile for each future task; the V216 profile is not blanket permission to skip other affected tests. Final main integration still requires manual full verification or the full-regression PR label.
 - This section narrows historical blanket verification language in handoffs/guides; prior test reports remain historical evidence, not a requirement to repeat their entire scope.
+
+## Required magic FX lessons
+Before creating or replacing magic effects, read `docs/MAGIC_FX_LESSONS.md`. Preserve complete original frames, per-frame anchors and blending; verify source pixels, multi-tile bounds and actual single/screen casts. User explicitly requires these V241/V242 lessons in later spell work.

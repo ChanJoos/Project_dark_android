@@ -1,3 +1,9 @@
+## V242 4써클 전체4 + 단일4 — 원본 EFA 연결 / 검증 진행
+
+USER080624 영상25.456367s: 전체 수/토/풍/화4종을 연결하고 동일 FX를4써클단일로 사용. 원본 roh.dat EFA236/252/242/239가 영상의백보라별/회색먼지/청백전격/황백폭발과 직접 일치. 전체030..033은 기존effectSource 별칭으로 단일026..029와 정확히같은4channel/atlas를 공유한다. 원본 RGB565 전체frame/rowpitch/sourcefoot/headerinterval70/52/85/65ms 보존. SCREEN/self-alpha2,2px투명padding,9,270,784decodedbytes. 캡처actor/HP마스크·색임계삭제·임의복원 없음. Source zip/hash/frames receipt retained;video rawnotcommitted. 독립3번째identityreference PENDING_REFERENCE.
+
+구현: ClassicSkillReference 마지막V242override, V242별도testpackage. Basic4/V241eightpromotions/circle3/모든수치·습득·전투권위·월드·몬스터·save 불변. Native3new(allframesRGBA+timing+alias+multi-tile;8normalquickslots+1MP;4screen death/offscreen contactrecheck)+V240basic1+V241normalpromotion1+adjacentcontact3=8tests 예정. Local sourceRGBA/interval/pivot/padding/unchangedguard PASS; BUILD/HOST_NATIVE/PHONE/USER_VISUAL PENDING. 재사용레슨런 docs/MAGIC_FX_LESSONS.md 및AGENTS gate 추가. SamePR197/branch/main41fe6defunmerged. Next exact-sourceCI→8actualGameViewcaptures/sequencegrid검수→APKsource/run/hash/signature저장. 검증되지 않은외형완료 주장은 금지.
+
 ## V241 승급 원본8 — 빌드/관련 호스트 시전 검증 완료
 
 Runtime `296656066627ef40d3a5210ca2bc70e489bc3907`, Actions39868184395/job120135595632 SUCCESS, artifact12465645971. 7native tests/0failures/errors/skips: full eight-original sequence pixel equality at every frame including outsideone tile;14normal promotion quickslots and DarkCURSE70/singleMP;8sequence nativegrid; retained Pote basic4 and3adjacentcontacts. ActualGameView39/40/41/42/45/46/51/52 captures and nativegrid inspected. Complete原本pixel bytes, no actor/HP masks, perframefoot/unionbounds;9,998,048 decoded bytes. Cadence PROJECT video-calibrated. Element reinforcement044 remains unchanged/unresolved originalanimation identity; third independent identityreference PENDING_REFERENCE. No all-magic-complete/phoneacceptance claim.
