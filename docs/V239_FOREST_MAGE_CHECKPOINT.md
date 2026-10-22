@@ -1,3 +1,9 @@
+## V239 first candidate verified; final label/cache tail pending
+
+Source `f75761af002cd7ca9c63ab2a6b7c581c7e1d40aa`, focused run39854786767/job120090048845 SUCCESS; artifact12459272320, ZIP SHA25651cb3c2e20e7e333ff726f1396f991844440b0b1022be20c73685ebc64388272. 9suites/34PASS/0failure/error/skipped independently parsed; actual GameView A/B/C and132pose/5sequence native grids inspected; no phone acceptance. Follow-up changes only occupied-silhouette name/HP offsets, explicit12-trip bitmap/cache budget assertions, and CI selection maintenance. Pote original assets/core rules unchanged. Native review rejected filmed weapon-star residue and adjacent-recipient fragments: four V239 FX atlases/manifest/recipe/source receipt revised; ice bytes unchanged. Source occlusions remain transparent. Strict tail guard checks exact GameView substitutions and reuses31 unchanged native results; rerun3direct render/magic tests,6CI selector tests,APK exact source.
+
+Common39854794744 failed in old generated catalog-vs-guide-description reproducibility check before full regression, plus missing downstream image upload; not a V239 native compile failure. Triggered by stale hash for unchanged MageVisualV237Test and historical doc hashes. Preserve underlying generator discrepancy for final integration; do not claim full suite PASS. Selector keeps force_full and unknown runtime fallback, admits unchanged V238 test byte hash/source status receipt, and handles changed docs before their stale historical expected hashes (new regression test). Main integration remains full-gated.
+
 ## V239 — 추가 마법 영상 / 포테 원본 외형 개선 후보 (2026-10-23)
 
 Director 단일 편집. 기존 branch `codex/rucesion-coast-v157` / PR197 유지, main `41fe6def5120b6c33b58f609e52fbaf2ead700ee`. 마지막 성공 V238 runtime `dc6f1426b61a1584bd819ceed312e82b42002514`, run39806023052; 문서HEAD ba495f2에서 재개. V238 재빌드/검사 반복 없음.

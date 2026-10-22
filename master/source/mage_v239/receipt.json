@@ -13,7 +13,7 @@
         400
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
-      "visiblePixels": 118027,
+      "visiblePixels": 71630,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     },
     {
@@ -27,7 +27,7 @@
         400
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
-      "visiblePixels": 162905,
+      "visiblePixels": 75724,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     },
     {
@@ -55,7 +55,7 @@
         330
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
-      "visiblePixels": 29586,
+      "visiblePixels": 26390,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     },
     {
@@ -69,7 +69,7 @@
         350
       ],
       "sourceSha256": "b90ff1c951bab421f470a5ee6206bff7c40468f4a2dcb3f3e2dbf6fc2befae94",
-      "visiblePixels": 31445,
+      "visiblePixels": 40636,
       "evidence": "ADAPTED_CAPTURE_MATTE; occluded pixels not reconstructed"
     }
   ],

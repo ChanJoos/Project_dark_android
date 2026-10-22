@@ -18,8 +18,8 @@ def main():
  specs=[(51,'delis',51.35,1.15,(780,180,400,400),165,190,.35),
         (52,'fortress',56.9,1.15,(780,180,400,400),165,190,.35),
         (39,'ice',62.25,.60,(900,80,260,350),115,270,.35),
-        (41,'storm',70.30,.55,(800,130,360,330),170,220,.30),
-        (42,'flare',78.40,.55,(820,80,230,350),110,270,.35)]
+        (41,'storm',70.30,.55,(800,130,360,330),260,200,.30),
+        (42,'flare',78.40,.55,(820,80,230,350),55,210,.35)]
  for ident,name,t,d,box,px,py,scale in specs:
   raw=decode(a.video,t,d,box);z=raw.astype(float);r,g,b=z[:,:,:,0],z[:,:,:,1],z[:,:,:,2]
   h,w=raw.shape[1:3];yy,xx=np.mgrid[:h,:w]
@@ -28,8 +28,10 @@ def main():
    plate=np.median(decode(a.video,53,.35,box),axis=0)
    diff=z-plate[None];keep=(diff.max(axis=-1)>12)&(b>r*.65)&(b>g*.65)&(b>80)
    # Stable filmed actor/weapon core, explicit occlusion rather than invented fill.
-   core=((xx-161)/22)**2+((yy-191)/56)**2<1
+   core=((xx-155)/68)**2+((yy-190)/70)**2<1
    keep[:,core]=False;keep[:,:76]=False
+   keep &= ~((r>g*1.20)&(r>b*1.15))
+   keep[:,186:230,82:136]=False
    support=((xx-161)/100)**2+((yy-178)/135)**2<1;keep &=support[None]
   elif ident==39:
    keep=(b>155)&(b>r*1.10)&(b>g*1.02)&(g>95)
@@ -37,10 +39,10 @@ def main():
    keep[:,220:]=False
   elif ident==41:
    keep=(g>205)&(g>r*.95)&(b>115)&(g>b*.90)
-   keep &= (((xx-170)/154)**2+((yy-147)/144)**2<1)[None]
+   keep &= (((xx-260)/78)**2+((yy-140)/115)**2<1)[None]
   elif ident==42:
    keep=(r>225)&(g>155)&(b>65)&(r>g*.96)&(g>b*1.1)
-   keep &= (((xx-110)/88)**2+((yy-150)/137)**2<1)[None]
+   keep &= (((xx-55)/67)**2+((yy-150)/120)**2<1)[None]
   else:
    keep=(r>115)&(abs(r-g)<26)&(abs(g-b)<27)&((z-plate[None]).max(axis=-1)>26)
    keep &= (((xx-130)/110)**2+((yy-132)/104)**2<1)[None]
@@ -48,7 +50,10 @@ def main():
   keep[:,:12]=False
   for i in range(len(keep)):
    lab,n=ndimage.label(keep[i]);sizes=np.bincount(lab.ravel());sizes[0]=0
-   keep[i]&=sizes[lab]>=(100 if ident==41 else 8)
+   keep[i]&=sizes[lab]>=(100 if ident==41 else 60 if ident==42 else 8)
+   if ident in (41,42):
+    for component,sl in enumerate(ndimage.find_objects(lab),1):
+     if sl is not None and sl[0].stop-sl[0].start<10:keep[i][lab==component]=False
   rgba=np.zeros((*raw.shape[:3],4),np.uint8)
   signal=np.clip((z-plate[None]-3)/(255-plate[None]).clip(20)*255,0,255).astype(np.uint8)
   rgba[:,:,:,:3]=signal;rgba[:,:,:,3]=keep.astype(np.uint8)*255;rgba[~keep]=0

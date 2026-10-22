@@ -40,7 +40,7 @@
           "blend": "SCREEN",
           "footOffsetY": 0,
           "sourceTiming": "OBSERVED_CAPTURE_20FPS",
-          "atlasSha256": "ad54ee91f9caf8331d3126286a24ef32d7b271617c337c4af765831f77e9298a"
+          "atlasSha256": "1136e74f28449e32a933c7f542417d373119082a239a876f11c968b573f06c29"
         }
       }
     },
@@ -82,7 +82,7 @@
           "blend": "SCREEN",
           "footOffsetY": 0,
           "sourceTiming": "OBSERVED_CAPTURE_20FPS",
-          "atlasSha256": "d1ea61f1a89c4635eecd9c237f30b06bb1e4f2d58ba52b8cb76a44cf8d31a7b1"
+          "atlasSha256": "53937f779d1ea0f77e8939f8e1771a0716769d4397baa0a411eaeb6a2f878d13"
         }
       }
     },
@@ -139,13 +139,13 @@
             50,
             50
           ],
-          "pivotX": 170,
-          "pivotY": 220,
+          "pivotX": 260,
+          "pivotY": 200,
           "scale": 0.3,
           "blend": "SCREEN",
           "footOffsetY": 0,
           "sourceTiming": "OBSERVED_CAPTURE_20FPS",
-          "atlasSha256": "c2c1b1697a78ca8d92386d35bf668e19480c32d4117a055fc74a991192257ddc"
+          "atlasSha256": "a68b99d4a4ebb51d4257d839eda218f38a24125fc4830f600442c2138562101d"
         }
       }
     },
@@ -170,13 +170,13 @@
             50,
             50
           ],
-          "pivotX": 110,
-          "pivotY": 270,
+          "pivotX": 55,
+          "pivotY": 210,
           "scale": 0.35,
           "blend": "SCREEN",
           "footOffsetY": 0,
           "sourceTiming": "OBSERVED_CAPTURE_20FPS",
-          "atlasSha256": "13bac9018f797287bbc5ad4440a16b714e7502b1418a971c2c9c91e23e7cf628"
+          "atlasSha256": "fee0752d9c86a0154699ca86d2070afb684de4e2c0b4deaa1e15550091b9c1ac"
         }
       }
     }

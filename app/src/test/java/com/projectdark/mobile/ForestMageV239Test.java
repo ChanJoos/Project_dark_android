@@ -22,6 +22,7 @@ public class ForestMageV239Test {
  }
  @Test public void originalForestPoseRegistrationPreservesNativeFootAndShowsEachDirection()throws Exception{
   String[] ids={"POTE_RED","POTE_GREEN","POTE_PURPLE","POTE_SILVER","POTE_TREANT","POTE_LYCAN","POTE_GNOLL","POTE_WOLFRIDER","POTE_ANTLION","POTE_ANTGIANT","POTE_SILVERWOLF"};
+  assertEquals(41f,PoteForestMonsterShowcase.nameOffset("POTE_PURPLE"),0f);assertEquals(59f,PoteForestMonsterShowcase.nameOffset("POTE_WOLFRIDER"),0f);
   PoteFieldRenderer renderer=new PoteFieldRenderer();Bitmap grid=Bitmap.createBitmap(1152,1100,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(grid);c.drawColor(0xff514d3b);
   for(int j=0;j<ids.length;j++){
    String id=ids[j];assertTrue(PoteForestMonsterShowcase.originalPote(id));assertEquals(96f,PoteForestMonsterShowcase.bodyHeight(id),0f);
@@ -39,6 +40,13 @@ public class ForestMageV239Test {
    int z=i%3+1;change.invoke(v,"MAP_POTE_0"+z,false);assertEquals(new int[]{72,96,108}[z-1],s.monsters().size());
    WorldRuntimeAdapter world=TownInteriorTest.field(v,"poteFieldAdapter");PoteCampaignMapDef d=PoteCampaignMapDef.forId(s.currentMapId());world.camera().snapTo(d.entryX,d.entryY);
    Bitmap b=Bitmap.createBitmap(1536,864,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));
+   PoteFieldRenderer renderer=TownInteriorTest.field(v,"poteFieldRenderer");
+   long retained=0;for(String field:new String[]{"cache","hitCache","curseCache","curseHitCache"}){
+    java.util.Map<?,?> entries=(java.util.Map<?,?>)ForestPixelCacheTest.field(renderer,field);int monsters=0;
+    for(java.util.Map.Entry<?,?> e:entries.entrySet())if(String.valueOf(e.getKey()).startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&e.getValue() instanceof Bitmap){monsters++;retained+=((Bitmap)e.getValue()).getAllocationByteCount();}
+    assertTrue(field+" current-map textures "+monsters,monsters<=60);
+   }assertTrue("Four-state monster byte budget "+retained,retained<=35389440L);
+   assertTrue(((java.util.Map<?,?>)ForestPixelCacheTest.field(renderer,"floorChunks")).size()<=32);
    if(i<3)RogueRepairV232Test.save(b,"v239-forest-"+z);b.recycle();
   }
  }

@@ -49,6 +49,14 @@ public final class PoteForestMonsterShowcase {
   // V161 calibrates occupied silhouette against the same-frame source player.
   public static float bodyWidth(String id){String s=species(id);float calibrated=s==null?-1:AbelSpriteCalibration.width(s);if(calibrated>0)return calibrated;return s!=null&&s.endsWith("KOATL")?104f:bodyHeight(id);}
   public static boolean originalPote(String id){String key=ART.get(species(id));return key!=null&&key.startsWith("original_v239/");}
+  /** Text sits above the occupied source silhouette, independent of the padded 192px texture. */
+  public static float nameOffset(String id){
+    if(!originalPote(id))return bodyHeight(id)-11f;
+    String s=species(id);if(s.contains("ANTGIANT")||s.contains("ANTLION"))return 75f;
+    if(s.contains("TREANT"))return 68f;if(s.contains("WOLFRIDER"))return 59f;
+    if(s.contains("LYCAN")||s.contains("GNOLL"))return 54f;
+    if(s.contains("SILVERWOLF"))return 45f;return 41f;
+  }
   public static float bodyHeight(String id){if(originalPote(id))return 96f;String s=species(id);float calibrated=s==null?-1:AbelSpriteCalibration.height(s);if(calibrated>0)return calibrated;if("LYK_ARIEL".equals(s))return 110f;if("LYK_TYRANT".equals(s))return 95f;if("LYK_KOATL".equals(s))return 84f;if("LYK_ELECT_KOATL".equals(s))return 84f;if("LYK_PLANT_ARKPUS".equals(s)||"LYK_ARKPUS".equals(s))return 84f;if("LYK_BLUE_HACON".equals(s))return 72f;if("LYK_RED_HACON".equals(s))return 72f;if(s!=null&&s.startsWith("LYK_"))return 64f;if(s!=null&&s.startsWith("ABEL_KINGARK"))return 210f;if("ABEL_GAS".equals(s)||"ABEL_OCTOPUS".equals(s)||"ABEL_BERSERKER".equals(s)||s!=null&&s.startsWith("ABEL_OBS_"))return 60f;if("ABEL_GRAB".equals(s))return 52f;if("ABEL_PONG".equals(s))return 54f;if("ABEL_CATERPILLAR".equals(s))return 48f;if("ABEL_TURTLE".equals(s))return 52f;if("ABEL_ARKPUS".equals(s))return 60f;return s!=null&&s.contains("MANTIS")?180f:s!=null&&s.contains("TREANT")?80f:s!=null&&(s.contains("LYCAN")||s.contains("GNOLL")||s.contains("WOLFRIDER"))?72f:48f;}
   public static String species(String id){if(id==null)return null;int separator=id.indexOf('#');return separator<0?id:id.substring(0,separator);}
   public static boolean containsMonster(String id){return ART.containsKey(species(id));}

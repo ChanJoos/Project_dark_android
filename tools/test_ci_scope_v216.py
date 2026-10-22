@@ -10,6 +10,9 @@ class ScopeTest(unittest.TestCase):
         self.assertTrue(classify(['app/known.java'], {}, {'app/known.java':'abc'})[0])
     def test_documentation_does_not_need_game_regression(self):
         self.assertFalse(classify(['docs/CHAT_HANDOFF.md'], {}, {})[0])
+    def test_changed_historical_document_hash_does_not_trigger_game_regression(self):
+        self.assertFalse(classify(['docs/checkpoint.md'], {'docs/checkpoint.md':'new'}, {'docs/checkpoint.md':'old'})[0])
+        self.assertTrue(classify(['docs/checkpoint.md'], {}, {}, True)[0])
     def test_final_integration_forces_full(self):
         self.assertTrue(classify([], {}, {}, True)[0])
 if __name__ == '__main__':

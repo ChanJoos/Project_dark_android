@@ -1,4 +1,4 @@
-"""Bounded V222 candidate gate from the last full-verified source.
+"""Exact reviewed-blob candidate gate from the last full-verified source.
 Only reviewed exact runtime blobs qualify; unknown changes fail back to full CI.
 Final integration uses manual full verification or the full-regression PR label.
 """
@@ -18,12 +18,15 @@ def classify(paths, hashes, expected, force_full=False):
     if force_full:
         return True, 'explicit final/full verification'
     for p in paths:
+        # Documentation may carry historical reviewed hashes; its current bytes do not change gameplay.
+        if p.startswith(("docs/", "verification/")):
+            continue
         if p in expected:
             if hashes.get(p) != expected[p]:
                 return True, 'unreviewed blob: ' + p
         elif not (p.startswith('docs/') or p.startswith('verification/') or p in CONFIG):
             return True, 'unreviewed path: ' + p
-    return False, 'reviewed V222 original entry/door source joins and equivalent dense collision allocation scope; focused paired/runtime workflow required'
+    return False, 'reviewed exact runtime blobs; task-specific focused workflow required; final integration remains full'
 
 def main():
     expected = json.loads((ROOT/'tools/ci_scope_v216.json').read_text())
