@@ -115,6 +115,7 @@ jobs:
               python3 - <<'GUARD'
           import subprocess
           base='261b73b7bca37ac0a9637c0423157d5f56b5eb3d'
+          subprocess.run(['git','fetch','--depth=1','origin',base],check=True)
           allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','docs/V234_ROGUE_COMBAT_CHECKPOINT.md','app/src/test/java/com/projectdark/mobile/RogueReviewV229Test.java','app/src/test/java/com/projectdark/mobile/SkillSpatialContractTest.java'}
           changed=set(subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines())
           assert changed <= allowed, changed-allowed
