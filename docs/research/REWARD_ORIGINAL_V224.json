@@ -1,0 +1,3529 @@
+{
+  "revision": "V224_REWARD_ORIGINAL_AUDIT",
+  "asOfKST": "2026-10-22",
+  "sourceCommit": "111df324af03aa4111942a417983dbaed9b6ed42",
+  "runtimeSource": "f79f354459007d6fe2cc214319db7dba278ebbd7",
+  "policy": {
+    "status": "AUDIT_COMPLETE_WITH_UNRESOLVED_ORIGINAL_FACTS; NOT_RUNTIME_CONFIG",
+    "scope": "현재68종/보상프로필(호러40속성조합을10외형으로집계), 출현여부포함. 자료만있는미구현몬스터는별도보류.",
+    "versionPolicy": "사용자영상/기존복원시대와현행공식분리.최신공지자동소급없음.확정목표시대는원본영상메타/원작버전으로추가바인딩.",
+    "rateDefinition": "1회유효처치·한아이템·명시된조건에서추첨되는확률.완료/NPC/위치/채집은처치확률과별도분모.",
+    "probabilityUnit": "0..1; null=원작미공개/미확인/적용대상아님, 절대로0%로해석금지",
+    "allowedNumericRates": "공식명시수치,조건부확정지급의명시적정책표현,실제k/n관측+표본조건만허용.이번원작일반드랍중새로확정한0<p<1수치없음.",
+    "unknownHandling": "확률임의생성금지.원작드랍가능품목의미확인수치로0%판정금지.현재기능정지나기존임시률덮어쓰기는이감사에포함하지않음.",
+    "rollTiming": "조건판정→조건별드랍풀→그룹/개인분모확정→1회사망추첨→결과고정→인벤/미수령보관→영속화.수령실패/재접속재추첨금지.",
+    "questRules": "선행수락/단계/소지상한/완료후드랍/거래/파티공유는아이템별근거필요.일괄퀘스트중전용또는완료후삭제규칙추정금지.",
+    "quantities": "수집필요개수와1회드랍수량분리.미확인수량은null.중복장비직업·성별·옵션유지.",
+    "experienceRules": "기본EXP·관측EXP·가호·레벨차·룹배율·분배·시대분리.원작공식이없는배율을새로만들지않음.현재Lv99누적상한규칙은보존.",
+    "goldRules": "고정금화/랜덤금전더미/아이템판매가/NPC완료금화를분리.상점매입가격은원작버전근거없으면미확정.",
+    "autoLoot": "기존승인대로인벤자동지급;원작바닥줍기복원안함.저장중복방지·미수령처리는보상계약으로검증.",
+    "rateMeasurement": "관측률은 조건에 맞는 처치 N회 중 해당 품목을 한 번 이상 얻은 처치 K회의 K/N. 여러개 드랍의 총개수/N(기대수량)와 구분한다. 버전·지역·퀘스트단계·파티·가호·관측기간·표본수를 보존하고 95% 신뢰구간을 붙인다. 0회 획득은 서버확률0% 증거가 아니다. 이번 자료에는 필요한 분모가 없어 수치추정을 하지 않았다.",
+    "outOfScope": "새몬스터/던전/승급길/퀵던전추가없음.이번은설계감사와정의이며런타임수치변경·APK생성없음."
+  },
+  "findings": [
+    {
+      "id": "F13",
+      "severity": "높음",
+      "title": "퀘스트 재료 수집과 실제 인벤토리의 연결 부족",
+      "detail": "현재 캠페인 처치 처리는 KILL/PAIR 카운트를 올리고, C06/M15 완료 시 시험용 정제된 정수를 3개 지급한다. 실제 원작 정수 드랍→인벤 수집→NPC 제출 과정이 아니다. 원작 재료 획득률을 정의해도 이 경로를 연결하지 않으면 퀘스트 재료가 사냥 보상으로 작동하지 않는다."
+    },
+    {
+      "id": "F01",
+      "severity": "높음",
+      "title": "보상표를 원작 설계로 승인할 수 없음",
+      "detail": "현재 68종 중 대부분의 EXP/Gold가 모바일 임시 프로필이다. 원작 확인 상태와 실제 사용값을 별도 저장해야 한다."
+    },
+    {
+      "id": "F02",
+      "severity": "높음",
+      "title": "관측 경험치와 기본 경험치 혼동",
+      "detail": "2008년 센스 글은 레벨·파티원 수에 따른 경험치 변동을 명시한다. 현재 정령 40,000 / 광폭자 95,000 / 폭군 1,280,575를 당시 관측 308,950 / 606,252 / 780,575로 곧바로 교체하는 것도 오류다. 버전·솔로/파티·가호 조건 확인이 필요하다."
+    },
+    {
+      "id": "F03",
+      "severity": "높음",
+      "title": "광산 획득률은 원작 근거 없는 임시값",
+      "detail": "방어구 350/10,000=3.5%, 무기 200/10,000=2%다. 기대 처치 약 28.57/50회는 임시 수치의 수학적 의미이며 원작 사냥 속도의 증거가 아니다. 두 로브의 동시 판정과 공유 드랍은 개체·갱도 근거가 부족하다."
+    },
+    {
+      "id": "F04",
+      "severity": "높음",
+      "title": "재료·잡템·장비·퀘스트 완료 보상을 한 테이블로 합치면 안 됨",
+      "detail": "정수·뿔·뿌리·날개·갈기털·오묘한보석·쇠조각·왕의문장·비늘 등이 누락되어 있다. 맨티스 반지와 NPC 200만G, 킹아크 반지, 파파야방패는 완료 조건을 별도로 관리한다."
+    },
+    {
+      "id": "F05",
+      "severity": "높음",
+      "title": "원작 시대가 혼재됨",
+      "detail": "2005년 완료 보상, 2008년 센스, 2017년 혼·캅셀, 2023년 골드, 2024년 정수, 2025년 경험치, 2026년 호러 드랍 제거를 한 버전의 수치로 합치지 않는다. 기존 영상의 복원 범위와 최신 공식 자료를 따로 대조한다."
+    },
+    {
+      "id": "F06",
+      "severity": "높음",
+      "title": "같은 이름/그림이어도 드랍표는 지역·개체별",
+      "detail": "노비스 독거미알을 죽마 독거미에 연결하지 않는다. 드라코에는 갱도별 드랍 차이 기록이 있다. 헬 로브는 남녀·직업별 항목을 같은 그림이라는 이유로 합치지 않는다."
+    },
+    {
+      "id": "F07",
+      "severity": "중간",
+      "title": "현재 출현하지 않는 보상 프로필",
+      "detail": "강력한놀·강력한울프라이더·강력한트렌트·캠페인정예놀·좀비는 보상만 등록되어 있거나 일반 출현 풀에 없다. 보상 등록만으로 획득 가능하다고 보고하지 않는다."
+    },
+    {
+      "id": "F08",
+      "severity": "높음",
+      "title": "사냥 보상 일부 실패 처리",
+      "detail": "자동 지급이 한도 초과로 실패하면 사냥 보상은 실패 품목을 이력에만 남기고 EXP/Gold는 지급한다. 보관함·재수령이 없어 당첨품이 누락될 수 있다. 현재 검사 대상은 전체 슬롯 수가 아니라 종류별 스택 한도다."
+    },
+    {
+      "id": "F09",
+      "severity": "중간",
+      "title": "획득량/희귀성 수식 검증 범위",
+      "detail": "현재 추첨은 사망 순번과 개체 ID의 해시를 사용한다. 10,000구간과 비교한 값은 설정률이며 원작 실측률이 아니다. 결과 고정과 재접속 재추첨 방지를 지급·저장과 함께 검증해야 한다."
+    },
+    {
+      "id": "F10",
+      "severity": "중간",
+      "title": "처치목표와 아이템 수집을 구분",
+      "detail": "울프라이더 5마리·앤트자이언트 5마리는 처치 목표이며 드랍 5개가 아니다. 수집 필요 개수는 1회당 수량이 아니다. 포스파늄·팬던트는 맵 생성·위치 획득을 분리한다."
+    },
+    {
+      "id": "F11",
+      "severity": "중간",
+      "title": "게임 경제와 성장 경로 평가 유보",
+      "detail": "현재 HP·스킬·출현 수도 조정되어 있어 EXP/HP의 단순 비교로 원작 정상성을 판정할 수 없다. 획득·판매 골드, 물약 소모, 시간당 처치 수, 성장 경험치와 가호 조건을 함께 검증해야 한다."
+    },
+    {
+      "id": "F12",
+      "severity": "중간",
+      "title": "기존 마스터의 서술도 확률 근거 아님",
+      "detail": "기존 Monster_Drop의 높음·낮음은 프로젝트 밸런스 표시이며 원작 수치 공개가 아니다. 은빛늑대 일반 잡템은 이름도 없다. 과거 바닥 소유방식은 폐기됐으며 승인된 인벤 자동 지급이 우선한다."
+    }
+  ],
+  "monsters": [
+    {
+      "id": "milles_mouse_proto",
+      "name": "여관 생쥐",
+      "region": "밀레스",
+      "currentExp": 2500,
+      "currentGold": 10,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_RED",
+      "name": "레드팜팻",
+      "region": "포테의숲",
+      "currentExp": 5000,
+      "currentGold": 12,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R018"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_GREEN",
+      "name": "그린팜팻",
+      "region": "포테의숲",
+      "currentExp": 5500,
+      "currentGold": 13,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_PURPLE",
+      "name": "퍼플팜팻",
+      "region": "포테의숲",
+      "currentExp": 9000,
+      "currentGold": 20,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R002",
+        "R020"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_SILVER",
+      "name": "실버팜팻",
+      "region": "포테의숲",
+      "currentExp": 11000,
+      "currentGold": 24,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R003",
+        "R019"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_TREANT",
+      "name": "트렌트",
+      "region": "포테의숲",
+      "currentExp": 16000,
+      "currentGold": 35,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R004",
+        "R016"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_ANTLION",
+      "name": "앤트라이온",
+      "region": "포테의숲",
+      "currentExp": 18000,
+      "currentGold": 38,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R018"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_GNOLL",
+      "name": "놀",
+      "region": "포테의숲",
+      "currentExp": 20000,
+      "currentGold": 42,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R017"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_LYCAN",
+      "name": "라이칸스로프",
+      "region": "포테의숲",
+      "currentExp": 22000,
+      "currentGold": 46,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_WOLFRIDER",
+      "name": "울프라이더",
+      "region": "포테의숲",
+      "currentExp": 26000,
+      "currentGold": 54,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_ANTGIANT",
+      "name": "앤트자이언트",
+      "region": "포테의숲",
+      "currentExp": 28000,
+      "currentGold": 58,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R005"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_SILVERWOLF",
+      "name": "은빛늑대",
+      "region": "포테의숲",
+      "currentExp": 36000,
+      "currentGold": 74,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R006"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_STRONG_GNOLL",
+      "name": "강력한놀",
+      "region": "포테의숲",
+      "currentExp": 48000,
+      "currentGold": 96,
+      "spawnStatus": "보상만 등록; 일반 풀 미배치",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R015"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_MANTIS",
+      "name": "자이언트맨티스",
+      "region": "포테의숲",
+      "currentExp": 0,
+      "currentGold": 0,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R012",
+        "R013",
+        "R014"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_STRONG_WOLFRIDER",
+      "name": "강력한울프라이더",
+      "region": "포테의숲",
+      "currentExp": 52000,
+      "currentGold": 104,
+      "spawnStatus": "보상만 등록; 일반 풀 미배치",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R015",
+        "R021"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_STRONG_TREANT",
+      "name": "강력한트렌트",
+      "region": "포테의숲",
+      "currentExp": 56000,
+      "currentGold": 112,
+      "spawnStatus": "보상만 등록; 일반 풀 미배치",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R015"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_CAMPAIGN_ELITE_GNOLL",
+      "name": "캠페인 정예 놀(프로젝트 등록명)",
+      "region": "포테의숲",
+      "currentExp": 56000,
+      "currentGold": 160,
+      "spawnStatus": "보상만 등록; 일반 풀 미배치",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "POTE_SPIRIT",
+      "name": "포테의정령",
+      "region": "포테의숲",
+      "currentExp": 40000,
+      "currentGold": 82,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "현재값과2008 센스관측 불일치. 파티/레벨/가호·시대 조건 미확인, 관측값을 기본EXP로 덮어쓰기 금지",
+      "originalExpObservation": 308950,
+      "sourceIds": [
+        "S01",
+        "S23",
+        "S25"
+      ],
+      "rewardRuleIds": [
+        "R007",
+        "R008",
+        "R009",
+        "R010",
+        "R022"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "combat_dummy_01",
+      "name": "훈련 몬스터 A",
+      "region": "밀레스",
+      "currentExp": 2500,
+      "currentGold": 25,
+      "spawnStatus": "훈련용",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작대상 아님; 프로젝트 튜토리얼",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R084"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "combat_dummy_02",
+      "name": "훈련 몬스터 B",
+      "region": "밀레스",
+      "currentExp": 2500,
+      "currentGold": 25,
+      "spawnStatus": "훈련용",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작대상 아님; 프로젝트 튜토리얼",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R085"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "combat_dummy_03",
+      "name": "훈련 몬스터 C",
+      "region": "밀레스",
+      "currentExp": 2500,
+      "currentGold": 25,
+      "spawnStatus": "훈련용",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작대상 아님; 프로젝트 튜토리얼",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R086"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "ABEL_TURTLE",
+      "name": "터틀",
+      "region": "아벨해안",
+      "currentExp": 45000,
+      "currentGold": 135,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R023",
+        "R026"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_ARKPUS",
+      "name": "아크퍼스",
+      "region": "아벨해안",
+      "currentExp": 48000,
+      "currentGold": 165,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_PONG",
+      "name": "퐁퐁이",
+      "region": "아벨해안",
+      "currentExp": 43000,
+      "currentGold": 140,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R024"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_CATERPILLAR",
+      "name": "애벌레",
+      "region": "아벨해안",
+      "currentExp": 44000,
+      "currentGold": 145,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_GRAB",
+      "name": "그래브",
+      "region": "아벨해안",
+      "currentExp": 52000,
+      "currentGold": 155,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_OBS_SLATE",
+      "name": "회청색 몬스터",
+      "region": "아벨해안",
+      "currentExp": 50000,
+      "currentGold": 150,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_OCTOPUS",
+      "name": "문어",
+      "region": "아벨해안",
+      "currentExp": 58000,
+      "currentGold": 170,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_EGG",
+      "name": "보라",
+      "region": "아벨해안",
+      "currentExp": 55000,
+      "currentGold": 160,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_GAS",
+      "name": "가스",
+      "region": "아벨해안",
+      "currentExp": 60000,
+      "currentGold": 175,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_OBS_PURPLE_MAW",
+      "name": "튜터",
+      "region": "아벨해안",
+      "currentExp": 62000,
+      "currentGold": 180,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_BERSERKER",
+      "name": "광폭자",
+      "region": "아벨해안",
+      "currentExp": 95000,
+      "currentGold": 190,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "현재값과2008 센스관측 불일치. 파티/레벨/가호·시대 조건 미확인, 관측값을 기본EXP로 덮어쓰기 금지",
+      "originalExpObservation": 606252,
+      "sourceIds": [
+        "S01",
+        "S23",
+        "S25"
+      ],
+      "rewardRuleIds": [
+        "R011"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_KINGARK_FAKE",
+      "name": "가짜 킹아크퍼스",
+      "region": "아벨해안",
+      "currentExp": 110000,
+      "currentGold": 220,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R030"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "ABEL_KINGARK",
+      "name": "킹아크퍼스",
+      "region": "아벨해안",
+      "currentExp": 150000,
+      "currentGold": 300,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R031"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R027",
+        "R028",
+        "R029"
+      ]
+    },
+    {
+      "id": "LYK_BLUE_HACON",
+      "name": "블루하콘",
+      "region": "뤼케시온해안",
+      "currentExp": 196250,
+      "currentGold": 240,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R032"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_RED_HACON",
+      "name": "레드하콘",
+      "region": "뤼케시온해안",
+      "currentExp": 200000,
+      "currentGold": 250,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R033"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_ARKPUS",
+      "name": "아크퍼스",
+      "region": "뤼케시온해안",
+      "currentExp": 170000,
+      "currentGold": 210,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_PLANT_ARKPUS",
+      "name": "플렌트아크퍼스",
+      "region": "뤼케시온해안",
+      "currentExp": 185000,
+      "currentGold": 220,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_KAKAPO",
+      "name": "카카포",
+      "region": "뤼케시온해안",
+      "currentExp": 215000,
+      "currentGold": 270,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R034"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_POISON_KAKAPO",
+      "name": "포이즌카카포",
+      "region": "뤼케시온해안",
+      "currentExp": 230000,
+      "currentGold": 280,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R035"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_KOATL",
+      "name": "코아틀",
+      "region": "뤼케시온해안",
+      "currentExp": 240000,
+      "currentGold": 300,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_ELECT_KOATL",
+      "name": "일렉코아틀",
+      "region": "뤼케시온해안",
+      "currentExp": 248570,
+      "currentGold": 310,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_TYRANT",
+      "name": "해안의폭군",
+      "region": "뤼케시온해안",
+      "currentExp": 1280575,
+      "currentGold": 500,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "현재값과2008 센스관측 불일치. 파티/레벨/가호·시대 조건 미확인, 관측값을 기본EXP로 덮어쓰기 금지",
+      "originalExpObservation": 780575,
+      "sourceIds": [
+        "S01",
+        "S23",
+        "S25"
+      ],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "LYK_ARIEL",
+      "name": "아리엘",
+      "region": "뤼케시온해안",
+      "currentExp": 0,
+      "currentGold": 0,
+      "spawnStatus": "시험 보스",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R036"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R037",
+        "R038",
+        "R039"
+      ]
+    },
+    {
+      "id": "HORROR_00_*",
+      "name": "남자 전사",
+      "region": "호러캐슬",
+      "currentExp": 183000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R074"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_01_*",
+      "name": "여자 전사",
+      "region": "호러캐슬",
+      "currentExp": 187000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R075"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_02_*",
+      "name": "남자 도적",
+      "region": "호러캐슬",
+      "currentExp": 154000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R076"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_03_*",
+      "name": "여자 도적",
+      "region": "호러캐슬",
+      "currentExp": 158000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R077"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_04_*",
+      "name": "남자 마법사",
+      "region": "호러캐슬",
+      "currentExp": 167000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R078"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_05_*",
+      "name": "여자 마법사",
+      "region": "호러캐슬",
+      "currentExp": 171000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R079"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_06_*",
+      "name": "남자 성직자",
+      "region": "호러캐슬",
+      "currentExp": 175000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R080"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_07_*",
+      "name": "여자 성직자",
+      "region": "호러캐슬",
+      "currentExp": 179000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R081"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_08_*",
+      "name": "남자 무도가",
+      "region": "호러캐슬",
+      "currentExp": 150000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R082"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "HORROR_09_*",
+      "name": "여자 무도가",
+      "region": "호러캐슬",
+      "currentExp": 200000,
+      "currentGold": 0,
+      "spawnStatus": "출현/4속성 동일보상",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "원작 개체별 EXP 미검증; 2026 드랍제거 공지 별도",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S23",
+        "S24"
+      ],
+      "rewardRuleIds": [
+        "R083"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": []
+    },
+    {
+      "id": "MINE_00",
+      "name": "광산 적발 병사",
+      "region": "카스마늄광산",
+      "currentExp": 1400000,
+      "currentGold": 800,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_01",
+      "name": "광산 적발 검병",
+      "region": "카스마늄광산",
+      "currentExp": 1520000,
+      "currentGold": 890,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_02",
+      "name": "광산 적발 근위병",
+      "region": "카스마늄광산",
+      "currentExp": 1640000,
+      "currentGold": 980,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_03",
+      "name": "그림록퀸",
+      "region": "카스마늄광산",
+      "currentExp": 1760000,
+      "currentGold": 1070,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R047"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_04",
+      "name": "드라코",
+      "region": "카스마늄광산",
+      "currentExp": 1880000,
+      "currentGold": 1160,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R050",
+        "R051",
+        "R052",
+        "R053",
+        "R054",
+        "R055"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_05",
+      "name": "헬블씨프",
+      "region": "카스마늄광산",
+      "currentExp": 2000000,
+      "currentGold": 1250,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R045",
+        "R056"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_06",
+      "name": "헬블루나이트",
+      "region": "카스마늄광산",
+      "currentExp": 2120000,
+      "currentGold": 1340,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R046",
+        "R057"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_07",
+      "name": "헬소서러스",
+      "region": "카스마늄광산",
+      "currentExp": 2240000,
+      "currentGold": 1430,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R059",
+        "R060"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_08",
+      "name": "헬몽크",
+      "region": "카스마늄광산",
+      "currentExp": 2360000,
+      "currentGold": 1520,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R058"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "MINE_09",
+      "name": "헬소서러",
+      "region": "카스마늄광산",
+      "currentExp": 2480000,
+      "currentGold": 1610,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "모바일 임시 설정; 원작 수치 미검증",
+      "originalExpObservation": null,
+      "sourceIds": [],
+      "rewardRuleIds": [
+        "R061",
+        "R062"
+      ],
+      "itemReview": "연결된획득규칙의근거·시대·미공개확률을각각확인",
+      "regionalRuleIds": [
+        "R048",
+        "R049",
+        "R063",
+        "R064",
+        "R065",
+        "R066",
+        "R067",
+        "R068",
+        "R069",
+        "R070"
+      ]
+    },
+    {
+      "id": "DEATH_00",
+      "name": "좀비",
+      "region": "죽음의마을",
+      "currentExp": 300000,
+      "currentGold": 450,
+      "spawnStatus": "보상만 등록; 미배치",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "미출현 등록값; 지역엑쿠보고는개별종확정아님",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S11",
+        "S23"
+      ],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R071",
+        "R072"
+      ]
+    },
+    {
+      "id": "DEATH_01",
+      "name": "니크르",
+      "region": "죽음의마을",
+      "currentExp": 750000,
+      "currentGold": 630,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "사용자 영상근사75만/요청값; 원작 순수 기본EXP 확정 아님; 지역엑쿠보고는개별종확정아님",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S11",
+        "S23"
+      ],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R071",
+        "R072"
+      ]
+    },
+    {
+      "id": "DEATH_02",
+      "name": "웨어렛",
+      "region": "죽음의마을",
+      "currentExp": 750000,
+      "currentGold": 810,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "사용자 영상근사75만/요청값; 원작 순수 기본EXP 확정 아님; 지역엑쿠보고는개별종확정아님",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S11",
+        "S23"
+      ],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R071",
+        "R072"
+      ]
+    },
+    {
+      "id": "DEATH_03",
+      "name": "독거미",
+      "region": "죽음의마을",
+      "currentExp": 750000,
+      "currentGold": 990,
+      "spawnStatus": "출현",
+      "originalBaseExp": null,
+      "originalGold": null,
+      "expReview": "사용자 영상근사75만/요청값; 원작 순수 기본EXP 확정 아님; 지역엑쿠보고는개별종확정아님",
+      "originalExpObservation": null,
+      "sourceIds": [
+        "S11",
+        "S23"
+      ],
+      "rewardRuleIds": [],
+      "itemReview": "개별드랍원문미확인.아이템없음이나0%로결론내리지않음",
+      "regionalRuleIds": [
+        "R071",
+        "R072"
+      ]
+    }
+  ],
+  "rewardRules": [
+    {
+      "id": "R001",
+      "targets": [
+        "OUT_OF_SCOPE_NOVICE_BROWN_PAMPAT"
+      ],
+      "item": "팜팻의정수",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S02",
+        "S10"
+      ],
+      "condition": "팜팻의변화 단계; 수집10개는 드랍수량/확률이 아님",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "레드/그린팜팻에 매핑 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R002",
+      "targets": [
+        "POTE_PURPLE"
+      ],
+      "item": "퍼플팜팻의정수",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S02",
+        "S10"
+      ],
+      "condition": "3개 수집; 타캐릭 조달 가능 기록; 선행 필요여부 별도 검증",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R003",
+      "targets": [
+        "POTE_SILVER"
+      ],
+      "item": "실버팜팻의정수",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S02",
+        "S10"
+      ],
+      "condition": "3개 수집; 2024확률 상향 수치 미공개",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R004",
+      "targets": [
+        "POTE_TREANT"
+      ],
+      "item": "트랜트의뿌리",
+      "kind": "퀘스트/잡템",
+      "sourceIds": [
+        "S06"
+      ],
+      "condition": "8개 이야기 재료; 1회처치당 수량 미확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R005",
+      "targets": [
+        "POTE_ANTGIANT"
+      ],
+      "item": "앤트자이언트의날개",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S06"
+      ],
+      "condition": "맨티스 함정 관련; 아이템명 앤트/엔트 별칭 정규화 필요",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R006",
+      "targets": [
+        "POTE_SILVERWOLF"
+      ],
+      "item": "은빛늑대의갈기털",
+      "kind": "퀘스트/교환 재료",
+      "sourceIds": [
+        "S06",
+        "S26"
+      ],
+      "condition": "5개→가죽 교환. 필요갯수는 획득률 아님",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R007",
+      "targets": [
+        "POTE_SPIRIT"
+      ],
+      "item": "포테정령의뿔",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S02"
+      ],
+      "condition": "뿔 제출단계; 다른 캐릭터 조달 가능 기록",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R008",
+      "targets": [
+        "POTE_SPIRIT"
+      ],
+      "item": "세줄금반지",
+      "kind": "장비",
+      "sourceIds": [
+        "S01",
+        "S25"
+      ],
+      "condition": "관측자료상 가끔/금전. 금전더미의 존재가 고정82G 증거 아님",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R009",
+      "targets": [
+        "POTE_SPIRIT"
+      ],
+      "item": "강력한연필",
+      "kind": "장비",
+      "sourceIds": [
+        "S01",
+        "S25"
+      ],
+      "condition": "관측자료상 가끔/금전. 금전더미의 존재가 고정82G 증거 아님",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R010",
+      "targets": [
+        "POTE_SPIRIT"
+      ],
+      "item": "금전더미",
+      "kind": "골드 획득",
+      "sourceIds": [
+        "S01",
+        "S25"
+      ],
+      "condition": "관측자료상 가끔/금전. 금전더미의 존재가 고정82G 증거 아님",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R011",
+      "targets": [
+        "ABEL_BERSERKER"
+      ],
+      "item": "실버아쿠아링",
+      "kind": "장비",
+      "sourceIds": [
+        "S01"
+      ],
+      "condition": "2008개체 보고; 확률/수량 미공개",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R012",
+      "targets": [
+        "POTE_MANTIS"
+      ],
+      "item": "세줄금반지",
+      "kind": "완료/NPC 보상",
+      "sourceIds": [
+        "S05",
+        "S06"
+      ],
+      "condition": "맨티스 처치 후 보상방 여자NPC 완료",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 확정지급(정책 표현; 서버확률 실측 아님)",
+      "quantity": 1,
+      "current": "D03 완료로 반지1개 지급",
+      "review": "랜덤드랍으로 전환 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R013",
+      "targets": [
+        "POTE_MANTIS"
+      ],
+      "item": "금전 2,000,000G",
+      "kind": "완료/NPC 보상",
+      "sourceIds": [
+        "S05"
+      ],
+      "condition": "동일 완료거래",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 확정지급",
+      "quantity": 2000000,
+      "current": "D03는10,000G",
+      "review": "2005보상과 프로젝트조정200배 차이; 최신 적용값은 미확정",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R014",
+      "targets": [
+        "POTE_MANTIS"
+      ],
+      "item": "Lv41 도달",
+      "kind": "프로젝트 완료 보상",
+      "sourceIds": [
+        "S05"
+      ],
+      "condition": "D03 완료",
+      "originalProbability": null,
+      "probabilityStatus": "원작 근거 없음",
+      "quantity": null,
+      "current": "현재 자동 레벨 이정표",
+      "review": "원작 보스 보상으로 표시 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R015",
+      "targets": [
+        "POTE_STRONG_GNOLL",
+        "POTE_STRONG_WOLFRIDER",
+        "POTE_STRONG_TREANT"
+      ],
+      "item": "포테의정수",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S08",
+        "S09"
+      ],
+      "condition": "강력3종 유저보고/공식 지역확률상향; 현재 강력3종 미배치",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "현재 획득불가. 일반몹전체에 일괄 연결 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R016",
+      "targets": [
+        "POTE_TREANT"
+      ],
+      "item": "포장된 달인의책+2",
+      "kind": "성장 소비/잡템",
+      "sourceIds": [
+        "S22"
+      ],
+      "condition": "2017 직접획득 보고",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "후대 패치 아이템; 목표시대 매칭 필요",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R017",
+      "targets": [
+        "POTE_GNOLL"
+      ],
+      "item": "포장된 달인의책+3",
+      "kind": "성장 소비/잡템",
+      "sourceIds": [
+        "S22"
+      ],
+      "condition": "2017 직접획득 보고",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "후대 패치 아이템; 목표시대 매칭 필요",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R018",
+      "targets": [
+        "POTE_RED",
+        "POTE_ANTLION"
+      ],
+      "item": "혼 ㅎ1",
+      "kind": "축약명 미해결 관측",
+      "sourceIds": [
+        "S22"
+      ],
+      "condition": "2017기록 원문 축약 유지",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "정식 itemId/등급/속성 식별 전 드랍 활성화 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R019",
+      "targets": [
+        "POTE_SILVER"
+      ],
+      "item": "혼 ㅍ1",
+      "kind": "축약명 미해결 관측",
+      "sourceIds": [
+        "S22"
+      ],
+      "condition": "2017기록 원문 축약 유지",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "정식 itemId/등급/속성 식별 전 드랍 활성화 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R020",
+      "targets": [
+        "POTE_PURPLE"
+      ],
+      "item": "캅셀3",
+      "kind": "축약명 미해결 관측",
+      "sourceIds": [
+        "S22"
+      ],
+      "condition": "2017기록 원문 축약 유지",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "정식 itemId/등급/속성 식별 전 드랍 활성화 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R021",
+      "targets": [
+        "POTE_STRONG_WOLFRIDER"
+      ],
+      "item": "혼 ㅅ2 / 캅셀2",
+      "kind": "축약명 미해결 관측",
+      "sourceIds": [
+        "S22"
+      ],
+      "condition": "2017기록 원문 축약 유지",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "정식 itemId/등급/속성 식별 전 드랍 활성화 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R022",
+      "targets": [
+        "POTE_SPIRIT"
+      ],
+      "item": "혼 ㅎ2 / 캅셀1 / 캅셀3",
+      "kind": "축약명 미해결 관측",
+      "sourceIds": [
+        "S22"
+      ],
+      "condition": "2017기록 원문 축약 유지",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "정식 itemId/등급/속성 식별 전 드랍 활성화 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R023",
+      "targets": [
+        "ABEL_TURTLE"
+      ],
+      "item": "터틀껍질",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S03"
+      ],
+      "condition": "각2개 수집→대지의인장; 개별몬스터 귀속은 이름/기존마스터와 교차, 수량 미확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R024",
+      "targets": [
+        "ABEL_PONG"
+      ],
+      "item": "퐁퐁이조각",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S03"
+      ],
+      "condition": "각2개 수집→대지의인장; 개별몬스터 귀속은 이름/기존마스터와 교차, 수량 미확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R025",
+      "targets": [
+        "OUT_OF_SCOPE_ABEL_CRAB"
+      ],
+      "item": "게껍질",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S03"
+      ],
+      "condition": "각2개 수집→대지의인장; 개별몬스터 귀속은 이름/기존마스터와 교차, 수량 미확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R026",
+      "targets": [
+        "ABEL_TURTLE"
+      ],
+      "item": "오묘한보석",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S19"
+      ],
+      "condition": "2025터틀1존 포함 획득 관측; 다른 몬스터0%로 일반화 금지",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R027",
+      "targets": [
+        "REGION_ABEL_UNASSIGNED"
+      ],
+      "item": "아쿠아글러브",
+      "kind": "장비",
+      "sourceIds": [
+        "S07"
+      ],
+      "condition": "아벨해안 지역 획득; 몬스터별 미배분",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "모든 일반몹 동일확률 적용 근거 없음",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R028",
+      "targets": [
+        "REGION_ABEL_UNASSIGNED"
+      ],
+      "item": "산호각반",
+      "kind": "장비",
+      "sourceIds": [
+        "S07"
+      ],
+      "condition": "아벨해안 지역 획득; 몬스터별 미배분",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "모든 일반몹 동일확률 적용 근거 없음",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R029",
+      "targets": [
+        "REGION_ABEL_UNASSIGNED"
+      ],
+      "item": "실버아쿠아링",
+      "kind": "장비",
+      "sourceIds": [
+        "S01",
+        "S07"
+      ],
+      "condition": "광폭자와의 확인 관계 외 일반몹 전원에게 분배 금지",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R030",
+      "targets": [
+        "ABEL_KINGARK_FAKE"
+      ],
+      "item": "문어다리",
+      "kind": "이벤트 진행 재료",
+      "sourceIds": [
+        "S03"
+      ],
+      "condition": "가짜 보스 후 파티원이 각각 조달",
+      "originalProbability": null,
+      "probabilityStatus": "공략상 드랍 관계; 개인100% 수량은 미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "한마리당5개/개인별100% 추정 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R031",
+      "targets": [
+        "ABEL_KINGARK"
+      ],
+      "item": "세줄황금반지",
+      "kind": "완료/NPC 보상",
+      "sourceIds": [
+        "S03"
+      ],
+      "condition": "진짜보스 처치 후 소녀NPC 완료",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 확정지급",
+      "quantity": 1,
+      "current": "미지급",
+      "review": "세줄금반지와 별도 원작명; 같은 옵션/그림을 이유로 동일 ID 단정 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R032",
+      "targets": [
+        "LYK_BLUE_HACON"
+      ],
+      "item": "블루하콘의무기",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S04"
+      ],
+      "condition": "각2개→에리얼 진행; 킹아크 완료자 재료면제",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R033",
+      "targets": [
+        "LYK_RED_HACON"
+      ],
+      "item": "레드하콘의다리",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S04"
+      ],
+      "condition": "각2개→에리얼 진행; 킹아크 완료자 재료면제",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R034",
+      "targets": [
+        "LYK_KAKAPO"
+      ],
+      "item": "카카포껍질",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S04"
+      ],
+      "condition": "각2개→에리얼 진행; 킹아크 완료자 재료면제",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R035",
+      "targets": [
+        "LYK_POISON_KAKAPO"
+      ],
+      "item": "포이즌카카포껍질",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S04"
+      ],
+      "condition": "각2개→에리얼 진행; 킹아크 완료자 재료면제",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R036",
+      "targets": [
+        "LYK_ARIEL"
+      ],
+      "item": "파파야방패",
+      "kind": "보스/완료 보상",
+      "sourceIds": [
+        "S04"
+      ],
+      "condition": "이벤트 보스 완료",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 확정지급",
+      "quantity": 1,
+      "current": "현재 시험보스0EXP/0G; 방패 미지급",
+      "review": "일반무한젠 랜덤 드랍으로 전환 금지; 반복/파티원 조건 보강",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R037",
+      "targets": [
+        "REGION_RUCESION_UNASSIGNED"
+      ],
+      "item": "아쿠아레더글러브",
+      "kind": "장비 후보",
+      "sourceIds": [
+        "S07"
+      ],
+      "condition": "기존마스터 지역 관계/장비가이드 추천, 개체별원문 부족",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "추천/착용레벨은 드랍처 증거 아님; 몬스터와 확률 보류",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R038",
+      "targets": [
+        "REGION_RUCESION_UNASSIGNED"
+      ],
+      "item": "아쿠아각반",
+      "kind": "장비 후보",
+      "sourceIds": [
+        "S07"
+      ],
+      "condition": "기존마스터 지역 관계/장비가이드 추천, 개체별원문 부족",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "추천/착용레벨은 드랍처 증거 아님; 몬스터와 확률 보류",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R039",
+      "targets": [
+        "REGION_RUCESION_UNASSIGNED"
+      ],
+      "item": "골드아쿠아링",
+      "kind": "장비 후보",
+      "sourceIds": [
+        "S07"
+      ],
+      "condition": "기존마스터 지역 관계/장비가이드 추천, 개체별원문 부족",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "추천/착용레벨은 드랍처 증거 아님; 몬스터와 확률 보류",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R040",
+      "targets": [
+        "RUCESION_LOBBY_RESOURCE"
+      ],
+      "item": "포스파늄",
+      "kind": "맵 주기 생성",
+      "sourceIds": [
+        "S20",
+        "S21"
+      ],
+      "condition": "대기실 자원 생성;2026주기/개수 변경",
+      "originalProbability": null,
+      "probabilityStatus": "처치확률 적용대상 아님",
+      "quantity": null,
+      "current": "미지급",
+      "review": "몬스터 드랍에 넣지 않음; 현행 생성량/주기 미공개",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R041",
+      "targets": [
+        "POTE_ROUTE_NPC"
+      ],
+      "item": "투르크의팬던트",
+      "kind": "조건부 위치 획득",
+      "sourceIds": [
+        "S05"
+      ],
+      "condition": "투르크의사면 완료 후 지정위치",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 위치획득",
+      "quantity": 1,
+      "current": "미지급",
+      "review": "맨티스 사망 드랍 아님",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R042",
+      "targets": [
+        "ABEL_ROUTE_NPC"
+      ],
+      "item": "대지의인장",
+      "kind": "NPC 교환",
+      "sourceIds": [
+        "S03"
+      ],
+      "condition": "터틀껍질/퐁퐁이조각/게껍질 각2 제출",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 교환지급",
+      "quantity": 1,
+      "current": "미지급",
+      "review": "킹아크 드랍 아님",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R043",
+      "targets": [
+        "ABEL_ROUTE_NPC"
+      ],
+      "item": "해저의펜던트",
+      "kind": "NPC 진행 보상",
+      "sourceIds": [
+        "S03"
+      ],
+      "condition": "포스파늄→붉은진주→브라토 교환",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 교환지급",
+      "quantity": 1,
+      "current": "미지급",
+      "review": "아크퍼스 랜덤 드랍 아님",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R044",
+      "targets": [
+        "POTE_ROUTE_NPC"
+      ],
+      "item": "은빛늑대의가죽",
+      "kind": "NPC 교환",
+      "sourceIds": [
+        "S06",
+        "S26"
+      ],
+      "condition": "갈기털5개 제출",
+      "originalProbability": 1,
+      "probabilityStatus": "공략상 조건부 교환지급",
+      "quantity": 1,
+      "current": "미지급",
+      "review": "소모성/반복성은 자료충돌 보류",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R045",
+      "targets": [
+        "MINE_05"
+      ],
+      "item": "곡단도",
+      "kind": "무기",
+      "sourceIds": [
+        "S13",
+        "S14"
+      ],
+      "condition": "구광층/3갱/시대 구분 필요",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "2%/1개",
+      "review": "외형·역사자료로 관계 보강; 개체/층 서버테이블·숫자확률 미확인",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R046",
+      "targets": [
+        "MINE_06"
+      ],
+      "item": "하이브레이질배틀액스",
+      "kind": "무기",
+      "sourceIds": [
+        "S13",
+        "S14"
+      ],
+      "condition": "구광층/3갱/시대 구분 필요",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "2%/1개",
+      "review": "외형·역사자료로 관계 보강; 개체/층 서버테이블·숫자확률 미확인",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R047",
+      "targets": [
+        "MINE_03"
+      ],
+      "item": "더브릴",
+      "kind": "무기",
+      "sourceIds": [
+        "S13",
+        "S14"
+      ],
+      "condition": "구광층/3갱/시대 구분 필요",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "외형·역사자료로 관계 보강; 개체/층 서버테이블·숫자확률 미확인",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R048",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "그림록퀸홀",
+      "kind": "투구",
+      "sourceIds": [
+        "S12",
+        "S13"
+      ],
+      "condition": "구광/3갱 획득지역보고; 정확 개체 매핑 미확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "이름에 그림록퀸이 있어도 그 몬스터 전용드랍으로 즉시 확정하지 않음",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R049",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "왕의문장",
+      "kind": "재료/잡템",
+      "sourceIds": [
+        "S12",
+        "S13"
+      ],
+      "condition": "구광 획득 기록; 현재 사용처·개별 몬스터 미확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R050",
+      "targets": [
+        "MINE_04"
+      ],
+      "item": "쇠조각",
+      "kind": "재료/소비",
+      "sourceIds": [
+        "S15",
+        "S16"
+      ],
+      "condition": "1갱/2갱",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "현재 광산 단일 맵에 모든 갱도의 드랍을 혼합하지 않음; 직접원문 실패/재인용 근거 보강",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R051",
+      "targets": [
+        "MINE_04"
+      ],
+      "item": "드라코발톱",
+      "kind": "재료/소비",
+      "sourceIds": [
+        "S15",
+        "S16"
+      ],
+      "condition": "1갱",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "현재 광산 단일 맵에 모든 갱도의 드랍을 혼합하지 않음; 직접원문 실패/재인용 근거 보강",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R052",
+      "targets": [
+        "MINE_04"
+      ],
+      "item": "리베륨",
+      "kind": "재료/소비",
+      "sourceIds": [
+        "S15",
+        "S16"
+      ],
+      "condition": "2갱",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "현재 광산 단일 맵에 모든 갱도의 드랍을 혼합하지 않음; 직접원문 실패/재인용 근거 보강",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R053",
+      "targets": [
+        "MINE_04"
+      ],
+      "item": "목도리염료b",
+      "kind": "재료/소비",
+      "sourceIds": [
+        "S15",
+        "S16"
+      ],
+      "condition": "3갱",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "현재 광산 단일 맵에 모든 갱도의 드랍을 혼합하지 않음; 직접원문 실패/재인용 근거 보강",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R054",
+      "targets": [
+        "MINE_04"
+      ],
+      "item": "드래곤크로어",
+      "kind": "무기",
+      "sourceIds": [
+        "S15",
+        "S16"
+      ],
+      "condition": "3갱",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "현재 광산 단일 맵에 모든 갱도의 드랍을 혼합하지 않음; 직접원문 실패/재인용 근거 보강",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R055",
+      "targets": [
+        "MINE_04"
+      ],
+      "item": "드라코의비늘",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S17"
+      ],
+      "condition": "5개 NPC 제출;정확 갱도 미확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R056",
+      "targets": [
+        "MINE_05"
+      ],
+      "item": "헬씨프아머",
+      "kind": "방어구",
+      "sourceIds": [
+        "S12",
+        "S18"
+      ],
+      "condition": "현재 외형기반 매핑; 원작 개체·갱도표 추가확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "3.5%/1개",
+      "review": "기존3.5%는프로젝트임시.원작확률확정금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R057",
+      "targets": [
+        "MINE_06"
+      ],
+      "item": "헬나이트아머",
+      "kind": "방어구",
+      "sourceIds": [
+        "S12",
+        "S18"
+      ],
+      "condition": "현재 외형기반 매핑; 원작 개체·갱도표 추가확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "3.5%/1개",
+      "review": "기존3.5%는프로젝트임시.원작확률확정금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R058",
+      "targets": [
+        "MINE_08"
+      ],
+      "item": "헬몽크아머",
+      "kind": "방어구",
+      "sourceIds": [
+        "S12",
+        "S18"
+      ],
+      "condition": "현재 외형기반 매핑; 원작 개체·갱도표 추가확인",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "3.5%/1개",
+      "review": "기존3.5%는프로젝트임시.원작확률확정금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R059",
+      "targets": [
+        "MINE_07"
+      ],
+      "item": "헬소서러로브",
+      "kind": "방어구",
+      "sourceIds": [
+        "S13",
+        "S18"
+      ],
+      "condition": "현재 두 몬스터가 법사남/직자여 로브 공통지급",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "각각3.5%/1개",
+      "review": "개체-직업매칭 미검증; 남녀법사·남녀직자 별도종류 누락 감사 필요",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R060",
+      "targets": [
+        "MINE_07"
+      ],
+      "item": "헬프리스트로브",
+      "kind": "방어구",
+      "sourceIds": [
+        "S13",
+        "S18"
+      ],
+      "condition": "현재 두 몬스터가 법사남/직자여 로브 공통지급",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "각각3.5%/1개",
+      "review": "개체-직업매칭 미검증; 남녀법사·남녀직자 별도종류 누락 감사 필요",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R061",
+      "targets": [
+        "MINE_09"
+      ],
+      "item": "헬소서러로브",
+      "kind": "방어구",
+      "sourceIds": [
+        "S13",
+        "S18"
+      ],
+      "condition": "현재 두 몬스터가 법사남/직자여 로브 공통지급",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "각각3.5%/1개",
+      "review": "개체-직업매칭 미검증; 남녀법사·남녀직자 별도종류 누락 감사 필요",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R062",
+      "targets": [
+        "MINE_09"
+      ],
+      "item": "헬프리스트로브",
+      "kind": "방어구",
+      "sourceIds": [
+        "S13",
+        "S18"
+      ],
+      "condition": "현재 두 몬스터가 법사남/직자여 로브 공통지급",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "각각3.5%/1개",
+      "review": "개체-직업매칭 미검증; 남녀법사·남녀직자 별도종류 누락 감사 필요",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R063",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "헬나이트투구",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R064",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "헬씨프투구",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R065",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "헬소서러후드",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R066",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "헬소서리스로브",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R067",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "매직베일",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R068",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "헬클레릭로브",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R069",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "헬클레릭후드",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R070",
+      "targets": [
+        "REGION_MINE_UNASSIGNED"
+      ],
+      "item": "홀리베일",
+      "kind": "장비/누락후보",
+      "sourceIds": [
+        "S12",
+        "S13",
+        "S18"
+      ],
+      "condition": "존재/지역·계열 관계와 실제 개체드랍은 별도",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "itemId는 성별·직업·옵션으로 구별; 그림중복제거 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R071",
+      "targets": [
+        "REGION_DEATH_HOUSE_UNDER_UNASSIGNED"
+      ],
+      "item": "엑스쿠라눔",
+      "kind": "소비/판매 재화",
+      "sourceIds": [
+        "S11"
+      ],
+      "condition": "한번쓸기1~2개 관측; 몬스터수N/총반복수 미기록",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "1~2개를 각개체100% 또는 일정%로 변환 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R072",
+      "targets": [
+        "REGION_DEATH_HOUSE_UNDER_UNASSIGNED"
+      ],
+      "item": "소량 골드",
+      "kind": "골드 획득",
+      "sourceIds": [
+        "S11"
+      ],
+      "condition": "지역관측이며 현재630/810/990G의 직접근거 아님",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "현재고정금화값은U/B/ADAPTED 유지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R073",
+      "targets": [
+        "OUT_OF_SCOPE_NOVICE_SPIDER"
+      ],
+      "item": "독거미알",
+      "kind": "퀘스트 재료",
+      "sourceIds": [
+        "S27"
+      ],
+      "condition": "노비스 독거미 기록",
+      "originalProbability": null,
+      "probabilityStatus": "원작 수치 미공개/미확인",
+      "quantity": null,
+      "current": "미지급",
+      "review": "죽음의마을 독거미에 재사용 금지",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R074",
+      "targets": [
+        "HORROR_00_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R075",
+      "targets": [
+        "HORROR_01_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R076",
+      "targets": [
+        "HORROR_02_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R077",
+      "targets": [
+        "HORROR_03_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R078",
+      "targets": [
+        "HORROR_04_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R079",
+      "targets": [
+        "HORROR_05_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R080",
+      "targets": [
+        "HORROR_06_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R081",
+      "targets": [
+        "HORROR_07_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R082",
+      "targets": [
+        "HORROR_08_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R083",
+      "targets": [
+        "HORROR_09_*"
+      ],
+      "item": "일반 드롭 아이템 전체",
+      "kind": "드랍 제거",
+      "sourceIds": [
+        "S24"
+      ],
+      "condition": "2026-08-20 정식판 기준",
+      "originalProbability": 0,
+      "probabilityStatus": "공식 드랍제거 →0%",
+      "quantity": 0,
+      "current": "아이템 미지급",
+      "review": "최신판일 때 일치.옛판기준은별도미확정;골드까지0이라고추정금지",
+      "era": "2026-08-20 이후 공식",
+      "proposedProbability": null
+    },
+    {
+      "id": "R084",
+      "targets": [
+        "combat_dummy_01"
+      ],
+      "item": "훈련 증표",
+      "kind": "프로젝트 시험 보상",
+      "sourceIds": [
+        "PROJECT"
+      ],
+      "condition": "튜토리얼",
+      "originalProbability": null,
+      "probabilityStatus": "원작대상 아님",
+      "quantity": 1,
+      "current": "100%/1개",
+      "review": "원작 드랍표에서 격리",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R085",
+      "targets": [
+        "combat_dummy_02"
+      ],
+      "item": "훈련 증표",
+      "kind": "프로젝트 시험 보상",
+      "sourceIds": [
+        "PROJECT"
+      ],
+      "condition": "튜토리얼",
+      "originalProbability": null,
+      "probabilityStatus": "원작대상 아님",
+      "quantity": 1,
+      "current": "100%/1개",
+      "review": "원작 드랍표에서 격리",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    },
+    {
+      "id": "R086",
+      "targets": [
+        "combat_dummy_03"
+      ],
+      "item": "훈련 증표",
+      "kind": "프로젝트 시험 보상",
+      "sourceIds": [
+        "PROJECT"
+      ],
+      "condition": "튜토리얼",
+      "originalProbability": null,
+      "probabilityStatus": "원작대상 아님",
+      "quantity": 1,
+      "current": "100%/1개",
+      "review": "원작 드랍표에서 격리",
+      "era": "자료시대 기준; 현행 검증 별도",
+      "proposedProbability": null
+    }
+  ],
+  "sources": [
+    {
+      "id": "S01",
+      "title": "2~4써클 보스 센스 관측",
+      "url": "https://lod.nexon.com/community/game/3472?SearchBoard=1",
+      "era": "2008-01-21",
+      "evidence": "V 커뮤니티",
+      "summary": "정령308950/광폭자606252/폭군780575는 당시 센스·파티/레벨 조건이 있는 관측치. 정령 반지·연필·금전, 광폭자 실버아쿠아링 관계. 수치 확률 없음."
+    },
+    {
+      "id": "S02",
+      "title": "팜팻의 변화",
+      "url": "https://lod.nexon.com/community/game/4060?SearchBoard=1",
+      "era": "2009-01-02",
+      "evidence": "V 커뮤니티",
+      "summary": "브라운팜팻 정수10; 퍼플/실버 정수 각3; 울프/앤트 각5마리는 처치 목표; 정령 뿔 수집. 옛 완료 보상 경험치45만/엑스쿠라눔3. 정수/뿔은 다른 캐릭터로 조달 가능 기록."
+    },
+    {
+      "id": "S03",
+      "title": "킹아크퍼스 이벤트",
+      "url": "https://lod.nexon.com/community/game/3452?SearchBoard=1",
+      "era": "2008-01-16",
+      "evidence": "V 커뮤니티",
+      "summary": "퐁퐁이조각/터틀껍질/게껍질 각2를 NPC에 전달해 대지의인장. 가짜 보스 문어다리. 진짜 보스 후 NPC 세줄황금반지. 인장·펜던트를 직접 보스 드랍으로 넣지 않음."
+    },
+    {
+      "id": "S04",
+      "title": "에리얼 이벤트",
+      "url": "https://lod.nexon.com/community/game/740?SearchBoard=1",
+      "era": "2006-12-04",
+      "evidence": "V 커뮤니티",
+      "summary": "블루하콘 무기/레드하콘 다리/카카포·포이즌카카포 껍질 각2. 킹아크 완료자는 재료 면제 기록. 보스 완료 파파야방패. 수치 확률 없음."
+    },
+    {
+      "id": "S05",
+      "title": "맨티스 완료 보상",
+      "url": "https://lod.nexon.com/community/game/24?SearchBoard=1",
+      "era": "2005-08-17",
+      "evidence": "V 커뮤니티",
+      "summary": "맨티스 처치 후 여자 NPC 대화: 세줄금반지와200만G. 희귀 랜덤 바닥드랍이 아닌 완료 보상."
+    },
+    {
+      "id": "S06",
+      "title": "맨티스 재료",
+      "url": "https://lod.nexon.com/board/1493172227/769",
+      "era": "옛 공략",
+      "evidence": "V 커뮤니티",
+      "summary": "트랜트의뿌리8, 앤트자이언트 날개, 은빛늑대 갈기털5의 사용처. 갈기털 교환과 몬스터 직접 보상 구분."
+    },
+    {
+      "id": "S07",
+      "title": "해안 장비 획득 지역",
+      "url": "https://lod.nexon.com/board/1493172227/6222",
+      "era": "2010-08-27",
+      "evidence": "V 커뮤니티",
+      "summary": "아쿠아/산호 장비 아벨해안 획득 관계. 뤼케 장비 추천이 곧 특정 몬스터 드랍 증거는 아님. 몬스터별 배분과 확률 미확인."
+    },
+    {
+      "id": "S08",
+      "title": "강력몹 정수 보고",
+      "url": "https://lod.nexon.com/Community/free/119111?SearchBoard=1",
+      "era": "2025-05-25",
+      "evidence": "V 유저 신고",
+      "summary": "강력한트렌트/놀/울프라이더의 포테의정수 획득 보고. 처치마다 보장되지 않는다는 보고; 서버 확률 측정 표본 없음."
+    },
+    {
+      "id": "S09",
+      "title": "정수 확률 상향 공식",
+      "url": "https://lod.nexon.com/News/update/5089?Page=5",
+      "era": "2025-05-29",
+      "evidence": "O 공식",
+      "summary": "포테 일부 몬스터의 포테의정수 확률 상향. 은빛늑대/강력몹 수 증가. 상향된 정확한 수치와 전체 몬스터별 표는 공지에 없음. 장비 삭제 지원 목록을 드랍표로 사용하지 않음."
+    },
+    {
+      "id": "S10",
+      "title": "팜팻 정수/알 공식",
+      "url": "https://lod.nexon.com/News/update/5067?Page=2",
+      "era": "2024-01-04",
+      "evidence": "O 공식 검색 본문 확인",
+      "summary": "팜팻/퍼플/실버 정수 확률 상향, 수치 미공개. 마라메부인의부탁 팜팻의알 등장100%는 별도 1서클 퀘스트이며 현재 포테 몬스터에 전용하지 않음."
+    },
+    {
+      "id": "S11",
+      "title": "죽마 집 사냥 관측",
+      "url": "https://lod.nexon.com/board/1493172227/7264",
+      "era": "2020-01-26",
+      "evidence": "V 커뮤니티",
+      "summary": "집/지하 한 번 쓸기 관측에서 엑스쿠라눔1~2와 소량 골드. 몬스터 종류·처치 수·반복 횟수 미기록이므로 개체별 확률 산출 불가."
+    },
+    {
+      "id": "S12",
+      "title": "구광 사냥 보고",
+      "url": "https://lod.nexon.com/Community/free/144067?Page=8&SearchBoard=1",
+      "era": "2026-03-25",
+      "evidence": "V 유저 관측",
+      "summary": "구광 사냥 중 헬옷/투구·왕의문장·3갱 퀸홀 경험 보고. 짧은 관측에서 도적/도가 미획득을 드랍0%로 해석하지 않음."
+    },
+    {
+      "id": "S13",
+      "title": "구광 막층 아이템",
+      "url": "https://lod.nexon.com/board/1509949442/392159",
+      "era": "2024-10-31",
+      "evidence": "V 커뮤니티",
+      "summary": "전사 헬셋/곡단도/더브릴/왕의문장/남녀 법사 헬옷 획득 보고. 퀸홀 희귀 표현만 있고 정확한 수치 없음."
+    },
+    {
+      "id": "S14",
+      "title": "광산 무기 외형·기원",
+      "url": "https://lod.nexon.com/community/game/3484?SearchBoard=3",
+      "era": "옛 회고",
+      "evidence": "V 커뮤니티 회고",
+      "summary": "헬블루나이트-하이브레이질배틀액스, 그림록퀸-더브릴, 헬씨프-곡단도 외형/획득 계통 기록. 외형 유사만으로 모든 옷 드랍처를 확정하지 않음."
+    },
+    {
+      "id": "S15",
+      "title": "드라코 갱도별 드랍",
+      "url": "https://lod.nexon.com/Community/game/384714?Category2=1&SearchBoard=2",
+      "era": "2021-08-21",
+      "evidence": "V 검색 본문 확인",
+      "summary": "1갱:쇠조각·드라코발톱;2갱:쇠조각·리베륨;3갱:목도리염료b·드래곤크로어. 같은 몬스터라도 맵조건 필요, 원문 직접열람 실패로 보강 필요."
+    },
+    {
+      "id": "S16",
+      "title": "드래곤크로어 획득처",
+      "url": "https://lod.nexon.com/board/1509949442/374717",
+      "era": "2019-07-25",
+      "evidence": "V 재인용",
+      "summary": "3갱 드라코 획득처 안내. 답변 자체가 검색 재인용이어서 단독 확정 근거로 부족."
+    },
+    {
+      "id": "S17",
+      "title": "용의발톱 퀘스트",
+      "url": "https://lod.nexon.com/board/1493172227/88",
+      "era": "옛 공략",
+      "evidence": "V 커뮤니티",
+      "summary": "드라코의비늘5개를 상인에게 전달하는 퀘스트. 발톱/비늘/완성무기 용의발톱은 서로 다른 품목, 정확 갱도/확률 미확인."
+    },
+    {
+      "id": "S18",
+      "title": "헬 장비 이름",
+      "url": "https://lod.nexon.com/board/1493172227/2131",
+      "era": "2006-07-09",
+      "evidence": "V 커뮤니티",
+      "summary": "법사 남녀/직자 남녀 로브·투구의 별도 이름 확인. 같은 그림을 이유로 이름·직업·성별을 통합하면 안 됨. 드랍처나 확률은 이 자료로 확정 못함."
+    },
+    {
+      "id": "S19",
+      "title": "오묘한보석 획득",
+      "url": "https://lod.nexon.com/Community/game/393776?Category2=1&SearchBoard=2",
+      "era": "2025-06-20",
+      "evidence": "V 유저 관측",
+      "summary": "아벨 터틀(1존포함),바크,일에서 오묘한보석 관측. 다른 몬스터 미획득은0% 증거가 아님. 현재 바크/일 정체 매칭 미확정."
+    },
+    {
+      "id": "S20",
+      "title": "포스파늄 획득",
+      "url": "https://lod.nexon.com/board/1811939343/119362",
+      "era": "2024-04-04",
+      "evidence": "V 커뮤니티",
+      "summary": "뤼케 대기실 주기 생성 자원. 광물 채집·식물 채집도 별개. 모두 몬스터 랜덤 드랍으로 합치지 않음."
+    },
+    {
+      "id": "S21",
+      "title": "포스파늄 공식 변경",
+      "url": "https://lod.nexon.com/news/update/147822",
+      "era": "2026-08-27",
+      "evidence": "O 공식",
+      "summary": "뤼케 대기실 포스파늄 주기와 개수 변경. 옛10~15분/3개를 현행 확정값으로 쓰지 않음."
+    },
+    {
+      "id": "S22",
+      "title": "포테 혼/캅셀 관측",
+      "url": "https://lod.nexon.com/Community/game/705206?Category2=1&SearchBoard=4",
+      "era": "2017-11-15",
+      "evidence": "V 직접획득 보고",
+      "summary": "레드팜팻·앤트라이온 혼ㅎ1, 실버팜팻 혼ㅍ1, 강력울프 혼ㅅ2/캅셀2, 정령 혼ㅎ2/캅셀1·3, 트렌트 포장된달인의책+2, 놀 +3. 축약명 완전 식별 전 활성화 금지."
+    },
+    {
+      "id": "S23",
+      "title": "사냥터 경험치 공식 변경",
+      "url": "https://lod.nexon.com/news/update/5095",
+      "era": "2025-05-22",
+      "evidence": "O 공식",
+      "summary": "포테/아벨/뤼케 난이도·경험치 변경 및 호러/죽마 경험치 증가. 2008관측값을 현재 기본치로 단순 복사 불가."
+    },
+    {
+      "id": "S24",
+      "title": "호러 드랍 공식 제거",
+      "url": "https://lod.nexon.com/news/update/147557",
+      "era": "2026-08-20",
+      "evidence": "O 공식",
+      "summary": "호러 몬스터 드롭 아이템 제거 및 경험치 증가. 현재버전 일반 아이템 드랍은0으로 정의 가능; 옛 영상 복원판에 자동 소급하지 않음. 정제된정수 제조도 변경."
+    },
+    {
+      "id": "S25",
+      "title": "정령 골드/퀘스트 변경",
+      "url": "https://lod.nexon.com/News/update/5020?Page=2",
+      "era": "2023-11-30",
+      "evidence": "O 공식",
+      "summary": "정령/강력정령 골드 감소·HP 감소·젠 증가. 메인퀘스트 경험치물약 도입. 옛 완료EXP·골드와 현재값을 섞지 않음."
+    },
+    {
+      "id": "S26",
+      "title": "은빛늑대 갈기털 교환",
+      "url": "https://lod.nexon.com/board/1509949442/392568",
+      "era": "2025-01-12 표시",
+      "evidence": "V 커뮤니티",
+      "summary": "갈기털5개로 가죽 교환 기록. 소비여부는 게시물 자체 충돌하므로 조건 미확정."
+    },
+    {
+      "id": "S27",
+      "title": "독거미알의 지역 차이",
+      "url": "https://lod.nexon.com/Community/free/87014?SearchBoard=1",
+      "era": "옛 공략",
+      "evidence": "V 커뮤니티",
+      "summary": "독거미알은 노비스 독거미 획득 기록. 죽마 독거미와 같은 이름만으로 공유 드랍 연결 금지."
+    }
+  ],
+  "excluded": [
+    {
+      "id": "ABEL_CRAB",
+      "reason": "마스터의게/게껍질관계는있지만현재그래브와동일몬스터라고확정못함"
+    },
+    {
+      "id": "DEATH_UNDER_MUMMY",
+      "reason": "죽던자료,현재요청범위던전제외"
+    },
+    {
+      "id": "DEATH_UNDER_GENERIC",
+      "reason": "그룹범주라개별종드랍표로사용불가"
+    },
+    {
+      "id": "NOVICE_BROWN_PAMPAT",
+      "reason": "현재포테RED/GREEN과별개;정수/알범위확인용"
+    },
+    {
+      "id": "MINE_ORE_AND_WOODLAND_HERBS",
+      "reason": "노다지광물/식물채집은몬스터드랍아님"
+    },
+    {
+      "id": "PROMOTION_AND_QUICK_DUNGEON",
+      "reason": "이동석/문열쇠/본드라곤재물/퀵던전드랍을현맵으로유입하지않음"
+    }
+  ],
+  "codeHashes": {
+    "AdaptedCampaignRewardCatalog.java": "2222e8fcb51904e9cfc08de3132add92c1be0ec8ce28df5697a4565dd769d356",
+    "AdaptedPrototypeRewardCatalog.java": "2544cfd9f825650262247c59d1344f64ab6aad12a17ef8f1cdd27865582ad1f4",
+    "CanonicalMonsterRewardCatalog.java": "fbdfcf422d3d6858a2b8c89ce78293df4acac38a78594e0a6a26f8e12451e17c",
+    "CampaignMonsters.java": "161612cb6c180c4b2e95ec9f36daa1b8d3b28c56f6b0c63cf4e3b053a532bfd4",
+    "PoteMonsterRoster.java": "10d87b2a9b36857614a0fddaa0c5db526eb98a049db5b4621f61eaa88f9a42d8",
+    "AbelCombatProfile.java": "aec00e562ed60e7e881b4f5ee4d41afcc4266615019df4ddda5eee50b54858db",
+    "AbelCoastMonsters.java": "00249ef680cea62a29014f7cf244ed4077724004bb2b062d5c69365de8118c87",
+    "RucesionCombatProfiles.java": "18e14f6801e5a4d9402f8bdaf554565f47fc099a228b64275fa732511e764d43",
+    "RucesionCoastMonsters.java": "a6522b53bdb3a354127a6554132552640eacb3d93840f50167285544cefc57d6",
+    "HorrorCastleMonsters.java": "137dd436e07e9b9bfb2d62369c995a05ce92748f960f29d063879835d9bea4a7",
+    "MineHuntMonsters.java": "0d55e8855c3c85b1873816b8936ce10a02714258ef6dc5019af0889a4639f1e1",
+    "DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
+    "RpgProgressionState.java": "daa12753a994eba6a0360e556130c6693c955f82842980d859bd1c51e419a10f",
+    "AdaptedPoteQuestRewards.java": "b685211d8e804456f7bca86a9db6eeed04e34499d5380aaf9a966cbe83d85039",
+    "CampaignProgress.java": "d5ca7b12b9af4cb35c11049721d3a3fec81cf5f3c2c4b8dcc551b4a43b562d74"
+  },
+  "coverage": {
+    "monsterProfiles": 68,
+    "byRegion": {
+      "밀레스": 4,
+      "포테의숲": 17,
+      "아벨해안": 13,
+      "뤼케시온해안": 10,
+      "호러캐슬": 10,
+      "카스마늄광산": 10,
+      "죽음의마을": 4
+    },
+    "rewardRelations": 86,
+    "sources": 27,
+    "findings": 13,
+    "unresolvedFractionalOriginalRates": true,
+    "allRuntimeRewardProfilesIncluded": true
+  }
+}
