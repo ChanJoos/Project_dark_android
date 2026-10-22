@@ -8,8 +8,8 @@ final class MartialSourceV228 {
   float dx=t[0]-s.player().x,dy=t[1]-s.player().y;int steps=SkillActionContract.distance(s.player().x,s.player().y,t[0],t[1]);
   if(steps<1||steps>3||!SkillActionContract.integer(SkillActionContract.u(dx,dy))||!SkillActionContract.integer(SkillActionContract.v(dx,dy)))return null;
   float u=SkillActionContract.u(dx,dy),v=SkillActionContract.v(dx,dy);if(Math.abs(u)>.01f&&Math.abs(v)>.01f)return null;
-  float x=s.player().x+dx/steps*3,y=s.player().y+dy/steps*3;
-  return movement.canLeapPlayer(x,y)?new float[]{x,y}:null;
+  java.util.List<float[]> choices=MartialSkillPolicy.landings(s,target,movement);
+  return choices.isEmpty()?null:choices.get(0);
  }
  private MartialSourceV228(){}
 }

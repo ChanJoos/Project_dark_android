@@ -5245,7 +5245,7 @@
       "name": "붕신선각",
       "job": "무도가",
       "kind": "기술",
-      "motion": "SPIN_KICK",
+      "motion": "SIDE_KICK",
       "caster": "NONE",
       "target": "SOURCE_V228",
       "targetSheet": "user-v228",
@@ -5272,7 +5272,7 @@
       "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
       "originalEffectVerified": true,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "사용자 전체스킬 구현 요청: 선풍각 승급, 사방2칸 프로젝트 규칙; 원작 최대범위 미확정"
+      "note": "사용자 정정: 주변 네 방향 인접 타일 공격. 원문 GIF의 파란 몬스터는 스킬 이펙트가 아님."
     },
     {
       "id": "SK_무도가_027",
@@ -5986,7 +5986,7 @@
       "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
       "originalEffectVerified": false,
       "combatStatus": "EXISTING_RUNTIME_ONLY",
-      "note": "전방3칸 이동 공격. 이형환위의 1칸 대상 넘기와 별개; 충돌/착지 검사 후 접촉 완료 때 이동."
+      "note": "전방 1~3칸 몬스터/NPC 넘기; 대상 뒤 또는 이형환위와 동일한 좌우 착지. 공격 후 대상 바라보기."
     }
   ]
 }

@@ -35,8 +35,8 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   public String takeSkillNotice(){return abilities.takeNotice();}
   public CombatResolver.RejectReason actionReady(String actor,String target,String id,boolean begin){
     if(begin&&"player".equals(actor)&&MagicTimingPolicy.managed(id)&&spellIntervalRemaining>0)return CombatResolver.RejectReason.ACTION_BUSY;
-    if("player".equals(actor)&&isNpc(target)&&!MartialSkillPolicy.LEAP.equals(id))return CombatResolver.RejectReason.TARGET_DEAD;
-    if("player".equals(actor)&&MartialSkillPolicy.LEAP.equals(id)&&playerFacing!=null&&!java.util.Objects.equals(target,frontTarget(id)))return CombatResolver.RejectReason.RANGE;
+    if("player".equals(actor)&&isNpc(target)&&!MartialSkillPolicy.leap(id))return CombatResolver.RejectReason.TARGET_DEAD;
+    if("player".equals(actor)&&MartialSkillPolicy.leap(id)&&playerFacing!=null&&!java.util.Objects.equals(target,frontTarget(id)))return CombatResolver.RejectReason.RANGE;
     CombatResolver.RejectReason r=abilities.ready(actor,target,id,begin);if(r!=null)return r;
     SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);
     if(begin&&a!=null&&a.damage()&&recipients(actor,target,id).isEmpty())return CombatResolver.RejectReason.TARGET_DEAD;
@@ -73,7 +73,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(r==null||!"player".equals(actor))return java.util.Collections.singletonList(target);
     Position a=position(actor),t=position(target);java.util.List<String> out=new java.util.ArrayList<>();
     if(a==null||t==null)return out;
-    if(MartialSkillPolicy.LEAP.equals(action))return targetAlive(target)?java.util.Collections.singletonList(target):out;
+    if(MartialSkillPolicy.leap(action))return targetAlive(target)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SINGLE)return visible(target)&&SkillActionContract.canStart(r,a.x,a.y,t.x,t.y,true)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.SELF||r.pattern==SkillActionContract.Pattern.ALLY||r.pattern==SkillActionContract.Pattern.GROUP){out.add(actor);return out;}
     float tx=t.x,ty=t.y;float[] intent=directions.get(actor+":"+action);
@@ -165,6 +165,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(playerActor&&ability!=null){
       CombatResolver.EffectResult effect=abilities.apply(targetId,actionId);if(effect!=null)return effect;
       amount=abilities.amount(actionId,amount);abilities.chargeRelease(ability);
+      if(MartialSourceV228.ADVANCE.equals(actionId)&&isNpc(targetId))return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.OTHER,CombatResolver.HitSemantic.STATUS);
     }
     if(SkillRuntimeCatalog.healing(actionId)){
       if(!playerActor||!actorId.equals(targetId)||!state.player().alive)throw new IllegalArgumentException("self heal target");

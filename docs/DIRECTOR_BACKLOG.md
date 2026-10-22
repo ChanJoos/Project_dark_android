@@ -1,3 +1,13 @@
+## 2026-10-22 V230 무도가 사용자 피드백 수정 — 검증 대기
+
+DEVICE_FAILED_USER_REPORTED: seven martial icon margins, advance movement/facing, Bungsin pose, Pacheon captured monsters, Muyeong/protection quality. Installed APK unknown (V228/V229 share martial bytes). Reproduced source defects: fixed3-tile advance landing, screenshot icon margins, Bungsin SPIN_KICK, Pacheon blue monster pixels and protection body-hole matte. No handset reproduction claimed.
+
+Actor-relative advance now reuses base leap landing geometry for a nearest forward monster/NPC within3tiles, attacks only the selected monster, harmless NPC crossing, post-completion facing cached even after lethal damage; no target/blocked/rooted fails closed. Base adjacent leap preserved. Bungsin uses exact Bunggak SIDE_KICK profile. Pacheon CROSS reach1 user surrounding4directions; removed captured blue monsters and kept original green swirl frames. Accepted Yeoncheon runtime/FX and all numeric ability formulas unchanged.
+
+Live article415458 original seven31px icons and7GIFs retained master/source/martial_v230 with SHA256 provenance. Replaces scaled video icons/page margins. Muyeong retains first-recipient black/orange disk without source people/HP bars; protection full purple/white sequence without hard body silhouette hole. Original GIF timing recovered; inverse SCREEN alpha and source facing occlusion remain limitations, not official raw engine sprites.
+
+Scoped verification:4generators+source projection determinism; numeric/Yeoncheon byte guards; MartialRepair/MartialSeven/MartialMechanics; direct ability/presentation/spatial/contact/window, adjacent rogue and F5M restart, concurrency audit, assembleDebug. Separate com.projectdark.mobile.v230test candidate because debug CI certificates vary; old apps/data preserved, no auto save transfer. IMPLEMENTED; exact CI/build/host native/PHONE/USER_VISUAL PENDING. Main41fe6def remains unchanged; same PR197.
+
 ## 2026-10-22 V229 도적 아이콘·모션 후보 전달 완료
 
 APK source `31e1a0d43fecc35fbeef3d8e216dce478ba9c474`; build run39743866592/job119707407658 SUCCESS, scope39743874285 SUCCESS. Runtime code/assets identical to native-tested `319f808e` / original `cf9d4788`, enforced by remote tree and single appId-change guards. Native38 distinct cases PASS:36 from39742229094 plus2 corrected cases from39743018663. No unresolved failure/error/skip, not a full regression or phone acceptance. 5generators/11projections deterministic; original ability JSON/Java bytes unchanged.

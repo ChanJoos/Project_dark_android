@@ -182,7 +182,7 @@ final class SkillActionData {
     {"SK_무도가_023", "달마신공", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V_FRONT_MAX_UNRESOLVED_ADAPTED1", "전방의 적을 대상으로 하는 체력 소모 필살기(체력 30%를 상대방에게 데미지로 전달)- 이모탈, 버프등 영향 받지 않는 스킬 · 2020 세오서버 팬 자료; 현재 서버 수치와 동일하다고 판정하지 않음.", "기술"},
     {"SK_무도가_024", "연천단각", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "전방 인접 한 타일", "기술"},
     {"SK_무도가_025", "붕신선각", "ACTIVE", "AROUND", "1", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "시전자 둘레 여덟 타일; 자신 제외", "기술"},
-    {"SK_무도가_026", "파천각", "ACTIVE", "CROSS", "2", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "PROJECT_ADAPTED_V83", "사용자 전체스킬 구현 요청: 선풍각 승급, 사방2칸 프로젝트 규칙; 원작 최대범위 미확정", "기술"},
+    {"SK_무도가_026", "파천각", "ACTIVE", "CROSS", "1", "0", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "PROJECT_ADAPTED_V83", "사용자 정정: 주변 네 방향 인접 타일 공격. 원문 GIF의 파란 몬스터는 스킬 이펙트가 아님.", "기술"},
     {"SK_무도가_027", "트리플어택", "LINKED", "FRONT", "1", "1", "PRESENTATION", "3", "0.14", "V", "독립 시전이 아닌 기본공격 연동 추가 타격", "기술"},
     {"SK_무도가_028", "무영신공", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.24", "V", "바라보는 방향 전방3칸. 첫 접촉 시 유효 대상 수만큼 각 대상 반복 타격. 피해/자원 공식은 기존 값 유지.", "마법"},
     {"SK_무도가_029", "자기보호", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.24", "V", "자기 대상", "마법"},
@@ -224,6 +224,6 @@ final class SkillActionData {
     {"SK_마법사_057", "헬푸라", "UTILITY", "UTILITY", "0", "0", "PRESENTATION", "1", "0.24", "UNRESOLVED_RUNTIME", "전투 공격 아님; 대상 서비스 미구현 상태에서 몬스터에게 가짜 피격 출력 금지", "마법"},
     {"SK_무도가_033", "경신공법", "ACTIVE", "SELF", "0", "0", "PRESENTATION", "1", "0.14", "V", "이동속도를 높힌다. (Speed+20%) · 이동속도/목적지 원작 서비스는 미구현.", "마법"},
     {"SK_무도가_034", "아지토", "UTILITY", "UTILITY", "0", "0", "PRESENTATION", "1", "0.14", "V", "소속된 국적의여관으로 순간이동 · 이동속도/목적지 원작 서비스는 미구현.", "마법"},
-    {"SK_무도가_035", "허공답보", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "U_LABELLED_VIDEO_V228", "전방3칸 이동 공격. 이형환위의 1칸 대상 넘기와 별개; 충돌/착지 검사 후 접촉 완료 때 이동.", "기술"},
+    {"SK_무도가_035", "허공답보", "ACTIVE", "FRONT", "3", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "U_LABELLED_VIDEO_V228", "전방 1~3칸 몬스터/NPC 넘기; 대상 뒤 또는 이형환위와 동일한 좌우 착지. 공격 후 대상 바라보기.", "기술"},
  };
 }

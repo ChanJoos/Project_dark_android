@@ -287,6 +287,7 @@ public final class GameView extends View {
       float[] target=MartialSkillPolicy.position(state,e.targetId);
       if(target!=null){playerFacing.endAttack();playerFacing.updateLocomotion(target[0]-state.player().x,target[1]-state.player().y);}
     }
+    float[] advanceFacing=combatSession.takeAdvanceFacing();if(advanceFacing!=null){playerFacing.endAttack();playerFacing.updateLocomotion(advanceFacing[0],advanceFacing[1]);}
     abelSpellFx.consume(result.events,state);skillVfx.consume(result.events,skillAnchors);consumeSkillNotice();
     // A skill quest is about a successfully accepted use, not whether the target
     // happened to take damage or a heal happened to restore HP on that frame.

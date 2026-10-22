@@ -67,3 +67,5 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))
 
 # User-selected rogue source icons and separate motion families.
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v229.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v230.py"))

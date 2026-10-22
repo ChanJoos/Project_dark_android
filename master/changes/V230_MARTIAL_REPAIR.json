@@ -1,0 +1,26 @@
+{
+  "status": "ACCEPTED",
+  "revision": "V230_USER_MARTIAL_REPAIR",
+  "rules": {
+    "SK_무도가_025": {
+      "motion": "SIDE_KICK"
+    },
+    "SK_무도가_026": {
+      "pattern": "CROSS",
+      "reach": "1",
+      "note": "사용자 정정: 주변 네 방향 인접 타일 공격. 원문 GIF의 파란 몬스터는 스킬 이펙트가 아님."
+    },
+    "SK_무도가_035": {
+      "note": "전방 1~3칸 몬스터/NPC 넘기; 대상 뒤 또는 이형환위와 동일한 좌우 착지. 공격 후 대상 바라보기."
+    }
+  },
+  "presentation": {
+    "SK_무도가_025": {
+      "motion": "SIDE_KICK"
+    }
+  },
+  "limitations": [
+    "Original numeric balance unchanged. Source GIF inverse SCREEN matte remains an approximation; no invented body silhouette holes.",
+    "연천단각 accepted runtime/FX unchanged; original icon only replaces video crop."
+  ]
+}

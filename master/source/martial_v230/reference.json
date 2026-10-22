@@ -1,0 +1,46 @@
+{
+  "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415458",
+  "acquired": "2026-10-22",
+  "method": "Live article img downloadMedia; raw files retained",
+  "rows": [
+    {
+      "id": "SK_무도가_035",
+      "iconSha256": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
+      "gifSha256": "80ffcd69cec1dd701a61764faad9a9e009741b91f0a5cc45a3ef4cd189dc1653"
+    },
+    {
+      "id": "SK_무도가_027",
+      "iconSha256": "70fc4fc4bc91014c1a547cdfdc976b06de4260a09087ac9c8ec071392ea2e43b",
+      "gifSha256": "a363fc48ee1adaeb18e033d038b86ab8de6ab991df3fd95f8565c212ad369d48"
+    },
+    {
+      "id": "SK_무도가_024",
+      "iconSha256": "91594dc652576016233de21cb3b459b1567756931a3b82ce3aef081567f1df05",
+      "gifSha256": "04c10893662790d25ec7c9eba6151145e6296a58f00a296ed1645c8afe7e9db6"
+    },
+    {
+      "id": "SK_무도가_025",
+      "iconSha256": "f5bbf79e13049e384f7867bb277718c31c1c24ce478986a48789afe27fe0a0d9",
+      "gifSha256": "f00189ac44f5117a41f7de8b61295729e08086634def680e6549614ba91358c5"
+    },
+    {
+      "id": "SK_무도가_026",
+      "iconSha256": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
+      "gifSha256": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb"
+    },
+    {
+      "id": "SK_무도가_028",
+      "iconSha256": "b09651175169011543ce37fe29acac121bcb20ad4df24763ce68ab249f70027f",
+      "gifSha256": "99d2e7206deb5336c82aa8a95d3469146d6baaf886afac5db3c3eb86ebc8a3d8"
+    },
+    {
+      "id": "SK_무도가_029",
+      "iconSha256": "71d8f3975d10810a59c68815a8d0afc4ae2009d779990e71ac8f1a11c24f21eb",
+      "gifSha256": "7cbb164f10924a918d3654269238ac0450e24036d7f726ed7d0f064a486b8656"
+    }
+  ],
+  "limitations": [
+    "Original GIF frames/timing recovered. Inverse SCREEN alpha remains approximate. Protection retains all visible purple pixels without a caster-shaped exclusion.",
+    "Pacheon source blue pillars are monsters, excluded; only green four-side motion from frames9..15. Muyeong first-recipient disk only; purple humanoids and HP bars excluded."
+  ]
+}
