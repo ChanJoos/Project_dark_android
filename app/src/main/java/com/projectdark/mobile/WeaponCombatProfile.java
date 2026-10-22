@@ -15,7 +15,7 @@ public final class WeaponCombatProfile {
   RpgProgressionState.ItemDefinition d=r.equippedDefinition(RpgProgressionState.WEAPON_SLOT);
   if(d==null)return "PUNCH";
   if(grip(d)==Grip.TWO_HAND)return "TWO_HAND";
-  return basicAction(d)==AnimationAction.THRUST?"THRUST":"SWING";
+  return basicAction(d)==AnimationAction.THRUST?("ROGUE".equals(r.currentJobCode())?"ROGUE_STAB":"THRUST"):"SWING";
  }
  public static String label(RpgProgressionState.ItemDefinition d){return grip(d)==Grip.TWO_HAND?"양손무기":"한손무기";}
  private WeaponCombatProfile(){}

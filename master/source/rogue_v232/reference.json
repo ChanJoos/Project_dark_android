@@ -1,0 +1,36 @@
+{
+  "revision": "V232_ROGUE_USER_ACCEPTANCE",
+  "base": "3c2abf110f599eef535d82cc709e6108deb2141c",
+  "martial": "ALL_SKILLS_USER_ACCEPTED_V231; unchanged",
+  "motionEvidence": {
+    "userRecordingLibraryId": "libfile_06b60bbf1a6c8191b769d1c5aa816940",
+    "sha256": "a4c6eb8b3eedcf0e64203ca427f3a076cda8c764addc5563d0a5c79dad0c32a1",
+    "article": 245450,
+    "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f.gif",
+    "frames": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "sourceContact": "front bent-knee/hand low, not e8..15 bow or c14..23 wide lunge",
+    "selectedContact": {
+      "back": "mm001/c/8",
+      "front": "mm001/c/13"
+    },
+    "cadence": "PROJECT phase timing; contact pose compared to user recording and retained original GIF; no source jumping c9/12"
+  },
+  "senseSource": {
+    "library_file_id": "libfile_6887971515908191a07f5156595b0f71",
+    "videoSha256": "7096f671d0a2b1ea029eca875423d97181f0d79655f78183f255c2b2db2b998b",
+    "timeSeconds": 3.5,
+    "frameCrop": [
+      766,
+      107,
+      1604,
+      530
+    ],
+    "frameSha256": "e7287c51af99a58b750a3925e7092c0292daffa4a30748221b48cc62e2056581"
+  },
+  "iconPolicy": "012 aliases017;022 brown palette of014 only;freeze all others;do not adopt new article icons"
+}

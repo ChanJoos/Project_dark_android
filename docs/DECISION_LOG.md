@@ -1,3 +1,7 @@
+## 2026-10-22 U — 무도가 전체 통과·도적 한정 정정
+
+USER_VISUAL_ACCEPTED: V231 무도가 모든 스킬 통과. 해당 BODY/FX/icon/숫자 파일 그대로 유지. DEVICE_FAILED_USER_REPORTED: 도적 e8..15는 활 모션;기존 c14..23은 양발 벌림. 첨부1000060674.mp4(3.294s)와 원문245450 보관GIF21의4frames를 직접 비교해 손을 낮추고 한쪽 무릎을 굽히는 c8(back)/c13(front) contact로 연결, jumping c9/c12 제외. 준비/회복 및 시간은project phase selection;새BODY 생성 없음. 도적 기본 단검THRUST만 같은pose로연결,전사/타직업기본불변. 원본 근거 master/source/rogue_v232/reference.json.
+
 ## 2026-10-22 U — V231 무도가·도적 실기기 정정
 
 DEVICE_FAILED_USER_REPORTED V230: protection top clipped; Muyeong sphere small; rogue icons wrong alias/palette, wide warrior crouch, assassin ring small, missing original Sense window; shuriken must be throw/body and damage only. Protection FX itself USER_ACCEPTED; preserve shape/colors/timing and repair fixed y>35 crop to y>8. Muyeong scale1.9 (29px source disk→55px above43px BODY); assassin source scale.32→.416. Original raw source bytes preserved. User-specified five rogue icons map source luminance to double-stab brown palette; stab001 aliases hwi007. Rogue stab uses retained e8..15 knee-forward BODY rather than c14..23 wide squat; per-facing original timing remains adapted. Sense original5rows/confirm reconstructed from retained rucesion screenshots with actual runtime fields; AUTO remains enabled and dismisses at.3s; manual confirm and death/map cleanup. Shuriken particles incl generic impact suppressed; damage/IDs/formulas unchanged.

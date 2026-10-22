@@ -44,7 +44,7 @@ final class SkillIconCatalog {
       Iterator<String> ids=supplements.keys();while(ids.hasNext()){String id=ids.next();Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open(supplements.getString(id)));if(icon==null)throw new IOException("Invalid user skill icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}}
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
-  static String iconId(String id){return "SK_도적_001".equals(id)?"SK_도적_007":"SK_무도가_001".equals(id)?"SK_무도가_006":id;}
+  static String iconId(String id){return "SK_도적_012".equals(id)?"SK_도적_017":"SK_도적_001".equals(id)?"SK_도적_007":"SK_무도가_001".equals(id)?"SK_무도가_006":id;}
   SkillWindowSkin windowSkin(){return windowSkin;}
   boolean drawSquare(Canvas c,String id,RectF dest){
     id=iconId(id);
@@ -57,7 +57,7 @@ final class SkillIconCatalog {
     if(!result){Bitmap image=presentation.get(id);if(image!=null){int inset=Math.max(1,Math.round(Math.min(image.getWidth(),image.getHeight())*.12f));paint.setFilterBitmap(false);c.drawBitmap(image,new Rect(inset,inset,image.getWidth()-inset,image.getHeight()-inset),dest,paint);result=true;}}
     c.restore();return result;
   }
-  boolean has(String id){return index.containsKey(iconId(id));}
+  boolean has(String id){return index.containsKey(iconId(id))||windowSkin.has(iconId(id));}
   boolean draw(Canvas canvas,String id,RectF dest){
     id=iconId(id);Integer i=index.get(id);if(i==null)return false;
     int x=(i%10)*40,y=(i/10)*40;paint.setFilterBitmap(false);

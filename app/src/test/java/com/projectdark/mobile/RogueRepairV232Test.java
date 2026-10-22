@@ -1,0 +1,50 @@
+package com.projectdark.mobile;
+import static org.junit.Assert.*;
+import android.graphics.*;
+import java.io.*;import java.util.*;
+import org.json.*;import org.junit.*;import org.junit.runner.RunWith;
+import org.robolectric.*;import org.robolectric.annotation.*;
+@RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE) @GraphicsMode(GraphicsMode.Mode.NATIVE)
+public class RogueRepairV232Test {
+ final ScreenMagicV201Test h=new ScreenMagicV201Test();
+ @Before public void setup(){h.setup();}
+ RuntimeState state()throws Exception{RuntimeState s=new RuntimeState();s.rpg().restoreProgression(99,0);s.rpg().restoreBaseResources(100000,100000);s.applyDerivedGrowth();s.player().hp=s.player().maxHp;s.player().mp=s.player().maxMp;s.player().x=s.player().y=0;((List<?>)h.field(s,"monsters")).clear();return s;}
+ RuntimeState.Monster add(RuntimeState s,String id,float x,float y)throws Exception{RuntimeState.Monster m=new RuntimeState.Monster(id,"source rogue target",x,y,1000000,"B");((List<RuntimeState.Monster>)h.field(s,"monsters")).add(m);return m;}
+ RuntimeCombatSession session(RuntimeState s,CharacterRenderer.Direction d){RuntimeCombatSession c=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);c.setPlayerFacing(()->d);return c;}
+ @Test public void originalBentKneeContactReplacesBowAndWideLungeForEveryRogueStabBothBodiesAllFacings()throws Exception{
+  SkillPresentationCatalog c=new SkillPresentationCatalog(h.c);SkillBodyRenderer body=new SkillBodyRenderer(h.c,c);body.prepare("mu0000001,mh172,ml228,ms001","mw002");Bitmap grid=Bitmap.createBitmap(960,360,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(grid);out.drawColor(0xff394239);int n=0;
+  for(String sex:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+   boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;String expected=sex+"/c/"+(back?8:13);
+   for(SkillPresentationCatalog.Entry e:c.entries.values())if(e.motion.equals("ROGUE_STAB"))assertEquals(e.id,expected,c.frameKey(sex,e.motion,d,1f/3f));
+   for(int i=0;i<4;i++){float phase=new float[]{0,.17f,1f/3f,.75f}[i];CharacterRenderer.Pose p=new CharacterRenderer.Pose(40,75,d,CharacterRenderer.State.SKILL,0,.2f,.5f,false,"mu0000001,mh172,ml228,ms001","mw002",null,CharacterRenderer.EffectFamily.SKILL);Bitmap b=Bitmap.createBitmap(80,100,Bitmap.Config.ARGB_8888);assertTrue(body.draw(new Canvas(b),p,sex,"ROGUE_STAB",phase));out.drawBitmap(b,null,new Rect(n%4*240+i*60,n/4*180,n%4*240+i*60+60,n/4*180+75),null);}n++;
+  }save(grid,"v232-rogue-bent-knee-source-motion");RuntimeState s=state();s.rpg().restoreJobCode("ROGUE");assertEquals("ROGUE_STAB",WeaponCombatProfile.motion(s.rpg(),"THRUST"));s.rpg().restoreJobCode("WARRIOR");assertEquals("THRUST",WeaponCombatProfile.motion(s.rpg(),"THRUST"));
+ }
+ @Test public void senseUsesOnlyFacingFirstTwoCellsAndNeverTurnsOrApproaches()throws Exception{
+  for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(int tiles=1;tiles<=3;tiles++){
+   RuntimeState s=state();float[] step=MartialSkillPolicy.step(d);RuntimeState.Monster m=add(s,"sense-"+tiles,step[0]*tiles,step[1]*tiles);RuntimeCombatSession c=session(s,d);int mp=s.player().mp;CombatActionOrchestrator.Submission r=c.submitFacingSense();assertEquals(d+" distance"+tiles,tiles<=2,r.accepted());if(tiles<=2){assertEquals(m.id,r.targetId);c.tick(c.effectiveCastSeconds(RogueSkillPolicy.SENSE)+.001f);assertEquals("SENSE_MONSTER:"+m.id,c.takeSkillNotice());}else{assertEquals(mp,s.player().mp);assertEquals(0,c.cooldownRemaining("player",RogueSkillPolicy.SENSE),0);}assertEquals(0,s.player().x,0);assertEquals(0,s.player().y,0);
+  }
+  GameView v=new GameView(h.c);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=h.field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;((CanonicalActorFacing)h.field(v,"playerFacing")).setLocomotion(CharacterRenderer.Direction.NW);((CombatController)h.field(v,"combat")).selectTarget(m);h.call(v,"useBookSkill",new Class<?>[]{SkillBook.Entry.class},((SkillBook)h.field(v,"skillBook")).get(RogueSkillPolicy.SENSE));assertFalse(((RuntimeCombatSession)h.field(v,"combatSession")).playerActionActive());assertNull(((SkillApproachController)h.field(v,"skillApproach")).skillId);assertEquals(CharacterRenderer.Direction.NW,((CanonicalActorFacing)h.field(v,"playerFacing")).presentation());
+ }
+ @Test public void senseRechecksLiveTargetVisibilityAndWallAtContactAndChoosesNearestFront()throws Exception{
+  RuntimeState s=state();add(s,"far",64,32);RuntimeState.Monster near=add(s,"near",32,16);add(s,"side",-32,16);RuntimeCombatSession c=session(s,CharacterRenderer.Direction.SE);assertEquals("near",c.submitFacingSense().targetId);near.x=96;near.y=48;c.tick(.2f);assertEquals("",c.takeSkillNotice());
+  RuntimeCombatSession hidden=session(s,CharacterRenderer.Direction.SE);hidden.setSkillVisibility(id->false);assertFalse(hidden.submitFacingSense().accepted());RuntimeCombatSession wall=new RuntimeCombatSession(s,(a,t)->false,(a,id)->true,a->true);wall.setPlayerFacing(()->CharacterRenderer.Direction.SE);assertEquals(CombatResolver.RejectReason.LOS,wall.submitFacingSense().rejectReason);
+ }
+ @Test public void trapFindOneDuplicatesTwoOnBothSurfacesAndRetiredTrapMigratesOutWithoutTouchingOthers()throws Exception{
+  SkillIconCatalog icons=new SkillIconCatalog(h.c);assertTrue(icons.has("SK_도적_012"));for(boolean quick:new boolean[]{false,true}){Bitmap a=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888),b=a.copy(Bitmap.Config.ARGB_8888,true);RectF r=new RectF(0,0,40,40);if(quick){assertTrue(icons.drawQuickslot(new Canvas(a),"SK_도적_012",r));assertTrue(icons.drawQuickslot(new Canvas(b),"SK_도적_017",r));}else{assertTrue(icons.drawSquare(new Canvas(a),"SK_도적_012",r));assertTrue(icons.drawSquare(new Canvas(b),"SK_도적_017",r));}assertTrue(a.sameAs(b));}
+  SkillBook b=SkillBook.load(h.c);assertTrue(b.learn("SK_도적_017",42));assertTrue(b.assign(1,"SK_도적_017"));JSONObject old=b.snapshot();old.getJSONObject("learned").put("SK_도적_031",99);old.getJSONArray("slots").put(0,"SK_도적_031");assertTrue(b.restore(old));assertNull(b.slot(0));assertEquals("SK_도적_017",b.slot(1));assertEquals(42,b.proficiency("SK_도적_017"));assertFalse(b.learn("SK_도적_031",99));assertFalse(b.list(false,false).stream().anyMatch(e->e.id.equals("SK_도적_031")));b.setTestAccess(true);assertFalse(b.usable("SK_도적_031"));assertNull(SkillRuntimeCatalog.get("SK_도적_031"));
+ }
+ @Test public void sourceSenseFrameRetainsOriginalHeaderBordersScrollAndClosePixels()throws Exception{
+  SenseMonsterWindow w=new SenseMonsterWindow(h.c);Bitmap frame=h.field(w,"frame");Bitmap raw=BitmapFactory.decodeFile("../master/source/rogue_v232/sense-frame-capture.png");for(Rect r:new Rect[]{new Rect(0,0,838,80),new Rect(760,0,838,423),new Rect(626,327,814,396),new Rect(0,410,590,423)})for(int y=r.top;y<r.bottom;y++)for(int x=r.left;x<r.right;x++)assertEquals(x+","+y,raw.getPixel(x,y),frame.getPixel(x,y));
+  RuntimeState s=state();w.show(s,add(s,"source",32,16),false);Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(image);c.drawColor(0xff263529);w.draw(c,0);save(image,"v232-original-sense-frame");assertTrue(w.touch(w.confirm.centerX(),w.confirm.centerY()));assertFalse(w.visible());
+ }
+ @Test public void hideFromNormalInputFadesEntireEquippedActorAndRestoresAfterExpiry()throws Exception{
+  SkillFeedbackV231Test fixture=new SkillFeedbackV231Test();fixture.h.setup();GameView v=fixture.actor("SK_도적_011",false);RuntimeState s=h.field(v,"state");RuntimeCombatSession c=h.field(v,"combatSession");h.call(v,"tickSkillCombat",new Class<?>[]{float.class},c.effectiveCastSeconds("SK_도적_011")+.001f);assertTrue(s.skillEffects().hidden());Bitmap hidden=actor(v,s,"drawCharacter"),normal=actor(v,s,"drawVisibleCharacter");long ha=0,na=0;for(int y=0;y<200;y++)for(int x=0;x<240;x++){ha+=Color.alpha(hidden.getPixel(x,y));na+=Color.alpha(normal.getPixel(x,y));}assertTrue(na>1000);assertEquals(80/255d,ha/(double)na,.025);save(hidden,"v232-hide-player");save(normal,"v232-visible-player");h.capture(v,"v232-hide-normal-input");s.skillEffects().tick(s,13);assertFalse(s.skillEffects().hidden());Bitmap restored=actor(v,s,"drawCharacter");assertTrue(normal.sameAs(restored));
+ }
+ @Test public void hideBlocksQueuedAndNewPhysicalMagicAttacksEvenUnderTauntThenAllowsAfterExpiry()throws Exception{
+  RuntimeState s=state();RuntimeState.Monster m=add(s,"LYK_ELECT_KOATL#v232",32,16);RuntimeCombatSession c=session(s,CharacterRenderer.Direction.SE);assertEquals(MonsterAutoCombatBridge.Outcome.ACCEPTED,c.monsterAutoBridge().submit(m.id,"player").outcome);new SkillAbilityExecutor(s).apply("player","SK_도적_011");s.skillEffects().put(m.id,"test","TAUNT",1,30);int hp=s.player().hp;assertTrue(s.skillEffects().hidden());c.tick(1);assertEquals(hp,s.player().hp);
+  for(String id:new String[]{RuntimeCombatSession.MONSTER_BASIC_ACTION_ID,"MONSTER_WATER"}){MonsterAutoCombatBridge.Result r=c.monsterAutoBridge().submit(m.id,"player",id);assertEquals(CombatResolver.RejectReason.CONTROL,r.rejectReason);RuntimeCombatPortAdapter port=new RuntimeCombatPortAdapter(s,(a,t)->true,(a,k)->true,a->true);assertEquals(0,port.applyDamage(m.id,"player",id,99999).appliedAmount);assertEquals(hp,s.player().hp);}
+  c.tick(3);s.skillEffects().tick(s,13);assertFalse(s.skillEffects().hidden());assertEquals(MonsterAutoCombatBridge.Outcome.ACCEPTED,c.monsterAutoBridge().submit(m.id,"player").outcome);
+ }
+ Bitmap actor(GameView v,RuntimeState s,String method)throws Exception{Bitmap b=Bitmap.createBitmap(240,200,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(b);c.translate(120-s.player().x,150-s.player().y);h.call(v,method,new Class<?>[]{Canvas.class},c);return b;}
+ static void save(Bitmap b,String name)throws Exception{File f=new File("build/reports/device-review/"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){b.compress(Bitmap.CompressFormat.PNG,100,out);}}
+}

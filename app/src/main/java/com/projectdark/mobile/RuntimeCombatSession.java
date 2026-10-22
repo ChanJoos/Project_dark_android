@@ -77,6 +77,7 @@ public final class RuntimeCombatSession {
     String target=MartialSourceV228.line(id)?PLAYER_ID:port.frontTarget(id);
     return submitPlayer(target==null?"NO_FRONT_ACTOR":target,id);
   }
+  public CombatActionOrchestrator.Submission submitFacingSense(){String target=RogueSkillPolicy.frontTarget(state,port.facing(),port::visible);return submitPlayer(target==null?"NO_FRONT_MONSTER":target,RogueSkillPolicy.SENSE);}
   public float[] takeAdvanceFacing(){float[] d=port.abilities.completedAdvanceFacing;port.abilities.completedAdvanceFacing=null;return d;}
   public void setSkillTestMode(boolean enabled){port.setSkillTestMode(enabled);}
   public void setSkillProficiency(java.util.function.ToIntFunction<String> p){port.setSkillProficiency(p);}

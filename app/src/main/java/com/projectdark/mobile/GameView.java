@@ -109,7 +109,7 @@ public final class GameView extends View {
 
   private float scale=1,ox,oy,vx,vy,hudRightOffset,hudCenterOffset,logicalViewportWidth=W;
   private float knobX=JOY_X,knobY=JOY_Y;
-  private final SenseMonsterWindow senseMonsterWindow=new SenseMonsterWindow();
+  private final SenseMonsterWindow senseMonsterWindow=new SenseMonsterWindow(getContext());
   private int autoSkillCursor;
   private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen,autoAttackEnabled,questCollapsed=true,questJournalOpen,innDialogueOpen,chatExpanded;
   private float autoTargetHintClock;
@@ -345,7 +345,7 @@ public final class GameView extends View {
   private void useBookSkill(SkillBook.Entry entry){
     if(entry==null||isActing()||!state.player().alive)return;
     if(!skillBook.jobAllowed(entry.id)||!skillBook.usable(entry.id)){useBookSkillNow(entry);return;}
-    cancelSkillApproach();if(!"SK_도적_002".equals(entry.id))autoAttackEnabled=false;
+    cancelSkillApproach();if(RogueSkillPolicy.sense(entry.id)){useBookSkillNow(entry);return;}autoAttackEnabled=false;
     if("SK_공통_001".equals(entry.id)||MartialSkillPolicy.facingOnly(entry.id)){useBookSkillNow(entry);return;}
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
     if(rule!=null&&rule.selfAnchored()){useBookSkillNow(entry);return;}
@@ -395,6 +395,12 @@ public final class GameView extends View {
     if(!skillBook.usable(entry.id)){showFeedback(skillBook.learned(entry.id)?"이 기술의 전투 효과는 준비 중입니다":"먼저 기술을 습득하세요",FeedbackTone.WARN);return;}
     if(!automatic&&!"SK_도적_002".equals(entry.id))autoAttackEnabled=false;
     if("SK_공통_001".equals(entry.id)){float remaining=skillActions.cooldown(entry.id);if(remaining>0)showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",remaining),FeedbackTone.WARN);else attack();return;}
+    if(RogueSkillPolicy.sense(entry.id)){
+      if(isActing()||!state.player().alive)return;
+      CombatActionOrchestrator.Submission result=combatSession.submitFacingSense();
+      if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 방향 전방 두 칸 안의 몬스터가 필요합니다",FeedbackTone.WARN);
+      return;
+    }
     if(MartialSkillPolicy.facingOnly(entry.id)){
       if(isActing()||!state.player().alive)return;
       CombatActionOrchestrator.Submission result=combatSession.submitFacingMartial(entry.id);
@@ -817,7 +823,8 @@ public final class GameView extends View {
   float renderedPlayerWorldY(){return activeWorld().presentationPlayerY();}
   private CharacterVisualBinding cachedPlayerVisuals;
   private CharacterVisualBinding playerVisuals(){if(cachedPlayerVisuals==null||!cachedPlayerVisuals.equippedBySlot().equals(state.rpg().equipment()))cachedPlayerVisuals=CharacterVisualBinding.from(state.rpg());return cachedPlayerVisuals;}
-  private void drawCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=playerVisuals();float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
+  private void drawCharacter(Canvas c){if(!state.skillEffects().hidden()){drawVisibleCharacter(c);return;}float x=renderedPlayerWorldX(),y=renderedPlayerWorldY();int layer=c.saveLayerAlpha(x-96,y-128,x+96,y+32,80);try{drawVisibleCharacter(c);}finally{c.restoreToCount(layer);}}
+  private void drawVisibleCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=playerVisuals();float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
     String characterBodyIdentity=visuals.sourceBodyIdentity(this.characterBodyIdentity);
     SkillPresentationCatalog.Entry selected=skillPresentation.get(activeSkillVisualId);
     String weaponMotion=WeaponCombatProfile.motion(state.rpg(),selected==null?"EQUIPPED_BASIC":selected.motion);if((selected==null||"SK_공통_001".equals(selected.id))&&presentation==CharacterRenderer.State.ATTACK&&equipmentActions.resolveBasicAttack(state.rpg()).animationAction==AnimationAction.PUNCH&&skillBook.learned(MartialSourceV228.TRIPLE)&&skillBook.jobAllowed(MartialSourceV228.TRIPLE))weaponMotion="TRIPLE_PUNCH";

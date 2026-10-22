@@ -27,7 +27,7 @@ final class SkillActionData {
     {"SK_전사_022", "매드소울진", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "ADAPTED_MELEE_REACH_ORIGINAL_UNRESOLVED", "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음.", "기술"},
     {"SK_전사_023", "데빌크래셔", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "ADAPTED_MELEE_REACH_ORIGINAL_UNRESOLVED", "근접 한 타일 임시 적용; 필살기 원작 최대 발동 거리는 추가 영상 확인 필요.; 사용자 확인: 크래셔/데빌크래셔 공통 형상, 파랑/빨강 구분. 기존 불꽃 기둥 폐기.; 원작 플레이 GIF의 실제 프레임/시간 추출, 가림/알파는 한계 명시. 캡처된 BODY는 렌더하지 않음.", "기술"},
     {"SK_도적_001", "찌르기", "ACTIVE", "FRONT", "1", "1", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V", "전방 인접 한 타일", "기술"},
-    {"SK_도적_002", "센스몬스터", "ACTIVE", "SINGLE", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.", "기술"},
+    {"SK_도적_002", "센스몬스터", "ACTIVE", "SINGLE", "2", "1", "PRESENTATION", "1", "0.14", "U_V232_FACING_TWO_TILES", "바라보는 방향 전방 1~2칸 몬스터만 확인. 자동 접근·회전하지 않음; 가림/이동 대상 접촉 시 재검증.", "기술"},
     {"SK_도적_003", "표창날리기", "ACTIVE", "SINGLE", "4", "2", "DAMAGE_ADAPTED_BALANCE", "1", "0.14", "V_MAX4_NONADJACENT_METRIC_ADAPTED", "최대4칸, 붙어서 사용 불가. 타일 거리 측정 방식은 프로젝트 Chebyshev 기준.", "기술"},
     {"SK_도적_004", "밀기", "UTILITY", "SINGLE", "0", "0", "PRESENTATION", "1", "0.14", "V_CATALOG_SHAPE_REACH_UNRESOLVED", "단일 원거리 발동 상한 미확정: 현재 화면 안 대상만 허용하는 프로젝트 규칙.; 2015 원문은 유저 전용. 대상 유저 서비스 전까지 몬스터 연출 시전 차단.", "기술"},
     {"SK_도적_005", "아무네지아", "ACTIVE", "SINGLE", "4", "2", "PRESENTATION", "1", "0.14", "V_NONADJACENT_MAX_UNRESOLVED_ADAPTED4", "인접 대상 사용 불가: 최소 두 타일 거리. 최대4칸은 프로젝트 임시 상한.", "기술"},

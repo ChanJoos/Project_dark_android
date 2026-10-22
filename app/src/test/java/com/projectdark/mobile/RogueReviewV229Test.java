@@ -29,7 +29,7 @@ public class RogueReviewV229Test {
  @Test public void throwsNeverUseKickGroupAndStabsHaveEquippedLungeInBothBodiesAllFacings()throws Exception{
   SkillPresentationCatalog cat=new SkillPresentationCatalog(h.c);SkillBodyRenderer renderer=new SkillBodyRenderer(h.c,cat);renderer.prepare("mu0000001,mh172,ml228,ms001","mw002");Bitmap montage=Bitmap.createBitmap(960,640,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(montage);out.drawColor(0xff283528);int col=0;
   for(String motion:new String[]{"ROGUE_THROW","ROGUE_STAB"})for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
-   String key=cat.frameKey(body,motion,d,1f/3f);assertTrue(key,key.contains("/e/"));assertNotEquals(cat.frameKey(body,motion,d,0),key);
+   String key=cat.frameKey(body,motion,d,1f/3f);assertTrue(key,key.contains(motion.equals("ROGUE_THROW")?"/e/":"/c/"));assertNotEquals(cat.frameKey(body,motion,d,0),key);
    CharacterRenderer.Pose pose=new CharacterRenderer.Pose(100,150,d,CharacterRenderer.State.SKILL,0,.2f,.5f,false,"mu0000001,mh172,ml228,ms001","mw002",null,CharacterRenderer.EffectFamily.SKILL);Bitmap image=Bitmap.createBitmap(200,200,Bitmap.Config.ARGB_8888);assertTrue(renderer.draw(new Canvas(image),pose,body,motion,1f/3f));boolean drawn=false;for(int y=0;y<200;y++)for(int x=0;x<200;x++)if(Color.alpha(image.getPixel(x,y))>0)drawn=true;assertTrue(key,drawn);out.drawBitmap(image,null,new Rect(col%8*120,col/8*320,col%8*120+120,col/8*320+160),null);col++;
   }
   File p=new File("build/reports/device-review/v229-source-motion.png");p.getParentFile().mkdirs();try(FileOutputStream f=new FileOutputStream(p)){montage.compress(Bitmap.CompressFormat.PNG,100,f);}
