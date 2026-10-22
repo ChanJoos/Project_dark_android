@@ -1,6 +1,6 @@
 {
   "revision": "V222",
-  "status": "ACCEPTED_USER_CORRECTION_IMPLEMENTED_VERIFICATION_PENDING",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
   "base": "c91f135995c6741a2dd2d090ac67d2d45c949da0",
   "deviceReport": {
     "status": "DEVICE_FAILED_USER_REPORTED",
@@ -56,7 +56,7 @@
       "AI frequency/0.60 movement/1.8attack defaults",
       "source resolution/frame sizes/caches/vsync/save semantics"
     ],
-    "pairedMethod": "Same current maps/spawns/HP/dense fixture in two JVM runs; before replaces only RuntimeState and PoteForestMonsterShowcase with exactV221 source3bf65b96; restore final bytes and assert clean production before final tests/APK",
+    "pairedMethod": "Same current maps/spawns/HP/dense fixture in two JVM runs; before replaces only RuntimeState and PoteForestMonsterShowcase with exactV221 source3bf65b96; restore final bytes and assert clean production before final tests/APK; final run before only6000 queries/oracle and after90 fullframes; historical31cfe95b fullbefore/after also succeeded",
     "phone": "PENDING; CPU/allocation not handset FPS"
   },
   "verification": [
@@ -66,5 +66,6 @@
     "500 independent point/segment/reservation oracle comparisons",
     "paired6000 actor queries and90 actual update/draw frames for72/36/100 dense live actors",
     "retained MonsterChasePathfinder/Performance/PoteMonsterPlayable/Movement/Ground/HUD/Restart suites"
-  ]
+  ],
+  "verificationReceipt": "verification/DEATH_REPAIR_V222_BUILD.json"
 }

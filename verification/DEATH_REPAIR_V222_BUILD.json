@@ -1,0 +1,434 @@
+{
+  "sourceCommit": "ae0c7ff69c130479c013ad831a6ff696efcb50ea",
+  "runId": "39698748694",
+  "builtAtKST": "2026-10-22T09:24:50.082134+09:00",
+  "apkSha256": "f54951327dd08f24b67d8961cdeeb1d69231b41ad086fc76918051d4cc28eef0",
+  "apkBytes": 101630340,
+  "identity": {
+    "sourceCommit": "ae0c7ff69c130479c013ad831a6ff696efcb50ea",
+    "runId": "39698748694",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V222 original12,85 outdoor arrival; all10 original underground doorway markers/thresholds plus explicit junction stairs; Wererat180000HP; identical live collision with cached immutable radius and cheap species parsing, paired V221 dense CPU/allocation comparison; phone pending",
+  "suites": [
+    {
+      "suite": "com.projectdark.mobile.ContinuousMoveProfileTest",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathMapV220Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathNavigationV221Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathRepairV222Test",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.DeathVillageV217Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MonsterChasePathfinderTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MonsterDamagePresentationTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MonsterDensityV222Test",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "tests": 47,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "package": "com.projectdark.mobile.v222test",
+  "label": "PROJECT DARK V222 TEST",
+  "apkSignatureV2": "PASS independent RSA signature, certificate and content digest",
+  "chunks": 99,
+  "zipCrc": "PASS",
+  "phone": "PENDING",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "performance": [
+    {
+      "map": "MAP_DEATH_FIELD",
+      "population": 72,
+      "before": {
+        "map": "MAP_DEATH_FIELD",
+        "population": 72,
+        "acceptedQueries": 5798,
+        "queries6000ms": 382.902838,
+        "queryAllocatedBytes": 291703656,
+        "fullFrames": 0,
+        "update90IncludingCold": null,
+        "draw90IncludingCold": null
+      },
+      "after": {
+        "map": "MAP_DEATH_FIELD",
+        "population": 72,
+        "acceptedQueries": 5798,
+        "queries6000ms": 14.918969,
+        "queryAllocatedBytes": 507744,
+        "fullFrames": 90,
+        "update90IncludingCold": {
+          "p50ms": 0.441246,
+          "p95ms": 0.942736,
+          "p99ms": 34.948059,
+          "maxms": 34.948059
+        },
+        "draw90IncludingCold": {
+          "p50ms": 11.936725,
+          "p95ms": 18.892731,
+          "p99ms": 262.623599,
+          "maxms": 262.623599
+        }
+      }
+    },
+    {
+      "map": "MAP_DEATH_UNDER_C",
+      "population": 36,
+      "before": {
+        "map": "MAP_DEATH_UNDER_C",
+        "population": 36,
+        "acceptedQueries": 4000,
+        "queries6000ms": 36.52538,
+        "queryAllocatedBytes": 114390680,
+        "fullFrames": 0,
+        "update90IncludingCold": null,
+        "draw90IncludingCold": null
+      },
+      "after": {
+        "map": "MAP_DEATH_UNDER_C",
+        "population": 36,
+        "acceptedQueries": 4000,
+        "queries6000ms": 2.970963,
+        "queryAllocatedBytes": 272048,
+        "fullFrames": 90,
+        "update90IncludingCold": {
+          "p50ms": 0.167714,
+          "p95ms": 0.310662,
+          "p99ms": 2.047975,
+          "maxms": 2.047975
+        },
+        "draw90IncludingCold": {
+          "p50ms": 6.763556,
+          "p95ms": 9.234544,
+          "p99ms": 24.272446,
+          "maxms": 24.272446
+        }
+      }
+    },
+    {
+      "map": "MAP_MINE_HUNT_3",
+      "population": 100,
+      "before": {
+        "map": "MAP_MINE_HUNT_3",
+        "population": 100,
+        "acceptedQueries": 3840,
+        "queries6000ms": 94.055671,
+        "queryAllocatedBytes": 300384048,
+        "fullFrames": 0,
+        "update90IncludingCold": null,
+        "draw90IncludingCold": null
+      },
+      "after": {
+        "map": "MAP_MINE_HUNT_3",
+        "population": 100,
+        "acceptedQueries": 3840,
+        "queries6000ms": 3.499354,
+        "queryAllocatedBytes": 266928,
+        "fullFrames": 90,
+        "update90IncludingCold": {
+          "p50ms": 0.446546,
+          "p95ms": 1.172175,
+          "p99ms": 891.78868,
+          "maxms": 891.78868
+        },
+        "draw90IncludingCold": {
+          "p50ms": 7.05384,
+          "p95ms": 11.686786,
+          "p99ms": 51.643926,
+          "maxms": 51.643926
+        }
+      }
+    }
+  ],
+  "historicalFullFrameComparison": [
+    {
+      "map": "MAP_DEATH_FIELD",
+      "population": 72,
+      "before": {
+        "map": "MAP_DEATH_FIELD",
+        "population": 72,
+        "acceptedQueries": 5798,
+        "queries6000ms": 307.381846,
+        "queryAllocatedBytes": 280631560,
+        "update90IncludingCold": {
+          "p50ms": 0.298345,
+          "p95ms": 1.354983,
+          "p99ms": 69.6711,
+          "maxms": 69.6711
+        },
+        "draw90IncludingCold": {
+          "p50ms": 9.356404,
+          "p95ms": 21.073282,
+          "p99ms": 237.063763,
+          "maxms": 237.063763
+        }
+      },
+      "after": {
+        "map": "MAP_DEATH_FIELD",
+        "population": 72,
+        "acceptedQueries": 5798,
+        "queries6000ms": 16.219058,
+        "queryAllocatedBytes": 523616,
+        "update90IncludingCold": {
+          "p50ms": 0.365471,
+          "p95ms": 1.06392,
+          "p99ms": 29.058043,
+          "maxms": 29.058043
+        },
+        "draw90IncludingCold": {
+          "p50ms": 11.527587,
+          "p95ms": 17.077265,
+          "p99ms": 267.447248,
+          "maxms": 267.447248
+        }
+      }
+    },
+    {
+      "map": "MAP_DEATH_UNDER_C",
+      "population": 36,
+      "before": {
+        "map": "MAP_DEATH_UNDER_C",
+        "population": 36,
+        "acceptedQueries": 4000,
+        "queries6000ms": 49.427262,
+        "queryAllocatedBytes": 114323448,
+        "update90IncludingCold": {
+          "p50ms": 0.122067,
+          "p95ms": 0.324585,
+          "p99ms": 1.953167,
+          "maxms": 1.953167
+        },
+        "draw90IncludingCold": {
+          "p50ms": 5.039554,
+          "p95ms": 8.739474,
+          "p99ms": 17.557765,
+          "maxms": 17.557765
+        }
+      },
+      "after": {
+        "map": "MAP_DEATH_UNDER_C",
+        "population": 36,
+        "acceptedQueries": 4000,
+        "queries6000ms": 2.943356,
+        "queryAllocatedBytes": 144048,
+        "update90IncludingCold": {
+          "p50ms": 0.127087,
+          "p95ms": 0.309166,
+          "p99ms": 1.768646,
+          "maxms": 1.768646
+        },
+        "draw90IncludingCold": {
+          "p50ms": 7.260213,
+          "p95ms": 8.933511,
+          "p99ms": 19.927133,
+          "maxms": 19.927133
+        }
+      }
+    },
+    {
+      "map": "MAP_MINE_HUNT_3",
+      "population": 100,
+      "before": {
+        "map": "MAP_MINE_HUNT_3",
+        "population": 100,
+        "acceptedQueries": 3840,
+        "queries6000ms": 99.653621,
+        "queryAllocatedBytes": 300384048,
+        "update90IncludingCold": {
+          "p50ms": 0.513146,
+          "p95ms": 1.300952,
+          "p99ms": 19119.680683,
+          "maxms": 19119.680683
+        },
+        "draw90IncludingCold": {
+          "p50ms": 8.100805,
+          "p95ms": 12.02855,
+          "p99ms": 41.805639,
+          "maxms": 41.805639
+        }
+      },
+      "after": {
+        "map": "MAP_MINE_HUNT_3",
+        "population": 100,
+        "acceptedQueries": 3840,
+        "queries6000ms": 3.872348,
+        "queryAllocatedBytes": 144048,
+        "update90IncludingCold": {
+          "p50ms": 0.499672,
+          "p95ms": 1.452478,
+          "p99ms": 960.144714,
+          "maxms": 960.144714
+        },
+        "draw90IncludingCold": {
+          "p50ms": 7.048037,
+          "p95ms": 11.40566,
+          "p99ms": 52.515818,
+          "maxms": 52.515818
+        }
+      }
+    }
+  ],
+  "historicalFullFrameComparisonSource": "31cfe95bff9c13e511ded6d1431669dc603f7a6b/run39697696611; same production bytes; includes cold outliers; not handset FPS",
+  "nativeVisualReview": [
+    "v222-door-MAP_DEATH_UNDER_C-25-10.png",
+    "v222-door-MAP_DEATH_UNDER_B-9-39.png",
+    "v222-door-MAP_DEATH_UNDER_D-6-1.png",
+    "v222-door-MAP_DEATH_UNDER_B-14-19.png",
+    "v222-door-MAP_DEATH_UNDER_D-40-1.png",
+    "v222-door-MAP_DEATH_UNDER_E-1-9.png",
+    "v222-door-MAP_DEATH_UNDER_A-6-1.png",
+    "v222-door-MAP_DEATH_UNDER_E-25-10.png",
+    "v222-door-MAP_DEATH_UNDER_B-6-1.png",
+    "v222-door-MAP_DEATH_UNDER_A-9-39.png",
+    "v222-door-MAP_DEATH_UNDER_C-43-19.png",
+    "v222-door-MAP_DEATH_UNDER_C-6-19.png",
+    "v222-door-MAP_DEATH_UNDER_E-43-19.png",
+    "v217-MAP_DEATH_FIELD.png"
+  ],
+  "retainedDeathAssets": {
+    "packagedPngCount": 825,
+    "sourceArtAndGenerator": "unchanged from V221",
+    "rawMapGridsAndCollision": "unchanged; gates/spawns only repaired"
+  },
+  "artifactId": 12392152261,
+  "artifactSha256": "26d2c4faf2adbd304cc84bec0b21a59bc203f109c9d6ac749a9ee3ce1db33882",
+  "jobId": 119562479699,
+  "commonScope": {
+    "runId": 39698755769,
+    "status": "SUCCESS",
+    "fullCompile": "intentionally skipped; final main integration full regression pending"
+  },
+  "previousDeviceReport": {
+    "status": "DEVICE_FAILED_USER_REPORTED",
+    "installedApkSha": "UNKNOWN",
+    "issues": [
+      "wrong field entry",
+      "portals detached from original doors",
+      "dense monster lag"
+    ]
+  },
+  "attemptHistory": [
+    {
+      "source": "f98cb3df61823ff2c8c823961000f69e8fd85465",
+      "run": 39696577345,
+      "result": "baseline git object missing from shallow checkout; no runtime verification"
+    },
+    {
+      "source": "834cfd59fd6856f208919bf8512574b69e825a37",
+      "run": 39696857596,
+      "result": "test compile host-only API imports unavailable; production compiled"
+    },
+    {
+      "source": "61d21e9a89eb36f2f3d402ccf2974c7994c2ce47",
+      "run": 39697181667,
+      "result": "independent collision oracle PASS; direct-entry dense fixture bounced to lobby, corrected actual inbound Gate"
+    },
+    {
+      "source": "31cfe95bff9c13e511ded6d1431669dc603f7a6b",
+      "run": 39697696611,
+      "result": "SUCCESS47 tests; full before/after frames retained as historical same-production evidence; finished before guarded cancellation"
+    }
+  ],
+  "performanceLimits": "Host JVM CPU/allocation; paired hotspot queries only on final run,90 final live AI+draw frames each scene. No phone FPS claim. Historical full-frame sample includes cold Mine update19119.68ms before/960.14ms after; final cold Mine891.79ms, field draw262.62ms. These outliers remain recorded; handset lag acceptance pending.",
+  "nativeVisualReviewSamePixelsAsSuccessfulPriorRun": [
+    "v222-door-MAP_DEATH_UNDER_C-25-10.png",
+    "v222-door-MAP_DEATH_UNDER_B-9-39.png",
+    "v222-door-MAP_DEATH_UNDER_D-6-1.png",
+    "v222-door-MAP_DEATH_UNDER_B-14-19.png",
+    "v222-door-MAP_DEATH_UNDER_D-40-1.png",
+    "v222-door-MAP_DEATH_UNDER_E-1-9.png",
+    "v222-door-MAP_DEATH_UNDER_A-6-1.png",
+    "v222-door-MAP_DEATH_UNDER_E-25-10.png",
+    "v222-door-MAP_DEATH_UNDER_B-6-1.png",
+    "v222-door-MAP_DEATH_UNDER_A-9-39.png",
+    "v222-door-MAP_DEATH_UNDER_C-43-19.png",
+    "v222-door-MAP_DEATH_UNDER_C-6-19.png",
+    "v222-door-MAP_DEATH_UNDER_E-43-19.png"
+  ],
+  "library": {
+    "file_id": "file_000000009b988230a25da0db82664458",
+    "library_file_id": "libfile_c1598e3747cc8191a8bb53c2648b0f44",
+    "filename": "PROJECT_DARK_V222_TEST.apk",
+    "metadataApplied": true
+  }
+}

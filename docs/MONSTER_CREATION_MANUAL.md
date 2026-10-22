@@ -1,3 +1,13 @@
+## 2026-10-22 V222 검증 완료 — 원본 입구·지하문·웨어렛 HP·밀집 충돌 비용 수정 후보
+
+사용자 실기기 결함 신고 DEVICE_FAILED_USER_REPORTED/설치 SHA UNKNOWN 이력 유지. 새 후보 source `ae0c7ff69c130479c013ad831a6ff696efcb50ea`, focused run39698748694/job119562479699 SUCCESS; 관련13 suites **47 PASS/0 failure/0 error/0 skipped**, scope selector5 PASS. common39698755769 SUCCESS(범위검사; full compile 의도적skip). main41fe6def/기존PR197미병합; 최종main전체회귀는별도. IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_NATIVE VERIFIED; PHONE·USER_VISUAL ACCEPTANCE PENDING.
+
+웨어렛HP180000(U/ADAPTED 사용자요청),니크르164926/독거미192707·3종EXP750000유지. 로비→야외원본spawn12,85복구;원본지하문6633/6639총10개에문발시각핀+합법인접문턱1개씩join,양방향arrival수정. 27gate합법/원본12,85실제entry·지도선택도착·충돌navigation/13문·계단native캡처검증. B14,19분기와C/E25,10귀환은명시적adapted계단. 원본그리드·충돌·825PNG·해상도불변;새원작사실로간주하지않음.
+
+밀집 충돌: ID고정반경1회계산+비정규식species+보수적live AABB선별. 500독립point/segment/reservation oracle PASS. 72/36/100마리·AI빈도·충돌·이동·저장유지. 같은6000query의CPU 야외382.90→14.92ms,지하36.53→2.97ms,광산94.06→3.50ms;임시할당291703656→507744/114390680→272048/300384048→266928bytes. 이는호스트hotspot측정(약92–96%CPU/99%이상할당감소)이며FPS주장아님. 최종각90실제AI/update/drawframes+맵/개체수검사PASS. 전체프레임cold outlier는남음(광산update891.79ms,야외draw262.62ms);폰렉완전해결미확인. 직전31cfe95b/run39697696611도동일production47PASS/전체before+after자료보존;실행이8분이상으로보여비교범위를좁혔으나구실행은이미성공종료하여취소되지않았음. 추가동일소스재검증금지.
+
+APK `PROJECT DARK V222 TEST` / `com.projectdark.mobile.v222test`(독립설치후보),legacy184/1.84-mobile-horror. 빌드 **2026-10-22T09:24:50.082134+09:00**,101630340bytes,SHA256 `f54951327dd08f24b67d8961cdeeb1d69231b41ad086fc76918051d4cc28eef0`. artifact12392152261/ZIP26d2c4faf2adbd304cc84bec0b21a59bc203f109c9d6ac749a9ee3ce1db33882. ZIP CRC/embeddedsource+run/manifest/독립APK V2 RSA+cert+contentdigest PASS. 13문캡처직접검토및최종픽셀동일확인. 상세 `verification/DEATH_REPAIR_V222_BUILD.json`; 이후문서HEAD를APK소스로재라벨하지않음. 다음은정확V222휴대폰입구/문이동/밀집사냥피드백.
+
 ## 2026-10-22 V222 사용자 실기기 결함 신고 — 입구/지하문/밀집 렉 수정, 검증 대기
 
 DEVICE_FAILED_USER_REPORTED: 야외 시작점이상·지하문과분리된포탈·몬스터밀집렉. 사용자설치APK정확SHA는UNKNOWN;직전전달V221호스트27PASS를휴대폰수용으로간주하지않음. main41fe6def/기존PR197/codex/rucesion-coast-v157,마지막성공소스3bf65b96/run39693321115에서재개,문서HEADc91f1359. 이전V219의임의FIELD28,10을원본source spawn12,85로복구. 웨어렛HP180000은사용자조정U/ADAPTED,원작확정아님;3종EXP750000유지.
