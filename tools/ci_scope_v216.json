@@ -124,9 +124,10 @@
   "app/src/main/assets/skill-presentation/rogue/icons/ff61f1898349d45c.png": "7057956b11c934146dc24f49c23319939dd50cca2f87c2aaff5ea8fa731090b7",
   "app/src/main/assets/skill-presentation/rogue/manifest.json": "10af38670b079c3837b166de1696bb015e18b0d1f343d0546f6e9d97e52f5f8e",
   "app/src/main/assets/skill-presentation/rogue/references.json": "3705af795d62b1410c83a0188569d511ad64e07906a4141eb9d01fd7dc9ce004",
-  "app/src/test/java/com/projectdark/mobile/RogueReviewV229Test.java": "05c96cde35f7179c3bdfd6ce498cb1bc37d688c5dd635e446a19fd6290c54d1b",
+  "app/src/test/java/com/projectdark/mobile/RogueReviewV229Test.java": "bfe2f958e98b0348b6bed0a84bd8aade7ef4f72c1271f82a2dfccac401b88d69",
   "app/src/test/java/com/projectdark/mobile/RogueSkillReferenceTest.java": "158e2fcd7aced4a87b76676a7af59bda352ed4b3d3a81b4945f7a6753af37123",
   "master/changes/V229_ROGUE_ARTICLE_REVIEW.json": "1338fb83427e11a85dacda31a4b6f60c2be7ab512f2bb034e0ae2a6505bcef05",
   "master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json": "1d0d6b40b4a7878e54fddba55b9d9c9add125f09683e26461ae6068f266e7c03",
-  "tools/apply_rogue_v229.py": "13449b1ff296cf1ca410e56c5b3f962ef30faf66d2e661d5eb23a20d7a09731a"
+  "tools/apply_rogue_v229.py": "13449b1ff296cf1ca410e56c5b3f962ef30faf66d2e661d5eb23a20d7a09731a",
+  "app/src/test/java/com/projectdark/mobile/SkillWindowReferenceTest.java": "a1650b71d9209b4c5608af8dab9869e0a1f69d7e98e7af3a9236a003fa825bce"
 }

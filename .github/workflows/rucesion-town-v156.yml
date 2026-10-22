@@ -114,7 +114,21 @@ jobs:
             python3 tools/generate_skill_presentation.py
             python3 tools/generate_skill_abilities.py
             git diff --exit-code -- app/src/main/assets/skills app/src/main/assets/skill-presentation app/src/main/java/com/projectdark/mobile/SkillActionData.java app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_PRESENTATION_MAPPING.csv docs/SKILL_ABILITY_FORMULAS.csv docs/SKILL_ACTION_DECISIONS.csv
+            if [[ "$(git log -1 --format=%B)" == *"[v229-native-tail]"* ]]; then
+              git fetch --depth=1 origin cf9d47885efdbde2134174326d9f6ec81047f311
+              python3 - <<'PYGUARD229'
+          import subprocess
+          base='cf9d47885efdbde2134174326d9f6ec81047f311'
+          assert subprocess.check_output(['git','rev-parse',base+':app/src/main'],text=True)==subprocess.check_output(['git','rev-parse','HEAD:app/src/main'],text=True)
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/test/java/com/projectdark/mobile/RogueReviewV229Test.java','app/src/test/java/com/projectdark/mobile/SkillWindowReferenceTest.java'}
+          paths=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
+          assert all(p in allowed or p.startswith(('docs/','verification/')) for p in paths),paths
+          print('Reuse36 passed cases from39742229094 with identical runtime. Correct min-reach fixture and original-article expected pixels; rerun2failed cases and unexecuted APK build')
+          PYGUARD229
+              gradle :app:testDebugUnitTest --tests '*RogueReviewV229Test.reviewedActiveDaggerAndThrowMotionsReachNormalQuickslotContactAndNativeDraw' --tests '*SkillWindowReferenceTest.latestSquareIconUsesExactReferenceCropPixels' :app:assembleDebug --stacktrace
+            else
             gradle :app:testDebugUnitTest --tests '*RogueReviewV229Test' --tests '*RogueSkillReferenceTest' --tests '*SkillPresentationTest' --tests '*SkillWindowTest' --tests '*SkillWindowReferenceTest' --tests '*F5mRestartPersistenceMatrixTest' --tests '*AllJobSkillSourceTest.everyCatalogPoseRendersForBothBodiesAndEveryDirection' --tests '*SkillCorrectionsV227Test.screenshotIconsRenderInBookAndQuickslots' --tests '*MartialSevenV228Test.allSevenIconsAndCaptureChannelsRenderWithoutFloorOrSourcePeople' :app:assembleDebug --stacktrace
+            fi
           elif [[ "$(git log -1 --format=%B)" == *"[martial-seven-v228]"* ]]; then
             python3 tools/test_ci_scope_v216.py
             python3 tools/generate_skill_catalog.py

@@ -1,3 +1,7 @@
+## V229 verification continuation — unchanged runtime
+
+Source cf9d47885efdbde2134174326d9f6ec81047f311, focused39742229094/job119701997499:38cases,36PASS/2FAIL. Native icon25×2surface pixel comparisons, two-ID durable restore, bothBODY/four-facing lunge/throw and existing direct UI/source/save regressions passed. Failed cases: normal shuriken fixture incorrectly placed target1tile despite existing minReach2; old UI assertion expected the now-superseded skill-window crop. Fixtures now use per-ID minReach/LOS and exact requested article pixels, preserving all pixel assertions. No runtime/asset bytes changed. Guarded tail reruns those2cases and previously unexecuted APK;36passed cases reused. PHONE/VISUAL PENDING.
+
 ## 2026-10-22 V229 도적 원문 아이콘·모션 재검토 — 검증 대기
 
 Base2ec732df / APK06da5333 V22878cases PASS; main41fe6def unchanged, same PR197. User requires exact article245450 icons, motion review and distinct 습격/기습. Live browser opened original article and confirmed54 body images; retained raw snapshots/media match those ordered images. Reviewed source GIF frames and original c/e/f BODY atlas. New accepted master/changes/V229_ROGUE_ARTICLE_REVIEW.json records per-ID routes and limits.
