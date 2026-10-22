@@ -1,0 +1,115 @@
+{
+  "revision": "V228_MARTIAL_SEVEN_BUILD",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "sourceCommit": "06da5333d37db7eee35ce765fa86d0e5fd1fb2c2",
+  "sameRuntimeTreeAs": "a5639b4b5774541497e12bbc1c9e6e2fdfdbd9ac",
+  "focusedRun": 39736705873,
+  "job": 119683978249,
+  "priorRun": 39735723474,
+  "priorSuites": [
+    {
+      "suite": "com.projectdark.mobile.SkillSpatialContractTest",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillCorrectionsV227Test",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillPresentationTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MartialMechanicsV173Test",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillWindowTest",
+      "tests": 16,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MartialSevenV228Test",
+      "tests": 7,
+      "failures": 1,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.AllSkillRuntimeV138Test",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.SkillAbilityRuntimeTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "reusedPassedTests": 77,
+  "rerunPassedTests": 1,
+  "totalDistinctTests": 78,
+  "failures": 0,
+  "concurrentInterruptionAudit": "PASS",
+  "scopeRun": 39736719343,
+  "fullRegression": false,
+  "artifact": 12407676110,
+  "artifactZipSha256": "e55c62f999a197c2380b06e1cec5123d20da98c32b208a3dea70c8695930c1eb",
+  "apk": {
+    "name": "PROJECT_DARK_V228_TEST.apk",
+    "package": "com.projectdark.mobile.v222test",
+    "label": "PROJECT DARK V228 TEST",
+    "builtAtKST": "2026-10-22T15:55:15.643124+09:00",
+    "bytes": 101884497,
+    "sha256": "476240e5181d7653c41a8a8b6389c919b11c2d7d38591d5c88a41e9c05e7545a",
+    "signature": "CI apksigner v2 PASS; downloaded archive digest/CRC and APK CRC/hash, embedded source/run, binary manifest, exact V228 source assets and dex policy markers verified",
+    "libraryFileId": "libfile_52e502083204819185ff7fe035f7e11f"
+  },
+  "projectionChecks": "four generators/nine reproducible projections; five scope tests; seven source channel hashes/transparent corners",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "limits": [
+    "Physical handset and user visual acceptance pending",
+    "Video15fps and approximate alpha/occlusion; original GIF timing and all four source facings unverified",
+    "Original damage/cost/reuse/protection duration values remain unresolved; existing adapted balance retained"
+  ]
+}
