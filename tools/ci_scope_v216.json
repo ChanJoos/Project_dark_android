@@ -188,7 +188,7 @@
   "tools/apply_rogue_v233.py": "8749649d0c92ad992ada93881e38a06c0e56bbc346fee9382ab5318dc5f042c4",
   "app/src/test/java/com/projectdark/mobile/SkillQuickslotApproachTest.java": "815a3b4685cb1a2211c6640a8a7b537b603b53d0351b6cb6be3fcaab2d5e1af1",
   "app/src/main/assets/skill-presentation/rogue/cfcd39e6a1fb7ca3.png": "476ebf93d83b2ecad7ab8d38f2cee4987b9868b739151abc632edecf667dfaba",
-  "app/src/test/java/com/projectdark/mobile/RogueCombatV234Test.java": "de96e7f8fd6f3f57d9271f6bc4e28eb558d840da3b2e4feeecdb375010cb49f9",
+  "app/src/test/java/com/projectdark/mobile/RogueCombatV234Test.java": "5b5ef91919a72364fa5812362401578d17ddceb63f867288dd7636d6346a11ab",
   "master/changes/V234_ROGUE_COMBAT.json": "445611cfb34c669c7141c107e15b4e8d164381e2524ee90f907099608d550df5",
   "tools/apply_rogue_v234.py": "829da03a4d1f0ea299b2ca05256bf3eb8c3574578c79faf5aaa13afa9016e7eb"
 }
