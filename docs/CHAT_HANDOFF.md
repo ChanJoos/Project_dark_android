@@ -1,3 +1,11 @@
+## V242 4써클 전체4·단일4 — 최종 빌드/관련 호스트 시전 검증
+
+Finalruntime `37021fa4b177b8ee9fbb8e0648893aa667f8b958`, Actions39871767730/job120147629203 SUCCESS, artifact12466462521. 최초f7f023ad/run39870628943는8nativePASS. 실제sequenceQA에서 원본EFA252frame1의분리된uniform가로줄을거절하고 displayrow0/240px만제거(원본bytes보존/ADAPTED correction). 최종2native(all4everyframeRGBA/headerinterval/foot/alias/multi-tile+토SINGLE/SCREEN)PASS; strictappmain2filedelta/Java·build.gradle불변가드로 최초8사례의변하지않은근거재사용. 고유9identity/0unresolvednativefailures. 최종4sequencegrid의줄제거및토실제single/screen검수;다른3속성의최초6GameView장면은해당asset/runtime동일. Fullsuite/phone/USER_VISUALacceptance아님.
+
+수/토/풍/화 EFA236/252/242/239,기존026..029및030..033전체별칭동일4channel/atlas,원본70/52/85/65ms,9,270,784decodedbytes. Source565/pitch/headerfoot및낮은색값보존. 유일한원본flatrow표시정정은receipt에원본·표시hash별도기록. Basic4/승급8/3circle/피해·MP·습득·map/save불변. 재사용레슨런MAGIC_FX_LESSONS/AGENTSgate저장.
+
+APK PROJECT_DARK_V242_TEST.apk/com.projectdark.mobile.v242test, built2026-10-23 08:27:55 KST,105515015bytes,SHA256 `729a0796598d4b4664d43262e02753cfc692708481a27db1b342cc81cfb77d25`. ZIP113123078bytes,SHA256d565cc115f299767e8b4f7618fd024ea0c3a3d35941cde0eb2682e61cd469191. DownloadedZIP/APKCRC/digest/embeddedsource+run/binarymanifest/716presentationfilebytes PASS, CIAPK V2signaturePASS exactdigest. Receipt verification/CIRCLE4_V242_BUILD.json. Common39871776312scopeSUCCESS/fullcompileSKIP. IMPLEMENTED/BUILD_VERIFIED/SCOPED_HOST_NATIVE_VERIFIED; PHONE/USER_VISUALPENDING. SamePR197unmerged/main41fe6def unchanged. 문서closure는APK소스아님. Next exactV242phonefeedback; 검증된불변작업을재빌드하지않음.
+
 ## V242 4써클 전체4 + 단일4 — 원본 EFA 연결 / 검증 진행
 
 USER080624 영상25.456367s: 전체 수/토/풍/화4종을 연결하고 동일 FX를4써클단일로 사용. 원본 roh.dat EFA236/252/242/239가 영상의백보라별/회색먼지/청백전격/황백폭발과 직접 일치. 전체030..033은 기존effectSource 별칭으로 단일026..029와 정확히같은4channel/atlas를 공유한다. 원본 RGB565 전체frame/rowpitch/sourcefoot/headerinterval70/52/85/65ms 보존. SCREEN/self-alpha2,2px투명padding,9,270,784decodedbytes. 캡처actor/HP마스크·색임계삭제·임의복원 없음. Source zip/hash/frames receipt retained;video rawnotcommitted. 독립3번째identityreference PENDING_REFERENCE.

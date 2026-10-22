@@ -25,7 +25,8 @@
     "world",
     "save"
   ],
-  "validation": "tools/check_mage_v242.py PASS; native/build pending",
+  "validation": "Finalsource37021fa4/run39871767730 two nativePASS +guarded unchanged first8cases fromf7f023ad/run39870628943;9uniqueidentities; verification/CIRCLE4_V242_BUILD.json",
   "device": "PHONE/USER_VISUAL PENDING",
-  "lessons": "docs/MAGIC_FX_LESSONS.md"
+  "lessons": "docs/MAGIC_FX_LESSONS.md",
+  "displayCorrection": "Single isolated originalearth scanline removed;rawEFA preserved;source/displayhash receipts distinct"
 }

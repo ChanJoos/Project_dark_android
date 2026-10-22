@@ -1,0 +1,75 @@
+{
+  "sourceCommit": "37021fa4b177b8ee9fbb8e0648893aa667f8b958",
+  "runId": "39871767730",
+  "builtAtKST": "2026-10-23T08:27:55.989166+09:00",
+  "apkSha256": "729a0796598d4b4664d43262e02753cfc692708481a27db1b342cc81cfb77d25",
+  "apkBytes": 105515015,
+  "identity": {
+    "sourceCommit": "37021fa4b177b8ee9fbb8e0648893aa667f8b958",
+    "runId": "39871767730",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V242 final source isolated earth scanline display correction; final2native all-source frame/pixel/timing/alias bounds and earthnormal SINGLE/SCREEN; reuse unchanged first8cases from39870628943 through exact runtime delta guard; phone visual pending",
+  "artifactId": 12466462521,
+  "jobId": 120147629203,
+  "artifactZipBytes": 113123078,
+  "artifactZipSha256": "d565cc115f299767e8b4f7618fd024ea0c3a3d35941cde0eb2682e61cd469191",
+  "manifestPackage": "com.projectdark.mobile.v242test",
+  "manifestLabel": "PROJECT DARK V242 TEST",
+  "signature": "CI APKv2PASS on exact downloaded digest;ZIP/APKCRC/embeddedidentity/binarymanifest/716presentationbytes independently verified",
+  "packagedPresentationFilesByteVerified": 716,
+  "finalTestSuites": [
+    {
+      "name": "com.projectdark.mobile.MageCircle4V242Test",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "initialSource": "f7f023addb145f756deb88534276818a2cbf509d",
+  "initialRun": 39870628943,
+  "initialTestSuites": [
+    {
+      "name": "com.projectdark.mobile.MageBasicV240Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MagePromotionV241Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MageCircle4V242Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "compositeUniqueTestIdentities": 9,
+  "finalNativeCases": 2,
+  "unresolvedNativeFailures": 0,
+  "reuseGuard": "CI app/src/main exact delta limited earth.png+manifest; Java/build.gradle unchanged. First8 tests retained; allframes and earthnormal single/screen rerun.",
+  "displayCorrection": "RawEFA252frame1 retained. Remove original uniform0x18e3row0/240px only; independent raw-source and corrected-display hashes checked. Original particles otherwise byte-identical.",
+  "lessons": "docs/MAGIC_FX_LESSONS.md;AGENTS mandatory read",
+  "verification": "IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pr": 197,
+  "unmerged": true
+}
