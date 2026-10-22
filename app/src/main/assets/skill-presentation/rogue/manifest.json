@@ -160,12 +160,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
           "sourceSha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
-          "atlasSha256": "1f85abf559b4e1da85962f00f37e0910254280bc9df0a2440781e321e6933c90",
+          "atlasSha256": "3f87d235eb4093c64e3f37aa866e39d15ee10b279f7ffefddc6b772967bd2022",
           "opaquePixelCounts": [
-            1319,
-            1242,
-            632,
-            18
+            1170,
+            1139,
+            561,
+            0
           ],
           "review": {
             "articleId": 245450,
@@ -196,10 +196,10 @@
               112
             ],
             "restoredLeftPixels": [
-              429,
-              352,
-              112,
-              18
+              353,
+              295,
+              78,
+              0
             ],
             "noRectangularActorHole": true,
             "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
@@ -233,12 +233,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f.gif",
           "sourceSha256": "9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f",
-          "atlasSha256": "03cf618422e040646f6b51fee2eb78cbd8cbfd2997f52468f8de85d8cd6670d4",
+          "atlasSha256": "4f7fb9783d63d03a75d9df49dd66cd75b2e92ab2f3e2455175e5c249de763700",
           "opaquePixelCounts": [
-            18,
-            1119,
-            127,
-            18
+            0,
+            1013,
+            121,
+            0
           ],
           "review": {
             "articleId": 245450,
@@ -269,10 +269,10 @@
               112
             ],
             "restoredLeftPixels": [
-              18,
-              309,
+              0,
+              252,
               16,
-              18
+              0
             ],
             "noRectangularActorHole": true,
             "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
@@ -326,10 +326,10 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b.gif",
           "sourceSha256": "b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b",
-          "atlasSha256": "bf09f95ce27b53753c6021340b00e998cf91a84e7e778095fd31de1f4466476f",
+          "atlasSha256": "6c67544e82f78862c6e0d3168f6de62dc456e43ba49737af943bf21815e6b0b4",
           "opaquePixelCounts": [
-            1374,
-            1347,
+            987,
+            695,
             0,
             0
           ],
@@ -362,8 +362,8 @@
               133
             ],
             "restoredLeftPixels": [
-              547,
-              475,
+              357,
+              184,
               0,
               0
             ],
@@ -399,10 +399,10 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8.gif",
           "sourceSha256": "332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8",
-          "atlasSha256": "4d0431f999b1e8c9493c59e32f3b6583002972c9b27547cdc1c4d8f02f03d392",
+          "atlasSha256": "31ffb1ce2f1806adf98ed208c33416485da49e332228f1de95edd669715f96ee",
           "opaquePixelCounts": [
-            1636,
-            2910,
+            1387,
+            2359,
             0,
             0
           ],
@@ -435,8 +435,8 @@
               133
             ],
             "restoredLeftPixels": [
-              611,
-              1087,
+              541,
+              857,
               0,
               0
             ],
@@ -620,13 +620,13 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70.gif",
           "sourceSha256": "8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70",
-          "atlasSha256": "5c61017451eb56b97e562dbf00e96fafd99b75f16857c7802e440dab9a29294e",
+          "atlasSha256": "12322e859a00e5d375f21c2bb611d3381fa7bfeae8a160dcf76551dc39834a3b",
           "opaquePixelCounts": [
-            30,
-            278,
-            222,
-            47,
-            30
+            0,
+            265,
+            238,
+            64,
+            0
           ],
           "review": {
             "articleId": 245450,
@@ -657,11 +657,11 @@
               98
             ],
             "restoredLeftPixels": [
-              30,
-              46,
-              41,
-              38,
-              30
+              0,
+              19,
+              16,
+              0,
+              0
             ],
             "noRectangularActorHole": true,
             "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
@@ -695,12 +695,12 @@
           "anchor": "CASTER",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50.gif",
           "sourceSha256": "e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50",
-          "atlasSha256": "42ddc8fe5a6112256b43fa0fd3d789e7d366c4ccfe217f2038a1cee0b5d9371f",
+          "atlasSha256": "9691b92dc01a78b9c26f01e131320bb1c8b6ed1d594d1a6eb65ee5ecdcdd9c12",
           "opaquePixelCounts": [
-            58,
-            101,
-            297,
-            254
+            5,
+            48,
+            229,
+            188
           ],
           "review": {
             "articleId": 245456,
@@ -776,12 +776,12 @@
           "anchor": "CASTER",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f.gif",
           "sourceSha256": "d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f",
-          "atlasSha256": "16582c4ac7b9bab3755b632518ea38d116688a03e2c147940db8bb7d8e4f39c7",
+          "atlasSha256": "7e64e4b38ae233c0dfe8ebd19f68e3af890dedef90aab776714d0e8f4cb130c8",
           "opaquePixelCounts": [
-            59,
-            99,
-            848,
-            252
+            9,
+            27,
+            569,
+            83
           ],
           "review": {
             "articleId": 245456,
@@ -952,12 +952,12 @@
           "anchor": "RECIPIENT",
           "sourceGif": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
           "sourceSha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
-          "atlasSha256": "1f85abf559b4e1da85962f00f37e0910254280bc9df0a2440781e321e6933c90",
+          "atlasSha256": "3f87d235eb4093c64e3f37aa866e39d15ee10b279f7ffefddc6b772967bd2022",
           "opaquePixelCounts": [
-            1319,
-            1242,
-            632,
-            18
+            1170,
+            1139,
+            561,
+            0
           ],
           "review": {
             "articleId": 245450,
@@ -988,10 +988,10 @@
               112
             ],
             "restoredLeftPixels": [
-              429,
-              352,
-              112,
-              18
+              353,
+              295,
+              78,
+              0
             ],
             "noRectangularActorHole": true,
             "limitations": "Visible source pixels only; truly occluded pixels remain unresolved."
