@@ -6,7 +6,7 @@ android {
     defaultConfig {
         applicationId 'com.projectdark.mobile'
         if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v222test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V222 TEST' : 'PROJECT DARK']
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V223 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
         versionCode 184

@@ -17,6 +17,8 @@ public final class TownTravel {
  public static boolean isManager(String npc){if(LEGACY_PIET.npc.equals(npc))return true;for(Destination d:TOWNS)if(d.npc.equals(npc))return true;return false;}
  public static boolean isTown(String map){return forMap(map)!=null;}
  public static Destination forMap(String map){map=AbelTownGeometry.canonical(map);if(LEGACY_PIET.map.equals(map))return LEGACY_PIET;for(Destination d:TOWNS)if(d.map.equals(map))return d;return null;}
+ /** Death Village entry is offered by the existing Mine town manager only. */
+ public static boolean offers(String from,String to){return !DeathVillageGeometry.LOBBY.equals(to)||MineTownGeometry.ID.equals(from);}
  public static boolean canDepart(String map,String npc){Destination d=forMap(map);return d!=null&&d.npc.equals(npc);}
  public static WorldMoveTargetController.TileCenter center(String map){
   if(WorldDef.ID.equals(map))return new WorldMoveTargetController.TileCenter(512,544);

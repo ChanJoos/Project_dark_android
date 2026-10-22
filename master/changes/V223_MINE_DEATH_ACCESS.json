@@ -1,0 +1,18 @@
+{
+  "id": "V223_MINE_DEATH_ACCESS",
+  "status": "ACCEPTED",
+  "evidence": "U: 2026-10-22 user requests changing Death Village approach from Milles to Mine NPC; excludes new house monster work. 마인마인 interpreted as existing Mine town manager Arthur, no new NPC.",
+  "sourceIDs": [
+    "TownTravel.TOWNS",
+    "mine_town_travel",
+    "MAP_DEATH_LOBBY"
+  ],
+  "before": "Death lobby offered by every town manager",
+  "after": "Death lobby offered only in Mine town manager dialogue; other destinations and existing return routes retained",
+  "affected": [
+    "TownTravel.java",
+    "TownTravelWindow.java"
+  ],
+  "validation": "actual NPC input, menu filtering, entry/re-entry, save restoration, existing town and death navigation suites; pending CI",
+  "originalFacts": "No new original monster names, stats or spawn claims"
+}

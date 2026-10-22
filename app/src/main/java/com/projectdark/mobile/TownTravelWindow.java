@@ -11,7 +11,7 @@ final class TownTravelWindow {
  static List<String> destinations(String current){
   List<String> out=new ArrayList<>();
   TownTravel.Destination here=TownTravel.forMap(current);
-  for(TownTravel.Destination d:TownTravel.TOWNS)if(here==null||!d.map.equals(here.map))out.add(d.map);
+  for(TownTravel.Destination d:TownTravel.TOWNS)if((here==null||!d.map.equals(here.map))&&TownTravel.offers(current,d.map))out.add(d.map);
   if(!com.projectdark.mobile.world.CampaignWorld.PIET.equals(current))out.add(hunting(current));if(WorldDef.ID.equals(current))out.add(com.projectdark.mobile.world.HorrorCastleGeometry.LOBBY);return out;
  }
  static String hunting(String current){
