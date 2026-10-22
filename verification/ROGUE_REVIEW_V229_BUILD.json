@@ -1,0 +1,139 @@
+{
+  "revision": "V229_ROGUE_REVIEW_BUILD",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "sourceCommit": "31e1a0d43fecc35fbeef3d8e216dce478ba9c474",
+  "sameRuntimeTreeAs": "319f808ee4ffdb812f66d0c2fbe12fd1f5b029b3",
+  "originalRuntimeSource": "cf9d47885efdbde2134174326d9f6ec81047f311",
+  "nativeEvidence": {
+    "initial": [
+      {
+        "suite": "com.projectdark.mobile.SkillCorrectionsV227Test",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.RogueSkillReferenceTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.SkillPresentationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.AllJobSkillSourceTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.RogueReviewV229Test",
+        "tests": 4,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.SkillWindowTest",
+        "tests": 16,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.MartialSevenV228Test",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.SkillWindowReferenceTest",
+        "tests": 3,
+        "failures": 1,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "tail": [
+      {
+        "suite": "com.projectdark.mobile.RogueReviewV229Test",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "suite": "com.projectdark.mobile.SkillWindowReferenceTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "distinctPassed": 38
+  },
+  "nativeRuns": [
+    39742229094,
+    39743018663
+  ],
+  "totalDistinctTests": 38,
+  "unresolvedFailures": 0,
+  "fullRegression": false,
+  "apk": {
+    "name": "PROJECT_DARK_V229_TEST.apk",
+    "package": "com.projectdark.mobile.v229test",
+    "label": "PROJECT DARK V229 TEST",
+    "builtAtKST": "2026-10-22T16:56:23.592823+09:00",
+    "bytes": 101891457,
+    "sha256": "6252f506c4457d7a5457740abf5fb14b62efa72dc24f4b6bf823a664b3069979",
+    "certificateSha256": "ef58307118df78733d4ab7d75a3bc3aa9e73ddbce6243dbf1e58e443a235657f",
+    "signature": "CI apksigner V2 PASS; downloaded ZIP/APK CRC/hash, embedded source/run, binary label/package and exact original-icon/source profile bytes independently verified",
+    "libraryFileId": "libfile_0be41e33e8f08191a64c0486615f1f22"
+  },
+  "packagedSourceFilesMatched": 43,
+  "previousV228Certificate": "5e16a582fb2f94d56112eb009f7330581602b11256a5137bfb0f54a70e6e0fc3",
+  "separateInstall": true,
+  "oldV228DataCopied": false,
+  "previousIncompatibleCandidate": {
+    "source": "319f808ee4ffdb812f66d0c2fbe12fd1f5b029b3",
+    "sha256": "b0a127f6e79e22d6050310ea369f454c993879ee44098c0d5ca484957d24c46f",
+    "delivered": false
+  },
+  "scope": "25 exact article icons take priority on square and quickslot UI; 16 source BODY motion routes; separate Supgyeok015 and Giseup023 definitions/learning/icons/durable slots; no ability numeric/save schema change",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "limits": [
+    "Phone/user visual acceptance pending",
+    "Source c/e family and phase selection are adaptations; exact original four-way cadence not certified",
+    "Article13 GIF23 names conflict retained; no automatic shared effect between Supgyeok and Giseup",
+    "Article23 icon40 identity called Windblade? by author; used exact source by user request, not official identity certification",
+    "New .v229test is separately installed and does not inherit V228 app-private saves",
+    "Stable signing for future updates remains open"
+  ],
+  "buildRun": 39743866592,
+  "buildJob": 119707407658,
+  "commonScopeRun": 39743874285,
+  "artifact": 12410466766,
+  "artifactZipSha256": "fc918dd5a99b75a00e8574ea6a287591fa4d4bdda3429cc16d9eef286014afde",
+  "buildStatus": "SUCCESS",
+  "nativeStatus": "36 retained +2 corrected distinct cases PASS",
+  "profileProjectionChecks": "5 generators/11 projections deterministic; ability JSON/Java bytes unchanged",
+  "original25Icons": "square and quickslot native pixel equality PASS",
+  "sourceBodyReview": "source c/e/f sheets and article54media visually reviewed; native bothBODY/four-facing draw PASS;14normal-input screenshots generated"
+}
