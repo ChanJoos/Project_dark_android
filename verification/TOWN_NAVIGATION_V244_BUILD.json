@@ -1,0 +1,121 @@
+{
+  "sourceCommit": "8a673869af3a5c9a1573ed2f32791940b7163805",
+  "runId": "39888499550",
+  "builtAtKST": "2026-10-23T11:16:47.835082+09:00",
+  "apkSha256": "08d17255fc0a89e18bc4ba71f149572dd90a39496df83ba62327563667bb3786",
+  "apkBytes": 105763820,
+  "identity": {
+    "sourceCommit": "8a673869af3a5c9a1573ed2f32791940b7163805",
+    "runId": "39888499550",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V244 Milles46,39 startup/recall/NPC arrival;6town recall inventory use, all-map overview and live entrance paths; final deep-temple/dead/no-consume test after inventory baseline oracle correction; strict unchanged appmain/build.gradle guard reuses25passed tests fromb89d796/run39887958748; phone pending",
+  "manifest": {
+    "manifest": {
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile.v244test",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "application": {
+      "theme": 2130837504,
+      "label": "PROJECT DARK V244 TEST",
+      "debuggable": 4294967295,
+      "extractNativeLibs": 0
+    }
+  },
+  "signature": "APKv2 RSA-SHA256 cryptographic signature + certificate public key + full chunk content digest PASS",
+  "packagedSkillPresentationByteMatches": 721,
+  "artifactId": 12473204427,
+  "artifactZipBytes": 111246609,
+  "artifactZipSha256": "5a94aa856ccd320c75e0f9fb769cb04953ac764dcf3fec08503663e849051984",
+  "initialSource": "b89d796be959aad92dcc26656e459128e77ec0d5",
+  "initialRun": 39887958748,
+  "initialArtifact": 12473701711,
+  "initialArtifactSha256": "c0dc95759de7ba46c88812ab6a2264d791bb212f9ec3854016c6bac277f1bbc7",
+  "jobId": 120202288397,
+  "focusedResult": "SUCCESS",
+  "commonScopeRun": 39888505106,
+  "commonScope": "SUCCESS",
+  "commonCompile": "SKIPPED",
+  "uniqueScopedTests": 26,
+  "unresolvedFailures": 0,
+  "runtimeReuse": "Strict app/src/main and app/build.gradle byte identity to b89d796;5other V244 test methods byte-identical;25PASS from first run reused; corrected test now passes entire deep-temple recall/dead/no-consume scenario",
+  "initialFailure": "Test expected2owned recalls after grant2 but starter inventory already contained1; corrected to captured before count. No production change.",
+  "verification": "IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "unmerged": true,
+  "initialSuites": [
+    {
+      "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+      "tests": "15",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ForestFloorCacheTest",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.world.GroundTapPathTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.TownNavigationV244Test",
+      "tests": "6",
+      "failures": "1",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "reusedPassedCases": [
+    "com.projectdark.mobile.RuntimeCheckpointTest.emptyInventoryDoesNotRecreateStarterItems",
+    "com.projectdark.mobile.RuntimeCheckpointTest.legacySaveMigratesWithoutReequippingEmptySlot",
+    "com.projectdark.mobile.RuntimeCheckpointTest.quest2WatermarkRejectsOldDefeatAfterRestart",
+    "com.projectdark.mobile.RuntimeCheckpointTest.unsupportedOrUnknownItemsCannotOverwriteSave",
+    "com.projectdark.mobile.RuntimeCheckpointTest.failedDiskCommitCanRetryWithoutDuplicatingReward",
+    "com.projectdark.mobile.RuntimeCheckpointTest.allItemsAndExplicitUnequipSurviveRestart",
+    "com.projectdark.mobile.RuntimeCheckpointTest.rejectedQuestCommitDoesNotMutateLiveReward",
+    "com.projectdark.mobile.RuntimeCheckpointTest.liveGameViewPauseRestoresPositionResourcesAndOwnership",
+    "com.projectdark.mobile.RuntimeCheckpointTest.poteDeathReviveResetsActiveAdapterAndJoystickCanMove",
+    "com.projectdark.mobile.RuntimeCheckpointTest.defeatImmediatelyBeforePauseIsRewardedOnceAndNextLifeWorks",
+    "com.projectdark.mobile.RuntimeCheckpointTest.prologueTurnInDoesNotReloadAndDiscardLiveStats",
+    "com.projectdark.mobile.RuntimeCheckpointTest.coldRestartRestoresPoteMapPositionAndReturnPoint",
+    "com.projectdark.mobile.RuntimeCheckpointTest.deadPlayerRestartsDeadUntilExplicitRevive",
+    "com.projectdark.mobile.RuntimeCheckpointTest.quest2CompletionAndAllGrowthCommitTogether",
+    "com.projectdark.mobile.RuntimeCheckpointTest.unknownSavedMapFallsBackWithoutOverwritingSource",
+    "com.projectdark.mobile.ForestFloorCacheTest.cachedFloorKeepsLegacyWorldTextureAndChunkSeamsAcrossAllMaps",
+    "com.projectdark.mobile.ForestFloorCacheTest.stationaryFloorReusesChunksAndMapTravelHasBoundedMemory",
+    "com.projectdark.mobile.world.GroundTapPathTest.destinationsAndShortestRoutesMatchIndependentOracles",
+    "com.projectdark.mobile.world.GroundTapPathTest.largeMapGroundTapDoesNotScanEveryActorForEveryTile",
+    "com.projectdark.mobile.world.GroundTapPathTest.requestCachesDoNotSurviveActorMovementAndLiveStepsRevalidate",
+    "com.projectdark.mobile.TownNavigationV244Test.everyAuthoredMapFamilyExposesItsRealDoorOrRoutePins",
+    "com.projectdark.mobile.TownNavigationV244Test.freshStartAndEveryMillesTownReturnAreExactly46_39AndSaveRestoresPosition",
+    "com.projectdark.mobile.TownNavigationV244Test.allSixActualInventoryRecallsShareNpcArrivalConsumeOneAndPersist",
+    "com.projectdark.mobile.TownNavigationV244Test.forestAndInteriorMinimapTouchesWalkRealExitWithoutTeleportAndCacheOverview",
+    "com.projectdark.mobile.TownNavigationV244Test.mineHorrorCoastsAndTempleOverviewOpenThroughActualHudAndRetainLiveCamera"
+  ],
+  "finalSuites": [
+    {
+      "name": "com.projectdark.mobile.TownNavigationV244Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ]
+}

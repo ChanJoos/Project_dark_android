@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "d2f3b39369ce382bd027aad56b26b324589c7ebb93f70ef8a73ead4e0b988193",
+  "master/MASTER_MANIFEST.md": "e8b5c7cc55bdb2b9f64f7c9a7499a8bb1ea8fb642ec13983f1b4944756a53fc1",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -551,5 +551,5 @@
   "app/src/main/java/com/projectdark/mobile/TownCommerce.java": "ac181de52e545f645dd020229f411ba2f41ca76afcb278b5ef8514afb0083ee4",
   "app/src/main/java/com/projectdark/mobile/WorldDef.java": "02cb7241d91f1f7f9eea1b0c6ce235df48faa06be85a3f5a9f777ecf6873f774",
   "app/src/test/java/com/projectdark/mobile/TownNavigationV244Test.java": "d4956d30f29baaa10bf3fb17bae32104c8f5a459581939c5311aea63732bb062",
-  "master/changes/V244_TOWN_NAVIGATION.json": "700aaf96a68627b5488928928c10433a5d23f6b00e165e820810e53e15b60acd"
+  "master/changes/V244_TOWN_NAVIGATION.json": "f5b90bf8bd6285b2d7ca0e8f56e2e8eaeb9673cb779a25ad3c448b6b193d568a"
 }

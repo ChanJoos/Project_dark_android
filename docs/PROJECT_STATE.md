@@ -1,3 +1,13 @@
+## V244 — 밀레스 시작·리콜·NPC 도착점 및 전 맵 미니맵: 후보 검증 완료
+
+사용자2026-10-23 GitHub 업로드·검증·APK 빌드 승인으로 이전 publication blocker 해소. 최종 소스 `8a673869af3a5c9a1573ed2f32791940b7163805`, Actions39888499550/job120202288397 SUCCESS, artifact12473204427. 최초 b89d796/run39887958748의26건중25PASS, 실패1은 시작인벤토리 리콜1개를 빼먹은 test oracle. 보유량 snapshot 비교로 수정 후 deep-temple/dead/no-consume 정상귀환까지1건 PASS. strict appmain/build.gradle 및 나머지5feature test method 동일성으로25통과 재사용. 관련 고유26건/미해결실패0, 전체회귀 주장은 아님. Common39888505106 scopeSUCCESS/compileSKIPPED.
+
+밀레스 신규 시작·리콜·다른마을 NPC이동 도착점은 HUD46,39/world736,704. 기존 저장 위치 복원은 유지. 리콜6종 실제 인벤토리1회사용→각마을 NPC도착점·1개소모·저장복원; 깊은 신전실내 레이어 종료 및 사망중 소모거절 검증. 각마을/포테/아벨·뤼케시온해안/광산/호러캐슬/죽음의마을/일반실내/신전의 실제 entrance pin, 정상HUD입력·기존길찾기·출입구전환·camera복원·overview cache 검증. 신규 룸/보상/레벨 제한 우회 없음. 신전 native map 화면 검수. 휴대폰/사용자 시각 수용은 PENDING.
+
+APK `PROJECT_DARK_V244_TEST.apk`, `com.projectdark.mobile.v244test`, built2026-10-23 11:16:47 KST,105763820bytes,SHA256 `08d17255fc0a89e18bc4ba71f149572dd90a39496df83ba62327563667bb3786`. Artifact ZIP111246609bytes,SHA2565a94aa856ccd320c75e0f9fb769cb04953ac764dcf3fec08503663e849051984. 내려받은ZIP/APK CRC·embeddedsource/run·binarymanifest package/label·독립APKv2 RSA-SHA256서명/인증서공개키/전체chunkdigest PASS;721스킬표시자료byte일치. 상세 verification/TOWN_NAVIGATION_V244_BUILD.json.
+
+IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED. Same PR197 unmerged/main41fe6def unchanged. 이문서closure는 APK소스가아님. Next exactV244phonefeedback; 검증된불변runtime 재빌드 불필요. 최종main통합은 별도fullgate 유지.
+
 ## V244 local verification / publication blocked
 
 전체 app/src/main Java와 신규 TownNavigationV244Test 및 종속 fixture compile PASS (API35 android-all, 임시 R/BuildConfig 선언, 원본 pinned manifest의1073개 generated wearable binding 사용). Android Gradle/패키징 성공 주장은 아님. 실제 Milles tile layer의736,704→HUD46,39 및 등록된 리콜6종 destination resolution Java probe PASS. CI scope classifier6tests PASS. 확대지도/정상HUD입력/path/포탈/저장복원 host-native 실행은 아직 PENDING; standalone probe는 Android Paint.nInit native runtime 부재로 중단. 변수 scope 충돌을 실제 compile 전에 수정.

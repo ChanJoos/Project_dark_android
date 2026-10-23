@@ -6,7 +6,9 @@
   "after": "Milles HUD46,39/world736,704; shared arrivals for all6town recalls; all map-family real entrance pins/live navigation",
   "sourcePreservation": "No source bytes replaced; existing saves retain position; original server recall prices not asserted",
   "adaptations": "Five supported town recall IDs and existing1000G mobile-policy offers; no unknown unsupported-town destination fabricated",
-  "validation": "LOCAL_MAIN_AND_TEST_COMPILE_PASS / COORDINATE_AND6RECALL_BINDINGS_PASS / ANDROID_NATIVE_BUILD_PENDING",
+  "validation": "26unique scoped host-native checks PASS, Android build PASS, exact APK verified; verification/TOWN_NAVIGATION_V244_BUILD.json",
   "next": "TownNavigationV244Test + GroundTapPathTest + RuntimeCheckpointTest + ForestFloorCacheTest and APK",
-  "publication": "BLOCKED_BY_AUTOMATIC_APPROVAL_REVIEW"
+  "publication": "APPROVED_USER_20261023_AND_PUBLISHED",
+  "sourceCommit": "8a673869af3a5c9a1573ed2f32791940b7163805",
+  "phone": "PENDING"
 }
