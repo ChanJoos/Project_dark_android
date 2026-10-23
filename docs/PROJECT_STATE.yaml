@@ -1,5 +1,11 @@
 visual_feedback_v250:
-  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: a5e752071792c5bdc5a442c75408a33a614365e9
+  focused_run: 39918615395
+  artifact_id: 12486256369
+  native_passed: 17
+  receipt: verification/VISUAL_FEEDBACK_V250_BUILD.json
+  library_file_id: libfile_04ed11ec19b48191a7a9c5a188bb392f
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
