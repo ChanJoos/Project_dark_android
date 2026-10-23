@@ -23,7 +23,7 @@ public class InventoryRepairV212Test {
  }
  @Test public void repairedRapidAndFoodsHaveTransparentSocketBorderAndSharedWindowPixels(){
   SourceItemIconRegistry icons=new SourceItemIconRegistry(c);RpgProgressionState r=new RpgProgressionState();String[] ids={"USER_ITEM_20261018_R05141","IT_NA_FOOD_293294_00","IT_NA_FOOD_293294_24","IT_NA_FOOD_293294_37"};
-  for(String id:ids){Bitmap b=icons.get(r.itemDefinitions().get(id));assertNotNull(id,b);assertSame(b,icons.get(id));for(int x=0;x<b.getWidth();x++){assertEquals(id,0,Color.alpha(b.getPixel(x,0)));assertEquals(id,0,Color.alpha(b.getPixel(x,b.getHeight()-1)));}assertFalse(id,b.sameAs(Bitmap.createBitmap(b.getWidth(),b.getHeight(),Bitmap.Config.ARGB_8888)));}
+  for(String id:ids){Bitmap b=icons.get(r.itemDefinitions().get(id));assertNotNull(id,b);assertSame(b,icons.get(id));if(icons.nativeInventory(id)){assertTrue(id+" complete native frame including edge pixels",b.sameAs(new OriginalInventoryV252(c).get(id)));}else for(int x=0;x<b.getWidth();x++){assertEquals(id,0,Color.alpha(b.getPixel(x,0)));assertEquals(id,0,Color.alpha(b.getPixel(x,b.getHeight()-1)));}assertFalse(id,b.sameAs(Bitmap.createBitmap(b.getWidth(),b.getHeight(),Bitmap.Config.ARGB_8888)));}
  }
  @Test public void actualRecoveredEquipmentAndFoodInventoryRender()throws Exception{
   GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().enableEquipmentSandbox(true);Set<String> slots=new HashSet<>();

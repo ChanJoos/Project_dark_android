@@ -1,3 +1,9 @@
+## V252 입력/검증 후속
+
+Initial6e5b5914/run39948420201:10native tests,7PASS/3FAIL. No assertion ignored. Three diagnosed fixture/oracle assumptions: native food37 has genuine foreground on frame edge (do not erase);7retained native source IDs are not registered game items (272runtime+7asset-only, no fabricated registration); Rapid-only rendering includes opaque underlyingBODY, so opaque composite pixels were incorrectly treated as opaque Rapid pixels. Correct oracle renders isolated source-alpha Rapid overlay, then composites it over actualhat;1RGBroundingunit tolerance covers sequential-vs-flattened source-over only. Bothbodies4directions3motions/real overlap assertions retained. Complete279frame sourcepixel audit still PASS. New actualbag/equipment/shop test and6adjacent checks passed initially; rerun scoped10 with corrected fixtures. No production delta after6e5b5914.
+
+Common39948426783 fell back to full because reviewed workflow hash was stale. Update exactworkflowhash in scope manifest; localclassifiernowFOCUSED. Do not claim initialcommonSKIPPED or fullPASS. Finalsource/build/native/phone still pending.
+
 ## V252 — 중단된 원본 아이콘·라피드·나르콜리 GIF 작업 복구
 
 Base8cff9726 / samecodex/rucesion-coast-v157 / PR197. main41fe6def is ancestor and unchanged. Last verified candidateV251 source4d3232c5/run39922524224; do not relabel it asV252.

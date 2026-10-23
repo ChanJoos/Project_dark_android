@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "6d511789774c0d8de969cdea3e31b8b323c8a4075dbd6f94c54a1c81daa80e5c",
+  ".github/workflows/rucesion-town-v156.yml": "7cf371f73850d3e1d0ea5295457f86796a4437866e7a844e6c735fe93d7c10a1",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -678,7 +678,7 @@
   "tools/check_magic_recall_v251.py": "943f3e012f9c6ad7d12ddcf8ab469c52388b54d85315110d2143a5e888e439a2",
   "app/src/main/java/com/projectdark/mobile/RapidHairclipV199.java": "8fce9a83d2bf560d3334209f06e456aff7472c361516da9fbb99349e0c589c4a",
   "app/src/main/java/com/projectdark/mobile/OriginalInventoryV252.java": "c2431cec636e7b2cccc9cfec6d675c1379f3ec626de339c10c86a5d66e0a090f",
-  "app/src/test/java/com/projectdark/mobile/VisualSourceV252Test.java": "5614bf366eb0791684dcfc93dab740dec7f7870f45f6c83076e9ea81b26359b5",
+  "app/src/test/java/com/projectdark/mobile/VisualSourceV252Test.java": "60b60d9b089af554916a9a5eb68d1757c421d268ca117c0840d47746c5b62cd3",
   "app/src/test/java/com/projectdark/mobile/WeaponIconsV209Test.java": "8ebb8a6b459db6994deb303701604febd7bb2d9681bee98d46f4f593b05cb2b4",
   "master/changes/V252_ORIGINAL_INVENTORY_RAPID.json": "488656364e918519a3bb6b7a94a53e4048e8edd96a90f9dd6ddea4738c785efa",
   "tools/build_inventory_v252.py": "b754ca0c03f48a835d5d6cbd29a75ec67771b524b1cfd39e14f4af43f10f0c58",
@@ -692,9 +692,10 @@
   "master/source/items/inventory_v252/remaining.json": "c5d7302a793b6101fab82c6627b1a9796054a78dfda536c6f53864d2138c4f00",
   "master/source/items/inventory_v252/collection-match.json": "31757945653395807e5cad860b914e2de8fcf394a57333df66198745e8d12e35",
   "master/source/items/inventory_v252/original_inventory.zip": "519c0ecdce9407c19e012a86790d3ba2a0e951add2d16e41579bf5920472e885",
-  "master/source/items/inventory_v252/receipt.json": "e2d63237b7481c304a7d558be0819a1cf2318f7dabc7ffc38c6cf257a34f51df",
+  "master/source/items/inventory_v252/receipt.json": "837ca6e9e1076716acd7a85b5f49bd8730ba3113d2002d17d3a61388cbc651bd",
   "master/source/narcoli_video_v252/narcoli-video.gif": "c7cf2777506b09d13e3b31d12dd20a62beeab0c75b26041333fcef629e0d7788",
   "master/source/narcoli_video_v252/video_frames.zip": "d046aabc04bfe5e3be783263585e503a0369c365877ef8882f2274eb3e42c057",
   "master/source/narcoli_video_v252/review-frames.png": "f189c82bd14b7fc7a9e3ee976fbb96453dcdee8eb8ce34e5c1047ad5d900b130",
-  "master/source/narcoli_video_v252/receipt.json": "519ead49d7611bdf3e8cad70040d50d496261ae19e636cfe9d052ecb7fe9828d"
+  "master/source/narcoli_video_v252/receipt.json": "519ead49d7611bdf3e8cad70040d50d496261ae19e636cfe9d052ecb7fe9828d",
+  "app/src/test/java/com/projectdark/mobile/InventoryRepairV212Test.java": "61b72284c9ddc830d4a0d48dda6ecbe0c5072e5579d538a4c68f665722127766"
 }

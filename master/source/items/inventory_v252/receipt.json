@@ -12822,5 +12822,15 @@
     }
   ],
   "bindingCount": 279,
-  "policy": "Native complete inventory sprites recovered by retained named inventory reference. Unresolved wearable previews are not certified inventory icons."
+  "policy": "Native complete inventory sprites recovered by retained named inventory reference. Unresolved wearable previews are not certified inventory icons.",
+  "runtimeBindingCount": 272,
+  "assetOnlyItemIds": [
+    "USER_ITEM_20261018_R03535",
+    "USER_ITEM_20261018_R03652",
+    "USER_ITEM_20261018_R03666",
+    "USER_ITEM_20261018_R03671",
+    "USER_ITEM_20261018_R03681",
+    "USER_ITEM_20261018_R03687",
+    "USER_ITEM_20261018_R04461"
+  ]
 }
