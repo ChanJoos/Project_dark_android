@@ -70,7 +70,13 @@
     "rows": 225,
     "unsupportedServiceSkills": 15,
     "unsupportedPrototypeFixtures": 3,
-    "scope": "Static registry reachability, not all skills runtime/original appearance accepted"
+    "scope": "Static registry reachability, not all skills runtime/original appearance accepted",
+    "canonicalCatalogRows": 222,
+    "undefinedCanonicalAbilities": 0,
+    "undefinedCanonicalRules": 0,
+    "retiredCanonicalSkills": 6,
+    "humanReport": "docs/V249_SKILL_AUDIT_KO.md",
+    "nativeReport": "verification/STATUS_MAGIC_V249_SKILL_AUDIT.json"
   },
   "limitations": [
     "Physical phone and user visual acceptance PENDING",
@@ -81,5 +87,17 @@
   "savedDeliverable": {
     "libraryFileId": "libfile_86832f4fd644819196ad343cfe5511e2",
     "filename": "PROJECT_DARK_V249_TEST.apk"
+  },
+  "independentRecheck": {
+    "apkSha256": "c8dbf7e60a204f5432a17fee36171e09a98e37c9a2822eff59c0c790545b4625",
+    "zipCrc": "PASS",
+    "embeddedSourceAndRun": "PASS",
+    "binaryManifestPackageAndLabel": "PASS",
+    "apkV2SignatureCertificatePublicKeyAndChunkDigest": "PASS",
+    "packagedSourceByteMatches": 754,
+    "skillPresentationFiles": 727,
+    "townFiles": 26,
+    "npcProfiles": 1,
+    "savedFileMetadataMatchesLibraryId": true
   }
 }

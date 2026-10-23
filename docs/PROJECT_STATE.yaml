@@ -1,5 +1,14 @@
 status_magic_v249:
-  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 4311a11ca096023b5fab6fb952d4ce9bdfca6233
+  focused_run: 39911143492
+  artifact_id: 12483535278
+  native_unique_passed: 40
+  native_current_passed: 11
+  native_reused_passed: 29
+  receipt: verification/STATUS_MAGIC_V249_BUILD.json
+  skill_audit: docs/V249_SKILL_AUDIT_KO.md
+  library_file_id: libfile_86832f4fd644819196ad343cfe5511e2
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197

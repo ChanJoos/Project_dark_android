@@ -1,0 +1,18 @@
+{
+  "version": 249,
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "userDecisions": [
+    "Complete reinforcement and all4Kuroto frames at source feet",
+    "Confusion onecycle and same passive double damage window as Amnesia",
+    "Narcoli and adapted Venomi bound to live status lifetime",
+    "All3Azito to Milles inn; restart and exit",
+    "Retire mage054/cleric059 Clemens and mage022 Locateo via existing save migration",
+    "Dilu/Soruma exact monk010/018 recipient channels"
+  ],
+  "runtimeSource": "4311a11ca096023b5fab6fb952d4ce9bdfca6233",
+  "sourceReceipt": "master/source/status_v249/receipt.json",
+  "buildReceipt": "verification/STATUS_MAGIC_V249_BUILD.json",
+  "audit": "docs/V249_SKILL_AUDIT_KO.md",
+  "scope": "40 scoped host native checks, not all-skill device acceptance or full regression",
+  "phone": "PENDING"
+}

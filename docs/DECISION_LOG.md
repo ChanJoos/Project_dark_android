@@ -1,3 +1,7 @@
+## V249 — 사용자 마법 수정 및 남은 기술 감사
+
+사용자 결정: 콘푸지오는 한 번 별 회전·아무네지아와 같은10초 비선공/피해2배; 나르콜리/베노미는 실제 상태 수명에 연동; 아지토3종은 밀레스 여관; 클리멘스2ID/로카테오 삭제; 딜루메니/소루마는 일음지/발경 몬스터 채널과 동일. 원본 프레임·pivot·blend·전체 외곽을 보존하고 베노미만 원작 미확정 ADAPTED배정을 명시한다. Runtime4311a11c/run39911143492,40scopedPASS/정확APK검증·저장 완료. 정의222종 누락0이나 SERVICE15·수혈대상·간이서비스·대체FX는 미완료: docs/V249_SKILL_AUDIT_KO.md. PHONE/원작 전체 외형/main통합 pending. 문서 갱신으로 APK소스 변경하지 않음.
+
 ## V248 — 최종 후보 검증·APK 전달 완료
 
 APK source `e38aeba15e34a7d9c797f16af7d8c8ed2922bb87`; [Actions39906861205](https://github.com/ChanJoos/Project_dark_android/actions/runs/39906861205) / job120260704047 SUCCESS, artifact12481077445. Final PortalServices3 + TempleMilles5 =8 PASS/0 failures/errors/skips. Exact-delta guarded retained32 PASS from eb7c55be/run39904714042 and 2df7cdf4/run39905956948:40 unique scoped checks, not a full-suite claim. Final71map/130portal groups,20source NPC roles, death-knight shop/recall checked. Prior21paid town routes/coast locking/cancel/poor/rollback/restart and adjacent navigation/save/cache/input evidence retained. Source pixel audit PASS. All71 final portal scenes plus temple capture inspected; old baked temple white beam removed, original32frame portal is common live overlay. Screenshot choice idle border cleaned with preserved original pixels.

@@ -1,3 +1,7 @@
+## Final audit and independent receipt reconciliation
+
+Independent downloaded APK/archive CRC, binarymanifest, exactsource/run, APKv2signature/certificatekey/fullchunkdigest and754packaged source bytes PASS. Saved file metadata matches libfile_86832f4fd644819196ad343cfe5511e2. SameAPK4311a11c; no rebuild/release duplication. Canonical222Ability+rule entries exist,6retired;15SERVICE and limited utilities/FX remain documented in docs/V249_SKILL_AUDIT_KO.md and verification/STATUS_MAGIC_V249_SKILL_AUDIT.json. YAML now reflects exact completed candidate instead of stale IMPLEMENTING. Physicalphone and main integration remain pending.
+
 ## V249 — 후보 APK 전달 검증 완료
 
 APK source `4311a11ca096023b5fab6fb952d4ce9bdfca6233`; Actions [39911143492](https://github.com/ChanJoos/Project_dark_android/actions/runs/39911143492), job120274194411 SUCCESS, artifact12483535278. Final10 status-native +1 source-description =11 PASS/0fail/error/skip; strict production-delta guard retains29 adjacent PASS from8f321f5d/run39909943836.40 scoped checks, not full regression. Original5sequence source audit PASS;727 packaged skill files byte-identical.
