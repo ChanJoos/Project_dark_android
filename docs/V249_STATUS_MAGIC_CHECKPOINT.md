@@ -1,3 +1,7 @@
+## Source audit runner repair
+
+First123a633/run39909677251 stopped before Gradle because the generation script assumed uncommitted video was in the CI upload directory. Original video hash is already preserved in source receipt; remote audit now reuses that provenance hash when raw recording is absent, and still decodes/compares every original frame. No runtime/native test result existed at this stop. Same focused suite resumes.
+
 # V249 status magic repair — IMPLEMENTED / CI PENDING
 
 Base1795f21, last successful APK sourcee38aeba1/run39906861205. SamePR197/branch; main41fe6def unchanged.

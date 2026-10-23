@@ -23,6 +23,9 @@ def main():
   with zipfile.ZipFile(S/'original_effects.zip','w',zipfile.ZIP_DEFLATED) as z:
    for n in sorted(names):z.writestr(n,ar[n])
  with zipfile.ZipFile(S/'original_effects.zip') as z:raw={n:z.read(n) for n in z.namelist()}
+ video=R.parent/'upload/1000060796.mp4'
+ video_hash=sha(video.read_bytes()) if video.is_file() else json.loads((S/'receipt.json').read_text())['referenceVideoSha256']
+ assert len(video_hash)==64
  channels={};records=[]
  for name,n,fmt,project_ms in specs:
   key=f'efct{n:03}';frames=[]
@@ -44,6 +47,6 @@ def main():
  skills={}
  for id,name in [('SK_마법사_044','reinforce'),('SK_공통_010','heal'),('SK_무도가_032','heal'),('SK_성직자_058','heal'),('SK_마법사_056','heal'),('SK_마법사_006','confusion')]:skills[id]={'channels':{'RECIPIENT_CONTACT':channels[name]}}
  (O/'manifest.json').write_text(json.dumps(dict(revision='V249',skills=skills,persistent={'SLEEP':channels['sleep'],'POISON':channels['poison']}),ensure_ascii=False,indent=2)+'\n')
- (S/'receipt.json').write_text(json.dumps(dict(revision='V249',source='Retained741 roh.dat',installerSha256='dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093',sourceFiles={n:sha(b) for n,b in raw.items()},sequences=records,referenceVideo='1000060796.mp4',referenceVideoSha256=sha((R.parent/'upload/1000060796.mp4').read_bytes()),venomiReference='https://lod.nexon.com/board/1493172227/7518',venomiEvidence='Nexon-hosted community text confirms timed poison, not an animation identification. Green original particle art is an explicit project-adapted assignment; existing poison balance retained.'),ensure_ascii=False,indent=2)+'\n')
+ (S/'receipt.json').write_text(json.dumps(dict(revision='V249',source='Retained741 roh.dat',installerSha256='dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093',sourceFiles={n:sha(b) for n,b in raw.items()},sequences=records,referenceVideo='1000060796.mp4',referenceVideoSha256=video_hash,venomiReference='https://lod.nexon.com/board/1493172227/7518',venomiEvidence='Nexon-hosted community text confirms timed poison, not an animation identification. Green original particle art is an explicit project-adapted assignment; existing poison balance retained.'),ensure_ascii=False,indent=2)+'\n')
  print('V249 complete source5 sequences PASS')
 if __name__=='__main__':main()

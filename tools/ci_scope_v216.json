@@ -641,5 +641,5 @@
   "app/src/test/java/com/projectdark/mobile/StatusMagicV249Test.java": "9a0137efb3731ca6f7b1a12ec5faec5154d08d1688c8ab1a1d50d6501c408247",
   "master/source/status_v249/original_effects.zip": "da6ed062ecf43dc2910536358f3978664f7d7a739a764653b0bc9b6f9233fa44",
   "master/source/status_v249/receipt.json": "8075118907621bff1261fabdd31d660738c4190024d187f7077cfd201a6cac9f",
-  "tools/build_status_v249.py": "d1aa52dafc75ec4b18e495996a7ee4c446f761db716d927beb55a353e0eae786"
+  "tools/build_status_v249.py": "c3706de97de0f758ce4b2d5ebe0b33fa70b3dd0954234b317d3d73eee063b4ff"
 }
