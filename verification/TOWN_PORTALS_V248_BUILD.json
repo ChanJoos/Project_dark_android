@@ -241,5 +241,16 @@
   "status": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED",
   "phone": "PENDING",
   "userVisualAcceptance": "PENDING",
-  "mainIntegrated": false
+  "mainIntegrated": false,
+  "libraryDelivery": {
+    "status": "succeeded",
+    "file_name": "PROJECT_DARK_V248_TEST(1).apk",
+    "library_file_id": "libfile_28534341b14c8191a709364a999850ec",
+    "file_id": "file_00000000fcf481fba9db47211097c9dd",
+    "local_metadata_applied": true
+  },
+  "commonScopeRun": 39906867800,
+  "commonCompile": "SKIPPED",
+  "nativeAudit": "verification/TOWN_PORTALS_V248_NATIVE_AUDIT.json",
+  "reusedNativeCases": "verification/TOWN_PORTALS_V248_REUSED_NATIVE.json"
 }

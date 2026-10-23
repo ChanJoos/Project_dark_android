@@ -1,5 +1,13 @@
 town_portals_v248:
-  status: IMPLEMENTING
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: e38aeba15e34a7d9c797f16af7d8c8ed2922bb87
+  focused_run: 39906861205
+  artifact_id: 12481077445
+  native_unique_passed: 40
+  native_current_passed: 8
+  native_reused_passed: 32
+  receipt: verification/TOWN_PORTALS_V248_BUILD.json
+  library_file_id: libfile_28534341b14c8191a709364a999850ec
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
