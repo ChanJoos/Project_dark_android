@@ -12,6 +12,9 @@ final class SkillIconCatalog {
   private final Bitmap atlas;
   private final Map<String,Integer> index=new HashMap<>();
   private final Map<String,Bitmap> presentation=new HashMap<>();
+  private final Map<String,Bitmap> squareIcons=new HashMap<>();
+  private Bitmap martialFrame;
+  private final Set<String> framedSources=new HashSet<>();
   private final Set<String> sourceOverrides=new HashSet<>();
   private final Paint paint=new Paint();
   private final SkillWindowSkin windowSkin;
@@ -35,7 +38,7 @@ final class SkillIconCatalog {
       }
       for(String directory:new String[]{"classic","rogue","warrior","shared"}){
       JSONObject refs=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/"+directory+"/references.json"),StandardCharsets.UTF_8));JSONArray list=refs.getJSONArray("rows");
-      for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id"),path=row.getString("iconAssetPath");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/"+directory+"/"+path));if(icon==null)throw new IOException("Invalid classic icon: "+path);presentation.put(id,icon);index.putIfAbsent(id,-1);}
+      for(int rowIndex=0;rowIndex<list.length();rowIndex++){JSONObject row=list.getJSONObject(rowIndex);if(row.isNull("id"))continue;String id=row.getString("id"),path=row.getString("iconAssetPath");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/"+directory+"/"+path));if(icon==null)throw new IOException("Invalid classic icon: "+path);presentation.put(id,icon);if(!directory.equals("classic"))framedSources.add(id);index.putIfAbsent(id,-1);}
       }
       JSONObject rogueIcons=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/rogue/references.json"),StandardCharsets.UTF_8));JSONArray articleIcons=rogueIcons.getJSONArray("rows");
       for(int i=0;i<articleIcons.length();i++){JSONObject row=articleIcons.getJSONObject(i);String id=row.getString("id");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/rogue/"+row.getString("iconAssetPath")));if(icon==null)throw new IOException("Rogue article icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}
@@ -44,15 +47,35 @@ final class SkillIconCatalog {
       Iterator<String> ids=supplements.keys();while(ids.hasNext()){String id=ids.next();Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open(supplements.getString(id)));if(icon==null)throw new IOException("Invalid user skill icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}}
       JSONObject mageGuide=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/mage-v235/references.json"),StandardCharsets.UTF_8));JSONArray mageRows=mageGuide.getJSONArray("rows");
       for(int i=0;i<mageRows.length();i++){JSONObject row=mageRows.getJSONObject(i);String id=row.getString("id");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/mage-v235/"+row.getString("iconAssetPath")));if(icon==null)throw new IOException("Mage guide icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}
+      JSONObject classic=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/classic/references.json"),StandardCharsets.UTF_8));
+      JSONArray originals=classic.getJSONArray("rows");for(int i=0;i<originals.length();i++){JSONObject row=originals.getJSONObject(i);if("SK_무도가_003".equals(row.optString("id")))martialFrame=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/classic/"+row.getString("iconAssetPath")));}
+      if(martialFrame==null)throw new IOException("Martial scroll reference missing");
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
   static String iconId(String id){return "SK_도적_012".equals(id)?"SK_도적_017":"SK_도적_001".equals(id)?"SK_도적_007":"SK_무도가_001".equals(id)?"SK_무도가_006":id;}
   SkillWindowSkin windowSkin(){return windowSkin;}
-  boolean drawSquare(Canvas c,String id,RectF dest){
-    id=iconId(id);
-    if(!sourceOverrides.contains(id)&&!id.equals("SK_마법사_043")&&windowSkin.draw(c,id,dest))return true;
-    Bitmap image=presentation.get(id);if(image==null)return false;paint.setFilterBitmap(true);c.drawBitmap(image,null,dest,paint);return true;
+  /** One cached parchment silhouette, edge lines and palette for every book icon. */
+  Bitmap squareIcon(String id){
+    id=iconId(id);Bitmap cached=squareIcons.get(id);if(cached!=null)return cached;
+    Bitmap source=!sourceOverrides.contains(id)&&!id.equals("SK_마법사_043")?windowSkin.image(id):null;
+    boolean captured=source!=null;if(source==null)source=presentation.get(id);if(source==null)return null;
+    int inset=(captured||framedSources.contains(id))&&Math.min(source.getWidth(),source.getHeight())>=36?Math.max(1,Math.round(Math.min(source.getWidth(),source.getHeight())*.10f)):0;
+    Bitmap art=Bitmap.createBitmap(31,31,Bitmap.Config.ARGB_8888);Paint copy=new Paint();copy.setFilterBitmap(false);
+    new Canvas(art).drawBitmap(source,new Rect(inset,inset,source.getWidth()-inset,source.getHeight()-inset),new Rect(0,0,31,31),copy);
+    // Exact martial outer pixels replace screenshot frames. Interior uses its source
+    // glyph, quantized to the reference's sepia palette; no new glyph is drawn.
+    java.util.Set<Integer> colors=new java.util.LinkedHashSet<>();for(int y=0;y<31;y++)for(int x=0;x<31;x++){int v=martialFrame.getPixel(x,y);if(Color.alpha(v)>0)colors.add(v);}
+    Map<Integer,Integer> palette=new HashMap<>();
+    for(int y=0;y<31;y++)for(int x=0;x<31;x++){
+      int edge=martialFrame.getPixel(x,y),v=art.getPixel(x,y);
+      if(x<3||x>=28||y<3||y>=28||Color.alpha(edge)==0){art.setPixel(x,y,edge);continue;}
+      if(Color.alpha(v)==0)continue;Integer mapped=palette.get(v);
+      if(mapped==null){int best=Integer.MAX_VALUE;for(int color:colors){int dr=Color.red(v)-Color.red(color),dg=Color.green(v)-Color.green(color),db=Color.blue(v)-Color.blue(color);int distance=dr*dr+dg*dg+db*db;if(distance<best){best=distance;mapped=color;}}palette.put(v,mapped);}
+      art.setPixel(x,y,mapped);
+    }
+    squareIcons.put(id,art);return art;
   }
+  boolean drawSquare(Canvas c,String id,RectF dest){Bitmap image=squareIcon(id);if(image==null)return false;paint.setFilterBitmap(false);float side=Math.min(dest.width(),dest.height());c.drawBitmap(image,null,new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2),paint);return true;}
   boolean drawQuickslot(Canvas c,String id,RectF dest){id=iconId(id);float side=Math.min(dest.width(),dest.height());dest=new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2);
     Path clip=new Path();clip.addRoundRect(dest,3,3,Path.Direction.CW);c.save();c.clipPath(clip);
     boolean result=!sourceOverrides.contains(id)&&!id.equals("SK_마법사_043")&&windowSkin.drawContent(c,id,dest);

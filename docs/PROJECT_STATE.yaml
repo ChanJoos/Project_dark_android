@@ -1,3 +1,10 @@
+hud_narcoli_v253:
+  status: IMPLEMENTING
+  user_report: NARCOLI_VISUAL_REJECTED_NEW_213626_VIDEO
+  required_sources: [AGENTS.md, docs/MAGIC_FX_LESSONS.md, app/src/main/java/com/projectdark/mobile/SkillBook.java, app/src/main/java/com/projectdark/mobile/SkillWindow.java, app/src/main/java/com/projectdark/mobile/SkillIconCatalog.java, app/src/main/java/com/projectdark/mobile/GameView.java, master/source/status_v249/receipt.json]
+  acceptance: 12 square slots; preserved8and10slot saves; martial icon background; left cluster; larger attack; auto above; actual recipient Narcoli comparison
+  phone: PENDING
+
 visual_source_v252:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   owner: ROOT_SINGLE_EDITOR

@@ -1,0 +1,40 @@
+{
+  "revision": "V253",
+  "user": "12 square skill slots; left controls, larger attack, upper auto; martial book icon lines/color; new Narcoli video",
+  "hud": {
+    "slots": 12,
+    "columns": 4,
+    "rows": 3,
+    "size": 44,
+    "slotOrigin": [
+      630,
+      365
+    ],
+    "attack": [
+      900,
+      449,
+      31
+    ],
+    "auto": [
+      854,
+      391,
+      16
+    ]
+  },
+  "save": {
+    "version": 1,
+    "acceptedSlotLengths": [
+      8,
+      10,
+      12
+    ],
+    "newSlots": "EMPTY; no learned grants"
+  },
+  "icons": "Existing source glyphs, common original martial outer3px/silhouette/sepia palette; source assets unchanged; quickslot source glyphs unchanged",
+  "narcoli": {
+    "z": "Exact retained741efct032 source pixels",
+    "aura": "ADAPTED_VIDEO_TRACE: not verified original archive art",
+    "reference": "libfile_baf588af44ec819192fe34330d5374fa"
+  },
+  "acceptance": "IMPLEMENTED; CI_PENDING; PHONE_USER_VISUAL_PENDING"
+}

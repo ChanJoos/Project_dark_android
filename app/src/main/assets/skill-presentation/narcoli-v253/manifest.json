@@ -1,0 +1,19 @@
+{
+  "anchor": "RECIPIENT",
+  "path": "narcoli-v253/z.png",
+  "width": 17,
+  "height": 44,
+  "columns": 4,
+  "durationsMs": [
+    100,
+    100,
+    100,
+    100
+  ],
+  "pivotX": 10,
+  "pivotY": 99,
+  "scale": 1,
+  "blend": "NORMAL",
+  "filterBitmap": false,
+  "footOffsetY": 0
+}

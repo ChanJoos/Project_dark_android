@@ -20,6 +20,7 @@ final class SkillWindowSkin {
       if(image==null)throw new IllegalStateException("Invalid window crop "+key);images.put(key,image);
     }
   }catch(Exception e){throw new IllegalStateException("Skill window reference skin unavailable",e);}}
+  Bitmap image(String id){return images.get(SkillIconCatalog.iconId(id));}
   boolean has(String id){return images.containsKey(id);}
   JSONObject capturedDetails(String id){return capturedDetails.optJSONObject(id);}
   int promotionOrder(String id){int index=roguePromotionOrder.indexOf(id);return index<0?99:index;}

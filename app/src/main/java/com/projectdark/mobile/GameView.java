@@ -34,10 +34,10 @@ import java.util.Map;
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private static final float JOY_X=110f,JOY_Y=374f,JOY_R=58f;
-  private static final float SLOT=44f,SLOT_GAP=6f,SLOT_X0=650f,SLOT_Y0=407f;
-  private static final float ATK_X=926f,ATK_Y=449f,ATK_R=27f;
+  private static final float SLOT=44f,SLOT_GAP=6f,SLOT_X0=630f,SLOT_Y0=365f;
+  private static final float ATK_X=900f,ATK_Y=449f,ATK_R=31f;
   private static final float CHAT_LEFT=14f,CHAT_RIGHT=266f;
-  private static final float AUTO_X=926f,AUTO_Y=507f,AUTO_R=16f;
+  private static final float AUTO_X=854f,AUTO_Y=391f,AUTO_R=16f;
   static final float AUTO_TARGET_RADIUS=Float.MAX_VALUE;
   private static final float UTILITY_X0=742f,UTILITY_Y0=28f,UTILITY_STEP=44f,UTILITY_R=18f;
 
@@ -140,7 +140,7 @@ public final class GameView extends View {
   void setSkillTestMode(boolean enabled){
     cancelSkillApproach();skillVfx.clear();skillVfx.testAccess=enabled;activeSkillVisualId=null;skillBook.setTestAccess(enabled);combatSession.setSkillTestMode(enabled);if(!enabled){state.rpg().enforceTwoHandLearning();state.applyDerivedGrowth();}
     getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().putBoolean("enabled",enabled).apply();
-    if(enabled){String raw=getContext().getSharedPreferences("project_dark_skill_test_v1",0).getString("slots",null);String[] ids={"SK_마법사_050","SK_마법사_044","SK_마법사_043","SK_성직자_040",null,null,null,null,null,null};if(getContext().getSharedPreferences("project_dark_skill_test_v1",0).getInt("preset_revision",0)<219){raw=null;getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().remove("slots").putInt("preset_revision",219).apply();}if(raw!=null)try{org.json.JSONArray a=new org.json.JSONArray(raw);if(a.length()==8||a.length()==SkillBook.SLOT_COUNT)for(int i=0;i<a.length();i++)ids[i]=a.isNull(i)?null:a.getString(i);}catch(Exception ignored){}skillBook.restoreTestSlots(ids);}
+    if(enabled){String raw=getContext().getSharedPreferences("project_dark_skill_test_v1",0).getString("slots",null);String[] ids=new String[SkillBook.SLOT_COUNT];System.arraycopy(new String[]{"SK_마법사_050","SK_마법사_044","SK_마법사_043","SK_성직자_040"},0,ids,0,4);if(getContext().getSharedPreferences("project_dark_skill_test_v1",0).getInt("preset_revision",0)<219){raw=null;getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().remove("slots").putInt("preset_revision",219).apply();}if(raw!=null)try{org.json.JSONArray a=new org.json.JSONArray(raw);if(a.length()==8||a.length()==10||a.length()==SkillBook.SLOT_COUNT)for(int i=0;i<a.length();i++)ids[i]=a.isNull(i)?null:a.getString(i);}catch(Exception ignored){}skillBook.restoreTestSlots(ids);}
     showFeedback(enabled?"스킬 테스트 ON · "+skillBook.catalogSize()+"개 시험 목록 · MP 소모 없음":"스킬 테스트 OFF · 직업/습득 조건 적용",FeedbackTone.INFO);
   }
   private boolean saveSkillSlots(){if(!skillBook.testAccess()){org.json.JSONObject before=state.rpg().campaign().snapshot();state.rpg().campaign().observeBasics(state.rpg(),skillBook);boolean saved=F5mSaveStore.writable()&&F5mSaveStore.checkpointActive();if(!saved)state.rpg().campaign().restore(before);return saved;}org.json.JSONArray a=new org.json.JSONArray();for(String id:skillBook.testSlots())a.put(id==null?org.json.JSONObject.NULL:id);return getContext().getSharedPreferences("project_dark_skill_test_v1",0).edit().putString("slots",a.toString()).commit();}
@@ -1111,11 +1111,11 @@ private void drawUtilityRail(Canvas c){
     if(targetVisible&&inside(x,y,380+center,12,580+center,55))return true;
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
     for(int i=0;i<5;i++){float cx=UTILITY_X0+i*UTILITY_STEP+d;if(circleHit(x,y,cx,UTILITY_Y0,UTILITY_R+2)||inside(x,y,cx-18,44,cx+18,54))return true;}
-    for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRectStatic(i,d);if(circleHit(x,y,r.centerX(),r.centerY(),SLOT/2))return true;}
+    for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRectStatic(i,d);if(r.contains(x,y))return true;}
     return circleHit(x,y,ATK_X+d,ATK_Y,ATK_R+3)||circleHit(x,y,AUTO_X+d,AUTO_Y,AUTO_R+3);
   }
 
-  private static RectF slotRectStatic(int index,float d){int col=index%5,row=index/5;float l=SLOT_X0+d+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
+  private static RectF slotRectStatic(int index,float d){int col=index%4,row=index/4;float l=SLOT_X0+d+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
   private boolean isHudSurface(float x,float y){return (chatExpanded&&MobileHudLayout.chat(true).contains(x,y))||blocksWorldTapForHud(x,y,combat.target()!=null,hudRightOffset);}
   private void autoNavigateQuest2(){worldAdapter.cancelForAction();interaction.cancelApproach();combat.cancelApproach();if(quest2.state()==GrowthQuest2.State.AVAILABLE||quest2.state()==GrowthQuest2.State.RETURN_READY){RuntimeState.Npc npc=findNpc("milles_guide_proto");if(npc!=null)worldAdapter.requestNpcApproach(npc.id);return;}if(quest2.state()==GrowthQuest2.State.ACTIVE){RuntimeState.Monster m=findMonster("combat_dummy_01");if(m==null)m=findMonster("combat_dummy_02");if(m==null)m=findMonster("combat_dummy_03");if(m!=null){combat.selectTarget(m);worldAdapter.requestMonsterApproach(m.id,48f);}else showFeedback("훈련 목표를 모두 처치했습니다 · 안내인에게 돌아가세요",FeedbackTone.INFO);}}
   private void requestGroundMove(float x,float y){cancelSkillApproach();WorldMoveTargetController.Snapshot move=activeWorld().requestGroundScreenTap(x,y);lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;if(move.status==WorldMoveTargetController.Status.MOVING||move.status==WorldMoveTargetController.Status.REACHED){tapMarkerX=move.targetX;tapMarkerY=move.targetY;tapMarkerClock=.7f;showFeedback(move.replacedRequestId>0?"이동 목표 변경":"이동 시작",FeedbackTone.INFO);}consumeMoveOutcome(move);}
@@ -1147,7 +1147,7 @@ private void drawUtilityRail(Canvas c){
 
       if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){cancelSkillApproach();autoAttackEnabled=false;joy=true;directStepClock=0f;pressedControl="JOY";activeWorld().cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}
       if(useHudPotion(x,y))return true;
-      for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRect(i);if(circleHit(x,y,r.centerX(),r.centerY(),SLOT/2)){pressedControl="SLOT"+i;SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);return true;}}
+      for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRect(i);if(r.contains(x,y)){pressedControl="SLOT"+i;SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);return true;}}
 
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
       if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}

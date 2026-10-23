@@ -1,3 +1,7 @@
+## V253 candidate
+
+Projection `master/changes/V253_HUD_NARCOLI.json`:12square slots, backward-compatible8/10reader, martial book frame/palette. Narcoli originalZ plus explicitlyADAPTED video-traced pink aura; NOT identical-original-client acceptance. Focusednative/build andphone pending.
+
 ## V252 최종 검증
 
 Sourcec43248c0/run39951347137SUCCESS;1current+9byteguarded retained=10unique scopednativePASS.272registered originalinventorybindings+7asset-only (no invented registration);24realhat/Rapid scenes reviewed.767packaged sourcefiles exact,APKsignature/identity/digest PASS. Narcoli205939videoGIFonly/no runtimeapplication. Wholeequipment inventorysourceidentity andPHONE/USER_VISUAL PENDING. `verification/VISUAL_SOURCE_V252_BUILD.json`; laterdocsHEAD is not APKsource.

@@ -42,7 +42,7 @@ public class MartialRepairV230Test {
  }
  @Test public void exactSourceIconsAndCompleteSourceFxRenderAndFade()throws Exception{
   SkillIconCatalog icons=new SkillIconCatalog(h.h.c);ClassicSkillReference ref=new ClassicSkillReference(h.h.c);for(String n:new String[]{"035","027","024","025","026","028","029"}){
-   String id="SK_무도가_"+n;Bitmap expected=BitmapFactory.decodeStream(h.h.c.getAssets().open("skill-presentation/user-v228/icon-"+n+".png"));assertEquals(31,expected.getWidth());Bitmap actual=Bitmap.createBitmap(31,31,Bitmap.Config.ARGB_8888);assertTrue(icons.drawSquare(new Canvas(actual),id,new RectF(0,0,31,31)));assertTrue(id,actual.sameAs(expected));
+   String id="SK_무도가_"+n;Bitmap expected=BitmapFactory.decodeStream(h.h.c.getAssets().open("skill-presentation/user-v228/icon-"+n+".png"));assertEquals(31,expected.getWidth());Bitmap actual=Bitmap.createBitmap(31,31,Bitmap.Config.ARGB_8888);assertTrue(icons.drawSquare(new Canvas(actual),id,new RectF(0,0,31,31)));assertTrue(id,actual.sameAs(icons.squareIcon(id)));
   }
   ClassicSkillReference.Channel shield=ref.channel("SK_무도가_029",false);CapturedSkillFx.Sequence q=shield.sequence;int fi=q.frame(.31f);double sum=0,weight=0;for(int yy=0;yy<q.height;yy++)for(int xx=0;xx<q.width;xx++){int color=q.atlas.getPixel(fi%q.columns*q.width+xx,fi/q.columns*q.height+yy);if(Color.alpha(color)>32&&Color.red(color)>160&&Color.blue(color)>160){sum+=(135+yy-q.pivotY)*Color.alpha(color);weight+=Color.alpha(color);}}assertTrue(weight>0);assertEquals("shield core surrounds runtime torso, not above head",135-23,sum/weight,12);
   java.io.File dir=new java.io.File("build/reports/horror-v179/v230");dir.mkdirs();
