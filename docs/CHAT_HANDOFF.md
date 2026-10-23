@@ -1,3 +1,7 @@
+## V252 여성 모자 fixture 수정
+
+d6e0a85e/run39950554428 guardedtail: male12facing/motion original-alpha/hat comparisons PASS; failed at femaleNWIDLE because fixture incorrectly referenced nonexistentwh172. Confirmed Asset_Master has no wh172, and retained/recovered original archive supplies femaleBonnetwh108 with all10idle/walk +4actionframes. Use actualwh108fixture; no production change or invented source. Keep exactalpha/pixel/visibility/realoverlap assertions. Retain9priorPASS guarded against29ce; rerun finalRapid1+assemble. No APK delivered from failed run.
+
 ## V252 최종 라피드 픽셀 검수 후속
 
 29ce6738/run39949583532:10native tests/9PASS, onlyRapid pixel-oracle FAIL. All279fullnativeframes/272registered+7asset-only, actualbag/equipment/shop, bothweaponchecks, originalfoodedges, alias/save andRapid roster/equiprestart/disjoint routing PASS. Native source279gallery produced. No production change. Remainingoracle flattened two semi-transparent original layers into intermediate bitmap before comparing; preserve original source-over by drawing primitive directly over copiedhat reference. Exactpixel assertion restored (noRGBtolerance), bothbodies/all4facings/idle/walk/contact and realoverlap retained; save4diagnosticPNGs on any mismatch. Guarded finaltail only reruns that1test+assemble; retain9PASS only when all production/assets/other testfiles and unaffected2VisualSource test bodies are byte-identical to29ce6738. Common39949591420scopeSUCCESS/compileSKIPPED. Finalcandidate/phone pending.

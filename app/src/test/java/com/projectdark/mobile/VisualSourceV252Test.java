@@ -17,7 +17,7 @@ public class VisualSourceV252Test {
  @Test public void hatsNeverCoverRapidOnEitherBodyAnyFacingOrIdleWalkContact()throws Exception{
   SkillBodyRenderer renderer=new SkillBodyRenderer(c,new SkillPresentationCatalog(c));Bitmap gallery=Bitmap.createBitmap(960,960,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(gallery);int n=0,totalOverlap=0;
   for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(String motion:new String[]{"IDLE","WALK","SWING"}){
-   String hat="wm001".equals(body)?"wh172":"mh172",rapid="mg146,mc147";
+   String hat="wm001".equals(body)?"wh108":"mh172",rapid="mg146,mc147";
    Bitmap base=render(renderer,body,d,motion,null),hatOnly=render(renderer,body,d,motion,hat),overlay=rapidOverlay(renderer,body,d,motion,rapid,null),both=render(renderer,body,d,motion,hat+","+rapid);Bitmap expected=hatOnly.copy(Bitmap.Config.ARGB_8888,true);rapidOverlay(renderer,body,d,motion,rapid,expected);if(!expected.sameAs(both)){save(hatOnly,"failure-hat");save(overlay,"failure-rapid-layer");save(expected,"failure-expected");save(both,"failure-actual");}int visibleHat=0,visibleRapid=0,overlap=0;
    for(int y=0;y<120;y++)for(int x=0;x<140;x++){int a=base.getPixel(x,y),h=hatOnly.getPixel(x,y),q=overlay.getPixel(x,y);if(h!=a)visibleHat++;if(Color.alpha(q)>0){visibleRapid++;if(h!=a){overlap++;assertEquals(body+d+motion+" direct source-alpha Rapid above hat at "+x+","+y+" layerAlpha="+Color.alpha(q),expected.getPixel(x,y),both.getPixel(x,y));}}}
    assertTrue(body+d+motion+" hat must be rendered",visibleHat>0);assertTrue(body+d+motion+" clip must be rendered",visibleRapid>0);totalOverlap+=overlap;out.drawBitmap(both,n%6*160,n/6*160,null);n++;
