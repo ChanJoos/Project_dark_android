@@ -758,5 +758,6 @@
   "app/src/main/java/com/projectdark/mobile/OriginalDamageDigitsV260.java": "273c4a6ebdc52641f9d359f173f92b760ae00f71001faeb87adbd325fa05233a",
   "app/src/test/java/com/projectdark/mobile/FacingNumbersV260Test.java": "fe35eb9a1c2b248ec1df512d7ee2a25b227ab8ffba420e1189359259708c4421",
   "master/changes/V260_FACING_NUMBERS.json": "b14d9769db81caeaf6782426e61992c304883bdc9759f123b958be8b82e7bd04",
-  "design/COMBAT_PRESENTATION_V260.md": "0a1aec258a1661399af74add3f638a56f9ede9e6bcf76d5b0d724bd8e5666441"
+  "design/COMBAT_PRESENTATION_V260.md": "0a1aec258a1661399af74add3f638a56f9ede9e6bcf76d5b0d724bd8e5666441",
+  "app/src/test/java/com/projectdark/mobile/PoteMonsterMotionV121Test.java": "29c38aaf64d0f72c6fc70ca3cc0da0ea55fd88df53a1119e4325bd50bc655d65"
 }

@@ -33,7 +33,10 @@ public class PoteMonsterMotionV121Test {
           int[] pixels=new int[128*128];cell.getPixels(pixels,0,128,0,0,128,128);hashes.add(Arrays.hashCode(pixels));
           if(i%2==0)atlas.drawBitmap(cell,(i/2)*128,d.ordinal()*128,null);cell.recycle();
         }
-        assertTrue(id+" "+d+" articulated changing frames",hashes.size()>=8);
+        // Original source poses are intentionally not rubber-sheet animated (PoteMonsterMotion).
+        // Keep the original pose pixel-stable; generated families retain their continuous gait gate.
+        if(PoteForestMonsterShowcase.originalPote(id))assertEquals(id+" "+d+" original source pose remains stable",1,hashes.size());
+        else assertTrue(id+" "+d+" articulated changing frames",hashes.size()>=8);
       }
       save(sheet,id.replace('#','-')+"-walk");sheet.recycle();
     }
