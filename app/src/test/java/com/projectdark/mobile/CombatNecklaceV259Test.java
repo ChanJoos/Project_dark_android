@@ -39,7 +39,7 @@ public class CombatNecklaceV259Test {
   s.player().hp=s.player().maxHp;m.visualFacing.setLocomotion(CharacterRenderer.Direction.NW);before=s.player().hp;p.applyDamage(m.id,"player",RuntimeCombatSession.MONSTER_BASIC_ACTION_ID,100);int hit=before-s.player().hp;m.visualFacing.setLocomotion(CharacterRenderer.Direction.SE);before=s.player().hp;p.applyDamage(m.id,"player",RuntimeCombatSession.MONSTER_BASIC_ACTION_ID,100);assertEquals(hit,before-s.player().hp);
  }
  @Test public void everyInventoryNecklaceHasAnAuditedElementOrOneExplicitUnresolvedCashSource()throws Exception{
-  RuntimeState s=new RuntimeState();int verified=0,pending=0;Set<String> seen=new HashSet<>();
+  GameView v=view();RuntimeState s=field(v,"state");int verified=0,pending=0;Set<String> seen=new HashSet<>();
   for(String id:s.rpg().inventory().keySet()){RpgProgressionState.ItemDefinition d=s.rpg().itemDefinitions().get(id);if(!"목걸이".equals(d.equipSlot)||!seen.add(RpgProgressionState.canonicalItemId(id)))continue;if(d.attackElement==null){pending++;assertEquals("쥬얼십자가목걸이FX",d.name);}else{verified++;assertTrue(d.name,ElementalDamageFormula.index(d.attackElement)>=0);}}
   assertTrue("inventory has verified necklaces",verified>0);assertEquals(1,pending);assertEquals("WATER",ElementalDamageFormula.normalize(s.rpg().itemDefinitions().get(StarterNecklacesV259.id(StarterNecklacesV259.WATER)).attackElement));
   assertEquals("EARTH",ElementalDamageFormula.normalize(s.rpg().itemDefinitions().get("USER_ITEM_20261018_R01306").attackElement));assertEquals("WATER",ElementalDamageFormula.normalize(s.rpg().itemDefinitions().get("USER_ITEM_20261018_R03895").attackElement));
