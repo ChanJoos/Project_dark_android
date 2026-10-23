@@ -121,7 +121,7 @@ jobs:
           new='tap(v,((Number)field(v,"AUTO_X")).floatValue()+((Number)field(v,"hudRightOffset")).floatValue(),((Number)field(v,"AUTO_Y")).floatValue());'
           assert before.count(old)==1
           assert Path(test).read_text()==before.replace(old,new)
-          original=subprocess.check_output(['git','rev-parse','c79d31d2e36177e38047b811a1f297e745ffc210:master/data/Sources.csv'],text=True).strip()
+          original='e6b1a885b4d7bfe8df1546916968be7e3ef18d0f'
           assert subprocess.check_output(['git','hash-object','master/data/Sources.csv'],text=True).strip()==original
           print('V258 strict fixture/reference-only guard PASS; retain38 passing checks from run39976958819; runtime/assets unchanged')
           PYV258
