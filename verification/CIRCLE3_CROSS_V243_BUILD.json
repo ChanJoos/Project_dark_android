@@ -1,0 +1,133 @@
+{
+  "sourceCommit": "81a36780b95ed646fa3fd5a52edc26b6f2243f70",
+  "runId": "39876774670",
+  "builtAtKST": "2026-10-23T09:15:37.598574+09:00",
+  "apkSha256": "077be4c42d3ccceb4afef2ec868f1db2f3a8af9c2f62855206b7f1d2cb040d44",
+  "apkBytes": 105762288,
+  "identity": {
+    "sourceCommit": "81a36780b95ed646fa3fd5a52edc26b6f2243f70",
+    "runId": "39876774670",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V243 final runtime identical to e7c3c075;16native PASS reused from39876160476 via strict appmain/build.gradle guard; final8empty/noMP cast pairs rerun after test oracle corrected to existing no-recipient rejection; normal4single/8cross/pairedfinaldamage/source36pixel+blend/timing/contact/basic4/circle4/promotion/adjacent/spatial verified; phone pending",
+  "artifactId": 12468309606,
+  "artifactZipBytes": 111245098,
+  "artifactZipSha256": "7bfd0f0919323879bca4a2899ce6a458c17979b197ba89806f2cadb57d8028fc",
+  "signature": "Independent APKv2 RSA-SHA256 signature, certificate public key and all1MiB content chunks PASS",
+  "manifest": {
+    "manifest": {
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile.v243test",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "application": {
+      "theme": 2130837504,
+      "label": "PROJECT DARK V243 TEST",
+      "debuggable": 4294967295,
+      "extractNativeLibs": 0
+    }
+  },
+  "packagedPresentationFilesByteVerified": 721,
+  "finalTestSuites": [
+    {
+      "name": "com.projectdark.mobile.MageCircle3CrossV243Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "initialSource": "e7c3c075dadf31093462ec670e845e06ccb828b1",
+  "initialRun": 39876160476,
+  "initialArtifact": 12468762076,
+  "initialArtifactSha256": "af06612ad579f6be2e6fd88e1f841e8e572f07e9582af8b66136a144fae78a98",
+  "initialSuites": [
+    {
+      "name": "com.projectdark.mobile.MageBasicV240Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MageCircle3CrossV243Test",
+      "tests": "5",
+      "failures": "1",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MagePromotionV241Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MageCircle4V242Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillSpatialContractTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "reusedPassedCases": [
+    "com.projectdark.mobile.MageBasicV240Test.basicFourReachNormalSingleContactWithChangingRecordedFramesAndOneMpCharge",
+    "com.projectdark.mobile.MageCircle3CrossV243Test.crossesIgnoreRemoteSelectionAndRecheckLiveShapeDeathAndVisibilityAtContact",
+    "com.projectdark.mobile.MageCircle3CrossV243Test.fourNormalSingleQuickslotsHitOnlySelectedRecipientAndConsumeMpOnce",
+    "com.projectdark.mobile.MageCircle3CrossV243Test.originalFramesKeepEveryPixelHeaderTimingFootBoundsAndActualAdditiveBlending",
+    "com.projectdark.mobile.MageCircle3CrossV243Test.eightNormalCrossQuickslotsNeedNoTargetHitExactlyFourNeighborsAndMatchSinglePower",
+    "com.projectdark.mobile.MagePromotionV241Test.originalDarkSealRetainsCurse70AndAllPromotionQuickslotsReachExpectedRecipients",
+    "com.projectdark.mobile.MagePromotionV241Test.allOriginalPixelsRenderOutsideOneTileWithoutLossAtEveryFrame",
+    "com.projectdark.mobile.MagePromotionV241Test.nativeCompleteSequenceGridAtWorldScale",
+    "com.projectdark.mobile.MageCircle4V242Test.allEfaFramesUseOriginalIntervalsFullEnvelopeAndShareOneAtlasWithScreen",
+    "com.projectdark.mobile.MageCircle4V242Test.earthSingleAndScreenRemainCorrectAfterSourceScanlineRepair",
+    "com.projectdark.mobile.MageCircle4V242Test.allFourScreenRecipientsRecheckDeathAndVisibilityAtActualContact",
+    "com.projectdark.mobile.MageCircle4V242Test.eightNormalQuickslotsKeepSingleVersusAllVisibleRecipientsOneMpChargeAndSharedOriginalFx",
+    "com.projectdark.mobile.SkillSpatialContractTest.actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass",
+    "com.projectdark.mobile.SkillContactRegressionTest.bothCrashersHavePeakEnergyBetweenActorsInEveryDirection",
+    "com.projectdark.mobile.SkillContactRegressionTest.fourCurseCrownsAreIncludedAndRenderWithoutTheOldCutoff",
+    "com.projectdark.mobile.SkillContactRegressionTest.damageAndVisibleRecipientEffectStartTogetherIncludingLethalDragon"
+  ],
+  "reuseGuard": "CI app/src/main and build.gradle exactly unchanged; other four V243 test methods unchanged. Empty-cast acceptance assertion corrected to existing RuntimeCombatPortAdapter actionReady no-recipient rejection. No runtime change or weakened feature assertion.",
+  "compositeUniqueTests": 17,
+  "unresolvedFailures": 0,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pr": 197,
+  "unmerged": true,
+  "verification": "IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "jobId": 120164164811,
+  "initialCommon": {
+    "run": 39876168538,
+    "conclusion": "FAILURE",
+    "reason": "Pre-existing source guide catalog regeneration mismatch; focused V243 runtime/source checks passed; full integration still pending"
+  },
+  "finalCommon": {
+    "run": 39876781780,
+    "scope": "SUCCESS",
+    "compile": "SKIPPED"
+  },
+  "apkSignatureCI": "APKv2PASS on exact077be4c42d3ccceb4afef2ec868f1db2f3a8af9c2f62855206b7f1d2cb040d44",
+  "runtimeReuseGuard": "Strict actual app/src/main/build.gradle byte identity PASS; four other V243 method prefixes byte-identical PASS; only empty cast test oracle corrected"
+}

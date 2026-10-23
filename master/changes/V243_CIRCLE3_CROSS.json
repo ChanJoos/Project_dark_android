@@ -68,6 +68,6 @@
     "monsters",
     "save"
   ],
-  "validation": "Local/source and Android focused native/build PENDING",
-  "device": "PHONE PENDING"
+  "validation": "Final81a36780/run39876774670 one corrected empty/noMPnativePASS +strictunchangedruntime sixteenPASS frome7c3c075/run39876160476;17unique;verification/CIRCLE3_CROSS_V243_BUILD.json",
+  "device": "PHONE/USER_VISUAL PENDING"
 }
