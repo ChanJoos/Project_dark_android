@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "7c84f730fa7fd9e71deee6f2945e2543a4efa6df7425673dee612082a2d81306",
+  "master/MASTER_MANIFEST.md": "40c73ee0ffdb74f800efc0a1cdf70b3f3fec1a224a122346ef7b43af419dfb19",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",

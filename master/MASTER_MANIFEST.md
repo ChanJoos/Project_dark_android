@@ -1,3 +1,7 @@
+## V252 최종 검증
+
+Sourcec43248c0/run39951347137SUCCESS;1current+9byteguarded retained=10unique scopednativePASS.272registered originalinventorybindings+7asset-only (no invented registration);24realhat/Rapid scenes reviewed.767packaged sourcefiles exact,APKsignature/identity/digest PASS. Narcoli205939videoGIFonly/no runtimeapplication. Wholeequipment inventorysourceidentity andPHONE/USER_VISUAL PENDING. `verification/VISUAL_SOURCE_V252_BUILD.json`; laterdocsHEAD is not APKsource.
+
 ## V252 — 原본 인벤토리279종·라피드 모자앞·나르콜리영상 검수
 
 Accepted projection `master/changes/V252_ORIGINAL_INVENTORY_RAPID.json`. All279complete native frames preserve sourceEPF/PAL/RGBA;known named sources only. This is scoped recovery, not all-equipment original acceptance.1714compatibilitydefinitions remain without an identified original inventory frame. Rapid is drawn above hats in every direction; no stats/save changes. Actual205939video pinkZ15samples retained for GIFreview, no replacement spell mapping. CI/phone pending.

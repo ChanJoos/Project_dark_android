@@ -1,7 +1,17 @@
 visual_source_v252:
-  status: FEMALE_HAT_FIXTURE_CORRECTION_PENDING
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   owner: ROOT_SINGLE_EDITOR
   base: 8cff9726
+  runtime_source: c43248c04b9e42e2565a2007e44f143604d4e1ac
+  focused_run: 39951347137
+  artifact_id: 12501020646
+  native_unique_passed: 10
+  native_current_passed: 1
+  native_retained_passed: 9
+  registered_original_inventory: 272
+  source_only_original_inventory: 7
+  receipt: verification/VISUAL_SOURCE_V252_BUILD.json
+  narcoli: VIDEO_REVIEW_GIF_NOT_APPLIED
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
   user_request: Rapid above hats in all directions; original inventory art for equipment and reagents; extract Narcoli GIF from supplied205939video
