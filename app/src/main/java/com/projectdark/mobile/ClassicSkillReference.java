@@ -26,11 +26,11 @@ final class ClassicSkillReference {
     Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=entries.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=new LinkedHashMap<>();Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}effects.put(id,result);}
     JSONArray rows=read(c,directory+"/references.json").getJSONArray("rows");for(int i=0;i<rows.length();i++){JSONObject row=rows.getJSONObject(i);if(!row.isNull("id"))references.put(row.getString("id"),row);}
     if(directory.equals("classic")){JSONObject extra=read(c,"user-v228/manifest.json").getJSONObject("skills");Iterator<String> newIds=extra.keys();while(newIds.hasNext()){String id=newIds.next();JSONObject raw=extra.getJSONObject(id).getJSONObject("channels");Map<String,Channel> channels=new LinkedHashMap<>();Iterator<String> keys=raw.keys();while(keys.hasNext()){String key=keys.next();channels.put(key,new Channel(c,key,raw.getJSONObject(key)));}effects.put(id,channels);}}
-    if(directory.equals("classic")){prepareMageV237();loadMageVideoV238(c);loadMageVideoV239(c);loadMageVideoV240(c);loadOriginalPromotionV241(c);loadOriginalCircle4V242(c);loadOriginalCircle3V243(c);}prewarmCenters();prepareBaekbo();
+    if(directory.equals("classic")){prepareMageV237();loadMageVideoV238(c);loadMageVideoV239(c);loadMageVideoV240(c);loadOriginalPromotionV241(c);loadOriginalCircle4V242(c);loadOriginalCircle3V243(c);loadStatusV249(c);}prewarmCenters();prepareBaekbo();
   }catch(Exception e){throw new IllegalStateException("Classic skill reference",e);}}
   private static JSONObject read(Context c,String path)throws Exception{return new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/"+path),StandardCharsets.UTF_8));}
   boolean has(String id){return effects.containsKey(SkillPolicyV227.effectSource(id));}
-  Channel channel(String id,boolean start){Map<String,Channel> channels=effects.get(SkillPolicyV227.effectSource(id));return channels==null?null:channels.get(start?"CASTER_START":"RECIPIENT_CONTACT");}
+  Channel channel(String id,boolean start){if(start&&(id.equals("SK_마법사_023")||id.equals("SK_마법사_025")))return null;Map<String,Channel> channels=effects.get(SkillPolicyV227.effectSource(id));return channels==null?null:channels.get(start?"CASTER_START":"RECIPIENT_CONTACT");}
   void drawRegistered(Canvas canvas,Channel channel,float age,float x,float y,float pivotX,float pivotY,float dx,float dy,boolean projectile,int topCrop){
     CapturedSkillFx.Sequence s=channel.sequence;int frame=s.frame(age),col=frame%s.columns,row=frame/s.columns;
     canvas.save();
@@ -77,6 +77,10 @@ final class ClassicSkillReference {
   private void loadOriginalCircle3V243(Context c)throws Exception{
     JSONObject skills=read(c,"mage-v243/manifest.json").getJSONObject("skills");
     Iterator<String> ids=skills.keys();while(ids.hasNext()){String id=ids.next();JSONObject channels=skills.getJSONObject(id).getJSONObject("channels");Map<String,Channel> result=new LinkedHashMap<>();Iterator<String> keys=channels.keys();while(keys.hasNext()){String key=keys.next();result.put(key,new Channel(c,key,channels.getJSONObject(key)));}effects.put(id,result);}
+  }
+  private void loadStatusV249(Context c)throws Exception{
+    JSONObject entries=read(c,"status-v249/manifest.json").getJSONObject("skills");
+    Iterator<String> ids=entries.keys();while(ids.hasNext()){String id=ids.next();JSONObject raw=entries.getJSONObject(id).getJSONObject("channels");Map<String,Channel> channels=new LinkedHashMap<>();Iterator<String> keys=raw.keys();while(keys.hasNext()){String key=keys.next();channels.put(key,new Channel(c,key,raw.getJSONObject(key)));}effects.put(id,channels);}
   }
   private Bitmap baekbo;private final java.util.List<Rect> baekboFrames=new ArrayList<>();
   /** Retain cyan burst pixels only; source actor/HP UI residue is never projected onto recipients. */

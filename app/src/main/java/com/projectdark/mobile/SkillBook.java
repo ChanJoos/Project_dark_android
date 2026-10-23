@@ -31,7 +31,7 @@ public final class SkillBook {
   private final LinkedHashMap<String,Integer> learned=new LinkedHashMap<>();
   private final Map<String,String> captureConditions=new LinkedHashMap<>();
   private final Map<String,String> sourceDescriptions=new LinkedHashMap<>();
-  String sourceDescription(String id){return sourceDescriptions.get(id);}
+  String sourceDescription(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a!=null&&a.status.equals("TRAVEL")?"밀레스 마을 여관으로 이동":sourceDescriptions.get(id);}
   private JSONObject learningPolicy;
   JSONObject learningPolicy(String id){return learningPolicy==null?null:learningPolicy.optJSONObject(id);}
   public String summary(String id){JSONObject row=learningPolicy(id);return row==null?"":row.optString("summary");}

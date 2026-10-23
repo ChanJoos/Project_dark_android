@@ -43,8 +43,8 @@ public class RogueAmnesiaV236Test {
   assertEquals(raw,p.applyDamage("player",other.id,attack,raw).appliedAmount);assertTrue(s.skillEffects().has(m.id,"AMNESIA"));
   m.hp=1;p.applyDamage("player",m.id,attack,raw);p.applyDamage("player",m.id,attack,raw);assertEquals(1,s.ledger().snapshot().stream().filter(e->e.type==CombatLedger.Type.MONSTER_DEFEATED&&e.targetId.equals(m.id)).count());s.tick(.01f);assertFalse(s.skillEffects().has(m.id,"AMNESIA"));
  }
- @Test public void mageConfusionKeepsItsExistingBreakOnDamageAndNoDouble()throws Exception{
-  RuntimeState s=h.state();RuntimeState.Monster m=h.add(s,"front",32,16);RuntimeCombatSession c=h.session(s,CharacterRenderer.Direction.SE);assertTrue(c.submitPlayer(m.id,"SK_마법사_006").accepted());c.tick(c.effectiveCastSeconds("SK_마법사_006")+.01f);assertTrue(s.skillEffects().has(m.id,"AGGRO_RESET"));s.damage(m,123);assertEquals(123,m.maxHp-m.hp);assertFalse(s.skillEffects().has(m.id,"AGGRO_RESET"));assertFalse(s.skillEffects().has(m.id,"AMNESIA"));
+ @Test public void mageConfusionUsesSamePassiveDoubleDamageWindow()throws Exception{
+  RuntimeState s=h.state();RuntimeState.Monster m=h.add(s,"front",32,16);RuntimeCombatSession c=h.session(s,CharacterRenderer.Direction.SE);assertTrue(c.submitPlayer(m.id,"SK_마법사_006").accepted());c.tick(c.effectiveCastSeconds("SK_마법사_006")+.01f);assertTrue(s.skillEffects().has(m.id,"AGGRO_RESET"));s.damage(m,123);assertEquals(246,m.maxHp-m.hp);assertTrue(s.skillEffects().has(m.id,"AGGRO_RESET"));assertTrue(s.skillEffects().has(m.id,"AMNESIA"));
  }
  @Test public void lowStatDamageHasDistinctRoleStrengthAndCurrentHpFinisherRemainsHonest()throws Exception{
   RuntimeState s=h.state();s.rpg().restoreStats(12,6,4,54,17,0);s.rpg().restoreProgression(26,0);FinalStats stats=s.rpg().finalStats();double base=stats.weaponBaseAttack()+1.8*stats.str+2.2*stats.dex+stats.dam;

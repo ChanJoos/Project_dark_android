@@ -1,3 +1,12 @@
+status_magic_v249:
+  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, docs/MAGIC_FX_LESSONS.md, master/MASTER_MANIFEST.md, master/source/status_v249/receipt.json, master/source/mage_v241/receipt.json, master/source/death_v220/reference.json]
+  user_request: Fix reinforcement/all Kuroto anchors; one-cycle confusion/passive double damage; sleep/poison persistent; all-class Azito Milles inn; remove Clemens/Locateo; martial recipient aliases; audit missing connections
+  phone: PENDING
+
 town_portals_v248:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   runtime_source: e38aeba15e34a7d9c797f16af7d8c8ed2922bb87
