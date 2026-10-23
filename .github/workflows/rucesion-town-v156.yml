@@ -19,7 +19,7 @@ jobs:
           import urllib.request,json,os
           base='https://api.github.com/repos/ChanJoos/Project_dark_android/actions/runs/'
           headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'}
-          for ident,expected in {39102512303:'9d8344d3f9f39579bfbff7dfe9ece98db37989f8',39102510494:'9d8344d3f9f39579bfbff7dfe9ece98db37989f8',39904721524:'eb7c55bea6ecc788b890dc07a4f29c70eb8521b4'}.items():
+          for ident,expected in {40041462323:'7c19d5aa7b335e93379ce59ccd03ae7573cd60f0',39102512303:'9d8344d3f9f39579bfbff7dfe9ece98db37989f8',39102510494:'9d8344d3f9f39579bfbff7dfe9ece98db37989f8',39904721524:'eb7c55bea6ecc788b890dc07a4f29c70eb8521b4'}.items():
               run=json.load(urllib.request.urlopen(urllib.request.Request(base+str(ident),headers=headers)))
               assert run['head_sha']==expected and run['name']=='Validate PROJECT DARK Android'
               if run['status']!='completed':
