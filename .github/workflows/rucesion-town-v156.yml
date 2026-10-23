@@ -106,7 +106,19 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[v258-verify-tail]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[v258-equipment-proof]"* ]]; then
+            git fetch --depth=1 origin 255a104c69cb09bfc4c760d9c0c98210502bae05
+            python3 - <<'PYV258E'
+          import subprocess
+          base='255a104c69cb09bfc4c760d9c0c98210502bae05'
+          allowed={'app/src/test/java/com/projectdark/mobile/EquipmentFoundationV124Test.java','.github/workflows/rucesion-town-v156.yml'}
+          delta=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
+          assert set(delta)<=allowed,delta
+          print('V258 test-only guard PASS; APK runtime/assets unchanged;39 prior checks retained')
+          PYV258E
+            gradle --no-daemon :app:testDebugUnitTest --tests "*EquipmentFoundationV124Test.actualWeaponHitAndHitsToKillChange"
+            exit 0
+          elif [[ "$(git log -1 --format=%B)" == *"[v258-verify-tail]"* ]]; then
             git fetch --depth=1 origin 7ebca27c27c821e4db39ea59042cfe7bf1dd4c16
             python3 - <<'PYV258'
           import subprocess

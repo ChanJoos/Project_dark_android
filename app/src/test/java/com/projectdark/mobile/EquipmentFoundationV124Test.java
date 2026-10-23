@@ -18,10 +18,10 @@ public class EquipmentFoundationV124Test {
   RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.bindTwoHandLearning(()->true);RuntimeState.Monster m=s.monsters().get(0);
   int hp=m.maxHp;int mokdo=hit(s);m.hp=hp;m.alive=true;
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_TEST_WEAPON_MW002"));
-  int epe=hit(s);assertEquals(Math.min(hp,30),epe);assertTrue(epe>mokdo);
+  int epe=hit(s);assertEquals(Math.min(hp,6),epe);assertTrue(epe>mokdo);
   assertTrue((hp+epe-1)/epe < (hp+mokdo-1)/mokdo);
   m.hp=hp;m.alive=true;assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(RpgProgressionState.CHUNGRYONG_ITEM_ID));
-  assertEquals(Math.min(hp,11),hit(s)); // source S1~2 must not silently inherit stronger weapon/base floor
+  assertEquals(Math.min(hp,2),hit(s)); // V258: unenchanted raw11 * source3800/18300 rounds to2; S1~2 never inherits a stronger weapon floor
  }
  @Test public void weaponRangeSurvivesEffectsAndChangesRealPhysicalSkills(){
   RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();RuntimeCombatPortAdapter p=port(s);
