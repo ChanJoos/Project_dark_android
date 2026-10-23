@@ -1,5 +1,5 @@
 package com.projectdark.mobile;
-import android.content.*;import android.graphics.*;import java.io.*;import java.util.*;import org.junit.*;import static org.junit.Assert.*;import org.junit.runner.RunWith;import org.robolectric.*;import org.robolectric.annotation.*;
+import com.projectdark.mobile.world.WorldRuntimeAdapter;import android.content.*;import android.graphics.*;import java.io.*;import java.util.*;import org.junit.*;import static org.junit.Assert.*;import org.junit.runner.RunWith;import org.robolectric.*;import org.robolectric.annotation.*;
 @RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE) @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public class VisualFeedbackV250Test {
  Context c;@Before public void setup(){new MineTownV203Test().reset();c=RuntimeEnvironment.getApplication();}

@@ -646,6 +646,6 @@
   "app/src/main/java/com/projectdark/mobile/SourceItemIconRegistry.java": "1bef2957b83961f4d83fefd0d263797ab3951286881d91181228bc41fff67829",
   "app/src/main/java/com/projectdark/mobile/WeaponInventoryArtworkV209.java": "55d0d30f7f87c1ca807a66d58c6239739404dd4c0a38d143c57f52bc2245c251",
   "app/src/main/java/com/projectdark/mobile/WingShieldV215.java": "7b1f8ec1819adcb8b68d487b8d06e3062c5d191fb250eea14138d27e2dcbcfa4",
-  "app/src/test/java/com/projectdark/mobile/VisualFeedbackV250Test.java": "818163f59b5775e89dfcd090b1fdb40486e4ff667ff9ee47bb0c18986c9043e1",
+  "app/src/test/java/com/projectdark/mobile/VisualFeedbackV250Test.java": "4439ef252fb78ecfcd1c0726303ae23f8a7695725494e752207fe4ab258d652a",
   "master/changes/V250_VISUAL_FEEDBACK.json": "cd7d89b4843aa066fbb075d02889648838a5322adcb286750ded0f06931b445d"
 }
