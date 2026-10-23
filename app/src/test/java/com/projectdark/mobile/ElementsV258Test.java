@@ -22,7 +22,7 @@ public class ElementsV258Test {
  RuntimeCombatSession session(RuntimeState s){return new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);}
  void equip(RuntimeState s,String alias){s.rpg().enableEquipmentSandbox(true);String id=RpgProgressionState.canonicalItemId(alias);assertNotNull(s.rpg().itemDefinitions().get(id));assertEquals(RpgProgressionState.AutoLootResult.LOOTED,s.rpg().autoLootResolvedItem(id,1));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,s.rpg().equip(id));}
  @Test public void everySourceCellUsesDefenseRowsAttackColumnsAndExactDamageReference()throws Exception{
-  JSONObject source=new JSONObject(Files.readString(Paths.get("../master/canonical/Element_Reference_V257.json")));JSONArray order=source.getJSONObject("orientation").getJSONArray("order"),matrix=source.getJSONArray("tables").getJSONObject(0).getJSONArray("values");
+  JSONObject source=new JSONObject(new String(Files.readAllBytes(Paths.get("../master/canonical/Element_Reference_V257.json")),java.nio.charset.StandardCharsets.UTF_8));JSONArray order=source.getJSONObject("orientation").getJSONArray("order"),matrix=source.getJSONArray("tables").getJSONObject(0).getJSONArray("values");
   for(int d=0;d<9;d++)for(int a=0;a<9;a++)assertEquals("def "+order.getString(d)+" atk "+order.getString(a),matrix.getJSONArray(d).getInt(a),ElementalDamageFormula.apply(18300,order.getString(a),order.getString(d)));
   assertEquals(13000,ElementalDamageFormula.apply(18300,"WOOD","METAL"));assertEquals(16000,ElementalDamageFormula.apply(18300,"LIFE","DARK"));assertEquals(16000,ElementalDamageFormula.apply(18300,"DARK","LIFE"));assertTrue(CombatV3PipelineAudit.verify());
  }
@@ -39,7 +39,7 @@ public class ElementsV258Test {
   for(RuntimeState.Monster m:s.monsters()){assertTrue(MonsterElementsV258.natural(m.attackElement));assertTrue(MonsterElementsV258.natural(m.defenseElement));}
   for(String map:new LinkedHashSet<>(list)){s.enterCampaignMap(map,false);maps++;for(RuntimeState.Monster m:s.monsters()){actors++;if(MonsterElementsV258.darkMine(m.id)){dark++;assertEquals("DARK",m.attackElement);assertEquals("DARK",m.defenseElement);}else{assertTrue(map+" "+m.id,MonsterElementsV258.natural(m.attackElement));assertTrue(map+" "+m.id,MonsterElementsV258.natural(m.defenseElement));}}}
   assertTrue(maps>=30);assertTrue(actors>1000);assertEquals(60,dark);assertTrue(MonsterElementsV258.natural(new RuntimeState(RuntimeState.BootMode.POTE_01_PROTOTYPE).monsters().get(0).defenseElement));
-  File report=new File("build/reports/horror-v179/v258/coverage.json");report.getParentFile().mkdirs();Files.writeString(report.toPath(),new JSONObject().put("maps",maps).put("actors",actors).put("darkMineActors",dark).toString());
+  File report=new File("build/reports/horror-v179/v258/coverage.json");report.getParentFile().mkdirs();Files.write(report.toPath(),new JSONObject().put("maps",maps).put("actors",actors).put("darkMineActors",dark).toString().getBytes(java.nio.charset.StandardCharsets.UTF_8));
  }
  @Test public void successfulRespawnDrawsANewPairAndBlockedRespawnDoesNotDraw()throws Exception{
   RuntimeState s=new RuntimeState();s.enterCampaignMap("MAP_ABEL_COAST_3B",false);RuntimeState.Monster m=s.monsters().get(0);MonsterElementsV258.assign(m,0,1);String before=m.attackElement+"/"+m.defenseElement;s.damage(m,m.hp);s.player().x=m.spawnX;s.player().y=m.spawnY;s.tick(m.respawnSeconds+1);assertFalse(m.alive);assertEquals(before,m.attackElement+"/"+m.defenseElement);Set<String> seen=new HashSet<>();seen.add(before);s.player().x=-1000;s.player().y=-1000;

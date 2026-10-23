@@ -53,7 +53,7 @@ public class AccessoryCatalogV125Test {
   RpgProgressionState a=new RpgProgressionState(),d=new RpgProgressionState();a.enableEquipmentSandbox(true);a.bindTwoHandLearning(()->true);d.enableEquipmentSandbox(true);d.bindTwoHandLearning(()->true);
   a.equip("IT_NECK_FIRE_PEARL");assertEquals(Integer.valueOf(5),a.equippedDefinition("목걸이").statModifiers.get("HIT"));d.equip("IT_BELT_WATER_LEATHER");
   assertEquals(38,ElementalDamageFormula.apply(100,a.finalStats().attackElement,d.finalStats().defenseElement));
-  assertEquals(175,ElementalDamageFormula.apply(100,"생명","암흑"));assertEquals(100,ElementalDamageFormula.apply(100,"숲","숲"));
+  assertEquals(87,ElementalDamageFormula.apply(100,"생명","암흑"));assertEquals(34,ElementalDamageFormula.apply(100,"숲","숲"));
  }
  @Test public void realPagedInventoryCanReachAndEquipLastAccessoryAndRingSlot()throws Exception{
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");
