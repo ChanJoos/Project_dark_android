@@ -20,7 +20,7 @@ public final class WorldDef {
 
   // B4 device correction: keep meaningful traversable space west of the reagent shop so the shop is not pinned to the map edge.
   public static final float MIN_X=-512f,MAX_X=2304f,MIN_Y=48f,MAX_Y=1600f;
-  public static final float PLAYER_SPAWN_X=620f,PLAYER_SPAWN_Y=560f;
+  public static final float PLAYER_SPAWN_X=736f,PLAYER_SPAWN_Y=704f;
 
   public enum LayerKind { TILE, OBJECT, COLLISION, NPC, MONSTER_SPAWN, PORTAL }
   public static final class LayerStatus { public final LayerKind kind; public final String evidence,status; LayerStatus(LayerKind k,String e,String s){kind=k;evidence=e;status=s;} }

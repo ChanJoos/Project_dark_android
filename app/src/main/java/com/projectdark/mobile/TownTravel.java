@@ -29,6 +29,23 @@ public final class TownTravel {
   if(RucesionTownGeometry.contains(map)){RucesionTownGeometry.Building shop=RucesionTownGeometry.forInterior("rucesion_interior_reagent");x=shop.doorX()+96;y=shop.doorY()+48;}
   return CampaignWorld.nearestConnectedTile(map,x,y);
  }
+ /** Shared arrival for recall and NPC town travel; never the occupied manager tile. */
+ public static WorldMoveTargetController.TileCenter arrival(String map){
+  if(WorldDef.ID.equals(map))return new WorldMoveTargetController.TileCenter(WorldDef.PLAYER_SPAWN_X,WorldDef.PLAYER_SPAWN_Y);
+  return CampaignWorld.arrival(map,false);
+ }
+ /** Resolve only actual town recall names, including imported catalog IDs. */
+ public static String recallDestination(String name){
+  if(name==null)return null;String n=name.replace(" ","").replace("마을","");
+  if(!n.endsWith("리콜"))return null;
+  if(n.equals("밀레스리콜"))return WorldDef.ID;
+  if(n.equals("아벨리콜"))return AbelTownGeometry.ID;
+  if(n.equals("뤼케시온리콜"))return RucesionTownGeometry.ID;
+  if(n.equals("마인리콜"))return MineTownGeometry.ID;
+  if(n.equals("피에트리콜"))return CampaignWorld.PIET;
+  if(n.equals("죽음의리콜"))return DeathVillageGeometry.LOBBY;
+  return null;
+ }
  private TownTravel(){}
 }
 

@@ -105,6 +105,9 @@ final class MobileHudSkin {
       // Project the authored static collision footprints once per map, never live actors or paths.
       for(RectF o:state.obstacles())terrain.drawRect(map(o.left,minX,maxX,0,96),map(o.top,minY,maxY,0,96),map(o.right,minX,maxX,0,96),map(o.bottom,minY,maxY,0,96),p);
       p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.6f);p.setColor(0x339c8c65);for(int i=1;i<5;i++){float v=i*19.2f;terrain.drawLine(v,0,v,96,p);terrain.drawLine(0,v,96,v,p);}p.setStyle(Paint.Style.FILL);terrainKey=key;}
+      p.setColor(0xffffe4aa);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.7f);
+      for(WorldMapWindow.Pin pin:WorldMapWindow.entrances(state.currentMapId()))terrain.drawCircle(map(pin.x,minX,maxX,0,96),map(pin.y,minY,maxY,0,96),1.7f,p);
+      p.setStyle(Paint.Style.FILL);
     }
     p.setColor(0xffffffff);c.drawBitmap(mapTerrain,null,new RectF(20,25,116,121),p);
     for(RuntimeState.Npc n:state.npcs())marker(c,n.x,n.y,minX,minY,maxX,maxY,0xffc3dfad,1.8f);

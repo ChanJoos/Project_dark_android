@@ -12,7 +12,15 @@ final class WorldMapWindow {
  static String gateLabel(DeathVillageData.Gate g){if(DeathVillageGeometry.FIELD.equals(g.to))return "죽음의마을";if(DeathVillageGeometry.LOBBY.equals(g.to))return "대기실";if(DeathVillageGeometry.house(g.to))return "건물 "+g.to.substring(g.to.length()-1);return "지하 "+g.to.substring(g.to.length()-1);}
  static java.util.List<Pin> entrances(String id){
   java.util.List<Pin> out=new ArrayList<>();
-  if(DeathVillageGeometry.contains(id)){
+  TownInteriorDef room=TownInteriorDef.forMap(id);
+  if(room!=null){
+   if(room.isTemple())for(TempleRoutes.Gate g:TempleRoutes.forRoom(room))out.add(new Pin(g.label,g.x,g.y));
+   else out.add(new Pin("출구",room.exitX(),room.exitY()));
+  }else if(HorrorCastleGeometry.contains(id)){
+   for(HorrorCastleGeometry.Door d:HorrorCastleGeometry.doors(id))out.add(new Pin(d.label,d.markerX,d.markerY,d.x,d.y));
+  }else if(MineHuntGeometry.contains(id)){
+   WorldMoveTargetController.TileCenter exit=MineHuntGeometry.exit();out.add(new Pin("마인 마을",exit.x,exit.y));
+  }else if(DeathVillageGeometry.contains(id)){
    Set<String> seen=new HashSet<>();
    for(DeathVillageData.Gate g:DeathVillageGeometry.gates(id)){
     if(!seen.add(g.to))continue;float x=0,y=0;int n=0;
@@ -30,7 +38,11 @@ final class WorldMapWindow {
   }else{
    for(TownServiceLabels.Sign sign:TownServiceLabels.signs(id))out.add(new Pin(sign.name,sign.x,sign.y));
    if(MineTownGeometry.contains(id))out.add(new Pin("카스마늄 광산",MineTownGeometry.x(14,23),MineTownGeometry.y(14,23),MineTownGeometry.x(15,23),MineTownGeometry.y(15,23)));
-   if(CampaignWorld.PIET.equals(id)){WorldMoveTargetController.TileCenter back=CampaignWorld.backward(id);out.add(new Pin(CampaignWorld.title(CampaignWorld.previous(id)),back.x,back.y));}
+   if((CampaignWorld.contains(id)&&!TownTravel.isTown(id))||CampaignWorld.PIET.equals(id)){
+    WorldMoveTargetController.TileCenter back=CampaignWorld.backward(id);String previous=CampaignWorld.previous(id);
+    out.add(new Pin(previous==null?"밀레스 마을":CampaignWorld.title(previous),back.x,back.y));
+    String next=CampaignWorld.next(id);if(next!=null){WorldMoveTargetController.TileCenter forward=CampaignWorld.forward(id);out.add(new Pin(CampaignWorld.title(next),forward.x,forward.y));}
+   }
   }
   return out;
  }

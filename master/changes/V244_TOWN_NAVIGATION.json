@@ -1,0 +1,12 @@
+{
+  "changeId": "V244_TOWN_NAVIGATION",
+  "status": "ACCEPTED",
+  "evidence": "USER 2026-10-23 explicit requested start/recall/NPC arrivals and all-map minimap navigation",
+  "before": "Milles fresh spawn620,560; NPC arrival544,560; only Milles recall wired; map input restricted to towns/death",
+  "after": "Milles HUD46,39/world736,704; shared arrivals for all6town recalls; all map-family real entrance pins/live navigation",
+  "sourcePreservation": "No source bytes replaced; existing saves retain position; original server recall prices not asserted",
+  "adaptations": "Five supported town recall IDs and existing1000G mobile-policy offers; no unknown unsupported-town destination fabricated",
+  "validation": "LOCAL_MAIN_AND_TEST_COMPILE_PASS / COORDINATE_AND6RECALL_BINDINGS_PASS / ANDROID_NATIVE_BUILD_PENDING",
+  "next": "TownNavigationV244Test + GroundTapPathTest + RuntimeCheckpointTest + ForestFloorCacheTest and APK",
+  "publication": "BLOCKED_BY_AUTOMATIC_APPROVAL_REVIEW"
+}

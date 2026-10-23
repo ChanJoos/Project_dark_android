@@ -249,6 +249,7 @@ public final class RpgProgressionState {
     registerItem(new ItemDefinition("IT_REAGENT_HOLYWATER","성수",null,null,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_SHOP_WEAPON_MW004","세이버",WEAPON_SLOT,"mw004",AnimationAction.SWING,11,anyJob,true,null,null,stats("DAM",7,"HIT",2),Evidence.ADAPTED));
     registerItem(new ItemDefinition("IT_SHOP_WEAPON_MW005","그라디우스",WEAPON_SLOT,"mw005",AnimationAction.SWING,11,anyJob,true,null,null,stats("DAM",9,"HIT",1),Evidence.ADAPTED));
+    for(String[] recall:new String[][]{{"ABEL","아벨"},{"RUCESION","뤼케시온"},{"MINE","마인"},{"PIET","피에트"},{"DEATH","죽음의마을"}})registerItem(new ItemDefinition("IT_RECALL_"+recall[0],recall[1]+"리콜",null,null,anyJob,true,null,null,noStats,Evidence.ADAPTED));
     registerItem(new ItemDefinition(RECALL_MILLES_ITEM_ID,"밀레스리콜",null,null,anyJob,true,null,null,noStats,Evidence.O));
     registerItem(new ItemDefinition(STARTER_SHIRT_ITEM_ID,"셔츠 [PENDING WEARABLE FRAMES]",ARMOR_SLOT,
         STARTER_SHIRT_APPEARANCE_ID,1,anyJob,true,null,null,shirtStats,Evidence.ADAPTED));
@@ -664,8 +665,15 @@ public final class RpgProgressionState {
     if(owned==1)inventory.remove(itemId);else inventory.put(itemId,owned-1);
     campaign.healed(itemId);return UseResult.USED;
   }
-  public boolean isRecall(String id){return RECALL_MILLES_ITEM_ID.equals(id);}
-  public UseResult useMillesRecall(RuntimeState runtime){int owned=inventory.getOrDefault(RECALL_MILLES_ITEM_ID,0);if(owned<=0)return UseResult.ITEM_NOT_OWNED;if(runtime==null||!runtime.player().alive)return UseResult.NO_EFFECT;if(owned==1)inventory.remove(RECALL_MILLES_ITEM_ID);else inventory.put(RECALL_MILLES_ITEM_ID,owned-1);return UseResult.USED;}
+  public String recallDestination(String id){ItemDefinition d=items.get(id);return d==null?null:TownTravel.recallDestination(d.name);}
+  public boolean isRecall(String id){return recallDestination(id)!=null;}
+  public UseResult useRecall(String id,RuntimeState runtime){
+    if(!isRecall(id))return UseResult.NO_EFFECT;
+    int owned=inventory.getOrDefault(id,0);if(owned<=0)return UseResult.ITEM_NOT_OWNED;
+    if(runtime==null||!runtime.player().alive)return UseResult.NO_EFFECT;
+    if(owned==1)inventory.remove(id);else inventory.put(id,owned-1);return UseResult.USED;
+  }
+  public UseResult useMillesRecall(RuntimeState runtime){return useRecall(RECALL_MILLES_ITEM_ID,runtime);}
   public boolean grantB5SmallHpPotion(int quantity){return autoLootResolvedItem(B5_SMALL_HP_POTION_ITEM_ID,quantity)==AutoLootResult.LOOTED;}
   public AutoLootResult autoLootResolvedItem(String itemId,int quantity){
     itemId=canonicalItemId(itemId);

@@ -13,6 +13,11 @@ public final class TownCommerce {
   new Offer("IT_REAGENT_EXCURANUM","엑스쿠라눔","시약류",50000,"생명력 10,000 회복 · 되팔기 불가"),
   new Offer("IT_REAGENT_HOLYWATER","성수","시약류",300,"성직자 수련과 의식용 성수"),
   new Offer("IT_RECALL_MILLES","밀레스리콜","리콜류",1000,"밀레스마을 귀환 스크롤"),
+  new Offer("IT_RECALL_ABEL","아벨리콜","리콜류",1000,"아벨 이동 NPC 도착점으로 귀환"),
+  new Offer("IT_RECALL_RUCESION","뤼케시온리콜","리콜류",1000,"뤼케시온 이동 NPC 도착점으로 귀환"),
+  new Offer("IT_RECALL_MINE","마인리콜","리콜류",1000,"마인 이동 NPC 도착점으로 귀환"),
+  new Offer("IT_RECALL_PIET","피에트리콜","리콜류",1000,"피에트 이동 NPC 도착점으로 귀환"),
+  new Offer("IT_RECALL_DEATH","죽음의마을리콜","리콜류",1000,"죽음의마을 이동 NPC 도착점으로 귀환"),
   new Offer("IT_B_MP_POTION","마력 물약","시약류",25,"마력 100 회복 · 한 병씩 사용"),
   new Offer(RpgProgressionState.B_SMALL_POTION_ITEM_ID,"소형 회복물약","시약류",20,"생명력 회복 · 한 병씩 사용")));
  private static final List<Offer> EQUIPMENT=campaignEquipment(Arrays.asList(

@@ -58,7 +58,7 @@ final class ItemEffects {
   if(mp>0)lines.add("사용 시 MP "+mp+" 회복 · 최대 MP 초과 불가");
   if(hp>0||mp>0)lines.add("회복할 자원이 없거나 사망 상태면 소모되지 않습니다.");
   if(RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID.equals(d.itemId))lines.add("시험 기능: 자신의 중독 해제 · 중독 시만 소모 · 원작 아이템 규칙 미확정");
-  if(RpgProgressionState.RECALL_MILLES_ITEM_ID.equals(d.itemId))lines.add("살아 있을 때 밀레스마을 시작 위치로 귀환 · 1개 소모");
+  if(TownTravel.recallDestination(d.name)!=null)lines.add("살아 있을 때 "+TownTravel.forMap(TownTravel.recallDestination(d.name)).title+" 이동 도착점으로 귀환 · 1개 소모");
   if(RpgProgressionState.REAGENT_KOMADIUM_ITEM_ID.equals(d.itemId))lines.add("코마 상태 동료 회복용 · 동료/코마 대상 기능 미구현");
   if("IT_REAGENT_HOLYWATER".equals(d.itemId))lines.add("성수의 원작 사용 효과는 미확정 · 현재 사용 불가");
   String staff=staffDescription(d.name);if(!staff.isEmpty()){lines.add(staff);lines.add("재사용 대기시간·물리 공격에는 적용되지 않습니다.");}

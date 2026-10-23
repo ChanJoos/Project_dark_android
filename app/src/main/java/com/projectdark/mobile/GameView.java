@@ -564,7 +564,8 @@ public final class GameView extends View {
     if(!TownTravel.isTown(map)||!F5mSaveStore.writable())return;
     campaignAutoRoute=false;autoAttackEnabled=false;interaction.cancel();activeWorld().cancelForAction();combat.cancelApproach();
     inventoryOpen=statsOpen=equipmentOpen=false;skillWindow.close();townWindow.close();activeSkillVisualId=null;
-    if(WorldDef.ID.equals(map)){if(inPoteField)leavePoteField();WorldMoveTargetController.TileCenter center=TownTravel.center(map);state.player().x=center.x+32;state.player().y=center.y+16;worldAdapter.snapCameraToPlayer();checkpoint();}
+    while(inReagentShop)leaveReagentShop();
+    if(WorldDef.ID.equals(map)){if(inPoteField)leavePoteField();WorldMoveTargetController.TileCenter arrival=TownTravel.arrival(map);state.player().x=arrival.x;state.player().y=arrival.y;worldAdapter.cancelForAction();worldAdapter.snapCameraToPlayer();checkpoint();}
     else{if(!inPoteField){fieldReturnX=state.player().x;fieldReturnY=state.player().y;F5mSaveStore.saveFieldReturnPointActive(fieldReturnX,fieldReturnY);}inPoteField=true;changeCampaignMap(map,false);}
     showFeedback(TownTravel.forMap(map).title+" 도착",FeedbackTone.INFO);
   }
@@ -920,16 +921,20 @@ private void drawQuestJournalIcon(Canvas c){
     showFeedback(pin.label+" 이동",FeedbackTone.INFO);consumeMoveOutcome(move);
   }
   private void openWorldMap(){
-    String id=state.currentMapId();float minX,maxX,minY,maxY;if(WorldDef.ID.equals(id)){minX=WorldDef.MIN_X;maxX=WorldDef.MAX_X;minY=WorldDef.MIN_Y;maxY=WorldDef.MAX_Y;}else{PoteCampaignMapDef d=PoteCampaignMapDef.forId(id);minX=d.minX;maxX=d.maxX;minY=d.minY;maxY=d.maxY;}
+    String id=state.currentMapId();float minX,maxX,minY,maxY;
+    if(inReagentShop){minX=townInterior.minX();maxX=townInterior.maxX();minY=townInterior.minY();maxY=townInterior.maxY();}
+    else if(WorldDef.ID.equals(id)){minX=WorldDef.MIN_X;maxX=WorldDef.MAX_X;minY=WorldDef.MIN_Y;maxY=WorldDef.MAX_Y;}
+    else{PoteCampaignMapDef d=PoteCampaignMapDef.forId(id);minX=d.minX;maxX=d.maxX;minY=d.minY;maxY=d.maxY;}
     final float width=maxX-minX,height=maxY-minY;WorldRuntimeAdapter w=activeWorld();
-    worldMap.show(id,WorldDef.ID.equals(id)?"밀레스 마을":CampaignWorld.title(id),minX,minY,maxX,maxY,canvas->{
+    worldMap.show(id,inReagentShop?townInterior.title:WorldDef.ID.equals(id)?"밀레스 마을":CampaignWorld.title(id),minX,minY,maxX,maxY,canvas->{
       if(DeathVillageGeometry.contains(id)){canvas.translate(-DeathVillageGeometry.minX(id),0);deathRenderer.drawOverview(canvas);}
-      else w.withOverviewCamera(width,height,()->{if(WorldDef.ID.equals(id)){java.util.List<AdaptedMillesMapRenderer.DepthDraw> pieces=new java.util.ArrayList<>();templeEntrance.add(canvas,pieces,w.camera().cameraX(),w.camera().cameraY());mapRenderer.draw(canvas,w,pieces);}else if(MineTownGeometry.contains(id))mineTownRenderer.draw(canvas,w,java.util.Collections.emptyList());else if(AbelTownGeometry.contains(id))abelTownRenderer.draw(canvas,w,java.util.Collections.emptyList());else if(RucesionTownGeometry.contains(id))rucesionTownRenderer.draw(canvas,w,java.util.Collections.emptyList());else poteFieldRenderer.drawScene(canvas,w,java.util.Collections.emptyList());});
+      else w.withOverviewCamera(width,height,()->{if(inReagentShop){if(townInterior.isTemple()){templeRenderer.ground(canvas,w,townInterior);templeRenderer.gates(canvas,w,townInterior);}else townRenderer.ground(canvas,w,townInterior);}
+      else if(WorldDef.ID.equals(id)){java.util.List<AdaptedMillesMapRenderer.DepthDraw> pieces=new java.util.ArrayList<>();templeEntrance.add(canvas,pieces,w.camera().cameraX(),w.camera().cameraY());mapRenderer.draw(canvas,w,pieces);}else if(MineTownGeometry.contains(id))mineTownRenderer.draw(canvas,w,java.util.Collections.emptyList());else if(AbelTownGeometry.contains(id))abelTownRenderer.draw(canvas,w,java.util.Collections.emptyList());else if(RucesionTownGeometry.contains(id))rucesionTownRenderer.draw(canvas,w,java.util.Collections.emptyList());else if(MineHuntGeometry.contains(id)){if(mineHuntRenderer==null)mineHuntRenderer=new MineHuntRenderer(getContext());mineHuntRenderer.draw(canvas,w,java.util.Collections.emptyList());}else if(HorrorCastleGeometry.contains(id)){if(horrorRenderer==null)horrorRenderer=new HorrorCastleRenderer(getContext());horrorRenderer.draw(canvas,w,java.util.Collections.emptyList());}else poteFieldRenderer.drawScene(canvas,w,java.util.Collections.emptyList());});
     });
   }
   private void drawMinimap(Canvas c){
     WorldRuntimeAdapter aw=activeWorld();com.projectdark.mobile.world.PoteCampaignMapDef forest=inPoteField?com.projectdark.mobile.world.PoteCampaignMapDef.forId(state.currentMapId()):null;
-    float minX=inReagentShop?townInterior.minX():inPoteField?forest.minX:WorldDef.MIN_X,maxX=inReagentShop?townInterior.maxX():inPoteField?forest.maxX:WorldDef.MAX_X,minY=inReagentShop?TownInteriorDef.MIN_Y:inPoteField?forest.minY:WorldDef.MIN_Y,maxY=inReagentShop?townInterior.maxY():inPoteField?forest.maxY:WorldDef.MAX_Y;
+    float minX=inReagentShop?townInterior.minX():inPoteField?forest.minX:WorldDef.MIN_X,maxX=inReagentShop?townInterior.maxX():inPoteField?forest.maxX:WorldDef.MAX_X,minY=inReagentShop?townInterior.minY():inPoteField?forest.minY:WorldDef.MIN_Y,maxY=inReagentShop?townInterior.maxY():inPoteField?forest.maxY:WorldDef.MAX_Y;
     MobileHudSkin.minimap(c,state,aw.presentationPlayerX(),aw.presentationPlayerY(),minX,minY,maxX,maxY);
     UiTheme.fit(c,currentMapLocation(),18,15,270,9,UiTheme.TEXT,true);
     UiTheme.text(c,"CH. 5-1",19,133,7,UiTheme.TEXT,false);
@@ -1063,7 +1068,11 @@ private void drawUtilityRail(Canvas c){
   }
   private void activateInventoryItem(){
     String selected=rpgInteraction.selectedInventoryItemId();
-    if(state.rpg().isRecall(selected)){if(state.rpg().useMillesRecall(state)==RpgProgressionState.UseResult.USED){if(inReagentShop)leaveReagentShop();if(inPoteField)leavePoteField();state.player().x=WorldDef.PLAYER_SPAWN_X;state.player().y=WorldDef.PLAYER_SPAWN_Y;worldAdapter.cancelForAction();worldAdapter.snapCameraToPlayer();inventoryOpen=false;checkpoint();showFeedback("밀레스마을로 귀환했습니다",FeedbackTone.INFO);}return;}
+    if(state.rpg().isRecall(selected)){
+      String destination=state.rpg().recallDestination(selected);
+      if(F5mSaveStore.transactActive(state.rpg(),skillBook,()->state.rpg().useRecall(selected,state)==RpgProgressionState.UseResult.USED))travelTown(destination);
+      return;
+    }
     if(selected!=null&&state.rpg().isConsumable(selected)){RpgProgressionState.UseResult used=state.rpg().useConsumable(selected,state);checkpoint();showFeedback(used==RpgProgressionState.UseResult.USED?"아이템 효과를 적용했습니다":used==RpgProgressionState.UseResult.NO_EFFECT?"적용할 효과가 없습니다":"사용할 수 없습니다",used==RpgProgressionState.UseResult.USED?FeedbackTone.REWARD:FeedbackTone.WARN);return;}
     RpgProgressionState.ItemDefinition selectedDef=state.rpg().itemDefinitions().get(selected);if(selectedDef!=null&&!selectedDef.equippable()){showFeedback(String.join(" · ",ItemEffects.description(selectedDef)),FeedbackTone.WARN);return;}
     RpgProgressionState.EquipResult result=rpgInteraction.equipSelectedDetailed(state.rpg());state.applyDerivedGrowth();checkpoint();showFeedback(equipResultLabel(result),(result==RpgProgressionState.EquipResult.EQUIPPED||result==RpgProgressionState.EquipResult.UNEQUIPPED)?FeedbackTone.INFO:FeedbackTone.WARN);
@@ -1126,9 +1135,10 @@ private void drawUtilityRail(Canvas c){
       if(equipmentOpen)return handleEquipmentTouch(x-hudCenterOffset,y);if(handleInventoryTouch(x-hudCenterOffset,y))return true;
       if(MobileHudLayout.chat(chatExpanded).contains(x,y)){chatExpanded=!chatExpanded;return true;}
       if(MobileHudLayout.quest(hudRightOffset).contains(x,y)){touchQuickQuest(x,y);return true;}
+      if(WorldMapWindow.minimapHit(x,y)){cancelSkillApproach();activeWorld().cancelForDirectInput();joy=false;vx=vy=0;openWorldMap();return true;}
       if(inReagentShop)return handleReagentShopTouch(e,x,y);
 
-      if(WorldMapWindow.minimapHit(x,y)&&!inReagentShop&&(TownTravel.isTown(state.currentMapId())||DeathVillageGeometry.contains(state.currentMapId()))){cancelSkillApproach();activeWorld().cancelForDirectInput();joy=false;vx=vy=0;openWorldMap();return true;}
+
       if(circleHit(x,y,JOY_X,JOY_Y,JOY_R)){cancelSkillApproach();autoAttackEnabled=false;joy=true;directStepClock=0f;pressedControl="JOY";activeWorld().cancelForDirectInput();interaction.cancelApproach();combat.cancelApproach();stick(x,y);return true;}
       if(useHudPotion(x,y))return true;
       for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRect(i);if(circleHit(x,y,r.centerX(),r.centerY(),SLOT/2)){pressedControl="SLOT"+i;SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);return true;}}
