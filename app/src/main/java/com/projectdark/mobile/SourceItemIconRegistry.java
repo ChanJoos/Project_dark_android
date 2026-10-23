@@ -18,18 +18,21 @@ final class SourceItemIconRegistry {
  private final ItemIconRepairsV212 repairs;
  private JSONObject full;
  private final RecallAssetsV251 recalls;
+ private final OriginalInventoryV252 originals;
  private ItemAtlasV210 atlas;private JSONObject additions;
- SourceItemIconRegistry(Context c){context=c;recalls=new RecallAssetsV251(c);repairs=new ItemIconRepairsV212(c);try(InputStream in=c.getAssets().open("item-icons/manifest.json")){full=new JSONObject(new String(read(in),StandardCharsets.UTF_8));}catch(Exception e){throw new IllegalStateException("Full original item artwork manifest unavailable",e);}}
+ SourceItemIconRegistry(Context c){context=c;originals=new OriginalInventoryV252(c);recalls=new RecallAssetsV251(c);repairs=new ItemIconRepairsV212(c);try(InputStream in=c.getAssets().open("item-icons/manifest.json")){full=new JSONObject(new String(read(in),StandardCharsets.UTF_8));}catch(Exception e){throw new IllegalStateException("Full original item artwork manifest unavailable",e);}}
 
  private static byte[] read(InputStream in)throws java.io.IOException{java.io.ByteArrayOutputStream out=new java.io.ByteArrayOutputStream();byte[] bytes=new byte[4096];int n;while((n=in.read(bytes))!=-1)out.write(bytes,0,n);return out.toByteArray();}
  private ItemAtlasV210 atlas(){if(atlas==null)atlas=new ItemAtlasV210(context);return atlas;}
  JSONObject receipt(String id){JSONObject recall=recalls.receipt(id);if(recall!=null)return recall;JSONObject row=full.optJSONObject("items").optJSONObject(id);if(row!=null)return row;try{if(additions==null)additions=new JSONObject(new String(PresentationAssetBytes.read(context,"item-atlas-v210/new-sources.json"),StandardCharsets.UTF_8));return additions.optJSONObject(id);}catch(Exception e){throw new IllegalStateException("New item sources unavailable",e);}}
- boolean pending(String id){JSONObject row=receipt(id);return row!=null&&"PENDING_REPLACEMENT_SOURCE".equals(row.optString("identityMatch"));}
+ boolean nativeInventory(String id){return originals.receipt(id)!=null;}
+ boolean pending(String id){if(originals.receipt(id)!=null)return false;JSONObject row=receipt(id);return row!=null&&"PENDING_REPLACEMENT_SOURCE".equals(row.optString("identityMatch"));}
  static void drawPending(Canvas c,RectF target){
   UiTheme.center(c,"이미지",target.centerX(),target.centerY()-1,8,UiTheme.MUTED,false);
   UiTheme.center(c,"준비 중",target.centerX(),target.centerY()+10,8,UiTheme.MUTED,false);
  }
  Bitmap get(String id){
+  Bitmap original=originals.get(id);if(original!=null)return original;
   Bitmap recall=recalls.get(id);if(recall!=null)return recall;
   Bitmap repaired=repairs.get(id);if(repaired!=null)return repaired;
   if(pending(id))return null;
@@ -113,7 +116,7 @@ final class SourceItemIconRegistry {
   if(mirror)canvas.scale(-1,1,target.centerX(),target.centerY());canvas.drawBitmap(bitmap,src,dst,paint);canvas.restoreToCount(save);
  }
  Bitmap get(RpgProgressionState.ItemDefinition d){
-  if(d==null)return null;Bitmap recall=recalls.get(d.itemId);if(recall!=null)return recall;Bitmap repaired=repairs.get(d.itemId);if(repaired!=null)return repaired;Bitmap source="IT_REAGENT_CURUM".equals(d.itemId)?get(d.itemId):atlas().get(d.itemId);if(source==null)source=get(d.itemId);if(source==null||!"무기".equals(d.equipSlot))return source;
+  if(d==null)return null;Bitmap original=originals.get(d.itemId);if(original!=null)return original;Bitmap recall=recalls.get(d.itemId);if(recall!=null)return recall;Bitmap repaired=repairs.get(d.itemId);if(repaired!=null)return repaired;Bitmap source="IT_REAGENT_CURUM".equals(d.itemId)?get(d.itemId):atlas().get(d.itemId);if(source==null)source=get(d.itemId);if(source==null||!"무기".equals(d.equipSlot))return source;
   JSONObject row=receipt(d.itemId),cell=atlas().entry(d.itemId);String key="V210_DIAGONAL:"+(cell!=null?cell.optString("texture"):row==null?d.itemId:row.optString("assetPath",d.itemId));
   Bitmap icon=cache.get(key);if(icon==null){icon=WeaponInventoryArtworkV209.diagonal(source);cache.put(key,icon);}return icon;
  }

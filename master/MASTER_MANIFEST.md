@@ -1,3 +1,7 @@
+## V252 — 原본 인벤토리279종·라피드 모자앞·나르콜리영상 검수
+
+Accepted projection `master/changes/V252_ORIGINAL_INVENTORY_RAPID.json`. All279complete native frames preserve sourceEPF/PAL/RGBA;known named sources only. This is scoped recovery, not all-equipment original acceptance.1714compatibilitydefinitions remain without an identified original inventory frame. Rapid is drawn above hats in every direction; no stats/save changes. Actual205939video pinkZ15samples retained for GIFreview, no replacement spell mapping. CI/phone pending.
+
 ## V248 — 최종 후보 검증·APK 전달 완료
 
 APK source `e38aeba15e34a7d9c797f16af7d8c8ed2922bb87`; [Actions39906861205](https://github.com/ChanJoos/Project_dark_android/actions/runs/39906861205) / job120260704047 SUCCESS, artifact12481077445. Final PortalServices3 + TempleMilles5 =8 PASS/0 failures/errors/skips. Exact-delta guarded retained32 PASS from eb7c55be/run39904714042 and 2df7cdf4/run39905956948:40 unique scoped checks, not a full-suite claim. Final71map/130portal groups,20source NPC roles, death-knight shop/recall checked. Prior21paid town routes/coast locking/cancel/poor/rollback/restart and adjacent navigation/save/cache/input evidence retained. Source pixel audit PASS. All71 final portal scenes plus temple capture inspected; old baked temple white beam removed, original32frame portal is common live overlay. Screenshot choice idle border cleaned with preserved original pixels.

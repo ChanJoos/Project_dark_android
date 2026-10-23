@@ -1,3 +1,15 @@
+## V252 — 중단된 원본 아이콘·라피드·나르콜리 GIF 작업 복구
+
+Base8cff9726 / samecodex/rucesion-coast-v157 / PR197. main41fe6def is ancestor and unchanged. Last verified candidateV251 source4d3232c5/run39922524224; do not relabel it asV252.
+
+Recovered interrupted/tmp/v252review results, rechecked named-table matches and every279native frame against retainedEPF/PAL and immutable source hashes.279bindings/252unique frame tuples, including ChrysaorR01881 and curveddaggerR05502. Shared registry prioritizes complete original icon without rotation/recolor in bag/equipment/shop. Source aliases resolve same cached native bitmap. Repaired food/socket art remains fallback only where no verified native inventory source exists. Rapid helper now routes all source tiers/bodies/facings to final foreground pass, preserving source pair ordering and anchors.
+
+Localproduction/alltests compilation with ECJ17(filteredAndroidAPI/JRE) PASS; independent279RGBA/source/bounds/namedtable audit PASS. CI native/build PENDING. Focused scope: new3native(all279/aliases;bothbody4direction3motion realhat overlap;actualbag/equipment/shop), weapons2, existingRapid roster+equiprestart2, RapidWingdisjoint1, foodsharedwindow1, alias/save1. No map/combat/save rule changes; no fullregression/mainmerge/phone acceptance claim.
+
+Narcoli: priorV251checked205405deathvideo;correct205939video now loaded and pinkZ0.20–0.80s continuously sampled25fps.15exactRGBcrops in video_frames.zip;2xnearest600msGIF preview has256colorquantization only. No actor removal/inpainting;wall background preserved. This is requestedvideo review, not a new confirmed runtime binding.
+
+Remaining1714compatibilitydefinitions lack identified original inventory frames (`master/source/items/inventory_v252/remaining.json`); includes aliases, not1714unique original items. Do not claim all-original completion. Next CI native/result review then exactcandidateAPK;unresolvedsource work remains. PHONE/USER_VISUAL PENDING.
+
 ## V251 — 마법·리콜 수정 검증 및 후보 APK/나르콜리 미리보기 전달
 
 Exact runtime `4d3232c565732feecdc3fe5cba8b775fc2cf603d`; [Actions39922524224](https://github.com/ChanJoos/Project_dark_android/actions/runs/39922524224)/job120310911678 SUCCESS, artifact12487817994. DownloadedXML19tests/7suites/0fail/error/skip: MagicRecall6,StatusMagic4,MageCircle3Cross1,ScreenMagic1,Ragnaroksource2,F5mRestart4,TownNavigation1. Soruma normalcast putsFREEZE onlyonmonster and liveFXanchorsmonster; twoMPbursts preserveallMPonce/exactfourfullSemelia copies/currentdamage andradius whilecenteringactor/originalselectedmonster; Death retired/oldslotscleanup;10sourceassets,4existingtownactualrecallarrival/use/oncegrant/restart anddeepTemple/dead/noConsume PASS.8lowercirclecross directregression andsourceRagnarok,screenrecipients/restart PASS. RawJPEG→losslessdecode→10cropRGBA and8EPFcandidateoriginalpixels PASS. Scope selector6localPASS/common39922531917SUCCESS withfullcompileintentionallySKIPPED. Not fullregression/mainintegration.

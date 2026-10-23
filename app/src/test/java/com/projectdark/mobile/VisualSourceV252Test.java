@@ -1,0 +1,32 @@
+package com.projectdark.mobile;
+import android.content.*;import android.graphics.*;import java.io.*;import java.util.*;import java.security.*;import org.json.*;import org.junit.*;import static org.junit.Assert.*;import org.junit.runner.RunWith;import org.robolectric.*;import org.robolectric.annotation.*;
+@RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE) @GraphicsMode(GraphicsMode.Mode.NATIVE)
+public class VisualSourceV252Test {
+ Context c;@Before public void setup(){new MineTownV203Test().reset();c=RuntimeEnvironment.getApplication();}
+ static void save(Bitmap b,String name)throws Exception{File f=new File("build/reports/horror-v179/v252/"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream o=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,o));}}
+ @Test public void all279OriginalFramesAndAliasesBypassLegacyRotationAndRecolor()throws Exception{
+  SourceItemIconRegistry icons=new SourceItemIconRegistry(c);OriginalInventoryV252 originals=new OriginalInventoryV252(c);RpgProgressionState r=new RpgProgressionState();int weapons=0,reagents=0,n=0;
+  Bitmap gallery=Bitmap.createBitmap(960,1200,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(gallery);out.drawColor(0xff302820);
+  for(Iterator<String> it=originals.entries.keys();it.hasNext();){String id=it.next();RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(id);assertNotNull(id,d);Bitmap raw=originals.get(id),source=icons.get(id),actual=icons.get(d);assertTrue(id,source.sameAs(raw));assertSame(id,source,actual);assertSame(actual,icons.get(d));assertTrue(actual.getWidth()<=32&&actual.getHeight()<=32);
+   if("무기".equals(d.equipSlot))weapons++;if(id.startsWith("IT_REAGENT_"))reagents++;
+   SourceItemIconRegistry.draw(out,actual,new RectF(n%20*48,n/20*64,n%20*48+40,n/20*64+40),new Paint());n++;
+  }assertEquals(279,n);assertTrue(weapons>=30);assertTrue(reagents>=3);
+  for(Map.Entry<String,String> e:EquipmentIdentityV210.ALIASES.entrySet())if(icons.nativeInventory(e.getValue()))assertSame(e.getKey(),icons.get(e.getKey()),icons.get(e.getValue()));
+  assertTrue(icons.nativeInventory("USER_ITEM_20261018_R01881"));assertTrue(icons.nativeInventory("USER_ITEM_20261018_R05502"));save(gallery,"original-inventory-279");
+ }
+ @Test public void hatsNeverCoverRapidOnEitherBodyAnyFacingOrIdleWalkContact()throws Exception{
+  SkillBodyRenderer renderer=new SkillBodyRenderer(c,new SkillPresentationCatalog(c));Bitmap gallery=Bitmap.createBitmap(960,960,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(gallery);int n=0,totalOverlap=0;
+  for(String body:new String[]{"mm001","wm001"})for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(String motion:new String[]{"IDLE","WALK","SWING"}){
+   String hat="wm001".equals(body)?"wh172":"mh172",rapid="mg146,mc147";
+   Bitmap base=render(renderer,body,d,motion,null),hatOnly=render(renderer,body,d,motion,hat),rapidOnly=render(renderer,body,d,motion,rapid),both=render(renderer,body,d,motion,hat+","+rapid);int visibleHat=0,visibleRapid=0,overlap=0;
+   for(int y=0;y<120;y++)for(int x=0;x<140;x++){int a=base.getPixel(x,y),h=hatOnly.getPixel(x,y),q=rapidOnly.getPixel(x,y);if(h!=a)visibleHat++;if(q!=a){visibleRapid++;if(h!=a&&Color.alpha(q)==255){overlap++;assertEquals(body+d+motion+" Rapid pixel above hat at "+x+","+y,q,both.getPixel(x,y));}}}
+   assertTrue(body+d+motion+" hat must be rendered",visibleHat>0);assertTrue(body+d+motion+" clip must be rendered",visibleRapid>0);totalOverlap+=overlap;out.drawBitmap(both,n%6*160,n/6*160,null);n++;
+  }assertTrue("exercise real overlapping hat pixels",totalOverlap>10);assertEquals(24,n);save(gallery,"rapid-hats-bodies-directions-motions");
+ }
+ private Bitmap render(SkillBodyRenderer renderer,String body,CharacterRenderer.Direction d,String motion,String equipment){Bitmap b=Bitmap.createBitmap(140,120,Bitmap.Config.ARGB_8888);CharacterRenderer.Pose p=new CharacterRenderer.Pose(70,102,d,CharacterRenderer.State.IDLE,0,.45f,1,false,equipment,null,null,CharacterRenderer.EffectFamily.NONE);assertTrue(renderer.draw(new Canvas(b),p,body,motion,.45f));return b;}
+ @Test public void actualBagEquipmentAndShopUseSameOriginalWeaponAndReagentPixels()throws Exception{
+  GameView v=new GameView(c);v.layout(0,0,960,540);RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().enableEquipmentSandbox(true);Map<String,Integer> owned=new LinkedHashMap<>();for(String id:new String[]{"USER_ITEM_20261018_R01881","USER_ITEM_20261018_R05502","IT_REAGENT_CURANUM","IT_REAGENT_KOMADIUM"})owned.put(id,1);assertTrue(s.rpg().restoreOwnedItems(owned,Collections.emptyMap()));ItemWindow.Visuals visuals=TownInteriorTest.field(v,"itemWindowVisuals");SourceItemIconRegistry icons=new SourceItemIconRegistry(c);TownShopWindow shop=new TownShopWindow(c);java.lang.reflect.Field state=TownShopWindow.class.getDeclaredField("state");state.setAccessible(true);state.set(shop,s);java.lang.reflect.Method icon=TownShopWindow.class.getDeclaredMethod("icon",String.class);icon.setAccessible(true);
+  for(RpgInventoryPresentation.ItemRow row:new RpgInventoryPresentation().inventoryRows(s.rpg())){RpgProgressionState.ItemDefinition def=s.rpg().itemDefinitions().get(row.itemId);Bitmap original=icons.get(def);assertTrue(row.name,original.sameAs((Bitmap)icon.invoke(shop,row.itemId)));Bitmap bag=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888),expected=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888);visuals.icon(new Canvas(bag),row,0,0,40);SourceItemIconRegistry.draw(new Canvas(expected),original,new RectF(0,0,40,40),new Paint());assertTrue(row.name,bag.sameAs(expected));if("무기".equals(def.equipSlot)){Bitmap gear=Bitmap.createBitmap(40,40,Bitmap.Config.ARGB_8888);visuals.equipmentIcon(new Canvas(gear),row,"무기",0,0,40);assertTrue(row.name,gear.sameAs(bag));}}
+  Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);ItemWindowReferenceTest.tap(v,742,28);v.draw(new Canvas(image));save(image,"actual-bag-original-weapons-reagents");
+ }
+}

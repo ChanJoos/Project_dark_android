@@ -1,0 +1,1514 @@
+[
+  {
+    "file": "109f4481f4da_baikuherumeto.gif",
+    "error": 2.5768115942028986,
+    "source": [
+      "item031.epf",
+      254,
+      0,
+      8,
+      8
+    ],
+    "pixels": 115,
+    "fullError": 2.775482093663912,
+    "p95": 8.0
+  },
+  {
+    "file": "a1064728103d_faiakara.gif",
+    "error": 1.7361111111111112,
+    "source": [
+      "item002.epf",
+      18,
+      0,
+      10,
+      12
+    ],
+    "pixels": 24,
+    "fullError": 1.7679738562091503,
+    "p95": 8.0
+  },
+  {
+    "file": "74dba945a3db_sidoubousi.gif",
+    "error": 2.3868092691622103,
+    "source": [
+      "item046.epf",
+      70,
+      0,
+      6,
+      0
+    ],
+    "pixels": 187,
+    "fullError": 3.0854700854700856,
+    "p95": 7.0
+  },
+  {
+    "file": "bf49754f6938_ma_master01.gif",
+    "error": 3.3377386196769456,
+    "source": [
+      "item004.epf",
+      88,
+      0,
+      2,
+      3
+    ],
+    "pixels": 227,
+    "fullError": 2.868544600938967,
+    "p95": 7.0
+  },
+  {
+    "file": "dacb534f7573_da-kube-ru.gif",
+    "error": 3.361111111111111,
+    "source": [
+      "item004.epf",
+      89,
+      0,
+      2,
+      5
+    ],
+    "pixels": 12,
+    "fullError": 3.7895167895167896,
+    "p95": 8.0
+  },
+  {
+    "file": "b31f6dad3e78_seintohoru.gif",
+    "error": 1.2098765432098766,
+    "source": [
+      "item004.epf",
+      86,
+      0,
+      9,
+      5
+    ],
+    "pixels": 135,
+    "fullError": 2.3186274509803924,
+    "p95": 7.0
+  },
+  {
+    "file": "06b93f54899c_seimw.gif",
+    "error": 2.4641744548286604,
+    "source": [
+      "item002.epf",
+      10,
+      0,
+      4,
+      5
+    ],
+    "pixels": 214,
+    "fullError": 2.689236111111111,
+    "p95": 8.0
+  },
+  {
+    "file": "26b7a411ecfc_quiresu_dark.gif",
+    "error": 2.236559139784946,
+    "source": [
+      "item004.epf",
+      191,
+      0,
+      2,
+      8
+    ],
+    "pixels": 31,
+    "fullError": 2.856154910096819,
+    "p95": 8.0
+  },
+  {
+    "file": "6ee8bf009564_tukieikan.gif",
+    "error": 2.1666666666666665,
+    "source": [
+      "item004.epf",
+      254,
+      0,
+      7,
+      11
+    ],
+    "pixels": 74,
+    "fullError": 2.223021582733813,
+    "p95": 5.0
+  },
+  {
+    "file": "8fee8e7203ac_beasubousi.gif",
+    "error": 1.806878306878307,
+    "source": [
+      "item013.epf",
+      200,
+      0,
+      9,
+      9
+    ],
+    "pixels": 126,
+    "fullError": 2.202777777777778,
+    "p95": 8.0
+  },
+  {
+    "file": "fe5d3323c3cb_purinsesubousi.gif",
+    "error": 2.3152777777777778,
+    "source": [
+      "item031.epf",
+      109,
+      0,
+      4,
+      6
+    ],
+    "pixels": 240,
+    "fullError": 2.396039603960396,
+    "p95": 8.0
+  },
+  {
+    "file": "05c1ebd47267_kuraunkatura.gif",
+    "error": 2.465909090909091,
+    "source": [
+      "item002.epf",
+      22,
+      0,
+      8,
+      6
+    ],
+    "pixels": 176,
+    "fullError": 2.617283950617284,
+    "p95": 6.0
+  },
+  {
+    "file": "39785025ba5b_mugiwara.gif",
+    "error": 3.17687074829932,
+    "source": [
+      "item013.epf",
+      150,
+      0,
+      4,
+      12
+    ],
+    "pixels": 49,
+    "fullError": 2.892109500805153,
+    "p95": 8.0
+  },
+  {
+    "file": "65bbf3be8045_purinsesudoresu.gif",
+    "error": 2.007803790412486,
+    "source": [
+      "item037.epf",
+      0,
+      23,
+      0,
+      2
+    ],
+    "pixels": 598,
+    "fullError": 2.0127991096271565,
+    "p95": 6.0
+  },
+  {
+    "file": "addfdcddb4a4_sukerutonyoroi.gif",
+    "error": 1.4985754985754987,
+    "source": [
+      "item046.epf",
+      19,
+      0,
+      8,
+      0
+    ],
+    "pixels": 117,
+    "fullError": 1.7900874635568513,
+    "p95": 8.0
+  },
+  {
+    "file": "089053218805_seifuku.gif",
+    "error": 2.7301587301587302,
+    "source": [
+      "item013.epf",
+      253,
+      0,
+      5,
+      6
+    ],
+    "pixels": 84,
+    "fullError": 3.5446194225721785,
+    "p95": 8.0
+  },
+  {
+    "file": "1f82de30eba9_guri-ntamasiiotokoseifuku.gif",
+    "error": 1.830188679245283,
+    "source": [
+      "item013.epf",
+      252,
+      0,
+      7,
+      1
+    ],
+    "pixels": 53,
+    "fullError": 3.611273080660836,
+    "p95": 8.0
+  },
+  {
+    "file": "fd3e5eae015e_krsuccer.gif",
+    "error": 2.725925925925926,
+    "source": [
+      "item007.epf",
+      161,
+      0,
+      8,
+      6
+    ],
+    "pixels": 225,
+    "fullError": 2.8247694334650855,
+    "p95": 7.0
+  },
+  {
+    "file": "54376eb20990_kuraun.gif",
+    "error": 2.3489096573208723,
+    "source": [
+      "item002.epf",
+      25,
+      0,
+      6,
+      3
+    ],
+    "pixels": 214,
+    "fullError": 2.1271271271271273,
+    "p95": 7.0
+  },
+  {
+    "file": "48bef38c5c3a_toranku.gif",
+    "error": 2.3625730994152048,
+    "source": [
+      "item002.epf",
+      19,
+      0,
+      9,
+      10
+    ],
+    "pixels": 114,
+    "fullError": 1.75894538606403,
+    "p95": 7.0
+  },
+  {
+    "file": "21ce2a2ab234_bikini.gif",
+    "error": 4.164319248826291,
+    "source": [
+      "item002.epf",
+      20,
+      0,
+      9,
+      9
+    ],
+    "pixels": 71,
+    "fullError": 4.465465465465465,
+    "p95": 7.0
+  },
+  {
+    "file": "746712f20c33_baron.gif",
+    "error": 2.321138211382114,
+    "source": [
+      "item003.epf",
+      213,
+      0,
+      6,
+      1
+    ],
+    "pixels": 246,
+    "fullError": 3.005420054200542,
+    "p95": 7.0
+  },
+  {
+    "file": "5d2dd7b71436_meruran.gif",
+    "error": 1.738396624472574,
+    "source": [
+      "item006.epf",
+      16,
+      0,
+      6,
+      0
+    ],
+    "pixels": 79,
+    "fullError": 2.4014778325123154,
+    "p95": 7.0
+  },
+  {
+    "file": "3f957abbaead_L1_male.gif",
+    "error": 2.045138888888889,
+    "source": [
+      "item002.epf",
+      102,
+      0,
+      8,
+      10
+    ],
+    "pixels": 96,
+    "fullError": 2.9401709401709404,
+    "p95": 7.0
+  },
+  {
+    "file": "304313e6706f_L1_female.gif",
+    "error": 2.289972899728997,
+    "source": [
+      "item002.epf",
+      162,
+      0,
+      10,
+      6
+    ],
+    "pixels": 123,
+    "fullError": 2.688473520249221,
+    "p95": 7.0
+  },
+  {
+    "file": "d27f34a3815a_L86_male.gif",
+    "error": 2.464367816091954,
+    "source": [
+      "item003.epf",
+      230,
+      0,
+      2,
+      5
+    ],
+    "pixels": 145,
+    "fullError": 4.184281842818428,
+    "p95": 7.0
+  },
+  {
+    "file": "97c6fb528f8c_ren2.gif",
+    "error": 2.2771084337349397,
+    "source": [
+      "item013.epf",
+      233,
+      0,
+      8,
+      4
+    ],
+    "pixels": 83,
+    "fullError": 2.809356725146199,
+    "p95": 8.0
+  },
+  {
+    "file": "20c8118ca6d6_L1_male.gif",
+    "error": 1.05078125,
+    "source": [
+      "item002.epf",
+      139,
+      0,
+      7,
+      7
+    ],
+    "pixels": 256,
+    "fullError": 1.0405576679340938,
+    "p95": 4.0
+  },
+  {
+    "file": "1a8eceb891bf_N1_male.gif",
+    "error": 1.9224806201550388,
+    "source": [
+      "item001.epf",
+      99,
+      0,
+      8,
+      6
+    ],
+    "pixels": 172,
+    "fullError": 1.8669064748201438,
+    "p95": 5.0
+  },
+  {
+    "file": "e3070ac24783_N1_female.gif",
+    "error": 2.39292364990689,
+    "source": [
+      "item001.epf",
+      118,
+      0,
+      8,
+      3
+    ],
+    "pixels": 179,
+    "fullError": 2.4558303886925796,
+    "p95": 6.0
+  },
+  {
+    "file": "9b9fc629aa92_S1_male.gif",
+    "error": 2.106589147286822,
+    "source": [
+      "item002.epf",
+      148,
+      0,
+      8,
+      6
+    ],
+    "pixels": 172,
+    "fullError": 1.7386091127098322,
+    "p95": 5.349999999999909
+  },
+  {
+    "file": "cab0497bcb35_S1_female.gif",
+    "error": 2.3925925925925924,
+    "source": [
+      "item002.epf",
+      208,
+      0,
+      8,
+      3
+    ],
+    "pixels": 180,
+    "fullError": 2.452296819787986,
+    "p95": 6.0
+  },
+  {
+    "file": "173aed9df6eb_R1_male.gif",
+    "error": 1.661512027491409,
+    "source": [
+      "item002.epf",
+      150,
+      0,
+      8,
+      6
+    ],
+    "pixels": 194,
+    "fullError": 1.670263788968825,
+    "p95": 4.0
+  },
+  {
+    "file": "3a7ff3278a25_R1_female.gif",
+    "error": 2.2925925925925927,
+    "source": [
+      "item002.epf",
+      209,
+      0,
+      8,
+      3
+    ],
+    "pixels": 180,
+    "fullError": 2.3886925795053005,
+    "p95": 6.0
+  },
+  {
+    "file": "cbbc147dc0bc_M1_male.gif",
+    "error": 1.3078703703703705,
+    "source": [
+      "item002.epf",
+      149,
+      0,
+      7,
+      6
+    ],
+    "pixels": 144,
+    "fullError": 1.211031175059952,
+    "p95": 3.0
+  },
+  {
+    "file": "664d3c74662e_M1_female.gif",
+    "error": 2.5574074074074074,
+    "source": [
+      "item002.epf",
+      211,
+      0,
+      8,
+      3
+    ],
+    "pixels": 180,
+    "fullError": 2.557126030624264,
+    "p95": 6.0
+  },
+  {
+    "file": "e2bcc90c8b58_L1_male.gif",
+    "error": 1.8291316526610644,
+    "source": [
+      "item002.epf",
+      151,
+      0,
+      8,
+      6
+    ],
+    "pixels": 238,
+    "fullError": 1.8231780167264038,
+    "p95": 6.0
+  },
+  {
+    "file": "1449399eb64c_L1_female.gif",
+    "error": 2.4203703703703705,
+    "source": [
+      "item002.epf",
+      210,
+      0,
+      8,
+      3
+    ],
+    "pixels": 180,
+    "fullError": 2.469964664310954,
+    "p95": 6.0
+  },
+  {
+    "file": "c37fca988c04_L99_male.gif",
+    "error": 3.2124542124542126,
+    "source": [
+      "item003.epf",
+      256,
+      0,
+      9,
+      1
+    ],
+    "pixels": 182,
+    "fullError": 3.3014301430143016,
+    "p95": 7.0
+  },
+  {
+    "file": "cb9aaa5768fd_L99_female.gif",
+    "error": 2.746268656716418,
+    "source": [
+      "item004.epf",
+      34,
+      0,
+      9,
+      1
+    ],
+    "pixels": 67,
+    "fullError": 2.8212121212121213,
+    "p95": 7.0
+  },
+  {
+    "file": "c6f1c42850f7_seimhukuw.gif",
+    "error": 2.0246433203631646,
+    "source": [
+      "item004.epf",
+      73,
+      0,
+      5,
+      0
+    ],
+    "pixels": 257,
+    "fullError": 3.028985507246377,
+    "p95": 7.0
+  },
+  {
+    "file": "8b7f40ebaa11_lapislazuli_dark.gif",
+    "error": 2.259259259259259,
+    "source": [
+      "item004.epf",
+      171,
+      0,
+      6,
+      0
+    ],
+    "pixels": 378,
+    "fullError": 2.3458528951486697,
+    "p95": 7.0
+  },
+  {
+    "file": "235640e7f45a_tukikagedougi.gif",
+    "error": 1.7,
+    "source": [
+      "item004.epf",
+      70,
+      0,
+      10,
+      9
+    ],
+    "pixels": 20,
+    "fullError": 2.574404761904762,
+    "p95": 6.0
+  },
+  {
+    "file": "1cfb6d9ab196_orurosu.gif",
+    "error": 2.0881226053639845,
+    "source": [
+      "item007.epf",
+      168,
+      0,
+      9,
+      8
+    ],
+    "pixels": 87,
+    "fullError": 2.5753968253968256,
+    "p95": 7.0
+  },
+  {
+    "file": "bdc580402b15_rusifa-wingu.gif",
+    "error": 1.5925925925925926,
+    "source": [
+      "item031.epf",
+      123,
+      0,
+      6,
+      0
+    ],
+    "pixels": 27,
+    "fullError": 4.502336448598131,
+    "p95": 8.0
+  },
+  {
+    "file": "5fb7b319183a_tate1.gif",
+    "error": 2.484848484848485,
+    "source": [
+      "item001.epf",
+      91,
+      0,
+      9,
+      5
+    ],
+    "pixels": 44,
+    "fullError": 3.4563218390804598,
+    "p95": 7.0
+  },
+  {
+    "file": "3cd662ea5f31_tate11.gif",
+    "error": 2.5594405594405596,
+    "source": [
+      "item001.epf",
+      187,
+      0,
+      7,
+      3
+    ],
+    "pixels": 143,
+    "fullError": 3.452320675105485,
+    "p95": 7.0
+  },
+  {
+    "file": "0347dae45a7d_tate26.gif",
+    "error": 2.41969696969697,
+    "source": [
+      "item001.epf",
+      188,
+      0,
+      8,
+      2
+    ],
+    "pixels": 220,
+    "fullError": 2.483011937557392,
+    "p95": 6.0
+  },
+  {
+    "file": "5f19df039041_tate41.gif",
+    "error": 1.7777777777777777,
+    "source": [
+      "item001.epf",
+      189,
+      0,
+      8,
+      0
+    ],
+    "pixels": 126,
+    "fullError": 1.997530864197531,
+    "p95": 6.0
+  },
+  {
+    "file": "8b32c27d93b6_dokurotate.gif",
+    "error": 3.5874125874125875,
+    "source": [
+      "item001.epf",
+      191,
+      0,
+      7,
+      2
+    ],
+    "pixels": 143,
+    "fullError": 4.213957759412305,
+    "p95": 7.0
+  },
+  {
+    "file": "2fedfc34d33e_tate56.gif",
+    "error": 2.231981981981982,
+    "source": [
+      "item001.epf",
+      92,
+      0,
+      10,
+      7
+    ],
+    "pixels": 148,
+    "fullError": 2.544581618655693,
+    "p95": 7.0
+  },
+  {
+    "file": "52b1309ac7b1_tate71.gif",
+    "error": 2.5614973262032086,
+    "source": [
+      "item001.epf",
+      93,
+      0,
+      9,
+      5
+    ],
+    "pixels": 187,
+    "fullError": 3.3270911360799,
+    "p95": 7.0
+  },
+  {
+    "file": "986e0808d7d8_tate86.gif",
+    "error": 2.974242424242424,
+    "source": [
+      "item001.epf",
+      186,
+      0,
+      8,
+      5
+    ],
+    "pixels": 220,
+    "fullError": 3.111506524317912,
+    "p95": 6.0
+  },
+  {
+    "file": "cedf7ab2d1fd_gisidan.gif",
+    "error": 2.6064030131826743,
+    "source": [
+      "item001.epf",
+      190,
+      0,
+      8,
+      2
+    ],
+    "pixels": 177,
+    "fullError": 2.21875,
+    "p95": 6.0
+  },
+  {
+    "file": "95bde1f20c92_fobo.gif",
+    "error": 1.8026666666666666,
+    "source": [
+      "item006.epf",
+      78,
+      0,
+      8,
+      3
+    ],
+    "pixels": 125,
+    "fullError": 2.6233062330623307,
+    "p95": 7.0
+  },
+  {
+    "file": "a6404a874bfb_warefobosu.gif",
+    "error": 1.6736842105263159,
+    "source": [
+      "item006.epf",
+      76,
+      0,
+      9,
+      3
+    ],
+    "pixels": 95,
+    "fullError": 2.7038152610441766,
+    "p95": 8.0
+  },
+  {
+    "file": "4ae5b623b810_desunaito.gif",
+    "error": 1.3651515151515152,
+    "source": [
+      "item006.epf",
+      36,
+      0,
+      4,
+      4
+    ],
+    "pixels": 220,
+    "fullError": 2.6125175808720114,
+    "p95": 7.0
+  },
+  {
+    "file": "76a08467ccd2_so-ra-.gif",
+    "error": 1.8908045977011494,
+    "source": [
+      "item001.epf",
+      183,
+      0,
+      1,
+      2
+    ],
+    "pixels": 116,
+    "fullError": 1.8908045977011494,
+    "p95": 4.0
+  },
+  {
+    "file": "fe0715f32fc4_darkdhiana.gif",
+    "error": 1.654970760233918,
+    "source": [
+      "item004.epf",
+      133,
+      0,
+      4,
+      5
+    ],
+    "pixels": 57,
+    "fullError": 1.654970760233918,
+    "p95": 4.0
+  },
+  {
+    "file": "b00d56321197_roonohikari.gif",
+    "error": 2.2923976608187133,
+    "source": [
+      "item004.epf",
+      132,
+      0,
+      4,
+      5
+    ],
+    "pixels": 57,
+    "fullError": 2.2923976608187133,
+    "p95": 7.0
+  },
+  {
+    "file": "9c5cec52767c_iaontyou.gif",
+    "error": 2.272108843537415,
+    "source": [
+      "item004.epf",
+      77,
+      0,
+      4,
+      4
+    ],
+    "pixels": 49,
+    "fullError": 2.760233918128655,
+    "p95": 7.0
+  },
+  {
+    "file": "8b755d2988fa_udohapu.gif",
+    "error": 2.074712643678161,
+    "source": [
+      "item007.epf",
+      181,
+      0,
+      9,
+      9
+    ],
+    "pixels": 58,
+    "fullError": 2.6825396825396823,
+    "p95": 7.0
+  },
+  {
+    "file": "7170bd383a88_gorudoberihapu.gif",
+    "error": 1.9166666666666667,
+    "source": [
+      "item008.epf",
+      115,
+      0,
+      9,
+      9
+    ],
+    "pixels": 60,
+    "fullError": 2.475177304964539,
+    "p95": 7.0
+  },
+  {
+    "file": "bc6f306dde91_powerglove.gif",
+    "error": 4.2555555555555555,
+    "source": [
+      "item006.epf",
+      90,
+      0,
+      7,
+      6
+    ],
+    "pixels": 60,
+    "fullError": 2.651072124756335,
+    "p95": 8.0
+  },
+  {
+    "file": "be5193bfedda_bressglove.gif",
+    "error": 3.3076923076923075,
+    "source": [
+      "item006.epf",
+      256,
+      0,
+      3,
+      4
+    ],
+    "pixels": 91,
+    "fullError": 3.350132625994695,
+    "p95": 7.0
+  },
+  {
+    "file": "5d9ec4e147a8_mithrilbattlehand.gif",
+    "error": 2.3511904761904763,
+    "source": [
+      "item006.epf",
+      89,
+      0,
+      8,
+      5
+    ],
+    "pixels": 56,
+    "fullError": 3.963636363636364,
+    "p95": 7.0
+  },
+  {
+    "file": "7380e840d6d7_tonfa.gif",
+    "error": 1.2148148148148148,
+    "source": [
+      "item013.epf",
+      62,
+      0,
+      3,
+      8
+    ],
+    "pixels": 45,
+    "fullError": 3.720657276995305,
+    "p95": 7.0
+  },
+  {
+    "file": "36845c0f6dec_saishuami.gif",
+    "error": 2.131233595800525,
+    "source": [
+      "item031.epf",
+      142,
+      0,
+      5,
+      13
+    ],
+    "pixels": 127,
+    "fullError": 2.131233595800525,
+    "p95": 5.0
+  },
+  {
+    "file": "defb6b312a88_hanataba.gif",
+    "error": 2.9686924493554327,
+    "source": [
+      "item003.epf",
+      211,
+      0,
+      3,
+      9
+    ],
+    "pixels": 181,
+    "fullError": 2.860606060606061,
+    "p95": 7.0
+  },
+  {
+    "file": "9aea4817e9b5_goukakuiwai.gif",
+    "error": 2.4051796157059315,
+    "source": [
+      "item046.epf",
+      22,
+      0,
+      3,
+      2
+    ],
+    "pixels": 399,
+    "fullError": 2.4698216735253773,
+    "p95": 8.0
+  },
+  {
+    "file": "427442650f05_majutusihouki.gif",
+    "error": 2.145631067961165,
+    "source": [
+      "item046.epf",
+      31,
+      0,
+      2,
+      7
+    ],
+    "pixels": 103,
+    "fullError": 2.2416666666666667,
+    "p95": 8.0
+  },
+  {
+    "file": "aeb5e80336ca_ruruningyou.gif",
+    "error": 3.063063063063063,
+    "source": [
+      "item009.epf",
+      166,
+      0,
+      7,
+      7
+    ],
+    "pixels": 148,
+    "fullError": 3.10105580693816,
+    "p95": 7.0
+  },
+  {
+    "file": "829a6274d590_girudtou.gif",
+    "error": 1.8271604938271604,
+    "source": [
+      "item004.epf",
+      47,
+      0,
+      2,
+      3
+    ],
+    "pixels": 81,
+    "fullError": 2.784313725490196,
+    "p95": 7.0
+  },
+  {
+    "file": "4cf84b832e14_emeraldsword.gif",
+    "error": 1.280701754385965,
+    "source": [
+      "item001.epf",
+      176,
+      0,
+      0,
+      0
+    ],
+    "pixels": 114,
+    "fullError": 1.6087719298245613,
+    "p95": 6.0
+  },
+  {
+    "file": "42b4e46f1b36_battlesword.gif",
+    "error": 2.49618320610687,
+    "source": [
+      "item001.epf",
+      174,
+      0,
+      1,
+      0
+    ],
+    "pixels": 131,
+    "fullError": 2.5714285714285716,
+    "p95": 6.0
+  },
+  {
+    "file": "4b1be39ecd6b_gaia.gif",
+    "error": 2.412121212121212,
+    "source": [
+      "item001.epf",
+      181,
+      0,
+      0,
+      0
+    ],
+    "pixels": 165,
+    "fullError": 2.734567901234568,
+    "p95": 6.0
+  },
+  {
+    "file": "b2a7278b89ab_greatsword.gif",
+    "error": 2.76214405360134,
+    "source": [
+      "item001.epf",
+      179,
+      0,
+      0,
+      4
+    ],
+    "pixels": 199,
+    "fullError": 2.7918552036199094,
+    "p95": 5.0
+  },
+  {
+    "file": "24d7454738af_daburiru.gif",
+    "error": 1.8095238095238095,
+    "source": [
+      "item002.epf",
+      253,
+      0,
+      2,
+      2
+    ],
+    "pixels": 28,
+    "fullError": 2.8596491228070176,
+    "p95": 8.0
+  },
+  {
+    "file": "5d54710cf187_darkcrow.gif",
+    "error": 1.8602150537634408,
+    "source": [
+      "item013.epf",
+      28,
+      0,
+      2,
+      0
+    ],
+    "pixels": 62,
+    "fullError": 3.0591397849462365,
+    "p95": 7.0
+  },
+  {
+    "file": "dc54dc0d6583_dkuro.gif",
+    "error": 4.942028985507246,
+    "source": [
+      "item001.epf",
+      177,
+      0,
+      1,
+      0
+    ],
+    "pixels": 161,
+    "fullError": 5.081936685288641,
+    "p95": 7.0
+  },
+  {
+    "file": "0b5118fb06f7_p4.gif",
+    "error": 2.6986301369863015,
+    "source": [
+      "item004.epf",
+      125,
+      0,
+      0,
+      2
+    ],
+    "pixels": 73,
+    "fullError": 3.449275362318841,
+    "p95": 7.0
+  },
+  {
+    "file": "a9f8e849707c_sya-kubureido.gif",
+    "error": 2.2973621103117505,
+    "source": [
+      "item013.epf",
+      220,
+      0,
+      2,
+      1
+    ],
+    "pixels": 139,
+    "fullError": 2.2333333333333334,
+    "p95": 6.0
+  },
+  {
+    "file": "cd55ed488f81_UG_asuka.gif",
+    "error": 1.8910675381263617,
+    "source": [
+      "item004.epf",
+      131,
+      0,
+      2,
+      0
+    ],
+    "pixels": 153,
+    "fullError": 1.8910675381263617,
+    "p95": 4.0
+  },
+  {
+    "file": "c76e853653ab_tomahork.gif",
+    "error": 2.441666666666667,
+    "source": [
+      "item002.epf",
+      260,
+      0,
+      10,
+      7
+    ],
+    "pixels": 40,
+    "fullError": 2.378306878306878,
+    "p95": 6.0
+  },
+  {
+    "file": "9cfadec8663c_guardianbastardaxe.gif",
+    "error": 1.9138755980861244,
+    "source": [
+      "item013.epf",
+      61,
+      0,
+      3,
+      1
+    ],
+    "pixels": 209,
+    "fullError": 1.8869309838472834,
+    "p95": 5.0
+  },
+  {
+    "file": "348d461c1f01_tanken26.gif",
+    "error": 2.3484848484848486,
+    "source": [
+      "item001.epf",
+      250,
+      0,
+      11,
+      3
+    ],
+    "pixels": 88,
+    "fullError": 2.3484848484848486,
+    "p95": 4.0
+  },
+  {
+    "file": "e4f8e23a4999_tanken41.gif",
+    "error": 4.104166666666667,
+    "source": [
+      "item001.epf",
+      254,
+      0,
+      9,
+      4
+    ],
+    "pixels": 64,
+    "fullError": 4.01418439716312,
+    "p95": 6.0
+  },
+  {
+    "file": "5f1f0e43cf6c_tanken56.gif",
+    "error": 2.1712962962962963,
+    "source": [
+      "item001.epf",
+      253,
+      0,
+      12,
+      3
+    ],
+    "pixels": 72,
+    "fullError": 2.1712962962962963,
+    "p95": 4.0
+  },
+  {
+    "file": "4fbf65c3ac24_tanken71.gif",
+    "error": 2.65625,
+    "source": [
+      "item001.epf",
+      252,
+      0,
+      11,
+      3
+    ],
+    "pixels": 64,
+    "fullError": 2.89922480620155,
+    "p95": 5.0
+  },
+  {
+    "file": "f1be44f90539_tanken86.gif",
+    "error": 2.841666666666667,
+    "source": [
+      "item001.epf",
+      256,
+      0,
+      11,
+      4
+    ],
+    "pixels": 80,
+    "fullError": 2.8015873015873014,
+    "p95": 6.0
+  },
+  {
+    "file": "a8cf9e94e199_singetu.gif",
+    "error": 2.3333333333333335,
+    "source": [
+      "item004.epf",
+      213,
+      0,
+      10,
+      7
+    ],
+    "pixels": 49,
+    "fullError": 2.8088235294117645,
+    "p95": 7.0
+  },
+  {
+    "file": "f263a6541d7a_kurisyaoru.gif",
+    "error": 2.497777777777778,
+    "source": [
+      "item004.epf",
+      129,
+      0,
+      9,
+      3
+    ],
+    "pixels": 75,
+    "fullError": 2.5875,
+    "p95": 7.0
+  },
+  {
+    "file": "158a08427fb6_syuriken1.gif",
+    "error": 3.125,
+    "source": [
+      "item001.epf",
+      220,
+      0,
+      6,
+      6
+    ],
+    "pixels": 48,
+    "fullError": 5.086206896551724,
+    "p95": 7.0
+  },
+  {
+    "file": "e22cdcd6c3b4_syuriken41.gif",
+    "error": 2.254166666666667,
+    "source": [
+      "item001.epf",
+      221,
+      0,
+      5,
+      6
+    ],
+    "pixels": 160,
+    "fullError": 3.2417739628040056,
+    "p95": 7.0
+  },
+  {
+    "file": "a486614280b0_whip.gif",
+    "error": 2.3333333333333335,
+    "source": [
+      "item002.epf",
+      29,
+      0,
+      3,
+      12
+    ],
+    "pixels": 5,
+    "fullError": 3.267229254571027,
+    "p95": 8.0
+  },
+  {
+    "file": "f236d7e7885f_misurirumuti.gif",
+    "error": 1.9505649717514124,
+    "source": [
+      "item002.epf",
+      255,
+      0,
+      3,
+      12
+    ],
+    "pixels": 236,
+    "fullError": 1.9479606188466947,
+    "p95": 4.0
+  },
+  {
+    "file": "17b895098e2b_rubywhip.gif",
+    "error": 5.337552742616034,
+    "source": [
+      "item002.epf",
+      256,
+      0,
+      3,
+      12
+    ],
+    "pixels": 237,
+    "fullError": 5.337552742616034,
+    "p95": 7.0
+  },
+  {
+    "file": "415f0b81ab68_tye-n.gif",
+    "error": 2.3333333333333335,
+    "source": [
+      "item002.epf",
+      257,
+      0,
+      5,
+      12
+    ],
+    "pixels": 32,
+    "fullError": 1.6632302405498283,
+    "p95": 3.0
+  },
+  {
+    "file": "2ed1dcd0c26a_uddobou.gif",
+    "error": 2.891472868217054,
+    "source": [
+      "item007.epf",
+      178,
+      0,
+      2,
+      2
+    ],
+    "pixels": 43,
+    "fullError": 3.324242424242424,
+    "p95": 7.0
+  },
+  {
+    "file": "47e305a4683b_purinsesubou.gif",
+    "error": 3.8564102564102565,
+    "source": [
+      "item008.epf",
+      117,
+      0,
+      2,
+      2
+    ],
+    "pixels": 65,
+    "fullError": 3.393939393939394,
+    "p95": 7.0
+  },
+  {
+    "file": "f288b0980470_banbou.gif",
+    "error": 2.6842105263157894,
+    "source": [
+      "item008.epf",
+      180,
+      0,
+      0,
+      0
+    ],
+    "pixels": 57,
+    "fullError": 3.42018779342723,
+    "p95": 7.0
+  },
+  {
+    "file": "77eb642c6391_komadhiumu.gif",
+    "error": 2.0,
+    "source": [
+      "item001.epf",
+      45,
+      0,
+      8,
+      8
+    ],
+    "pixels": 146,
+    "fullError": 2.1408045977011496,
+    "p95": 8.0
+  },
+  {
+    "file": "8addf7f9f927_dhibenonumu.gif",
+    "error": 1.700374531835206,
+    "source": [
+      "item001.epf",
+      50,
+      0,
+      8,
+      8
+    ],
+    "pixels": 89,
+    "fullError": 2.5301724137931036,
+    "p95": 8.0
+  },
+  {
+    "file": "3eea1156dd88_kuranumu.gif",
+    "error": 2.3874643874643873,
+    "source": [
+      "item001.epf",
+      47,
+      0,
+      8,
+      8
+    ],
+    "pixels": 117,
+    "fullError": 2.1695402298850577,
+    "p95": 8.0
+  },
+  {
+    "file": "acc3a80e5a74_axkuranumu.gif",
+    "error": 2.9231884057971014,
+    "source": [
+      "item009.epf",
+      44,
+      0,
+      6,
+      3
+    ],
+    "pixels": 230,
+    "fullError": 3.4161290322580644,
+    "p95": 7.0
+  },
+  {
+    "file": "435440610934_papurika.gif",
+    "error": 2.8095238095238093,
+    "source": [
+      "item006.epf",
+      166,
+      0,
+      7,
+      4
+    ],
+    "pixels": 112,
+    "fullError": 3.2819148936170213,
+    "p95": 7.0
+  },
+  {
+    "file": "58a36c149c7f_driko.gif",
+    "error": 2.447619047619048,
+    "source": [
+      "item004.epf",
+      85,
+      0,
+      2,
+      14
+    ],
+    "pixels": 35,
+    "fullError": 2.9252032520325204,
+    "p95": 8.0
+  },
+  {
+    "file": "minimob87_magic_satia.gif",
+    "error": 0.0,
+    "source": [
+      "item001.epf",
+      182,
+      0,
+      0,
+      0
+    ],
+    "pixels": 99,
+    "fullError": 0.0,
+    "p95": 0.0
+  }
+]

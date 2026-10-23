@@ -1,3 +1,13 @@
+visual_source_v252:
+  status: IN_PROGRESS
+  owner: ROOT_SINGLE_EDITOR
+  base: 8cff9726
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  user_request: Rapid above hats in all directions; original inventory art for equipment and reagents; extract Narcoli GIF from supplied205939video
+  required_sources: [AGENTS.md, docs/MAGIC_FX_LESSONS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/items/catalog_v210/catalog.json, master/source/items/full_20261010/collection.json, master/source/narcoli_review_v251/receipt.json, app/src/main/java/com/projectdark/mobile/RapidHairclipV199.java, app/src/main/java/com/projectdark/mobile/SourceItemIconRegistry.java]
+  phone: PENDING
+
 magic_recall_v251:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   runtime_source: 4d3232c565732feecdc3fe5cba8b775fc2cf603d

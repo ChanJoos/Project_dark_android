@@ -7,8 +7,9 @@ final class RapidHairclipV199 {
  static boolean source(String id){return id!=null&&id.matches("[mw][gc]14[6-9]");}
  static String gender(String id,String body){return source(id)?("wm001".equals(body)?"w":"m")+id.substring(1):id;}
  static List<String> layers(String ref,String body,CharacterRenderer.Direction direction,boolean behind){
+  // User V252: these hairclips must remain above hats in every facing and motion.
   boolean up=direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE;
-  if(behind==up||ref==null)return Collections.emptyList();List<String> ids=new ArrayList<>();
+  if(behind||ref==null)return Collections.emptyList();List<String> ids=new ArrayList<>();
   for(String id:ref.split(","))if(source(id))ids.add(gender(id,body));
   ids.sort((a,b)->up?Character.compare(a.charAt(1),b.charAt(1)):Character.compare(b.charAt(1),a.charAt(1)));return ids;
  }

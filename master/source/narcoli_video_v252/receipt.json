@@ -1,0 +1,93 @@
+{
+  "status": "VIDEO_EXTRACTED_REVIEW_NOT_APPLIED",
+  "video": "Screen_Recording_20261021_205939_YouTube.mp4",
+  "videoSha256": "7096f671d0a2b1ea029eca875423d97181f0d79655f78183f255c2b2db2b998b",
+  "durationSeconds": 0.6,
+  "startSeconds": 0.2,
+  "sampleFps": 25,
+  "crop": [
+    1195,
+    0,
+    180,
+    210
+  ],
+  "frames": [
+    {
+      "file": "frame-00.png",
+      "requestedSampleSeconds": 0.2,
+      "rgbSha256": "ec6a3c2e122cead48d8849792968a5fa8a401e444036499f33b30df5d4029448"
+    },
+    {
+      "file": "frame-01.png",
+      "requestedSampleSeconds": 0.24,
+      "rgbSha256": "919774f12bcdaebe312206028f73fa116aefb0070374c678a4cceebb9d46b0e3"
+    },
+    {
+      "file": "frame-02.png",
+      "requestedSampleSeconds": 0.28,
+      "rgbSha256": "8ae245a0b0b9894020a1613cca0a33eb897c0e0b740dc05e22b437f0693b228a"
+    },
+    {
+      "file": "frame-03.png",
+      "requestedSampleSeconds": 0.32,
+      "rgbSha256": "e99b37595304d6f759a5386319b6260e588234b0a33099e2ffaf0e64404118d5"
+    },
+    {
+      "file": "frame-04.png",
+      "requestedSampleSeconds": 0.36,
+      "rgbSha256": "8635eda01d2122b9991f4d12448286f221261de39e76b125b56778fd3b47557b"
+    },
+    {
+      "file": "frame-05.png",
+      "requestedSampleSeconds": 0.4,
+      "rgbSha256": "c5b6f3f7865fbb7badb09d6f9b18772736975a758955294b97c01a3f36964384"
+    },
+    {
+      "file": "frame-06.png",
+      "requestedSampleSeconds": 0.44,
+      "rgbSha256": "d4413d4e520bfca3c3e9c6981c8551eec4df84b6ce4943e092f5c426b2d3a9c6"
+    },
+    {
+      "file": "frame-07.png",
+      "requestedSampleSeconds": 0.48,
+      "rgbSha256": "3bec87a6853b1393b05f31130e3324e2a8ffba958346017197e964d7e3a36070"
+    },
+    {
+      "file": "frame-08.png",
+      "requestedSampleSeconds": 0.52,
+      "rgbSha256": "958743fae099b580b0a0b68680a25b1c88a90ca7061f99794eb81b3a2615f8d0"
+    },
+    {
+      "file": "frame-09.png",
+      "requestedSampleSeconds": 0.56,
+      "rgbSha256": "801849169efd22f060de58c79ebb6799e3ac60033ea0d96e37bdc73ca56efd5a"
+    },
+    {
+      "file": "frame-10.png",
+      "requestedSampleSeconds": 0.6,
+      "rgbSha256": "26e0018bbd45115440dc56ee6df59f8e35c846dabedb44dc1b451ab9d9bb343c"
+    },
+    {
+      "file": "frame-11.png",
+      "requestedSampleSeconds": 0.64,
+      "rgbSha256": "26e0018bbd45115440dc56ee6df59f8e35c846dabedb44dc1b451ab9d9bb343c"
+    },
+    {
+      "file": "frame-12.png",
+      "requestedSampleSeconds": 0.68,
+      "rgbSha256": "26e0018bbd45115440dc56ee6df59f8e35c846dabedb44dc1b451ab9d9bb343c"
+    },
+    {
+      "file": "frame-13.png",
+      "requestedSampleSeconds": 0.72,
+      "rgbSha256": "26e0018bbd45115440dc56ee6df59f8e35c846dabedb44dc1b451ab9d9bb343c"
+    },
+    {
+      "file": "frame-14.png",
+      "requestedSampleSeconds": 0.76,
+      "rgbSha256": "4645aaf2e19ae306071f48df07e64ca802bbe736dacbcdd3873deea8dfa350a9"
+    }
+  ],
+  "interpretation": "User-requested Narcoli review: pink Z appears small, grows, rises and disperses. This is the supplied205939video, not the earlier205405deathvideo. No new runtime mapping. Background preserved; no invented or painted pixels.",
+  "preview": "2xnearest;GIF palette quantization only; exact sampled RGB retained in video_frames.zip"
+}

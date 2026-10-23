@@ -1,0 +1,20 @@
+{
+  "revision": "V252_ORIGINAL_INVENTORY_RAPID",
+  "status": "ACCEPTED",
+  "authority": "User20261023Rapid above hats, all-equipment/reagent original fidelity and redoNarcoliGIF from supplied video",
+  "base": "8cff9726",
+  "before": "NW/NE Rapid drawn before hat;wearable previews can be rotated into indistinct weapon icons",
+  "after": "Rapid above hats for all facings;279 confirmed native inventory bindings bypass legacy rotation/recolor;video205939pinkZ extracted for review only",
+  "evidence": [
+    "master/source/items/inventory_v252/receipt.json",
+    "master/source/narcoli_video_v252/receipt.json"
+  ],
+  "impact": [
+    "RapidHairclipV199",
+    "SourceItemIconRegistry",
+    "OriginalInventoryV252"
+  ],
+  "unchanged": "No item IDs, stats, quantities, equip rules, save schema or spell runtime mapping changes",
+  "limitations": "1714 compatibility definitions do not yet have identified original inventory frames;restoration is scoped, not all-original completion;phone visual acceptance pending",
+  "validation": "tools/check_inventory_v252.py;VisualSourceV252Test;WeaponIconsV209Test;Rapid render/save tests;inventory shared-window and alias-save regression"
+}
