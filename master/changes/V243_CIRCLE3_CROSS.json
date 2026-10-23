@@ -1,0 +1,73 @@
+{
+  "revision": "V243",
+  "status": "ACCEPTED",
+  "userDecision": "2026-10-23: implement approved circle3 single preview; circle2supera and circle3ex use their respective circle element magic on caster-adjacent four directions, effects/damage/function connected",
+  "before": "Circle3 singles static capture; supera unaliased FX and reduced1.274coefficient; ex target-centeredcross and reduced1.686coefficient",
+  "after": "Circle3 original EFA235/251/241/238; self CROSS reach1 for eight attacks, diagonal/center/outside excluded; same circle single FX and coefficient per actual recipient, own existing MP once per cast",
+  "rows": [
+    {
+      "id": "SK_마법사_007",
+      "single": "SK_마법사_001",
+      "circle": 2,
+      "element": "WATER"
+    },
+    {
+      "id": "SK_마법사_008",
+      "single": "SK_마법사_003",
+      "circle": 2,
+      "element": "EARTH"
+    },
+    {
+      "id": "SK_마법사_009",
+      "single": "SK_마법사_004",
+      "circle": 2,
+      "element": "WIND"
+    },
+    {
+      "id": "SK_마법사_010",
+      "single": "SK_마법사_005",
+      "circle": 2,
+      "element": "FIRE"
+    },
+    {
+      "id": "SK_마법사_018",
+      "single": "SK_마법사_013",
+      "circle": 3,
+      "element": "WATER"
+    },
+    {
+      "id": "SK_마법사_019",
+      "single": "SK_마법사_014",
+      "circle": 3,
+      "element": "EARTH"
+    },
+    {
+      "id": "SK_마법사_020",
+      "single": "SK_마법사_015",
+      "circle": 3,
+      "element": "WIND"
+    },
+    {
+      "id": "SK_마법사_021",
+      "single": "SK_마법사_016",
+      "circle": 3,
+      "element": "FIRE"
+    }
+  ],
+  "source": "master/source/mage_v243/receipt.json; earlier V240 basic4",
+  "damagePolicy": "User-linked matching circle single base coefficient; actual damage retains own proficiency, defender, element and shared stat pipeline. No original server damage claim.",
+  "unchanged": [
+    "MP costs",
+    "cast/reuse timing",
+    "learning requirements",
+    "single2 damage",
+    "single3 damage",
+    "circle4 single/screen",
+    "promotion",
+    "world",
+    "monsters",
+    "save"
+  ],
+  "validation": "Local/source and Android focused native/build PENDING",
+  "device": "PHONE PENDING"
+}

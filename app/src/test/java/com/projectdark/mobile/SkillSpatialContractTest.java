@@ -40,7 +40,7 @@ public class SkillSpatialContractTest {
   }
   @Test public void actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass(){
     String[] ids={"SK_전사_006","SK_도적_030","SK_무도가_025","SK_마법사_018","SK_마법사_043","SK_성직자_040"};
-    int[][] expected={{0,1,2,3},{0,1},{0,1,2,3,4},{0,4,5},{0,1,2,3,4,5},{0,1,2,3,4,5}};
+    int[][] expected={{0,1,2,3},{0,1},{0,1,2,3,4},{0,1,2,3},{0,1,2,3,4,5},{0,1,2,3,4,5}};
     for(int k=0;k<ids.length;k++){
       RuntimeState s=scene();RuntimeCombatSession session=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);
       session.setSkillVisibility(id->!id.equals("m6"));SkillActionContract.Rule rule=SkillActionContract.get(ids[k]);
@@ -52,9 +52,9 @@ public class SkillSpatialContractTest {
       for(RuntimeState.Monster m:s.monsters())assertEquals(ids[k]+" "+m.id,want.contains(m.id),m.hp<100);
       SkillVfxRenderer fx=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));fx.consume(events,anchors(s));fx.consume(events,anchors(s));
       assertEquals(ids[k]+" skill recipients",want.size(),fx.pulses.stream().filter(p->!p.caster&&!p.sheet.equals("impact")).count());
-      assertEquals(ids[k]+" source rogue FX must not receive a shared recolouring overlay",ids[k].startsWith("SK_도적_")||ids[k].equals("SK_마법사_043")?0:want.size(),fx.pulses.stream().filter(p->p.sheet.equals("impact")).count());
+      assertEquals(ids[k]+" source rogue FX must not receive a shared recolouring overlay",ids[k].startsWith("SK_도적_")||ids[k].equals("SK_마법사_043")||ids[k].equals("SK_마법사_018")?0:want.size(),fx.pulses.stream().filter(p->p.sheet.equals("impact")).count());
       Set<String> impactAnchors=new HashSet<>();for(SkillVfxRenderer.Pulse p:fx.pulses)if(p.sheet.equals("impact")){assertFalse(p.caster);impactAnchors.add(p.anchor);}
-      assertEquals(ids[k]+" impact anchors",ids[k].startsWith("SK_도적_")||ids[k].equals("SK_마법사_043")?Collections.emptySet():want,impactAnchors);
+      assertEquals(ids[k]+" impact anchors",ids[k].startsWith("SK_도적_")||ids[k].equals("SK_마법사_043")||ids[k].equals("SK_마법사_018")?Collections.emptySet():want,impactAnchors);
     }
   }
   @Test public void targetMovesWallsAndViewportAreRecheckedAtContact(){

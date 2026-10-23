@@ -117,3 +117,6 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v230.py"))
 
 # V236 user combat correction must follow older projections.
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v236.py"))
+
+# V243 final circle-specific caster-cross contract follows prior source overlays.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_mage_v243.py"))

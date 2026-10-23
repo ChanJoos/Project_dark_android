@@ -849,7 +849,7 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 수 속성 마법 피해를 줍니다. 마레노와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -863,7 +863,7 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 토 속성 마법 피해를 줍니다. 테라미코와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -877,7 +877,7 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 풍 속성 마법 피해를 줍니다. 아듀로와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -891,7 +891,7 @@
     },
     "gold": 150,
     "items": {},
-    "summary": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 화 속성 마법 피해를 줍니다. 플라모와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -1003,7 +1003,7 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 수 속성 마법 피해를 줍니다. 마레누스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -1017,7 +1017,7 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 토 속성 마법 피해를 줍니다. 테라미쿠스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -1031,7 +1031,7 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 풍 속성 마법 피해를 줍니다. 아듀로스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },
@@ -1045,7 +1045,7 @@
     },
     "gold": 500,
     "items": {},
-    "summary": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+    "summary": "시전자 주변 사방 한 칸의 적에게 화 속성 마법 피해를 줍니다. 플라무스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
     "evidence": "PROJECT_ADAPTED_V60",
     "stat_source": "USER_CAPTURE"
   },

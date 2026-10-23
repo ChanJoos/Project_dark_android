@@ -82,7 +82,7 @@
     {
       "id": "SK_마법사_007",
       "name": "수페라마레나",
-      "description": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 수 속성 마법 피해를 줍니다. 마레노와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 1단계 범위 공격 마법\n시전자 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/007.png",
       "sourceIconPath": "master/source/mage_v235/0b43ca33fe6677b0.png",
@@ -93,7 +93,7 @@
     {
       "id": "SK_마법사_008",
       "name": "수페라테라미카",
-      "description": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 토 속성 마법 피해를 줍니다. 테라미코와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 1단계 범위 공격 마법\n시전자 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/008.png",
       "sourceIconPath": "master/source/mage_v235/e4e457993eceaf16.png",
@@ -104,7 +104,7 @@
     {
       "id": "SK_마법사_009",
       "name": "수페라아듀라",
-      "description": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 풍 속성 마법 피해를 줍니다. 아듀로와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 1단계 범위 공격 마법\n시전자 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/009.png",
       "sourceIconPath": "master/source/mage_v235/b877ebf67726feb3.png",
@@ -115,7 +115,7 @@
     {
       "id": "SK_마법사_010",
       "name": "수페라플라미카",
-      "description": "각 속성별 1단계 범위 공격 마법 시전자 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 화 속성 마법 피해를 줍니다. 플라모와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 1단계 범위 공격 마법\n시전자 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/010.png",
       "sourceIconPath": "master/source/mage_v235/c6cb05ada0eca449.png",
@@ -203,7 +203,7 @@
     {
       "id": "SK_마법사_018",
       "name": "엑스마레나",
-      "description": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 수 속성 마법 피해를 줍니다. 마레누스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 2단계 범위 공격 마법\n대상의 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/018.png",
       "sourceIconPath": "master/source/mage_v235/326d46ed063666b7.png",
@@ -214,7 +214,7 @@
     {
       "id": "SK_마법사_019",
       "name": "엑스테라미카",
-      "description": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 토 속성 마법 피해를 줍니다. 테라미쿠스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 2단계 범위 공격 마법\n대상의 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/019.png",
       "sourceIconPath": "master/source/mage_v235/58ce4a3ac845ac11.png",
@@ -225,7 +225,7 @@
     {
       "id": "SK_마법사_020",
       "name": "엑스아듀라",
-      "description": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 풍 속성 마법 피해를 줍니다. 아듀로스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 2단계 범위 공격 마법\n대상의 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/020.png",
       "sourceIconPath": "master/source/mage_v235/b62515fe980dfd09.png",
@@ -236,7 +236,7 @@
     {
       "id": "SK_마법사_021",
       "name": "엑스플라미카",
-      "description": "각 속성별 2단계 범위 공격 마법 대상의 주위 네 방향에 데미지를 가함",
+      "description": "시전자 주변 사방 한 칸의 적에게 화 속성 마법 피해를 줍니다. 플라무스와 같은 이펙트·기본공격력이며 대각선은 제외합니다.",
       "sourceDescription": "각 속성별 2단계 범위 공격 마법\n대상의 주위 네 방향에 데미지를 가함",
       "iconAssetPath": "icons/021.png",
       "sourceIconPath": "master/source/mage_v235/c2d3eb99473a02f2.png",
