@@ -30,11 +30,7 @@ final class WorldMapWindow {
     out.add(new Pin(gateLabel(g),cx,cy,DeathVillageGeometry.x(target.u,target.v),DeathVillageGeometry.y(target.u,target.v)));
    }
   }else if(WorldDef.ID.equals(id)){
-   for(WorldDef.PortalSpawn portal:new WorldDef().portalSpawns()){
-    TownInteriorDef interior=TownInteriorDef.forDoor(portal.portalId);
-    String label=interior==null?"포테의 숲":TownServiceLabels.name(interior);
-    out.add(new Pin(label,portal.x,portal.y));
-   }
+   out.addAll(millesEntrances(new WorldDef().portalSpawns()));
   }else{
    for(TownServiceLabels.Sign sign:TownServiceLabels.signs(id))out.add(new Pin(sign.name,sign.x,sign.y));
    if(MineTownGeometry.contains(id))out.add(new Pin("카스마늄 광산",MineTownGeometry.x(14,23),MineTownGeometry.y(14,23),MineTownGeometry.x(15,23),MineTownGeometry.y(15,23)));
@@ -43,6 +39,28 @@ final class WorldMapWindow {
     out.add(new Pin(previous==null?"밀레스 마을":CampaignWorld.title(previous),back.x,back.y));
     String next=CampaignWorld.next(id);if(next!=null){WorldMoveTargetController.TileCenter forward=CampaignWorld.forward(id);out.add(new Pin(CampaignWorld.title(next),forward.x,forward.y));}
    }
+  }
+  return out;
+ }
+
+ /** One label per connected doorway cluster; target remains an actual portal threshold. */
+ static List<Pin> millesEntrances(List<WorldDef.PortalSpawn> portals){
+  List<Pin> out=new ArrayList<>();boolean[] used=new boolean[portals.size()];
+  for(int i=0;i<portals.size();i++){
+   if(used[i])continue;WorldDef.PortalSpawn first=portals.get(i);
+   List<WorldDef.PortalSpawn> cluster=new ArrayList<>();cluster.add(first);used[i]=true;
+   for(int cursor=0;cursor<cluster.size();cursor++){
+    WorldDef.PortalSpawn member=cluster.get(cursor);
+    for(int j=0;j<portals.size();j++){
+     WorldDef.PortalSpawn other=portals.get(j);
+     if(!used[j]&&first.targetMapId.equals(other.targetMapId)&&Math.hypot(member.x-other.x,member.y-other.y)<=72f){used[j]=true;cluster.add(other);}
+    }
+   }
+   float x=0,y=0;for(WorldDef.PortalSpawn portal:cluster){x+=portal.x;y+=portal.y;}x/=cluster.size();y/=cluster.size();
+   WorldDef.PortalSpawn target=first;double best=Double.MAX_VALUE;
+   for(WorldDef.PortalSpawn portal:cluster){double d=Math.hypot(portal.x-x,portal.y-y);if(d<best){best=d;target=portal;}}
+   TownInteriorDef interior=TownInteriorDef.forMap(first.targetMapId);
+   out.add(new Pin(interior==null?"포테의 숲":TownServiceLabels.name(interior),x,y,target.x,target.y));
   }
   return out;
  }
