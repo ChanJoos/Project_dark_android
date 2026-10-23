@@ -5,11 +5,11 @@ import android.graphics.*;
 final class OriginalDamageDigitsV260 {
  private final Bitmap[] glyphs=new Bitmap[11];private final Paint paint=new Paint();private final RectF dst=new RectF();
  OriginalDamageDigitsV260(Context context){
-  try{
-   Bitmap font=BitmapFactory.decodeStream(context.getAssets().open("town-v247/font-en.png"));if(font==null)throw new IllegalStateException("Original font");
+  try(java.io.InputStream input=context.getAssets().open("town-v247/font-en.png")){
+   Bitmap font=BitmapFactory.decodeStream(input);if(font==null)throw new IllegalStateException("Original font");
    Paint p=new Paint();p.setFilterBitmap(false);
    for(int i=0;i<11;i++){
-    char ch=i==10?'-':(char)('0'+i);int code=ch-32;Rect source=new Rect((code%32)*8,(code/32)*12,(code%32+1)*8,(code/32+1)*12);
+    char ch=i==10?'-':(char)('0'+i);int code=ch-33;Rect source=new Rect((code%32)*8,(code/32)*12,(code%32+1)*8,(code/32+1)*12);
     Bitmap mask=Bitmap.createBitmap(font,source.left,source.top,8,12);Bitmap out=Bitmap.createBitmap(10,14,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(out);
     p.setColorFilter(new PorterDuffColorFilter(0xff302138,PorterDuff.Mode.SRC_IN));
     for(int y=0;y<3;y++)for(int x=0;x<3;x++)if(x!=1||y!=1)c.drawBitmap(mask,x,y,p);

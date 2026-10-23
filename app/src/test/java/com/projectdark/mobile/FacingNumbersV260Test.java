@@ -23,7 +23,7 @@ public class FacingNumbersV260Test {
    assertEquals(x,m.x,0);assertEquals(y,m.y,0);assertFalse(m.isMoving);
    s.skillEffects().clear(m.id);m.attackCooldown=0;
    ai.tick(s,.016f);assertTrue("ordinary fight still attacks",m.attackPrimed||m.attackVisualRemaining>0);
-   for(int i=0;i<45;i++){h.advance(v,.016f);assertEquals("stationary one-on-one stays front",100,BasicPositionDamageV259.percent(s.player(),m));}
+   Set<Long> attacks=new HashSet<>();for(int i=0;i<240;i++){h.advance(v,.016f);assertEquals("stationary one-on-one stays front",100,BasicPositionDamageV259.percent(s.player(),m));MonsterAIController.AttackSubmissionSnapshot submission=ai.lastAttackSubmission();if(submission.outcome==MonsterAIController.SubmissionOutcome.ACCEPTED)attacks.add(submission.sequence);}assertTrue("normal monster keeps attacking across cooldowns",attacks.size()>=2);
   }
  }
  @Test public void movementAttackLocksDisabledHiddenAndAggroResetNeverTurnForPositionBonus()throws Exception{
@@ -32,6 +32,7 @@ public class FacingNumbersV260Test {
   m.visualFacing.beginAttack(CharacterRenderer.Direction.SE);MonsterCombatFacingV260.track(s,m);assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());m.visualFacing.endAttack();
   for(String effect:new String[]{"SLEEP","AGGRO_RESET"}){s.skillEffects().put(m.id,"qa",effect,1,10);MonsterCombatFacingV260.track(s,m);assertEquals(effect,CharacterRenderer.Direction.SE,m.visualFacing.presentation());s.skillEffects().clear(m.id);}
   s.skillEffects().put("player","qa","STEALTH",1,10);assertTrue(s.skillEffects().hidden());MonsterCombatFacingV260.track(s,m);assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());s.skillEffects().clear("player");
+  RuntimeState.Monster chase=new RuntimeState.Monster("chase-heading","chase",0,0,100,"B");chase.provoked=true;chase.visualFacing.setLocomotion(CharacterRenderer.Direction.NW);s.player().x=128;s.player().y=0;MonsterCombatFacingV260.track(s,chase);assertEquals("between chase steps retain the committed route heading",CharacterRenderer.Direction.NW,chase.visualFacing.presentation());s.player().x=-32;s.player().y=-16;
   assertEquals(200,BasicPositionDamageV259.percent(s.player(),m));assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());
   s.player().x=32;s.player().y=-16;assertEquals(150,BasicPositionDamageV259.percent(s.player(),m));assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());
  }
@@ -72,7 +73,11 @@ public class FacingNumbersV260Test {
   m.hp=1;s.damage(m,20);Bitmap with=frame(v);m.damageNumbers.clear();Bitmap without=frame(v);assertFalse("dead target keeps its final floating number",with.sameAs(without));save(with,"lethal.png");
  }
  @Test public void originalPixelFontRendersStableDigitsWithoutSystemFontFallback()throws Exception{
-  OriginalDamageDigitsV260 digits=new OriginalDamageDigitsV260(c);Bitmap im=Bitmap.createBitmap(480,100,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(im);out.drawColor(0xff24322d);digits.draw(out,"0123456789",240,65,1);save(im,"digits.png");
+  OriginalDamageDigitsV260 digits=new OriginalDamageDigitsV260(c);
+  Bitmap font=BitmapFactory.decodeStream(c.getAssets().open("town-v247/font-en.png"));Bitmap[] glyphs=field(digits,"glyphs");
+  // The retained FNT starts with '!' at cell0; original '0' is cell15, not16.
+  for(int n=0;n<10;n++)for(int y=0;y<12;y++)for(int x=0;x<8;x++)if(Color.alpha(font.getPixel((15+n)*8+x,y))>200){int actual=glyphs[n].getPixel(x+1,y+1);assertTrue("original digit "+n+" ink retained",Color.red(actual)>190&&Color.green(actual)>190&&Color.blue(actual)>190);}
+  font.recycle();Bitmap im=Bitmap.createBitmap(480,100,Bitmap.Config.ARGB_8888);Canvas out=new Canvas(im);out.drawColor(0xff24322d);digits.draw(out,"0123456789",240,65,1);save(im,"digits.png");
   int changed=0;for(int y=0;y<100;y++)for(int x=0;x<480;x++)if(im.getPixel(x,y)!=0xff24322d)changed++;assertTrue(changed>150);assertTrue(changed<3000);
  }
  Bitmap frame(GameView v){Bitmap im=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(im));return im;}

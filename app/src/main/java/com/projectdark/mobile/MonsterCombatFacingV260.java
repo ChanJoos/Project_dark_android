@@ -3,6 +3,7 @@ package com.projectdark.mobile;
 final class MonsterCombatFacingV260 {
  static void track(RuntimeState s,RuntimeState.Monster m){
   if(!s.player().alive||!m.alive||m.isMoving||m.visualFacing.attackLocked()||s.skillEffects().disabled(m.id)||s.skillEffects().hidden())return;
+  if(!CanonicalMeleeTileContract.reachable(m.x,m.y,s.player().x,s.player().y))return;
   boolean taunt=s.skillEffects().has(m.id,"TAUNT");
   if(s.skillEffects().has(m.id,"AGGRO_RESET")&&!taunt)return;
   float dx=s.player().x-m.x,dy=s.player().y-m.y;
