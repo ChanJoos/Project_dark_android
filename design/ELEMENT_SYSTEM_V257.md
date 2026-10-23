@@ -1,3 +1,5 @@
+현재 적용: [V258 런타임 설계](ELEMENT_SYSTEM_V258.md). 아래 V257은 원문 전사 시점의 기록이며 원본 표는 보존한다. 출처 추가분은 [별도 등록 CSV](../master/canonical/Sources_Elements_V257.csv)에 보존하고 master/data/Sources.csv 원본은 그대로 유지한다.
+
 # 속성 정의 V257
 
 등록일: 2026-10-24 KST · 상태: 사용자 승인 원작 기획 기준 등록 / 런타임 적용 대기

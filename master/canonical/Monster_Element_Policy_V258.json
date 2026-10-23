@@ -1,6 +1,6 @@
 {
   "revision": "V258",
-  "status": "IMPLEMENTED_CI_PHONE_PENDING",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_VERIFIED_PHONE_PENDING",
   "default": {
     "attack": "independent uniform WATER/EARTH/WIND/FIRE",
     "defense": "independent uniform WATER/EARTH/WIND/FIRE",
@@ -60,5 +60,13 @@
     "https://lod.nexon.com/Community/game/4168?Category2=1&Page=2&SearchBoard=3",
     "https://lod.nexon.com/board/1493172227/1104",
     "https://lod.nexon.com/community/game/2600?SearchBoard=3"
-  ]
+  ],
+  "verification": {
+    "source": "255a104c69cb09bfc4c760d9c0c98210502bae05",
+    "maps": 37,
+    "actors": 1522,
+    "darkMineActors": 60,
+    "tests": 40,
+    "phone": "PENDING"
+  }
 }

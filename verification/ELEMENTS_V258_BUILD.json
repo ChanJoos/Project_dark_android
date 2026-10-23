@@ -1,0 +1,155 @@
+{
+  "revision": "V258",
+  "sourceCommit": "255a104c69cb09bfc4c760d9c0c98210502bae05",
+  "runId": "39977747900",
+  "jobId": 120496693189,
+  "artifactId": 12512317256,
+  "archiveSha256": "56c5b0a53af909434380c5c553f0477ce7dc7bef8ba479ecfbf52e3e549744f7",
+  "builtAtKST": "2026-10-24T00:26:43.334189+09:00",
+  "apkSha256": "d28930e9b74b5385d66cb9865b57deb66f8069e807a847bc0c1571309c6b1210",
+  "apkBytes": 106532826,
+  "identity": {
+    "sourceCommit": "255a104c69cb09bfc4c760d9c0c98210502bae05",
+    "runId": "39977747900",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V258 final1 real AUTO mage cadence test plus38 passing checks retained by strict exact runtime/assets and single fixture correction guard; original master source CSV restored byte-for-byte and new source registered separately; phone pending",
+  "retainedChecks": {
+    "source": "7ebca27c27c821e4db39ea59042cfe7bf1dd4c16",
+    "run": 39976958819,
+    "artifact": 12511248607,
+    "passed": 38,
+    "suites": [
+      {
+        "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "tests": "4",
+        "failures": "0",
+        "retained": [
+          "activeZeroOfOneRestores",
+          "returnReadyOneOfOneRestores",
+          "completedTurnInRestoresAndCannotDuplicateReward",
+          "rpgRewardEquipmentStatsAndProgressionRestore"
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.AccessoryCatalogV125Test",
+        "tests": "2",
+        "failures": "0",
+        "retained": [
+          "originalModifiersElementsAndSaveRestoreAreConnected",
+          "elementalEquipmentFeedsTheCombatPipeline"
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.AbelCombatV153Test",
+        "tests": "4",
+        "failures": "0",
+        "retained": [
+          "rangedBossApproachEndsInsideActualFollowCamera",
+          "profilesBindEverySpeciesAndSourceRewardsRemainSeparate",
+          "respawnWaitsForAnUnoccupiedSpawnTile",
+          "magicUsesRealWindupMpLosControlAndSavedStatusAndBossRecoversOnlyOnce"
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.MagicRuntimeV137Test",
+        "tests": "7",
+        "failures": "1",
+        "retained": [
+          "kurotoHasNoTwoSecondReuseDelayButSharesThreePerSecondSpellCadence",
+          "normalMageQuickslotCastsAtRangeWhileTargetIsBetweenTiles",
+          "staffManaBoundaryUnlearnedAndDeadActorFailWithoutCharge",
+          "offscreenAndBlockedLosSpellsDoNotChargeAndPhysicalTileRulesRemainExact",
+          "learnedSlotsStaffAndTimingSurviveRestart",
+          "equippedPanaReleasesElementarySpellOnNextFrameWithoutExtraCooldown"
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.ElementsV258Test",
+        "tests": "10",
+        "failures": "0",
+        "retained": [
+          "successfulRespawnDrawsANewPairAndBlockedRespawnDoesNotDraw",
+          "independentAttackAndDefenseRollsCoverAllSixteenNaturalPairsAndStayStableWhileAlive",
+          "realNecklaceSwapChangesDamageAndManualAutoUseIdenticalCurrentInstanceDefense",
+          "senseDisplaysTheSameTwoIndependentElementsUsedByCombatAndSavesNativePreview",
+          "aliasesUnknownNonPositiveAndOverflowHaveExplicitSafeBehavior",
+          "allExistingHuntMapsAndPrototypeActorsHaveNaturalPairsExceptSixtyDarkMineActors",
+          "actualSaveRestartPreservesPairsAndOldCorruptOrForeignRowsKeepValidSpawn",
+          "everySourceCellUsesDefenseRowsAttackColumnsAndExactDamageReference",
+          "elementalMagicOverridesNecklaceAndStillUsesTheTargetsCurrentDefense",
+          "monsterBasicUsesIndependentAttackAndRealPlayerBeltWhileExplicitSpellsKeepTheirElement"
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.RogueRepairV232Test",
+        "tests": "3",
+        "failures": "0",
+        "retained": [
+          "sourceSenseFrameRetainsOriginalHeaderBordersScrollAndClosePixels",
+          "senseUsesOnlyFacingFirstTwoCellsAndNeverTurnsOrApproaches",
+          "senseRechecksLiveTargetVisibilityAndWallAtContactAndChoosesNearestFront"
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.AutoOrderTargetV256Test",
+        "tests": "6",
+        "failures": "0",
+        "retained": [
+          "acceptedNonVisualLeapAdvancesExactlyOneSlotWithoutNeedingAnAnimation",
+          "enablingAndIncomingHitRetainTheAttackedMonsterThenFourAdjacentBeatsCloserDiagonal",
+          "afterOneThenFourFiveWinsEvenThoughOneHasAlreadyRecovered",
+          "autoFacingAttacksSelectedMonsterInsteadOfNewcomerOnTheOtherSideWhileManualRayKeepsFacingRules",
+          "registeredBasicAttackParticipatesBeforeTheNextSkill",
+          "allTwelveAlwaysReadySkillsRunInRegisteredOrderThenWrapAndAutoEnableRestartsAtOne"
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+        "tests": "3",
+        "failures": "0",
+        "retained": [
+          "sourceMokdoOptionsResolveButUnidentifiedShoesStayPending",
+          "unequipImmediatelyChangesFinalStats",
+          "starterEquipmentProjectsIntoFinalStats"
+        ]
+      }
+    ]
+  },
+  "scopedChecks": 40,
+  "coverage": {
+    "maps": 37,
+    "actors": 1522,
+    "darkMineActors": 60
+  },
+  "archiveApkCrcHashIdentity": "PASS",
+  "signature": "CI apksigner APK v2 verified",
+  "phone": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "integration": {
+    "runId": 39978531235,
+    "jobId": 120499514618,
+    "status": "FULL_BLOCKED",
+    "masterPreservation": "original Sources.csv restored exact blob e6b1a885b4d7bfe8df1546916968be7e3ef18d0f; separate canonical source registration",
+    "adjacentGate": "V124 equipment/accessory/reward/skill-learning20 tests PASS after old NONE1.0 fixture correction",
+    "blocker": "unchanged skill catalog generator rewrites approved descriptions in app/src/main/assets/skills/catalog.json; git diff gate failed; later full stages not run"
+  },
+  "additionalEquipmentProof": {
+    "source": "b2cac9f1240b033c8339cdbf82c0143fbef63224",
+    "runId": 39978518320,
+    "jobId": 120499367273,
+    "artifactId": 12513005577,
+    "archiveSha256": "626dba85a8c37efa8050577fb7a57b1f9431817de867943b4e153253ea38e094",
+    "tests": 1,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "guard": "exact APK runtime/assets unchanged; test/workflow only"
+  },
+  "saved": {
+    "apk": "libfile_fdb4474182a4819191038e4bea8b7540",
+    "preview": "libfile_1281236edfc88191b0345c9bf1ba8cf1",
+    "metadataApplied": true
+  }
+}
