@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "48265f1c7ca5ae5b6257f2402cd6020c3599cfbe1cc18a6ec49eb124ca44427e",
+  ".github/workflows/rucesion-town-v156.yml": "c8ea7991edb8945b2de206620feaf0e23cb68f8c4e55f6c3ccf936de38b9551c",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -608,7 +608,7 @@
   "app/src/main/java/com/projectdark/mobile/PortalAnimation.java": "f29fe6ba3654493f3fa67b860289c5f070773f296bd6dee56a49843eb5aa4cf1",
   "app/src/main/java/com/projectdark/mobile/SourceTravelSkin.java": "bc8d20b363a9d67286752f4922c9e2a881b4d444050add106b15aa6419956ff8",
   "app/src/test/java/com/projectdark/mobile/NpcTravelV248Test.java": "9c12b55a4e00a061b686145f4af23956ce9c2228aaf3a02110f429bd61508377",
-  "app/src/test/java/com/projectdark/mobile/PortalServicesV248Test.java": "b2f8a9521652e68b6446a80f2978877e1c04d1bdf014b06ce52e90108aa29d95",
+  "app/src/test/java/com/projectdark/mobile/PortalServicesV248Test.java": "96de32ecb826e2b0919f41d3f8c02d4cdbcb1e9b599a7d4b59b1b7b10adf686e",
   "master/changes/V248_TOWN_PORTALS.json": "c829f5f4747c65f74ca967165350ed4a528ea888167377ef0734296a22f01874",
   "master/source/town_v248/1000060737.jpg": "3f50c0a712e9885bfc7a47af62c4026b4ccef2aab1dd0b37216a9f4c2a6e8d24",
   "master/source/town_v248/1000060739.jpg": "453a7835d91a13faee0d0486dfab89b03c3c499d8b4dd9a525b862fa13f7349e",
@@ -629,5 +629,5 @@
   "app/src/main/java/com/projectdark/mobile/world/ReagentShopInteriorRenderer.java": "0cd662b30b894581c234c3d4a758eabd3f39397ed6e028aa0d4a83d4e905e043",
   "app/src/main/java/com/projectdark/mobile/world/RucesionTownRenderer.java": "327201766cb872ab78b890450c447d6b6b03d2830d03d4f8b6bc38a795d24bb0",
   "app/src/main/java/com/projectdark/mobile/world/TownInteriorRenderer.java": "9bc148f4bb543fa92322f34fcb38522e16f725f6f3e8d16ae1a17df827bef7fc",
-  "app/src/main/java/com/projectdark/mobile/TempleEntranceRenderer.java": "50da3d59acefeb1f4b4dab7df4a9f267ff8a8a1213dd915a250b1a5fec9ac4bf"
+  "app/src/main/java/com/projectdark/mobile/TempleEntranceRenderer.java": "cf13b95b01fb889c21dd384facd7fa8237a8d15669b4ca5cc15950dbc9684ee0"
 }

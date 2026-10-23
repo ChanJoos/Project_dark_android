@@ -1,3 +1,7 @@
+## V248 신전 최종 캡처 보정
+
+2df7cdf4/run39905956948/job12025786302014nativePASS이나실제캡처에서흰빛이남아있음확인. 별도entrance_light는삭제됐으나originalentrance_platformcrop자체에흰빛이합성됨;기존포탈받침그림도제외하고공통EFA만사용,3stonearch/altar/충돌/입구그대로. Whitebeam밖픽셀반례검사를PortalServices에추가.26기존+직전NPC/travel6=32불변PASS재사용,portal3+temple5=8재실행/총40고유검사. 기존2dfAPK는전달하지않으며수정후exactAPK로대체. Finalsource/CI/APK/PHONE pending.
+
 ## V248 최종 화면·NPC 검사 보정
 
 최초eb7c55be/run39904714042/job120253889351:35검사34PASS,1실패는NpcAppearance의예전마인이동role문구기대값. 요구된공통백원만/이동으로기대값정정. 모든71맵/130그룹·20원본NPC·21유료마을경로·rollback·무료리콜·재시작등통과. Native96PNG/71portal씬9contactpage검수. Idle선택창right9px에촬영원본backgroundHUD혼입확인:깨끗한left원본pixel을right에대칭하여정리/independentaudit확장. 밀레스신전기존흰빛effect도commonportal로통일;stoneplatform/arches보존.
