@@ -1,0 +1,9 @@
+# V264 actual contact sprite diagnosis
+
+DEVICE_FAILED_USER_REPORTED: V263 still shows wrong facing/motion in Screen_Recording_20261024_081540.mp4 (29.390678s,2340x1080). Reviewed full1fps sheet and10-14/19-23s6fps crops. Previous rollback restores code bytes but cannot resolve a preexisting renderer mapping defect.
+
+Source BODY02 frames0/1 are back-view preparation/contact;2/3 front-view preparation/contact. The front head pixels align99.17percent unreflected but only55.36percent reflected (top12rows,>=65opaque overlap; best translations). SkillPresentationCatalog incorrectly interpreted frame0/1/2/3 as NW/NE/SW/SE. SkillBodyRenderer also exempted group02 from the common west mirror. Thus west sword contacts can retain a preparation/sideways-looking pose. Existing source rig/held-weapon references already use frames1(back)/3(front).
+
+Fix only the two rendering decisions: during the existing contact envelope choose source02 frame1 for back or3 for front; mirror the entire west composite like other source groups. Existing IDLE preparation/recovery and contact timing stay intact. No source pixels rewritten. No GameView,AI,target,damage,facing state or position multiplier changes. This supersedes V167 source-four-direction assumption and V263 renderer-byte-identity as a current requirement; V263 removal of extra facing logic stays effective.
+
+Before final checks, run the new native pixel-oracle case on old V263 rendering files and retain failing actual/expected images. Then verify source pixel exactness, both genders/all4directions/equipment mirroring, actual manual/AUTO contacts and native actor captures. Adjacent basic1/2/3,auto order/target,chase,save and gear/HUD sanity. Host pixel reproduction is evidence for the rendering path, not blanket physical handset acceptance. Label APK as candidate and leave phone/user acceptance PENDING.

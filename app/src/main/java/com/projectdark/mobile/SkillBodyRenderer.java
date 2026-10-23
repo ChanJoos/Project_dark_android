@@ -52,13 +52,13 @@ final class SkillBodyRenderer {
   }
   boolean draw(Canvas c,CharacterRenderer.Pose p,String body,String motion,float phase){
     if(p.direction==null)return false;
-    // group02 is an authored directional contact pose, not a complete temporal clip.
+    // group02 contact shares the source front/back view and the common west mirror.
     // Its real source standing preparation/recovery keeps the blade and clothes registered.
     if(("SWING".equals(motion)||"EQUIPPED_BASIC".equals(motion))&&(phase<1f/3f||phase>=.8f)||"TWO_HAND".equals(motion)&&(phase<.12f||phase>=.68f))motion="IDLE";
     String key=catalog.frameKey(body,motion,p.direction,phase);JSONObject f=key==null?null:catalog.frames.optJSONObject(key);if(f==null)return false;
     Bitmap b=bitmap(f.optString("path"));if(b==null)return false;
     String[] parts=key.split("/");String group=parts[1];int index=Integer.parseInt(parts[2]);
-    boolean mirror=!"02".equals(group)&&(p.direction==CharacterRenderer.Direction.NW||p.direction==CharacterRenderer.Direction.SW);
+    boolean mirror=p.direction==CharacterRenderer.Direction.NW||p.direction==CharacterRenderer.Direction.SW;
     float rootX=p.x,rootY=p.y+8f*SCALE;
     if("JUMP_KICK".equals(motion))rootY-=jumpLift(phase);
     if("JUMP".equals(motion)){paint.setColor(0x50000000);c.drawOval(new RectF(p.x-7,p.y-2,p.x+7,p.y+2),paint);paint.setColor(Color.WHITE);rootY-=jumpLift(phase);}

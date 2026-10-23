@@ -32,10 +32,10 @@ public class CombatTownV167Test {
   RuntimeState s=state();FinalStats low=s.rpg().finalStats();s.rpg().restoreStats(3,80,3,3,80,0);FinalStats high=s.rpg().finalStats();
   for(String id:new String[]{"SK_마법사_001","SK_도적_001"}){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);assertTrue(id,SkillAbilityCatalog.amount(a,new SkillAbilityCatalog.Snapshot(high,100,100,30,100,false))>SkillAbilityCatalog.amount(a,new SkillAbilityCatalog.Snapshot(low,100,100,30,100,false)));}
  }
- @Test public void twoHandedOccupancyAndAllFourSourceFacingsAreExplicit()throws Exception{
+ @Test public void twoHandedOccupancyAndBothContactViewsAreExplicit()throws Exception{
   RuntimeState s=state();RpgProgressionState r=s.rpg();r.equip("IT_ADAPTED_STARTER_SHIELD");r.equip("IT_WARDROBE_MW016");assertNull(r.equippedDefinition("방패"));assertEquals(WeaponCombatProfile.Grip.TWO_HAND,WeaponCombatProfile.grip(r.equippedDefinition("무기")));assertEquals("TWO_HAND",WeaponCombatProfile.motion(r,"SWING"));
   assertEquals(RpgProgressionState.EquipResult.TWO_HAND_CONFLICT,r.equip("IT_ADAPTED_STARTER_SHIELD"));assertNotNull(r.equippedDefinition("무기"));assertNull(r.equippedDefinition("방패"));
-  SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(String body:new String[]{"mm001","wm001"})assertEquals(body+"/02/"+CharacterRenderer.actionSourceIndex(d),catalog.frameKey(body,"SWING",d,.5f));
+  SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())for(String body:new String[]{"mm001","wm001"})assertEquals(body+"/02/"+(d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?1:3),catalog.frameKey(body,"SWING",d,.5f));
  }
  @Test public void daraCannotSilentlyPreviewZeroAndRealResourcesDamageExactlyOnce()throws Exception{
   SkillAbilityRuntimeTest h=new SkillAbilityRuntimeTest();h.context=c;RuntimeState s=h.state();RuntimeCombatSession session=h.session(s);session.setSkillTestMode(true);s.player().mp=0;

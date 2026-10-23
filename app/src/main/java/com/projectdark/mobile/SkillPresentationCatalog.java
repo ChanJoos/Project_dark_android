@@ -17,8 +17,10 @@ final class SkillPresentationCatalog {
   String frameKey(String body,String motion,CharacterRenderer.Direction d,float phase){
     if("WALK".equals(motion))return body+"/01/"+ShirtSourceRegistration.idleFrame(d,CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,phase));
     JSONObject p=profiles.optJSONObject(motion);if(p==null)return null;String group=p.optString("group");
-    if("02".equals(group))return body+"/02/"+CharacterRenderer.actionSourceIndex(d);
     boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
+    // Source02 has preparation/contact pairs for the back and front views.
+    // Left views mirror the same contact, rather than selecting the preparation frame.
+    if("02".equals(group))return body+"/02/"+(back?1:3);
     JSONArray a=p.optJSONArray(back?"back":"front");if(a==null||a.length()==0)return null;
     float q=Math.max(0,Math.min(.999f,phase));if(p.optBoolean("idleEdges")&&(q<.15f||q>=.70f))return frameKey(body,"IDLE",d,0);int n=Math.min(a.length()-1,(int)(q*a.length()));
     JSONArray stops=p.optJSONArray("phases");if(stops!=null){n=0;for(int i=1;i<stops.length()&&i<a.length();i++)if(q+.00001f>=stops.optDouble(i))n=i;}

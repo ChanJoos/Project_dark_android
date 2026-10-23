@@ -1,5 +1,5 @@
 {
-  "app/build.gradle": "174e930ab571588747fe0277a909f8e754b22007127533a457c085fef18aea5c",
+  "app/build.gradle": "19c034ad4f9b8e75b0a4bae85e8ac117a67c4b3064cbc97a7d27c81625a7977a",
   "app/src/main/java/com/projectdark/mobile/DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
   "app/src/main/java/com/projectdark/mobile/DeathVillageRenderer.java": "85b7fa6fd8fdf06508f31a930c1458777d2e551c215c56ab0796811000c5dc66",
   "app/src/main/java/com/projectdark/mobile/DeathVillageTravel.java": "ab75b725f01382ac3c5a1a37e9d921c67376b358c48b71fc0c595b0d23f059d6",
@@ -80,7 +80,7 @@
   "app/src/main/java/com/projectdark/mobile/SkillAbilityExecutor.java": "1d74a7349cbe6c9e9b171898477e719b328f4cb12ddcf8112bba33d4b637253c",
   "app/src/main/java/com/projectdark/mobile/SkillActionContract.java": "07b7f1f39fb0cd6d5cfcf9283c3f4ea3f1cc07e8c9294fc63325d3c498a21553",
   "app/src/main/java/com/projectdark/mobile/SkillActionData.java": "0e09399ccbc804d877ae41d40cfa4c66a4e99e492239142964cd7421daccfa48",
-  "app/src/main/java/com/projectdark/mobile/SkillBodyRenderer.java": "611e0741e2a7ec41161ae6a528b790c819ef6c780b7f2a26618fe1ca27487fd6",
+  "app/src/main/java/com/projectdark/mobile/SkillBodyRenderer.java": "159c298f01548e804e9432889f6b1ba115fb9468f904c35126c220f49f3f3141",
   "app/src/test/java/com/projectdark/mobile/AllSkillRuntimeV138Test.java": "f09aeeada2549a319fc8b427a3f5632da0acbc97293e131f0f1439a0d70e4956",
   "app/src/test/java/com/projectdark/mobile/MartialMechanicsV173Test.java": "d2f8760e3e5413fbd25ea6b4f38ab985c6dfd8ef0d00d8aafe3e00a42261c084",
   "app/src/test/java/com/projectdark/mobile/MartialSevenV228Test.java": "a2bdf9aaf3e3fd0ee2c5065c802abd07711ed9a5dfb940b24057b0eb89254aab",
@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "5cc80fa0a60130daa5e4c973be71fbec8e7db38660b457723c084353abab9e43",
+  ".github/workflows/rucesion-town-v156.yml": "4413a144da315c85d9b6331b35efdc4503dfe5c79c643b2df014a1494689d952",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -170,7 +170,7 @@
   "tools/apply_rogue_v232.py": "aa94667ad66d55ee31b9bf65f1aa723db0023412d5739fb6355a3f1ab3689739",
   "app/src/test/java/com/projectdark/mobile/SkillTestModeTest.java": "b98f4e3bb5247fdb31605d540125d836920d6c02d224078de209afcb4c397fe9",
   "tools/verify_v232_tail.py": "595f78a3682a3ebe723271e4229348b605be3ca1896284ca1aeed094eef492d8",
-  "app/src/main/java/com/projectdark/mobile/SkillPresentationCatalog.java": "b0b206cf46601b197988dc66fdf4bdbfaec671d5f1788d43ac9375a905b4e248",
+  "app/src/main/java/com/projectdark/mobile/SkillPresentationCatalog.java": "cc3c9c02287bd9ae8e83f78460233abbe141f64483bfd00a227954d726e2bd20",
   "app/src/main/assets/skill-presentation/captured/assassination.png": "3bf4069739f3cd57cb42c0b48605d633d99645ed97ceb2203304f420680e342d",
   "app/src/main/assets/skill-presentation/captured/assassination_jin.png": "5d0cb9ae1225196262134937359d51a27f63914b9a3c407072ff5d41fc4d7a18",
   "app/src/main/assets/skill-presentation/rogue/4459f9eb02d24cbe.png": "96e24adc11a9b1ffee750a84a233fdb9c3fc07357b63c8c7de934cca3f43209b",
@@ -773,5 +773,9 @@
   "design/FACING_ROLLBACK_V263.md": "c22aead85fabae0b4c5e13e0d4729a7331a23e67a990b7efb888950747ef9f1f",
   "master/changes/V263_FACING_ROLLBACK.json": "1567ccb1a911f97b6b7aaef16091c22fc62691e134deb95e600c8b671c2aba20",
   "master/source/items/naver_310542_20261018/.source_01.png.DqGZ3Y": "89b1162c1af4934ae71373ea7b54582c84cb725b4a19c7261adec9f9c037769c",
-  "tools/verify_facing_rollback_v263.py": "4a970889afcfbf5aa6b3b18937219b294f3103663aa9a18e2f5f96d6c538a7d2"
+  "tools/verify_facing_rollback_v263.py": "4a970889afcfbf5aa6b3b18937219b294f3103663aa9a18e2f5f96d6c538a7d2",
+  "app/src/test/java/com/projectdark/mobile/CombatTownV167Test.java": "27f09620003ba50d8ef97f4b55ae55769aad51398b430fbe5e53f8eb8f7ee8ef",
+  "app/src/test/java/com/projectdark/mobile/ContactPoseV264Test.java": "f5903e2f7c10e2e2f6662f7d7af08d650caf6ca0cedc8858c8ed2e51b30db634",
+  "design/CONTACT_POSE_V264.md": "2320e3eda4471766c6106d7c1c1c5601f7efa69e4b2f3cca23fba0e8326d4193",
+  "master/changes/V264_CONTACT_POSE.json": "83365bb80c2748ad0be1fbbf11826b0cbbd4e3a81c27ee6c6451cdfa9eb3e7aa"
 }
