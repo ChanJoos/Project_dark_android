@@ -13,7 +13,7 @@ final class SkillIconCatalog {
   private final Map<String,Integer> index=new HashMap<>();
   private final Map<String,Bitmap> presentation=new HashMap<>();
   private final Map<String,Bitmap> squareIcons=new HashMap<>();
-  private Bitmap martialFrame;
+  private Bitmap martialFrame,blankFrame;
   private final Set<String> framedSources=new HashSet<>();
   private final Set<String> sourceOverrides=new HashSet<>();
   private final Paint paint=new Paint();
@@ -47,8 +47,7 @@ final class SkillIconCatalog {
       Iterator<String> ids=supplements.keys();while(ids.hasNext()){String id=ids.next();Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open(supplements.getString(id)));if(icon==null)throw new IOException("Invalid user skill icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}}
       JSONObject mageGuide=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/mage-v235/references.json"),StandardCharsets.UTF_8));JSONArray mageRows=mageGuide.getJSONArray("rows");
       for(int i=0;i<mageRows.length();i++){JSONObject row=mageRows.getJSONObject(i);String id=row.getString("id");Bitmap icon=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/mage-v235/"+row.getString("iconAssetPath")));if(icon==null)throw new IOException("Mage guide icon "+id);presentation.put(id,icon);sourceOverrides.add(id);index.putIfAbsent(id,-1);}
-      JSONObject classic=new JSONObject(new String(PresentationAssetBytes.read(context,"skill-presentation/classic/references.json"),StandardCharsets.UTF_8));
-      JSONArray originals=classic.getJSONArray("rows");for(int i=0;i<originals.length();i++){JSONObject row=originals.getJSONObject(i);if("SK_무도가_003".equals(row.optString("id")))martialFrame=BitmapFactory.decodeStream(context.getAssets().open("skill-presentation/classic/"+row.getString("iconAssetPath")));}
+      martialFrame=BitmapFactory.decodeStream(context.getAssets().open("skill-window/common-martial-frame-v253.png"));
       if(martialFrame==null)throw new IOException("Martial scroll reference missing");
     }catch(Exception e){throw new IllegalStateException("Skill source icons unavailable",e);}
   }
@@ -74,6 +73,10 @@ final class SkillIconCatalog {
       art.setPixel(x,y,mapped);
     }
     squareIcons.put(id,art);return art;
+  }
+  void drawBookBackground(Canvas c,RectF dest){
+    if(blankFrame==null){blankFrame=martialFrame.copy(Bitmap.Config.ARGB_8888,true);for(int y=3;y<28;y++)for(int x=3;x<28;x++)if(Color.alpha(blankFrame.getPixel(x,y))>0)blankFrame.setPixel(x,y,0xffbc825c);}
+    paint.setFilterBitmap(false);c.drawBitmap(blankFrame,null,dest,paint);
   }
   boolean drawSquare(Canvas c,String id,RectF dest){Bitmap image=squareIcon(id);if(image==null)return false;paint.setFilterBitmap(false);float side=Math.min(dest.width(),dest.height());c.drawBitmap(image,null,new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2),paint);return true;}
   boolean drawQuickslot(Canvas c,String id,RectF dest){id=iconId(id);float side=Math.min(dest.width(),dest.height());dest=new RectF(dest.centerX()-side/2,dest.centerY()-side/2,dest.centerX()+side/2,dest.centerY()+side/2);

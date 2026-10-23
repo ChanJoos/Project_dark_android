@@ -1,3 +1,7 @@
+## V253 first CI diagnosis
+
+7a55676b/run39957875289:59checks,38failed. All view construction failures share missing requiredatlasSha256 in newZmanifest; added actualatlas digest and explicitproject100ms timing. No failedAPK delivered. Book coverage test separately guessed>210 although actual204identified glyphs+11unresolved entries=215visible. Assert exact204coverage and common parchment on all11fallbacks instead; no invented glyph. Historicaltest-mode220count updated215after prior retiredIDs. Common scope39957883696SUCCESS/compileSKIPPED. Replaced singlemartialreference edges with pixelmode24distinct originalmartialicons to avoid copying any one glyphstroke. Nativefullfocused59 rerun required after startup metadata correction.
+
 ## V253 — 12 square slots, common martial book frame, video Narcoli reconstruction
 
 User explicitly authorized GitHub. New213626video rejects prior Narcoli appearance. Original741archive scan does not contain the full pink wisp/ring combination: retain exactefct032 Z pixels/order/pivots, add explicitly ADAPTED_VIDEO_TRACE curved aura. This is a candidate reconstruction, not verified identical original-client aura or user acceptance. Body anchors, live sleep expiry/damage wake/death continue using state; no combat balance changes.

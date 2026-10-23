@@ -15,5 +15,7 @@
   "scale": 1,
   "blend": "NORMAL",
   "filterBitmap": false,
-  "footOffsetY": 0
+  "footOffsetY": 0,
+  "atlasSha256": "50a12d6ac46178b1954d2dde3f766f763bd001d29dbec12115bde1c31b66300d",
+  "sourceTiming": "ORIGINAL_ORDER_PROJECT_100MS"
 }

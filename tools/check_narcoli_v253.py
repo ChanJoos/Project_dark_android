@@ -18,3 +18,14 @@ for i,k in enumerate(order):
  assert np.count_nonzero(atlas[:,i*q['width']:(i+1)*q['width'],3])==np.count_nonzero(im[...,3])
 assert 'ADAPTED_VIDEO_TRACE' in r['aura']
 print('V253 original Z complete source pixels/order/pivot PASS; aura explicitly ADAPTED_VIDEO_TRACE, not original-client verification')
+
+# The shared book edge cannot contain one selected skill's foreground stroke.
+from collections import Counter
+r=json.loads((R/'master/source/skill_window/martial_frame_v253.json').read_text());imgs=[]
+for row in r['inputs']:
+ f=R/'app/src/main/assets'/row['path'];assert hashlib.sha256(f.read_bytes()).hexdigest()==row['sha256'];imgs.append(Image.open(f).convert('RGBA'))
+assert len(imgs)==24
+actual=Image.open(R/'app/src/main/assets/skill-window/common-martial-frame-v253.png').convert('RGBA')
+for y in range(31):
+ for x in range(31):assert actual.getpixel((x,y))==Counter(im.getpixel((x,y)) for im in imgs).most_common(1)[0][0]
+print('V253 martial common edge provenance24sources PASS; per-skill foreground excluded from common edge')
