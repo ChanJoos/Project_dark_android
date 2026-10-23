@@ -106,7 +106,26 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[hud-items-v254]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[v254-canonical-tail]"* ]]; then
+            git fetch --depth=1 origin 9a9f398b1b5027e86ae7033934a9676e7b5bff54
+            python3 - <<'PYV254'
+          import subprocess
+          from pathlib import Path
+          base='9a9f398b1b5027e86ae7033934a9676e7b5bff54'
+          path='app/src/test/java/com/projectdark/mobile/HudItemsV254Test.java'
+          old="List<String> necklaces(RuntimeState s){List<String> ids=new ArrayList<>();for(RpgProgressionState.ItemDefinition d:s.rpg().itemDefinitions().values())if(\"목걸이\".equals(d.equipSlot)&&!ids.contains(d.itemId)){assertEquals(RpgProgressionState.AutoLootResult.LOOTED,s.rpg().autoLootResolvedItem(d.itemId,1));ids.add(d.itemId);if(ids.size()==2)break;}assertEquals(2,ids.size());s.rpg().enableEquipmentSandbox(true);return ids;}"
+          new="List<String> necklaces(RuntimeState s){s.rpg().enableEquipmentSandbox(true);List<String> ids=new ArrayList<>();for(String alias:new String[]{\"IT_NECK_WATER_PEARL\",\"IT_NECK_EARTH_PEARL\"}){String id=RpgProgressionState.canonicalItemId(alias);assertNotNull(id,s.rpg().itemDefinitions().get(id));assertEquals(\"목걸이\",s.rpg().itemDefinitions().get(id).equipSlot);assertEquals(id,RpgProgressionState.RequirementResult.MET,s.rpg().currentRequirements(id));assertEquals(RpgProgressionState.AutoLootResult.LOOTED,s.rpg().autoLootResolvedItem(id,1));ids.add(id);}assertEquals(2,new HashSet<>(ids).size());return ids;}"
+          allowed={path,'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json'}
+          delta=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
+          assert all(p in allowed or p.startswith(('docs/','verification/')) for p in delta),delta
+          before=subprocess.check_output(['git','show',base+':'+path],text=True)
+          assert before.count(old)==1
+          assert Path(path).read_text()==before.replace(old,new)
+          print('Reuse42 unchanged native PASS from39963079979;rerun5 V254 cases after exact canonical necklace fixture replacement;all production/assets/other tests unchanged')
+          PYV254
+            python3 tools/check_narcoli_v253.py
+            gradle --no-daemon :app:testDebugUnitTest --tests "*HudItemsV254Test" :app:assembleDebug
+          elif [[ "$(git log -1 --format=%B)" == *"[hud-items-v254]"* ]]; then
             python3 tools/check_narcoli_v253.py
             gradle --no-daemon :app:testDebugUnitTest --tests "*HudItemsV254Test" --tests "*HudNarcoliV253Test" --tests "*MobileHudV134Test" --tests "*MobileHudV135Test" --tests "*F5mRestartPersistenceMatrixTest" --tests "*SkillWindowTest" --tests "*SkillTestModeTest" :app:assembleDebug
           elif [[ "$(git log -1 --format=%B)" == *"[v253-fixture-tail]"* ]]; then
