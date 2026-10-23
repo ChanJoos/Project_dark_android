@@ -769,5 +769,5 @@
   "app/src/test/java/com/projectdark/mobile/CombatFacingV262Test.java": "b2ebdb2d8eefd37e98807b238b912eacb762ec3cdc85e7ffe27e550f8ffe59f2",
   "app/src/test/java/com/projectdark/mobile/EquipmentHudV262Test.java": "bc00ae82a741cc38a6ea7b9fee7afdcf308a680322b07ce6e566c7722e3981a1",
   "design/EQUIPMENT_HUD_V262.md": "1ed3e63beb625f34f6bbc20a7903444d216b0a911989a83afcad3fb20c51b621",
-  "master/changes/V262_EQUIPMENT_HUD.json": "e12f2fcdb2d86d1547f5729e4a8fc835659942fae1f3a04d3c0a01dec892d51f"
+  "master/changes/V262_EQUIPMENT_HUD.json": "9e7c6f643e42f9b317d333242a2c17a770851984046339505b2a877b88d48e07"
 }

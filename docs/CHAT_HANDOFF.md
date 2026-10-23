@@ -1,3 +1,15 @@
+## V262 — 한 칸 HUD·장비/가방 통합·접촉 방향 검증 후보 (2026-10-24 KST)
+
+사용자 최종수정 반영: 퀵스킬6x2 오른쪽 **한 칸39px**, 공격 크기20% 확대(반경31→37.2)·960px안에서겹침회피. 장비 단독버튼 제거/아이콘간격정리. 가방을 열면 좌측 장비+우측 인벤을 함께 열고 양쪽닫기연동. 착용복사본은 가방 loose quantity에서제외/해제시복귀,중복여분유지. 소유권/schema/원본자산은변경하지않는다. 목걸이는 실제 누른퀵슬롯에기존목걸이를교환하고 센스자동선택도같은경로. 읽기전용/소유검사/거절/재시작보존.
+
+V261 회귀실패 DEVICE_FAILED_USER_REPORTED: 몬스터가많으면옆보는모션으로앞을공격. 설치SHA UNKNOWN/최근배포57b8d85a. old adaed06에서 두 실제 경로를 먼저 FAIL로재현: 기본공격접촉전상대가SE→NW로이동했는데HP는맞고모션은SE, 원거리몬스터가인접전용facing검사때문에보행NW를SE공격에유지. 수정은 기본 HIT_FEEDBACK의 실제recipient방향과 몬스터의 accepted공격방향잠금뿐. 새선택/주변다른몬스터로회전하지않고 대기추적/위치별피해재도입없음. 물리기기동일성및사용자외형수용은PENDING.
+
+IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_RUNTIME VERIFIED: 소스 `65330bb0fb2c0135e483a8fee47c0ded3360f53a`, Actions40032342978/job120683396314/artifact12534704137 SUCCESS, **36 scoped native checks PASS**, old두경로재현/수정후방향·밀집24개타깃·기본1/2/3·자동대상유지·추격·실제HUD터치·장비해제·목걸이중복바인딩정확슬롯교환·읽기전용/소모품·저장재시작. first8da219e/run40031956717의35PASS를최종소스로재라벨하거나재사용하지않고 최신소스로36건전부실행. scope40032349575 SUCCESS/full compile의도적SKIP. Full/main통합은별도이며과거Lv70/catalog전구간차단해결주장없음.
+
+APK PROJECT_DARK_V262_TEST.apk / com.projectdark.mobile.v262test / built2026-10-24 07:20:11 KST /106539866bytes. SHA256 `53aef7091533cc7f3d546853a014f7d90842326e49886c5699c8aa03db870106`. ZIP SHA256 `594f140bf324d4ceb5f73c58c0ccf0f3db749431b5904070950eb93a636cfdef`. CRC·해시·embedded source/run·CIv2서명·1518 mainassets동일PASS. 960/2340실제렌더의좌우장비/가방·HUD원형비겹침·밀집NW공격화면검토. manifest184/1.84유지/V262testpackage+label. PR197/main41fe6def미병합후보; 문서HEAD를APK소스로재라벨금지. [검증영수증](../verification/EQUIPMENT_HUD_V262_BUILD.json), [설계](../design/EQUIPMENT_HUD_V262.md), [Master변경](../master/changes/V262_EQUIPMENT_HUD.json).
+
+다음: exactV262기기에서밀집사냥방향·장비인벤이동·목걸이교환확인. 휴대폰성공/원작외형수용을host성공으로대체하지않는다. 동일한통과소스재빌드불필요.
+
 ## V261 — 위치별 피해 회귀·총1/2/3타·영상 숫자 궤적 (2026-10-24 KST)
 
 사용자 V260 기기 실패 보고: 전투 방향이 깨지고 트리플 기본공격이4타, 숫자의 발생·이동·소멸이 원작과 다름. 설치SHA UNKNOWN, 최근후보df3c0e56. 사용자 명시로 정면/측면/후면 피해 기능을 폐기한다. BasicPositionDamageV259/MonsterCombatFacingV260 파일과 실제 호출 제거, MonsterAIController는 도입 전V258/255a104c와 바이트 동일. 부가 대기추적/원거리방향보정 모두 회귀했고 센스·목걸이는 유지한다.

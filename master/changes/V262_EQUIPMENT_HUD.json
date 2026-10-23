@@ -6,5 +6,5 @@
   "inventory": "visible loose quantity=owned-equipped; stable ownership schema; unequip returns copy",
   "quick": "exact tapped necklace slot exchanges previous necklace",
   "facing": "accepted ranged monster vector; player basic HIT_FEEDBACK aligns actual recipient after side change, never idle/current selection; reproduce both old failures; physical parity pending",
-  "verification": "pending focused native/build/phone"
+  "verification": "36 focused native PASS on65330bb0, Actions40032342978, artifact12534704137; old two facing paths reproduced; phone/user acceptance PENDING; see verification/EQUIPMENT_HUD_V262_BUILD.json"
 }
