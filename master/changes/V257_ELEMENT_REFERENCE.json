@@ -1,0 +1,54 @@
+{
+  "revision": "V257",
+  "status": "ACCEPTED_DESIGN_REGISTERED_RUNTIME_PENDING",
+  "base": "c79d31d2e36177e38047b811a1f297e745ffc210",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "sourceId": "SRC_USER_ELEMENT_TABLE_20261024",
+  "source": {
+    "file": "master/source/element_v257/1000060687.jpg",
+    "sha256": "8f49ac734cf605055377e2c34377b3b546236b41bd46f8db5da370d977e2c865",
+    "originalFilename": "1000060687.jpg",
+    "visibleCommunity": "성천직자의어둠의전설",
+    "visibleTitle": "속성정리표",
+    "url": null,
+    "postDate": null,
+    "evidence": [
+      "U",
+      "FAN"
+    ],
+    "authority": "User designates this screenshot as original-game design reference; community provenance, not independently verified official Nexon data."
+  },
+  "scope": "design/master/reference only",
+  "before": "legacy BALANCED Element_Matrix partial rows and runtime candidate formula; no accepted nine-element source table",
+  "after": "9-element defense-row x attack-column three 81-cell source tables registered; old BALANCED design values superseded as evidence",
+  "files": [
+    "design/ELEMENT_SYSTEM_V257.md",
+    "master/canonical/Element_Reference_V257.json",
+    "master/canonical/Element_Reference_V257.csv",
+    "master/source/element_v257/provenance.json",
+    "docs/CHAT_HANDOFF.md",
+    "docs/PROJECT_STATE.md",
+    "docs/DECISION_LOG.md",
+    "docs/DIRECTOR_BACKLOG.md",
+    "master/MASTER_MANIFEST.md",
+    "master/MASTER_INDEX.md",
+    "master/RECONCILIATION.md",
+    "design/SOURCE_OF_TRUTH.md"
+  ],
+  "discrepancies": [
+    {
+      "id": "ELEMENT_V257_D01",
+      "defense": "METAL",
+      "attack": "WOOD",
+      "table": "neutral_defense_100_percent",
+      "printedPercent": 55,
+      "observedDamage": 13000,
+      "referenceDamage": 24500,
+      "derivedPercent": 53.06122448979592,
+      "otherTablePrintedPercent": 71,
+      "resolution": "Preserve printed55; do not auto-correct or derive a universal runtime multiplier; resolve before runtime projection."
+    }
+  ],
+  "verification": "243 cell transcriptions and structured data dimensions/CSV roundtrip/source hash/link/diff checks; no gameplay change or APK",
+  "runtimeApplied": false
+}

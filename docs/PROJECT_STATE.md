@@ -1,3 +1,7 @@
+## V257 — 원작 속성표 기획·마스터 등록 (2026-10-24 KST)
+
+사용자 승인 사진1000060687.jpg(성천직자의어둠의전설/속성정리표)을 원작 기획 기준으로 등록. [기획](../design/ELEMENT_SYSTEM_V257.md), [정규JSON](../master/canonical/Element_Reference_V257.json), [CSV](../master/canonical/Element_Reference_V257.csv): 방어행×공격열9속성, 원문대미지/무속방어100%/기본4속상성100% 세 표243셀. U+FAN 출처 보존;공식O승격 없음. 기존BALANCED Element_Matrix는 구기획 참고값으로 분리. 금방어×목공격의 표2=55%와 원문대미지 환산≈53% 불일치는 원문그대로보존. 기준대미지24500/18300은 표1과의 수치대응 해석이며 보편계산식은 미확정. **등록완료, 런타임·APK변경 없음**. 후속 구현은 기준/반올림/불일치/목금ID및장비·몬스터경로 결정과 공통계산 검증이 필요하다. 이전V256AUTO/HUD검증과 Narcoli승인 상태 유지.
+
 ## V256 — 퀵스킬 상단 정렬·AUTO 슬롯 순환·현재 타겟 유지
 
 Implemented:36px6×2 quickskills top438 equals potion top438; accepted AUTO slots continue1→12 circularly (skip unavailable), registered basic/nonvisual/deferred accepts advance once. Earlier recovered cooldown never resets cursor. Live selected current-map target wins incoming/closer monsters; when gone legal visible cardinal neighbor wins diagonal/ranged fallback. AUTO directional skills face retained target and skip a conflicting ray recipient; manual facing/LOS and NarcoliUSER_ACCEPTED preserved.
