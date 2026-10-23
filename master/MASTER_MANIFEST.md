@@ -1,3 +1,7 @@
+## V254 accepted projection and verified candidate
+
+`master/changes/V254_HUD_ITEMS.json`:6x2skills;joined36pxHP/MP+4owned-item shortcuts;canonicalID prefs+durable existing RPG use/equip. Exactsource58984f20/run39964073034:5native+42strictlyretained adjacentPASS=47scoped;APK/identity/hash/signature verified. CurrentV253Narcoli USER_VISUAL_ACCEPTED by explicit userchoice;prior original-aura TODO closed without changing ADAPTEDprovenance. HUDphone/userlayout pending;see docs/V254_HUD_ITEMS_CHECKPOINT.md.
+
 ## V253 candidate
 
 Projection `master/changes/V253_HUD_NARCOLI.json`:12square slots, backward-compatible8/10reader, martial book frame/palette. Narcoli originalZ plus explicitlyADAPTED video-traced pink aura; NOT identical-original-client acceptance. Focusednative/build andphone pending.

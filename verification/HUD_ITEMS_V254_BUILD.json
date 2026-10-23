@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "58984f20b8ec458b10126e7d5d1519732ff1f55a",
+  "runId": "39964073034",
+  "builtAtKST": "2026-10-23T22:51:27.285562+09:00",
+  "apkSha256": "8155eb79a9e88a741d7ae1dc487f0d52014ae62ccd9b6646ef0e0e5326539ac7",
+  "apkBytes": 106529606,
+  "identity": {
+    "sourceCommit": "58984f20b8ec458b10126e7d5d1519732ff1f55a",
+    "runId": "39964073034",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V254 skill6x2; joined HP/MP+4owned-item shortcuts; normal and wide input/register/equip/consume/readonly/restart; V253 Narcoli user accepted unchanged; host native,phone pending",
+  "finalTests": 5,
+  "retainedTests": 42,
+  "retainedRun": "39963079979",
+  "artifactId": 12505368740,
+  "artifactSha256": "7dc66036db686717deef5d84e948b146b9c4208a9a9e1d4a04569ac04ea1c88f",
+  "phone": "PENDING",
+  "narcoli": "USER_ACCEPTED_V253_UNCHANGED"
+}
