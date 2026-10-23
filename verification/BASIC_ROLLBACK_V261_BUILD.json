@@ -1,0 +1,89 @@
+{
+  "version": "V261",
+  "sourceCommit": "57b8d85ac62cdfa9dcedb2d493ec8e8c864214da",
+  "status": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_VERIFIED",
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "run": 40028630344,
+  "firstSource": "601e0ba976613ceece826610608aaa1dbe153d42",
+  "firstRun": 40027979318,
+  "firstArtifact": 12533601958,
+  "firstArtifactSha256": "484f43d7b4d90eb8a1c2345eb06dd269aa75a812123af6c7d446327aed23057e",
+  "retainedPasses": 49,
+  "finalChecks": 3,
+  "totalScoped": 52,
+  "rollback": {
+    "deleted": [
+      "BasicPositionDamageV259.java",
+      "MonsterCombatFacingV260.java"
+    ],
+    "aiSource": "255a104c69cb09bfc4c760d9c0c98210502bae05",
+    "aiBlob": "8b9bc471ecde7f4d9ec2216ce290820642787e18",
+    "aiByteExact": "PASS",
+    "damage": "No positional multiplier, all defender facings equal; independent necklace/sense retained"
+  },
+  "hits": {
+    "normal": 1,
+    "double": 2,
+    "triple": 3,
+    "maximum": 3,
+    "quadOrTrapAddsFourth": false,
+    "time": "Same existing action contact, actual1/2/3 resolver hits and summedHP; no extra base hit or late fourth",
+    "tests": "Manual/AUTO, normal/preview/extra linked, triple priority and save/restart; lethal stops remaining contacts"
+  },
+  "numberMotion": {
+    "video": "Screen_Recording_20261021_205939_YouTube.mp4",
+    "libraryFileId": "libfile_41a306c37f9c8191a71940cd46bceb40",
+    "videoSha256": "58b41133fe26b4322c0d82149ec95c6f7587b4e3471153d8cb55eac39de36054",
+    "observed": "5.750-6.350s,1433/1444/1421 tracked: rightward motion, separately diverging ballistic arcs, late fade; fitted source displacement <=2.1px",
+    "removed": "Old26px-rise and12px forced old-number stacking",
+    "adaptation": "13 steps at15fps; extrapolated common origin/initial velocity, body45%anchor/world scale and fade; recording contains seeks/repeated frames. No exact original-engine/onset/timing certification.",
+    "review": "Native source fan strip and actual combo09 inspected;3 independent5 numbers match actual15 damage."
+  },
+  "fixtureChanges": [
+    "Range exit before the single atomic contact cancels all hits; there is no longer an inter-hit range gap",
+    "Two-hand contact at.30s applies all3 and preserves1s cycle; no delayed contacts",
+    "Ownership uses canonicalItemId after existing V210 alias migration; equipment requirements unchanged"
+  ],
+  "reuseGuard": "Exact app/src/main, build.gradle, master, design trees; only exact3 fixture replacements, workflow and reviewed hashes change",
+  "phone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "fullRegression": "NOT_RUN; scoped candidate, final main integration remains separately gated",
+  "scopeRun": 40028637986,
+  "job": 120671021334,
+  "artifact": 12534246645,
+  "artifactBytes": 131984000,
+  "artifactSha256": "2954a1db63ece86cb035cc3ff5f619a4d39d1a22d66df7477448f115fd8f2f3d",
+  "apk": {
+    "sourceCommit": "57b8d85ac62cdfa9dcedb2d493ec8e8c864214da",
+    "runId": "40028630344",
+    "builtAtKST": "2026-10-24T06:45:43.757652+09:00",
+    "apkSha256": "3f9a1daa340a7dd19acd2bfdf14f4dfa22103cd451fdb80e906c45848fdcba07",
+    "apkBytes": 106538406,
+    "identity": {
+      "sourceCommit": "57b8d85ac62cdfa9dcedb2d493ec8e8c864214da",
+      "runId": "40028630344",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "V26149 exact-runtime retained checks +3 corrected atomic-impact/canonical-ownership fixtures =52 scoped checks; positional damage/facing removed, AI pre-position255a104c; total1/2/3 contacts and video-tracked number fan; scoped native/manual/AUTO/source font/chase/save; exact-original and phone acceptance pending"
+  },
+  "checks": {
+    "zipAndApkCRC": "PASS",
+    "artifactAndApkSha256": "PASS",
+    "sourceRunVersionIdentity": "PASS",
+    "CI_apksigner_v2": "PASS",
+    "trackedMainAssetBytesMatch": 1518,
+    "finalJUnit": 3,
+    "scope": "49 exact-runtime retained +3 final =52"
+  },
+  "delivery": {
+    "status": "SAVED",
+    "libraryFileId": "libfile_13b729c96f9c819186bbf60177566232",
+    "fileId": "file_00000000f290820c8ad3669042e5a015",
+    "version": 0,
+    "localMetadataApplied": true,
+    "filename": "PROJECT_DARK_V261_TEST.apk"
+  }
+}

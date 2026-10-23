@@ -1,3 +1,17 @@
+## V261 — 위치별 피해 회귀·총1/2/3타·영상 숫자 궤적 (2026-10-24 KST)
+
+사용자 V260 기기 실패 보고: 전투 방향이 깨지고 트리플 기본공격이4타, 숫자의 발생·이동·소멸이 원작과 다름. 설치SHA UNKNOWN, 최근후보df3c0e56. 사용자 명시로 정면/측면/후면 피해 기능을 폐기한다. BasicPositionDamageV259/MonsterCombatFacingV260 파일과 실제 호출 제거, MonsterAIController는 도입 전V258/255a104c와 바이트 동일. 부가 대기추적/원거리방향보정 모두 회귀했고 센스·목걸이는 유지한다.
+
+기본 총1, 더블 총2, 트리플 총3, 겹쳐 배워도3. LINKED 쿼드4타를3으로 제한하고 설치형트랩의 불필요한+1 경로 제거. 기본1타에트리플3타를더하지 않는다. 기존 접촉 시점에 실제HP/장부1·2·3회를 처리하여 합산 감소, 독립 숫자2/3개를같은원점에서발생시킨다. 공격모션/주기 변경없음,처치후추가타/중복보상금지.
+
+영상 Screen_Recording_20261021_205939_YouTube.mp4/5.750~6.350초1433·1444·1421 템플릿 추적. 기존26px상승/새숫자가이전숫자를12px밀어올리기 폐기, 오른쪽포물선/숫자별상하속도/층간확산/끝페이드. 초기숨겨진원점·월드크기·15fps13스텝은ADAPTED,영상탐색/반복프레임으로원작상수동일성미확정. 실제GameView combo09와원본폰트팬그리드검토, 실기기/사용자외형수용PENDING.
+
+IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_RUNTIME VERIFIED: 소스 `57b8d85ac62cdfa9dcedb2d493ec8e8c864214da`, Actions40028630344/job120671021334/artifact12534246645 SUCCESS. first601e0ba/run40027979318의49PASS를정확runtime/assets/Master/design및해시/XMLguard로유지하고양손무기fixture3건교정후3PASS추가=**52 scoped checks PASS**. 교정은단일접촉전사거리취소,양손접촉3타동시/지연0타·주기유지,기존canonicalItemId소유조회이며게임착용조건우회없음. 정상/미리보기·추가연결·수동/AUTO·장부HP·4방향피해동일·AI원본·추격·센스목걸이·저장재시작검증. Full/main통합별도,기존전구간성장/catalog재생성차단해결주장없음.
+
+APK PROJECT_DARK_V261_TEST.apk / com.projectdark.mobile.v261test / built2026-10-24 06:45:43 KST / 106538406bytes. SHA256 `3f9a1daa340a7dd19acd2bfdf14f4dfa22103cd451fdb80e906c45848fdcba07`. ZIP `2954a1db63ece86cb035cc3ff5f619a4d39d1a22d66df7477448f115fd8f2f3d`. APK/ZIP CRC·해시·embedded source/run·CIv2서명·1518 main asset bytes PASS. 기존manifest184/1.84유지, V261은testpackage/label. PR197/main41fe6def미병합후보. [검증 영수증](../verification/BASIC_ROLLBACK_V261_BUILD.json), [사용자 회귀 계약](../design/COMBAT_ROLLBACK_V261.md), [Master 개정](../master/changes/V261_BASIC_ROLLBACK.json). 이후문서커밋으로APK소스를재라벨하지말것.
+
+다음: 정확V261기기에서기본1/더블2/트리플3·기존전투방향·새숫자팬확인. 사용자요청없이위치별피해/자동방향보정재도입금지. 이미통과한동일런타임재빌드불필요.
+
 ## V260 — 방향·타격별 숫자 후보 검증 완료 (2026-10-24 KST)
 
 소스 `df3c0e5675e8b6617d2a83ac1e35813fc1b67a15`, Actions40023813177/job120654810808/artifact12531379208 SUCCESS. 기존 AI ce02feb8에서 쿨다운 대기 중 정면100 기대가 후면200으로 나오는 결함을 먼저 재현했다. 복원한 실제 런타임은 대기 중 기존 상대를 바라보며 이동·공격 방향 잠금·수면/마비·은신·어그로 해제를 보존한다. 위치 피해 계산은 방향을 바꾸지 않는다. 기본공격 정면100/측면150/후면200 규칙은 다른 공격자 위치를 위해 유지한다.
