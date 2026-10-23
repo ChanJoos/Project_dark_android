@@ -1,6 +1,14 @@
-## V260 — 사용자 기기 방향·연타 숫자 결함 수정 중
+## V260 — 방향·타격별 숫자 후보 검증 완료 (2026-10-24 KST)
 
-DEVICE_FAILED_USER_REPORTED: 몬스터가 멈추고 측면을 보며, 더블/트리플 피해 숫자가 하나로 보임. 설치 SHA UNKNOWN; 직전 전달 aab7b4da/V259를 기기 수용으로 간주하지 않음. 기존 branch/PR197, main41fe6def 유지. 원인 후보: AI 쿨다운 대기 중 facing 미갱신, 마지막 피해만 표시하는 single popup 덮어쓰기. 방향 재현을 old AI로 먼저 증명 후 복원 소스에 실제 UI/2·3타/기존상성·자동·이동·저장 검증. 위치 계산은 순수하게 유지, 기획/원본 근거 master/changes/V260_FACING_NUMBERS.json. 구현 후 BUILD/HOST/PHONE PENDING.
+소스 `df3c0e5675e8b6617d2a83ac1e35813fc1b67a15`, Actions40023813177/job120654810808/artifact12531379208 SUCCESS. 기존 AI ce02feb8에서 쿨다운 대기 중 정면100 기대가 후면200으로 나오는 결함을 먼저 재현했다. 복원한 실제 런타임은 대기 중 기존 상대를 바라보며 이동·공격 방향 잠금·수면/마비·은신·어그로 해제를 보존한다. 위치 피해 계산은 방향을 바꾸지 않는다. 기본공격 정면100/측면150/후면200 규칙은 다른 공격자 위치를 위해 유지한다.
+
+더블2타/트리플3타, 동시 습득 시 트리플만 적용. 실제 양수 타격마다 독립 숫자를 만들고 저프레임·처치 타격도 보존한다. 기존 원본 font-en glyph 사용, 관측 영상의 상승·중첩·페이드는 ADAPTED(.80초/26px/12px), 원작 상수의 완전 동일성 주장이 아니다. 실제 GameView combo03/06/09/12와 lethal/digits 화면 검토 완료; 물리 휴대폰/사용자 외형 수용 PENDING. 최종 combo09에서 실제5 숫자3개를 확인했다.
+
+최종 원본 숫자 atlas의 !기준 셀 오프셋과 스트림 수명을 교정했고, 상대 방향 추적을 근접 도달 범위로 한정해 추격 경로 방향을 유지한다. 기존 unchanged38건을 엄격한 delta/hash/XML 검증으로 재사용하고, 연속공격·추격·폰트픽셀·실제화면·인접AI·원본/생성형보행17건을 재실행해 **55 scoped host checks PASS**. 옛 AI facing 결함 및 기존 검사2개의 실패를 complete old source ce02feb8에서 각각 재현했다. 옛 V153 5직업 Lv70 유료장비 시나리오는 V210 canonical alias의 착용 토글/미확정 원본 착용조건과 충돌하여 여전히 OPEN이다. 게임 착용조건을 우회하거나 전체 성장 검증 성공으로 처리하지 않았다. 공통40023457499는 Master/V12420검사 PASS 후 기존 skill catalog 재생성 dirty diff에서 중단; 전체회귀/main통합 미완료. 최신 scope40023819383 SUCCESS이며 full compile은 의도적으로 SKIP됐다.
+
+APK PROJECT_DARK_V260_TEST.apk / com.projectdark.mobile.v260test, built2026-10-24 06:08:37 KST,106538494bytes,SHA256 `8c2fc38b596f9cb363aa27ea4789f03c3ca286cd2d8fbb7d9a154aeb8d710d84`. ZIP SHA256 `8df2cb964ccdf5394b14d85a503608572c4a26a70a5073abdfc6daf807dfc858`. CRC/hash/embedded source+run/CI apksigner v2 PASS;1518 tracked main assets byte exact. 기존 manifest versionCode184/versionName1.84는 유지, V260은 test package/label 식별자다. IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_RUNTIME VERIFIED; PHONE/USER_ACCEPTANCE PENDING. 기존 branch/PR197/main41fe6def 미병합 후보. 정확 기록 [검증 영수증](../verification/FACING_NUMBERS_V260_BUILD.json). 이후 문서 커밋을 APK 소스로 재라벨하지 말 것.
+
+다음: 정확 V260을 설치해 서로 마주보기·수동/AUTO 더블2/트리플3·처치 숫자 확인. 이미 통과한 동일 런타임을 재빌드하지 않는다. 별도 full통합 시 기존 Lv70장비 fixture와 skill catalog 재생성 차단을 해결한다.
 
 ## V259 — 기본 공격 위치 배율·센스 목걸이 검증 후보 (2026-10-24 KST)
 
