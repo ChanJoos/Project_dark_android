@@ -15,8 +15,8 @@ final class PersistentStatusV249 {
  void drawActor(Canvas c,SkillVfxRenderer.Anchors a,String actor){for(String kind:sequences.keySet())if(active(actor,kind)){
   float x=a.centerX(actor),foot=a.y(actor),center=a.centerY(actor);if(!Float.isFinite(x)||!Float.isFinite(foot)||!Float.isFinite(center))continue;
   SkillEffectState.Effect e=state.skillEffects().get(actor,kind);SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(e.source);float age=Math.max(0,(ability==null?e.remaining:ability.duration)-e.remaining);CapturedSkillFx.Sequence q=sequences.get(kind);
-  // Source foot is calibrated for a 46px actor. Put the head glyph above the actual body.
-  float y=kind.equals("SLEEP")?2*center-foot+46:foot;
+  // Keep the whole falling source glyph envelope above the live body top, including short monsters.
+  float y=kind.equals("SLEEP")?2*center-foot-8:foot;
   int frame=q.frame(age%q.duration),sx=frame%q.columns*q.width,sy=frame/q.columns*q.height;
   paint.setXfermode(q.normalBlend?null:q.additiveBlend?add:screen);
   c.drawBitmap(q.atlas,new Rect(sx,sy,sx+q.width,sy+q.height),new RectF(x-q.pivotX,y-q.pivotY,x+q.width-q.pivotX,y+q.height-q.pivotY),paint);paint.setXfermode(null);
