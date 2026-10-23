@@ -7,6 +7,11 @@ final class MobileHudSkin {
   private static Bitmap mapTerrain;private static String terrainKey;
   private static final int WHITE=0xfff1eee4,GOLD=0xffdfc88c;
   static void fade(Canvas c,RectF r){p.setStyle(Paint.Style.FILL);p.setShader(new LinearGradient(r.left,r.top,r.right,r.top,0x03080b10,0x77080b10,Shader.TileMode.CLAMP));c.drawRect(r,p);p.setShader(null);}
+  static void square(Canvas c,RectF r,boolean active){
+    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(0xff171b20);c.drawRect(r,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(active?0xfff4e6b1:0xffa28d63);c.drawRect(r,p);
+    p.setStrokeWidth(1);p.setColor(0xff454039);c.drawRect(r.left+2,r.top+2,r.right-2,r.bottom-2,p);p.setStyle(Paint.Style.FILL);
+  }
   static void ring(Canvas c,float x,float y,float r,boolean active){
     p.setStyle(Paint.Style.FILL);p.setColor(active?0x775f573a:0x6413191b);c.drawCircle(x,y,r,p);
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(active?1.8f:1f);p.setColor(active?GOLD:0x998e876d);c.drawCircle(x,y,r-.7f,p);

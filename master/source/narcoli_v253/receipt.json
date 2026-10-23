@@ -14,7 +14,7 @@
     "efct364 blue lightning",
     "Z-only rendering"
   ],
-  "acceptance": "HOST_NATIVE_PENDING / PHONE_PENDING / USER_VISUAL_PENDING",
+  "acceptance": "USER_VISUAL_ACCEPTED_2026-10-23: current V253 Narcoli retained at user's explicit request; ADAPTED provenance unchanged",
   "referenceLibraryFileId": "libfile_baf588af44ec819192fe34330d5374fa",
   "localAttachment": "upload/Screen_Recording_20261023_213626_YouTube.mp4"
 }
