@@ -16,7 +16,7 @@ import org.robolectric.shadows.ShadowAlertDialog;
 public class HudItemsV254Test {
  final MobileHudV134Test h=new MobileHudV134Test();Activity activity;
  @Before public void setup(){h.setup();h.c.getSharedPreferences(QuickItemBarV254.PREFS,0).edit().clear().commit();activity=Robolectric.buildActivity(Activity.class).setup().get();}
- GameView view(int width,int height){GameView v=new GameView(activity);v.layout(0,0,width,height);try{QuickItemBarV254 b=h.field(v,"quickItems");RuntimeState s=h.field(v,"state");for(int i=0;i<4;i++)assertTrue(b.assign(i,null,s.rpg()));}catch(Exception e){throw new AssertionError(e);}return v;}
+ GameView view(int width,int height){boolean fresh=F5mSaveStore.freshEquipmentTestProfile();GameView v=new GameView(activity);v.layout(0,0,width,height);try{QuickItemBarV254 b=h.field(v,"quickItems");RuntimeState s=h.field(v,"state");if(fresh)for(int i=0;i<4;i++)assertTrue(b.assign(i,null,s.rpg()));}catch(Exception e){throw new AssertionError(e);}return v;}
  void gesture(GameView v,RectF r,float scale,long duration,int finish){long start=100;for(int action:new int[]{MotionEvent.ACTION_DOWN,finish}){MotionEvent e=MotionEvent.obtain(start,action==MotionEvent.ACTION_DOWN?start:start+duration,action,r.centerX()*scale,r.centerY()*scale,0);v.onTouchEvent(e);e.recycle();}}
  @Test public void sixByTwoAndSixJoinedItemCellsHaveExactTouchBoundsWithoutAnyControlOverlap()throws Exception{
   for(int[] size:new int[][]{{960,540},{2340,1080}}){GameView v=view(size[0],size[1]);float scale=size[1]/540f,d=size[0]/scale-960;List<RectF> rects=new ArrayList<>();

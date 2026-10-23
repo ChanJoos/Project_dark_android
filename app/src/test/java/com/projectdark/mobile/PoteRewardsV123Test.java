@@ -62,7 +62,7 @@ public class PoteRewardsV123Test {
   @Test public void elementRewardsActuallyEquipAndFallbackShopsSellAllFourPairs()throws Exception{
     RpgProgressionState r=reportReady("C04","MAGE");assertTrue(r.campaign().claim("C04",r));
     assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_NECK_FIRE_PEARL"));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_BELT_FIRE_LEATHER"));
-    assertEquals("화염",r.itemDefinitions().get(r.equipment().get("목걸이")).attackElement);assertEquals("화염",r.itemDefinitions().get(r.equipment().get("벨트")).defenseElement);
+    assertEquals("FIRE",ElementalDamageFormula.normalize(r.itemDefinitions().get(r.equipment().get("목걸이")).attackElement));assertEquals("화염",r.itemDefinitions().get(r.equipment().get("벨트")).defenseElement);
     for(String element:new String[]{"WATER","WIND","EARTH","FIRE"})for(String id:new String[]{"IT_NECK_"+element+"_PEARL","IT_BELT_"+element+"_LEATHER"})assertNotNull(TownCommerce.find(com.projectdark.mobile.world.TownInteriorDef.Kind.EQUIPMENT,id));
   }
   @Test public void journalShowsExactRingAndNamedEquipmentRatherThanOnlyExpGold()throws Exception{
