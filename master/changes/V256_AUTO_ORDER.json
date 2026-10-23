@@ -1,0 +1,26 @@
+{
+  "revision": "V256",
+  "user": "align skill top with potion top; AUTO1..12 circular order without earlier cooldown preemption; current attacked target then4cardinal neighbors",
+  "hud": {
+    "size": 36,
+    "columns": 6,
+    "rows": 2,
+    "origin": [
+      620,
+      438
+    ],
+    "top": "equals MobileHudLayout.potion(0).top"
+  },
+  "auto": {
+    "start": 1,
+    "sequence": "last accepted slot+1 modulo12; skip empty/unavailable; includes registered basic; nonvisual accept advances; deferred approach retains slot index",
+    "target": "live selected actor in current map first, then legal visible cardinal neighbor, then existing ranged/path fallback",
+    "face": "AUTO-only face selected target; skip single facing skill if an intervening actor would replace target; manual facing/ray/LOS contracts unchanged"
+  },
+  "deviceReport": {
+    "status": "DEVICE_FAILED_USER_REPORTED",
+    "installedSource": "UNKNOWN",
+    "scenario": "new nearby/attacking monster appeared to take priority over current monster"
+  },
+  "acceptance": "IMPLEMENTED_CI_PENDING_PHONE_PENDING"
+}

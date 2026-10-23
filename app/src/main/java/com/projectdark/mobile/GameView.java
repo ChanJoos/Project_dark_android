@@ -34,7 +34,7 @@ import java.util.Map;
 public final class GameView extends View {
   private static final float W=960f,H=540f;
   private static final float JOY_X=110f,JOY_Y=374f,JOY_R=58f;
-  private static final float SLOT=36f,SLOT_GAP=3f,SLOT_X0=620f,SLOT_Y0=456f;
+  private static final float SLOT=36f,SLOT_GAP=3f,SLOT_X0=620f,SLOT_Y0=438f;
   private static final float ATK_X=900f,ATK_Y=449f,ATK_R=31f;
   private static final float CHAT_LEFT=14f,CHAT_RIGHT=266f;
   private static final float AUTO_X=854f,AUTO_Y=391f,AUTO_R=16f;
@@ -111,7 +111,8 @@ public final class GameView extends View {
   private float scale=1,ox,oy,vx,vy,hudRightOffset,hudCenterOffset,logicalViewportWidth=W;
   private float knobX=JOY_X,knobY=JOY_Y;
   private final SenseMonsterWindow senseMonsterWindow=new SenseMonsterWindow(getContext());
-  private int autoSkillCursor;
+  private int autoSkillCursor,autoApproachSlot=-1;
+  private long acceptedPlayerActions;
   private boolean joy,running,inventoryOpen,statsOpen,equipmentOpen,autoAttackEnabled,questCollapsed=true,questJournalOpen,innDialogueOpen,chatExpanded;
   private float autoTargetHintClock;
   private final ItemWindow itemWindow;
@@ -374,7 +375,7 @@ public final class GameView extends View {
     tickSkillApproach(0);
     if(skillApproach.skillId!=null)showFeedback(entry.name+" · 사용 가능한 위치로 이동",FeedbackTone.INFO);
   }
-  private void cancelSkillApproach(){if(skillApproach.skillId!=null)activeWorld().cancel();skillApproach.cancel();}
+  private void cancelSkillApproach(){if(skillApproach.skillId!=null)activeWorld().cancel();skillApproach.cancel();autoApproachSlot=-1;}
   private void tickSkillApproach(float dt){
     if(skillApproach.skillId==null)return;skillApproach.age+=Math.max(0,dt);
     RuntimeState.Monster target=findMonster(skillApproach.targetId);SkillBook.Entry entry=skillBook.get(skillApproach.skillId);
@@ -382,7 +383,7 @@ public final class GameView extends View {
     if(activeWorld().presentationMoving()||isActing())return;
     SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
     if((!target.isMoving||rangedSpell(rule))&&skillTargetVisible(target.id)&&SkillApproachController.legal(rule,state.player().x,state.player().y,target.x,target.y)&&activeWorld().hasCombatLineOfSight("player",target.id)){
-      combat.selectTarget(target);cancelSkillApproach();useBookSkillNow(entry,autoAttackEnabled);return;
+      combat.selectTarget(target);int slot=autoApproachSlot;cancelSkillApproach();if(autoAttackEnabled&&slot>=0)tryAutomaticSlot(entry,slot);else useBookSkillNow(entry,autoAttackEnabled);return;
     }
     float tx=target.isMoving?target.moveTargetX:target.x,ty=target.isMoving?target.moveTargetY:target.y;
     WorldMoveTargetController.Snapshot move=activeWorld().movement().snapshot();
@@ -397,23 +398,24 @@ public final class GameView extends View {
     if(!skillBook.jobAllowed(entry.id)){showFeedback(entry.job+" 전용 기술입니다",FeedbackTone.WARN);return;}
     if(!skillBook.usable(entry.id)){showFeedback(skillBook.learned(entry.id)?"이 기술의 전투 효과는 준비 중입니다":"먼저 기술을 습득하세요",FeedbackTone.WARN);return;}
     if(!automatic&&!"SK_도적_002".equals(entry.id))autoAttackEnabled=false;
+    if(automatic&&!prepareAutomaticFacing(entry))return;
     if("SK_공통_001".equals(entry.id)){float remaining=skillActions.cooldown(entry.id);if(remaining>0)showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",remaining),FeedbackTone.WARN);else attack();return;}
     if(RogueSkillPolicy.sense(entry.id)){
       if(isActing()||!state.player().alive)return;
       CombatActionOrchestrator.Submission result=combatSession.submitFacingSense();
-      if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 방향 전방 두 칸 안의 몬스터가 필요합니다",FeedbackTone.WARN);
+      if(result.accepted()){acceptedPlayerActions++;playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 방향 전방 두 칸 안의 몬스터가 필요합니다",FeedbackTone.WARN);
       return;
     }
     if(RogueSkillPolicy.ray(entry.id)){
       if(isActing()||!state.player().alive)return;
       CombatActionOrchestrator.Submission result=combatSession.submitFacingRogueRay(entry.id);
-      if(result.accepted()){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 직선 1~4칸의 몬스터가 필요합니다",FeedbackTone.WARN);
+      if(result.accepted()){acceptedPlayerActions++;playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(Action.SKILL);}else showFeedback("바라보는 직선 1~4칸의 몬스터가 필요합니다",FeedbackTone.WARN);
       return;
     }
     if(MartialSkillPolicy.facingOnly(entry.id)){
       if(isActing()||!state.player().alive)return;
       CombatActionOrchestrator.Submission result=combatSession.submitFacingMartial(entry.id);
-      if(result.accepted()){if(!MartialSkillPolicy.LEAP.equals(entry.id)){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(entry.magic()?Action.CAST:Action.SKILL);}}
+      if(result.accepted()){acceptedPlayerActions++;if(!MartialSkillPolicy.LEAP.equals(entry.id)){playerFacing.beginAttack();activeSkillVisualId=entry.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(entry.id);trigger(entry.magic()?Action.CAST:Action.SKILL);}}
       else showFeedback(result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":"바라보는 방향의 대상 또는 착지 공간이 없습니다",FeedbackTone.WARN);
       return;
     }
@@ -422,7 +424,7 @@ public final class GameView extends View {
       SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(entry.id);
       if(rule.mode.equals("LINKED")||rule.pattern==SkillActionContract.Pattern.PASSIVE){showFeedback(entry.name+" · 기본공격/장착에 적용",FeedbackTone.INFO);return;}
       if(ability==null||!ability.supported()){showFeedback(entry.name+" · 필요한 대상 서비스가 아직 없습니다",FeedbackTone.WARN);return;}
-      if(combatSession.useUtility(entry.id))consumeSkillNotice();else showFeedback(entry.name+" · 자원/쿨타임 조건을 확인하세요",FeedbackTone.WARN);return;
+      if(combatSession.useUtility(entry.id)){acceptedPlayerActions++;consumeSkillNotice();}else showFeedback(entry.name+" · 자원/쿨타임 조건을 확인하세요",FeedbackTone.WARN);return;
     }
     if(entry.runtime==null){showFeedback(entry.name+" · 효과 미확정",FeedbackTone.WARN);return;}
     submitLearnedAction(entry.runtime,entry.magic()?Action.CAST:entry.runtime.effectType==SkillDef.EffectType.KICK_ARC?Action.KICK:Action.SKILL);
@@ -451,7 +453,7 @@ public final class GameView extends View {
     if(isActing()||!state.player().alive)return;
     SkillActionContract.Rule rule=SkillActionContract.get(def.id);boolean self=rule!=null?rule.selfAnchored():def.targetPolicy==SkillDef.TargetPolicy.SELF;if(!self&&!requireTarget())return;
     CombatActionOrchestrator.Submission result=combatSession.submitPlayer(self?RuntimeCombatSession.PLAYER_ID:combat.target().id,def.id);
-    if(result.accepted()){if(!self)snapshotAttackFacingTarget();else playerFacing.beginAttack();activeSkillVisualId=def.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(def.id);trigger(visual);}
+    if(result.accepted()){acceptedPlayerActions++;if(!self)snapshotAttackFacingTarget();else playerFacing.beginAttack();activeSkillVisualId=def.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(def.id);trigger(visual);}
     else showFeedback(result.rejectReason==CombatResolver.RejectReason.NOT_LEARNED?"아직 배우지 않은 기술입니다":result.rejectReason==CombatResolver.RejectReason.RESOURCE?skillResourceFailure(def.id):result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":result.rejectReason==CombatResolver.RejectReason.RANGE?"대상이 사거리 밖에 있습니다":"지금 사용할 수 없습니다",FeedbackTone.WARN);
   }
   private Action actionFor(AttackDef.Kind k){switch(k){case THRUST:return Action.THRUST;case THROW:return Action.THROW;case PUNCH:return Action.PUNCH;default:return Action.SWING;}}
@@ -462,19 +464,19 @@ public final class GameView extends View {
     if(autoHuntQuestId!=null&&hunt==null){autoHuntQuestId=null;autoAttackEnabled=false;combat.clearTarget();autoNavigateCampaign();return;}
 
     RuntimeState.Monster current=combat.target();
-    if(!combat.hasUsableTarget()||(current!=null
-        &&(!campaignHuntTarget(hunt,current)||(navigation!=null&&navigation.status==WorldMoveTargetController.Status.BLOCKED)))){
+    if(!combat.retainsAutoTarget(state)){
       if(autoAcquireWait>0)return;
       RuntimeState.Monster best=bestReachableAutoTarget(hunt);
       if(best==null){autoAcquireWait=.5f;combat.clearTarget();if(autoTargetHintClock<=0f){showFeedback("접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);autoTargetHintClock=3f;}return;}
       combat.selectTarget(best);
       autoTargetHintClock=1f;
     }
-    // Use equipped slots in a fair cycle; skip unavailable actions without disabling AUTO.
+    // Continue after the last accepted slot, never restart at a newly ready earlier slot.
     current=combat.target();
     for(int n=0;n<SkillBook.SLOT_COUNT;n++){
       int index=(autoSkillCursor+n)%SkillBook.SLOT_COUNT;SkillBook.Entry entry=skillBook.get(skillBook.slot(index));
-      if(entry==null||!skillBook.usable(entry.id)||"SK_공통_001".equals(entry.id))continue;
+      if(entry==null||!skillBook.usable(entry.id))continue;
+      if("SK_공통_001".equals(entry.id)){if(combat.attackInRange(state)&&combat.attackReady()&&skillActions.cooldown(entry.id)<=0&&tryAutomaticSlot(entry,index))return;continue;}
       SkillActionContract.Rule rule=SkillActionContract.get(entry.id);SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(entry.id);
       if(rule==null||!rule.presentationAllowed()||ability==null||!ability.supported()||skillActions.cooldown(entry.id)>0)continue;
       if(!skillBook.testAccess()&&state.player().mp<combatSession.effectiveMpCost(entry.id))continue;
@@ -482,8 +484,7 @@ public final class GameView extends View {
       if(!ability.damage()&&!ability.heal()&&state.skillEffects().playerEffects().stream().anyMatch(e->entry.id.equals(e.source)))continue;
       boolean self=rule.selfAnchored();
       if(!self&&(current==null||!SkillActionContract.canStart(rule,state.player().x,state.player().y,current.x,current.y,skillTargetVisible(current.id))||!activeWorld().hasCombatLineOfSight("player",current.id)))continue;
-      useBookSkillNow(entry,true);
-      if(isActing()){autoSkillCursor=(index+1)%SkillBook.SLOT_COUNT;return;}
+      if(tryAutomaticSlot(entry,index))return;
     }
     // A ranged damage loadout waits/casts at spell range rather than walking into melee
     // during cast cadence, a cooling spell, or a missing-resource interval.
@@ -492,10 +493,29 @@ public final class GameView extends View {
       if(entry==null||!skillBook.usable(entry.id)||!skillBook.jobAllowed(entry.id))continue;
       SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
       if(!rangedSpell(rule)||!rule.damage())continue;
-      if(!rule.selfAnchored()&&current!=null&&(!skillTargetVisible(current.id)||!activeWorld().hasCombatLineOfSight("player",current.id))){skillApproach.begin(entry.id,current.id);tickSkillApproach(0);}
+      if(!rule.selfAnchored()&&current!=null&&(!skillTargetVisible(current.id)||!activeWorld().hasCombatLineOfSight("player",current.id))){autoApproachSlot=(autoSkillCursor+n)%SkillBook.SLOT_COUNT;skillApproach.begin(entry.id,current.id);tickSkillApproach(0);}
       return;
     }
     if(combat.attackReady())attack();
+  }
+  private boolean tryAutomaticSlot(SkillBook.Entry entry,int index){
+    if(entry==null||index<0||index>=SkillBook.SLOT_COUNT||!entry.id.equals(skillBook.slot(index)))return false;
+    long before=acceptedPlayerActions;useBookSkillNow(entry,true);
+    if(acceptedPlayerActions==before)return false;
+    autoSkillCursor=(index+1)%SkillBook.SLOT_COUNT;return true;
+  }
+  private boolean prepareAutomaticFacing(SkillBook.Entry entry){
+    if(!RogueSkillPolicy.facingOnly(entry.id)&&!MartialSkillPolicy.facingOnly(entry.id))return true;
+    if(!combat.retainsAutoTarget(state))return false;
+    RuntimeState.Monster target=combat.target();if(!skillTargetVisible(target.id)||!activeWorld().hasCombatLineOfSight("player",target.id))return false;
+    CharacterRenderer.Direction direction=CanonicalActorFacing.quantize(target.x-state.player().x,target.y-state.player().y,playerFacing.presentation());
+    if(RogueSkillPolicy.facingOnly(entry.id)){
+      if(!target.id.equals(RogueSkillPolicy.frontTarget(state,entry.id,direction,this::skillTargetVisible)))return false;
+    }else if(MartialSourceV228.line(entry.id)){
+      SkillActionContract.Rule rule=SkillActionContract.get(entry.id);
+      if(!SkillActionContract.includes(rule,state.player().x,state.player().y,target.x,target.y,target.x,target.y,true))return false;
+    }else if(!target.id.equals(MartialSkillPolicy.frontTarget(state,entry.id,direction,this::skillTargetVisible)))return false;
+    setFacingDirection(target.x-state.player().x,target.y-state.player().y);return true;
   }
   private static boolean rangedSpell(SkillActionContract.Rule rule){return rule!=null&&"마법".equals(rule.kind)&&rule.minReach==0&&(rule.pattern==SkillActionContract.Pattern.SINGLE&&rule.reach==0||rule.pattern==SkillActionContract.Pattern.TARGET_CROSS||rule.pattern==SkillActionContract.Pattern.SCREEN);}
 
@@ -516,6 +536,8 @@ public final class GameView extends View {
   }
   private RuntimeState.Monster bestReachableAutoTarget(){return bestReachableAutoTarget(null);}
   private RuntimeState.Monster bestReachableAutoTarget(CampaignProgress.Def hunt){
+    RuntimeState.Monster preferred=combat.preferredAutoTarget(state,m->campaignHuntTarget(hunt,m)&&skillTargetVisible(m.id)&&activeWorld().hasCombatLineOfSight("player",m.id));
+    if(preferred!=null)return preferred;
     RuntimeState.Monster ranged=null;SkillActionContract.Rule rangedRule=null;float distance=Float.MAX_VALUE;
     for(int i=0;i<SkillBook.SLOT_COUNT;i++){
       SkillBook.Entry e=skillBook.get(skillBook.slot(i));if(e==null||!skillBook.usable(e.id)||!skillBook.jobAllowed(e.id))continue;
@@ -538,6 +560,7 @@ public final class GameView extends View {
     if(!combat.attackInRange(state)){beginCombatApproach(CombatController.Intent.ATTACK);return;}
     RuntimeCombatSession.PlayerActionSubmission result=combatSession.submitPlayerBasicAttack(combat.target().id);
     if(!result.combat.accepted())return;
+    acceptedPlayerActions++;
     activeWorld().cancelForAction();snapshotAttackFacingTarget();combat.commitAttack();trigger(actionFor(def.kind));
   }
 
@@ -768,7 +791,7 @@ public final class GameView extends View {
       if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();reagentShopAdapter.snapCameraToPlayer();checkpoint();}return true;}
       if(MobileHudLayout.quest(hudRightOffset).contains(x,y)){touchQuickQuest(x,y);return true;}
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){merchantApproach=false;attack();return true;}
-      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){merchantApproach=false;cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null)combat.selectTarget(best);}return true;}
+      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){merchantApproach=false;cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled)autoSkillCursor=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null)combat.selectTarget(best);}return true;}
       for(int i=0;i<SkillBook.SLOT_COUNT;i++)if(slotRect(i).contains(x,y)){SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);return true;}
       WorldCameraTransform.Point target=reagentShopAdapter.screenToWorld(x,y);RuntimeState.Monster rat=state.hitMonster(target.x,target.y,18);if(rat!=null&&!isHudSurface(x,y)){merchantApproach=false;reagentShopAdapter.cancelForAction();combat.selectTarget(rat);return true;}
     }
@@ -1169,7 +1192,7 @@ private void drawUtilityRail(Canvas c){
       for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRect(i);if(r.contains(x,y)){pressedControl="SLOT"+i;SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);return true;}}
 
       if(circleHit(x,y,ATK_X+hudRightOffset,ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
-      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
+      if(circleHit(x,y,AUTO_X+hudRightOffset,AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled)autoSkillCursor=0;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
       if(isHudSurface(x,y))return true;
       WorldRuntimeAdapter active=activeWorld();WorldCameraTransform.Point wp=active.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){cancelSkillApproach();combat.cancelApproach();interaction.cancelApproach();active.requestNpcApproach(npc.id);showFeedback("NPC 접근 · "+npc.name,FeedbackTone.INFO);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){cancelSkillApproach();active.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name,FeedbackTone.INFO);return true;}requestGroundMove(x,y);return true;
     case MotionEvent.ACTION_MOVE:if(joy)stick(x,y);return true;

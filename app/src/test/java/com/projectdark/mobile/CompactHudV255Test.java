@@ -14,9 +14,9 @@ public class CompactHudV255Test {
  @Test public void compactGridStaysTenPixelsBesideCenteredResourcesAtBothWidthsAndEveryCornerUsesItsOwnSlot()throws Exception{
   for(int[] size:new int[][]{{960,540},{2340,1080}}){
    GameView v=new GameView(h.c);v.layout(0,0,size[0],size[1]);float scale=size[1]/540f,d=size[0]/scale-960;
-   RectF status=MobileHudLayout.status(d);assertEquals(status.right+10,h.slot(v,0).left,0);assertEquals(531,h.slot(v,11).bottom,0);
+   RectF status=MobileHudLayout.status(d);assertEquals(status.right+10,h.slot(v,0).left,0);assertEquals(513,h.slot(v,11).bottom,0);assertEquals(MobileHudLayout.potion(0,d).top,h.slot(v,0).top,0);
    for(int i=0;i<12;i++){RectF r=h.slot(v,i);assertEquals(36,r.width(),0);assertEquals(36,r.height(),0);assertTrue(r.left>status.right);assertTrue(r.right<869+d);assertTrue(r.bottom<540);
-    assertEquals(h.slot(v,i%6).left,r.left,0);assertEquals(i<6?456:495,r.top,0);
+    assertEquals(h.slot(v,i%6).left,r.left,0);assertEquals(i<6?438:477,r.top,0);
     for(int p=0;p<6;p++)assertFalse(RectF.intersects(r,MobileHudLayout.itemBar(p,d)));
     if(i%6>0)assertEquals(3,r.left-h.slot(v,i-1).right,0);
     for(float[] point:new float[][]{{r.left+1,r.top+1},{r.right-1,r.bottom-1}}){
