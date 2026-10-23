@@ -1,5 +1,7 @@
 # V262 user equipment/HUD revision
 
+**Facing section WITHDRAWN by user rollback V263.** Its two correction policies are historical, not approved current behavior. See [V263](FACING_ROLLBACK_V263.md). The other independent UI/equipment requests remain in effect.
+
 Latest user correction: move the whole6x2 quickskill grid right one cell (39 logical pixels), not1.5. Attack visual radius31→37.2 (+20%). Keep button inside960x540 with no circular overlap against skill cells; input uses the same center. Remove independent equipment utility icon and close the rail gap.
 
 Inventory button opens paired equipment LEFT and bag RIGHT; either close closes both. Preserve source artwork; affine transforms and inverse touch routing share constants. Equipped copies are removed from visible bag quantity; ownership/save map retains total owned quantity and equipment references (no schema change). Duplicate loose copies remain visible. Equipment slot selection and footer unequip return worn copy to bag. Paired item targeting remains explicit.

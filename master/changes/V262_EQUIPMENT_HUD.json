@@ -1,10 +1,12 @@
 {
   "version": "V262",
-  "status": "ACCEPTED",
+  "status": "PARTIALLY_SUPERSEDED_FACING_WITHDRAWN",
   "authority": "Current user requests; overlap correction to one-cell skill shift",
   "hud": "grid+39; attack radius+20%; paired left equipment/right bag; no equipment rail icon",
   "inventory": "visible loose quantity=owned-equipped; stable ownership schema; unequip returns copy",
   "quick": "exact tapped necklace slot exchanges previous necklace",
   "facing": "accepted ranged monster vector; player basic HIT_FEEDBACK aligns actual recipient after side change, never idle/current selection; reproduce both old failures; physical parity pending",
-  "verification": "36 focused native PASS on65330bb0, Actions40032342978, artifact12534704137; old two facing paths reproduced; phone/user acceptance PENDING; see verification/EQUIPMENT_HUD_V262_BUILD.json"
+  "verification": "36 focused native PASS on65330bb0, Actions40032342978, artifact12534704137; old two facing paths reproduced; phone/user acceptance PENDING; see verification/EQUIPMENT_HUD_V262_BUILD.json",
+  "facingStatus": "WITHDRAWN_BY_USER_V263; remove both corrections, use pre-position255a104c direction behavior",
+  "deviceReport": "DEVICE_FAILED_USER_REPORTED with Screen_Recording_20261024_075444.mp4; previous host cases do not certify this handset scenario; root UNKNOWN"
 }

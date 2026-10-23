@@ -11,5 +11,5 @@
   "baseline": "255a104c69cb09bfc4c760d9c0c98210502bae05",
   "runtime": "remove basic contact facing override; restore exact monster AI; no new correction",
   "kept": "independent explicitly requested basic1/2/3, HUD and equipment/necklace changes",
-  "verification": "pending exact-source native/build; handset root UNKNOWN"
+  "verification": "34 scoped native PASS + exact pre-position source guard oneca4d745, Actions40037138309/artifact12538041249; handset video root UNKNOWN, phone acceptance PENDING; verification/FACING_ROLLBACK_V263_BUILD.json"
 }

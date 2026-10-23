@@ -768,10 +768,10 @@
   "app/src/main/java/com/projectdark/mobile/InventoryPairV262.java": "35a0adbb06cbaed72f590ad767745663b2f1282c6acb3bfa6a6fce1108b927cf",
   "app/src/test/java/com/projectdark/mobile/CombatFacingV262Test.java": "1f477cb66026daddf97b08b20e15b20ff91f24171828f5d26377a57519858438",
   "app/src/test/java/com/projectdark/mobile/EquipmentHudV262Test.java": "bc00ae82a741cc38a6ea7b9fee7afdcf308a680322b07ce6e566c7722e3981a1",
-  "design/EQUIPMENT_HUD_V262.md": "1ed3e63beb625f34f6bbc20a7903444d216b0a911989a83afcad3fb20c51b621",
-  "master/changes/V262_EQUIPMENT_HUD.json": "9e7c6f643e42f9b317d333242a2c17a770851984046339505b2a877b88d48e07",
+  "design/EQUIPMENT_HUD_V262.md": "a9a4e2d3f1dbd47e60ead893d783dc812b19cf7b1fbc60f367c66be8490c94d0",
+  "master/changes/V262_EQUIPMENT_HUD.json": "d3b725fb11100cdf98b6493f0cd7b38bfe45b50f0f123c20bf1d7ffc7b74e5c7",
   "design/FACING_ROLLBACK_V263.md": "c22aead85fabae0b4c5e13e0d4729a7331a23e67a990b7efb888950747ef9f1f",
-  "master/changes/V263_FACING_ROLLBACK.json": "4096bf874df17eea5b7e779df6abc1ceafe98c06f35e55fb5c851c121fe5a88b",
+  "master/changes/V263_FACING_ROLLBACK.json": "1567ccb1a911f97b6b7aaef16091c22fc62691e134deb95e600c8b671c2aba20",
   "master/source/items/naver_310542_20261018/.source_01.png.DqGZ3Y": "89b1162c1af4934ae71373ea7b54582c84cb725b4a19c7261adec9f9c037769c",
   "tools/verify_facing_rollback_v263.py": "4a970889afcfbf5aa6b3b18937219b294f3103663aa9a18e2f5f96d6c538a7d2"
 }

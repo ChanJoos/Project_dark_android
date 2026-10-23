@@ -1,3 +1,15 @@
+## V263 — 회귀 요청 준수: 추가 방향 보정 제거 (2026-10-24 KST)
+
+V262는 DEVICE_FAILED_USER_REPORTED. 사용자 영상 Screen_Recording_20261024_075444.mp4(26.378456s,libfile_c07b8f5f1a3c81919c53069a820f5e41,SHA256 7a86278ce9ecd77a2fd995d0934f46b19afd0e3ea585cb8a5168df12a6f0c823) 전체1fps및12~16초6fps/10·14초원본크롭확인. 설치SHA영상내UNKNOWN/최근배포65330bb0. V262의두합성재현과36hostPASS는이영상상황의재현/해결검증이아니다. ROOT CAUSE UNKNOWN,PHONE/USER_VISUAL_ACCEPTANCE PENDING. 회귀요청뒤두보정정책을재추가한것을철회한다.
+
+게임런타임수정은2파일뿐: GameView의기본HIT_FEEDBACK방향덮어쓰기5줄삭제,MonsterAIController를위치피해도입전255a104c원본으로복원. 대체알고리즘없음. AI·CanonicalActorFacing·CombatController·근접계약·CharacterRenderer·SkillBodyRenderer·Pote표시방향·RuntimeCombatSession·CombatResolver등9전체파일과GameView전체전투eventconsumer/9방향·공격메서드,RuntimeState공격/이동및port방향잠금의기준일치확인. 독립적으로요청한기본1/2/3·팝업·HUD·장비/인벤·퀵목걸이교환은보존. V262두보정정책테스트는철회하고밀집선택유지검사는유지;설계/Master에도방향정책WITHDRAWN명시.
+
+소스 `eca4d74515781d01e1758545f739567ef78211c3`, Actions40037138309/job120699289145/artifact12538041249 SUCCESS. 도입전소스일치guard + **34 scoped native checks PASS**(기본1/2/3,기존방향잠금·대기,밀집24개체선택유지,수동/AUTO,추격,저장재시작,기존HUD/장비/목걸이기능). 36→34는거절된V262정책검사2개제거때문이며실패를PASS로재분류하지않았다. scope40037144174 SUCCESS/full compile의도적SKIP. Full/main통합별도.
+
+APK PROJECT_DARK_V263_ROLLBACK.apk / com.projectdark.mobile.v263test / built2026-10-24 08:05:54 KST /106539706bytes. SHA256 `1b3ebd66a99d41bac43cda5acd575de7bf2cbb61d846dadf69c7244ea717dfba`, ZIP `57b29075a8288db965d92abe7b971126106caa244ff903b0d94b92a37eb82b3c`. CRC/hash/embedded source+run/CIv2서명/manifest label/1518 mainasset bytes PASS. Native NW밀집장면sanity검토만했으며사용자기기재현성공또는문제해결로표기하지말것. IMPLEMENTED/BUILD VERIFIED/HOST_SCOPED VERIFIED; 회귀후보이고main41fe6def/PR197미병합. 후속문서HEAD를APK소스로재라벨금지. [영수증](../verification/FACING_ROLLBACK_V263_BUILD.json), [회귀계약](../design/FACING_ROLLBACK_V263.md), [Master](../master/changes/V263_FACING_ROLLBACK.json).
+
+다음: exactV263에서사용자영상과동일한실기기상황확인. 확인전추가방향패치금지;기존전체성장/catalog차단해결주장없음. 통과한동일소스재빌드불필요.
+
 ## V262 — 한 칸 HUD·장비/가방 통합·접촉 방향 검증 후보 (2026-10-24 KST)
 
 사용자 최종수정 반영: 퀵스킬6x2 오른쪽 **한 칸39px**, 공격 크기20% 확대(반경31→37.2)·960px안에서겹침회피. 장비 단독버튼 제거/아이콘간격정리. 가방을 열면 좌측 장비+우측 인벤을 함께 열고 양쪽닫기연동. 착용복사본은 가방 loose quantity에서제외/해제시복귀,중복여분유지. 소유권/schema/원본자산은변경하지않는다. 목걸이는 실제 누른퀵슬롯에기존목걸이를교환하고 센스자동선택도같은경로. 읽기전용/소유검사/거절/재시작보존.
