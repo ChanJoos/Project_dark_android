@@ -98,6 +98,7 @@ public final class F5mSaveStore {
   }
 
   private void writeRuntime(SharedPreferences.Editor edit){
+    edit.putString("monster_elements_v258",MonsterElementsV258.snapshot(runtime).toString());
     RuntimeState.Player p=runtime.player();runtime.horror().record(runtime.currentMapId(),runtime.monsters());edit.putString("horror_castle_v179",runtime.horror().snapshot().toString());
     for(RuntimeState.Monster m:runtime.monsters())if("milles_mouse_proto".equals(m.id)){
       edit.putString("inn_mouse_map",runtime.currentMapId()).putInt("inn_mouse_hp",m.hp)
@@ -113,6 +114,7 @@ public final class F5mSaveStore {
     SharedPreferences p=active.prefs;
     try{String h=p.getString("horror_castle_v179",null);if(h!=null&&r.horror().restore(new org.json.JSONObject(h)))r.restoreHorrorEncounter();}catch(Exception ignored){}
     if(com.projectdark.mobile.world.AbelCoastGeometry.contains(r.currentMapId()))try{String stored=p.getString("abel_encounters_v153",null);if(stored!=null){org.json.JSONObject data=new org.json.JSONObject(stored);if(r.currentMapId().equals(data.getString("map"))){org.json.JSONArray rows=data.getJSONArray("actors");for(int i=0;i<rows.length();i++){org.json.JSONObject row=rows.getJSONObject(i);for(RuntimeState.Monster m:r.monsters())if(m.id.equals(row.getString("id"))){int hp=row.getInt("hp"),mp=row.getInt("mp");if(hp<0||hp>m.maxHp||mp<0||mp>m.maxMp)continue;m.hp=hp;m.mp=mp;m.bossRecovered=row.optBoolean("recovered",false);m.alive=hp>0;m.state=m.alive?RuntimeState.Monster.State.IDLE:RuntimeState.Monster.State.RESPAWN;m.respawnClock=(float)Math.max(0,Math.min(60,row.optDouble("respawn",m.respawnSeconds)));}}}}}catch(Exception ignored){/* Preserve a normal fresh spawn when old/corrupt encounter data cannot be admitted. */}
+    try{String elements=p.getString("monster_elements_v258",null);if(elements!=null)MonsterElementsV258.restore(r,new JSONObject(elements));}catch(Exception ignored){/* Old/corrupt optional pairs retain valid fresh spawn. */}
     boolean oldEast=com.projectdark.mobile.world.AbelTownGeometry.EAST_ID.equals(p.getString("map_id",null))&&com.projectdark.mobile.world.AbelTownGeometry.ID.equals(r.currentMapId());
     if(oldEast||r.currentMapId().equals(p.getString("map_id",null))){
       float x=p.getFloat("player_x",r.player().x)+(oldEast?com.projectdark.mobile.world.AbelTownGeometry.EAST_DX:0),y=p.getFloat("player_y",r.player().y)+(oldEast?com.projectdark.mobile.world.AbelTownGeometry.EAST_DY:0);
@@ -341,4 +343,3 @@ public final class F5mSaveStore {
     copyRpg(staged,r);q.restore(GrowthQuest2.State.COMPLETED,q.currentCount());return true;
   }
 }
-

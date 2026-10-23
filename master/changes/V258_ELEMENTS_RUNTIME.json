@@ -1,0 +1,27 @@
+{
+  "revision": "V258",
+  "user": "apply original element table; every monster natural random attack/defense except supported current mine dark majority; research original",
+  "base": "1e582830db71420acffcb6f93ea1b8da06058b94",
+  "status": "IMPLEMENTED_CI_PHONE_PENDING",
+  "affected": [
+    "app/src/main/java/com/projectdark/mobile/ElementalDamageFormula.java",
+    "app/src/main/java/com/projectdark/mobile/MonsterElementsV258.java",
+    "app/src/main/java/com/projectdark/mobile/RuntimeState.java",
+    "app/src/main/java/com/projectdark/mobile/FinalStats.java",
+    "app/src/main/java/com/projectdark/mobile/RuntimeCombatPortAdapter.java",
+    "app/src/main/java/com/projectdark/mobile/SenseMonsterWindow.java",
+    "app/src/main/java/com/projectdark/mobile/MineHuntMonsters.java",
+    "app/src/main/java/com/projectdark/mobile/F5mSaveStore.java",
+    "app/src/main/java/com/projectdark/mobile/CombatV3PipelineAudit.java",
+    "app/src/test/java/com/projectdark/mobile/ElementsV258Test.java",
+    ".github/workflows/rucesion-town-v156.yml",
+    "app/build.gradle",
+    "master/canonical/Monster_Element_Policy_V258.json",
+    "master/canonical/Element_Runtime_V258.json"
+  ],
+  "verificationPlan": {
+    "feature": "10 new tests:81 exact reference cells,aliases/safety,16pair independence,all active hunting maps,respawn,real necklace/belt/manualAUTO/magic,save/sense",
+    "adjacent": "27 existing auto6/magic7/restart4/equipment3/Abel4/rogue sense3",
+    "broader": "shared combat foundation changes require full integration attempt; common full pipeline retains known catalog-generation gate; no full-pass claim"
+  }
+}

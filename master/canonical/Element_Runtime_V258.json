@@ -1,0 +1,126 @@
+{
+  "revision": "V258",
+  "source": "master/canonical/Element_Reference_V257.json",
+  "sourceTable": "observed_damage",
+  "rows": "defense",
+  "columns": "attack",
+  "order": [
+    "NONE",
+    "WATER",
+    "EARTH",
+    "WIND",
+    "FIRE",
+    "WOOD",
+    "METAL",
+    "DARK",
+    "LIFE"
+  ],
+  "numerators": [
+    [
+      6200,
+      24500,
+      24500,
+      24500,
+      24500,
+      24500,
+      24500,
+      24500,
+      24500
+    ],
+    [
+      3800,
+      6200,
+      18300,
+      11000,
+      6900,
+      9000,
+      5300,
+      13450,
+      13450
+    ],
+    [
+      3800,
+      6900,
+      6200,
+      18300,
+      11000,
+      20000,
+      9000,
+      13450,
+      13450
+    ],
+    [
+      3800,
+      11000,
+      6900,
+      6200,
+      18300,
+      9000,
+      20000,
+      13450,
+      13450
+    ],
+    [
+      3800,
+      18300,
+      11000,
+      6900,
+      6200,
+      5300,
+      9000,
+      13450,
+      13450
+    ],
+    [
+      3800,
+      9000,
+      5300,
+      9000,
+      20000,
+      6200,
+      13000,
+      13450,
+      13450
+    ],
+    [
+      3800,
+      20000,
+      9000,
+      5300,
+      9000,
+      13000,
+      6200,
+      13450,
+      13450
+    ],
+    [
+      3800,
+      8800,
+      8800,
+      8800,
+      8800,
+      8800,
+      8800,
+      6200,
+      16000
+    ],
+    [
+      3800,
+      9800,
+      9800,
+      9800,
+      9800,
+      9800,
+      9800,
+      16000,
+      6200
+    ]
+  ],
+  "denominator": 18300,
+  "rawMeaning": "existing action damage before element/defense is projected as standard four-natural-element advantageous damage",
+  "rounding": "nearest positive integer once using (raw*numerator+9150)/18300; min1 for positive raw; capINT_MAX",
+  "evidence": "U reference; ADAPTED normalization of existing balanced action baselines; no claim original universal raw formula recovered",
+  "discrepancyResolution": "raw observed13000 takes priority for METAL defense / WOOD attack over displayed55% in second table; V257 literal image/table untouched",
+  "unsupportedElement": "fail-neutral while unresolved, not a silently mapped known element",
+  "fixedDamageSkills": "existing fixed-damage bypass preserved; healing/status/poison rules untouched"
+}

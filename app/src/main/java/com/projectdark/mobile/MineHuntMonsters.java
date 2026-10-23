@@ -7,7 +7,7 @@ public final class MineHuntMonsters {
  public static final String[] NAMES={"광산 적발 병사","광산 적발 검병","광산 적발 근위병","그림록퀸","드라코","헬블씨프","헬블루나이트","헬소서러스","헬몽크","헬소서러"};
  public static final int[] HP={150000,170000,190000,240000,360000,260000,320000,210000,280000,310000};
  private static final String[] SPELLS={"","MONSTER_CURSE","MONSTER_VENOM","MONSTER_ROOT","MONSTER_FIRE","MONSTER_BLIND","","MONSTER_FREEZE","","MONSTER_FIRE"};
- private static final String[] ELEMENTS={"EARTH","WATER","WIND","EARTH","LIFE","WIND","FIRE","WATER","FIRE","FIRE"};
+ private static final String[] ELEMENTS={"EARTH","WATER","WIND","EARTH","DARK","DARK","DARK","DARK","DARK","DARK"};
  public static final int COUNT=NAMES.length;
  private static final Map<String,AbelCombatProfile> PROFILES=new LinkedHashMap<>();
  static {for(int t=0;t<COUNT;t++){String s=species(t);PROFILES.put(s,AbelCombatProfile.regional(s,99,HP[t],75+t*9,-30-t*3,18+t*2,ELEMENTS[t],SPELLS[t],1400000+t*120000,800+t*90,1.65f+t*.065f));}}

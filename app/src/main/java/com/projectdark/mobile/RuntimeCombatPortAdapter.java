@@ -180,7 +180,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     CombatStatPipeline.Channel channel=(SkillRuntimeCatalog.magic(actionId)||AbelCombatProfile.spell(actionId))?CombatStatPipeline.Channel.MAGIC:CombatStatPipeline.Channel.PHYSICAL;
     FinalStats attacker=(playerActor?state.rpg().finalStats():monsterStats(actorId)).withEffects(state.skillEffects(),actorId);
     FinalStats defender=("player".equals(targetId)?state.rpg().finalStats():monsterStats(targetId)).withEffects(state.skillEffects(),targetId);
-    if(profile!=null)attacker=attacker.withAttackElement(AbelCombatProfile.element(actionId,profile));
+    if(profile!=null&&AbelCombatProfile.spell(actionId)){String element=actionId.equals("MONSTER_FIRE")?"FIRE":actionId.equals("MONSTER_WATER")?"WATER":actionId.equals("MONSTER_ROOT")?"EARTH":attacker.attackElement;attacker=attacker.withAttackElement(element);}
     if(ability!=null){String element=skillElement(ability);if(!element.isEmpty())attacker=attacker.withAttackElement(element);}
     boolean basic=actionId.startsWith("attack_proto_");
     if(playerActor&&ability!=null){
@@ -236,7 +236,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
         CombatResolver.DefeatedTargetKind.OTHER,CombatResolver.HitSemantic.DAMAGE);
   }
 
-  private FinalStats monsterStats(String actor){AbelCombatProfile p=AbelCombatProfile.forId(actor);return p==null?FinalStats.neutral(100,0):p.stats();}
+  private FinalStats monsterStats(String actor){AbelCombatProfile p=AbelCombatProfile.forId(actor);RuntimeState.Monster m=findMonster(actor);FinalStats stats=p==null?FinalStats.neutral(m==null?100:m.maxHp,0):p.stats();return m==null?stats:stats.withElements(m.attackElement,m.defenseElement);}
   private boolean entityAlive(String id){
     if("player".equals(id))return state.player().alive;
     RuntimeState.Monster monster=findMonster(id);

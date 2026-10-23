@@ -14,13 +14,11 @@ final class SenseMonsterWindow {
  boolean visible(){return lines!=null;}
  void show(RuntimeState state,RuntimeState.Monster m,boolean auto){
   AbelCombatProfile profile=AbelCombatProfile.forId(m.id);AdaptedCampaignRewardCatalog.Reward reward=rewards.find(m.campaignRewardProfileId==null?m.id:m.campaignRewardProfileId);
-  String attack=profile==null?"?":element(profile.element),defense=attack;
-  String species=PoteForestMonsterShowcase.species(m.id);
-  if("LYK_ELECT_KOATL".equals(species)){attack="땅";defense="물";}else if("LYK_TYRANT".equals(species)){attack="물";defense="번개";}
+  String attack=element(m.attackElement),defense=element(m.defenseElement);
   lines=new String[]{"Name: "+m.name+"   EXP: "+(reward!=null?reward.exp:profile!=null?profile.exp:"?"),"HP: "+m.hp,"Lev: "+(m.level>0?m.level:profile!=null?profile.level:"?"),"ATTACK NATURE: "+attack,"DEFENSE NATURE: "+defense};
   automatic=auto;remaining=auto?.3f:Float.POSITIVE_INFINITY;map=state.currentMapId();
  }
- static String element(String e){switch(e){case "FIRE":return "불";case "WATER":return "물";case "EARTH":return "땅";case "WIND":return "바람";case "LIGHTNING":return "번개";case "DARK":return "암흑";case "LIGHT":return "빛";case "NONE":return "무";default:return e;}}
+ static String element(String e){switch(e){case "FIRE":return "불";case "WATER":return "물";case "EARTH":return "땅";case "WIND":return "바람";case "LIGHTNING":return "번개";case "DARK":return "암흑";case "LIGHT":case "LIFE":return "생명";case "WOOD":return "숲";case "METAL":return "강철";case "NONE":return "무";default:return e;}}
  void tick(float dt,RuntimeState s){if(!visible())return;remaining-=Math.max(0,dt);if(remaining<=0||!s.player().alive||!map.equals(s.currentMapId()))close();}
  void close(){lines=null;}
  boolean touch(float x,float y){if(!visible()||automatic)return false;if(confirm.contains(x,y))close();return true;}
