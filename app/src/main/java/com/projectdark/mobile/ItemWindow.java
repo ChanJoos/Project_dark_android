@@ -84,7 +84,7 @@ final class ItemWindow {
   String actionLabel(RpgProgressionState r,RpgProgressionState.ItemDefinition d,boolean equipped){
     if(!RpgProgressionState.pairedSlot(d.equipSlot))return ItemEffects.actionLabel(d,r,equipped);
     String target=targetSlot(r,d);if(target==null)return "장비 선택";
-    String current=r.equipment().get(target);return current==null?"장착":InventoryGroupsV199.equivalent(r,d.itemId,current)?"해제":"교체";
+    String current=r.equipment().get(target);return current==null?"장착":InventoryGroupsV199.equivalent(r,d.itemId,current)?(pairedPanels?"장착 중":"해제"):"교체";
   }
   void comparisonCards(Canvas c,RpgProgressionState r,RpgProgressionState.ItemDefinition d,String target,Visuals v){
     panel(c,new RectF(40,348,467,464),"착용 중인 장비");int count=RpgProgressionState.pairedSlot(d.equipSlot)?2:1;

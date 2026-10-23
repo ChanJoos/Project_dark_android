@@ -3,7 +3,7 @@
   "app/src/main/java/com/projectdark/mobile/DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
   "app/src/main/java/com/projectdark/mobile/DeathVillageRenderer.java": "85b7fa6fd8fdf06508f31a930c1458777d2e551c215c56ab0796811000c5dc66",
   "app/src/main/java/com/projectdark/mobile/DeathVillageTravel.java": "ab75b725f01382ac3c5a1a37e9d921c67376b358c48b71fc0c595b0d23f059d6",
-  "app/src/main/java/com/projectdark/mobile/GameView.java": "14b0f84bd18df413dc68381d38e6a7d84a265fe4b4306254c18c087ffeff5cd3",
+  "app/src/main/java/com/projectdark/mobile/GameView.java": "594349a7f05984208645de88d2d4f52741713204b9b438a7f8c89ef3bb0d417c",
   "app/src/main/java/com/projectdark/mobile/WorldMapWindow.java": "f0a09af71f625971e1ba61e040bf8dd71133426847c51ceb17a680500da31124",
   "app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java": "58fdc062fb29ebc9ba0094a19f47ffde860f07e54776137f81aac20a7684bab8",
   "app/src/main/java/com/projectdark/mobile/world/DeathVillageData.java": "9387373fec0f477f4b0c4350541c4c9b37f25aa250a64d33feb7de899af34e28",
@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "110692d02c587ff20ae2c8205c5c510e37610e618a759999bc234a69ce53df1f",
+  ".github/workflows/rucesion-town-v156.yml": "29982663d7d3fd5d55a589bc8704b4e91b2f54511c91f67ad3763d1a9f59328c",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -764,10 +764,10 @@
   "master/changes/V261_BASIC_ROLLBACK.json": "261a69f9bc391967efde44198d0e9e66365c4c2b90543afadf43cd474d4dc870",
   "design/COMBAT_ROLLBACK_V261.md": "193a9771f067afc845f99e66bd01751fc7eee40345352d577325960dd7dfa9bd",
   "app/src/test/java/com/projectdark/mobile/LinkedTwoHandV170Test.java": "2f4a08c1a80936acfd0578a8683f2d2a63865c7110853754326cac7a3d3e5ea9",
-  "app/src/main/java/com/projectdark/mobile/ItemWindow.java": "dd1e6e0b870ab88f2d81e40b1cb96ab2f9aa1a450b8e6bd2625be6c3d95d4201",
+  "app/src/main/java/com/projectdark/mobile/ItemWindow.java": "22b572fb0f9f5232171e01d17d6acb8dd35ac69c826df40c235aa1d2d2e27f0a",
   "app/src/main/java/com/projectdark/mobile/InventoryPairV262.java": "35a0adbb06cbaed72f590ad767745663b2f1282c6acb3bfa6a6fce1108b927cf",
-  "app/src/test/java/com/projectdark/mobile/CombatFacingV262Test.java": "b6ff79b0ea91684cee0cbbf63d75ecaca4cdbddcb7610df69854b215e05e615c",
+  "app/src/test/java/com/projectdark/mobile/CombatFacingV262Test.java": "b2ebdb2d8eefd37e98807b238b912eacb762ec3cdc85e7ffe27e550f8ffe59f2",
   "app/src/test/java/com/projectdark/mobile/EquipmentHudV262Test.java": "bc00ae82a741cc38a6ea7b9fee7afdcf308a680322b07ce6e566c7722e3981a1",
-  "design/EQUIPMENT_HUD_V262.md": "227023b733fa1ba04e79feafa101261eee82f6cae001415264dd9d3d2cc33f5b",
-  "master/changes/V262_EQUIPMENT_HUD.json": "76a32c1e70cd11628d661584ce55d0be9131d6be12de1e43d5f8e9f19a7b79ee"
+  "design/EQUIPMENT_HUD_V262.md": "1ed3e63beb625f34f6bbc20a7903444d216b0a911989a83afcad3fb20c51b621",
+  "master/changes/V262_EQUIPMENT_HUD.json": "e12f2fcdb2d86d1547f5729e4a8fc835659942fae1f3a04d3c0a01dec892d51f"
 }

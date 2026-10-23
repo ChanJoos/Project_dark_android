@@ -109,22 +109,28 @@ jobs:
           if [[ "$(git log -1 --format=%B)" == *"[equipment-hud-v262]"* ]]; then
             mkdir -p app/build/reports/horror-v179/v262
             cp app/src/main/java/com/projectdark/mobile/MonsterAIController.java /tmp/ai-v262.java
+            cp app/src/main/java/com/projectdark/mobile/GameView.java /tmp/view-v262.java
             git fetch --depth=1 origin adaed0647a9631f70617f59ebad891ca9494be04
             git show adaed0647a9631f70617f59ebad891ca9494be04:app/src/main/java/com/projectdark/mobile/MonsterAIController.java > app/src/main/java/com/projectdark/mobile/MonsterAIController.java
+            git show adaed0647a9631f70617f59ebad891ca9494be04:app/src/main/java/com/projectdark/mobile/GameView.java > app/src/main/java/com/projectdark/mobile/GameView.java
             set +e
-            gradle --no-daemon :app:testDebugUnitTest --tests "*CombatFacingV262Test.rangedMonsterTurnsAtAcceptedAttackEvenWhenCrowdKeepsOldWalkHeading" > app/build/reports/horror-v179/v262/baseline.log 2>&1
+            gradle --no-daemon :app:testDebugUnitTest --tests "*CombatFacingV262Test.rangedMonsterTurnsAtAcceptedAttackEvenWhenCrowdKeepsOldWalkHeading" --tests "*CombatFacingV262Test.basicContactFacesItsActualRecipientAfterItMovesAcrossThePlayer" > app/build/reports/horror-v179/v262/baseline.log 2>&1
             baseline=$?
             set -e
             cp /tmp/ai-v262.java app/src/main/java/com/projectdark/mobile/MonsterAIController.java
+            cp /tmp/view-v262.java app/src/main/java/com/projectdark/mobile/GameView.java
             python3 - "$baseline" <<'PYV262'
           import sys,json,xml.etree.ElementTree as E
           from pathlib import Path
           p=Path('app/build/test-results/testDebugUnitTest/TEST-com.projectdark.mobile.CombatFacingV262Test.xml')
-          root=E.parse(p).getroot();cases=root.findall('testcase');assert len(cases)==1
-          failed=cases[0].find('failure');assert int(sys.argv[1])!=0 and failed is not None,'old AI bug was not reproduced'
-          assert 'expected:<SE> but was:<NW>' in failed.get('message',''),failed.get('message')
-          Path('app/build/reports/horror-v179/v262/baseline-reproduction.json').write_text(json.dumps(dict(source='adaed0647a9631f70617f59ebad891ca9494be04',case=cases[0].get('name'),failure=failed.get('message'),scope='old AI only; reported phone scenario root remains pending'),indent=2))
-          print('V262 old ranged attack stale heading reproduced; final native checks follow')
+          root=E.parse(p).getroot();cases=root.findall('testcase');assert len(cases)==2
+          assert int(sys.argv[1])!=0
+          failures={case.get('name'):case.find('failure').get('message','') for case in cases if case.find('failure') is not None}
+          assert len(failures)==2,failures
+          assert 'expected:<SE> but was:<NW>' in failures['rangedMonsterTurnsAtAcceptedAttackEvenWhenCrowdKeepsOldWalkHeading']
+          assert 'expected:<NW> but was:<SE>' in failures['basicContactFacesItsActualRecipientAfterItMovesAcrossThePlayer']
+          Path('app/build/reports/horror-v179/v262/baseline-reproduction.json').write_text(json.dumps(dict(source='adaed0647a9631f70617f59ebad891ca9494be04',failures=failures,scope='old AI and GameView; actual selected basic recipient moves across actor before contact; physical phone parity pending'),indent=2))
+          print('V262 old ranged heading and player basic contact facing failures reproduced; final native checks follow')
           PYV262
             gradle --no-daemon :app:testDebugUnitTest --tests "*EquipmentHudV262Test" --tests "*CombatFacingV262Test" --tests "*BasicRollbackV261Test" --tests "*CombatNecklaceV259Test" --tests "*AutoOrderTargetV256Test" --tests "*MonsterChasePerformanceTest" --tests "*F5mRestartPersistenceMatrixTest" --tests "*HudItemsV254Test.longPressReassignsAndClearsCancelDoesNotUseAndUnownedOrReadonlyCannotMutate" --tests "*HudItemsV254Test.fourthSlotConsumableUsesOnceRestoresOnNoEffectAndRetainsBindingAfterDepletion" :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[v261-timing-tail]"* ]]; then
