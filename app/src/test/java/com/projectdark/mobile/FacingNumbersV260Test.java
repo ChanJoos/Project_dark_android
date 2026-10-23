@@ -31,7 +31,7 @@ public class FacingNumbersV260Test {
   m.isMoving=true;MonsterCombatFacingV260.track(s,m);assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());m.isMoving=false;
   m.visualFacing.beginAttack(CharacterRenderer.Direction.SE);MonsterCombatFacingV260.track(s,m);assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());m.visualFacing.endAttack();
   for(String effect:new String[]{"SLEEP","AGGRO_RESET"}){s.skillEffects().put(m.id,"qa",effect,1,10);MonsterCombatFacingV260.track(s,m);assertEquals(effect,CharacterRenderer.Direction.SE,m.visualFacing.presentation());s.skillEffects().clear(m.id);}
-  s.skillEffects().put("player","qa","HIDE",1,10);if(s.skillEffects().hidden()){MonsterCombatFacingV260.track(s,m);assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());}s.skillEffects().clear("player");
+  s.skillEffects().put("player","qa","STEALTH",1,10);assertTrue(s.skillEffects().hidden());MonsterCombatFacingV260.track(s,m);assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());s.skillEffects().clear("player");
   assertEquals(200,BasicPositionDamageV259.percent(s.player(),m));assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());
   s.player().x=32;s.player().y=-16;assertEquals(150,BasicPositionDamageV259.percent(s.player(),m));assertEquals(CharacterRenderer.Direction.SE,m.visualFacing.presentation());
  }

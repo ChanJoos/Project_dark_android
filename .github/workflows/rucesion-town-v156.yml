@@ -107,6 +107,7 @@ jobs:
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           if [[ "$(git log -1 --format=%B)" == *"[facing-numbers-v260]"* ]]; then
+            git fetch --depth=1 origin ce02feb82eb1a87f208a428682d25c3abca13b82
             mkdir -p app/build/reports/horror-v179/v260
             cp app/src/main/java/com/projectdark/mobile/MonsterAIController.java /tmp/v260-ai.java
             trap 'cp /tmp/v260-ai.java app/src/main/java/com/projectdark/mobile/MonsterAIController.java' EXIT

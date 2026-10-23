@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "cd7dedf75b8ab510b6849a66d435e7e287103fbb3e1169ebbc88bbc5d52704b0",
+  ".github/workflows/rucesion-town-v156.yml": "88882691efec7932de0b7167acea37a3deb53c8c731faa9fe763f3adff2f22d6",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -756,7 +756,7 @@
   "app/src/main/java/com/projectdark/mobile/MonsterCombatFacingV260.java": "23a291b62320f4b204b86e054e8a10b92f87c657c9de7078254a1b3402b43080",
   "app/src/main/java/com/projectdark/mobile/HitNumbersV260.java": "517d33d2bf642cb49a534dcb649ed8ff94ceb040cbafe96876462cb553635ff2",
   "app/src/main/java/com/projectdark/mobile/OriginalDamageDigitsV260.java": "273c4a6ebdc52641f9d359f173f92b760ae00f71001faeb87adbd325fa05233a",
-  "app/src/test/java/com/projectdark/mobile/FacingNumbersV260Test.java": "39e91964f0835474e000210b47a626b188573402f3cf3266177ba1533932605d",
+  "app/src/test/java/com/projectdark/mobile/FacingNumbersV260Test.java": "fe35eb9a1c2b248ec1df512d7ee2a25b227ab8ffba420e1189359259708c4421",
   "master/changes/V260_FACING_NUMBERS.json": "b14d9769db81caeaf6782426e61992c304883bdc9759f123b958be8b82e7bd04",
   "design/COMBAT_PRESENTATION_V260.md": "0a1aec258a1661399af74add3f638a56f9ede9e6bcf76d5b0d724bd8e5666441"
 }
