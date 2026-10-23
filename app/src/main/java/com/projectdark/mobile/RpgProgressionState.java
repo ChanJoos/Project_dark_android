@@ -306,6 +306,7 @@ public final class RpgProgressionState {
     ExpandedVillageClothingV197.install(this);
     UnifiedItemCatalogV210.install(this);
     RecoveredWearablesV212.install(this);WingShieldV215.install(this);
+    NecklaceElementsV259.install(this);
     installUnifiedAliases();
     for(String id:RecallAssetsV251.LIVE)inventory.putIfAbsent(id,1);
     for(String id:ExpandedVillageClothingV197.IDS)inventory.put(id,1);
@@ -333,6 +334,7 @@ public final class RpgProgressionState {
   }
 
   /** One authoritative definition; retained IDs are compatibility aliases, not separate equipment. */
+  void installNecklaceElement(String id,String element){ItemDefinition d=items.get(id);if(d==null||!"목걸이".equals(d.equipSlot))return;items.put(id,new ItemDefinition(id,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,d.requiredLevel,d.allowedJobCodes,d.jobRestrictionResolved,element,d.defenseElement,d.statModifiers,d.evidence));}
   void registerUnifiedItem(String id,String name,String slot,String appearance,Integer level,Map<String,Integer> source,Evidence evidence,boolean inventoryOnly){
     ItemDefinition old=items.get(id);
     Map<String,Integer> values=source.isEmpty()&&old!=null?old.statModifiers:source;
@@ -345,6 +347,12 @@ public final class RpgProgressionState {
     // These unidentified original silhouettes had invented DEX/AC. Keep source art, remove invented numbers.
     for(ItemDefinition d:new ArrayList<>(items.values()))if(d.name.startsWith("이름 미확인"))
       items.put(d.itemId,new ItemDefinition(d.itemId,d.name,d.equipSlot,d.appearanceId,d.basicAttackAction,null,Collections.emptySet(),false,null,null,Collections.emptyMap(),Evidence.PENDING));
+    // Element facts follow verified ID aliases independently of unresolved job restrictions.
+    for(Map.Entry<String,String> e:EquipmentIdentityV210.ALIASES.entrySet()){
+      ItemDefinition legacy=items.get(e.getKey()),target=items.get(e.getValue());
+      if(legacy!=null&&target!=null&&"목걸이".equals(target.equipSlot)&&target.attackElement==null&&legacy.attackElement!=null)
+        items.put(target.itemId,new ItemDefinition(target.itemId,target.name,target.equipSlot,target.appearanceId,target.basicAttackAction,target.requiredLevel,target.allowedJobCodes,target.jobRestrictionResolved,legacy.attackElement,target.defenseElement,target.statModifiers,target.evidence));
+    }
     // Canonical source rows may omit restrictions already verified on an original legacy
     // registration. Carry those facts across the ID join before retiring the registration.
     // Synthetic campaign/training conditions must never become original item authority.
@@ -553,7 +561,7 @@ public final class RpgProgressionState {
     return RequirementResult.MET;
   }
 
-  public RequirementResult currentRequirements(String itemId){itemId=canonicalItemId(itemId);if(inventoryOnlyItem(itemId))return RequirementResult.PENDING;if(equipmentSandbox&&items.containsKey(itemId)&&items.get(itemId).equippable())return RequirementResult.MET;return evaluateRequirements(itemId,currentJobCode,normalLevel);}
+  public RequirementResult currentRequirements(String itemId){itemId=canonicalItemId(itemId);if(inventoryOnlyItem(itemId))return RequirementResult.PENDING;if(StarterNecklacesV259.allowed(itemId)&&items.containsKey(itemId))return RequirementResult.MET;if(equipmentSandbox&&items.containsKey(itemId)&&items.get(itemId).equippable())return RequirementResult.MET;return evaluateRequirements(itemId,currentJobCode,normalLevel);}
 
   /**
    * Consumes combat events exactly once. Unknown monster reward mapping produces an explicit PENDING result.
@@ -784,5 +792,3 @@ public final class RpgProgressionState {
   private void trimRewardHistory(){while(rewardHistory.size()>48)rewardHistory.remove(0);}
   private static int value(Map<String,Integer> map,String key){Integer v=map.get(key);return v==null?0:v;}
 }
-
-

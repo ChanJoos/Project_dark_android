@@ -19,6 +19,11 @@ final class QuickItemBarV254 {
   context=c;prefs=c.getSharedPreferences(PREFS,0);
   try{JSONArray a=new JSONArray(prefs.getString("slots","[null,null,null,null]"));if(a.length()==4)for(int i=0;i<4;i++)if(!a.isNull(i))slots[i]=RpgProgressionState.canonicalItemId(a.getString(i));}catch(Exception ignored){}
  }
+ boolean seedFresh(String[] ids,RpgProgressionState rpg){
+  if(prefs.contains("slots"))return true;if(ids.length!=4||!F5mSaveStore.writable())return false;
+  JSONArray a=new JSONArray();for(String id:ids){if(id!=null&&(!eligible(id,rpg)||rpg.inventory().getOrDefault(id,0)<=0))return false;a.put(id==null?JSONObject.NULL:id);}
+  if(!prefs.edit().putString("slots",a.toString()).commit())return false;System.arraycopy(ids,0,slots,0,4);return true;
+ }
  String slot(int i){return i>=0&&i<4?slots[i]:null;}
  boolean assign(int i,String id,RpgProgressionState rpg){
   if(i<0||i>=4||!F5mSaveStore.writable())return false;

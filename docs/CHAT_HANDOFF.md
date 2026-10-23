@@ -1,3 +1,7 @@
+## V259 — 기본 공격 위치 배율·센스 목걸이 (구현, 검증 대기)
+
+사용자 확정 계약: [V259 설계](../design/COMBAT_NECKLACE_V259.md), master/changes/V259_SENSE_NECKLACE.json. 기본 정면100/측면150/후면200, 더블/트리플 실제 타수 유지. 센스 성공→퀵아이템4칸 소유·착용가능·확인속성 목걸이 표 순위 선택; 불리한 교체 없음. 신규 수크리스탈 착용+화/토/풍 슬롯, 기존저장 보존. source139 explicit mappings+alias element propagation, FX목걸이1종 UNKNOWN 유지. 몬스터 V258리젠/광산DARK예외 보존. 공유기본공격/장비기반 변경으로 focused 후 common full 시도. BUILD/HOST/PHONE PENDING; 기존 PR197, main41fe6def 미병합후보. 이후 정확SHA/run/APK근거로 갱신.
+
 ## V258 — 속성표 실제 대미지·모든 몬스터 공방 속성 적용 (2026-10-24 KST)
 
 [설계](../design/ELEMENT_SYSTEM_V258.md), [대미지 투영](../master/canonical/Element_Runtime_V258.json), [몬스터 정책](../master/canonical/Monster_Element_Policy_V258.json). V257원시표81조합/18300을 기본 유리상성 기준으로 정규화(U표+ADAPTED기존raw연결),한번반올림/양수최소1/포화. 기존무속1.0·생암1.75·목금중립 임시값 폐기. 원시13000 우선으로55%불일치 처리,원본사진/243셀전사보존. 고정피해/회복/상태/명시속성마법 계약유지. 수동/AUTO 같은CombatStatPipeline.

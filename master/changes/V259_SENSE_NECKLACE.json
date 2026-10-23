@@ -1,0 +1,1155 @@
+{
+  "version": "V259",
+  "status": "ACCEPTED",
+  "evidenceClass": "U+SOURCE_REPAIR+ADAPTED_STARTER",
+  "before": {
+    "basicDirection": "no explicit positional multiplier",
+    "sense": "display only",
+    "starter": "no necklace shortcut kit",
+    "alias": "element copied only with job restriction resolution"
+  },
+  "after": {
+    "basic": {
+      "front": 100,
+      "side": 150,
+      "rear": 200,
+      "scope": "player basic hit only; evaluated per contact; existing learned extra hit resolver unchanged"
+    },
+    "sense": {
+      "trigger": "successful SENSE_MONSTER notice only",
+      "candidates": "four registered quickitem slots, owned, eligible, known necklace element",
+      "rank": "V257/V258 observed damage table; current equipment included; strictly better only; no toggle/downgrade",
+      "waterDefense": [
+        "EARTH",
+        "WIND",
+        "FIRE",
+        "WATER"
+      ]
+    },
+    "starter": {
+      "equipped": "WATER crystal",
+      "quickItems": [
+        "FIRE crystal",
+        "EARTH crystal",
+        "WIND crystal",
+        null
+      ],
+      "existingSave": "preserve user choices",
+      "userException": "only these four canonical starter crystals equippable at starting level; original requiredLevel11/stats retained"
+    },
+    "monsters": "V258 independent natural4 attack/defense re-roll only on spawn/successful respawn; fixed mine DARK exceptions retained; no invented LIFE"
+  },
+  "mappings": [
+    {
+      "id": "USER_ITEM_20261018_R01268",
+      "name": "흑요석프리스트목걸이(화)",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1268,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01269",
+      "name": "흑요석프리스트목걸이(풍)",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1269,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01270",
+      "name": "흑요석프리스트목걸이(토)",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1270,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01271",
+      "name": "흑요석프리스트목걸이(수)",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1271,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01280",
+      "name": "흑요석워리어목걸이(화)",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1280,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01281",
+      "name": "흑요석워리어목걸이(풍)",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1281,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01282",
+      "name": "흑요석워리어목걸이(토)",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1282,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01283",
+      "name": "흑요석워리어목걸이(수)",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1283,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01292",
+      "name": "흑요석소서러목걸이(화)",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1292,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01293",
+      "name": "흑요석소서러목걸이(풍)",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1293,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01294",
+      "name": "흑요석소서러목걸이(토)",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1294,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01295",
+      "name": "흑요석소서러목걸이(수)",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1295,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01304",
+      "name": "흑요석몽크목걸이(화)",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1304,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01305",
+      "name": "흑요석몽크목걸이(풍)",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1305,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01306",
+      "name": "흑요석몽크목걸이(토)",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1306,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01307",
+      "name": "흑요석몽크목걸이(수)",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1307,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01316",
+      "name": "흑요석로그목걸이(화)",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1316,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01317",
+      "name": "흑요석로그목걸이(풍)",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1317,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01318",
+      "name": "흑요석로그목걸이(토)",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1318,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01319",
+      "name": "흑요석로그목걸이(수)",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1319,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01365",
+      "name": "화염의크리스탈목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1365,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01366",
+      "name": "화염의칸나목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1366,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01367",
+      "name": "화염의진주목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1367,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01368",
+      "name": "화염의젬스필목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1368,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01369",
+      "name": "화염의제니아목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1369,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01370",
+      "name": "화염의잼스톤목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1370,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01372",
+      "name": "화염의자수정목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1372,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01374",
+      "name": "화염의올리브목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1374,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01378",
+      "name": "화염의별목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1378,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01379",
+      "name": "화염의벽옥목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1379,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01381",
+      "name": "화염의목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1381,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01382",
+      "name": "화염의마기아목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1382,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01383",
+      "name": "화염의룬스톤목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1383,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R01385",
+      "name": "화염의금옥목걸이",
+      "element": "FIRE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 1385,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R02158",
+      "name": "철금의칸나목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 2158,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R02159",
+      "name": "철금의젬스필목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 2159,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R02160",
+      "name": "철금의제니아목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 2160,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R02162",
+      "name": "철금의올리브목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 2162,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R02888",
+      "name": "암흑의목걸이1",
+      "element": "DARK",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 2888,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03041",
+      "name": "숲의칸나목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3041,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03042",
+      "name": "숲의진주목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3042,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03043",
+      "name": "숲의젬스필목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3043,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03044",
+      "name": "숲의제니아목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3044,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03045",
+      "name": "숲의잼스톤목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3045,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03047",
+      "name": "숲의자수정목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3047,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03048",
+      "name": "숲의올리브목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3048,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03049",
+      "name": "숲의벽옥목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3049,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03050",
+      "name": "숲의마기아목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3050,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03051",
+      "name": "숲의금옥목걸이",
+      "element": "WOOD",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3051,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03547",
+      "name": "생명의목걸이1",
+      "element": "LIFE",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3547,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03851",
+      "name": "바람의크리스탈목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3851,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03852",
+      "name": "바람의칸나목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3852,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03853",
+      "name": "바람의진주목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3853,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03854",
+      "name": "바람의젬스필목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3854,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03855",
+      "name": "바람의제니아목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3855,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03856",
+      "name": "바람의잼스톤목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3856,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03858",
+      "name": "바람의자수정목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3858,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03860",
+      "name": "바람의올리브목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3860,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03864",
+      "name": "바람의별목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3864,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03865",
+      "name": "바람의벽옥목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3865,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03867",
+      "name": "바람의목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3867,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03868",
+      "name": "바람의마기아목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3868,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03869",
+      "name": "바람의룬스톤목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3869,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03871",
+      "name": "바람의금옥목걸이",
+      "element": "WIND",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3871,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03878",
+      "name": "바다의크리스탈목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3878,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03879",
+      "name": "바다의칸나목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3879,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03880",
+      "name": "바다의진주목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3880,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03881",
+      "name": "바다의젬스필목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3881,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03882",
+      "name": "바다의제니아목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3882,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03883",
+      "name": "바다의잼스톤목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3883,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03885",
+      "name": "바다의자수정목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3885,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03887",
+      "name": "바다의올리브목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3887,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03891",
+      "name": "바다의별목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3891,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03892",
+      "name": "바다의벽옥목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3892,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03894",
+      "name": "바다의목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3894,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03895",
+      "name": "바다의마기아목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3895,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03896",
+      "name": "바다의룬스톤목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3896,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R03898",
+      "name": "바다의금옥목걸이",
+      "element": "WATER",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 3898,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05212",
+      "name": "대지의크리스탈목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5212,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05213",
+      "name": "대지의칸나목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5213,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05214",
+      "name": "대지의진주목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5214,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05215",
+      "name": "대지의젬스필목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5215,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05216",
+      "name": "대지의제니아목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5216,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05217",
+      "name": "대지의잼스톤목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5217,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05219",
+      "name": "대지의자수정목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5219,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05221",
+      "name": "대지의올리브목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5221,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05225",
+      "name": "대지의별목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5225,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05226",
+      "name": "대지의벽옥목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5226,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05228",
+      "name": "대지의목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5228,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05229",
+      "name": "대지의마기아목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5229,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05230",
+      "name": "대지의룬스톤목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5230,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05232",
+      "name": "대지의금옥목걸이",
+      "element": "EARTH",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5232,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05532",
+      "name": "강철의진주목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5532,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05533",
+      "name": "강철의잼스톤목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5533,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05534",
+      "name": "강철의자수정목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5534,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05535",
+      "name": "강철의벽옥목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5535,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05536",
+      "name": "강철의마기아목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5536,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "USER_ITEM_20261018_R05537",
+      "name": "강철의금옥목걸이",
+      "element": "METAL",
+      "source": "master/source/items/user_master_20261018/items_02_Sheet1.csv",
+      "sourceRow": 5537,
+      "kind": "EXPLICIT_SOURCE_ELEMENT_NAME"
+    },
+    {
+      "id": "IT_SOURCE_197_KAENNEKU_584513F2",
+      "name": "화염의목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_KAZENEKU_2DB6010B",
+      "name": "바람의목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_DAICHINEKU_E75BD4C9",
+      "name": "대지의목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_UMINEKU_D2A72A12",
+      "name": "바다의목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_KIN-KAEN_4D647A6B",
+      "name": "화염의금목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_KIN-KAZE_71BFBAEC",
+      "name": "바람의금목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_KIN-DAICHI_158A1DC4",
+      "name": "대지의금목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_KIN-UMI_CAB975EA",
+      "name": "바다의금목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_NECK_FIRE_PEARL",
+      "name": "화염의진주목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_NECK_WIND_PEARL",
+      "name": "바람의진주목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_NECK_EARTH_PEARL",
+      "name": "대지의진주목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_NECK_WATER_PEARL",
+      "name": "바다의진주목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_SUISHOU-KAEN_80452A02",
+      "name": "화염의자수정목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_SUISHOU-KAZE_F0E7357B",
+      "name": "바람의자수정목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_SUISHOU-DAICHI_4D70A2AD",
+      "name": "대지의자수정목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_SUISHOU-UMI_60179756",
+      "name": "바다의자수정목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_HI_HEKIGEKU_361934BE",
+      "name": "화염의벽옥목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_HEKIGYOKU-KAZE_C3FC5734",
+      "name": "바람의벽옥목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_DAITI_HEKIGYOKU_7D05B7DB",
+      "name": "대지의벽옥목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_MIZU_HEKIGYOKU_7B2382B5",
+      "name": "바다의벽옥목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_MAGIRA_HI_3C371C7E",
+      "name": "화염의마기라목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_MAGIRA_KAZE_E3B6280F",
+      "name": "바람의마기라목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_MAGIRA_TI_01801011",
+      "name": "대지의마기라목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_MAGIRA_UMI_8EB93900",
+      "name": "바다의마기라목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_DAITINORU-NSUTO-NNEKKURESU_1970651C",
+      "name": "대지의룬스톤목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_ZEMSTONE_HI_62C3AF8C",
+      "name": "화염의잼스톤목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_ZEMSTONE_KAZE_88EE1EDC",
+      "name": "바람의잼스톤목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_ZEMSTONE_TI_5D6A1048",
+      "name": "대지의잼스톤목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_ZEMSTONE_UMI_62F2D328",
+      "name": "바다의잼스톤목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_HICRYSTAL_A94FCE06",
+      "name": "화염의크리스탈목걸이",
+      "element": "화염",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B",
+      "name": "바람의크리스탈목걸이",
+      "element": "바람",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_TICRYSTAL_A90E7D50",
+      "name": "대지의크리스탈목걸이",
+      "element": "대지",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_UMICRYSTAL_21B5EDA7",
+      "name": "바다의크리스탈목걸이",
+      "element": "바다",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_DARKNECK_38E272A2",
+      "name": "암흑의목걸이",
+      "element": "암흑",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_HIKARINECK_CE1F9258",
+      "name": "생명의목걸이",
+      "element": "생명",
+      "source": "https://w.atwiki.jp/takesi100/pages/197.html",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_MINIMOB_1",
+      "name": "숲의잼스톤목걸이",
+      "element": "숲",
+      "source": "https://minimob.tistory.com/99",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_MINIMOB_2",
+      "name": "흑요석워리어목걸이(수)",
+      "element": "바다",
+      "source": "https://minimob.tistory.com/99",
+      "kind": "EXISTING_REVIEWED_ELEMENT"
+    },
+    {
+      "id": "IT_SOURCE_197_KANNEKU_56B04FF1",
+      "name": "칸의목걸이",
+      "element": "NONE",
+      "source": "https://lod.nexon.com/board/1493172227/6222",
+      "kind": "SOURCE_NON_ELEMENT_BASE"
+    },
+    {
+      "id": "IT_SOURCE_197_CRYSTAL_5911EC0D",
+      "name": "크리스탈목걸이",
+      "element": "NONE",
+      "source": "https://lod.nexon.com/board/1493172227/6222",
+      "kind": "SOURCE_EXPLICIT_NON_ELEMENT"
+    },
+    {
+      "id": "USER_ITEM_20261018_R02205",
+      "name": "진주목걸이",
+      "element": "NONE",
+      "source": "https://lod.nexon.com/board/1493172227/7672",
+      "kind": "SOURCE_EXPLICIT_NON_ELEMENT"
+    },
+    {
+      "id": "USER_ITEM_20261018_R02359",
+      "name": "자수정목걸이",
+      "element": "NONE",
+      "source": "https://lod.nexon.com/board/1493172227/7672",
+      "kind": "SOURCE_EXPLICIT_NON_ELEMENT"
+    }
+  ],
+  "pending": [
+    {
+      "id": "IT_SOURCE_MINIMOB_5",
+      "name": "쥬얼십자가목걸이FX",
+      "reason": "Original observed article records HIT10/DAM10 but no attack nature; keep unknown, exclude automatic selector",
+      "source": "https://minimob.tistory.com/99"
+    }
+  ],
+  "sourcePreservation": "No changes to source92CSV, Sources.csv, original image/table or source requirement/stat bytes",
+  "implementation": [
+    "app/src/main/java/com/projectdark/mobile/NecklaceElementsV259.java",
+    "app/src/main/java/com/projectdark/mobile/BasicPositionDamageV259.java",
+    "app/src/main/java/com/projectdark/mobile/SenseNecklaceV259.java",
+    "app/src/main/java/com/projectdark/mobile/StarterNecklacesV259.java",
+    "app/src/main/java/com/projectdark/mobile/RpgProgressionState.java",
+    "app/src/main/java/com/projectdark/mobile/QuickItemBarV254.java",
+    "app/src/main/java/com/projectdark/mobile/GameView.java",
+    "app/src/main/java/com/projectdark/mobile/RuntimeCombatPortAdapter.java",
+    "app/src/main/java/com/projectdark/mobile/MonsterElementsV258.java",
+    "app/src/main/java/com/projectdark/mobile/SenseMonsterWindow.java",
+    "app/src/test/java/com/projectdark/mobile/EquipmentFoundationV124Test.java",
+    "app/src/test/java/com/projectdark/mobile/HudItemsV254Test.java",
+    "app/src/test/java/com/projectdark/mobile/CombatNecklaceV259Test.java",
+    "app/build.gradle",
+    ".github/workflows/rucesion-town-v156.yml"
+  ],
+  "verification": {
+    "focused": [
+      "CombatNecklaceV259Test",
+      "ElementsV258Test",
+      "AutoOrderTargetV256Test",
+      "HudItemsV254Test",
+      "EquipmentFoundationV124Test",
+      "RogueRepairV232Test",
+      "F5mRestartPersistenceMatrixTest",
+      "MagicRuntimeV137Test"
+    ],
+    "fullTrigger": "shared basic combat and RpgProgressionState element alias foundation",
+    "phone": "PENDING"
+  }
+}

@@ -16,7 +16,7 @@ public class EquipmentFoundationV124Test {
  static int hit(RuntimeState s){RuntimeState.Monster m=s.monsters().get(0);int before=m.hp;port(s).applyDamage("player",m.id,"attack_proto_swing",8);return before-m.hp;}
  @Test public void actualWeaponHitAndHitsToKillChange(){
   RuntimeState s=new RuntimeState();RpgProgressionState r=s.rpg();r.bindTwoHandLearning(()->true);RuntimeState.Monster m=s.monsters().get(0);
-  int hp=m.maxHp;int mokdo=hit(s);m.hp=hp;m.alive=true;
+  m.visualFacing.setLocomotion(CanonicalActorFacing.quantize(s.player().x-m.x,s.player().y-m.y,CharacterRenderer.Direction.SE));int hp=m.maxHp;int mokdo=hit(s);m.hp=hp;m.alive=true;
   assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_TEST_WEAPON_MW002"));
   int epe=hit(s);assertEquals(Math.min(hp,6),epe);assertTrue(epe>mokdo);
   assertTrue((hp+epe-1)/epe < (hp+mokdo-1)/mokdo);

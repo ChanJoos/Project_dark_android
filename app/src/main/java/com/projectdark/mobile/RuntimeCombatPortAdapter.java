@@ -188,6 +188,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
       if(!ability.fixed()&&state.skillEffects().has(actorId,"ELEMENT_BOOST"))amount=safeScale(amount,1.2);
       if(!ability.fixed())amount=CombatStatPipeline.resolveSkill(amount,channel,attacker,defender).applied;
     }else amount=(profile!=null&&AbelCombatProfile.spell(actionId)?CombatStatPipeline.resolveSkill(amount,channel,attacker,defender):CombatStatPipeline.resolve(amount,channel,attacker,defender)).applied;
+    if(playerActor&&basic)amount=BasicPositionDamageV259.apply(amount,state.player(),findMonster(targetId));
     if(playerActor&&basic){if(state.skillEffects().has(actorId,"BASIC_POWER")&&abilities.random.getAsDouble()<.3)amount=safeScale(amount,2);}
     SkillEffectState fx=state.skillEffects();
     // Reflection redirects the computed incoming hit once, before other immunity; never recurses.

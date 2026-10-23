@@ -14,7 +14,7 @@ final class SenseMonsterWindow {
  boolean visible(){return lines!=null;}
  void show(RuntimeState state,RuntimeState.Monster m,boolean auto){
   AbelCombatProfile profile=AbelCombatProfile.forId(m.id);AdaptedCampaignRewardCatalog.Reward reward=rewards.find(m.campaignRewardProfileId==null?m.id:m.campaignRewardProfileId);
-  String attack=element(m.attackElement),defense=element(m.defenseElement);
+  String attack=element(m.attackElement),defense=element(MonsterElementsV258.effectiveDefense(state,m));
   lines=new String[]{"Name: "+m.name+"   EXP: "+(reward!=null?reward.exp:profile!=null?profile.exp:"?"),"HP: "+m.hp,"Lev: "+(m.level>0?m.level:profile!=null?profile.level:"?"),"ATTACK NATURE: "+attack,"DEFENSE NATURE: "+defense};
   automatic=auto;remaining=auto?.3f:Float.POSITIVE_INFINITY;map=state.currentMapId();
  }

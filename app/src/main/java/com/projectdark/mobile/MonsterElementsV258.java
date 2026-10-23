@@ -5,6 +5,7 @@ import org.json.*;
 public final class MonsterElementsV258 {
  private static final String[] NATURAL={"WATER","EARTH","WIND","FIRE"};
  private MonsterElementsV258(){}
+ public static String effectiveDefense(RuntimeState s,RuntimeState.Monster m){return s.skillEffects().has(m.id,"CHANGE_ELEMENT")?"FIRE":m.defenseElement;}
  public static boolean darkMine(String id){if(id==null||!id.startsWith("MINE_")||id.length()<7)return false;try{int t=Integer.parseInt(id.substring(5,7));return t>=4&&t<=9;}catch(NumberFormatException e){return false;}}
  public static boolean natural(String e){return "WATER".equals(e)||"EARTH".equals(e)||"WIND".equals(e)||"FIRE".equals(e);}
  static void spawn(RuntimeState.Monster m){assign(m,ThreadLocalRandom.current().nextInt(4),ThreadLocalRandom.current().nextInt(4));}
