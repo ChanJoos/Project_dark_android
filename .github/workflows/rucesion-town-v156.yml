@@ -107,7 +107,13 @@ jobs:
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
           if [[ "$(git log -1 --format=%B)" == *"[town-navigation-v244]"* ]]; then
+            if [[ "$(git log -1 --format=%B)" == *"[v244-recall-tail]"* ]]; then
+              git fetch --depth=1 origin b89d796be959aad92dcc26656e459128e77ec0d5
+              git diff --exit-code b89d796be959aad92dcc26656e459128e77ec0d5 HEAD -- app/src/main app/build.gradle
+              gradle --no-daemon :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests 'com.projectdark.mobile.TownNavigationV244Test.recallFromDeepTempleLeavesAllInteriorLayersAndDeadOrUnknownCannotConsume' :app:assembleDebug
+            else
             gradle --no-daemon :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests '*TownNavigationV244Test' --tests '*GroundTapPathTest' --tests '*RuntimeCheckpointTest' --tests '*ForestFloorCacheTest' :app:assembleDebug
+            fi
           elif [[ "$(git log -1 --format=%B)" == *"[mage-circle3-cross-v243]"* ]]; then
             git fetch --depth=1 origin 68dfb93ec466e0caeaa240d0033043a095db2890
             python3 tools/check_mage_v243.py
@@ -606,6 +612,7 @@ jobs:
           if '[mage-circle4-v242]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V242 four original EFA circle4 sequences, exact RGB565/frameinterval/foot/fullbounds;4normal singles and4screen casts, oneMPcharge, contact death/visibility recheck; retained basic4,14promotion contacts and adjacent contact; phone visual pending'
           if '[v242-scanline-tail]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V242 final source isolated earth scanline display correction; final2native all-source frame/pixel/timing/alias bounds and earthnormal SINGLE/SCREEN; reuse unchanged first8cases from39870628943 through exact runtime delta guard; phone visual pending'
           if '[v243-empty-cast-tail]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V243 final runtime identical to e7c3c075;16native PASS reused from39876160476 via strict appmain/build.gradle guard; final8empty/noMP cast pairs rerun after test oracle corrected to existing no-recipient rejection; normal4single/8cross/pairedfinaldamage/source36pixel+blend/timing/contact/basic4/circle4/promotion/adjacent/spatial verified; phone pending'
+          if '[town-navigation-v244]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V244 Milles46,39 startup/recall/NPC arrival;6town recall inventory use, all-map overview and live entrance paths; final deep-temple/dead/no-consume test after inventory baseline oracle correction; strict unchanged appmain/build.gradle guard reuses25passed tests fromb89d796/run39887958748; phone pending'
           Path('delivery/build_evidence.json').write_text(json.dumps(report,indent=2)+'\n')
           print(json.dumps(report))
           PY

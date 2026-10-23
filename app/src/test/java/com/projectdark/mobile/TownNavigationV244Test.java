@@ -34,7 +34,7 @@ public class TownNavigationV244Test {
  }
  @Test public void recallFromDeepTempleLeavesAllInteriorLayersAndDeadOrUnknownCannotConsume()throws Exception{
   GameView v=view();RuntimeState s=state(v);f.call(v,"enterTownInterior",new Class<?>[]{TownInteriorDef.class},TownInteriorDef.forMap("milles_interior_temple_seo"));
-  String id="IT_RECALL_MILLES";s.rpg().autoLootResolvedItem(id,2);s.player().alive=false;assertEquals(RpgProgressionState.UseResult.NO_EFFECT,s.rpg().useRecall(id,s));assertEquals(2,s.rpg().inventory().get(id).intValue());assertFalse(s.rpg().isRecall("unknown"));s.player().alive=true;
+  String id="IT_RECALL_MILLES";s.rpg().autoLootResolvedItem(id,2);int before=s.rpg().inventory().get(id);s.player().alive=false;assertEquals(RpgProgressionState.UseResult.NO_EFFECT,s.rpg().useRecall(id,s));assertEquals(before,s.rpg().inventory().get(id).intValue());assertFalse(s.rpg().isRecall("unknown"));s.player().alive=true;
   RpgInteractionController ui=f.field(v,"rpgInteraction");ui.selectInventoryItem(s.rpg(),id);f.call(v,"activateInventoryItem",new Class<?>[]{});assertEquals(WorldDef.ID,s.currentMapId());assertFalse((Boolean)f.field(v,"inReagentShop"));assertFalse((Boolean)f.field(v,"inPoteField"));assertEquals(46,world(v).tileCoordinateX(s.player().x,s.player().y));assertEquals(39,world(v).tileCoordinateY(s.player().x,s.player().y));
  }
  @Test public void everyAuthoredMapFamilyExposesItsRealDoorOrRoutePins(){
