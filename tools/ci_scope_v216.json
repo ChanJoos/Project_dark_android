@@ -1,10 +1,10 @@
 {
-  "app/build.gradle": "be311e2eaa9e09c59a9fb775c2622262bee74b862f53a35868906131017cadff",
+  "app/build.gradle": "97ea9917787f222059a6a4906f8e5a047503bcc936c734409d3bdc2560c1a6fa",
   "app/src/main/java/com/projectdark/mobile/DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
   "app/src/main/java/com/projectdark/mobile/DeathVillageRenderer.java": "dc4c5757fe6f93d463c7f79799abbc325f53058fcddd72f75818e6d4c943c7a3",
   "app/src/main/java/com/projectdark/mobile/DeathVillageTravel.java": "ab75b725f01382ac3c5a1a37e9d921c67376b358c48b71fc0c595b0d23f059d6",
   "app/src/main/java/com/projectdark/mobile/GameView.java": "3f25d9e0b4a8f6d10d6c058c5652b7dd4d3cc0386fc4b3fa6d23c4ed0b23694b",
-  "app/src/main/java/com/projectdark/mobile/WorldMapWindow.java": "62053ae4580b961082d090600eca26b0281edcbcb0f4b5d9c141e0099bccd618",
+  "app/src/main/java/com/projectdark/mobile/WorldMapWindow.java": "f0a09af71f625971e1ba61e040bf8dd71133426847c51ceb17a680500da31124",
   "app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java": "093ce8bffe988a4bcdd47f6b12fff7c88d8a27cbda4229451d8573093406f310",
   "app/src/main/java/com/projectdark/mobile/world/DeathVillageData.java": "9387373fec0f477f4b0c4350541c4c9b37f25aa250a64d33feb7de899af34e28",
   "app/src/main/java/com/projectdark/mobile/world/DeathVillageGeometry.java": "41fac90d9f767765f1dbf821e218e0662cda78700e5b4b97361fa03e74e19908",
@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "ef66d32f0db599f300402acf59d8b5fd9ba289e9553d553cdbd9c931f88b9986",
+  "master/MASTER_MANIFEST.md": "2bc1c18d94d19d982b412adc76fe77e20788437015dd77cf44fb41fd3a400db1",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "75ea3f773db28ddd474e689933295a2dfcb35c2f85cef6c942156aa143c6e5db",
+  ".github/workflows/rucesion-town-v156.yml": "5847238afdfcfbcc1720533c8f603bb7cf3fc034b3d2dbc080bd6d81318cdf4d",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -553,5 +553,7 @@
   "app/src/test/java/com/projectdark/mobile/TownNavigationV244Test.java": "d4956d30f29baaa10bf3fb17bae32104c8f5a459581939c5311aea63732bb062",
   "master/changes/V244_TOWN_NAVIGATION.json": "f5b90bf8bd6285b2d7ca0e8f56e2e8eaeb9673cb779a25ad3c448b6b193d568a",
   "app/src/test/java/com/projectdark/mobile/MapLabelsV245Test.java": "0a9b10b5650cd6ffba247977a0b23e11a9c8ea930b903245df97412ba8e8d81c",
-  "master/changes/V245_MAP_LABELS.json": "5338d0c542e5add17824bd0069087e9f47db84d1b820a8e0f63e5d0bd6ee36ce"
+  "master/changes/V245_MAP_LABELS.json": "5338d0c542e5add17824bd0069087e9f47db84d1b820a8e0f63e5d0bd6ee36ce",
+  "app/src/test/java/com/projectdark/mobile/AllMapLabelsV246Test.java": "981a8329a0dccfed512ea163d1f9f542050866913b07d76792e85e054d83ff40",
+  "master/changes/V246_ALL_MAP_LABELS.json": "1667de48c86dd75551639a92139f843cbf33823d70e2e78f9d1f1025705f44e7"
 }
