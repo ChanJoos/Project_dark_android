@@ -55,7 +55,7 @@ public final class MonsterAIController {
     public AttackRoute route(){return AttackRoute.SHARED_RESOLVER;}
     public AttackSubmissionSnapshot submitAction(RuntimeState state,RuntimeState.Monster m,long sequence,String action){
       state.cancelMonsterAttack(m);String target=action.equals("MONSTER_RECOVER")?m.id:"player";MonsterAutoCombatBridge.Result result=bridge.submit(m.id,target,action);
-      if(result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){CharacterRenderer.Direction f=CanonicalMeleeTileContract.facing(m.x,m.y,state.player().x,state.player().y);if(f!=null)m.visualFacing.setLocomotion(f);m.visualFacing.beginAttack();m.attackVisualRemaining=action.equals("MONSTER_RECOVER")?1.46f:AbelCombatProfile.spell(action)?1.01f:.60f;m.state=RuntimeState.Monster.State.ATTACK;}
+      if(result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){m.visualFacing.beginAttack(state.player().x-m.x,state.player().y-m.y);m.attackVisualRemaining=action.equals("MONSTER_RECOVER")?1.46f:AbelCombatProfile.spell(action)?1.01f:.60f;m.state=RuntimeState.Monster.State.ATTACK;}
       return new AttackSubmissionSnapshot(sequence,m.id,target,action,route(),result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED?SubmissionOutcome.ACCEPTED:result.outcome==MonsterAutoCombatBridge.Outcome.ACTION_UNRESOLVED?SubmissionOutcome.ACTION_UNRESOLVED:SubmissionOutcome.REJECTED,result.rejectReason);
     }
     public AttackSubmissionSnapshot submit(RuntimeState state,RuntimeState.Monster monster,long sequence){

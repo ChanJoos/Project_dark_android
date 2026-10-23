@@ -1,0 +1,10 @@
+{
+  "version": "V262",
+  "status": "ACCEPTED",
+  "authority": "Current user requests; overlap correction to one-cell skill shift",
+  "hud": "grid+39; attack radius+20%; paired left equipment/right bag; no equipment rail icon",
+  "inventory": "visible loose quantity=owned-equipped; stable ownership schema; unequip returns copy",
+  "quick": "exact tapped necklace slot exchanges previous necklace",
+  "facing": "accepted ranged monster vector only; reproduce old stale heading; dense-player direction checks; device report root UNKNOWN",
+  "verification": "pending focused native/build/phone"
+}
