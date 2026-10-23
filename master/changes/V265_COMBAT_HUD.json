@@ -1,0 +1,32 @@
+{
+  "version": "V265",
+  "status": "ACCEPTED_USER_REQUEST",
+  "request": "공격 버튼과 자동공격 버튼을 왼쪽 아래로; 둘 다 퀵스킬창 바로 오른쪽",
+  "before": {
+    "attack": [
+      922,
+      418
+    ],
+    "auto": [
+      854,
+      391
+    ],
+    "viewportOffset": "full right offset"
+  },
+  "after": {
+    "attack": [
+      935,
+      490
+    ],
+    "auto": [
+      935,
+      428
+    ],
+    "viewportOffset": "shared half offset with skill grid; narrow-screen cluster fit"
+  },
+  "evidence": "current user instruction; ADAPTED mobile HUD, no original-layout assertion",
+  "files": [
+    "app/src/main/java/com/projectdark/mobile/GameView.java"
+  ],
+  "verification": "pending four scoped native HUD/gear cases and APK build; PHONE_PENDING"
+}

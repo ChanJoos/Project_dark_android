@@ -1,9 +1,9 @@
 {
-  "app/build.gradle": "19c034ad4f9b8e75b0a4bae85e8ac117a67c4b3064cbc97a7d27c81625a7977a",
+  "app/build.gradle": "a22799bde005b81d72a0424f22204ee04a80e121c5330c24a9d480d6586bf067",
   "app/src/main/java/com/projectdark/mobile/DeathVillageMonsters.java": "4c8f7f860451b4c7e66e65d375cfe248246eaea79d11fba3632cfc96294acf23",
   "app/src/main/java/com/projectdark/mobile/DeathVillageRenderer.java": "85b7fa6fd8fdf06508f31a930c1458777d2e551c215c56ab0796811000c5dc66",
   "app/src/main/java/com/projectdark/mobile/DeathVillageTravel.java": "ab75b725f01382ac3c5a1a37e9d921c67376b358c48b71fc0c595b0d23f059d6",
-  "app/src/main/java/com/projectdark/mobile/GameView.java": "c5b9cb2630aa8e39dbf4e8bdc94d965403d9ee00b5ee7235a6c92560a4ebd016",
+  "app/src/main/java/com/projectdark/mobile/GameView.java": "b627c6d5a8f55a747314e27326147fc7a5c2c731b62ed4fb3cec111710f0f005",
   "app/src/main/java/com/projectdark/mobile/WorldMapWindow.java": "f0a09af71f625971e1ba61e040bf8dd71133426847c51ceb17a680500da31124",
   "app/src/main/java/com/projectdark/mobile/world/AdaptedMillesMapRenderer.java": "58fdc062fb29ebc9ba0094a19f47ffde860f07e54776137f81aac20a7684bab8",
   "app/src/main/java/com/projectdark/mobile/world/DeathVillageData.java": "9387373fec0f477f4b0c4350541c4c9b37f25aa250a64d33feb7de899af34e28",
@@ -767,7 +767,7 @@
   "app/src/main/java/com/projectdark/mobile/ItemWindow.java": "22b572fb0f9f5232171e01d17d6acb8dd35ac69c826df40c235aa1d2d2e27f0a",
   "app/src/main/java/com/projectdark/mobile/InventoryPairV262.java": "35a0adbb06cbaed72f590ad767745663b2f1282c6acb3bfa6a6fce1108b927cf",
   "app/src/test/java/com/projectdark/mobile/CombatFacingV262Test.java": "1f477cb66026daddf97b08b20e15b20ff91f24171828f5d26377a57519858438",
-  "app/src/test/java/com/projectdark/mobile/EquipmentHudV262Test.java": "bc00ae82a741cc38a6ea7b9fee7afdcf308a680322b07ce6e566c7722e3981a1",
+  "app/src/test/java/com/projectdark/mobile/EquipmentHudV262Test.java": "24a42d0bca5d48d1ee0e59c22523bf041e2d93dadb561ad718a7f55725ec3013",
   "design/EQUIPMENT_HUD_V262.md": "a9a4e2d3f1dbd47e60ead893d783dc812b19cf7b1fbc60f367c66be8490c94d0",
   "master/changes/V262_EQUIPMENT_HUD.json": "d3b725fb11100cdf98b6493f0cd7b38bfe45b50f0f123c20bf1d7ffc7b74e5c7",
   "design/FACING_ROLLBACK_V263.md": "c22aead85fabae0b4c5e13e0d4729a7331a23e67a990b7efb888950747ef9f1f",
@@ -777,5 +777,7 @@
   "app/src/test/java/com/projectdark/mobile/CombatTownV167Test.java": "27f09620003ba50d8ef97f4b55ae55769aad51398b430fbe5e53f8eb8f7ee8ef",
   "app/src/test/java/com/projectdark/mobile/ContactPoseV264Test.java": "f5903e2f7c10e2e2f6662f7d7af08d650caf6ca0cedc8858c8ed2e51b30db634",
   "design/CONTACT_POSE_V264.md": "adf1bb51016aef0fd27a1f2b55533e2ae1f45eff2c2a8f16a5cb93ef6094d917",
-  "master/changes/V264_CONTACT_POSE.json": "d50f52cfc88e2f36fd9db7d44ce08d7de04a1435d3902eaf88970a2bf5cae2ae"
+  "master/changes/V264_CONTACT_POSE.json": "d50f52cfc88e2f36fd9db7d44ce08d7de04a1435d3902eaf88970a2bf5cae2ae",
+  "design/COMBAT_HUD_V265.md": "b69d00e6fb61e5acf8166ebf7ad211a0b338414b7b22866301948b54155140f1",
+  "master/changes/V265_COMBAT_HUD.json": "d660336a19fbf14196b71415167ad40fa02859d9710d9ebfeac6dff7eeeeaaa0"
 }
