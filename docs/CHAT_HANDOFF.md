@@ -1,3 +1,15 @@
+## V264 — 공격 그림의 프레임 선택·반전 교정 후보 (2026-10-24 KST)
+
+V263 DEVICE_FAILED_USER_REPORTED: Screen_Recording_20261024_081540.mp4(29.390678s,2340x1080,libfile_1556c6c0b3748191bac77952c1d935a4). 전체1fps와10~14/19~23초6fps크롭확인. 설치SHA영상내UNKNOWN/최근eca4d745. 기존 방향값/소스회귀 검사는 실제 몸그림의 방향을 놓쳤다.
+
+실제 SkillBodyRenderer의 west 출력이 원본 contact 프레임을 반전한 독립 픽셀 oracle과 다른 실패를 V263 코드에서 재현했다. source02의 프레임을 수평방향별로 고르고 west반전을 제외한 두 렌더 분기가 원인이다. 접촉자세를 back1/front3으로 선택하고 west에서 장비까지 합성 전체를 반전한다. source앞모습02/2 머리픽셀은 IDLE앞모습과100%,02/3과99.17%일치(비반전). 자세 단계 해석은 소스 기반 추론이며 원본 엔진 전체 애니메이션 타이밍의 확정 근거는 아니다. GameView/AI/방향상태/피해/타수/접촉시각/에셋 변경 없음. V263의 추가 방향보정 삭제 및 독립 HUD/장비 요구는 유지.
+
+소스 `b8ec4fdacabe38776dd1589eacd264b1fdf8e411`, Actions40039445543/job120706791702/artifact12539270759 SUCCESS. **27 scoped native checks PASS**: 기존 실제 렌더 실패 선재현, 최종 west 원본접촉 픽셀 정확일치, 남녀/4방향/장비합성, 실제 수동/AUTO 접촉·피해·방향, 기본1/2/3·숫자·HUD/가방/목걸이·저장재시작·추격/성능. 기존V167의4방향source프레임가정만 교정. scope40039451310 SUCCESS/full compile의도적SKIP; full/main통합 별도.
+
+APK PROJECT_DARK_V264_TEST.apk / com.projectdark.mobile.v264test / built2026-10-24 08:31:20 KST /106539710bytes. SHA256 `ea6075777ef1c3bdf77fba084b443c00ff8852cd8a1efa45bced0063a100306f`, ZIP `249e97c5fe82cdf0d7a8c254caf965a3b479f7cfb75696ba8d543da94828a7da`. CRC/hash/embedded source+run/CIv2서명/manifest/1518 mainasset bytes PASS. old/final west와실제GameView manual-SW캡처 검토. 설치파일 저장완료 libfile_8a54bb477bac81919b7080094cef9886. IMPLEMENTED / BUILD VERIFIED / HOST_RENDER_PIXEL VERIFIED; PHONE/USER_VISUAL_ACCEPTANCE PENDING. 원인 두 렌더 분기의 검증 후보이며 전체 잔존문제 해결로 표기하지 않는다. main41fe6def/PR197미병합. 문서HEAD를APK소스로재라벨금지.
+
+[검증영수증](../verification/CONTACT_POSE_V264_BUILD.json), [계약](../design/CONTACT_POSE_V264.md), [Master](../master/changes/V264_CONTACT_POSE.json). 다음: exactV264에서 사용자 실기기의 밀집전투 외형 확인. 추가 방향정책을 임의로 도입하지 않는다.
+
 ## V263 — 회귀 요청 준수: 추가 방향 보정 제거 (2026-10-24 KST)
 
 V262는 DEVICE_FAILED_USER_REPORTED. 사용자 영상 Screen_Recording_20261024_075444.mp4(26.378456s,libfile_c07b8f5f1a3c81919c53069a820f5e41,SHA256 7a86278ce9ecd77a2fd995d0934f46b19afd0e3ea585cb8a5168df12a6f0c823) 전체1fps및12~16초6fps/10·14초원본크롭확인. 설치SHA영상내UNKNOWN/최근배포65330bb0. V262의두합성재현과36hostPASS는이영상상황의재현/해결검증이아니다. ROOT CAUSE UNKNOWN,PHONE/USER_VISUAL_ACCEPTANCE PENDING. 회귀요청뒤두보정정책을재추가한것을철회한다.

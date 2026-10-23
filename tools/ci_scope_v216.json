@@ -776,6 +776,6 @@
   "tools/verify_facing_rollback_v263.py": "4a970889afcfbf5aa6b3b18937219b294f3103663aa9a18e2f5f96d6c538a7d2",
   "app/src/test/java/com/projectdark/mobile/CombatTownV167Test.java": "27f09620003ba50d8ef97f4b55ae55769aad51398b430fbe5e53f8eb8f7ee8ef",
   "app/src/test/java/com/projectdark/mobile/ContactPoseV264Test.java": "f5903e2f7c10e2e2f6662f7d7af08d650caf6ca0cedc8858c8ed2e51b30db634",
-  "design/CONTACT_POSE_V264.md": "2320e3eda4471766c6106d7c1c1c5601f7efa69e4b2f3cca23fba0e8326d4193",
-  "master/changes/V264_CONTACT_POSE.json": "83365bb80c2748ad0be1fbbf11826b0cbbd4e3a81c27ee6c6451cdfa9eb3e7aa"
+  "design/CONTACT_POSE_V264.md": "adf1bb51016aef0fd27a1f2b55533e2ae1f45eff2c2a8f16a5cb93ef6094d917",
+  "master/changes/V264_CONTACT_POSE.json": "d50f52cfc88e2f36fd9db7d44ce08d7de04a1435d3902eaf88970a2bf5cae2ae"
 }
