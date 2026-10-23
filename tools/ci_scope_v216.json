@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "9c56a4d380b42426940325a3533cf998009d21c7061e831a7760f4e7199f7165",
+  "master/MASTER_MANIFEST.md": "cd3fd6ea816bb9c8ba3047f4163672651e708afef0d0eb11fe60dd58ac1506b1",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "2457cdc4d78061210e08940ecd358e6946b793cfdbdd2a7ac546bb91309d5d90",
+  ".github/workflows/rucesion-town-v156.yml": "c5e6690dec4f6af582268df7c5cc16241179c3fbcb9362e5b40ce7fa7608aec2",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -719,5 +719,5 @@
   "master/changes/V255_COMPACT_HUD.json": "a6d87cfef0797793cc97f192e42dc6ca131c9901f7bd31202267e63115e0167a",
   "app/src/main/java/com/projectdark/mobile/CombatController.java": "fd964441c9ee0bd2917d1474a186f2f424bf1b0e31a9b235c8e8dbdc1e0fd321",
   "app/src/test/java/com/projectdark/mobile/AutoOrderTargetV256Test.java": "ee6f2e2dd706e8bec5247aadba6d68a0c39d24013b6202994b873377b6bab18a",
-  "master/changes/V256_AUTO_ORDER.json": "63f7c4ec9b99db853f9f463f95fc5815135f9f047849302191912c930a529506"
+  "master/changes/V256_AUTO_ORDER.json": "2e98dafb2501dad62575e33315d687fb8db7e1ae3657aa97f90857bd0747bf45"
 }
