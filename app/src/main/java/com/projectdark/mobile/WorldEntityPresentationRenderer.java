@@ -58,6 +58,8 @@ public final class WorldEntityPresentationRenderer {
         "World entity presentation contract audit failed: "+WorldEntityPresentationAudit.summary());
   }
 
+  public void installNpcContext(android.content.Context c){npcActors=new NpcActorRenderer(c);}
+
   public void draw(Canvas c,Pose pose){
     draw(c,pose,false);
   }

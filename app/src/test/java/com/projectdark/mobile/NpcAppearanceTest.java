@@ -42,6 +42,7 @@ public final class NpcAppearanceTest {
  @Test public void allFourDirectionsUseExactlyThePlayerPaperDollAndOutfitsAreVisiblyDifferent(){
   Set<Integer> appearances=new HashSet<>();assertTrue(new CharacterRenderer(context()).resourceAtlasActive());
   for(NpcIdentity.Profile p:NpcIdentity.ALL)for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+   if(TownServiceArt.role(p.id)!=null)continue; // Source service sprites are independently verified by TownServicesV247Test.
    Bitmap npc=actor(p,d,true),player=actor(p,d,false);assertArrayEquals("fixed SW NPC has same source scale, body, equipment and foot "+p.id+" "+d,pixels(player),pixels(npc));
    if(d==CharacterRenderer.Direction.SE)appearances.add(Arrays.hashCode(pixels(npc)));
    int count=0;for(int color:pixels(npc))if(Color.alpha(color)>0)count++;assertTrue("real dressed sprite, not missing layers",count>250);

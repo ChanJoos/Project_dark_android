@@ -109,7 +109,7 @@ public final class CampaignProgress {
   common("T08","마력 물약 구매","milles_job_counselor",WorldDef.ID,"BUY","IT_B_MP_POTION",3,1,22800,75);
   common("T09","퀵슬롯으로 회복","milles_job_counselor",WorldDef.ID,"QUICK_USE","",3,1,27200,75);
   common("T10","남는 물품 판매","milles_job_counselor",WorldDef.ID,"SELL","IT_B_MP_POTION",3,1,30600,75);
-  for(String j:JOBS)for(int tier=1;tier<=3;tier++)ALL.add(new Def("J0"+tier+"_"+j,(tier==1?"첫 기술 실습":tier==2?"2써클 기술 실습":"주력 기술의 완성")+" · "+jobName(j),mentor(j),tier==3?"MAP_PIET_CAMP":WorldDef.ID,"SKILL","",tier==1?3:tier==2?11:26,3,0,0,j));
+  for(String j:JOBS)for(int tier=1;tier<=3;tier++)ALL.add(new Def("J0"+tier+"_"+j,(tier==1?"첫 기술 실습":tier==2?"2써클 기술 실습":"주력 기술의 완성")+" · "+jobName(j),(tier==3?mentor(j):"milles_job_counselor"),tier==3?"MAP_PIET_CAMP":WorldDef.ID,"SKILL","",tier==1?3:tier==2?11:26,3,0,0,j));
  }
  private static void common(String id,String title,String npc,String map,String kind,String targets,int lv,int n,int exp,long gold){ALL.add(new Def(id,title,npc,map,kind,targets,lv,n,exp,gold,null));}
  public static List<Def> definitions(){return Collections.unmodifiableList(ALL);}

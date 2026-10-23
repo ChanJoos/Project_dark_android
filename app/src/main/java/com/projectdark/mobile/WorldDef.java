@@ -50,8 +50,7 @@ public final class WorldDef {
     // Keep outdoor NPCs one isometric step northwest of their prior anchors.
     n.add(new NpcSpawn("pote_travel_guide","마을 이동 관리인",512.0f,544.0f,"모든 마을과 포테의 숲으로 이동할 수 있습니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_job_counselor","마이클 · 직업 상담관",930.0f,630.0f,"기본 수련을 마쳤다면 다섯 직업의 전투 방식과 입문 장비를 안내해 주겠네.",ASSET_STATUS));
-    String[] mentors={"mentor_warrior","mentor_rogue","mentor_mage","mentor_cleric","mentor_monk"};
-    for(int i=0;i<mentors.length;i++)n.add(new NpcSpawn(mentors[i],"직업 지도자",1056f+i*64f,592f,"직업 기술 실습과 장비 점검을 도와줍니다.",ASSET_STATUS));
+    // V247: the five redundant outdoor mentors now report to the existing job counselor.
     n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1868.0f,804.0f,"시장에서는 필요한 물건을 미리 챙기세요. 강을 건널 때는 다리를 이용하시고요.",ASSET_STATUS));
     npcSpawns=Collections.unmodifiableList(n);
 

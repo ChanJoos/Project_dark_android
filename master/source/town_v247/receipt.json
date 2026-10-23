@@ -1,0 +1,175 @@
+{
+  "revision": "V247",
+  "userReferences": [
+    "1000060733.jpg",
+    "1000060731.jpg",
+    "1000060735.jpg"
+  ],
+  "source": "Retained DarkAges741single.exe; original Hades MPF/Setoa SPF/Legend FNT",
+  "installerSha256": "dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093",
+  "sourceFiles": {
+    "hades/mns022.mpf": "6b7fee401cb6d478f0a2d126404bfd127327ad41c7366cfb6c528fed8659b85e",
+    "hades/mns010.pal": "e3fe6c3bcba9d5330764462f40bb9f1e5bf88dd11264eb0c6db38937d89a6f58",
+    "hades/mns030.mpf": "8e2ee184b2d4d665a6517a1acd31e25f00ccf9ab259aa916fd4912901dca01a2",
+    "hades/mns000.pal": "ecf05b101c09df6309f695c12d642fd8a8b725701a2bbfad309b0773d7701b76",
+    "setoa/nd_mback.spf": "ffedd559f2fcb40e200b6b542adb6bff2649c7f24ab2ef63857b999bc010bc0f",
+    "setoa/nd_npcbg.spf": "9847c96fe5e2841cef612b08331177db68318d971d7b9c0e292f85c7b943496a",
+    "setoa/nd_talk.spf": "304d5ec84f2c20676e170112e9f51a8a49942818f7d047b910005d32727a1a70",
+    "setoa/nd_mtab.spf": "0c0f125435fbaa96a855ebc926e04aff0a109db445e19ed6090c226d5f6a1be0",
+    "setoa/nd_mcp.spf": "fdce79dfcefd14f4cb1775f8fe1e8e4a62dac88fd5914ff09c7bd5cf878f94af",
+    "setoa/nd_mcn.spf": "df2fbfa5e31dc1a5570ff514ee446a2e9bcb018fc15653114bd5a81f18c6d469",
+    "setoa/nd_mprev.spf": "abaa32c2316413bd8152216acbba610db2d2893b6f83f7a182134f5e5379488d",
+    "setoa/nd_mnext.spf": "c413707d8387fab8be77e52cbe619f450076b5db01cdf723e8d8af1f9df9e072",
+    "setoa/_nbtn.spf": "f980b3e97c5a310c9a518add0c44af09d183d083648d1d6b37a1e14fed5da91a",
+    "setoa/dlgback2.spf": "ad0c1057bd1751465d803b1b26f8531a242e5eb39f443a1facc1ca279bb5b232",
+    "setoa/lnpcd.txt": "8a4fa8026364bbc06a40b8e6b940c674d6bf64fbf176e86789cc3cd3a43a9a80",
+    "setoa/lnpcd3.txt": "4011be93c5eb0142a26b214837022b5b651aefc9246fb5fc237c58f3046497a6",
+    "Legend/han00.fnt": "bc2c90e28fcddfe8f3b22954f57d6b2030398866d942b3221768aa71225d92db",
+    "Legend/eng00.fnt": "34134df94ac7bd1dcce50cc604aa652e422d2f07739583d67fd6046ebeb2b7b1"
+  },
+  "assets": {
+    "inn.png": {
+      "sha256": "61702e3eef36430903404e72663869d066fc1abe2d21586a892c4d4e19fac31c",
+      "size": [
+        23,
+        55
+      ],
+      "source": "mns022.mpf",
+      "palette": "mns010.pal",
+      "frame": 0,
+      "mirrored": false,
+      "foot": [
+        11.5,
+        55
+      ]
+    },
+    "equipment.png": {
+      "sha256": "b5e47bc36d77e395188d966fbd2a2c26cd635692acd925765b407a7b15e8f496",
+      "size": [
+        23,
+        58
+      ],
+      "source": "mns030.mpf",
+      "palette": "mns000.pal",
+      "frame": 5,
+      "mirrored": true,
+      "foot": [
+        11.5,
+        58
+      ]
+    },
+    "nd_mback-0.png": {
+      "sha256": "f05c733b5f7d32aae64dc5787d33f8eae1cb6cf6a32c35212e16e2f6df559ae2",
+      "size": [
+        449,
+        292
+      ]
+    },
+    "nd_npcbg-0.png": {
+      "sha256": "c1bbfab78c9d0cde398ac57f0daf60f5c14fca6b64c4d3be263ea5219af6559a",
+      "size": [
+        132,
+        118
+      ]
+    },
+    "nd_talk-0.png": {
+      "sha256": "2ec36c5f7d10b4161ac569e1c7d1c40110310da59574544856b848ef2af495d1",
+      "size": [
+        640,
+        108
+      ]
+    },
+    "nd_mtab-0.png": {
+      "sha256": "b9b7d8a5ff54508690624769fde53789dcb1e9483e8107f4dc258f12b2992981",
+      "size": [
+        60,
+        16
+      ]
+    },
+    "nd_mtab-1.png": {
+      "sha256": "da0cabf105ef395e02e3815970e73cb54612ea73f0621955f0db404876e2ec1e",
+      "size": [
+        60,
+        16
+      ]
+    },
+    "nd_mcp-0.png": {
+      "sha256": "fdbbb2e9c3707dd39ffe06a18ddd7e556758880f2fcf833da12525c6bec7cf2d",
+      "size": [
+        18,
+        16
+      ]
+    },
+    "nd_mcn-0.png": {
+      "sha256": "96223a865691583cdd8f543271169eeebbd552de37f22875e7cdd93a7c13988e",
+      "size": [
+        18,
+        16
+      ]
+    },
+    "nd_mprev-0.png": {
+      "sha256": "84474e32fa618181a4979c0e08221f33953fd4e842837af72174afbf25aefd15",
+      "size": [
+        38,
+        15
+      ]
+    },
+    "nd_mnext-0.png": {
+      "sha256": "083a78850ea8d604eed3921c980a511db78c70606083769772f5d3389490028b",
+      "size": [
+        38,
+        15
+      ]
+    },
+    "_nbtn-0.png": {
+      "sha256": "9c4cf1484a3f2170aadfb65d83351451b43ae87cf57a2e2aa49c19e266d36e78",
+      "size": [
+        61,
+        22
+      ]
+    },
+    "_nbtn-3.png": {
+      "sha256": "060d9903cb3a6b3c966199a9a5b9339a12100aac9ddd240fdf1c24efd186bcf2",
+      "size": [
+        61,
+        22
+      ]
+    },
+    "_nbtn-6.png": {
+      "sha256": "8dd17394294c24e8a49d4255c5ac51bc1934b71b03dde351cbd97ae44bdc06c6",
+      "size": [
+        61,
+        22
+      ]
+    },
+    "_nbtn-27.png": {
+      "sha256": "4d3655cf612b2604ed0fb4191e116f5fe0f7bf453ad146eccbb8f4838ec0eeb7",
+      "size": [
+        61,
+        22
+      ]
+    },
+    "dlgback2-0.png": {
+      "sha256": "41484da27943c257ff3258c34a4c147f3e9771e424ac4a6cff4f6d958b084993",
+      "size": [
+        64,
+        52
+      ]
+    },
+    "font-ko.png": {
+      "sha256": "bf75205e75d2d559b71beaf909e986faa9bfa2209495203b715b989cf2af55db",
+      "size": [
+        512,
+        912
+      ]
+    },
+    "font-en.png": {
+      "sha256": "4ebbc46616365970913ab58acbbdb159a639c451ea7c63f5c57b948e09c5b2c1",
+      "size": [
+        256,
+        36
+      ]
+    }
+  },
+  "policy": "Original full sprite rectangles, transparent palette0, exact nearest pixels; equipment frame5 mirrored to match supplied left-facing photo. UI449x292, dialogue640x108, original controls and bitmap glyphs; English baked labels localized using same recovered font. No AI redrawing."
+}

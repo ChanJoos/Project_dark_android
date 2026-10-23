@@ -21,7 +21,7 @@ public final class TownInteriorDef {
  public final int columns,rows,npcU,npcV,customerU,customerV,counterV,counterStart,counterEnd;
  private TownInteriorDef(Kind k,String id,String title,String npc,String outfit,String door){
   TempleOriginalData.Grid g=TempleOriginalData.get(id);
-  kind=k;mapId=id;this.title=title;npcId=com.projectdark.mobile.NpcIdentity.interiorKey(id,k.name());com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(npcId);npcName=k==Kind.TEMPLE?(id.endsWith("_seo")?"세오":"선진"):profile.label();this.outfit=profile.outfit;doorId=door;
+  kind=k;mapId=id;this.title=title;npcId=com.projectdark.mobile.NpcIdentity.interiorKey(id,k.name());com.projectdark.mobile.NpcIdentity.Profile profile=com.projectdark.mobile.NpcIdentity.forId(npcId);npcName=k==Kind.TEMPLE?(id.endsWith("_seo")?"세오":"선진"):profile.label();this.outfit=profile.outfit;com.projectdark.mobile.TownServiceArt.register(npcId,k.name());doorId=door;
   columns=g!=null?g.width:k==Kind.INN&&id.startsWith("abel_")?17:k==Kind.EQUIPMENT?14:k==Kind.BANK?10:k==Kind.INN?14:12;rows=g!=null?g.height:k==Kind.INN&&id.startsWith("abel_")?16:k==Kind.EQUIPMENT?10:k==Kind.INN?13:12;
   npcU=g!=null?(id.endsWith("_temple_hub")?24:g.npcU):k==Kind.INN&&id.startsWith("abel_")?10:k==Kind.CHURCH?6:k==Kind.EQUIPMENT?8:k==Kind.INN?5:7;npcV=g!=null?(id.endsWith("_temple_hub")?22:g.npcV):k==Kind.INN&&id.startsWith("abel_")?4:k==Kind.BANK?3:k==Kind.EQUIPMENT?1:2;
   counterV=npcV+2;customerU=npcU;customerV=g!=null?npcV+1:counterV+1;
