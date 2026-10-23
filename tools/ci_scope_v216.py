@@ -19,7 +19,7 @@ def classify(paths, hashes, expected, force_full=False):
         return True, 'explicit final/full verification'
     for p in paths:
         # Documentation may carry historical reviewed hashes; its current bytes do not change gameplay.
-        if p.startswith(("docs/", "verification/")):
+        if p == "CHAT_HANDOFF.md" or p.startswith(("docs/", "verification/")):
             continue
         if p in expected:
             if hashes.get(p) != expected[p]:
