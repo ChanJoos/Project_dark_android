@@ -110,7 +110,17 @@ jobs:
             git fetch --depth=1 origin 68dfb93ec466e0caeaa240d0033043a095db2890
             python3 tools/check_mage_v243.py
             python3 tools/test_ci_scope_v216.py
+            if [[ "$(git log -1 --format=%B)" == *"[v243-empty-cast-tail]"* ]]; then
+              git fetch --depth=1 origin e7c3c075dadf31093462ec670e845e06ccb828b1
+              python3 - <<'V243TAIL'
+          import subprocess
+          assert not subprocess.check_output(['git','diff','e7c3c075dadf31093462ec670e845e06ccb828b1','HEAD','--','app/src/main','app/build.gradle'])
+          print('Exact runtime unchanged; reuse16 passed native cases from39876160476. Correct empty cast test oracle to existing no-recipient rejection; rerun all8 empty/noMP pairs.')
+          V243TAIL
+              gradle --no-daemon :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests 'com.projectdark.mobile.MageCircle3CrossV243Test.emptyCrossAndInsufficientMpRejectWithoutCostSelfDamageOrEffects' :app:assembleDebug
+            else
             gradle --no-daemon :app:compileDebugJavaWithJavac :app:testDebugUnitTest --tests 'com.projectdark.mobile.MageCircle3CrossV243Test' --tests 'com.projectdark.mobile.MageCircle4V242Test' --tests 'com.projectdark.mobile.MageBasicV240Test' --tests 'com.projectdark.mobile.MagePromotionV241Test' --tests 'com.projectdark.mobile.SkillContactRegressionTest' --tests 'com.projectdark.mobile.SkillSpatialContractTest.actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass' :app:assembleDebug
+            fi
           elif [[ "$(git log -1 --format=%B)" == *"[mage-circle4-v242]"* ]]; then
             git fetch --depth=1 origin e0b38a12684b4086fb80297f1a5906f54dce97c3
             python3 tools/check_mage_v242.py
@@ -593,6 +603,7 @@ jobs:
           if '[mage-circle3-cross-v243]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V243 approved36original circle3frames, correct additive/SCREEN blending,4normal single casts,8caster-centered four-neighbor attacks with paired single damage and oneMPcharge; contact live/shape/visibility recheck and empty/noMP gates; retained basic/circle4/promotion/contact native checks; phone pending'
           if '[mage-circle4-v242]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V242 four original EFA circle4 sequences, exact RGB565/frameinterval/foot/fullbounds;4normal singles and4screen casts, oneMPcharge, contact death/visibility recheck; retained basic4,14promotion contacts and adjacent contact; phone visual pending'
           if '[v242-scanline-tail]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V242 final source isolated earth scanline display correction; final2native all-source frame/pixel/timing/alias bounds and earthnormal SINGLE/SCREEN; reuse unchanged first8cases from39870628943 through exact runtime delta guard; phone visual pending'
+          if '[v243-empty-cast-tail]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V243 final runtime identical to e7c3c075;16native PASS reused from39876160476 via strict appmain/build.gradle guard; final8empty/noMP cast pairs rerun after test oracle corrected to existing no-recipient rejection; normal4single/8cross/pairedfinaldamage/source36pixel+blend/timing/contact/basic4/circle4/promotion/adjacent/spatial verified; phone pending'
           Path('delivery/build_evidence.json').write_text(json.dumps(report,indent=2)+'\n')
           print(json.dumps(report))
           PY

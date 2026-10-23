@@ -63,9 +63,14 @@ public class MageCircle3CrossV243Test {
    assertTrue(entered.hp<entered.maxHp);assertEquals(Collections.singleton(entered.id),recipients(v,id));for(RuntimeState.Monster t:new RuntimeState.Monster[]{moved,died,invisible,remote,remoteNeighbor})assertEquals(t.maxHp,t.hp);
   }
  }
- @Test public void eightEmptyCrossCastsNeverDamageCasterAndInsufficientMpRejectsBeforeAnyEffect()throws Exception{
+ @Test public void emptyCrossAndInsufficientMpRejectWithoutCostSelfDamageOrEffects()throws Exception{
   for(int start:new int[]{7,18})for(int e=0;e<4;e++){
-   m.setup();String id=m.mage(start+e);GameView v=m.actor(id);openCenter(v);RuntimeState s=m.h.field(v,"state");int hp=s.player().hp,mp=s.player().mp;RuntimeCombatSession c=m.h.field(v,"combatSession");m.tap(v);assertTrue(c.playerActionActive());m.contact(v);assertEquals(hp,s.player().hp);assertEquals(mp-c.effectiveMpCost(id),s.player().mp);assertTrue(recipients(v,id).isEmpty());
+   m.setup();String id=m.mage(start+e);GameView v=m.actor(id);openCenter(v);RuntimeState s=m.h.field(v,"state");int hp=s.player().hp,mp=s.player().mp;RuntimeCombatSession c=m.h.field(v,"combatSession");m.tap(v);
+   assertFalse(id+" no eligible neighbor: existing cast gate rejects",c.playerActionActive());
+   assertEquals(id+" empty cast keeps HP",hp,s.player().hp);
+   assertEquals(id+" empty cast keeps MP",mp,s.player().mp);
+   assertTrue(id+" empty cast has no recipient pulse",recipients(v,id).isEmpty());
+   assertTrue(id+" rejected cast has no caster pulse",((SkillVfxRenderer)m.h.field(v,"skillVfx")).pulses.isEmpty());
    m.setup();v=m.actor(id);s=m.h.field(v,"state");s.player().mp=0;RuntimeState.Monster t=s.monsters().get(0);m.tap(v);c=m.h.field(v,"combatSession");assertFalse(c.playerActionActive());assertEquals(0,s.player().mp);assertEquals(t.maxHp,t.hp);assertTrue(recipients(v,id).isEmpty());
   }
  }
