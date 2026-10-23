@@ -1,6 +1,16 @@
-## V259 — 기본 공격 위치 배율·센스 목걸이 (구현, 검증 대기)
+## V259 — 기본 공격 위치 배율·센스 목걸이 검증 후보 (2026-10-24 KST)
 
-사용자 확정 계약: [V259 설계](../design/COMBAT_NECKLACE_V259.md), master/changes/V259_SENSE_NECKLACE.json. 기본 정면100/측면150/후면200, 더블/트리플 실제 타수 유지. 센스 성공→퀵아이템4칸 소유·착용가능·확인속성 목걸이 표 순위 선택; 불리한 교체 없음. 신규 수크리스탈 착용+화/토/풍 슬롯, 기존저장 보존. source139 explicit mappings+alias element propagation, FX목걸이1종 UNKNOWN 유지. 몬스터 V258리젠/광산DARK예외 보존. 공유기본공격/장비기반 변경으로 focused 후 common full 시도. BUILD/HOST/PHONE PENDING; 기존 PR197, main41fe6def 미병합후보. 이후 정확SHA/run/APK근거로 갱신.
+사용자 확정: [설계](../design/COMBAT_NECKLACE_V259.md), [변경 계약](../master/changes/V259_SENSE_NECKLACE.json), [목걸이 원본 ID·출처](../master/canonical/Necklace_Elements_V259.json). 플레이어 기본 공격만 정면100%/측면150%/후면200%, 접촉 시 대상 표시 방향 기준으로 각 타격에1회 적용. 전사·도적·무도가 실제 더블2타/트리플3타 유지, 배수 중복 없음. 기술/마법/몬스터가 주는 공격에는 적용하지 않음.
+
+센스몬스터 성공 알림→대상의 실제 방어 속성(속성변환 포함)→퀵아이템4칸의 소유·착용가능·속성확인 목걸이를 V257/V258 표로 비교→기존 durable equip 경로. 현재 장비보다 유리할 때만 교체, 동점 유지; 수방어 토→풍→화→수, 별도 예시 하드코딩 없음. 빈칸/미소유/미확정/착용불가/죽은대상/읽기전용/센스실패는 교체 없음. 수동·AUTO 같은 경로.
+
+신규 시작 수크리스탈 착용, 화·토·풍·빈칸 등록; 기존 저장 장비/슬롯 선택 보존. 네 시작 크리스탈만 사용자 요청에 따라 시작 레벨 착용 허용 예외, 원본 Lv11/스탯/제한 근거 보존. source139 explicit ID mappings와 alias 속성 보존으로 실제 신규 GameView 인벤토리 목걸이44종 확인, 쥬얼십자가목걸이FX1종은 원문에 공격속성이 없어 UNKNOWN/자동교체 제외. 숫자열/이름으로 미확정 속성 추정하지 않음. V258 일반 공방 독립 자연4속 리젠/생존중유지·광산60DARK예외·원본92CSV·schema4 유지.
+
+APK 정확 소스 `aab7b4dab1d9644fa0676beb8ad63e33a4c1caa4`, Actions39983972749/job120518223036/artifact12514976446 SUCCESS. 최종 실제 인벤토리 검사1PASS + 엄격한 runtime/assets/master/design와 test-only guard로 first8ef0a774/run39981751669의52PASS 및 ee5e4b48/run39983186247의3PASS 유지 = **56 scoped host checks PASS**.4방향/위치·3직업 더블/트리플·수동/AUTO·센스 성공/실패/사거리·임시방어·선택 우선순위/빈칸/미소유/미확정/읽기전용·시작키트/재시작·기존 자동순서/장비/마법/저장 검증. 최초 인벤토리 검사는 bare RuntimeState를 실제 새게임 인벤토리로 착각한 fixture였으며 actual GameView 검사로 교정; 임의 최소개수 가정 제거, 각 목걸이 속성/미확정1종의 완전성 검사는 유지. 기존 HudItems fixture는 신규 시작에서만 슬롯을 비우고 restart 상태는 유지하도록 교정. Pote 화염/FIRE 비교는 normalize 의미 비교로 수정. 게임 런타임 변경 추가 없음.
+
+APK PROJECT_DARK_V259_TEST.apk / com.projectdark.mobile.v259test / 2026-10-24T01:09:16.949898+09:00, 106536378bytes, SHA256 `03993cfecf4ec2d2b63345a84dceb5923fb1b5dd61f39bfa91e2f3f32b762b3e`. ZIP SHA256 `b189b34952a55b58b820ed8b8d4b28fb46d226a7d09115857786a6e3ef6b61e5`. ZIP/APK CRC·embedded source/run·APK hash·CI apksignerV2 서명 PASS. IMPLEMENTED / BUILD VERIFIED / SCOPED HOST_RUNTIME VERIFIED; PHONE/USER_ACCEPTANCE PENDING. 상세 [검증 기록](../verification/SENSE_NECKLACE_V259_BUILD.json). 후속 문서 HEAD를 APK 소스로 재라벨 금지.
+
+공통 전체회귀39981760803: Master 보존검사 PASS, V12420개 중19PASS·Pote 속성 표기 문자열1FAIL. 해당1개는 ee5e4b48의 semantic assertion 교정으로 PASS; 그 이후 full 단계는 실행되지 않았으며 전체회귀 완료 주장이 아님. 후속 scope39983982161 SUCCESS/full compile 의도적SKIP(정확히 검토된 blob). 과거 skill catalog 생성 차단 해결 주장 없음. main41fe6def/PR197 OPEN·UNMERGED 후보 유지. 다음: exact V259 실기기 사냥/센스/목걸이 피드백 또는 main 통합의 남은 전체회귀. 검증 완료한 불변 소스 재빌드/재검사 불필요.
 
 ## V258 — 속성표 실제 대미지·모든 몬스터 공방 속성 적용 (2026-10-24 KST)
 
