@@ -9,8 +9,11 @@ final class WeaponInventoryArtworkV209 {
  static Bitmap diagonal(Bitmap source){
   Rect bounds=SourceItemIconRegistry.visibleEquipmentBounds(source);if(bounds.isEmpty())return source;
   Bitmap crop=Bitmap.createBitmap(source,bounds.left,bounds.top,bounds.width(),bounds.height());float angle=-45-axisDegrees(crop);while(angle>90)angle-=180;while(angle< -90)angle+=180;
-  Matrix turn=new Matrix();turn.postRotate(Math.abs(angle)<3?0:angle);Bitmap rotated=Bitmap.createBitmap(crop,0,0,crop.getWidth(),crop.getHeight(),turn,false);Rect visible=SourceItemIconRegistry.visibleEquipmentBounds(rotated);
-  Bitmap icon=Bitmap.createBitmap(32,32,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(icon);Paint p=new Paint();p.setFilterBitmap(false);p.setAntiAlias(false);float scale=Math.min(1f,Math.min(28f/visible.width(),28f/visible.height()));float w=visible.width()*scale,h=visible.height()*scale;c.drawBitmap(rotated,visible,new RectF(16-w/2,16-h/2,16+w/2,16+h/2),p);icon.prepareToDraw();return icon;
+  // Integrate the rotated pixel cells at 4x before the final reduction. Thin blades and
+  // highlights survive diagonal projection instead of being dropped by two nearest passes.
+  Matrix turn=new Matrix();turn.postScale(4f,4f);turn.postRotate(Math.abs(angle)<3?0:angle);
+  Bitmap rotated=Bitmap.createBitmap(crop,0,0,crop.getWidth(),crop.getHeight(),turn,false);Rect visible=SourceItemIconRegistry.visibleEquipmentBounds(rotated);
+  Bitmap icon=Bitmap.createBitmap(32,32,Bitmap.Config.ARGB_8888);Canvas c=new Canvas(icon);Paint p=new Paint();p.setFilterBitmap(true);p.setAntiAlias(true);float scale=Math.min(.25f,Math.min(28f/visible.width(),28f/visible.height()));float w=visible.width()*scale,h=visible.height()*scale;c.drawBitmap(rotated,visible,new RectF(16-w/2,16-h/2,16+w/2,16+h/2),p);rotated.recycle();icon.prepareToDraw();return icon;
  }
  private WeaponInventoryArtworkV209(){}
 }

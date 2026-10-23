@@ -1,3 +1,13 @@
+## V250 — 신전 흰빛 보존 / 라피드·인벤토리·백원만 화면 수정 진행
+
+Base a0c66db; latest successful candidate V249 source4311a11/run39911143492, main41fe6def unchanged, samePR197. User asks preserve temple white light (supersedes V248 removal), repair Rapid original appearance, broken inventory icons, Baekwonman right window. Recall list/images promised but not yet supplied; no invented varieties or grants.
+
+Restored source entrance_platform and entrance_light together with retained common portal overlay. Both choice states use clean original screenshot left-border pixels mirrored to the right, removing HUD contamination; selected state had been omitted by prior idle-only fix. Rapid mg/mc source layers were also classified as wings: central disjoint routing stops duplicate/later wrong-depth draws across both actor renderers, preserving all source frames/anchors/tier identities. Reduced icons now use filtered reduction, native-size remains nearest; weapon diagonal uses4x pixel-cell rotation then filtered integration to retain thin strokes. No new art/stats/source identity claims.
+
+Validation scope: new4native(temple actual presence/common portal, symmetric original menu caps/actual window, Rapid routing both slots/bodies/directions, subpixel coverage); TempleMilles5 actual routes; NpcTravel3 actual21paid routes/cancel/locked/save failure; WeaponIcons2 full registered axes/shared bag/equipment; InventoryFeedback2 Rapid native poses/actualequiprestart; repaired-icon1. Expected17focused; confirm actual counts from XML. No full regression/main merge/phone visual acceptance claim. Source audit exact raw NPC/portal/border pixels. CI/build/native captures pending.
+
+Recall registration+image binding+inventory grant remains PENDING_USER_LIST_AND_IMAGES. Level85 Rapid exact original remains previously unresolved, not substituted. Latest user visual reports remain DEVICE_FAILED_USER_REPORTED until candidate phone acceptance; root causes above are confirmed code/source findings, full original match pending visual comparison.
+
 ## V249 — 후보 APK 전달 검증 완료
 
 APK source `4311a11ca096023b5fab6fb952d4ce9bdfca6233`; Actions [39911143492](https://github.com/ChanJoos/Project_dark_android/actions/runs/39911143492), job120274194411 SUCCESS, artifact12483535278. Final10 status-native +1 source-description =11 PASS/0fail/error/skip; strict production-delta guard retains29 adjacent PASS from8f321f5d/run39909943836.40 scoped checks, not full regression. Original5sequence source audit PASS;727 packaged skill files byte-identical.

@@ -1,3 +1,13 @@
+visual_feedback_v250:
+  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/source/town_v248/receipt.json, master/source/items/rapid_v198/frame_audit.json, master/source/items/rapid_v198/original_sources.zip]
+  user_request: Preserve temple white light; repair Rapid duplicate layering, inventory icon reduction and Baekwonman right choice frame; register supplied recall varieties with inventory
+  recall_sources: PENDING_USER_LIST_AND_IMAGES
+  phone: PENDING
+
 status_magic_v249:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   runtime_source: 4311a11ca096023b5fab6fb952d4ce9bdfca6233

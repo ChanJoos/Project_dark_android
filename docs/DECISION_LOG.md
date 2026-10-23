@@ -1,3 +1,13 @@
+## V250 — 신전 흰빛 보존 / 라피드·인벤토리·백원만 화면 수정 진행
+
+Base a0c66db; latest successful candidate V249 source4311a11/run39911143492, main41fe6def unchanged, samePR197. User asks preserve temple white light (supersedes V248 removal), repair Rapid original appearance, broken inventory icons, Baekwonman right window. Recall list/images promised but not yet supplied; no invented varieties or grants.
+
+Restored source entrance_platform and entrance_light together with retained common portal overlay. Both choice states use clean original screenshot left-border pixels mirrored to the right, removing HUD contamination; selected state had been omitted by prior idle-only fix. Rapid mg/mc source layers were also classified as wings: central disjoint routing stops duplicate/later wrong-depth draws across both actor renderers, preserving all source frames/anchors/tier identities. Reduced icons now use filtered reduction, native-size remains nearest; weapon diagonal uses4x pixel-cell rotation then filtered integration to retain thin strokes. No new art/stats/source identity claims.
+
+Validation scope: new4native(temple actual presence/common portal, symmetric original menu caps/actual window, Rapid routing both slots/bodies/directions, subpixel coverage); TempleMilles5 actual routes; NpcTravel3 actual21paid routes/cancel/locked/save failure; WeaponIcons2 full registered axes/shared bag/equipment; InventoryFeedback2 Rapid native poses/actualequiprestart; repaired-icon1. Expected17focused; confirm actual counts from XML. No full regression/main merge/phone visual acceptance claim. Source audit exact raw NPC/portal/border pixels. CI/build/native captures pending.
+
+Recall registration+image binding+inventory grant remains PENDING_USER_LIST_AND_IMAGES. Level85 Rapid exact original remains previously unresolved, not substituted. Latest user visual reports remain DEVICE_FAILED_USER_REPORTED until candidate phone acceptance; root causes above are confirmed code/source findings, full original match pending visual comparison.
+
 ## V249 — 사용자 마법 수정 및 남은 기술 감사
 
 사용자 결정: 콘푸지오는 한 번 별 회전·아무네지아와 같은10초 비선공/피해2배; 나르콜리/베노미는 실제 상태 수명에 연동; 아지토3종은 밀레스 여관; 클리멘스2ID/로카테오 삭제; 딜루메니/소루마는 일음지/발경 몬스터 채널과 동일. 원본 프레임·pivot·blend·전체 외곽을 보존하고 베노미만 원작 미확정 ADAPTED배정을 명시한다. Runtime4311a11c/run39911143492,40scopedPASS/정확APK검증·저장 완료. 정의222종 누락0이나 SERVICE15·수혈대상·간이서비스·대체FX는 미완료: docs/V249_SKILL_AUDIT_KO.md. PHONE/원작 전체 외형/main통합 pending. 문서 갱신으로 APK소스 변경하지 않음.

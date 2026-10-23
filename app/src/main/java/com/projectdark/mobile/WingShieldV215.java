@@ -59,7 +59,7 @@ final class WingShieldV215 {
 }
  static boolean wing(String id){return id!=null&&(id.startsWith("mg")||id.startsWith("wg"));}
  static String front(String id){return FRONTS.get(id);}
- static boolean layer(String id){return wing(id)||FRONTS.containsValue(id);}
+ static boolean layer(String id){return !RapidHairclipV199.source(id)&&(wing(id)||FRONTS.containsValue(id));}
  static boolean inFront(String id,CharacterRenderer.Direction d){return FRONTS.containsValue(id)||(!FRONTS.containsKey(id)&&(d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE));}
  static int actionFrame(String id,int bodyFrame){return "mg332".equals(id)||"mc332".equals(id)?bodyFrame*4:bodyFrame;}
  private WingShieldV215(){}

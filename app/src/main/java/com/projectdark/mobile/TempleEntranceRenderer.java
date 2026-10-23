@@ -11,11 +11,11 @@ public final class TempleEntranceRenderer {
  public static boolean coversGround(float x,float y){return Math.pow((x-X)/156f,2)+Math.pow((y-Y)/81f,2)<1;}
  public void tick(float dt){clock=(clock+dt)%100;}
  public void add(Canvas c,List<AdaptedMillesMapRenderer.DepthDraw> actors,float ox,float oy){this.ox=ox;this.oy=oy;
-  // The previous platform crop also contains a baked white portal beam; common FX owns this threshold.
+  actors.add(new AdaptedMillesMapRenderer.DepthDraw(Float.NEGATIVE_INFINITY,()->draw(c,"entrance_platform",-135,-69,255)));
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y-64*S,()->draw(c,"altar",94,-156,255)));
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y-86*S,()->draw(c,"entrance_arch_back",-131,-159,255)));
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y+84*S,()->draw(c,"entrance_arch_front",184,-24,255)));
   actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y+117*S,()->draw(c,"entrance_arch_left",-207,36,255)));
-  // V248: the common original animated portal replaces the previous entrance light effect.
+  actors.add(new AdaptedMillesMapRenderer.DepthDraw(Y+7,()->draw(c,"entrance_light",-47,-215,220+(int)(12*Math.sin(clock*1.5)))));
  }
 }

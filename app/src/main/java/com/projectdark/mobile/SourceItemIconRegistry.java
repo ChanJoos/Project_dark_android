@@ -61,7 +61,7 @@ final class SourceItemIconRegistry {
   if(bitmap==null)return;
   float scale=Math.min(1f,Math.min(target.width()/bitmap.getWidth(),target.height()/bitmap.getHeight()));
   float w=bitmap.getWidth()*scale,h=bitmap.getHeight()*scale;
-  paint.setFilterBitmap(false);paint.setAntiAlias(false);
+  paint.setFilterBitmap(scale<1f);paint.setAntiAlias(false);
   canvas.drawBitmap(bitmap,null,new RectF(Math.round(target.centerX()-w/2),Math.round(target.centerY()-h/2),Math.round(target.centerX()-w/2)+w,Math.round(target.centerY()-h/2)+h),paint);
  }
  // Equipment-only projection; retained source bytes and inventory rendering stay unchanged.
