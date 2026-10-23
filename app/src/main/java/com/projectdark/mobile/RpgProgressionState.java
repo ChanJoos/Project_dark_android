@@ -307,6 +307,7 @@ public final class RpgProgressionState {
     UnifiedItemCatalogV210.install(this);
     RecoveredWearablesV212.install(this);WingShieldV215.install(this);
     installUnifiedAliases();
+    for(String id:RecallAssetsV251.LIVE)inventory.putIfAbsent(id,1);
     for(String id:ExpandedVillageClothingV197.IDS)inventory.put(id,1);
     for(String id:RecoveredWeaponCatalogV195.IDS)inventory.put(id,1);
     for(String id:LinkedStaffCatalogV194.IDS)inventory.put(id,1);

@@ -160,7 +160,7 @@ public final class F5mSaveStore {
   private SharedPreferences.Editor writeRpg(SharedPreferences.Editor edit,RpgProgressionState r){
     prepareOwnership(r);
     return edit.putInt("save_schema",SCHEMA)
-        .putBoolean("unified_items_granted_v210",true)
+        .putBoolean("unified_items_granted_v210",true).putBoolean("recalls_granted_v251",true)
         // A save authored by V94 already includes the one-time grant, even if the player removed it.
         .putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).putBoolean("horror_equipment_granted_v184",true).putBoolean("linked_items_granted_v185",true).putBoolean("linked_clothes_granted_v186",true).putBoolean("linked_food_granted_v187",true).putBoolean("sparse_weapons_granted_v188",true).putBoolean("linked_accessories_granted_v189",true).putBoolean("male_clothes_granted_v190",true).putBoolean("linked_belts_granted_v191",true).putBoolean("female_clothes_granted_v192",true).putBoolean("linked_accessories_granted_v193",true).putBoolean("linked_staffs_granted_v194",true).putBoolean("recovered_weapons_granted_v195",true).putBoolean("expanded_clothes_granted_v197",true)
         .putString("inventory_v2",serializedInventory)
@@ -271,6 +271,10 @@ public final class F5mSaveStore {
         for(String id:UnifiedItemCatalogV210.IDS)grantCanonical(owned,bank,id,RpgProgressionState.pairedSlot(staged.itemDefinitions().get(id).equipSlot)?2:1);
         if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid unified item grant");
       }
+      if(!prefs.getBoolean("recalls_granted_v251",false)){
+        for(String id:RecallAssetsV251.LIVE)grantCanonical(owned,bank,id,1);
+        if(!staged.restoreOwnedItems(owned,equipped))throw new IllegalArgumentException("Invalid recall grant");
+      }
       long savedExp=prefs.getLong("normal_exp",0L);int savedLevel=prefs.getInt("normal_level",1);
       if(savedLevel==99&&savedExp<TempleGrowthPolicy.EXP_CAP&&!prefs.getBoolean("exp_retained_v215",false))savedExp=Math.min(TempleGrowthPolicy.EXP_CAP,Math.min(savedExp,TempleGrowthPolicy.EXP_CAP)+LevelExpCurve.totalTo99());
       staged.restoreProgression(savedLevel,savedExp);
@@ -283,7 +287,7 @@ public final class F5mSaveStore {
       if(prefs.contains("campaign_v1")&&!staged.campaign().restore(new JSONObject(prefs.getString("campaign_v1",""))))throw new IllegalArgumentException("Invalid campaign");
       staged.restoreCombatSequence(prefs.getLong("reward_sequence",0));copyRpg(staged,r);
       if(!prefs.getBoolean("exp_retained_v215",false)&&!prefs.edit().putBoolean("exp_retained_v215",true).putLong("normal_exp",r.normalExp()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).commit())throw new IllegalStateException("V215 migration write failed");
-      if(!prefs.getBoolean("unified_items_granted_v210",false))prefs.edit().putBoolean("unified_items_granted_v210",true).putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString()).commit();
+      if(!prefs.getBoolean("unified_items_granted_v210",false))prefs.edit().putBoolean("unified_items_granted_v210",true).putBoolean("recalls_granted_v251",true).putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putString("bank_inventory_v84",new JSONObject(r.bankInventory()).toString()).commit();
       if(!prefs.getBoolean("chungryong_granted_v94",false)||!prefs.getBoolean("reference_warrior_granted_v107",false)||!prefs.getBoolean("horror_equipment_granted_v184",false)||!prefs.getBoolean("linked_items_granted_v185",false)||!prefs.getBoolean("linked_clothes_granted_v186",false)||!prefs.getBoolean("linked_food_granted_v187",false)||!prefs.getBoolean("sparse_weapons_granted_v188",false)||!prefs.getBoolean("linked_accessories_granted_v189",false)||!prefs.getBoolean("male_clothes_granted_v190",false)||!prefs.getBoolean("linked_belts_granted_v191",false)||!prefs.getBoolean("female_clothes_granted_v192",false)||!prefs.getBoolean("linked_accessories_granted_v193",false)||!prefs.getBoolean("linked_staffs_granted_v194",false)||!prefs.getBoolean("recovered_weapons_granted_v195",false)||!prefs.getBoolean("expanded_clothes_granted_v197",false))prefs.edit().putString("inventory_v2",new JSONObject(r.inventory()).toString()).putString("equipment_v2",new JSONObject(r.equipment()).toString()).putBoolean("chungryong_granted_v94",true).putBoolean("reference_warrior_granted_v107",true).putBoolean("horror_equipment_granted_v184",true).putBoolean("linked_items_granted_v185",true).putBoolean("linked_clothes_granted_v186",true).putBoolean("linked_food_granted_v187",true).putBoolean("sparse_weapons_granted_v188",true).putBoolean("linked_accessories_granted_v189",true).putBoolean("male_clothes_granted_v190",true).putBoolean("linked_belts_granted_v191",true).putBoolean("female_clothes_granted_v192",true).putBoolean("linked_accessories_granted_v193",true).putBoolean("linked_staffs_granted_v194",true).putBoolean("recovered_weapons_granted_v195",true).putBoolean("expanded_clothes_granted_v197",true).commit();
     }catch(Exception invalid){writable=false;}
   }

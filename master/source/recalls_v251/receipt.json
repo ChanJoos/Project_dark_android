@@ -1,0 +1,157 @@
+{
+  "revision": "V251",
+  "sourceSha256": "37681422867c42ab18a00a4f14ee2ae92cc9a86e058bd9c9c64199746840fff8",
+  "provenance": "USER_SCREENSHOT_SOCKET_INTERIOR_PRESERVED_BACKGROUND_RGB_NO_RECOLOR",
+  "recalls": [
+    {
+      "id": "IT_RECALL_MILLES",
+      "name": "밀레스리콜",
+      "crop": [
+        28,
+        562,
+        71,
+        605
+      ],
+      "path": "recalls-v251/milles.png",
+      "source": "1000060685.jpg",
+      "sha256": "bffaa602d55724ffcebc5332279a284bba547bac8d037f05614118cecf016d13",
+      "currentTown": true,
+      "status": "RUNTIME_EXISTING_TOWN"
+    },
+    {
+      "id": "IT_RECALL_PIET",
+      "name": "피에트리콜",
+      "crop": [
+        245,
+        562,
+        288,
+        605
+      ],
+      "path": "recalls-v251/piet.png",
+      "source": "1000060685.jpg",
+      "sha256": "25d407b3d83a2857def5e023e1b3df2d42394cb2796897f960e16b1842e28704",
+      "currentTown": true,
+      "status": "RUNTIME_EXISTING_TOWN"
+    },
+    {
+      "id": "IT_RECALL_RUOSMA",
+      "name": "루어스마을리콜",
+      "crop": [
+        461,
+        562,
+        504,
+        605
+      ],
+      "path": "recalls-v251/ruosma.png",
+      "source": "1000060685.jpg",
+      "sha256": "b340b923a13514a6b8b01f08bd6211e6482c53a5cfe36af4f767a7b657eaf736",
+      "currentTown": false,
+      "status": "ASSET_ONLY_NO_DESTINATION"
+    },
+    {
+      "id": "IT_RECALL_ABEL",
+      "name": "아벨리콜",
+      "crop": [
+        28,
+        627,
+        71,
+        670
+      ],
+      "path": "recalls-v251/abel.png",
+      "source": "1000060685.jpg",
+      "sha256": "b6f205103878046422a9d72a44b86bd5523e198708ee9f156de18670a5d0e986",
+      "currentTown": true,
+      "status": "RUNTIME_EXISTING_TOWN"
+    },
+    {
+      "id": "IT_RECALL_SUOMI",
+      "name": "수오미리콜",
+      "crop": [
+        245,
+        627,
+        288,
+        670
+      ],
+      "path": "recalls-v251/suomi.png",
+      "source": "1000060685.jpg",
+      "sha256": "a8cc18c319df04512559e3788678f5b156baac97ab17c819a1acbee15ddcb004",
+      "currentTown": false,
+      "status": "ASSET_ONLY_NO_DESTINATION"
+    },
+    {
+      "id": "IT_RECALL_RUCESION",
+      "name": "뤼케시온리콜",
+      "crop": [
+        461,
+        627,
+        504,
+        670
+      ],
+      "path": "recalls-v251/rucesion.png",
+      "source": "1000060685.jpg",
+      "sha256": "c6c92d82d1239a706ce9af36bf8196a0c6ce73b3b683379cabea66eaa180db15",
+      "currentTown": true,
+      "status": "RUNTIME_EXISTING_TOWN"
+    },
+    {
+      "id": "IT_RECALL_UNDI",
+      "name": "운디네리콜",
+      "crop": [
+        28,
+        692,
+        71,
+        735
+      ],
+      "path": "recalls-v251/undi.png",
+      "source": "1000060685.jpg",
+      "sha256": "b51a76a6f6cbd5d6a96114ea8ec1b71ed893092c2f11a5b49a06816c4d33d0c5",
+      "currentTown": false,
+      "status": "ASSET_ONLY_NO_DESTINATION"
+    },
+    {
+      "id": "IT_RECALL_LOTON",
+      "name": "로톤리콜",
+      "crop": [
+        245,
+        692,
+        288,
+        735
+      ],
+      "path": "recalls-v251/loton.png",
+      "source": "1000060685.jpg",
+      "sha256": "7e4cc9e31dae379e70fa1b47fd0812e222c96966a2ef7fe10ea180d57cc7a50c",
+      "currentTown": false,
+      "status": "ASSET_ONLY_NO_DESTINATION"
+    },
+    {
+      "id": "IT_RECALL_HOEN",
+      "name": "호엔리콜",
+      "crop": [
+        461,
+        692,
+        504,
+        735
+      ],
+      "path": "recalls-v251/hoen.png",
+      "source": "1000060685.jpg",
+      "sha256": "c1ba97f5b2fffc011e8a5d57b41da103c19f2aaa2a6c8359fd44102e074e5f34",
+      "currentTown": false,
+      "status": "ASSET_ONLY_NO_DESTINATION"
+    },
+    {
+      "id": "IT_RECALL_GENERIC",
+      "name": "리콜",
+      "crop": [
+        28,
+        757,
+        71,
+        800
+      ],
+      "path": "recalls-v251/generic.png",
+      "source": "1000060685.jpg",
+      "sha256": "3767014c50e37902ba375e7e371d001ab6777138e606d7bdfa9098bcfd231018",
+      "currentTown": false,
+      "status": "ASSET_ONLY_NO_DESTINATION"
+    }
+  ]
+}

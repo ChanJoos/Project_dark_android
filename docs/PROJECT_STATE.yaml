@@ -1,3 +1,13 @@
+magic_recall_v251:
+  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, docs/MAGIC_FX_LESSONS.md, master/source/status_v249/receipt.json, master/source/town_v248/receipt.json, master/source/recalls_v251/1000060685.jpg]
+  narcoli: PREVIEW_ONLY_NO_NEW_MAPPING_WITHOUT_USER_REVIEW
+  user_request: Correct Soruma recipient; retire Death; Semelia four directions centered on caster and selected monster; all10recallassets and existingtowninventory
+  phone: PENDING
+
 visual_feedback_v250:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   runtime_source: a5e752071792c5bdc5a442c75408a33a614365e9

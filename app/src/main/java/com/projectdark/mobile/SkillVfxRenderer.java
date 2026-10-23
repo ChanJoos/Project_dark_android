@@ -16,6 +16,7 @@ final class SkillVfxRenderer {
   final PersistentStatusV249 statusFx;
   private final CapturedSkillFx.Sequence meteor;
   private static final int MAX_PULSES=1024;
+  private static final float[][] SEMELIA_OFFSETS={{32,16},{-32,16},{32,-16},{-32,-16}};
   boolean testAccess;java.util.function.BooleanSupplier martialTriple=()->false;
   final List<Pulse> pulses=new ArrayList<>();private final Set<String> seen=new HashSet<>();private final Deque<String> history=new ArrayDeque<>();private final Paint p=new Paint();
   SkillVfxRenderer(Context c,SkillPresentationCatalog catalog){this.catalog=catalog;statusFx=new PersistentStatusV249(c);try{meteor=new CapturedSkillFx.Sequence(c,new org.json.JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/screen-magic-v204/meteor.json"),java.nio.charset.StandardCharsets.UTF_8)));}catch(Exception ex){throw new IllegalStateException("Meteor original frames",ex);}captured=new CapturedSkillFx(c);classic=new ClassicSkillReference(c);curseSkull=new CurseSkullFx(c);rogue=new ClassicSkillReference(c,"rogue");warrior=new ClassicSkillReference(c,"warrior");shared=new ClassicSkillReference(c,"shared");p.setFilterBitmap(false);for(String name:new String[]{"caster","target","status","finisher-v65"})try{BitmapFactory.Options options=new BitmapFactory.Options();options.inSampleSize=name.equals("finisher-v65")?1:2;sheets.put(name,BitmapFactory.decodeStream(c.getAssets().open("skill-presentation/"+name+".png"),null,options));}catch(Exception ignored){}}
@@ -53,9 +54,12 @@ final class SkillVfxRenderer {
     }
     // A real resolved damaging contact has its own recipient-only visual channel.
     // Preview (amount zero), misses and healing never pretend the monster took damage.
-    if(target&&!sourceOriginalDamage(id)&&!MartialSourceV228.TRIPLE.equals(id)&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)&&!e.actorId.equals(e.targetId)){
+    if(target&&!semeliaCross(id)&&!sourceOriginalDamage(id)&&!MartialSourceV228.TRIPLE.equals(id)&&e.amount>0&&(e.hitSemantic==CombatResolver.HitSemantic.DAMAGE||e.hitSemantic==CombatResolver.HitSemantic.CRIT)&&!e.actorId.equals(e.targetId)){
       String impactKey=e.actionSequence+":recipient-damage:"+e.targetId;float ix=a.x(e.targetId),iy=a.y(e.targetId);
       if(Float.isFinite(ix)&&Float.isFinite(iy)&&seen.add(impactKey)){history.add(impactKey);while(history.size()>256)seen.remove(history.removeFirst());pulses.add(new Pulse(e.actionSequence,id,"impact",0,e.targetId,false,warrior.damageImpact.sequence.duration,ix,iy));if(pulses.size()>MAX_PULSES)pulses.remove(0);}
+    }
+    if(semeliaCross(id)){
+      if(target){String key=e.actionSequence+":semelia-cross";if(seen.add(key)){history.add(key);while(history.size()>256)seen.remove(history.removeFirst());String center=id.equals("SK_마법사_035")?e.actorId:directionTargets.get(e.actionSequence);if(center==null)center=e.targetId;ClassicSkillReference.Channel ch=classic.channel(SkillPolicyV227.SEMELIA,false);pulses.add(new Pulse(e.actionSequence,id,"semelia-cross",0,center,false,ch.sequence.duration,a.centerX(center),a.centerY(center)));if(pulses.size()>MAX_PULSES)pulses.remove(0);}}continue;
     }
     if(id.equals("SK_마법사_017")||id.equals("SK_마법사_012"))continue; // Persistent status owns its sole visual channel.
     if(target&&id.equals("SK_마법사_043")){
@@ -72,7 +76,7 @@ final class SkillVfxRenderer {
       ClassicSkillReference.Channel channel=reference.channel(id,caster);if(channel==null)continue;
       // Capture anchor records the example's pivot, not who receives a live attack.
       SkillActionContract.Rule liveRule=SkillActionContract.get(id);
-      boolean martialRecipient=sourceSheet.equals("classic")&&id.startsWith("SK_무도가_")&&!caster&&liveRule!=null&&MartialCaptureRegistration.recipient(id,caster);
+      boolean martialRecipient=sourceSheet.equals("classic")&&SkillPolicyV227.effectSource(id).startsWith("SK_무도가_")&&!caster&&liveRule!=null&&MartialCaptureRegistration.recipient(SkillPolicyV227.effectSource(id),caster);
       String anchor=(martialRecipient||!caster&&recipientFinisher(id))?e.targetId:channel.casterAnchor?e.actorId:e.targetId,key=e.actionSequence+":classic:"+channel.key+":"+anchor+((MartialSourceV228.MUYEONG.equals(id)||MartialSourceV228.TRIPLE.equals(id))?":"+e.sequence:"");
       if(!seen.add(key))continue;history.add(key);while(history.size()>256)seen.remove(history.removeFirst());
       float x=a.x(anchor),y=a.y(anchor);if(!Float.isFinite(x)||!Float.isFinite(y))continue;
@@ -85,8 +89,10 @@ boolean captureContact=target&&captured.get(id)!=null;String key=e.actionSequenc
   }}
   private boolean sourceOriginalDamage(String id){return id.startsWith("SK_도적_")&&(rogue.has(id)||captured.get(id)!=null)||id.startsWith("SK_마법사_")&&classic.has(id);}
   static boolean recipientFinisher(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a!=null&&a.damage()&&(a.resourceBurst()||a.formula.equals("METEOR")||a.formula.equals("HOLY_DRAGON"))&&!"CRASH".equals(a.formula);}
+  static boolean semeliaCross(String id){return "SK_마법사_035".equals(id)||"SK_마법사_036".equals(id);}
   static int casterRow(String name){switch(name){case "SLASH":return 0;case "MARTIAL":return 1;case "ARCANE":return 2;case "HEAL":return 3;default:return -1;}}
   void draw(Canvas c,Anchors a){statusFx.draw(c,a);for(Pulse f:pulses){
+    if(f.sheet.equals("semelia-cross")){float x=a.centerX(f.anchor),y=a.centerY(f.anchor);if(!Float.isFinite(x)||!Float.isFinite(y)){x=f.x;y=f.y;}ClassicSkillReference.Channel ch=classic.channel(SkillPolicyV227.SEMELIA,false);for(float[] offset:SEMELIA_OFFSETS)classic.drawCentered(c,ch,f.age,x+offset[0],y+offset[1]);continue;}
     if(f.sheet.equals("meteor-source")){float x=a.x(f.anchor),y=a.y(f.anchor)-8;int frame=meteor.frame(f.age),col=frame%meteor.columns,row=frame/meteor.columns;p.setAlpha(255);p.setColorFilter(null);p.setFilterBitmap(false);c.drawBitmap(meteor.atlas,new Rect(col*meteor.width,row*meteor.height,(col+1)*meteor.width,(row+1)*meteor.height),new RectF(x-meteor.pivotX,y-meteor.pivotY,x+meteor.width-meteor.pivotX,y+meteor.height-meteor.pivotY),p);continue;}
     if(f.sheet.equals("curse-skull")){float x=a.centerX(f.anchor),y=a.centerY(f.anchor);curseSkull.draw(c,f.id,f.age,Float.isFinite(x)?x:f.x,Float.isFinite(y)?y:f.y-25);continue;}
     if(f.sheet.equals("martial-line")){classic.drawBaekboContact(c,f.age,a.centerX(f.anchor),a.centerY(f.anchor));continue;}

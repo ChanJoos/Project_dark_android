@@ -3,7 +3,7 @@ package com.projectdark.mobile;
 /** User decisions. Retired IDs remain readable for transactional old-save migration. */
 final class SkillPolicyV227 {
   static final String HOLY_BLOW="SK_성직자_020",SEMELIA="SK_마법사_034",RAGNAROK="SK_마법사_037";
-  static boolean retired(String id){return HOLY_BLOW.equals(id)||"SK_도적_031".equals(id)||"SK_마법사_057".equals(id)||"SK_마법사_054".equals(id)||"SK_성직자_059".equals(id)||"SK_마법사_022".equals(id);}
+  static boolean retired(String id){return "SK_마법사_038".equals(id)||HOLY_BLOW.equals(id)||"SK_도적_031".equals(id)||"SK_마법사_057".equals(id)||"SK_마법사_054".equals(id)||"SK_성직자_059".equals(id)||"SK_마법사_022".equals(id);}
   static String effectSource(String id){
     if("SK_마법사_023".equals(id))return "SK_무도가_010";
     if("SK_마법사_025".equals(id))return "SK_무도가_018";

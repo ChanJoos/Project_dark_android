@@ -12,7 +12,7 @@ final class PersistentStatusV249 {
  PersistentStatusV249(Context c){try{JSONObject j=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/status-v249/manifest.json"),java.nio.charset.StandardCharsets.UTF_8)).getJSONObject("persistent");for(String key:new String[]{"SLEEP","POISON"})sequences.put(key,new CapturedSkillFx.Sequence(c,j.getJSONObject(key)));}catch(Exception e){throw new IllegalStateException("V249 status source",e);}paint.setFilterBitmap(false);}
  void draw(Canvas c,SkillVfxRenderer.Anchors a){if(state==null)return;for(RuntimeState.Monster m:state.monsters())if(m.alive)drawActor(c,a,m.id);if(state.player().alive)drawActor(c,a,"player");}
  boolean active(String actor,String kind){SkillEffectState.Effect e=state==null?null:state.skillEffects().get(actor,kind);return e!=null&&e.remaining>0&&(!kind.equals("POISON")||e.source.equals("SK_마법사_012"));}
- void drawActor(Canvas c,SkillVfxRenderer.Anchors a,String actor){for(String kind:sequences.keySet())if(active(actor,kind)){
+ void drawActor(Canvas c,SkillVfxRenderer.Anchors a,String actor){for(String kind:sequences.keySet())if(!kind.equals("SLEEP")&&active(actor,kind)){
   float x=a.centerX(actor),foot=a.y(actor),center=a.centerY(actor);if(!Float.isFinite(x)||!Float.isFinite(foot)||!Float.isFinite(center))continue;
   SkillEffectState.Effect e=state.skillEffects().get(actor,kind);SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(e.source);float age=Math.max(0,(ability==null?e.remaining:ability.duration)-e.remaining);CapturedSkillFx.Sequence q=sequences.get(kind);
   // Keep the whole falling source glyph envelope above the live body top, including short monsters.
