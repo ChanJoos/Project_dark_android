@@ -1,3 +1,13 @@
+## V265 — 퀵스킬 바로 오른쪽으로 공격·AUTO 하향 배치 (2026-10-24 KST)
+
+사용자 명시 요청: 두 버튼을 왼쪽 아래로 내려 모두 퀵스킬창 바로 오른쪽. AUTO 위/공격 아래 한 열, logical y428/490; 공격반경37.2(20percent 확대),AUTO16 유지. 넓은2340x1080에서 슬롯의 승인된한칸39px이동위치를유지하고 두버튼이 skill과동일한half viewport offset을사용해왼쪽/아래로붙는다. 960x540에서는크기/간격유지를위해묶음만20.2px왼쪽으로fit하여오른쪽8px여백을확보. 렌더·두입력경로·worldtap차단동일좌표. 게임runtime은GameView HUD좌표/offset뿐; 전투방향·타수·애니메이션/V264렌더불변.
+
+소스 `7c19d5aa7b335e93379ce59ccd03ae7573cd60f0`, Actions40041455984/job120713245839/artifact12539512797 SUCCESS. **4 scoped native checks PASS**: 두화면실제GameView렌더/12슬롯·ATK/AUTO터치·자동공격on/off·버튼/슬롯터치비겹침/화면fit/world차단; 인접장비/인벤페어·착용수량·퀵목걸이정확슬롯교환/재시작. 실제두화면PNG검토완료. diff 역정규화로GameView추가전투변경없음검사PASS. sourcepush의workflow검토hash누락으로common40041462323이추가실행되어정확source/run만취소; scope metadata수정뒤40041575371 SUCCESS/full compile SKIP. 동일native재빌드없음.
+
+APK PROJECT_DARK_V265_TEST.apk / com.projectdark.mobile.v265test / built2026-10-24 08:48:41 KST /106539706bytes. SHA256 `65fdd98a8917eb5f699cf522c68a3577e42bafea3df970f2bb0612da58a4cb16`, ZIP `af61f22b245a2878d3b59218cb768be7137f55fa1e6249413677b3794b8ad020`. CRC/hash/embedded source+run/CIv2서명/manifest/1518 mainasset bytes PASS. IMPLEMENTED / BUILD VERIFIED / HOST_HUD_RENDER_TOUCH VERIFIED; PHONE/USER_VISUAL_ACCEPTANCE PENDING. V264방향외형기기수용도여전히PENDING. main41fe6def/PR197미병합후보이며문서HEAD를APK소스로재라벨금지.
+
+[검증영수증](../verification/COMBAT_HUD_V265_BUILD.json), [배치계약](../design/COMBAT_HUD_V265.md), [Master](../master/changes/V265_COMBAT_HUD.json). 다음: exactV265실기기버튼위치/조작성확인; 관련없는방향/전투패치금지.
+
 ## V264 — 공격 그림의 프레임 선택·반전 교정 후보 (2026-10-24 KST)
 
 V263 DEVICE_FAILED_USER_REPORTED: Screen_Recording_20261024_081540.mp4(29.390678s,2340x1080,libfile_1556c6c0b3748191bac77952c1d935a4). 전체1fps와10~14/19~23초6fps크롭확인. 설치SHA영상내UNKNOWN/최근eca4d745. 기존 방향값/소스회귀 검사는 실제 몸그림의 방향을 놓쳤다.

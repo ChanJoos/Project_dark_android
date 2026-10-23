@@ -28,5 +28,7 @@
   "files": [
     "app/src/main/java/com/projectdark/mobile/GameView.java"
   ],
-  "verification": "pending four scoped native HUD/gear cases and APK build; PHONE_PENDING"
+  "verification": "4 scoped native HUD/gear cases PASS; two actual GameView screen renders inspected; APK exact source/run/hash/signature/manifest/assets verified; PHONE_PENDING",
+  "sourceCommit": "7c19d5aa7b335e93379ce59ccd03ae7573cd60f0",
+  "receipt": "verification/COMBAT_HUD_V265_BUILD.json"
 }

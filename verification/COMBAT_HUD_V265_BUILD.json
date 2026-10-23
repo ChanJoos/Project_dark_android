@@ -1,0 +1,61 @@
+{
+  "version": "V265",
+  "sourceCommit": "7c19d5aa7b335e93379ce59ccd03ae7573cd60f0",
+  "run": 40041455984,
+  "apkSha256": "65fdd98a8917eb5f699cf522c68a3577e42bafea3df970f2bb0612da58a4cb16",
+  "apkBytes": 106539706,
+  "builtAtKST": "2026-10-24T08:48:41.568809+09:00",
+  "zipSha256": "af61f22b245a2878d3b59218cb768be7137f55fa1e6249413677b3794b8ad020",
+  "identity": {
+    "sourceCommit": "7c19d5aa7b335e93379ce59ccd03ae7573cd60f0",
+    "runId": "40041455984",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "passed": [
+    "com.projectdark.mobile.EquipmentHudV262Test.wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+    "com.projectdark.mobile.EquipmentHudV262Test.bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+    "com.projectdark.mobile.EquipmentHudV262Test.necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+    "com.projectdark.mobile.EquipmentHudV262Test.combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths"
+  ],
+  "scopedChecks": 4,
+  "trackedAssetsByteExact": 1518,
+  "zipCrc": "PASS",
+  "apkCrc": "PASS",
+  "manifestCheck": "PASS",
+  "package": "com.projectdark.mobile.v265test",
+  "appLabel": "PROJECT DARK V265 TEST",
+  "status": "HOST_HUD_RENDER_TOUCH_VERIFIED_CANDIDATE",
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "change": "attack and AUTO lower beside quick skills, shared responsive draw/touch anchors",
+  "deviceAcceptance": "PENDING",
+  "fullRegression": "not claimed",
+  "job": 120713245839,
+  "artifact": 12539512797,
+  "artifactName": "PROJECT_DARK_V265_COMBAT_HUD",
+  "artifactBytes": 116542890,
+  "signature": "CI apksigner v2 TRUE",
+  "commonScopeRun": 40041575371,
+  "commonScopeResult": "SUCCESS; reviewed exact focused blobs, compile skipped",
+  "duplicateCommonRun": {
+    "id": 40041462323,
+    "conclusion": "cancelled",
+    "reason": "workflow reviewed-hash omitted on source push; fixed scope metadata and cancelled only exact duplicate run/source through scoped workflow40041569664"
+  },
+  "visualReview": [
+    "native actual GameView 960x540 screenshot inspected",
+    "native actual GameView 2340x1080 screenshot inspected",
+    "AUTO above attack in same column immediately right of6x2skills; no clipping/overlap"
+  ],
+  "sourceOnlyCheck": "GameView exactly equals V264 after reversing only anchors/shared combat offset changes",
+  "narrowScreenFit": "960x540 entire skill+buttons cluster shifts20.2logicalpx left for8px right margin; wide grid anchor retained",
+  "previousCandidate": "V264 contact renderer unchanged; physical facing acceptance remains pending",
+  "delivery": {
+    "file": "PROJECT_DARK_V265_TEST.apk",
+    "fileId": "file_00000000193081f58e602281fa3290df",
+    "libraryFileId": "libfile_9c94137330e08191810adeb7ff9c18bc",
+    "localMetadataApplied": true
+  }
+}
