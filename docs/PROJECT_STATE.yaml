@@ -1,5 +1,11 @@
 magic_recall_v251:
-  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 4d3232c565732feecdc3fe5cba8b775fc2cf603d
+  focused_run: 39922524224
+  artifact_id: 12487817994
+  native_passed: 19
+  receipt: verification/MAGIC_RECALL_V251_BUILD.json
+  library_file_id: libfile_8e9a8498b9448191a1214750a966fb08
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197

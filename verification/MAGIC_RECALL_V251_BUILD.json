@@ -1,0 +1,194 @@
+{
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "source": "4d3232c565732feecdc3fe5cba8b775fc2cf603d",
+  "run": 39922524224,
+  "job": 120310911678,
+  "artifact": 12487817994,
+  "build": {
+    "sourceCommit": "4d3232c565732feecdc3fe5cba8b775fc2cf603d",
+    "runId": "39922524224",
+    "builtAtKST": "2026-10-23T17:13:33.141434+09:00",
+    "apkSha256": "b28ad6686a90f538e4df247efe6371df90697f56b805bb88b0be769937b4f97e",
+    "apkBytes": 106379565,
+    "identity": {
+      "sourceCommit": "4d3232c565732feecdc3fe5cba8b775fc2cf603d",
+      "runId": "39922524224",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "V251 Soruma recipient-only freeze FX, Death retired, four full Semelia copies around caster/selected monster; Narcoli preview-only/rejected electrical source suppressed;10recall assets/4existing town grants and actual use/restart; phone pending"
+  },
+  "independent": {
+    "apkSha256": "b28ad6686a90f538e4df247efe6371df90697f56b805bb88b0be769937b4f97e",
+    "apkBytes": 106379565,
+    "identity": {
+      "sourceCommit": "4d3232c565732feecdc3fe5cba8b775fc2cf603d",
+      "runId": "39922524224",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "manifest": {
+      "manifest": {
+        "versionCode": 184,
+        "versionName": "1.84-mobile-horror",
+        "compileSdkVersion": 35,
+        "compileSdkVersionCodename": "15",
+        "package": "com.projectdark.mobile.v251test",
+        "platformBuildVersionCode": 35,
+        "platformBuildVersionName": 15
+      },
+      "application": {
+        "theme": 2130837504,
+        "label": "PROJECT DARK V251 TEST",
+        "debuggable": 4294967295,
+        "extractNativeLibs": 0
+      }
+    },
+    "signature": "APKv2 RSA-SHA256 cryptographic signature + certificate public key + full chunk content digest PASS",
+    "packagedSourceByteMatches": 765,
+    "skillPresentationFiles": 727,
+    "townSourceFiles": 26,
+    "npcProfiles": 1
+  },
+  "native": {
+    "totals": [
+      19,
+      0,
+      0,
+      0
+    ],
+    "suites": [
+      {
+        "suite": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "counts": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.ScreenMagicV201Test",
+        "counts": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.MageCircle3CrossV243Test",
+        "counts": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.RagnarokSourceCaptureTest",
+        "counts": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.StatusMagicV249Test",
+        "counts": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.TownNavigationV244Test",
+        "counts": [
+          1,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.MagicRecallV251Test",
+        "counts": [
+          6,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "zip": {
+    "bytes": 137383281,
+    "sha256": "334dd004629f9f61c1f78d74afc0d38d8f1b9dd271d7535779a50d47968e52bf",
+    "crc": "PASS"
+  },
+  "sourceAudit": "10 screenshot crops/4runtime IDs and8complete original preview-only candidate frames PASS",
+  "scopeSelector": {
+    "run": 39922531917,
+    "status": "SUCCESS_FULL_COMPILE_SKIPPED",
+    "localTests": 6
+  },
+  "localCompile": "Production and all tests PASS",
+  "review": {
+    "totalPNGs": 47,
+    "inspected": [
+      "Soruma monster-only actual normalcast",
+      "Armageddon and SummaStella actual four circles",
+      "isolated exactfourcopy native bitmap",
+      "actual4recall inventory",
+      "source10recall crops",
+      "originalcandidate4frames at4x nearest"
+    ],
+    "phone": "PENDING"
+  },
+  "library": {
+    "apk": "libfile_8e9a8498b9448191a1214750a966fb08",
+    "frames": "libfile_6da66da3357c8191b0bfe9ff033bc716",
+    "animation": "libfile_38bec00d5c288191aa61585af9ad2025",
+    "saved": true,
+    "metadataApplied": true
+  },
+  "narcoli": {
+    "status": "PREVIEW_ONLY_NOT_CONFIRMED_NOT_MAPPED",
+    "oldElectricGlyph": "SUPPRESSED",
+    "mechanic": "SLEEP_PRESERVED",
+    "candidate": "EPF028 Z symbols; EPF032 alternate foot registration retained in source review only",
+    "previewScale": 4,
+    "previewIntervalMs": 150,
+    "previewTiming": "PROJECT_PREVIEW_NOT_ORIGINAL_CLIENT_TIMING",
+    "files": {
+      "narcoli-z-4frames.png": "9fbc6f88534fd2b2f286d1a0529153368f85c6841bc12f2cd35743b900a1fa4c",
+      "narcoli-z-preview.gif": "05923810f154b02ba1dd07f3c0d2e3871e52a7fade13e7a126709013d99d9308"
+    }
+  },
+  "recalls": {
+    "assets": 10,
+    "runtimeGranted": [
+      "MILLES",
+      "ABEL",
+      "PIET",
+      "RUCESION"
+    ],
+    "assetOnly": [
+      "RUOSMA",
+      "SUOMI",
+      "UNDI",
+      "LOTON",
+      "HOEN",
+      "GENERIC"
+    ],
+    "legacyMineDeath": "UNCHANGED"
+  },
+  "pending": [
+    "Narcoli exact named video/source identity and user review before mapping",
+    "6recalltowns absent",
+    "Physicalphone and uservisual acceptance",
+    "Separate full gate before main integration"
+  ]
+}
