@@ -1,3 +1,7 @@
+## V260 — 사용자 기기 방향·연타 숫자 결함 수정 중
+
+DEVICE_FAILED_USER_REPORTED: 몬스터가 멈추고 측면을 보며, 더블/트리플 피해 숫자가 하나로 보임. 설치 SHA UNKNOWN; 직전 전달 aab7b4da/V259를 기기 수용으로 간주하지 않음. 기존 branch/PR197, main41fe6def 유지. 원인 후보: AI 쿨다운 대기 중 facing 미갱신, 마지막 피해만 표시하는 single popup 덮어쓰기. 방향 재현을 old AI로 먼저 증명 후 복원 소스에 실제 UI/2·3타/기존상성·자동·이동·저장 검증. 위치 계산은 순수하게 유지, 기획/원본 근거 master/changes/V260_FACING_NUMBERS.json. 구현 후 BUILD/HOST/PHONE PENDING.
+
 ## V259 — 기본 공격 위치 배율·센스 목걸이 검증 후보 (2026-10-24 KST)
 
 사용자 확정: [설계](../design/COMBAT_NECKLACE_V259.md), [변경 계약](../master/changes/V259_SENSE_NECKLACE.json), [목걸이 원본 ID·출처](../master/canonical/Necklace_Elements_V259.json). 플레이어 기본 공격만 정면100%/측면150%/후면200%, 접촉 시 대상 표시 방향 기준으로 각 타격에1회 적용. 전사·도적·무도가 실제 더블2타/트리플3타 유지, 배수 중복 없음. 기술/마법/몬스터가 주는 공격에는 적용하지 않음.

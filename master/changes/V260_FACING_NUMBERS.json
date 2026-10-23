@@ -1,0 +1,61 @@
+{
+  "version": "V260",
+  "status": "ACCEPTED",
+  "userReport": {
+    "classification": "DEVICE_FAILED_USER_REPORTED",
+    "installedSha": "UNKNOWN",
+    "latestDeliveredCandidate": "aab7b4dab1d9644fa0676beb8ad63e33a4c1caa4",
+    "reported": "Monster stops and turns sideways; double/triple damage numbers overwrite"
+  },
+  "changes": {
+    "facing": "Existing AI opponent tracked during idle/cooldown. Do not turn during movement, attack lock, disabled, hidden or aggro-reset. Ranged attack locks full target vector.",
+    "position": "Keep pure front100/side150/rear200 calculator for other attackers; do not turn a defender inside the damage calculation.",
+    "hits": "Existing actual per-contact damage/count retained. Learned triple max precedence over double. One independent positive digit number for every positive actual hit.",
+    "numbers": "Original retained town-v247/font-en.png glyph atlas; nearest sampled, white/lavender face/dark contour; rise without system-font pulse, stack older hits above newer ones; .80s lifetime/max12 per target; killing number survives body removal.",
+    "scope": "No movement/collision/AI cadence/spawn stats/reward/save-schema changes."
+  },
+  "sources": [
+    {
+      "path": "app/src/main/assets/town-v247/font-en.png",
+      "kind": "existing original client atlas; source bytes unchanged"
+    },
+    {
+      "file": "Screen_Recording_20261022_235706_YouTube(1).mp4",
+      "libraryId": "libfile_9c2d1f530d2c8191be996f0d5c811816",
+      "time": "70.0-71.2s",
+      "observation": "Positive white outlined damage digits rise over recipients, independent simultaneous numbers. Lossy video limits; motion constants adapted from observation, not original server constants."
+    },
+    {
+      "file": "Screen_Recording_20260930_201141_YouTube.mp4",
+      "path": "project_sources/23-Screen_Recording_20260930_201141_YouTube.mp4",
+      "time": "0.0-1.6s",
+      "observation": "Repeated white/cyan heal numbers rise and remain independently visible; healing itself unchanged."
+    }
+  ],
+  "verification": {
+    "baseline": "old AI controller only, expected native facing assertion failure before final source restored",
+    "focused": [
+      "FacingNumbersV260Test",
+      "CombatNecklaceV259Test",
+      "AutoOrderTargetV256Test",
+      "RogueRepairV232Test",
+      "F5mRestartPersistenceMatrixTest",
+      "MagicRuntimeV137Test",
+      "AbelCombatV153Test",
+      "MonsterChasePerformanceTest",
+      "PoteMonsterMotionV121Test"
+    ],
+    "phone": "PENDING"
+  },
+  "implementation": [
+    "app/src/main/java/com/projectdark/mobile/MonsterCombatFacingV260.java",
+    "app/src/main/java/com/projectdark/mobile/HitNumbersV260.java",
+    "app/src/main/java/com/projectdark/mobile/OriginalDamageDigitsV260.java",
+    "app/src/main/java/com/projectdark/mobile/MonsterAIController.java",
+    "app/src/main/java/com/projectdark/mobile/RuntimeState.java",
+    "app/src/main/java/com/projectdark/mobile/GameView.java",
+    "app/build.gradle",
+    "app/src/test/java/com/projectdark/mobile/FacingNumbersV260Test.java",
+    ".github/workflows/rucesion-town-v156.yml"
+  ]
+}

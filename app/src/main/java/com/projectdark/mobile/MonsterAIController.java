@@ -55,7 +55,7 @@ public final class MonsterAIController {
     public AttackRoute route(){return AttackRoute.SHARED_RESOLVER;}
     public AttackSubmissionSnapshot submitAction(RuntimeState state,RuntimeState.Monster m,long sequence,String action){
       state.cancelMonsterAttack(m);String target=action.equals("MONSTER_RECOVER")?m.id:"player";MonsterAutoCombatBridge.Result result=bridge.submit(m.id,target,action);
-      if(result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){CharacterRenderer.Direction f=CanonicalMeleeTileContract.facing(m.x,m.y,state.player().x,state.player().y);if(f!=null)m.visualFacing.setLocomotion(f);m.visualFacing.beginAttack();m.attackVisualRemaining=action.equals("MONSTER_RECOVER")?1.46f:AbelCombatProfile.spell(action)?1.01f:.60f;m.state=RuntimeState.Monster.State.ATTACK;}
+      if(result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){CharacterRenderer.Direction f=CanonicalActorFacing.quantize(state.player().x-m.x,state.player().y-m.y,m.visualFacing.locomotion());m.visualFacing.setLocomotion(f);m.visualFacing.beginAttack();m.attackVisualRemaining=action.equals("MONSTER_RECOVER")?1.46f:AbelCombatProfile.spell(action)?1.01f:.60f;m.state=RuntimeState.Monster.State.ATTACK;}
       return new AttackSubmissionSnapshot(sequence,m.id,target,action,route(),result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED?SubmissionOutcome.ACCEPTED:result.outcome==MonsterAutoCombatBridge.Outcome.ACTION_UNRESOLVED?SubmissionOutcome.ACTION_UNRESOLVED:SubmissionOutcome.REJECTED,result.rejectReason);
     }
     public AttackSubmissionSnapshot submit(RuntimeState state,RuntimeState.Monster monster,long sequence){
@@ -111,7 +111,7 @@ public final class MonsterAIController {
       boolean poteShowcase=com.projectdark.mobile.world.CampaignWorld.contains(state.currentMapId())
           &&PoteForestMonsterShowcase.containsMonster(m.id);
       if(def.status!=MonsterDefinition.Status.PROTOTYPE_PENDING&&!poteShowcase)continue;
-      AbelCombatProfile profile=AbelCombatProfile.forId(m.id);if(profile!=null)tickCoastMonster(state,m,dt,profile);else tickPrototypeMonster(state,m,dt);
+      MonsterCombatFacingV260.track(state,m);AbelCombatProfile profile=AbelCombatProfile.forId(m.id);if(profile!=null)tickCoastMonster(state,m,dt,profile);else tickPrototypeMonster(state,m,dt);
     }
   }
 
