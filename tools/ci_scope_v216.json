@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "fafa45681808f430812d7b878fd90ffc11f68a1994467624e62605c497adf458",
+  ".github/workflows/rucesion-town-v156.yml": "00ef7b94d717218be59262a138c6de006853fc5718b5132a57787a60058db281",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -762,5 +762,6 @@
   "app/src/test/java/com/projectdark/mobile/PoteMonsterMotionV121Test.java": "29c38aaf64d0f72c6fc70ca3cc0da0ea55fd88df53a1119e4325bd50bc655d65",
   "app/src/test/java/com/projectdark/mobile/BasicRollbackV261Test.java": "84f6149769398324800558efc99930c391d158405f5ca430747762ef2eb094ec",
   "master/changes/V261_BASIC_ROLLBACK.json": "261a69f9bc391967efde44198d0e9e66365c4c2b90543afadf43cd474d4dc870",
-  "design/COMBAT_ROLLBACK_V261.md": "193a9771f067afc845f99e66bd01751fc7eee40345352d577325960dd7dfa9bd"
+  "design/COMBAT_ROLLBACK_V261.md": "193a9771f067afc845f99e66bd01751fc7eee40345352d577325960dd7dfa9bd",
+  "app/src/test/java/com/projectdark/mobile/LinkedTwoHandV170Test.java": "2f4a08c1a80936acfd0578a8683f2d2a63865c7110853754326cac7a3d3e5ea9"
 }

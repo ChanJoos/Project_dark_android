@@ -106,7 +106,45 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[basic-rollback-v261]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[v261-timing-tail]"* ]]; then
+            git fetch --depth=1 origin 601e0ba976613ceece826610608aaa1dbe153d42
+            python3 - <<'PYV261TAIL'
+          import subprocess,json,hashlib,urllib.request,os,zipfile,io
+          from pathlib import Path
+          import xml.etree.ElementTree as E
+          base='601e0ba976613ceece826610608aaa1dbe153d42'
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/test/java/com/projectdark/mobile/LinkedTwoHandV170Test.java'}
+          delta=set(subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines());assert delta<=allowed,delta
+          for p in ['app/src/main','app/build.gradle','master','design']:
+              assert subprocess.check_output(['git','rev-parse',base+':'+p])==subprocess.check_output(['git','rev-parse','HEAD:'+p]),p
+          test='app/src/test/java/com/projectdark/mobile/LinkedTwoHandV170Test.java'
+          old=subprocess.check_output(['git','show',base+':'+test],text=True)
+          fixed=old.replace('losingRangeBetweenHitsCancelsRemainingDamage','leavingRangeBeforeAtomicImpactCancelsEntireCombo').replace('assertEquals(1,damage(x.tick(.181f)).size());int hp=m.hp;m.x+=1000;assertEquals(0,damage(x.tick(.3f)).size());','assertEquals(0,damage(x.tick(.179f)).size());int hp=m.hp;m.x+=1000;assertEquals(0,damage(x.tick(.3f)).size());').replace('assertEquals(1,damage(x.tick(.011f)).size());assertEquals(1,damage(x.tick(.065f)).size());assertEquals(1,damage(x.tick(.065f)).size());','assertEquals(3,damage(x.tick(.011f)).size());assertEquals(0,damage(x.tick(.065f)).size());assertEquals(0,damage(x.tick(.065f)).size());').replace('r.inventory().get("IT_WARDROBE_MW016")','r.inventory().get(RpgProgressionState.canonicalItemId("IT_WARDROBE_MW016"))')
+          assert Path(test).read_text()==fixed,'unexpected fixture changes'
+          class Redirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,newurl):
+                  r=super().redirect_request(req,fp,code,msg,headers,newurl)
+                  if r is not None:r.remove_header('Authorization')
+                  return r
+          req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/12533601958/zip',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
+          raw=urllib.request.build_opener(Redirect()).open(req,timeout=120).read();assert hashlib.sha256(raw).hexdigest()=='484f43d7b4d90eb8a1c2345eb06dd269aa75a812123af6c7d446327aed23057e'
+          z=zipfile.ZipFile(io.BytesIO(raw));assert z.testzip() is None
+          folder=Path('app/build/reports/horror-v179/v261-retained');folder.mkdir(parents=True,exist_ok=True);passed=[];failed=[]
+          for name in z.namelist():
+              if '/test-results/' in name and name.endswith('.xml'):
+                  data=z.read(name);(folder/Path(name).name).write_bytes(data)
+                  for case in E.fromstring(data).findall('testcase'):
+                      key=case.get('classname')+'.'+case.get('name');assert case.find('skipped') is None
+                      (failed if case.find('failure') is not None or case.find('error') is not None else passed).append(key)
+              if name.endswith('.png') and '/v260/' in name:(folder/Path(name).name).write_bytes(z.read(name))
+          prefix='com.projectdark.mobile.LinkedTwoHandV170Test.'
+          expected={prefix+'losingRangeBetweenHitsCancelsRemainingDamage',prefix+'twoHandContactAndCooldownShareVideoAdaptedClock',prefix+'oldEquippedTwoHandWithoutLearningIsRemovedWithoutLosingOwnership'}
+          assert len(passed)==49 and set(failed)==expected,(len(passed),failed)
+          (folder/'retained-evidence.json').write_text(json.dumps(dict(source=base,run=40027979318,artifact=12533601958,passed=passed,priorFailures=failed,guard='exact runtime/assets/master/design; exact three timing/alias fixture repairs only'),indent=2)+'\n')
+          print('V26149 exact-runtime checks retained; corrected atomic-impact timing/range and canonical ownership fixtures; run3 and assemble')
+          PYV261TAIL
+            gradle --no-daemon :app:testDebugUnitTest --tests "*LinkedTwoHandV170Test.leavingRangeBeforeAtomicImpactCancelsEntireCombo" --tests "*LinkedTwoHandV170Test.twoHandContactAndCooldownShareVideoAdaptedClock" --tests "*LinkedTwoHandV170Test.oldEquippedTwoHandWithoutLearningIsRemovedWithoutLosingOwnership" :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[basic-rollback-v261]"* ]]; then
             git fetch --depth=1 origin 255a104c69cb09bfc4c760d9c0c98210502bae05
             python3 - <<'PYV261'
           from pathlib import Path
@@ -1044,7 +1082,7 @@ jobs:
           if '[hud-items-v254]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V254 skill6x2; joined HP/MP+4owned-item shortcuts; normal and wide input/register/equip/consume/readonly/restart; V253 Narcoli user accepted unchanged; host native,phone pending'
           if '[compact-hud-v255]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V255 36px6x2 skill shortcuts beside centered HP/MP bars; normal/wide bounds and real input/cast/auto/potion/item/picker/restart; host native,phone pending'
           if '[v260-final-review]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V260 final17 affected AI/chase/visual checks plus38 exact-delta retained checks =55 scoped PASS; original !-based digit cells corrected, continuous stationary attacks and unchanged chase headings, independent2/3-hit numbers; old AI facing fault and two legacy failures reproduced; original/generation gait assertion now separately corrected on old runtime; full/phone acceptance pending'
-          if '[basic-rollback-v261]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V261 positional damage and facing helper removed, AI exact pre-position255a104c; atomic total1/2/3 basic contacts without fourth linked/utility hit; original-video measured rightward/parabolic number fan and13step fade; scoped native/manual/AUTO/source font/chase/save; exact original onset/world scale and phone acceptance pending'
+          if '[basic-rollback-v261]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V26149 exact-runtime retained checks +3 corrected atomic-impact/canonical-ownership fixtures =52 scoped checks; positional damage/facing removed, AI pre-position255a104c; total1/2/3 contacts and video-tracked number fan; scoped native/manual/AUTO/source font/chase/save; exact-original and phone acceptance pending'
           if '[facing-numbers-v260]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V260 reproduced old-AI facing fault; exact-runtime54 retained scoped passes plus corrected original/generated gait gate. Facing locks, pure positional rules, per-hit source-font popups, triple priority, manual/AUTO/neck/element/chase/save. Historical five-job level70 paid-gear fixture remains OPEN; phone pending'
           if '[v259-verify-tail]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V259 final1 actual GameView inventory source coverage PASS plus55 earlier exact-runtime checks retained by strict source/test/artifact guards =56; original code/assets/master/design unchanged; full attempt stopped at stale Pote string assertion, repaired here; later full checks not run; phone pending'
           if '[sense-neck-v259]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V259 front100 side150 rear200 basic-only per-hit damage; learned double/triple manual/AUTO; successful Sense quickitem necklace table ranking; fresh water/fire-earth-wind kit, source-backed elements/alias propagation and restart; adjacent combat/gear/auto/save; phone pending'
