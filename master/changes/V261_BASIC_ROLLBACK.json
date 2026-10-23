@@ -1,0 +1,25 @@
+{
+  "version": "V261",
+  "status": "ACCEPTED",
+  "authority": "User explicitly removes front/side/rear damage and associated facing adjustments; total basic1/double2/triple3, no extra fourth; review provided video popup motion",
+  "deviceReport": "DEVICE_FAILED_USER_REPORTED: V260 installed source unknown, latest candidate df3c0e56; facing broken,4 hits with triple, popup motion unlike original",
+  "rollback": {
+    "ai": "MonsterAIController restored byte-for-byte from255a104c V258 before positional feature",
+    "removed": [
+      "BasicPositionDamageV259",
+      "MonsterCombatFacingV260"
+    ],
+    "retained": "V259 necklace/sense behavior, original monster movement and existing combat direction locks"
+  },
+  "hits": "Total count clamp3; remove trap add-on; all basic contacts at one existing impact event, no base+linked duplication; no late fourth",
+  "numbers": {
+    "source": "Screen_Recording_20261021_205939_YouTube.mp4",
+    "sha256": "58b41133fe26b4322c0d82149ec95c6f7587b4e3471153d8cb55eac39de36054",
+    "window": "5.750-6.350s: track1433/1444/1421 white glyph templates; horizontal9.3px/source update, parabolic y acceleration2.36px/update; gaps grow4.65px/update",
+    "cadence": "15fps-adapted reference stepping, source recording30fps contains repeated frames and YouTube seeks; original engine clock and pre-visible onset unresolved",
+    "policy": "Same-impact common origin, independently diverging vertical velocities and shared rightward arc; no retroactive upward stacking; fade last3steps then expire",
+    "classification": "OBSERVED tracks + ADAPTED extrapolated onset/world scale, not exact-original certification"
+  },
+  "verification": "pending exact source native/build and phone",
+  "master": "Preserve all original source snapshots and historical stats/skill rows; this user override changes runtime basic behavior only"
+}

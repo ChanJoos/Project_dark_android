@@ -67,8 +67,8 @@ public class SkillSpatialContractTest {
   @Test public void passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic()throws Exception{
     GameView v=new GameView(c);v.setSkillTestMode(true);SkillBook b=field(v,"skillBook");
     for(String id:new String[]{"SK_전사_008","SK_전사_002","SK_도적_025","SK_성직자_060","SK_마법사_054"}){use(v,b.get(id));assertNull(id,field(v,"activeSkillVisualId"));assertFalse(((RuntimeCombatSession)field(v,"combatSession")).playerActionActive());assertTrue(((SkillVfxRenderer)field(v,"skillVfx")).pulses.isEmpty());}
-    assertFalse("retired installed trap cannot add a fifth hit",b.learned("SK_도적_031"));assertEquals(4,b.basicHits());v.setSkillTestMode(false);assertEquals(1,b.basicHits());
-    b.bindJob(()->"WARRIOR");b.learn("SK_전사_002",0);assertEquals(2,b.basicHits());b.learn("SK_전사_005",0);assertEquals(3,b.basicHits());b.learn("SK_전사_020",0);assertEquals(4,b.basicHits());
+    assertFalse("retired installed trap cannot add a fifth hit",b.learned("SK_도적_031"));assertEquals(3,b.basicHits());v.setSkillTestMode(false);assertEquals(1,b.basicHits());
+    b.bindJob(()->"WARRIOR");b.learn("SK_전사_002",0);assertEquals(2,b.basicHits());b.learn("SK_전사_005",0);assertEquals(3,b.basicHits());b.learn("SK_전사_020",0);assertEquals(3,b.basicHits());
   }
   @Test public void liveGameInputRendersDistinctFinisherAndSpellEffects()throws Exception{
     for(String id:new String[]{"SK_전사_015","SK_전사_023","SK_도적_020","SK_무도가_020","SK_마법사_043","SK_성직자_040"}){

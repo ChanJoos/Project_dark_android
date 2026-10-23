@@ -66,9 +66,9 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private java.util.function.Predicate<String> visible=id->true;
   private java.util.function.IntSupplier basicHits=()->1;
   public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
-  public int hitCount(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(5,basicHits.getAsInt())):1;}
+  public int hitCount(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(3,basicHits.getAsInt())):1;}
   public int contactHitCount(String actor,String target,String action,int initial){return "player".equals(actor)&&MartialSourceV228.MUYEONG.equals(action)?Math.max(1,recipients(actor,target,action).size()):initial;}
-  public float hitSpacing(String actor,String action){return BasicAttackTiming.HIT_SPACING;}
+  public float hitSpacing(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?0f:BasicAttackTiming.HIT_SPACING;}
   public void setVisible(java.util.function.Predicate<String> visible){this.visible=visible;}
   public boolean visible(String id){return isNpc(id)||visible.test(id);}
   public java.util.List<String> recipients(String actor,String target,String action){
@@ -188,7 +188,6 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
       if(!ability.fixed()&&state.skillEffects().has(actorId,"ELEMENT_BOOST"))amount=safeScale(amount,1.2);
       if(!ability.fixed())amount=CombatStatPipeline.resolveSkill(amount,channel,attacker,defender).applied;
     }else amount=(profile!=null&&AbelCombatProfile.spell(actionId)?CombatStatPipeline.resolveSkill(amount,channel,attacker,defender):CombatStatPipeline.resolve(amount,channel,attacker,defender)).applied;
-    if(playerActor&&basic)amount=BasicPositionDamageV259.apply(amount,state.player(),findMonster(targetId));
     if(playerActor&&basic){if(state.skillEffects().has(actorId,"BASIC_POWER")&&abilities.random.getAsDouble()<.3)amount=safeScale(amount,2);}
     SkillEffectState fx=state.skillEffects();
     // Reflection redirects the computed incoming hit once, before other immunity; never recurses.

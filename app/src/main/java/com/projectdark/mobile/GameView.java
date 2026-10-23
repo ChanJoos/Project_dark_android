@@ -854,7 +854,7 @@ public final class GameView extends View {
   }
   private void drawMonsterDamage(Canvas c,RuntimeState.Monster m){
     if(damageDigits==null||m.damageNumbers.hits().isEmpty())return;
-    for(HitNumbersV260.Hit h:m.damageNumbers.hits())damageDigits.draw(c,h.text(),h.x,h.y-damageNumberHeight(m)+h.offsetY(),h.alpha());
+    for(HitNumbersV260.Hit h:m.damageNumbers.hits())damageDigits.draw(c,h.text(),h.x+h.offsetX(),h.y-damageNumberHeight(m)*.45f+h.offsetY(),h.alpha());
   }
 
   static float monsterFacingX(CharacterRenderer.Direction d){return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-3f:3f;}
