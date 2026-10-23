@@ -1,3 +1,11 @@
+town_portals_v248:
+  status: IMPLEMENTING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/MAGIC_FX_LESSONS.md, master/source/town_v248/receipt.json, master/source/town_v248/1000060746.jpg, master/source/town_v248/1000060745.png, master/source/town_v248/1000060743.jpg, master/source/town_v248/1000060739.jpg, master/source/town_v248/1000060737.jpg]
+  phone: PENDING
+
 town_services_v247:
   status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
   runtime_source: 2367c5811a05b00b724cf2b15245239e5f262921

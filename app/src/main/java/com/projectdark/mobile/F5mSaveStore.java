@@ -74,6 +74,8 @@ public final class F5mSaveStore {
   }
   public static void beginFrame(){if(active!=null)active.inFrame=true;}
   public static void endFrame(){if(active!=null)active.inFrame=false;}
+  /** Exactly one commit persists the paid destination, Gold and optional Milles return point. */
+  static boolean commitNpcTravelActive(RuntimeState state,String from,float returnX,float returnY){if(active==null)return true;if(!active.writable||active.runtime!=state)return false;SharedPreferences.Editor edit=active.checkpointEditor();if(WorldDef.ID.equals(from))edit.putFloat("field_return_x",returnX).putFloat("field_return_y",returnY);return edit.commit();}
   public static boolean checkpointActive(){return active==null||active.checkpoint();}
 
   /** Position-only periodic checkpoint: memory is updated now; Android queues disk IO.

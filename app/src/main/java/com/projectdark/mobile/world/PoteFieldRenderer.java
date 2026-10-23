@@ -261,7 +261,7 @@ public final class PoteFieldRenderer {
     if(c==null||w==null)return;drawBelow(c,w,Float.POSITIVE_INFINITY);
   }
 
-  public void drawPortalWorld(Canvas c,float x,float y){Bitmap b=bitmap("assets/world/portal/portal_reagent_shop.webp");if(b!=null){pixel.setAlpha(255);pixel.setColor(0xffffffff);c.drawBitmap(b,null,new RectF(x-32,y-22,x+32,y+10),pixel);}}
+  public void drawPortalWorld(Canvas c,float x,float y){com.projectdark.mobile.PortalAnimation.draw(c,x,y);}
   /** Actor bounds/callbacks use world feet. Each tree fades only if its foreground pixels hide an actor. */
   public static final class ActorDraw {
     public final float x,y,height,width; public final Runnable draw;

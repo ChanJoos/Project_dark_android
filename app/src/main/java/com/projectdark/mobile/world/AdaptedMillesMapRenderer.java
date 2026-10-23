@@ -129,6 +129,7 @@ public final class AdaptedMillesMapRenderer {
 
   private void drawPlacement(Canvas canvas,WorldRuntimeAdapter world,SpritePlacement placement){
     if((placement.asset.startsWith("vegetation/grass/")||placement.asset.startsWith("vegetation/flowers/"))&&com.projectdark.mobile.TempleEntranceRenderer.coversGround(placement.x,placement.y))return;
+    if(placement.asset.startsWith("assets/world/portal/"))return; // V248 common live overlay owns every entrance.
     Bitmap image=bitmap(placement.asset);if(image==null)return;
     WorldCameraTransform.Point foot=world.worldToScreen(placement.x,placement.y);
     if("door".equals(placement.drawMode)){

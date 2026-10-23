@@ -23,7 +23,6 @@ public final class HorrorCastleLegacyRenderer {
   if(HorrorCastleGeometry.LOBBY.equals(id))stairs(c,HorrorCastleGeometry.x(11,3),HorrorCastleGeometry.y(11,3));
   for(HorrorCastleGeometry.Door d:HorrorCastleGeometry.doors(id)){
    if("밀레스로 돌아가기".equals(d.label)){bitmap(c,"door",d.x,d.y,55);}else if(!"MILLES".equals(d.destination)&&!"로비로".equals(d.label)){bitmap(c,"door",d.x+32,d.y-16,55);}
-   if(d.visiblePortal){p.setColor(0xffa28c67);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);c.drawOval(d.x-16,d.y-6,d.x+16,d.y+6,p);p.setStyle(Paint.Style.FILL);}
   }
  }
  private void wall(Canvas c,String id,boolean left){int count=(left?HorrorCastleGeometry.rows(id):HorrorCastleGeometry.columns(id))-1;float sign=left?-1:1,x=800,y=160,length=count*32;

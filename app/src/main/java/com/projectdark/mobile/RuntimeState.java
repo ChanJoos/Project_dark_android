@@ -13,6 +13,14 @@ import java.util.Arrays;
  * [ADAPTED] Screen-space geometry validates mobile controls before verified tile collision exists.
  */
 public final class RuntimeState {
+  /** Captures live actor objects so a failed paid transfer cannot respawn or heal the source map. */
+  static final class TravelSnapshot {
+    final String map;final float[] at;final List<Npc> npcs;final List<Monster> monsters;final List<RectF> obstacles;final org.json.JSONObject campaign,effects,horror;
+    TravelSnapshot(RuntimeState s){map=s.currentMapId;at=new float[]{s.currentMinX,s.currentMaxX,s.currentMinY,s.currentMaxY,s.player.x,s.player.y,s.player.spawnX,s.player.spawnY};npcs=new ArrayList<>(s.npcs);monsters=new ArrayList<>(s.monsters);obstacles=new ArrayList<>(s.obstacles);campaign=s.rpg.campaign().snapshot();effects=s.skillEffects.snapshot();horror=s.horror.snapshot();}
+  }
+  TravelSnapshot captureTravel(){return new TravelSnapshot(this);}
+  void restoreTravel(TravelSnapshot b){currentMapId=b.map;currentMinX=b.at[0];currentMaxX=b.at[1];currentMinY=b.at[2];currentMaxY=b.at[3];player.x=b.at[4];player.y=b.at[5];player.spawnX=b.at[6];player.spawnY=b.at[7];npcs.clear();npcs.addAll(b.npcs);monsters.clear();monsters.addAll(b.monsters);obstacles.clear();obstacles.addAll(b.obstacles);terrainIndex=null;rpg.campaign().restore(b.campaign);skillEffects.restore(b.effects);horror.restore(b.horror);}
+
   public enum BootMode { MILLES, POTE_01_PROTOTYPE }
 
   public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
@@ -30,7 +38,7 @@ public final class RuntimeState {
 
   public static final class Npc {
     public final String id,name,dialogue,assetStatus;public final float x,y;
-    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||HorrorCastleTravel.EXIT_NPC.equals(id)||id.startsWith("campaign_altar_")?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
+    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||id.startsWith("campaign_altar_")?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
   }
 
   public static final class Monster {
@@ -203,7 +211,7 @@ public final class RuntimeState {
     int zone=map.zone;monsters.addAll(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)?HorrorCastleMonsters.spawn(id,horror.seed()):CampaignMonsters.spawnForMap(id));horror.apply(monsters);
     // This roster contains new lives. Reused species#slot keys must not inherit old-map effects.
     for(Monster fresh:monsters)skillEffects.clear(fresh.id);
-    if(com.projectdark.mobile.world.DeathVillageGeometry.contains(id)){if(com.projectdark.mobile.world.DeathVillageGeometry.LOBBY.equals(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("death_village_travel","죽음의마을 이동 도우미",t.x,t.y,"마을 안의 세 건물과 지하로 이어지는 길을 살펴보세요.","ADAPTED_ORIGINAL_SOURCE"));}}
+    if(com.projectdark.mobile.world.DeathVillageGeometry.contains(id)){if(com.projectdark.mobile.world.DeathVillageGeometry.LOBBY.equals(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("death_village_travel","죽음의마을 이동 도우미",t.x,t.y,"마을 안의 세 건물과 지하로 이어지는 길을 살펴보세요.","ADAPTED_ORIGINAL_SOURCE"));com.projectdark.mobile.world.WorldMoveTargetController.TileCenter shop=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,t.x+96,t.y+48);npcs.add(new Npc("death_reagent_knight","수호기사",shop.x,shop.y,"시약과 마을 리콜을 판매합니다.","ORIGINAL_MNS028_USER_ASSIGNED_SERVICE"));}}
     else if(com.projectdark.mobile.world.MineHuntGeometry.contains(id)||com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)){ /* Dedicated return portals, no generic forest NPC. */ }
     else if(com.projectdark.mobile.world.MineTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("mine_town_travel","마인 이동 도우미",t.x,t.y,"밀레스를 비롯한 마을로 이동할 수 있습니다.","ADAPTED_USER_VIDEO"));}
     else if(com.projectdark.mobile.world.RucesionTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,TownTravel.center(id).x,TownTravel.center(id).y);npcs.add(new Npc("rucesion_town_travel","해럴드",t.x,t.y,"모든 마을로 이동할 수 있습니다.","ADAPTED"));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.RucesionTownGeometry.x(15,24),com.projectdark.mobile.world.RucesionTownGeometry.y(15,24));npcs.add(new Npc("rucesion_beach_keeper","루크",t.x,t.y,"뤼케시온 해변으로 이동합니다. Lv71 이상 · 시험 모드 미리보기 가능","ADAPTED"));}

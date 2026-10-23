@@ -32,7 +32,6 @@ public final class MineHuntRenderer {
   boolean occludes=a.image.getHeight()>=48&&a.depth>playerY+2&&a.depth-playerY<150&&playerX>=a.x-12&&playerX<=a.x+w+12&&playerY-40>a.y;
   p.setAlpha(occludes?108:255);if(occludes)fadedPieces++;c.drawBitmap(a.image,null,dst,p);p.setAlpha(255);}
  public void draw(Canvas c,WorldRuntimeAdapter world,List<PoteFieldRenderer.ActorDraw> input){prepare();fadedPieces=0;playerX=world.presentationPlayerX();playerY=world.presentationPlayerY();float ox=world.camera().cameraX(),oy=world.camera().cameraY();c.getClipBounds(clip);p.setColorFilter(null);p.setAlpha(255);for(int cy=(int)Math.floor((oy+clip.top)/256f);cy<=Math.floor((oy+clip.bottom)/256f);cy++)for(int cx=(int)Math.floor((ox+clip.left)/256f);cx<=Math.floor((ox+clip.right)/256f);cx++)c.drawBitmap(chunk(cx,cy),cx*256f-ox,cy*256f-oy,p);
-  WorldMoveTargetController.TileCenter e=MineHuntGeometry.exit();dst.set(e.x-24-ox,e.y-15-oy,e.x+24-ox,e.y+9-oy);c.drawBitmap(portal,null,dst,p);
   actors.clear();actors.addAll(input);actors.sort(Comparator.comparingDouble(a->a.y));int i=0;for(PoteFieldRenderer.ActorDraw actor:actors){while(i<foreground.size()&&foreground.get(i).depth<=actor.y)piece(c,foreground.get(i++),ox,oy);actor.draw.run();}while(i<foreground.size())piece(c,foreground.get(i++),ox,oy);actors.clear();
  }
  public float bodyHeight(String id){int t=MineHuntMonsters.type(id);return t<0?50:ay[t]*SCALE;}

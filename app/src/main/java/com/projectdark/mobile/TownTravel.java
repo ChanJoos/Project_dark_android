@@ -14,12 +14,12 @@ public final class TownTravel {
   new Destination(MineTownGeometry.ID,"mine_town_travel","마인 마을"),
   new Destination(DeathVillageGeometry.LOBBY,"death_village_travel","죽음의마을 대기실")));
  private static final Destination LEGACY_PIET=new Destination(CampaignWorld.PIET,"piet_town_travel","피에트 거점");
- public static boolean isManager(String npc){if(LEGACY_PIET.npc.equals(npc))return true;for(Destination d:TOWNS)if(d.npc.equals(npc))return true;return false;}
+ public static boolean isManager(String npc){if("abel_coast_departure".equals(npc)||"rucesion_beach_keeper".equals(npc)||HorrorCastleTravel.EXIT_NPC.equals(npc))return true;if(LEGACY_PIET.npc.equals(npc))return true;for(Destination d:TOWNS)if(d.npc.equals(npc))return true;return false;}
  public static boolean isTown(String map){return forMap(map)!=null;}
  public static Destination forMap(String map){map=AbelTownGeometry.canonical(map);if(LEGACY_PIET.map.equals(map))return LEGACY_PIET;for(Destination d:TOWNS)if(d.map.equals(map))return d;return null;}
  /** Death Village entry is offered by the existing Mine town manager only. */
  public static boolean offers(String from,String to){return !DeathVillageGeometry.LOBBY.equals(to)||MineTownGeometry.ID.equals(from);}
- public static boolean canDepart(String map,String npc){Destination d=forMap(map);return d!=null&&d.npc.equals(npc);}
+ public static boolean canDepart(String map,String npc){if(HorrorCastleTravel.EXIT_NPC.equals(npc))return HorrorCastleGeometry.contains(map);if("abel_coast_departure".equals(npc))return AbelTownGeometry.contains(map);if("rucesion_beach_keeper".equals(npc))return RucesionTownGeometry.contains(map);Destination d=forMap(map);return d!=null&&d.npc.equals(npc);}
  public static WorldMoveTargetController.TileCenter center(String map){
   if(WorldDef.ID.equals(map))return new WorldMoveTargetController.TileCenter(512,544);
   float x=800,y=608;
