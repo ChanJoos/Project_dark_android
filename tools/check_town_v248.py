@@ -16,7 +16,9 @@ with zipfile.ZipFile(S/'original_sources.zip') as z:
     assert f['pivot']==[19,110] and f['size']==[38,120]
     assert sha(f['rgba'].tobytes())==r['portalFrames'][i]['rgbaSha256'];assert np.array_equal(np.array(actual.crop((i%8*38,i//8*120,(i%8+1)*38,(i//8+1)*120))),f['rgba'])
   elif n.startswith(('choice-','portrait')):
-   expected=np.array(Image.open(S/a['source']).convert('RGBA').crop(a['crop']));pad=a['removedInterior'];expected[pad:-pad,pad:-pad,3]=0;assert np.array_equal(np.array(actual),expected)
+   expected=np.array(Image.open(S/a['source']).convert('RGBA').crop(a['crop']));pad=a['removedInterior'];expected[pad:-pad,pad:-pad,3]=0
+   if a.get('mirrorRightHalf'):expected[:,expected.shape[1]//2:]=expected[:,:expected.shape[1]//2][:,::-1]
+   assert np.array_equal(np.array(actual),expected)
   else:
    m=mpf(z.read('hades/'+a['source']));expected=render_frame(m,palette(z.read('hades/'+a['palette'])),a['frame'])
    if a['mirrored']:expected=expected.transpose(Image.Transpose.FLIP_LEFT_RIGHT)

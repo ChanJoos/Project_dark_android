@@ -93,7 +93,7 @@
       "preserved": "all border RGB, no AI repaint"
     },
     "choice-idle.png": {
-      "sha256": "564b850385fe1ce7bd56d4b3f9791ce3a568a36983fce9e4fea6c3bc70ba2b3b",
+      "sha256": "4e7b6f804947ebea5e247dbd5941debb392ee6fcade3756011d714270f37bd95",
       "size": [
         316,
         49
@@ -106,7 +106,8 @@
         474
       ],
       "removedInterior": 9,
-      "preserved": "all border RGB, no AI repaint"
+      "preserved": "Clean left screenshot border mirrored into right half to remove overlaid background HUD; original RGB retained, no repaint",
+      "mirrorRightHalf": true
     },
     "portrait.png": {
       "sha256": "033a039cbdb09ed93daafdbe602eae308b762251a3b4cb8fbf319ca5cb2d52d2",

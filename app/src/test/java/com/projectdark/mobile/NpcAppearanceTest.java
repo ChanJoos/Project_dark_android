@@ -25,7 +25,7 @@ public final class NpcAppearanceTest {
   Set<String> registeredIds=new HashSet<>();
   for(NpcIdentity.Profile p:NpcIdentity.ALL)assertTrue("unique registered NPC "+p.id,registeredIds.add(p.id));
   assertTrue(registeredIds.contains("mine_town_travel"));
-  assertEquals("마을 이동 도우미",NpcIdentity.forId("mine_town_travel").role);
+  assertEquals("이동",NpcIdentity.forId("mine_town_travel").role);
   for(TownInteriorDef d:TownInteriorDef.MINE){
    String id=NpcIdentity.interiorKey(d.mapId,d.kind.name());
    assertTrue("Mine service uses registered profile "+id,registeredIds.contains(id));
