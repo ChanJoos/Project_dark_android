@@ -1,0 +1,69 @@
+{
+  "apkSha256": "a585d8665ef1653e8e795fecc05fa68dc8fd055865044b74d44f099db39a936d",
+  "apkBytes": 106089258,
+  "identity": {
+    "sourceCommit": "2367c5811a05b00b724cf2b15245239e5f262921",
+    "runId": "39900306358",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "manifest": {
+    "manifest": {
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile.v247test",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "application": {
+      "theme": 2130837504,
+      "label": "PROJECT DARK V247 TEST",
+      "debuggable": 4294967295,
+      "extractNativeLibs": 0
+    }
+  },
+  "signature": "APKv2 RSA-SHA256 cryptographic signature + certificate public key + full chunk content digest PASS",
+  "packagedSourceByteMatches": 739,
+  "skillPresentationFiles": 721,
+  "townSourceFiles": 18,
+  "sourceCommit": "2367c5811a05b00b724cf2b15245239e5f262921",
+  "runId": "39900306358",
+  "builtAtKST": "2026-10-23T13:30:25.215487+09:00",
+  "scope": "V247 original NPC9 service roles, all19 service scenes,9 retail buy/sell/rollback/restart, both coastal gate halos, counselor quest continuity; focused regressions, phone pending",
+  "revision": "V247",
+  "runtimeSource": "2367c5811a05b00b724cf2b15245239e5f262921",
+  "focusedRun": 39900306358,
+  "focusedJob": 120240120717,
+  "artifact": 12479056086,
+  "artifactZipSha256": "4600a5e59f30aedf337479d604512cd337dd1d59a5a15e2445bcb78556524c07",
+  "artifactZipBytes": 148707867,
+  "commonRun": 39900312213,
+  "commonScope": "SUCCESS",
+  "commonCompile": "SKIPPED_EXACT_REVIEWED_SCOPE",
+  "fullGameRegression": "NOT_CLAIMED",
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "unmergedCandidate": true,
+  "priorSource": "825f112f0d68c342c7554fd27a1b927ae47614c9",
+  "priorRun": 39899353646,
+  "priorNative": "20 executed/18PASS/2fixture-oracleFAIL; source filtering and coast entry fixed, no waived assertions",
+  "finalNative": "8PASS/0failure/error/skip; plus16 unchanged relevant prior PASS reused under code/fixture guard =24unique PASS",
+  "serviceScenes": 19,
+  "commonOriginalNpcs": 9,
+  "retailShops": 9,
+  "coastalLobbies": 2,
+  "nativePngs": 68,
+  "sourceAssetCount": 18,
+  "sourceAssets": "Full raw original formats and pixels independently audited; master/source/town_v247/receipt.json",
+  "renderReview": "19service scenes,9retailshop frames, blacktooltips/confirmation,2coast captures reviewed; source pixel9NPC assertions PASS; 3scene/2shop contact pages reviewed",
+  "limits": "Original source frame/font/control positions adapted uniformly from640x480 into720x540 central screen; existing items/prices retained, unknown weights shown dash. No claim of exact Korean client/server price/data/physical handset acceptance.",
+  "delivery": {
+    "file": "PROJECT_DARK_V247_TEST.apk",
+    "libraryFileId": "libfile_17636fefc1ec8191ac0521550635ee2c",
+    "fileId": "file_000000009ef481fd9a17de1c33eef644",
+    "save": "SUCCESS",
+    "metadataApplied": true
+  }
+}

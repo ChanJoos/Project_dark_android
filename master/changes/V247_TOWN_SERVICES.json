@@ -17,6 +17,8 @@
     "ClassicShopSkin",
     "GameView"
   ],
-  "verification": "TownServicesV247Test3 + TownInteriorTest8 + NpcAppearanceTest3 + CampaignProgressTest6 focused; exact source CI/APK pending",
-  "phone": "PENDING"
+  "verification": "24 unique relevant PASS: final8native39900306358 plus16unchangednative39899353646 guarded;18sourcepixel assetchecks;68nativecaptures;APKcryptographic/digest/package/source verification PASS",
+  "phone": "PENDING",
+  "runtimeSource": "2367c5811a05b00b724cf2b15245239e5f262921",
+  "receipt": "verification/TOWN_SERVICES_V247_BUILD.json"
 }

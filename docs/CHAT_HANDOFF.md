@@ -1,3 +1,13 @@
+## V247 — 해안 원·NPC 정리·모든 마을 공통 원본 상점: 최종 후보 완료
+
+APK소스 `2367c5811a05b00b724cf2b15245239e5f262921`, Actions39900306358/job120240120717 SUCCESS, artifact12479056086. 최종8native PASS/0failure/error/skip + 최초825f112f/run39899353646의불변16관련PASS를CIsource/fixtureguard로재사용 =고유24PASS. 최초20중2fixture/oracle오류는nearestPaint/실제필드진입으로수정,실패무시없음. Source18자산 raw format/전체pixel독립PASS. 여관4/장비5 원본9NPC exactnativepixel,미래서비스kind등록,19실제서비스씬,9상점 BUY/SELL/rollback/restart/quantity/top/close,양해안2원제거,기존4마을실제상점입력·온보딩자동안내·5직업진행/은행/성당직접영향검사완료. 최종nativePNG68,19scene·9shop·tooltip/확인창·양해안캡처검수. 원본UI잔여영문글자제거·가격정렬·검은설명창·기본분류활성 보정완료.
+
+밀레스5mentor제거/J01·J02기존마이클통합,실제연결된경비·시장등4명유지. 피에트J03mentor유지. 모든현재·신규마을여관/장비kind는같은original22/30NPC자산을사용. 공통상점은원본Setoa프레임·버튼·Legend bitmapfont/원본control좌표를사용;원본영문label한글localization. 기존품목/가격보존·미확정무게“-”;한국서버전체pixel·데이터동일성주장아님.
+
+APK `PROJECT_DARK_V247_TEST.apk`/com.projectdark.mobile.v247test, built2026-10-23 13:30:25 KST,106089258bytes,SHA256 `a585d8665ef1653e8e795fecc05fa68dc8fd055865044b74d44f099db39a936d`. ZIP148707867bytes/SHA2564600a5e59f30aedf337479d604512cd337dd1d59a5a15e2445bcb78556524c07. DownloadedZIP/APKCRC/embeddedsource+run/binarypackage·label/APKv2 RSA-SHA256 signature·certpublickey·allchunkdigest PASS.721기존skill+18신규town=739packaged파일byte일치. 파일저장·metadata성공. verification/TOWN_SERVICES_V247_BUILD.json 및NATIVE_AUDIT.json. Common39900312213scopeSUCCESS/compileSKIPPED;fullCI주장아님.
+
+IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED. PHONE/USER_VISUAL PENDING. SamePR197/branch unmerged/main41fe6def unchanged. 문서closure는APKsource아님. Next exactV247handsetfeedback;변경없는재빌드불필요,main최종통합시fullgate.
+
 ## V247 최종 입력·화면 검수 후속
 
 최초source825f112f/run39899353646/job120237062108에서20tests중18PASS,2실패. 모든19서비스 actualscene/9상점 BUY/SELL/rollback/restart PASS. 실패2는expectedsourcebitmap Paint기본filter로인한half-pixelalpha127비교 및coastfixture enterPoteField생략. expected에도nearest명시,실제필드진입fixture로수정;assertion완화없음. 실제캡처에서영문Weight/Feature왼쪽잔상발견하여localizedFrame표면치환범위수정,가격262sourceX로정렬·긴이름clip,검은tooltip,최초판매분류탭활성. Original source18assets unchanged.

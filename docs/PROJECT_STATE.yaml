@@ -1,5 +1,10 @@
 town_services_v247:
-  status: IMPLEMENTING
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 2367c5811a05b00b724cf2b15245239e5f262921
+  focused_run: 39900306358
+  native_unique_passed: 24
+  receipt: verification/TOWN_SERVICES_V247_BUILD.json
+  library_file_id: libfile_17636fefc1ec8191ac0521550635ee2c
   owner: ROOT_SINGLE_EDITOR
   active_branch: codex/rucesion-coast-v157
   pull_request: 197
