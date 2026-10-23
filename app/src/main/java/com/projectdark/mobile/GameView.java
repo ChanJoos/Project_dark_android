@@ -282,11 +282,6 @@ public final class GameView extends View {
     RuntimeCombatSession.FrameResult result=combatSession.tick(dt);
     for(CombatResolver.Event e:result.events)if(RuntimeCombatSession.PLAYER_ID.equals(e.actorId)){
       if(e.type==CombatResolver.EventType.ACTION_STARTED&&e.actionId.equals(activeSkillVisualId)){visualFacingSequence=e.actionSequence;visualFacingTarget=e.targetId;visualFacingReleased=false;}
-      // A basic contact can still reach a target that completed a step onto another side.
-      // Face the resolver's actual recipient, never the current selection or idle enemies.
-      if(e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.actionId.startsWith("attack_proto_")){
-        for(RuntimeState.Monster recipient:state.monsters())if(recipient.id.equals(e.targetId)){playerFacing.beginAttack(recipient.x-state.player().x,recipient.y-state.player().y);break;}
-      }
       SkillActionContract.Rule rule=SkillActionContract.get(e.actionId);
       if(e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.actionSequence==visualFacingSequence&&!visualFacingReleased&&e.targetId.equals(visualFacingTarget)&&rule!=null&&rule.pattern==SkillActionContract.Pattern.SINGLE&&rule.damage()){
         for(RuntimeState.Monster target:state.monsters())if(target.id.equals(e.targetId)){playerFacing.beginAttack(target.x-state.player().x,target.y-state.player().y);visualFacingReleased=true;break;}
