@@ -1,3 +1,11 @@
+## V248 — 최종 후보 검증·APK 전달 완료
+
+APK source `e38aeba15e34a7d9c797f16af7d8c8ed2922bb87`; [Actions39906861205](https://github.com/ChanJoos/Project_dark_android/actions/runs/39906861205) / job120260704047 SUCCESS, artifact12481077445. Final PortalServices3 + TempleMilles5 =8 PASS/0 failures/errors/skips. Exact-delta guarded retained32 PASS from eb7c55be/run39904714042 and 2df7cdf4/run39905956948:40 unique scoped checks, not a full-suite claim. Final71map/130portal groups,20source NPC roles, death-knight shop/recall checked. Prior21paid town routes/coast locking/cancel/poor/rollback/restart and adjacent navigation/save/cache/input evidence retained. Source pixel audit PASS. All71 final portal scenes plus temple capture inspected; old baked temple white beam removed, original32frame portal is common live overlay. Screenshot choice idle border cleaned with preserved original pixels.
+
+`PROJECT_DARK_V248_TEST.apk` / com.projectdark.mobile.v248test; built2026-10-23 14:42:51 KST;106187803bytes; SHA256 `342b13004d95525c2d19b890196f03a46a7d3b2abcb36efeec6df4082fdb952d`. Downloaded artifact ZIP158454943bytes/SHA2565dcf5be84364304ae91164fa2d90a6869eb6f7a49592bcb93cf3aa1ff897d8b4; ZIP/APK CRC, embedded exact source/run, binary package/label, independent APKv2 RSA-SHA256 signature/certificate key/full content digest PASS.748packaged source files byte-identical (721skill+26town+NPC profiles). Saved APK successfully. Evidence: `verification/TOWN_PORTALS_V248_BUILD.json`.
+
+IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED. PHONE / USER_VISUAL PENDING. Existing PR197/branch codex/rucesion-coast-v157 unmerged; main41fe6def unchanged. Documentation closure does not change delivered APK source. Next: exactV248 handset feedback; no unchanged rebuild. Final main integration requires separate full gate. Prior CI_PENDING entries below are historical.
+
 ## V248 — 원본 동적 포탈·시약/은행/이동 NPC (CI 진행)
 
 사용자 첨부5사진+영상1000060741 기준. Hades mns035(시약),028(죽음상점기사),056(은행),019(백원만) 원본MPF/PAL 복원. Roh efct362.efa 전체32프레임38x120·125ms·pivot19,110·ADD 보존. 스크린샷 오른쪽선택창/portrait 프레임 RGB 그대로 추출, 내용부만투명화. master/source/town_v248/receipt.json 및rawzip 보관; tools/check_town_v248.py 전체pixel PASS.

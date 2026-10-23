@@ -1,6 +1,6 @@
 {
   "version": 248,
-  "status": "IMPLEMENTED_CI_PENDING",
+  "status": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED",
   "receipt": "master/source/town_v248/receipt.json",
   "contract": [
     "all71maps original32frame portal",
@@ -20,5 +20,9 @@
     "ForestFloorCacheTest",
     "GroundTapPathTest"
   ],
-  "phone": "PENDING"
+  "phone": "PENDING",
+  "buildReceipt": "verification/TOWN_PORTALS_V248_BUILD.json",
+  "sourceCommit": "e38aeba15e34a7d9c797f16af7d8c8ed2922bb87",
+  "runId": 39906861205,
+  "uniqueScopedChecks": 40
 }

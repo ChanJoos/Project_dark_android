@@ -1,0 +1,245 @@
+{
+  "apkSha256": "342b13004d95525c2d19b890196f03a46a7d3b2abcb36efeec6df4082fdb952d",
+  "apkBytes": 106187803,
+  "identity": {
+    "sourceCommit": "e38aeba15e34a7d9c797f16af7d8c8ed2922bb87",
+    "runId": "39906861205",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "manifest": {
+    "manifest": {
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile.v248test",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "application": {
+      "theme": 2130837504,
+      "label": "PROJECT DARK V248 TEST",
+      "debuggable": 4294967295,
+      "extractNativeLibs": 0
+    }
+  },
+  "signature": "APKv2 RSA-SHA256 cryptographic signature + certificate public key + full chunk content digest PASS",
+  "packagedSourceByteMatches": 748,
+  "skillPresentationFiles": 721,
+  "townSourceFiles": 26,
+  "npcProfiles": 1,
+  "sourceCommit": "e38aeba15e34a7d9c797f16af7d8c8ed2922bb87",
+  "runId": "39906861205",
+  "builtAtKST": "2026-10-23T14:42:51.308363+09:00",
+  "scope": "V248 original32-frame portals on all71 maps/130groups; all service NPC roles;21 paid town routes, coast gates, transaction rollback, bank/shop, recall, restart, floor cache and ground input; focused native, phone pending",
+  "artifactId": 12481077445,
+  "artifactZipSha256": "5dcf5be84364304ae91164fa2d90a6869eb6f7a49592bcb93cf3aa1ff897d8b4",
+  "artifactZipBytes": 158454943,
+  "reusedEvidence": {
+    "source": "eb7c55bea6ecc788b890dc07a4f29c70eb8521b4",
+    "run": 39904714042,
+    "artifact": 12479979778,
+    "zipSha256": "81cfa301a8b84a140e3628fabebd62d594d051bee01a93ca634306fe8b363a98",
+    "retainedPasses": [
+      {
+        "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "name": "activeZeroOfOneRestores",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "name": "returnReadyOneOfOneRestores",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "name": "completedTurnInRestoresAndCannotDuplicateReward",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+        "name": "rpgRewardEquipmentStatsAndProgressionRestore",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.AllMapLabelsV246Test",
+        "name": "commonGroupingMergesAllSameDestinationNeighborsButKeepsDisconnectedAndDifferentDestinations",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.AllMapLabelsV246Test",
+        "name": "everyMapCoversEveryRawGateExactlyOnceAndOnlyAdjacentSameDestinationMembersMerge",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.AllMapLabelsV246Test",
+        "name": "actualHudOverviewAndEveryGroupedPinPathAreInspectedOnEveryMap",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.ForestFloorCacheTest",
+        "name": "cachedFloorKeepsLegacyWorldTextureAndChunkSeamsAcrossAllMaps",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.ForestFloorCacheTest",
+        "name": "stationaryFloorReusesChunksAndMapTravelHasBoundedMemory",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.world.GroundTapPathTest",
+        "name": "destinationsAndShortestRoutesMatchIndependentOracles",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.world.GroundTapPathTest",
+        "name": "largeMapGroundTapDoesNotScanEveryActorForEveryTile",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.world.GroundTapPathTest",
+        "name": "requestCachesDoNotSurviveActorMovementAndLiveStepsRevalidate",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownNavigationV244Test",
+        "name": "everyAuthoredMapFamilyExposesItsRealDoorOrRoutePins",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownNavigationV244Test",
+        "name": "freshStartAndEveryMillesTownReturnAreExactly46_39AndSaveRestoresPosition",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownNavigationV244Test",
+        "name": "allSixActualInventoryRecallsShareNpcArrivalConsumeOneAndPersist",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownNavigationV244Test",
+        "name": "forestAndInteriorMinimapTouchesWalkRealExitWithoutTeleportAndCacheOverview",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownNavigationV244Test",
+        "name": "recallFromDeepTempleLeavesAllInteriorLayersAndDeadOrUnknownCannotConsume",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownNavigationV244Test",
+        "name": "mineHorrorCoastsAndTempleOverviewOpenThroughActualHudAndRetainLiveCamera",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "transactionsAreConservedAndRollbackEveryChannel",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "fourMapsReachNpcUseNativeUiAndExitWithoutPortalLoop",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "quantityDialogAcceptsOnlyPositiveBoundedNumericInputAndPreservesOriginalExcuranumPixels",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "portalMarkersMatchMeasuredBuildingImageThresholds",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "catalogsHaveRegisteredTradableItemsAndExcuranumHeals",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "exteriorDoorsEnterAllFourScenesThroughWorldNavigation",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "denseFurnitureKeepsCustomerAndExitReachableAndAllPropsRenderable",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.TownInteriorTest",
+        "name": "restartRestoresMapCoordinatesGoldStorageAndOwnership",
+        "passed": true
+      }
+    ],
+    "secondSource": "2df7cdf4dc13fbba98442fa984aa49560a08757d",
+    "secondRun": 39905956948,
+    "secondArtifact": 12479954994,
+    "additionalPasses": [
+      {
+        "class": "com.projectdark.mobile.NpcAppearanceTest",
+        "name": "allFourDirectionsUseExactlyThePlayerPaperDollAndOutfitsAreVisiblyDifferent",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.NpcAppearanceTest",
+        "name": "allHumanNpcRoutesHaveDistinctRegisteredProfilesAndFutureDefaults",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.NpcAppearanceTest",
+        "name": "nativeRosterAndEveryTownServiceAreCapturedWithThePlayer",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.NpcTravelV248Test",
+        "name": "failedCommitOrMoveRestoresExactLiveActorsProgressAndGoldWithoutRespawn",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.NpcTravelV248Test",
+        "name": "cancelPoorAndLockedCoastUseTheSamePaidMenuWithoutBypass",
+        "passed": true
+      },
+      {
+        "class": "com.projectdark.mobile.NpcTravelV248Test",
+        "name": "realNpcMenusChargeExactlyOnceAcrossEveryExistingTownPairAndColdRestart",
+        "passed": true
+      }
+    ],
+    "totalReusedPasses": 32
+  },
+  "finalTests": [
+    {
+      "name": "com.projectdark.mobile.PortalServicesV248Test",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-23T05:41:29",
+      "hostname": "runnervm8k3b6",
+      "time": "29.443"
+    },
+    {
+      "name": "com.projectdark.mobile.TempleMillesV213Test",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-23T05:42:25",
+      "hostname": "runnervm8k3b6",
+      "time": "13.483"
+    }
+  ],
+  "finalTestCount": 8,
+  "uniqueScopedChecks": 40,
+  "nativePngCount": 85,
+  "portalMaps": 71,
+  "portalGroups": 130,
+  "visualReview": "All71portal native captures/6contactpages and temple entrance inspected; prior source NPC/travel capture evidence retained; no physical-phone acceptance",
+  "status": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED",
+  "phone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "mainIntegrated": false
+}
