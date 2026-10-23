@@ -128,7 +128,12 @@ jobs:
           old=subprocess.check_output(['git','show',base+':'+test],text=True)
           assert Path(test).read_text()==old.replace('assertEquals("화염",r.itemDefinitions().get(r.equipment().get("목걸이")).attackElement);','assertEquals("FIRE",ElementalDamageFormula.normalize(r.itemDefinitions().get(r.equipment().get("목걸이")).attackElement));')
           req=urllib.request.Request('https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/12513663418/zip',headers={'Authorization':'Bearer '+os.environ['GH_TOKEN']})
-          data=urllib.request.urlopen(req).read()
+          class ArtifactRedirect(urllib.request.HTTPRedirectHandler):
+              def redirect_request(self,req,fp,code,msg,headers,newurl):
+                  redirected=super().redirect_request(req,fp,code,msg,headers,newurl)
+                  if redirected is not None:redirected.remove_header('Authorization')
+                  return redirected
+          data=urllib.request.build_opener(ArtifactRedirect()).open(req).read()
           assert hashlib.sha256(data).hexdigest()=='c121337d50759bc63eee7a09d4dad1bce5a0375b55e0c40376715f10cb6bc71c'
           z=zipfile.ZipFile(io.BytesIO(data));assert z.testzip() is None
           passed=[];failed=[]
