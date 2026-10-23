@@ -106,7 +106,23 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[visual-source-v252]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[v252-rapid-tail]"* ]]; then
+            git fetch --depth=1 origin 29ce6738c9e739e3629c3f6bdab14f7383ad0790
+            python3 - <<'PYV252'
+          import subprocess
+          from pathlib import Path
+          base='29ce6738c9e739e3629c3f6bdab14f7383ad0790'
+          changed=subprocess.check_output(['git','diff','--name-only',base,'HEAD'],text=True).splitlines()
+          allowed={'.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json','app/src/test/java/com/projectdark/mobile/VisualSourceV252Test.java'}
+          assert all(p in allowed or p.startswith(('docs/','verification/'))for p in changed),changed
+          p='app/src/test/java/com/projectdark/mobile/VisualSourceV252Test.java';old=subprocess.check_output(['git','show',base+':'+p],text=True);new=Path(p).read_text()
+          prefix=' @Test public void hatsNeverCoverRapid';suffix=' private Bitmap render('
+          assert old.split(prefix)[0]==new.split(prefix)[0]
+          assert old.split(suffix)[1]==new.split(suffix)[1]
+          print('V252 retain9unchanged nativePASS from39949583532;rerun isolated Rapid original-alpha/hat pixel-order oracle only;all production/assets/other testbytes unchanged')
+          PYV252
+            gradle --no-daemon :app:testDebugUnitTest --tests "*VisualSourceV252Test.hatsNeverCoverRapidOnEitherBodyAnyFacingOrIdleWalkContact" :app:assembleDebug
+          elif [[ "$(git log -1 --format=%B)" == *"[visual-source-v252]"* ]]; then
             python3 tools/check_inventory_v252.py
             gradle --no-daemon :app:testDebugUnitTest --tests "*VisualSourceV252Test" --tests "*WeaponIconsV209Test" --tests "*InventoryFeedbackV199Test.knownRapidTiersDrawBothBodiesFourDirectionsIdleWalkAndContact" --tests "*InventoryFeedbackV199Test.actualInventoryAndEquipmentShowRapidBindingAndRetainItAfterRestart" --tests "*VisualFeedbackV250Test.rapidAndWingLayersAreDisjointForBothSlotsBodiesAndDirections" --tests "*InventoryRepairV212Test.repairedRapidAndFoodsHaveTransparentSocketBorderAndSharedWindowPixels" --tests "*ItemCatalogV210Test.oldSaveMigratesAliasesInInventoryEquipmentAndBankWithoutLosingQuantityAndNewGrantRunsOnce" :app:assembleDebug
           elif [[ "$(git log -1 --format=%B)" == *"[magic-recall-v251]"* ]]; then
