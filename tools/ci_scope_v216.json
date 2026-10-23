@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "f1527f334ec35ea799243bad2c081ce9e58c5183a99819fe1d57e038fc394f33",
+  "master/MASTER_MANIFEST.md": "9c56a4d380b42426940325a3533cf998009d21c7061e831a7760f4e7199f7165",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -713,8 +713,8 @@
   "app/src/main/java/com/projectdark/mobile/QuickItemBarV254.java": "c51ce00ab6253aba6eb320ad1435de203aeb86ab8adbc7cf486f43817646d6cd",
   "app/src/main/java/com/projectdark/mobile/MobileHudLayout.java": "4fdc9a7a2a252e24e2943d0c89aaaac4c383157377c7763f6c0232a629212898",
   "app/src/test/java/com/projectdark/mobile/HudItemsV254Test.java": "f4a15ab256594cf3364403e60d91ad369853d469892226197376560a8282527f",
-  "master/changes/V254_HUD_ITEMS.json": "16283e3cbb7b15196843b1b94cf6d66c308c933b3ff92a6dd639e9f4032c9f12",
+  "master/changes/V254_HUD_ITEMS.json": "ebcd0fd419db599f707f9ecf233b7488635ca25206f43f5585d6c9842cd8546e",
   "app/src/test/java/com/projectdark/mobile/MobileHudV135Test.java": "a76a42d286b7b47d8ae503600975de6f2d79b266766c71d80c53b18100316105",
   "app/src/test/java/com/projectdark/mobile/CompactHudV255Test.java": "dc58a4ecc6ac1b65c4c20d2baa73ad38b9cd3e2f619c6cad23c0557f13ba0468",
-  "master/changes/V255_COMPACT_HUD.json": "31cc894383bd897ef8767e573bfa090f403cd6fa59f662ba9f1aed0fac952d98"
+  "master/changes/V255_COMPACT_HUD.json": "a6d87cfef0797793cc97f192e42dc6ca131c9901f7bd31202267e63115e0167a"
 }

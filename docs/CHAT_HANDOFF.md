@@ -1,3 +1,15 @@
+## V255 — 체력·마력 바 오른쪽의 작은6×2 퀵스킬
+
+User asks smaller quickskills besideHP/MP bars. Runtime delta is exactly2GameView lines:44→36px (18.18% smaller),gap4→3,origin540,340→620,456,andviewport anchor rightOffset→rightOffset/2.12slots remain6×2;firstleft=status.right+10;bottom531. Square visual/input/worldblocking share exactrect. Potion/item row,attack/AUTO,skillIDs/assignments/save/action rules and USER_ACCEPTEDV253Narcoli unchanged. Old44px/right-anchor fixture expectations updated to current36px/center-anchor contract; no domain logic added.
+
+Exactsource `2fa9c3ad7760d3dd5fafd8daf957aeec85dff718`; [Actions39966531212](https://github.com/ChanJoos/Project_dark_android/actions/runs/39966531212)/job120457728775 SUCCESS;artifact12507796335. Downloaded XML19tests/5suites/0failure/error/skip:CompactHudV2552,HudItemsV2545,HUD1345,HUD1354,HudNarcoliV2533. Realnormal/wide everycorner touch,bar-relative anchor,all12source icons,slots11/12cast/restart,AUTO12,potions,owneditempicker/necklace swap/idempotence/longpress/clear/readonly/depletion/restart verified. ActualHUD960and2340PNG reviewed:bottomright6×2grid besidebars,noitem/attack/controloverlap. Implemented/build/scoped hostnative only;phone/userlayout acceptance pending.
+
+APK `PROJECT_DARK_V255_TEST.apk`,com.projectdark.mobile.v255test,built2026-10-23 23:09:35KST,106529642bytes,SHA256 `b1f51c8303f7fa376aea9bdae510fea67f0f0d2b4eaf800f51d44c42e40c2553`. ZIP122479023bytes/SHA2565db188a4f45c389af2498ca3945d74c25ac60c6eac7708e2ebe8fb7136b12d89;downloadedZIP/APKCRC,archive/APKhash,embeddedsource/run,CIAPKv2signature PASS. SavedAPKlibfile_b33acb496a0081918c09ef490253dc7a;HUDPNGlibfile_70a31fdbacc0819193a6e6deb46a64e0;localmetadataapplied. Receipt verification/COMPACT_HUD_V255_BUILD.json.
+
+Separatecommonrun39966544357 FAILED:scopefellbackFULLbecause reviewedmaster/MASTER_MANIFEST.mdhashwasstale;fulljobthenfailed python tools/generate_skill_catalog.py + gitdiff on app/src/main/assets/skills/catalog.json (reverts committed skill descriptions). Generator/catalog untouched byV255; this is an existing reproducibility/integration blocker, not a focusednativePASS or fullregression claim. Preserve current user-approved descriptions; diagnose generator inputs before mainintegration. Finalclosure refreshes reviewed metadatahashes for currentMastermanifest,V254acceptedcontract,V255acceptedcontract;no remoteFOCUSEDselector success claim. No meaningful assertiondisabled.
+
+Samebranchcodex/rucesion-coast-v157/PR197;unmergedcandidate;main41fe6def unchanged. Next:phone/user check newlayout;resolve existingcataloggenerator drift before fullmainintegration. Narcoli remains closedbyuserchoice. This metadata checkpoint is not APKsource.
+
 ## V254 — 6×2 스킬·포션/아이템 6칸·나르콜리 사용자 확정
 
 User request2026-10-23: skills6columns×2rows; square joinedHP/MP slots plus4item slots to their right; keep current Narcoli. CurrentV253Narcoli is now USER_VISUAL_ACCEPTED_BY_EXPLICIT_CHOICE; preserve source/provenance (Zoriginal, authoredADAPTEDaura). Prior original-aura identification TODO is CLOSED_BY_USER_CHOICE; do not reopen or restyle it without a new request.

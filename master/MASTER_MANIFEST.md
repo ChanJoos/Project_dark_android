@@ -1,3 +1,7 @@
+## V255 verified compact skill HUD candidate
+
+`master/changes/V255_COMPACT_HUD.json`:36px6x2quickskills620,456,3pxgap,resource-centeredviewportanchor;normal/wide10pxgapafterstatus. source2fa9c3ad/run39966531212/19nativePASS/exactAPKverified. Phone/userlayout pending;commonfullintegration blocked by unchangedskillcataloggenerator dirtydiff afterstalemanifesthashfallback. AcceptedNarcoli/potion-itemrow/action-save rules preserved. See docs/V255_COMPACT_HUD_CHECKPOINT.md.
+
 ## V254 accepted projection and verified candidate
 
 `master/changes/V254_HUD_ITEMS.json`:6x2skills;joined36pxHP/MP+4owned-item shortcuts;canonicalID prefs+durable existing RPG use/equip. Exactsource58984f20/run39964073034:5native+42strictlyretained adjacentPASS=47scoped;APK/identity/hash/signature verified. CurrentV253Narcoli USER_VISUAL_ACCEPTED by explicit userchoice;prior original-aura TODO closed without changing ADAPTEDprovenance. HUDphone/userlayout pending;see docs/V254_HUD_ITEMS_CHECKPOINT.md.

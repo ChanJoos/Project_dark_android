@@ -16,5 +16,13 @@
     "bottom": 531
   },
   "unchanged": "skill IDs, assignments, action/save rules; potion/item bar; attack/AUTO; accepted Narcoli",
-  "acceptance": "IMPLEMENTED_CI_PENDING_PHONE_PENDING"
+  "acceptance": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "source": "2fa9c3ad7760d3dd5fafd8daf957aeec85dff718",
+  "evidence": {
+    "run": 39966531212,
+    "artifact": 12507796335,
+    "nativePass": 19,
+    "commonRun": 39966544357,
+    "fullIntegration": "BLOCKED_EXISTING_SKILL_CATALOG_GENERATOR_DRIFT"
+  }
 }
