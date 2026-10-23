@@ -718,6 +718,6 @@
   "app/src/test/java/com/projectdark/mobile/CompactHudV255Test.java": "7aa2088779f9929441c6c7bd2896ac70a9da0644d3522bb9d9890a69a1302f0a",
   "master/changes/V255_COMPACT_HUD.json": "a6d87cfef0797793cc97f192e42dc6ca131c9901f7bd31202267e63115e0167a",
   "app/src/main/java/com/projectdark/mobile/CombatController.java": "fd964441c9ee0bd2917d1474a186f2f424bf1b0e31a9b235c8e8dbdc1e0fd321",
-  "app/src/test/java/com/projectdark/mobile/AutoOrderTargetV256Test.java": "c82c1c3c8639e69513870ef67ec39517bcd9a224b6262014902c55fc534386f8",
+  "app/src/test/java/com/projectdark/mobile/AutoOrderTargetV256Test.java": "ee6f2e2dd706e8bec5247aadba6d68a0c39d24013b6202994b873377b6bab18a",
   "master/changes/V256_AUTO_ORDER.json": "63f7c4ec9b99db853f9f463f95fc5815135f9f047849302191912c930a529506"
 }

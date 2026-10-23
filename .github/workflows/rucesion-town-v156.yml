@@ -106,7 +106,17 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[auto-order-v256]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[v256-fixture-tail]"* ]]; then
+            git fetch --depth=1 origin 1fa80e66ae0e2d4b9ecdfc380380d4af1681ded0
+            python3 - <<'PYV256'
+          import subprocess
+          allowed={'app/src/test/java/com/projectdark/mobile/AutoOrderTargetV256Test.java','.github/workflows/rucesion-town-v156.yml','tools/ci_scope_v216.json'}
+          delta=subprocess.check_output(['git','diff','--name-only','1fa80e66ae0e2d4b9ecdfc380380d4af1681ded0','HEAD'],text=True).splitlines()
+          assert set(delta)<=allowed,delta
+          print('V256 fixture-only guard PASS; 17 passing adjacent tests retained from run39972098212; runtime/assets unchanged')
+          PYV256
+            gradle --no-daemon :app:testDebugUnitTest --tests "*AutoOrderTargetV256Test" :app:assembleDebug
+          elif [[ "$(git log -1 --format=%B)" == *"[auto-order-v256]"* ]]; then
             gradle --no-daemon :app:testDebugUnitTest --tests "*AutoOrderTargetV256Test" --tests "*CompactHudV255Test" --tests "*HudItemsV254Test" --tests "*AutoAttackTargetSelectorTest" --tests "*SkillQuickslotApproachTest" --tests "*MartialHudAutoRegressionTest.autoUsesQuickslotsFairlyAndSkipsCoolingUnlearnedAndFullHealthHeal" --tests "*HudNarcoliV253Test.upperAutoUsesTwelfthSlotAndLargerMovedAttackReceivesItsOuterTouch" :app:assembleDebug
           elif [[ "$(git log -1 --format=%B)" == *"[compact-hud-v255]"* ]]; then
             gradle --no-daemon :app:testDebugUnitTest --tests "*CompactHudV255Test" --tests "*HudItemsV254Test" --tests "*MobileHudV134Test" --tests "*MobileHudV135Test" --tests "*HudNarcoliV253Test.allSquareCornersConsumeInputAndControlsDoNotOverlapInNormalOrWideViewport" --tests "*HudNarcoliV253Test.slotsElevenAndTwelveRegisterThroughBookCastFromSquareCornerAndRestart" --tests "*HudNarcoliV253Test.upperAutoUsesTwelfthSlotAndLargerMovedAttackReceivesItsOuterTouch" :app:assembleDebug

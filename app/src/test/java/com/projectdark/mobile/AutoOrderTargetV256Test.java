@@ -27,7 +27,7 @@ public class AutoOrderTargetV256Test {
  }
  void slots(GameView v,String... ids)throws Exception{SkillBook b=f.field(v,"skillBook");for(int i=0;i<ids.length;i++)if(ids[i]!=null)assertTrue(b.assign(i,ids[i]));}
  RuntimeState.Monster extra(GameView v,String id,float dx,float dy)throws Exception{
-  RuntimeState s=f.field(v,"state");RuntimeState.Monster m=new RuntimeState.Monster(id,id,s.player().x+dx,s.player().y+dy,1000000,"B");m.attackCooldown=10000;((List<RuntimeState.Monster>)s.monsters()).add(m);s.skillEffects().put(id,"qa","ROOT",1,10000);return m;
+  RuntimeState s=f.field(v,"state");RuntimeState.Monster m=new RuntimeState.Monster(id,id,s.player().x+dx,s.player().y+dy,1000000,"B");m.attackCooldown=10000;((List<RuntimeState.Monster>)f.field(s,"monsters")).add(m);s.skillEffects().put(id,"qa","ROOT",1,10000);return m;
  }
  RuntimeState.Monster preferred(GameView v)throws Exception{Method m=GameView.class.getDeclaredMethod("bestReachableAutoTarget");m.setAccessible(true);return(RuntimeState.Monster)m.invoke(v);}
  @Test public void allTwelveAlwaysReadySkillsRunInRegisteredOrderThenWrapAndAutoEnableRestartsAtOne()throws Exception{
@@ -38,7 +38,7 @@ public class AutoOrderTargetV256Test {
  }
  @Test public void afterOneThenFourFiveWinsEvenThoughOneHasAlreadyRecovered()throws Exception{
   GameView v=fixture();slots(v,"SK_마법사_001","SK_마법사_013","SK_마법사_014","SK_마법사_003","SK_마법사_004");
-  RuntimeCombatSession session=f.field(v,"combatSession");RuntimeCombatPortAdapter port=f.field(session,"port");port.commitCooldown("player","SK_마법사_013",100);port.commitCooldown("player","SK_마법사_014",100);
+  RuntimeCombatSession session=f.field(v,"combatSession");RuntimeCombatPortAdapter port=f.field(session,"port");port.commitCooldown("player","SK_마법사_013",100);port.commitCooldown("player","SK_마법사_014",100);port.tick(1);
   f.tap(v,854,391);start(v);assertEquals("SK_마법사_001",f.field(v,"activeSkillVisualId"));finish(v);start(v);assertEquals("SK_마법사_003",f.field(v,"activeSkillVisualId"));assertEquals(4,((Integer)f.field(v,"autoSkillCursor")).intValue());finish(v);assertEquals(0,session.cooldownRemaining("player","SK_마법사_001"),0);start(v);assertEquals("slot5 before recovered slot1","SK_마법사_004",f.field(v,"activeSkillVisualId"));
  }
  @Test public void registeredBasicAttackParticipatesBeforeTheNextSkill()throws Exception{
@@ -57,9 +57,9 @@ public class AutoOrderTargetV256Test {
  @Test public void enablingAndIncomingHitRetainTheAttackedMonsterThenFourAdjacentBeatsCloserDiagonal()throws Exception{
   GameView v=fixture();RuntimeState s=f.field(v,"state");CombatController combat=f.field(v,"combat");RuntimeState.Monster current=combat.target();current.x=s.player().x+64;current.y=s.player().y+32;RuntimeState.Monster adjacent=extra(v,"qa_incoming",-32,-16),diagonal=extra(v,"qa_diagonal",0,32);
   slots(v,"SK_마법사_001");assertSame(current,preferred(v));f.tap(v,854,391);assertSame(current,combat.target());start(v);
-  RuntimeCombatSession session=f.field(v,"combatSession");int hp=s.player().hp;assertEquals(MonsterAutoCombatBridge.Outcome.ACCEPTED,session.monsterAutoBridge().submit(adjacent.id,"player").outcome);f.advance(v,.7f);assertTrue("real incoming damage",s.player().hp<hp);assertSame("incoming hit cannot steal target",current,combat.target());
+  RuntimeCombatSession session=f.field(v,"combatSession");int hp=s.player().hp;adjacent.attackCooldown=0;assertEquals(MonsterAutoCombatBridge.Outcome.ACCEPTED,session.monsterAutoBridge().submit(adjacent.id,"player").outcome);f.advance(v,.7f);assertTrue("real incoming damage",s.player().hp<hp);assertSame("incoming hit cannot steal target",current,combat.target());
   current.alive=false;combat.tick(0);assertSame("cardinal neighbor precedes nearer diagonal",adjacent,preferred(v));combat.selectTarget(diagonal);assertSame("explicit selection takes priority",diagonal,preferred(v));
-  ((List<RuntimeState.Monster>)s.monsters()).remove(diagonal);assertSame("removed target is not retained",adjacent,preferred(v));
+  ((List<RuntimeState.Monster>)f.field(s,"monsters")).remove(diagonal);assertSame("removed target is not retained",adjacent,preferred(v));
  }
  @Test public void autoFacingAttacksSelectedMonsterInsteadOfNewcomerOnTheOtherSideWhileManualRayKeepsFacingRules()throws Exception{
   GameView v=fixture();RuntimeState s=f.field(v,"state");RuntimeState.Monster current=((CombatController)f.field(v,"combat")).target(),near=extra(v,"qa_wrong_side",-32,-16);((CanonicalActorFacing)f.field(v,"playerFacing")).setLocomotion(CharacterRenderer.Direction.NW);slots(v,"SK_도적_003");int currentHp=current.hp,nearHp=near.hp;f.tap(v,854,391);start(v);assertEquals("SK_도적_003",f.field(v,"activeSkillVisualId"));assertEquals(CharacterRenderer.Direction.SE,((CanonicalActorFacing)f.field(v,"playerFacing")).presentation());finish(v);assertTrue(current.hp<currentHp);assertEquals(nearHp,near.hp);
