@@ -1,0 +1,432 @@
+{
+  "maps": 71,
+  "actualHudPaths": 130,
+  "records": [
+    {
+      "map": "milles_runtime_proto",
+      "pins": 7,
+      "actualHudPaths": 7,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_ABEL_TOWN",
+      "pins": 5,
+      "actualHudPaths": 5,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_RUCESION_TOWN",
+      "pins": 7,
+      "actualHudPaths": 7,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_MINE_TOWN",
+      "pins": 3,
+      "actualHudPaths": 3,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_LOBBY",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_POTE_01",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_POTE_02",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_PIET_CAMP",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_POTE_03",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_POTE_D_BOSS",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_ABEL_COAST",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_ABEL_COAST_1A",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_ABEL_COAST_2A",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_ABEL_COAST_3B",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_ABEL_COAST_4C",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_POTE_04",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_RUCESION_COAST",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_RUCESION_COAST_1C",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_RUCESION_COAST_2C",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_RUCESION_COAST_3B",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_RUCESION_ARIEL_ROOM",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_MINE_HUNT_3",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_FIELD",
+      "pins": 4,
+      "actualHudPaths": 4,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_1",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_2",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_3",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_UNDER_A",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_UNDER_B",
+      "pins": 3,
+      "actualHudPaths": 3,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_UNDER_C",
+      "pins": 3,
+      "actualHudPaths": 3,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_UNDER_D",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_DEATH_UNDER_E",
+      "pins": 3,
+      "actualHudPaths": 3,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_LOBBY",
+      "pins": 4,
+      "actualHudPaths": 4,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_1",
+      "pins": 11,
+      "actualHudPaths": 11,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_2",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_01",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_02",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_03",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_04",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_05",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_06",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_07",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_08",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_09",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_10",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_11",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_12",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_13",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_14",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "MAP_HORROR_ROOM_15",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_potion_shop",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_weapon_shop",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_bank",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_church",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_inn",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_temple_lobby",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_temple_hub",
+      "pins": 2,
+      "actualHudPaths": 2,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "milles_interior_temple_seo",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "abel_interior_reagent",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "abel_interior_equipment",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "abel_interior_bank",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "abel_interior_church",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "abel_interior_inn",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "rucesion_interior_armor",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "rucesion_interior_weapon",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "rucesion_interior_reagent",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "rucesion_interior_bank_a",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "rucesion_interior_bank_b",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "rucesion_interior_inn",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "rucesion_interior_clothing",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "mine_interior_inn",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    },
+    {
+      "map": "mine_interior_reagent",
+      "pins": 1,
+      "actualHudPaths": 1,
+      "overviewBytes": 2097152
+    }
+  ]
+}

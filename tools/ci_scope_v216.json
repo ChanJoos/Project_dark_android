@@ -12,7 +12,7 @@
   "app/src/test/java/com/projectdark/mobile/DeathMapV220Test.java": "aaf4859bf7d3fbfe1e4fde7b592b032f76cba5bc2a03484aace0d4a815146957",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV217Test.java": "d8a4b442dde9876f34a9bdfab357a444c0890b43d0f4835cc989b632c4da660a",
   "app/src/test/java/com/projectdark/mobile/DeathVillageV219Test.java": "abb1b5a5ae3a1a3d20dbe85211d48efbf881e18ca6059711ace1a564d4ad1aa3",
-  "master/MASTER_MANIFEST.md": "2bc1c18d94d19d982b412adc76fe77e20788437015dd77cf44fb41fd3a400db1",
+  "master/MASTER_MANIFEST.md": "bc1d9318e81946620c6839b8fe9fc2f240c681e539b2f5febb5588cdb66be29e",
   "master/changes/V220_MAP_MONSTERS.json": "5829c6841cba8e227ded1962bb2481e01542d24468a210f35472cfa93113c4fb",
   "master/source/death_v220/original_monsters.zip": "fd4c496740e6836380214cec422e9fbb9d772f8e5a31916e69840d42bfa1e62a",
   "master/source/death_v220/reference.json": "65b3def3d1b218ee7ace7b6d0376ab802f0bc6b05b03e814cd91c2838f614413",
@@ -555,5 +555,5 @@
   "app/src/test/java/com/projectdark/mobile/MapLabelsV245Test.java": "0a9b10b5650cd6ffba247977a0b23e11a9c8ea930b903245df97412ba8e8d81c",
   "master/changes/V245_MAP_LABELS.json": "5338d0c542e5add17824bd0069087e9f47db84d1b820a8e0f63e5d0bd6ee36ce",
   "app/src/test/java/com/projectdark/mobile/AllMapLabelsV246Test.java": "981a8329a0dccfed512ea163d1f9f542050866913b07d76792e85e054d83ff40",
-  "master/changes/V246_ALL_MAP_LABELS.json": "1667de48c86dd75551639a92139f843cbf33823d70e2e78f9d1f1025705f44e7"
+  "master/changes/V246_ALL_MAP_LABELS.json": "aee442c5b8a13081a7ad1a983d42ad4a9b223c7969d57812fe941dcc09651983"
 }

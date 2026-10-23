@@ -1,0 +1,106 @@
+{
+  "sourceCommit": "9d40f1683fc01f4a267eb41b1674c6bf0fd27c50",
+  "runId": "39891661835",
+  "builtAtKST": "2026-10-23T11:53:04.631261+09:00",
+  "apkSha256": "6b1d6558e6e5ee503b797d19a4f09835521b6ec1942efa2b29930ce61f6e451b",
+  "apkBytes": 105765292,
+  "identity": {
+    "sourceCommit": "9d40f1683fc01f4a267eb41b1674c6bf0fd27c50",
+    "runId": "39891661835",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V246 common same-destination adjacent portal clusters on every live map; raw gate coverage and real target preservation; actual all-map HUD overview captures and grouped pin paths; Milles and Death adjacent regressions; phone pending",
+  "manifest": {
+    "manifest": {
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile.v246test",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "application": {
+      "theme": 2130837504,
+      "label": "PROJECT DARK V246 TEST",
+      "debuggable": 4294967295,
+      "extractNativeLibs": 0
+    }
+  },
+  "signature": "APKv2 RSA-SHA256 cryptographic signature + certificate public key + full chunk content digest PASS",
+  "packagedSkillPresentationByteMatches": 721,
+  "artifactId": 12475306637,
+  "artifactZipBytes": 142461783,
+  "artifactZipSha256": "c52eab5cdacd52a4fa05cee06fc1db014ea5297ff330d55da9f9ed0164916c1b",
+  "jobId": 120212604592,
+  "focusedResult": "SUCCESS",
+  "commonScopeRun": 39891667994,
+  "commonScope": "SUCCESS",
+  "commonCompile": "SKIPPED",
+  "mapsAudited": 71,
+  "legacyAliasesAudited": 3,
+  "rawThresholds": 152,
+  "groupedEntrances": 130,
+  "actualHudPathChecks": 130,
+  "fullNativeCaptures": 71,
+  "contactSheetsReviewed": 9,
+  "verification": "IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "phone": "PENDING",
+  "userVisual": "PENDING",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "unmerged": true,
+  "scopeBoundary": "UI label grouping/raw gate coverage and binding/actual source overview/input/live path to130retained thresholds in71scene fixtures. Does not certify full original terrain/asset parity, normal unlock journey to every map, physical handset or full game regression.",
+  "testSuites": [
+    {
+      "name": "com.projectdark.mobile.AllMapLabelsV246Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.DeathNavigationV221Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MapLabelsV245Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "uniqueScopedTests": 7,
+  "labelReductions": [
+    {
+      "map": "milles_runtime_proto",
+      "raw": 12,
+      "shown": 7
+    },
+    {
+      "map": "MAP_DEATH_LOBBY",
+      "raw": 4,
+      "shown": 1
+    },
+    {
+      "map": "MAP_HORROR_LOBBY",
+      "raw": 12,
+      "shown": 4
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_1",
+      "raw": 14,
+      "shown": 11
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_2",
+      "raw": 5,
+      "shown": 2
+    }
+  ]
+}

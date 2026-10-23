@@ -5,6 +5,7 @@
   "before": "Milles-only adjacency grouping; Death global destination grouping; Horror raw door-per-tile pins",
   "after": "every map uses shared same-destination adjacency components, preserves real portal thresholds, separates distant/different destinations",
   "aliases": "AbelTown EAST, RucesionTown LEGACY, AbelCoast1B canonical labels/gates",
-  "validation": "Local runtime/test compilePASS; entire map inventory/native HUD/threshold path/capture verification pending",
-  "phone": "PENDING"
+  "validation": "71maps,3aliases,152rawthresholds,130actualHUDpaths,71nativecaptures,7focused tests PASS; verification/ALL_MAP_LABELS_V246_BUILD.json",
+  "phone": "PENDING",
+  "sourceCommit": "9d40f1683fc01f4a267eb41b1674c6bf0fd27c50"
 }

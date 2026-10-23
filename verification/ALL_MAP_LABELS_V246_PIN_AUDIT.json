@@ -1,0 +1,1414 @@
+{
+  "maps": 71,
+  "rawThresholds": 152,
+  "displayedEntrances": 130,
+  "records": [
+    {
+      "map": "milles_runtime_proto",
+      "raw": 12,
+      "shown": 7,
+      "pins": [
+        {
+          "label": "신전대기실",
+          "destination": "milles_interior_temple_lobby",
+          "sourceThresholds": 1,
+          "targetX": 1952,
+          "targetY": 1104
+        },
+        {
+          "label": "시약상점",
+          "destination": "milles_interior_potion_shop",
+          "sourceThresholds": 2,
+          "targetX": 244.5,
+          "targetY": 371
+        },
+        {
+          "label": "장비상점",
+          "destination": "milles_interior_weapon_shop",
+          "sourceThresholds": 2,
+          "targetX": 688,
+          "targetY": 250
+        },
+        {
+          "label": "은행",
+          "destination": "milles_interior_bank",
+          "sourceThresholds": 2,
+          "targetX": 1050.5,
+          "targetY": 313
+        },
+        {
+          "label": "성당",
+          "destination": "milles_interior_church",
+          "sourceThresholds": 2,
+          "targetX": 1463.050048828125,
+          "targetY": 422.6000061035156
+        },
+        {
+          "label": "여관",
+          "destination": "milles_interior_inn",
+          "sourceThresholds": 2,
+          "targetX": 2048,
+          "targetY": 752
+        },
+        {
+          "label": "포테의 숲",
+          "destination": "MAP_POTE_01",
+          "sourceThresholds": 1,
+          "targetX": 790,
+          "targetY": 1565
+        }
+      ]
+    },
+    {
+      "map": "MAP_ABEL_TOWN",
+      "raw": 5,
+      "shown": 5,
+      "pins": [
+        {
+          "label": "교회",
+          "destination": "abel_interior_church",
+          "sourceThresholds": 1,
+          "targetX": 2752,
+          "targetY": 416
+        },
+        {
+          "label": "시약상점",
+          "destination": "abel_interior_reagent",
+          "sourceThresholds": 1,
+          "targetX": 2464,
+          "targetY": 528
+        },
+        {
+          "label": "은행",
+          "destination": "abel_interior_bank",
+          "sourceThresholds": 1,
+          "targetX": 3072,
+          "targetY": 576
+        },
+        {
+          "label": "무기상점",
+          "destination": "abel_interior_equipment",
+          "sourceThresholds": 1,
+          "targetX": 1920,
+          "targetY": 1248
+        },
+        {
+          "label": "여관",
+          "destination": "abel_interior_inn",
+          "sourceThresholds": 1,
+          "targetX": 4096,
+          "targetY": 1216
+        }
+      ]
+    },
+    {
+      "map": "MAP_RUCESION_TOWN",
+      "raw": 7,
+      "shown": 7,
+      "pins": [
+        {
+          "label": "방어구상점",
+          "destination": "rucesion_interior_armor",
+          "sourceThresholds": 1,
+          "targetX": 3296,
+          "targetY": 1296
+        },
+        {
+          "label": "시약상점",
+          "destination": "rucesion_interior_reagent",
+          "sourceThresholds": 1,
+          "targetX": 2656,
+          "targetY": 912
+        },
+        {
+          "label": "무기상점",
+          "destination": "rucesion_interior_weapon",
+          "sourceThresholds": 1,
+          "targetX": 3424,
+          "targetY": 880
+        },
+        {
+          "label": "은행 A",
+          "destination": "rucesion_interior_bank_a",
+          "sourceThresholds": 1,
+          "targetX": 4448,
+          "targetY": 1552
+        },
+        {
+          "label": "은행 B",
+          "destination": "rucesion_interior_bank_b",
+          "sourceThresholds": 1,
+          "targetX": 4928,
+          "targetY": 1504
+        },
+        {
+          "label": "여관",
+          "destination": "rucesion_interior_inn",
+          "sourceThresholds": 1,
+          "targetX": 3872,
+          "targetY": 1840
+        },
+        {
+          "label": "의상점",
+          "destination": "rucesion_interior_clothing",
+          "sourceThresholds": 1,
+          "targetX": 3456,
+          "targetY": 2048
+        }
+      ]
+    },
+    {
+      "map": "MAP_MINE_TOWN",
+      "raw": 3,
+      "shown": 3,
+      "pins": [
+        {
+          "label": "여관",
+          "destination": "mine_interior_inn",
+          "sourceThresholds": 1,
+          "targetX": 2752,
+          "targetY": 1056
+        },
+        {
+          "label": "시약점",
+          "destination": "mine_interior_reagent",
+          "sourceThresholds": 1,
+          "targetX": 1888,
+          "targetY": 1488
+        },
+        {
+          "label": "카스마늄 광산",
+          "destination": "MAP_MINE_HUNT_3",
+          "sourceThresholds": 1,
+          "targetX": 1792,
+          "targetY": 672
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_LOBBY",
+      "raw": 4,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "죽음의마을",
+          "destination": "MAP_DEATH_FIELD",
+          "sourceThresholds": 4,
+          "targetX": 3688,
+          "targetY": 304
+        }
+      ]
+    },
+    {
+      "map": "MAP_POTE_01",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "밀레스 마을",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 832
+        },
+        {
+          "label": "포테의 숲 B · 무리 숲",
+          "destination": "MAP_POTE_02",
+          "sourceThresholds": 1,
+          "targetX": 1024,
+          "targetY": 288
+        }
+      ]
+    },
+    {
+      "map": "MAP_POTE_02",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "포테의 숲 A · 입구 숲",
+          "destination": "MAP_POTE_01",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 2048
+        },
+        {
+          "label": "피에트 조사 거점",
+          "destination": "MAP_PIET_CAMP",
+          "sourceThresholds": 1,
+          "targetX": 4224,
+          "targetY": 160
+        }
+      ]
+    },
+    {
+      "map": "MAP_PIET_CAMP",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "포테의 숲 B · 무리 숲",
+          "destination": "MAP_POTE_02",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 832
+        },
+        {
+          "label": "포테의 숲 C · 깊은 숲",
+          "destination": "MAP_POTE_03",
+          "sourceThresholds": 1,
+          "targetX": 1024,
+          "targetY": 288
+        }
+      ]
+    },
+    {
+      "map": "MAP_POTE_03",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "피에트 조사 거점",
+          "destination": "MAP_PIET_CAMP",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 2304
+        },
+        {
+          "label": "포테의 숲 D · 결계 너머",
+          "destination": "MAP_POTE_D_BOSS",
+          "sourceThresholds": 1,
+          "targetX": 4736,
+          "targetY": 128
+        }
+      ]
+    },
+    {
+      "map": "MAP_POTE_D_BOSS",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "포테의 숲 C · 깊은 숲",
+          "destination": "MAP_POTE_03",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 768
+        }
+      ]
+    },
+    {
+      "map": "MAP_ABEL_COAST",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "아벨 마을",
+          "destination": "MAP_ABEL_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 512
+        },
+        {
+          "label": "아벨 해안 1",
+          "destination": "MAP_ABEL_COAST_1A",
+          "sourceThresholds": 1,
+          "targetX": 512,
+          "targetY": 448
+        }
+      ]
+    },
+    {
+      "map": "MAP_ABEL_COAST_1A",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "아벨 해안 대기방",
+          "destination": "MAP_ABEL_COAST",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 2208
+        },
+        {
+          "label": "아벨 해안 2",
+          "destination": "MAP_ABEL_COAST_2A",
+          "sourceThresholds": 1,
+          "targetX": 2336,
+          "targetY": 528
+        }
+      ]
+    },
+    {
+      "map": "MAP_ABEL_COAST_2A",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "아벨 해안 1",
+          "destination": "MAP_ABEL_COAST_1A",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 2208
+        },
+        {
+          "label": "아벨 해안 3",
+          "destination": "MAP_ABEL_COAST_3B",
+          "sourceThresholds": 1,
+          "targetX": 2336,
+          "targetY": 528
+        }
+      ]
+    },
+    {
+      "map": "MAP_ABEL_COAST_3B",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "아벨 해안 2",
+          "destination": "MAP_ABEL_COAST_2A",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 2208
+        },
+        {
+          "label": "아벨 해안 보스방",
+          "destination": "MAP_ABEL_COAST_4C",
+          "sourceThresholds": 1,
+          "targetX": 2336,
+          "targetY": 528
+        }
+      ]
+    },
+    {
+      "map": "MAP_ABEL_COAST_4C",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "아벨 해안 3",
+          "destination": "MAP_ABEL_COAST_3B",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 1952
+        }
+      ]
+    },
+    {
+      "map": "MAP_POTE_04",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "밀레스 마을",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 832
+        }
+      ]
+    },
+    {
+      "map": "MAP_RUCESION_COAST",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "뤼케시온 마을",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 512
+        },
+        {
+          "label": "뤼케시온 해안 1",
+          "destination": "MAP_RUCESION_COAST_1C",
+          "sourceThresholds": 1,
+          "targetX": 512,
+          "targetY": 448
+        }
+      ]
+    },
+    {
+      "map": "MAP_RUCESION_COAST_1C",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "뤼케시온 해안 대기방",
+          "destination": "MAP_RUCESION_COAST",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 2208
+        },
+        {
+          "label": "뤼케시온 해안 2",
+          "destination": "MAP_RUCESION_COAST_2C",
+          "sourceThresholds": 1,
+          "targetX": 2336,
+          "targetY": 528
+        }
+      ]
+    },
+    {
+      "map": "MAP_RUCESION_COAST_2C",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "뤼케시온 해안 1",
+          "destination": "MAP_RUCESION_COAST_1C",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 2208
+        },
+        {
+          "label": "뤼케시온 해안 3",
+          "destination": "MAP_RUCESION_COAST_3B",
+          "sourceThresholds": 1,
+          "targetX": 2336,
+          "targetY": 528
+        }
+      ]
+    },
+    {
+      "map": "MAP_RUCESION_COAST_3B",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "뤼케시온 해안 2",
+          "destination": "MAP_RUCESION_COAST_2C",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 2208
+        },
+        {
+          "label": "뤼케시온 해안 보스방",
+          "destination": "MAP_RUCESION_ARIEL_ROOM",
+          "sourceThresholds": 1,
+          "targetX": 2336,
+          "targetY": 528
+        }
+      ]
+    },
+    {
+      "map": "MAP_RUCESION_ARIEL_ROOM",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "뤼케시온 해안 3",
+          "destination": "MAP_RUCESION_COAST_3B",
+          "sourceThresholds": 1,
+          "targetX": 192,
+          "targetY": 1952
+        }
+      ]
+    },
+    {
+      "map": "MAP_MINE_HUNT_3",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "마인 마을",
+          "destination": "MAP_MINE_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 2696,
+          "targetY": 928
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_FIELD",
+      "raw": 4,
+      "shown": 4,
+      "pins": [
+        {
+          "label": "대기실",
+          "destination": "MAP_DEATH_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 1064,
+          "targetY": 1712
+        },
+        {
+          "label": "건물 1",
+          "destination": "MAP_DEATH_HOUSE_1",
+          "sourceThresholds": 1,
+          "targetX": 4200,
+          "targetY": 656
+        },
+        {
+          "label": "건물 2",
+          "destination": "MAP_DEATH_HOUSE_2",
+          "sourceThresholds": 1,
+          "targetX": 2952,
+          "targetY": 1856
+        },
+        {
+          "label": "건물 3",
+          "destination": "MAP_DEATH_HOUSE_3",
+          "sourceThresholds": 1,
+          "targetX": 4904,
+          "targetY": 2288
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_1",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "죽음의마을",
+          "destination": "MAP_DEATH_FIELD",
+          "sourceThresholds": 1,
+          "targetX": 3144,
+          "targetY": 608
+        },
+        {
+          "label": "지하 A",
+          "destination": "MAP_DEATH_UNDER_A",
+          "sourceThresholds": 1,
+          "targetX": 3400,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_2",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "죽음의마을",
+          "destination": "MAP_DEATH_FIELD",
+          "sourceThresholds": 1,
+          "targetX": 3144,
+          "targetY": 608
+        },
+        {
+          "label": "지하 E",
+          "destination": "MAP_DEATH_UNDER_E",
+          "sourceThresholds": 1,
+          "targetX": 3400,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_3",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "죽음의마을",
+          "destination": "MAP_DEATH_FIELD",
+          "sourceThresholds": 1,
+          "targetX": 3144,
+          "targetY": 608
+        },
+        {
+          "label": "지하 C",
+          "destination": "MAP_DEATH_UNDER_C",
+          "sourceThresholds": 1,
+          "targetX": 3400,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_UNDER_A",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "건물 1",
+          "destination": "MAP_DEATH_HOUSE_1",
+          "sourceThresholds": 1,
+          "targetX": 2440,
+          "targetY": 928
+        },
+        {
+          "label": "지하 B",
+          "destination": "MAP_DEATH_UNDER_B",
+          "sourceThresholds": 1,
+          "targetX": 3560,
+          "targetY": 272
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_UNDER_B",
+      "raw": 3,
+      "shown": 3,
+      "pins": [
+        {
+          "label": "지하 A",
+          "destination": "MAP_DEATH_UNDER_A",
+          "sourceThresholds": 1,
+          "targetX": 2440,
+          "targetY": 928
+        },
+        {
+          "label": "지하 C",
+          "destination": "MAP_DEATH_UNDER_C",
+          "sourceThresholds": 1,
+          "targetX": 3560,
+          "targetY": 272
+        },
+        {
+          "label": "지하 D",
+          "destination": "MAP_DEATH_UNDER_D",
+          "sourceThresholds": 1,
+          "targetX": 3240,
+          "targetY": 688
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_UNDER_C",
+      "raw": 3,
+      "shown": 3,
+      "pins": [
+        {
+          "label": "지하 B",
+          "destination": "MAP_DEATH_UNDER_B",
+          "sourceThresholds": 1,
+          "targetX": 2984,
+          "targetY": 560
+        },
+        {
+          "label": "지하 E",
+          "destination": "MAP_DEATH_UNDER_E",
+          "sourceThresholds": 1,
+          "targetX": 4168,
+          "targetY": 1152
+        },
+        {
+          "label": "건물 3",
+          "destination": "MAP_DEATH_HOUSE_3",
+          "sourceThresholds": 1,
+          "targetX": 3880,
+          "targetY": 720
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_UNDER_D",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "지하 B",
+          "destination": "MAP_DEATH_UNDER_B",
+          "sourceThresholds": 1,
+          "targetX": 3560,
+          "targetY": 272
+        },
+        {
+          "label": "지하 E",
+          "destination": "MAP_DEATH_UNDER_E",
+          "sourceThresholds": 1,
+          "targetX": 4648,
+          "targetY": 816
+        }
+      ]
+    },
+    {
+      "map": "MAP_DEATH_UNDER_E",
+      "raw": 3,
+      "shown": 3,
+      "pins": [
+        {
+          "label": "지하 C",
+          "destination": "MAP_DEATH_UNDER_C",
+          "sourceThresholds": 1,
+          "targetX": 3144,
+          "targetY": 320
+        },
+        {
+          "label": "지하 D",
+          "destination": "MAP_DEATH_UNDER_D",
+          "sourceThresholds": 1,
+          "targetX": 4168,
+          "targetY": 1152
+        },
+        {
+          "label": "건물 2",
+          "destination": "MAP_DEATH_HOUSE_2",
+          "sourceThresholds": 1,
+          "targetX": 3880,
+          "targetY": 720
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_LOBBY",
+      "raw": 12,
+      "shown": 4,
+      "pins": [
+        {
+          "label": "1층 서쪽 복도",
+          "destination": "MAP_HORROR_CORRIDOR_1",
+          "sourceThresholds": 5,
+          "targetX": 1248,
+          "targetY": 704
+        },
+        {
+          "label": "1층 동쪽 복도",
+          "destination": "MAP_HORROR_CORRIDOR_1",
+          "sourceThresholds": 1,
+          "targetX": 2176,
+          "targetY": 944
+        },
+        {
+          "label": "2층 중앙 복도",
+          "destination": "MAP_HORROR_CORRIDOR_2",
+          "sourceThresholds": 1,
+          "targetX": 1344,
+          "targetY": 464
+        },
+        {
+          "label": "밀레스",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 5,
+          "targetX": 960,
+          "targetY": 848
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_1",
+      "raw": 14,
+      "shown": 11,
+      "pins": [
+        {
+          "label": "로비로",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 4,
+          "targetX": -160,
+          "targetY": 768
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 608,
+          "targetY": 256
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 416,
+          "targetY": 352
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 224,
+          "targetY": 448
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 32,
+          "targetY": 544
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": -160,
+          "targetY": 640
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 896,
+          "targetY": 400
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 704,
+          "targetY": 496
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 512,
+          "targetY": 592
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 320,
+          "targetY": 688
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 128,
+          "targetY": 784
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_2",
+      "raw": 5,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "로비로",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 4,
+          "targetX": 32,
+          "targetY": 704
+        },
+        {
+          "label": "방 입구",
+          "destination": "MAP_HORROR_ROOM_01",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 320
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_01",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_02",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_03",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_04",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_05",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_06",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_07",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_08",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 576,
+          "targetY": 304
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_09",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 960,
+          "targetY": 272
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_10",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_11",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_12",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 1088,
+          "targetY": 304
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_13",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_14",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "MAP_HORROR_ROOM_15",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "로비로 돌아가기",
+          "destination": "MAP_HORROR_LOBBY",
+          "sourceThresholds": 1,
+          "targetX": 992,
+          "targetY": 256
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_potion_shop",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 320,
+          "targetY": 404
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_weapon_shop",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 384,
+          "targetY": 372
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_bank",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 288,
+          "targetY": 388
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_church",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 320,
+          "targetY": 404
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_inn",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 288,
+          "targetY": 420
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_temple_lobby",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "밀레스 마을",
+          "destination": "milles_runtime_proto",
+          "sourceThresholds": 1,
+          "targetX": 384,
+          "targetY": 404
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_temple_hub",
+      "raw": 2,
+      "shown": 2,
+      "pins": [
+        {
+          "label": "세오신전 · 체력\/마력",
+          "destination": "milles_interior_temple_seo",
+          "sourceThresholds": 1,
+          "targetX": 352,
+          "targetY": 868
+        },
+        {
+          "label": "신전대기실",
+          "destination": "milles_interior_temple_lobby",
+          "sourceThresholds": 1,
+          "targetX": 512,
+          "targetY": 980
+        }
+      ]
+    },
+    {
+      "map": "milles_interior_temple_seo",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "신들의 세계",
+          "destination": "milles_interior_temple_hub",
+          "sourceThresholds": 1,
+          "targetX": 544,
+          "targetY": 388
+        }
+      ]
+    },
+    {
+      "map": "abel_interior_reagent",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_ABEL_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 320,
+          "targetY": 404
+        }
+      ]
+    },
+    {
+      "map": "abel_interior_equipment",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_ABEL_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 384,
+          "targetY": 372
+        }
+      ]
+    },
+    {
+      "map": "abel_interior_bank",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_ABEL_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 288,
+          "targetY": 388
+        }
+      ]
+    },
+    {
+      "map": "abel_interior_church",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_ABEL_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 320,
+          "targetY": 404
+        }
+      ]
+    },
+    {
+      "map": "abel_interior_inn",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_ABEL_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 416,
+          "targetY": 580
+        }
+      ]
+    },
+    {
+      "map": "rucesion_interior_armor",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 384,
+          "targetY": 372
+        }
+      ]
+    },
+    {
+      "map": "rucesion_interior_weapon",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 384,
+          "targetY": 372
+        }
+      ]
+    },
+    {
+      "map": "rucesion_interior_reagent",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 320,
+          "targetY": 404
+        }
+      ]
+    },
+    {
+      "map": "rucesion_interior_bank_a",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 288,
+          "targetY": 388
+        }
+      ]
+    },
+    {
+      "map": "rucesion_interior_bank_b",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 288,
+          "targetY": 388
+        }
+      ]
+    },
+    {
+      "map": "rucesion_interior_inn",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 288,
+          "targetY": 420
+        }
+      ]
+    },
+    {
+      "map": "rucesion_interior_clothing",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_RUCESION_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 384,
+          "targetY": 372
+        }
+      ]
+    },
+    {
+      "map": "mine_interior_inn",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_MINE_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 288,
+          "targetY": 420
+        }
+      ]
+    },
+    {
+      "map": "mine_interior_reagent",
+      "raw": 1,
+      "shown": 1,
+      "pins": [
+        {
+          "label": "출구",
+          "destination": "MAP_MINE_TOWN",
+          "sourceThresholds": 1,
+          "targetX": 320,
+          "targetY": 404
+        }
+      ]
+    }
+  ]
+}
