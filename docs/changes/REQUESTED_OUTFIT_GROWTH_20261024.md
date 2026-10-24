@@ -9,3 +9,5 @@ Exact requested gear remains; rogue additionally equips source row1485 USER_ITEM
 Scoped verification: requested outfit tests (growth, exact modifiers, helmet four-direction action render, ten strongest mine physical-hit budget) and weapon source tests. Existing workflow also reruns directly adjacent mine/Amnesia checks without restoring retired groups. The budget check uses existing damage formula and HP debit, but is not an AI/timing, magic/status or full hunt acceptance. Android capture must independently establish legitimate equivalent progression or an explicitly authorized test setup; never silently inject these fixture saves.
 
 Local diff/source checks passed. Native CI and revised image review pending. Main remains unchanged.
+
+Verified:33scoped tests passed on c7bd7f3; run40074262962. Exact resources and artifact proof are in verification/REQUESTED_OUTFIT_GROWTH_20261024_BUILD.json. Native images inspected and saved to existing Library identities. Android hunt acceptance remains pending.

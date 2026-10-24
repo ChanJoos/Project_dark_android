@@ -1,3 +1,9 @@
+## Verified requested helmet and preview growth correction — 2026-10-24 16:33 KST
+
+User accepted location/appearance but identified novice HP/MP under the prior99label and requested 헬도적투구. Corrected only the preview fixture: normal canonical XP level growth1→99, genuine job choice at3, reproducible seed20261024;196 earned points unspent. No production balance, player-save injection or runtime change. Rogue now wears sourceR01485/mh128 including existingHP−100. Exact postgear rested resources: rogueHP4050/MP4941; mageHP6050/MP6241 (base5050/4941). Native inventory/action renders inspected. Both survive the test's ten strongest mine physical damage-budget hits; this does not establish AI/magic/full hunt acceptance.
+
+Sourcec7bd7f3f2d5fee70724619db1190df2b2e6a7d43, run40074262962/job120814159260 SUCCESS;33tests/7suites,0failures/errors/skips. APKartifact12553105142, diagnostics12552448439,7day retention. APK106540618bytes SHA2561b5f88a091dd0326eed9bfc786e84dcba0e51b76e3998dec3a39f845fff6cd99, built16:33:44KST; ZIPCRC/hash/embeddedidentity and CIv2signature verified. Native test setup does not grant permission to inject capture saves. Actual Android capture progression/equipment setup remains separately verified. No main merge. Receipt: verification/REQUESTED_OUTFIT_GROWTH_20261024_BUILD.json. Documentation HEAD is not APK source.
+
 ## Verified corrective candidate — 2026-10-24 16:19 KST
 
 Exact APK source `8940485f885766ed1f915203fa3d697b4f440bd2`, Actions `40073376007` / job `120811428000` SUCCESS. **32 scoped native tests, 0 failures/errors/skips** across7suites. APK artifact `12552346238`, diagnostics `12551862944`, retention7days. APK106540594bytes, packagecom.projectdark.mobile.v266test, SHA256 `18829fd140343ddaf29df425cd89c6bb77ee45a7387b8aa15f0f76d42f023bb9`; ZIPCRC/hash/embeddedsource+run and CIv2signature verified. Built2026-10-24 16:19:24KST. The package/legacy version label alone does not identify this candidate.

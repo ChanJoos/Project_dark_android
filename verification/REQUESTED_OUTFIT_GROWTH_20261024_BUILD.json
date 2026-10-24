@@ -1,0 +1,58 @@
+{
+  "source": "c7bd7f3f2d5fee70724619db1190df2b2e6a7d43",
+  "run": 40074262962,
+  "job": 120814159260,
+  "tests": 33,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "artifact": 12553105142,
+  "diagnosticsArtifact": 12552448439,
+  "apkSha256": "1b5f88a091dd0326eed9bfc786e84dcba0e51b76e3998dec3a39f845fff6cd99",
+  "apkBytes": 106540618,
+  "builtKST": "2026-10-24T16:33:44+09:00",
+  "retentionDays": 7,
+  "productionChanged": false,
+  "rogue": {
+    "job": "ROGUE",
+    "level": 99,
+    "baseHp": 5050,
+    "baseMp": 4941,
+    "hp": 4050,
+    "mp": 4941,
+    "maxHp": 4050,
+    "maxMp": 4941,
+    "unspentPoints": 196,
+    "equipment": {
+      "갑옷": "USER_ITEM_20261018_R01486",
+      "모자": "USER_ITEM_20261018_R01485",
+      "무기": "IT_NATIVE_V210_BE8DD6B8FCAD130F",
+      "방패": "IT_SHIELD_KNIGHT"
+    },
+    "setup": "Test-only normal XP growth, seed20261024; unallocated stats; exact equipment sandbox; rested. Not a player save or recorded gameplay."
+  },
+  "mage": {
+    "job": "MAGE",
+    "level": 99,
+    "baseHp": 5050,
+    "baseMp": 4941,
+    "hp": 6050,
+    "mp": 6241,
+    "maxHp": 6050,
+    "maxMp": 6241,
+    "unspentPoints": 196,
+    "equipment": {
+      "갑옷": "USER_ITEM_20261018_R01714",
+      "모자": "USER_ITEM_20261018_R01712",
+      "무기": "USER_ITEM_20261018_R05020"
+    },
+    "setup": "Test-only normal XP growth, seed20261024; unallocated stats; exact equipment sandbox; rested. Not a player save or recorded gameplay."
+  },
+  "limits": [
+    "native preview, not Android capture",
+    "196 earned points unspent",
+    "test-only XP through normal growth; not save injection",
+    "ten physical hit budget is not full hunting acceptance",
+    "no main merge"
+  ]
+}
