@@ -90,7 +90,7 @@ jobs:
           mkdir -p "$ANDROID_AVD_HOME" "$ANDROID_USER_HOME"
           echo no | avdmanager create avd -n apk-capture -p "$ANDROID_AVD_HOME/apk-capture.avd" -k 'system-images;android-35;google_apis;x86_64' --force
           find "$RUNNER_TEMP" -name 'apk-capture.ini' -o -name 'config.ini' > evidence/avd-paths.txt
-          printf '\nhw.lcd.width=1080\nhw.lcd.height=1920\nhw.lcd.density=320\nhw.cpu.ncore=2\n' >> "$ANDROID_AVD_HOME/apk-capture.avd/config.ini"
+          printf '\nhw.lcd.width=720\nhw.lcd.height=1280\nhw.lcd.density=240\nhw.cpu.ncore=2\n' >> "$ANDROID_AVD_HOME/apk-capture.avd/config.ini"
           emulator -list-avds | tee evidence/avd-list.txt
           grep -qx apk-capture evidence/avd-list.txt
           # Official Ubuntu runtime dependencies, unpacked locally without root changes.
@@ -209,26 +209,26 @@ jobs:
           prior=pathlib.Path('last-app-pid.txt')
           current=adb('shell','pidof',pkg).stdout.decode().strip()
           if prior.exists(): assert current==prior.read_text().strip(), 'App process changed; do not claim continuous pull'
-          adb('shell','am','start','-W','-n',pkg+'/'+activity)
+          adb('shell','am','start','-W','-f','0x20000000','-n',pkg+'/'+activity)
           time.sleep(0.4)
           snap('start')
           video=f'/sdcard/stage-{stage:02d}.mp4'
-          rec=subprocess.Popen(['adb','shell','screenrecord','--size','1920x1080','--bit-rate','8000000','--time-limit','150',video],stdout=(root/'record.log').open('wb'),stderr=subprocess.STDOUT)
+          rec=subprocess.Popen(['adb','shell','screenrecord','--size','1280x720','--bit-rate','4000000','--time-limit','150',video],stdout=(root/'record.log').open('wb'),stderr=subprocess.STDOUT)
           time.sleep(1)
           try:
               begun=time.monotonic()
               for index,c in enumerate(commands):
                   if time.monotonic()-begun>135:raise RuntimeError('Capture stage exceeded bounded duration')
                   op=c['op']
-                  if op=='tap':adb('shell','input','tap',str(round(c['x']*2)),str(round(c['y']*2)))
-                  elif op=='swipe':adb('shell','input','swipe',str(round(c['x']*2)),str(round(c['y']*2)),str(round(c['x2']*2)),str(round(c['y2']*2)),str(c.get('ms',1000)))
+                  if op=='tap':adb('shell','input','tap',str(round(c['x']*4/3)),str(round(c['y']*4/3)))
+                  elif op=='swipe':adb('shell','input','swipe',str(round(c['x']*4/3)),str(round(c['y']*4/3)),str(round(c['x2']*4/3)),str(round(c['y2']*4/3)),str(c.get('ms',1000)))
                   elif op=='wait':time.sleep(c.get('seconds',1))
                   elif op=='snapshot':snap(f'checkpoint-{index:02d}')
-                  elif op=='launch':adb('shell','am','start','-W','-n',pkg+'/'+activity)
+                  elif op=='launch':adb('shell','am','start','-W','-f','0x20000000','-n',pkg+'/'+activity)
                   elif op=='launch_encounter':
                       activity='com.projectdark.mobile.CaptureEncounterActivity'
                       pathlib.Path('current-activity.txt').write_text(activity)
-                      adb('shell','am','start','-W','-n',pkg+'/'+activity)
+                      adb('shell','am','start','-W','-f','0x20000000','-n',pkg+'/'+activity)
                       time.sleep(1)
                       report=adb('exec-out','run-as',pkg,'cat','files/capture-encounter.json').stdout
                       proof=json.loads(report)
