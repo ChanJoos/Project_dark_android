@@ -1,74 +1,28 @@
 {
-  "stage": 8,
+  "stage": 9,
   "commands": [
     {
-      "op": "tap",
-      "x": 1314,
-      "y": 912
+      "op": "load_checkpoint",
+      "job": "ROGUE"
     },
     {
       "op": "wait",
-      "seconds": 1.2
+      "seconds": 3
     },
     {
       "op": "tap",
-      "x": 1408,
-      "y": 477
+      "x": 1660,
+      "y": 56
     },
     {
       "op": "tap",
-      "x": 1392,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 1.2
-    },
-    {
-      "op": "snapshot"
+      "x": 498,
+      "y": 181
     },
     {
       "op": "tap",
-      "x": 1664,
-      "y": 670
-    },
-    {
-      "op": "tap",
-      "x": 1392,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 1.2
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 640,
-      "y": 950
-    },
-    {
-      "op": "tap",
-      "x": 1392,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 1.2
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 1470,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 4
+      "x": 437,
+      "y": 697
     },
     {
       "op": "snapshot"
