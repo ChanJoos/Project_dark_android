@@ -15,20 +15,66 @@
     "domainResult": "PASS"
   },
   "androidNative": {
-    "status": "PASS_PRE_LIVE_WORLD_FIX_PENDING_RERUN",
-    "runId": 40069361873,
-    "jobId": 120799257394,
-    "sourceCommit": "2f85445979f6c51fb7561027b1a5b8f52fbc4a0f",
-    "passed": 36,
+    "status": "PASS",
+    "runId": 40070443661,
+    "jobId": 120802529002,
+    "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db",
+    "passed": 37,
     "failed": 0,
     "classes": {
-      "CompanionPartyV269Test": 15,
-      "CompanionControllerV269Test": 5,
-      "CompanionNativeV269Test": 3,
-      "SkillSpatialContractTest": 5,
-      "SkillTimingV174Test.realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes": 1,
-      "InventoryPolishV266Test": 3,
-      "EquipmentHudV262Test": 4
+      "com.projectdark.mobile.CompanionControllerV269Test": [
+        "followerUsesAdjacentTileStepsAndWaitCommandStopsMovement",
+        "priestUsesHealOrDispelAndNeverAttacksOrCurses",
+        "noCombatBuffSpamInTown",
+        "priestDoesNotBreakPlayerCrashReservationAndRecoversAfterContact",
+        "warriorDoesNotWakeSleepingTargetWithBasicOrLowTierAttack"
+      ],
+      "com.projectdark.mobile.CompanionWorldV269Test": [
+        "rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck"
+      ],
+      "com.projectdark.mobile.EquipmentHudV262Test": [
+        "wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+        "bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+        "necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+        "combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths"
+      ],
+      "com.projectdark.mobile.CompanionNativeV269Test": [
+        "selectedAllyReceivesActualQuickslotHealAndProtection",
+        "recruitSelectSupportAndPersistThroughRealHudInBothAspectRatios",
+        "managementOverlayConsumesTouchesAndRecoveryDoesNotChangePlayerResources"
+      ],
+      "com.projectdark.mobile.SkillTimingV174Test": [
+        "realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes"
+      ],
+      "com.projectdark.mobile.CompanionPartyV269Test": [
+        "priestCompanionHealsPlayerWithoutSpendingPlayerMp",
+        "startingCommonerHasNoImplicitPartyAndRecruitmentRequiresJob",
+        "allyHealConsumesCasterMpAndUsesRecipientHp",
+        "friendlyDamageAndEnemyHealingAreRejected",
+        "reservationProtectsSleepAndCrashButExpiresAndEndsOnContact",
+        "companionEffectsKeepDurationAndAreRestoredWithoutTouchingPlayer",
+        "companionCannotUseUnlearnedOrWrongJobSkills",
+        "playerSelfCenteredAttackStillUsesEnemyRecipients",
+        "partySnapshotPreservesHpMpDeathCooldownAndDoesNotHealOnRejoin",
+        "invalidSnapshotDoesNotPartiallyReplaceRoster",
+        "monsterAttackCanHitCompanionAndNotPlayer",
+        "crashConditionIsNotInventedByMadSoul",
+        "hiddenRogueCanStillReceiveFriendlyHealing",
+        "supportPoliciesAvoidFullHpHealingAndPriestCurse",
+        "warriorSoulUsesCompanionHpAndCostsCompanionHp"
+      ],
+      "com.projectdark.mobile.InventoryPolishV266Test": [
+        "allTenRecallsLoseOuterBlackRectangleAndKeepForegroundPixelsAndCachedIdentity",
+        "consumptionTabIncludesAllReagentsFoodAndRecallsWithoutAddingOwnership",
+        "everyNecklaceVisibleBoundsAreCenteredOnBothAxesAndActualEquipmentUsesSameProjection"
+      ],
+      "com.projectdark.mobile.SkillSpatialContractTest": [
+        "originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId",
+        "passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic",
+        "liveGameInputRendersDistinctFinisherAndSpellEffects",
+        "targetMovesWallsAndViewportAreRecheckedAtContact",
+        "actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass"
+      ]
     },
     "rendersReviewed": [
       "warrior-hud-960",
@@ -38,32 +84,23 @@
     ]
   },
   "apk": {
-    "sourceCommit": "2f85445979f6c51fb7561027b1a5b8f52fbc4a0f",
-    "runId": 40069361873,
-    "jobId": 120799257394,
-    "artifactId": 12550795773,
-    "apkSha256": "98cc75674b68d4166c6e6a928a64efa7adaadbe4abba1a10b608924a48a94db2",
-    "bytes": 106557986,
+    "status": "BUILD_VERIFIED_SIGNATURE_VERIFIED_CANDIDATE",
+    "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db",
+    "runId": 40070443661,
+    "jobId": 120802529002,
+    "artifactId": 12550144749,
+    "apkSha256": "3bda7b1e3748a7f63a18cec80dadfcb0e8da8002481b7a162abf871b1b3608ac",
+    "bytes": 106558034,
     "package": "com.projectdark.mobile.v269test",
     "label": "PROJECT DARK V269 TEST",
-    "assembleCompletedKST": "2026-10-24 15:16:09",
+    "buildCompletedKST": "2026-10-24 15:33:38",
     "trackedAssetsByteExact": 1518,
-    "nativeAndAdjacentTestsPassed": 36,
     "crc": "PASS",
-    "signature": "VERIFIED_V2_APKSIG_8_7_3",
-    "zipDexTimestamp": [
-      1981,
-      1,
-      1,
-      1,
-      1,
-      2
-    ],
-    "libraryFileId": "libfile_198c24363560819187627d60f4be08ba",
-    "status": "SUPERSEDED_PENDING_REPLACEMENT_AFTER_LIVE_WORLD_FIX"
+    "signature": "VERIFIED_APKSIG_8_7_3_V2",
+    "libraryFileId": "libfile_198c24363560819187627d60f4be08ba"
   },
-  "phoneAcceptance": "PENDING_NEW_FEATURE_ONLY",
-  "mainIntegration": "NOT_REQUESTED_FOR_THIS_CANDIDATE",
+  "phoneAcceptance": "PENDING_NEW_V269_FEATURE_ONLY",
+  "mainIntegration": "NOT_MERGED; PR198 candidate",
   "retiredV268Checks": "REMAIN_RETIRED",
   "firstAndroidRun": {
     "id": 40068976919,
@@ -78,21 +115,22 @@
     ]
   },
   "fullCurrentRegression": {
-    "runId": 40069399147,
-    "sourceCommit": "2f85445979f6c51fb7561027b1a5b8f52fbc4a0f",
-    "status": "WORKFLOW_FAILED_OPTIONAL_RETIRED_ARTIFACT_UPLOAD",
-    "passedGateGroups": 31,
-    "skippedGateGroups": [
-      45
-    ],
-    "failedGateGroups": [],
-    "reason": "Retired v88-v109 render generators no longer emit historical screenshot files; mandatory artifact upload aborted before gate45. Make this archival artifact optional, retain every active assertion, then rerun remaining pipeline. Exact source APK already independently built and verified in40069361873."
+    "runId": 40070446870,
+    "jobId": 120802660120,
+    "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db",
+    "status": "PASS",
+    "activeGateGroups": 32,
+    "passed": 32,
+    "skipped": 0,
+    "failed": 0,
+    "retiredGroupsRemainAbsent": true
   },
   "liveWorldRegression": {
     "initialResult": "FAILED: RESCUE could leave attackPrimed=true with CHASE state and prevent monster retaliation",
     "fix": "Cancel old windup on taunt retarget; face the real party target when a new windup starts",
     "test": "CompanionWorldV269Test.rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck",
-    "localResult": "PASS"
+    "localResult": "PASS",
+    "androidResult": "PASS_ON_FINAL_SOURCE"
   },
   "liveWorldAndroidRun": {
     "runId": 40070181040,
@@ -100,5 +138,6 @@
     "passed": 36,
     "failed": 1,
     "reason": "New real-world fixture used JVM mock RectF; move only that fixture to Robolectric Android runtime. All game production bytes unchanged by this fixture correction."
-  }
+  },
+  "currentSourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db"
 }

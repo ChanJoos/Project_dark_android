@@ -1,3 +1,13 @@
+## V269 — 전사·성직자 동료 후보 검증 완료 (2026-10-24 KST)
+
+사용자 승인 기획의 첫 단계: 전사/성직자 중1명 동행, FOLLOW/FOCUS/WAIT, 아군 지원 선택, 공유 Resolver 기반 전투/자원/상태/보상, 충돌 준수 타일 추적, 몬스터 공격대상, 주력기 예약과 회복 판단, HP/MP/전투불능/쿨타임/버프 저장복원. 수혈·성직자저주는 동료 AI에서 제외. 실제 맵 레스큐 재타깃 시 windup 상태 교착을 수정하고 실제 몬스터의 동료 반격까지 검증했다. 신규 동료 성장/AI 수치는 PROJECT_ADAPTED이며 기존 원작 스킬계수와 에셋을 변경하지 않았다.
+
+최종 APK 소스 `96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db`, Actions40070443661/job120802529002. 기능·인접검증37PASS(실제Android UI/두화면/퀵슬롯 아군 회복보호/재시작 및 실제맵 상호전투 포함), assemble PASS. APK PROJECT_DARK_V269_COMPANION_TEST.apk/106558034bytes/2026-10-24 15:33:38 KST/SHA256 `3bda7b1e3748a7f63a18cec80dadfcb0e8da8002481b7a162abf871b1b3608ac`. embedded source/run·CRC·v2서명·1518 tracked main assets byte일치PASS. 설치파일 저장완료 libfile_198c24363560819187627d60f4be08ba.
+
+현재유효 전체검증: {"runId": 40070446870, "jobId": 120802660120, "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db", "status": "PASS", "activeGateGroups": 32, "passed": 32, "skipped": 0, "failed": 0, "retiredGroupsRemainAbsent": true}. 폐기된 V268 13묶음/57항목은 그대로 폐기상태이며 옛 render artifact만 optional로 정리했다. main은f86d961의V266사용자수용기준 유지, PR198 후보만 작성. 신규 V269 폰/사용자 시각수용은 별도이며 기존 V266수용을 취소하지 않는다. 5직업 전체 동료/3인 파티는 후속 범위.
+
+계약: design/COMPANION_PARTY_V269.md · 정확한 검증/APK 영수증: verification/COMPANION_PARTY_V269.json. 이전 V269 진행/부분 실패 기록은 아래의 이력이며 이 완료 기록이 우선한다.
+
 ## V269 — 직업별 협동 동료 구현 후보 (2026-10-24 KST)
 
 사용자 “응 그렇게 이제 만들어봐”에 따라 전사·성직자 중1명 동행/명령/아군지원, 공유Resolver 전투·자원·상태·보상, 타일추적/몬스터 공격대상, 주력기예약과 회복판단, 파티자원/쿨타임/상태 저장복원을 구현했다. 원작스킬계수·원본그림변경없음;동료성장/AI는PROJECT_ADAPTED. 수혈·성직자저주는동료AI에서제외. 전사SOUL후CRASH조건을임의충족시키지않는다.
