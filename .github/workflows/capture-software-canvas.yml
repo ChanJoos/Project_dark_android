@@ -61,6 +61,8 @@ jobs:
           name: SOFTWARE_CANVAS_DIAGNOSTICS
           retention-days: 7
           path: |
+            app/build/intermediates/merged_manifest/
+            app/build/intermediates/merged_manifests/
             app/build/test-results/
             app/build/reports/tests/
             app/build/reports/device-review/
