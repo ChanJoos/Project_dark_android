@@ -1,52 +1,58 @@
 {
-  "stage": 19,
+  "stage": 20,
   "commands": [
     {
-      "op": "swipe",
-      "x": 220,
-      "y": 748,
-      "x2": 220,
-      "y2": 648,
-      "ms": 3500
+      "op": "load_filming_profile",
+      "job": "MAGE"
     },
     {
       "op": "wait",
-      "seconds": 0.2
+      "seconds": 6
     },
     {
-      "op": "swipe",
-      "x": 220,
-      "y": 748,
-      "x2": 220,
-      "y2": 848,
-      "ms": 100
-    },
-    {
-      "op": "wait",
-      "seconds": 0.7
+      "op": "snapshot"
     },
     {
       "op": "tap",
-      "x": 1392,
-      "y": 912
+      "x": 830,
+      "y": 400
     },
     {
       "op": "wait",
-      "seconds": 0.25
+      "seconds": 12
     },
     {
       "op": "snapshot"
     },
     {
+      "op": "tap",
+      "x": 1628,
+      "y": 750
+    },
+    {
       "op": "wait",
-      "seconds": 0.6
+      "seconds": 4
     },
     {
       "op": "snapshot"
     },
     {
+      "op": "tap",
+      "x": 580,
+      "y": 740
+    },
+    {
       "op": "wait",
-      "seconds": 0.6
+      "seconds": 8
+    },
+    {
+      "op": "tap",
+      "x": 520,
+      "y": 700
+    },
+    {
+      "op": "wait",
+      "seconds": 8
     },
     {
       "op": "snapshot"
