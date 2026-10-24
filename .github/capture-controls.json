@@ -1,1 +1,1 @@
-{"stage":6,"finish":true,"commands":[]}
+{"stage":1,"commands":[{"op":"launch_encounter"},{"op":"wait","seconds":0.4}]}
