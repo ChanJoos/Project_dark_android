@@ -52,3 +52,7 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v229.py"))
 
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v230.py"))
+
+# Final accepted overlays preserve the V266 user-approved runtime projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"replay_accepted_skill_overlays_v267.py"))

@@ -251,3 +251,7 @@ runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v236.py"))
 
 # V243 final circle-specific caster-cross contract follows prior source overlays.
 runpy.run_path(str(Path(__file__).resolve().parent/"apply_mage_v243.py"))
+
+# Final accepted overlays preserve the V266 user-approved runtime projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"replay_accepted_skill_overlays_v267.py"))

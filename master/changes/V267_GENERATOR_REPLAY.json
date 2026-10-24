@@ -1,0 +1,95 @@
+{
+  "version": "V267_INTEGRATION_TOOLING",
+  "status": "ACCEPTED_TOOLING_REPAIR",
+  "authority": "V266 source7a4310b8; user device all-pass and main integration authorization20261024",
+  "reason": "Legacy generators omit later accepted overlays and overwrite accepted description/note metadata; preserve approved runtime bytes",
+  "abilities": {
+    "SK_마법사_002": {
+      "description": "1단계 방어 저주; 자료상 AC+20 · 10초"
+    },
+    "SK_마법사_006": {
+      "description": "몬스터의 공격 타겟/인식을 혼란·초기화하는 마법. 아무네지아와 유사한 역할. · 10초"
+    },
+    "SK_마법사_011": {
+      "description": "2단계 저주. AC +35, 마법방어 -10%. · 12초"
+    },
+    "SK_마법사_012": {
+      "description": "지속 중독 피해 · 18초"
+    },
+    "SK_마법사_017": {
+      "description": "정지/행동 제한 계열 마법 · 12초"
+    },
+    "SK_마법사_023": {
+      "description": "시야 감소/실명 · 14초"
+    },
+    "SK_마법사_024": {
+      "description": "3단계 저주; 자료상 AC+50, 마법방어 감소 · 14초"
+    },
+    "SK_마법사_025": {
+      "description": "동결 상태 부여 · 14초"
+    },
+    "SK_마법사_038": {
+      "description": "상급 중독 계열. 시전 시 MP가 0이 되며 뮤레칸의눈물 시약을 요구하는 구 규칙이 확인됨. 해골 틱마다 대상 체력의 약 5% 소모 자료. · 16초"
+    },
+    "SK_마법사_044": {
+      "description": "속성 상성 효과를 강화 · 18초"
+    },
+    "SK_마법사_045": {
+      "description": "방어력 증가. 자료상 AC -20 · 18초"
+    },
+    "SK_마법사_046": {
+      "description": "최상위 저주; 자료상 AC+70 및 마법방어 감소 · 20초"
+    },
+    "SK_마법사_047": {
+      "description": "단일 저주. AC +20, 마법방어 0%. 지속시간은 일반 렌토 계열보다 짧은 순수승급 버전. · 20초"
+    },
+    "SK_마법사_048": {
+      "description": "단일 저주. AC +35, 마법방어 -10%. · 20초"
+    },
+    "SK_마법사_049": {
+      "description": "단일 저주. AC +50, 마법방어 -20%. · 20초"
+    },
+    "SK_마법사_050": {
+      "description": "단일 저주. AC +65, 마법방어 -30%. · 20초"
+    },
+    "SK_마법사_051": {
+      "description": "마법/기술 방어 계열 토글 · 20초"
+    },
+    "SK_마법사_052": {
+      "description": "기술공격 완전 방어 계열 토글 · 20초"
+    },
+    "SK_마법사_053": {
+      "description": "저주 마법; 정확 효과 수치는 대조 필요 · 14초"
+    }
+  },
+  "presentation": {
+    "SK_도적_005": {
+      "note": "인접 대상 사용 불가: 최소 두 타일 거리. 최대4칸은 프로젝트 임시 상한."
+    },
+    "SK_마법사_007": {
+      "note": "시전자 사방 한 타일; 대각선 제외"
+    },
+    "SK_마법사_008": {
+      "note": "시전자 사방 한 타일; 대각선 제외"
+    },
+    "SK_마법사_009": {
+      "note": "시전자 사방 한 타일; 대각선 제외"
+    },
+    "SK_마법사_010": {
+      "note": "시전자 사방 한 타일; 대각선 제외"
+    },
+    "SK_마법사_018": {
+      "note": "선택 대상과 그 사방 한 타일"
+    },
+    "SK_마법사_019": {
+      "note": "선택 대상과 그 사방 한 타일"
+    },
+    "SK_마법사_020": {
+      "note": "선택 대상과 그 사방 한 타일"
+    },
+    "SK_마법사_021": {
+      "note": "선택 대상과 그 사방 한 타일"
+    }
+  },
+  "prohibited": "no formula/status/coefficient/cost/timing/pose/art or source changes"
+}

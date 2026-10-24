@@ -57,11 +57,12 @@ public class AccessoryCatalogV125Test {
  }
  @Test public void realPagedInventoryCanReachAndEquipLastAccessoryAndRingSlot()throws Exception{
   GameView view=new GameView(c);view.layout(0,0,960,540);RuntimeState state=ItemWindowReferenceTest.field(view,"state");ItemWindow w=ItemWindowReferenceTest.field(view,"itemWindow");
-  ItemWindowReferenceTest.tap(view,742,28);List<RpgInventoryPresentation.ItemRow> rows=w.rows(state.rpg());int last=rows.size()-1;
-  for(int p=0;p<last/50;p++)ItemWindowReferenceTest.tap(view,894,480);
-  assertEquals(last/50,w.page);RectF b=ItemWindow.cell(last%50);ItemWindowReferenceTest.tap(view,b.centerX(),b.centerY());
+  ItemWindowReferenceTest.tap(view,742,28);List<RpgInventoryPresentation.ItemRow> rows=w.rows(state.rpg());int last=-1;
+  for(int i=0;i<rows.size();i++){RpgProgressionState.ItemDefinition d=state.rpg().itemDefinitions().get(rows.get(i).itemId);if(d.equippable()&&!RpgProgressionState.pairedSlot(d.equipSlot)&&!state.rpg().inventoryOnlyItem(d.itemId))last=i;}assertTrue(last>=0);
+  for(int p=0;p<last/50;p++)ItemWindowReferenceTest.inventoryTap(view,894,480);
+  assertEquals(last/50,w.page);RectF b=ItemWindow.cell(last%50);ItemWindowReferenceTest.inventoryTap(view,b.centerX(),b.centerY());
   assertEquals(rows.get(last).itemId,w.hitItem);ItemWindowReferenceTest.render(view,"accessory-v125-last-page-details.png");
-  ItemWindowReferenceTest.tap(view,805,490);assertEquals(rows.get(last).itemId,state.rpg().equipment().get(rows.get(last).equipSlot));
+  ItemWindowReferenceTest.inventoryTap(view,805,490);assertEquals(rows.get(last).itemId,state.rpg().equipment().get(rows.get(last).equipSlot));
   assertTrue(Arrays.asList(ItemWindow.SLOTS).contains("반지"));
  }
 }
