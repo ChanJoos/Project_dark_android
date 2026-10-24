@@ -1,1 +1,1 @@
-{"stage":5,"commands":[{"op":"load_filming_profile","job":"ROGUE"},{"op":"wait","seconds":4},{"op":"tap","x":695,"y":214},{"op":"wait","seconds":1}]}
+{"stage":6,"commands":[{"op":"tap","x":736,"y":227},{"op":"wait","seconds":8}]}
