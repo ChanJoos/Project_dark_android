@@ -1,4 +1,4 @@
-name: V269 companion party candidate
+name: V270 immediate companion test candidate
 on:
   push:
     branches: [codex/companion-party-v269]
@@ -38,6 +38,7 @@ jobs:
       - name: Compile and verify party, support, resources, rewards and restart
         run: >-
           gradle --no-daemon :app:testDebugUnitTest
+          --tests 'com.projectdark.mobile.CompanionTestAccessV270Test'
           --tests 'com.projectdark.mobile.CompanionPartyV269Test'
           --tests 'com.projectdark.mobile.CompanionControllerV269Test'
           --tests 'com.projectdark.mobile.CompanionWorldV269Test'
@@ -52,11 +53,11 @@ jobs:
       - uses: actions/upload-artifact@v4
         if: always()
         with:
-          name: V269_PARTY_VERIFICATION
+          name: V270_PARTY_VERIFICATION
           path: |
             app/build/reports/
             app/build/test-results/
       - uses: actions/upload-artifact@v4
         with:
-          name: PROJECT_DARK_V269_COMPANION_TEST
+          name: PROJECT_DARK_V270_COMPANION_TEST
           path: app/build/outputs/apk/debug/*.apk

@@ -30,7 +30,9 @@ final class CompanionWindow {
     CompanionParty.Member m = s.party().active();
     UiTheme.text(
         c,
-        m == null ? "동료 · 눌러서 관리" : m.name + " · Lv" + m.level,
+        m == null
+            ? "동료 · 눌러서 관리"
+            : m.name + " · Lv" + m.level + (s.party().testing() ? " 테스트" : ""),
         r.left + 7,
         r.top + 13,
         9,
@@ -39,7 +41,7 @@ final class CompanionWindow {
     if (m == null) {
       UiTheme.text(
           c,
-          s.party().unlocked(s) ? "마을에서 동행 선택" : "전직 후 이용",
+          s.party().testing() ? "Lv99 테스트 동료 선택" : s.party().unlocked(s) ? "마을에서 동행 선택" : "전직 후 이용",
           r.left + 7,
           r.top + 32,
           8,
@@ -74,10 +76,17 @@ final class CompanionWindow {
     UiTheme.surface(c, new RectF(240, 118, 720, 420), UiTheme.BG, UiTheme.LINE, 10);
     UiTheme.text(c, "동료 관리", 260, 145, 15, UiTheme.TEXT, true);
     UiTheme.text(c, "닫기", 666, 145, 10, UiTheme.MUTED, false);
-    UiTheme.text(c, "동행 변경·회복은 마을에서 가능합니다", 260, 168, 10, UiTheme.MUTED, false);
+    UiTheme.text(
+        c,
+        s.party().testing() ? "임시 테스트 · Lv99 · 직업별 모든 기술 습득" : "동행 변경·회복은 마을에서 가능합니다",
+        260,
+        168,
+        10,
+        UiTheme.MUTED,
+        false);
     button(c, 260, 185, "전사 동료");
     button(c, 414, 185, "성직자 동료");
-    button(c, 568, 185, "마을 대기");
+    button(c, 568, 185, s.party().testing() ? "동행 해제" : "마을 대기");
     CompanionParty.Member m = s.party().active();
     UiTheme.text(
         c,
@@ -94,7 +103,7 @@ final class CompanionWindow {
     button(c, 568, 262, "제자리 대기");
     button(c, 260, 322, "동료 지원 선택");
     button(c, 414, 322, "자신 선택");
-    button(c, 568, 322, "마을에서 회복");
+    button(c, 568, 322, s.party().testing() ? "테스트 회복" : "마을에서 회복");
     UiTheme.text(c, "회복·보호 기술은 선택한 아군에게 사용합니다", 260, 399, 9, UiTheme.MUTED, false);
     c.restore();
   }

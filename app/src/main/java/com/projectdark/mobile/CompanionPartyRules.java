@@ -74,7 +74,15 @@ final class CompanionPartyRules {
 
   static String protection(CompanionParty.Member healer, SkillEffectState effects, String target) {
     for (String id :
-        new String[] {"SK_성직자_028", "SK_성직자_018", "SK_성직자_019", "SK_성직자_004", "SK_성직자_009"}) {
+        new String[] {
+          "SK_성직자_028",
+          "SK_성직자_018",
+          "SK_성직자_036",
+          "SK_성직자_019",
+          "SK_성직자_004",
+          "SK_성직자_035",
+          "SK_성직자_009"
+        }) {
       SkillAbilityCatalog.Ability a = SkillAbilityCatalog.get(id);
       if (!healer.learned(id) || a == null || healer.body.mp < a.mpCost || healer.cooldown(id) > 0)
         continue;

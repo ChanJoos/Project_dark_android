@@ -131,7 +131,7 @@ public final class CompanionController {
     if ("player".equals(target.attackTarget)
         && m.body.hp > m.body.maxHp * .3f
         && use(m, target.id, "SK_전사_012")) return;
-    if (m.body.hp <= m.body.maxHp * .02f && use(m, target.id, "SK_전사_015")) return;
+    if (m.body.hp <= m.body.maxHp * .02f && use(m, target.id, crash(m))) return;
     if (m.body.hp < m.body.maxHp * .25f) {
       m.notice = "회복 대기";
       return;
@@ -143,7 +143,7 @@ public final class CompanionController {
     if (target.hp > m.stats().prototypePhysicalAttack() * 5
         && support
         && m.body.hp > m.body.maxHp * .8f
-        && use(m, target.id, "SK_전사_013")) return;
+        && use(m, target.id, soul(m))) return;
     for (String id : new String[] {"SK_전사_006", "SK_전사_003", "SK_전사_001"})
       if (use(m, target.id, id)) return;
     use(m, target.id, RuntimeCombatSession.playerAttackActionId(0));
@@ -217,8 +217,16 @@ public final class CompanionController {
     return false;
   }
 
+  private String crash(CompanionParty.Member m) {
+    return m.learned("SK_전사_023") ? "SK_전사_023" : "SK_전사_015";
+  }
+
+  private String soul(CompanionParty.Member m) {
+    return m.learned("SK_전사_022") ? "SK_전사_022" : "SK_전사_013";
+  }
+
   private String burst(CompanionParty.Member m) {
-    return m.body.hp <= m.body.maxHp * .02f ? "SK_전사_015" : "SK_전사_013";
+    return m.body.hp <= m.body.maxHp * .02f ? crash(m) : soul(m);
   }
 
   private boolean canBurst(CompanionParty.Member m) {
@@ -226,7 +234,7 @@ public final class CompanionController {
     return m.learned(id)
         && m.cooldown(id) <= 0
         && m.body.hp > 1
-        && (id.equals("SK_전사_015")
+        && (SkillAbilityCatalog.get(id).formula.equals("CRASH")
             || m.body.hp > m.body.maxHp * .8f
                 && ("CLERIC".equals(state.rpg().currentJobCode())
                     || state.skillEffects().has(m.id, "PROTECT")));

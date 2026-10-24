@@ -82,7 +82,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private java.util.function.Predicate<String> visible=id->true;
   private java.util.function.IntSupplier basicHits=()->1;
   public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
-  public int hitCount(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(3,basicHits.getAsInt())):1;}
+  public int hitCount(String actor,String action){CompanionParty.Member companion=state.party().find(actor);if(companion!=null&&state.party().testing()&&action.startsWith("attack_proto_"))return companion.learned("SK_전사_005")?3:companion.learned("SK_전사_002")?2:1;return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(3,basicHits.getAsInt())):1;}
   public int contactHitCount(String actor,String target,String action,int initial){return "player".equals(actor)&&MartialSourceV228.MUYEONG.equals(action)?Math.max(1,recipients(actor,target,action).size()):initial;}
   public float hitSpacing(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?0f:BasicAttackTiming.HIT_SPACING;}
   public void setVisible(java.util.function.Predicate<String> visible){this.visible=visible;}

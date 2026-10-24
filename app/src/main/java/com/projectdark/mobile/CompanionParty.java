@@ -27,6 +27,7 @@ public final class CompanionParty {
     public Order order = Order.FOLLOW;
     public String target, actionId = "", map = "", notice = "동행";
     public int level = 1;
+    private boolean testAccess;
     public float clock, actionClock, moveClock, fromX, fromY;
     public boolean moving;
     public CharacterRenderer.Direction facing = CharacterRenderer.Direction.SW;
@@ -58,11 +59,16 @@ public final class CompanionParty {
     }
 
     public int circle() {
+      if (testAccess) return 7;
       return level >= 99 ? 5 : level >= 71 ? 4 : level >= 41 ? 3 : level >= 11 ? 2 : 1;
     }
 
     public boolean learned(String id) {
       SkillAbilityCatalog.Ability a = SkillAbilityCatalog.get(id);
+      if (testAccess)
+        return a != null
+            && !SkillPolicyV227.retired(id)
+            && (job == Job.WARRIOR ? a.job.equals("전사") : a.job.equals("성직자"));
       return a != null
           && a.supported()
           && a.circle <= circle()
@@ -87,6 +93,28 @@ public final class CompanionParty {
   }
 
   private final EnumMap<Job, Member> roster = new EnumMap<>(Job.class);
+  private boolean testing;
+
+  public boolean testing() {
+    return testing;
+  }
+
+  /** Temporary APK-only access: independent of quest and player skill-test toggles. */
+  public void enableTesting(RuntimeState state) {
+    testing = true;
+    for (Member m : roster.values()) {
+      m.testAccess = true;
+      if (m.level == 99) continue;
+      float hp = m.body.hp / (float) m.body.maxHp,
+          mp = m.body.mp / (float) Math.max(1, m.body.maxMp);
+      m.testAccess = true;
+      m.configure(99);
+      m.body.hp = m.body.alive ? Math.max(1, (int) (m.body.maxHp * hp)) : 0;
+      m.body.mp = (int) (m.body.maxMp * mp);
+    }
+    if (selected == null) selected = Job.WARRIOR;
+  }
+
   private Job selected;
   private String allyTarget;
   private String reservedTarget, reservedActor, reservedSkill;
@@ -139,9 +167,10 @@ public final class CompanionParty {
   }
 
   public boolean unlocked(RuntimeState s) {
-    return !"COMMONER".equals(s.rpg().currentJobCode())
-        && s.rpg().normalLevel() != null
-        && s.rpg().normalLevel() >= 3;
+    return testing
+        || !"COMMONER".equals(s.rpg().currentJobCode())
+            && s.rpg().normalLevel() != null
+            && s.rpg().normalLevel() >= 3;
   }
 
   public boolean town(RuntimeState s) {
@@ -159,8 +188,11 @@ public final class CompanionParty {
   }
 
   public boolean recruit(RuntimeState s, Job job) {
-    if (!unlocked(s) || !town(s) || !s.player().alive || reservation > 0 || threatened(s))
-      return false;
+    if (!unlocked(s)
+        || !testing && !town(s)
+        || !s.player().alive
+        || reservation > 0
+        || threatened(s)) return false;
     selected = job;
     allyTarget = null;
     clearReservation();
@@ -175,7 +207,7 @@ public final class CompanionParty {
   }
 
   public boolean recover(RuntimeState s) {
-    if (!town(s) || !s.player().alive || threatened(s)) return false;
+    if (!testing && !town(s) || !s.player().alive || threatened(s)) return false;
     for (Member m : roster.values()) {
       m.body.hp = m.body.maxHp;
       m.body.mp = m.body.maxMp;
@@ -209,7 +241,7 @@ public final class CompanionParty {
   public boolean holdHeal(String target) {
     return reservation > 0
         && Objects.equals(target, reservedActor)
-        && "SK_전사_015".equals(reservedSkill);
+        && ("SK_전사_015".equals(reservedSkill) || "SK_전사_023".equals(reservedSkill));
   }
 
   public void finishReservation(String actor, String skill) {
@@ -238,6 +270,7 @@ public final class CompanionParty {
   }
 
   private void grow(RuntimeState s, Member m) {
+    if (testing) return;
     int lv = s.rpg().normalLevel() == null ? 1 : s.rpg().normalLevel();
     if (lv <= m.level) return;
     float hp = m.body.hp / (float) m.body.maxHp, mp = m.body.mp / (float) Math.max(1, m.body.maxMp);
