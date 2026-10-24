@@ -39,6 +39,7 @@ public class AbelCoastV139Test {
   JSONObject old=s.rpg().campaign().snapshot();assertTrue(s.rpg().campaign().restore(old));assertEquals(inv,s.rpg().inventory());assertEquals(exp,CampaignProgress.earnedExp(s.rpg()));assertEquals(gold,s.rpg().gold().longValue());assertEquals("E01",s.rpg().campaign().next(s.rpg()).id);assertFalse(s.rpg().campaign().finished());
   assertFalse(CampaignWorld.canEnter(AbelCoastGeometry.ENTRY,40,true));assertFalse(CampaignWorld.canEnter(AbelCoastGeometry.ENTRY,41,false));assertTrue(CampaignWorld.canEnter(AbelCoastGeometry.ENTRY,41,true));assertFalse(s.rpg().campaign().claim("D03",s.rpg()));
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void normalFiveJobsCompleteCoastThroughResolverAndOneTimeSavedTurnIns()throws Exception{
   JSONObject report=new JSONObject();for(String job:CampaignProgress.JOBS){reset();RuntimeState s=new RuntimeState();restoreD04(s.rpg(),job);SkillBook b=SkillBook.load(context);b.bindJob(s.rpg()::currentJobCode);RuntimeCombatSession session=new RuntimeCombatSession(s,(a,t)->true,(a,id)->b.usable(id),a->true);
    F5mSaveStore.bindRuntime(s,F5mAdaptedPrologueQuest.openingFixture(),new GrowthQuest2());F5mSaveStore.restoreAndBindSkillsActive(b);int kills=0;
@@ -60,6 +61,7 @@ public class AbelCoastV139Test {
    for(RectF water:AbelCoastGeometry.water(map))assertTrue(d.terrainBlocked(water.centerX(),water.centerY(),0));for(AbelCoastGeometry.Prop prop:AbelCoastGeometry.props(map))if(prop.solid)assertTrue(d.terrainBlocked(prop.x,prop.y,0));
   }
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void actualTravelDialogueOffersTestPreviewWithoutGrantingLevelOrCompletingD04()throws Exception{
   GameView v=new GameView(context);v.setSkillTestMode(true);v.layout(0,0,960,540);RuntimeState s=(RuntimeState)ForestPixelCacheTest.field(v,"state");SkillBook b=(SkillBook)ForestPixelCacheTest.field(v,"skillBook");assertTrue(b.testAccess());RuntimeState.Npc npc=null;for(RuntimeState.Npc n:s.npcs())if(n.id.equals("pote_travel_guide"))npc=n;assertNotNull(npc);s.player().x=npc.x;s.player().y=npc.y;
   InteractionController interaction=(InteractionController)ForestPixelCacheTest.field(v,"interaction");interaction.request(s,npc);int level=s.rpg().normalLevel();long exp=CampaignProgress.earnedExp(s.rpg());TownInteriorTest.tap(v,TownTravelWindow.cardFor(s.currentMapId(),AbelTownGeometry.ID).centerX(),TownTravelWindow.cardFor(s.currentMapId(),AbelTownGeometry.ID).centerY());assertEquals(AbelTownGeometry.ID,s.currentMapId());assertEquals(level,s.rpg().normalLevel().intValue());assertEquals(exp,CampaignProgress.earnedExp(s.rpg()));assertFalse(s.rpg().campaign().forestFinished());

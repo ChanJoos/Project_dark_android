@@ -1,0 +1,53 @@
+{
+  "scope": "Requested Mine episode weapon source facts",
+  "base": "f86d961eee066f2575b3d805a9006cde99f9119b",
+  "itemId": "IT_NATIVE_V210_BE8DD6B8FCAD130F",
+  "source": "master/canonical/User_Item_Master_20261018.json",
+  "sourceSha256": "51446a746af625f932bd78941c1326dbd941e58f722a49c5a9e6fe47735ac2c8",
+  "sourceRow": {
+    "itemId": "USER_ITEM_20261018_R05500",
+    "sourceRow": 5500,
+    "displayName": "곡단도2",
+    "uniqueName": "신월도",
+    "cells": [
+      "곡단도2",
+      "신월도",
+      15,
+      1000000,
+      1,
+      0,
+      0,
+      0,
+      31000,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      0,
+      2,
+      0,
+      99,
+      0,
+      0,
+      "165m170",
+      "16m17",
+      2
+    ],
+    "evidence": "U",
+    "runtimeStatus": "PENDING_IDENTITY_SLOT_ART_MAPPING"
+  },
+  "reason": "V210 matches displayName only; original wearable named 신월도 matches uniqueName of 곡단도2. Retain existing stable ID and named pixels.",
+  "unchanged": [
+    "mw103/mw078 generated wearable bindings already admitted by V212",
+    "ms008 knight shield",
+    "Roo grace negative HP and all existing stats",
+    "job restriction remains unresolved",
+    "no invented bonus or progression"
+  ],
+  "verification": "Source row and pinned wearable contract statically checked. Native tests added; execution pending combined candidate CI."
+}

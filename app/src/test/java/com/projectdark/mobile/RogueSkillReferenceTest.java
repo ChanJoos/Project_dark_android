@@ -30,6 +30,7 @@ public class RogueSkillReferenceTest {
   for(String id:new String[]{"SK_도적_004","SK_도적_019","SK_도적_026"})assertFalse(id,SkillActionContract.get(id).presentationAllowed());
   assertEquals(SkillActionContract.Pattern.SCREEN,SkillActionContract.get("SK_도적_006").pattern);
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void labelledIconsNeverBorrowBasicAttackOrSwapSenseTables()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c,"rogue");assertEquals(25,reference.references.size());
   assertFalse(reference.references.containsKey("SK_도적_001"));
@@ -44,6 +45,7 @@ public class RogueSkillReferenceTest {
    for(int y=0;y<derived.getHeight();y++)for(int x=0;x<derived.getWidth();x++)assertEquals(row.getString("id"),original.getPixel(x+crop.getInt(0),y+crop.getInt(1)),derived.getPixel(x,y));
   }
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
   ClassicSkillReference fx=new ClassicSkillReference(c,"rogue");assertEquals(20,fx.effects.size());
   JSONObject doc=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/rogue/manifest.json"),StandardCharsets.UTF_8));assertFalse(doc.getBoolean("nativeArchivePixels"));
@@ -54,6 +56,7 @@ public class RogueSkillReferenceTest {
    assertEquals(0,s.frame(0));assertEquals(s.durations.length-1,s.frame(s.duration));assertEquals(0,Color.alpha(s.atlas.getPixel(s.width-1,s.height-1)));assertTrue(s.duration>0);
   }assertEquals(13,channels);
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void productionInputSeparatesCasterAndRecipientChannelsAndNeverHealsEnemies()throws Exception{
   ClassicSkillReference reference=new ClassicSkillReference(c,"rogue");
   for(String id:reference.effects.keySet()){

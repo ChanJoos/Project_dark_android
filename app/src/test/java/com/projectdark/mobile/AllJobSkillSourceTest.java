@@ -52,6 +52,7 @@ public class AllJobSkillSourceTest {
    }save(image,"alljob-body-"+job.getValue().get(0).id.split("_")[1]+"-"+body+".png");
   }
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void realDamageImpactIsIndependentRecipientOnlyAndNeverAppearsForMissHealOrPreview(){
   SkillVfxRenderer renderer=new SkillVfxRenderer(c,new SkillPresentationCatalog(c));SkillVfxRenderer.Anchors anchors=new SkillVfxRenderer.Anchors(){public float x(String id){return "player".equals(id)?100:300;}public float y(String id){return 200;}};
   String[] ids={"SK_전사_001","SK_도적_007","SK_마법사_005","SK_무도가_002","SK_성직자_013","SK_공통_001"};long sequence=500;

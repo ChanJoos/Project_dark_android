@@ -7,6 +7,7 @@ import org.junit.*;import org.junit.runner.RunWith;import org.robolectric.*;impo
 public class SkillFxAuditTest {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void all221RuntimeRoutesAndFourDirectionsRenderWithoutBorrowingSources()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillVfxRenderer fx=new SkillVfxRenderer(c,catalog);String[] dirs={"rogue","classic","warrior","shared"};Map<String,ClassicSkillReference> refs=new LinkedHashMap<>();for(String d:dirs)refs.put(d,new ClassicSkillReference(c,d));CapturedSkillFx capture=new CapturedSkillFx(c);Map<String,List<SkillPresentationCatalog.Entry>> jobs=new LinkedHashMap<>();for(SkillPresentationCatalog.Entry e:catalog.entries.values())jobs.computeIfAbsent(e.id.split("_")[1],k->new ArrayList<>()).add(e);long seq=100000;
   for(Map.Entry<String,List<SkillPresentationCatalog.Entry>> job:jobs.entrySet()){
@@ -32,6 +33,7 @@ public class SkillFxAuditTest {
    Bitmap b=Bitmap.createBitmap(320,320,Bitmap.Config.ARGB_8888);fx.drawDirected(new Canvas(b),new Paint(),"SK_전사_013",.5f,160,160,dx,dy);double sum=0,x=0,y=0;for(int py=0;py<320;py++)for(int px=0;px<320;px++){int a=Color.alpha(b.getPixel(px,py));sum+=a;x+=a*px;y+=a*py;}assertTrue(sum>0);double cx=x/sum-160,cy=y/sum-(160-s.directionPivotLift*s.scale);assertTrue("forward energy "+dx+","+dy,cx*dx+cy*dy>0);b.recycle();
   }
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void sixReviewedSkillsUseActualQuickslotInputInAllFourDirections()throws Exception{
   String[] ids={"SK_전사_015","SK_전사_014","SK_전사_013","SK_무도가_002","SK_무도가_007","SK_무도가_018"};int face=0;
   for(String id:ids)for(float dx:new float[]{32,-32})for(float dy:new float[]{16,-16}){

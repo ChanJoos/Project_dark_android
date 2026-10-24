@@ -17,8 +17,8 @@ public class MineEntryArrivalTest {
  @Test public void bothArrivalDirectionsUseWalkableAdjacentDoorwayTileAndPreservePopulation(){
   for(boolean fromNext:new boolean[]{false,true}){
    RuntimeState s=new RuntimeState();s.enterCampaignMap(MineHuntGeometry.ID,fromNext);
-   assertEquals(12,MineHuntGeometry.sourceU(s.player().x,s.player().y));
-   assertEquals(35,MineHuntGeometry.sourceV(s.player().x,s.player().y));
+   assertEquals(118,MineHuntGeometry.sourceU(s.player().x,s.player().y));
+   assertEquals(4,MineHuntGeometry.sourceV(s.player().x,s.player().y));
    assertTrue(MineHuntGeometry.inside(s.player().x,s.player().y));
    assertEquals(1,Math.abs(MineHuntGeometry.sourceU(s.player().x,s.player().y)-MineHuntGeometry.sourceU(MineHuntGeometry.exit().x,MineHuntGeometry.exit().y))+Math.abs(MineHuntGeometry.sourceV(s.player().x,s.player().y)-MineHuntGeometry.sourceV(MineHuntGeometry.exit().x,MineHuntGeometry.exit().y)));
    assertEquals(100,s.monsters().size());int[] species=new int[10];
@@ -53,7 +53,8 @@ public class MineEntryArrivalTest {
    assertFalse("arrival must not auto-exit",(Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));
    WorldRuntimeAdapter w=f.field(v,"poteFieldAdapter");
    WorldMoveTargetController.TileCenter exit=MineHuntGeometry.exit();
-   f.shot(v,"mine-entry-safe-arrival-"+trip);
+   assertEquals(CharacterRenderer.Direction.SW,((CanonicalActorFacing)f.field(v,"playerFacing")).presentation());
+   f.shot(v,"mine-entry-upper-right-arrival-"+trip);
    w.requestGroundWorld(exit.x,exit.y);
    f.tick(v,30); // Production update advances both tile movement and presentation before gate detection.
    assertEquals(MineTownGeometry.ID,s.currentMapId());

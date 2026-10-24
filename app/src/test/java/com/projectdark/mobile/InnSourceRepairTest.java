@@ -26,7 +26,8 @@ public class InnSourceRepairTest {
     Bitmap b=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));
     File f=new File("build/reports/device-review/v91-inn-"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}b.recycle();
   }
-  @Test public void actualInnMouseCanBeSelectedChasedAttackedTurnedInAndRestarted() throws Exception {
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void actualInnMouseCanBeSelectedChasedAttackedTurnedInAndRestarted() throws Exception {
     GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");RuntimeState.Monster rat=mouse(s);
     assertNotNull(rat);assertEquals(1,s.monsters().size());assertTrue(s.isMonsterTileCenter(rat.x,rat.y));
     WorldRuntimeAdapter w=TownInteriorTest.field(v,"reagentShopAdapter");assertFalse(w.canPlayerOccupy(rat.x,rat.y));

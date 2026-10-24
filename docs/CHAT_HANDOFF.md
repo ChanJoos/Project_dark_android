@@ -1,3 +1,21 @@
+## Requested mine upper-right arrival / Amnesia correction — 2026-10-24 KST
+
+User rejected the prior entrance presentation. The previous candidate changed only adjacency to an assumed return point; its passing logical tests did not establish the requested visual entrance. That prior result is user-rejected for this requirement, not current visual acceptance. User subsequently explicitly selected the uppermost corner of the rightmost room in the full isometric map.
+
+Current candidate moves arrival to source(118,4) and return to(118,3), with a visible shared portal and 마인마을 출구 label at the trigger. Default SW arrival facing points into the room. Original cells/collision remain unchanged,9468 connected tiles; all100monsters retained with initial/respawn homes outside360px. This location is user-directed mobile placement, not a claimed original-server warp.
+
+Amnesia accepts only the nearest facing target at cells2–4; adjacent1 and beyond4 reject. Keep no auto-turn/no approach and recheck at contact, including a target moving to1. Preserve nearest-only semantics rather than silently targeting through an adjacent blocker. Shuriken1–4 unchanged. Requested 신월도 facts restored from explicit user uniqueName source; existing mw103/mw078/ms008 bindings retained. Genuine mage/rogue outfit previews pending; no fabricated class/save identity.
+
+Integrated latest main f86d961 test-retirement changes without reopening retired cases. Verification scope: mine arrival/return/reentry/population/save/cache/native screenshot; Amnesia boundaries/quickslot/release and existing shuriken tests; requested source weapon stats/equipment and actual outfit previews. Local source-cell check and diff check passed; Android/native tests and exact APK BUILD PENDING. Host images will not be called handset/user acceptance. Separate candidate branch only, no main merge or filming until reviewed previews.
+
+## V268 — 이미 최신 기준으로 검토된 구검증 폐기 (2026-10-24 KST)
+
+사용자 지시: “그거 다 이미 최신기준으로 검토한건데? 다 버려”. 앞서 미해결이라고 제시한13검증묶음과57실패항목을 USER_RETIRED_ALREADY_REVIEWED_CURRENT_BASELINE으로 폐기한다. 해당13묶음은 active CI에서 제거하고57보고항목(상속 중복은 실제 선언 메서드에1회)을 명시적 @Ignore로 제외하여 수동 전체테스트에서도 다시 미해결로 집계되지 않게 한다. 공유 fixture와 이력은 보존한다. 기존 실패를 성공으로 바꾸는 조치가 아니다.
+
+**이13묶음에 대한 진단·수정·재검증 TODO는 취소되었다.** 과거 문서의 “미해결13개/다음은13개정리” 지시는 모두 이 최신 결정으로 무효다. V266사용자수용 및 main통합을현재개발기준으로삼는다. 원본에셋/게임코드/빌드설정은변경하지않는다. 현재유효32묶음의명령/검증은유지한다. 새변경은그변경의현재계약에맞춰검증하며폐기한구검사를자동부활시키지않는다.
+
+[폐기 목록·근거](../verification/V268_OBSOLETE_CHECKS_RETIRED.json), [통합 기록](../verification/V266_MAIN_INTEGRATION.json). 이변경은 검증대상/작업상태정리이며 새APK나새게임동작을 의미하지 않는다.
+
 ## Mine doorway arrival candidate — 2026-10-24 KST
 
 User requests arrival in front of the mine doorway, not inside a monster pack. Isolated `dot/mine-entry-arrival` candidate based on latest main bd060ac: entry source(12,35), retained exit(13,35), deliberate adjacent return supported. Remove prior ten-species welcome ring; all100monsters remain, initial/respawn homes outside360px doorway radius. Ordinary AI/combat/map art/collision/save schema unchanged.

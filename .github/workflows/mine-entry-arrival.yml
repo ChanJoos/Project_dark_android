@@ -30,6 +30,10 @@ jobs:
           --tests '*MineEntryArrivalTest'
           --tests '*MineHuntV208Test'
           --tests '*MineHuntV209Test'
+          --tests '*RogueAmnesiaV236Test'
+          --tests '*RogueCombatV234Test.shuriken*'
+          --tests '*RequestedWeaponLoadoutTest'
+          --tests '*RequestedOutfitPreviewTest'
           --stacktrace
       - name: Build exact candidate
         run: |
@@ -57,6 +61,8 @@ jobs:
           path: |
             app/build/test-results/
             app/build/reports/tests/
+            app/build/reports/device-review/
+            build/reports/device-review/
             build/reports/horror-v179/
             app/build/reports/horror-v179/
       - uses: actions/upload-artifact@v4

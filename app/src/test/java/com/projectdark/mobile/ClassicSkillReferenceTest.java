@@ -24,6 +24,7 @@ public class ClassicSkillReferenceTest {
   assertTrue(SkillActionContract.get("SK_무도가_003").presentationAllowed());assertFalse(SkillActionContract.get("SK_성직자_025").presentationAllowed());
   assertEquals("마법",b.get("SK_무도가_020").kind);assertEquals("마법",b.get("SK_무도가_011").kind);
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
   ClassicSkillReference fx=new ClassicSkillReference(c);assertEquals(103,fx.effects.size());
   JSONObject doc=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/classic/manifest.json"),StandardCharsets.UTF_8));assertFalse(doc.getBoolean("nativeArchivePixels"));

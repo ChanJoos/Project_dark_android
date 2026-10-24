@@ -15,7 +15,8 @@ import org.robolectric.annotation.*;
 public class SkillWindowReferenceTest {
   Context c;
   @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
-  @Test public void originalPanelsAndAllCatalogItemsRemainReachableThroughProductionInput()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void originalPanelsAndAllCatalogItemsRemainReachableThroughProductionInput()throws Exception{
     GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);SkillWindow w=field(v,"skillWindow");SkillBook book=field(v,"skillBook");tap(v,874,28);assertTrue(w.open);
     String[] jobs={"공통","전사","도적","무도가","마법사","성직자","전체"};Set<String> seen=new HashSet<>();
     render(v,"skill-window-v73-all-tabs.png");

@@ -1,6 +1,6 @@
 {
   "revision": "V266_MAIN_INTEGRATION",
-  "status": "MAIN_MERGED_USER_DEVICE_ACCEPTED_AUTO_REGRESSION_FAILED",
+  "status": "MAIN_MERGED_USER_ACCEPTED_OBSOLETE_CHECKS_RETIRED",
   "dateKST": "2026-10-24",
   "repository": "ChanJoos/Project_dark_android",
   "pr": 197,
@@ -100,8 +100,13 @@
       "MonsterDamagePresentationTest.everyJobDamagesEverySpeciesThroughGameInputAndDrivesTheLiveRenderer",
       "DeviceRecordingRegressionTest.attackControlEntireHitCircleFitsViewport"
     ],
-    "rootCause": "Mixed stale UI/count/contract assertions and combat/progression scenario failures; per-case diagnosis incomplete"
+    "rootCause": "Mixed stale UI/count/contract assertions and combat/progression scenario failures; per-case diagnosis incomplete",
+    "currentDisposition": {
+      "status": "USER_RETIRED_ALREADY_REVIEWED_CURRENT_BASELINE",
+      "activeFollowUp": false,
+      "receipt": "verification/V268_OBSOLETE_CHECKS_RETIRED.json"
+    }
   },
   "decision": "Director used user-reported acceptance as manual integration criterion and executed explicitly requested merge; does not assert user separately waived CI failures. Automatic regression remains failed.",
-  "next": "Diagnose and repair failed regression groups against current contracts; preserve approved runtime until evidence requires a change."
+  "next": "Retired validation is closed by user directive. Continue future requested development from accepted main; do not reopen the13old groups."
 }

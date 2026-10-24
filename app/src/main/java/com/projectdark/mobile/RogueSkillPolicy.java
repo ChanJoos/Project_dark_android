@@ -5,6 +5,7 @@ final class RogueSkillPolicy {
  static boolean shuriken(String id){return SHURIKEN.equals(id);}
  static boolean ray(String id){return shuriken(id)||AMNESIA.equals(id);}
  static boolean facingOnly(String id){return sense(id)||ray(id);}
+ static int minimumReach(String action){return AMNESIA.equals(action)?2:1;}
  static int reach(String action){return ray(action)?4:2;}
  static boolean sense(String id){return SENSE.equals(id);}
  static boolean valid(RuntimeState s,String id,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){
@@ -16,7 +17,7 @@ final class RogueSkillPolicy {
  static boolean validShuriken(RuntimeState s,String target,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){return validRay(s,SHURIKEN,target,facing,visible);}
  static boolean validRay(RuntimeState s,String action,String target,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){return target!=null&&target.equals(frontTarget(s,action,facing,visible));}
  static String frontTarget(RuntimeState s,String action,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){
-  float[] d=MartialSkillPolicy.step(facing);for(int n=1;n<=reach(action);n++)for(RuntimeState.Monster m:s.monsters())if(m.alive&&visible.test(m.id)&&MartialSkillPolicy.same(s.player().x+d[0]*n,s.player().y+d[1]*n,m.x,m.y))return m.id;return null;
+  float[] d=MartialSkillPolicy.step(facing);for(int n=1;n<=reach(action);n++)for(RuntimeState.Monster m:s.monsters())if(m.alive&&visible.test(m.id)&&MartialSkillPolicy.same(s.player().x+d[0]*n,s.player().y+d[1]*n,m.x,m.y))return n>=minimumReach(action)?m.id:null;return null;
  }
  private RogueSkillPolicy(){}
 }

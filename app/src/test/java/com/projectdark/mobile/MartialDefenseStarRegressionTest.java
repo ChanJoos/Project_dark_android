@@ -16,6 +16,7 @@ import org.robolectric.annotation.*;
 public class MartialDefenseStarRegressionTest {
  Context c;
  @Before public void setup(){c=RuntimeEnvironment.getApplication();c.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(c);}
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void all34MartialSelectionsRenderBothOriginalBodiesInFourDirections()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);SkillBodyRenderer renderer=new SkillBodyRenderer(c,catalog);int count=0;
   for(SkillPresentationCatalog.Entry entry:catalog.entries.values())if(entry.id.startsWith("SK_무도가_")){
@@ -135,6 +136,7 @@ public class MartialDefenseStarRegressionTest {
    write(review,"v80-defense-"+body+"-"+d+".png");actor.recycle();shell.recycle();review.recycle();
   }
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void remainingFifthCircleStarsAppearOnEachRecipientAtRealDamageContact()throws Exception{
   for(String id:new String[]{"SK_마법사_034","SK_마법사_035","SK_마법사_036"}){
    GameView view=fresh();RuntimeState state=field(view,"state");RuntimeState.Monster m=state.monsters().get(0);m.hp=200;

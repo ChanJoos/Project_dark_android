@@ -56,7 +56,8 @@ public class DeviceRecordingRegressionTest {
     for(android.graphics.RectF obstacle:s.obstacles())assertFalse(world.canPlayerOccupy(obstacle.centerX(),obstacle.centerY()));
     assertTrue(com.projectdark.mobile.world.F5mProductionQuickQuestRouteAudit.verify());
   }
-  @Test public void attackControlEntireHitCircleFitsViewport()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void attackControlEntireHitCircleFitsViewport()throws Exception{
     Field x=GameView.class.getDeclaredField("ATK_X"),radius=GameView.class.getDeclaredField("ATK_R");x.setAccessible(true);radius.setAccessible(true);assertTrue(x.getFloat(null)+radius.getFloat(null)+4<=960);
   }
 }

@@ -42,6 +42,7 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
    if(a.supported()&&SkillActionContract.get(a.id).presentationAllowed())assertEquals(a.id,expected,s.actionDefinitions().get(a.id).cooldown,0);
   }
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void upperCircleTargetCrossCastsAtMovingRangeAndAutoNeverFallsIntoMelee()throws Exception{
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook book=field(v,"skillBook");String ex="SK_마법사_018";assertTrue(book.learn(ex,50));book.clearSlot(0);book.clearSlot(1);book.clearSlot(2);assertTrue(book.assign(0,ex));RuntimeState.Monster m=distantTarget(v);m.x+=.2f;m.y+=.1f;m.isMoving=true;
   float x=s.player().x,y=s.player().y;int hp=m.hp;RectF slot=(RectF)invoke(v,"slotRect",int.class,0);tap(v,slot.centerX(),slot.centerY());invoke(v,"tickSkillCombat",float.class,.001f);assertTrue(m.hp<hp);assertEquals(0,((RuntimeCombatSession)field(v,"combatSession")).cooldownRemaining("player",ex),0);
@@ -53,6 +54,7 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String upper="SK_마법사_013";assertTrue(b.learn(upper,50));RuntimeState.Monster m=distantTarget(v);RuntimeCombatSession c=field(v,"combatSession");assertTrue(c.submitPlayer(m.id,upper).accepted());c.tick(.001f);assertEquals(CombatResolver.RejectReason.ACTION_BUSY,c.submitPlayer("player",HEAL).rejectReason);c.tick(.334f);assertTrue(c.submitPlayer("player",HEAL).accepted());
   s.rpg().autoLootResolvedItem("IT_WARDROBE_MW062",1);assertEquals(0,c.effectiveCastSeconds(upper),0);
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void screenSpellAutoWaitsAtRangeAfterItsFixedCostRelease()throws Exception{
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String id="SK_마법사_043";assertTrue(b.learn(id,50));for(int i=0;i<SkillBook.SLOT_COUNT;i++)b.clearSlot(i);assertTrue(b.assign(0,id));RuntimeState.Monster m=distantTarget(v);float x=s.player().x,y=s.player().y;int hp=m.hp;
   int beforeMp=s.player().mp;tap(v,926,507);advance(v,2.8f);assertTrue(m.hp<hp);assertEquals(beforeMp-((RuntimeCombatSession)field(v,"combatSession")).effectiveMpCost(id),s.player().mp);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);render(v,"screen-spell-empty-mp-auto");

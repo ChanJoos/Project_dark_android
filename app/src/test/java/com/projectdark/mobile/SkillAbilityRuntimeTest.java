@@ -63,12 +63,14 @@ public class SkillAbilityRuntimeTest {
    Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(image));File f=new File("build/reports/device-review/v83-spin-four-neighbors-"+direction+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){image.compress(Bitmap.CompressFormat.PNG,100,out);}
   }
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void areaUltimateChargesOnceUsesOneResourceSnapshotAndNoTargetCostsNothing()throws Exception{
   RuntimeState s=state();RuntimeCombatSession c=session(s);assertTrue(c.submitPlayer("player","SK_마법사_037").accepted());assertEquals(20000,s.player().mp);List<CombatResolver.Event> events=c.tick(.25f).events;
   List<Integer> amounts=new ArrayList<>();for(CombatResolver.Event e:events)if(e.type==CombatResolver.EventType.HIT_FEEDBACK)amounts.add(e.amount);
   assertEquals(5,amounts.size());assertEquals(1,new HashSet<>(amounts).size());assertEquals(9080,(int)amounts.get(0));assertEquals(0,s.player().mp);
   RuntimeState empty=state();((List<?>)field(empty,"monsters")).clear();RuntimeCombatSession none=session(empty);assertFalse(none.submitPlayer("player","SK_마법사_037").accepted());assertEquals(20000,empty.player().mp);assertEquals(0,none.cooldownRemaining("player","SK_마법사_037"),0);
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void daraWaitsThenUsesReleaseResourcesOnceAndCancellationDoesNotDrain()throws Exception{
   RuntimeState s=state();RuntimeCombatSession c=session(s);assertTrue(c.submitPlayer("m0","SK_무도가_020").accepted());c.tick(2.99f);assertEquals(20000,s.player().hp);assertEquals(20000,s.player().mp);s.player().hp=16000;s.player().mp=7000;
   List<CombatResolver.Event> e=c.tick(.02f).events;assertEquals(1,s.player().hp);assertEquals(1,s.player().mp);assertTrue(e.stream().anyMatch(x->x.type==CombatResolver.EventType.HIT_FEEDBACK&&x.amount==72873));

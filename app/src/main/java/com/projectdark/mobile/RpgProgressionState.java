@@ -305,6 +305,7 @@ public final class RpgProgressionState {
     RecoveredWeaponCatalogV195.install(this);
     ExpandedVillageClothingV197.install(this);
     UnifiedItemCatalogV210.install(this);
+    RequestedWeaponSourceFacts.install(this);
     RecoveredWearablesV212.install(this);WingShieldV215.install(this);
     NecklaceElementsV259.install(this);
     installUnifiedAliases();
