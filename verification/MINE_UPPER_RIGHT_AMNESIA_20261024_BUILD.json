@@ -1,0 +1,71 @@
+{
+  "status": "BUILD_AND_SCOPED_NATIVE_VERIFIED",
+  "sourceCommit": "8940485f885766ed1f915203fa3d697b4f440bd2",
+  "workflowRun": 40073376007,
+  "job": 120811428000,
+  "apkArtifact": 12552346238,
+  "diagnosticsArtifact": 12551862944,
+  "retentionDays": 7,
+  "builtKST": "2026-10-24T16:19:24.760921+09:00",
+  "apk": {
+    "filename": "PROJECT_DARK_MINE_ENTRY_CANDIDATE.apk",
+    "package": "com.projectdark.mobile.v266test",
+    "bytes": 106540594,
+    "sha256": "18829fd140343ddaf29df425cd89c6bb77ee45a7387b8aa15f0f76d42f023bb9",
+    "archiveSha256": "d7f75c640dc8f4d3fe50c476afd5fe73894c3008fcdd09862e42a862ebb72a40",
+    "zipCRC": true,
+    "embeddedIdentityVerified": true,
+    "signatureV2VerifiedInCI": true
+  },
+  "tests": {
+    "total": 32,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": {
+      "MineEntryArrivalTest": 3,
+      "MineHuntV208Test": 9,
+      "MineHuntV209Test": 3,
+      "RogueAmnesiaV236Test": 9,
+      "RogueCombatV234Test_shuriken": 4,
+      "RequestedWeaponLoadoutTest": 2,
+      "RequestedOutfitPreviewTest": 2
+    }
+  },
+  "placement": {
+    "entry": [
+      118,
+      4
+    ],
+    "exit": [
+      118,
+      3
+    ],
+    "worldEntry": [
+      7048,
+      2112
+    ],
+    "worldExit": [
+      7080,
+      2096
+    ],
+    "facing": "SW",
+    "rule": "User-selected upper corner of rightmost room, not original-server warp claim",
+    "population": 100,
+    "homeExclusionRadius": 360
+  },
+  "amnesia": "Nearest visible facing target at cells2–4, reject adjacent1/beyond4/wrong direction; revalidate at release, no auto-turn/approach; shuriken1–4 retained",
+  "visual": "Six actual native GameView outfit/inventory/action previews and three arrival/exit/reentry shots inspected; all six final outfit PNGs byte-identical to reviewed preceding-run PNGs",
+  "firstAttempt": {
+    "source": "876c88d4a5c9a98b2a4ab8b8ff4ba6ced915ad81",
+    "run": 40072652658,
+    "total": 32,
+    "failed": 1,
+    "diagnosis": "Old damage fixture compared raw309*2 with actual defense-resolved64*2. Test now uses identical untreated control and asserts actual HP/popup doubling, defense reduction and unaffected control. No production change in retry.",
+    "apkBuild": "SKIPPED"
+  },
+  "phoneVerified": false,
+  "userVisualAccepted": false,
+  "mainMerged": false,
+  "refilming": "HELD_FOR_PREVIEW_REVIEW_AND_ACTUAL_ANDROID_CHECK"
+}
