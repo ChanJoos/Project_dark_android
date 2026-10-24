@@ -1,35 +1,17 @@
 {
-  "stage": 18,
+  "stage": 19,
   "commands": [
-    {
-      "op": "tap",
-      "x": 1410,
-      "y": 750
-    },
-    {
-      "op": "tap",
-      "x": 1572,
-      "y": 56
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 1822,
-      "y": 182
-    },
     {
       "op": "swipe",
       "x": 220,
       "y": 748,
       "x2": 220,
       "y2": 648,
-      "ms": 2000
+      "ms": 3500
     },
     {
       "op": "wait",
-      "seconds": 0.3
+      "seconds": 0.2
     },
     {
       "op": "swipe",
@@ -41,7 +23,7 @@
     },
     {
       "op": "wait",
-      "seconds": 0.5
+      "seconds": 0.7
     },
     {
       "op": "tap",
@@ -50,14 +32,21 @@
     },
     {
       "op": "wait",
-      "seconds": 0.5
+      "seconds": 0.25
     },
     {
       "op": "snapshot"
     },
     {
       "op": "wait",
-      "seconds": 1
+      "seconds": 0.6
+    },
+    {
+      "op": "snapshot"
+    },
+    {
+      "op": "wait",
+      "seconds": 0.6
     },
     {
       "op": "snapshot"
