@@ -56,24 +56,24 @@ jobs:
       - name: Verify and download isolated software Canvas APK
         run: |
           mkdir -p canvas-input
-          gh api repos/$GH_REPO/actions/runs/40094376281 > evidence/canvas-source-run.json
-          gh api repos/$GH_REPO/actions/runs/40094376281/artifacts > evidence/canvas-artifacts.json
-          gh run download 40094376281 --repo "$GH_REPO" --name PROJECT_DARK_SOFTWARE_CANVAS_PILOT --dir canvas-input
+          gh api repos/$GH_REPO/actions/runs/40101239996 > evidence/canvas-source-run.json
+          gh api repos/$GH_REPO/actions/runs/40101239996/artifacts > evidence/canvas-artifacts.json
+          gh run download 40101239996 --repo "$GH_REPO" --name PROJECT_DARK_SOFTWARE_CANVAS_PILOT --dir canvas-input
           python3 - <<'PYCANVAS'
           import json,pathlib,hashlib,zipfile
           run=json.load(open('evidence/canvas-source-run.json'))
-          assert run['head_sha']=='a9cad59e07d32fb9680ed384ada618cc9c00d353'
+          assert run['head_sha']=='975fba1e05bdba0671c4b5ddf9d6186189b03da1'
           assert run['status']=='completed' and run['conclusion']=='success'
           artifacts=json.load(open('evidence/canvas-artifacts.json'))['artifacts']
-          assert any(a['id']==12560153840 and a['name']=='PROJECT_DARK_SOFTWARE_CANVAS_PILOT' and not a['expired'] for a in artifacts)
+          assert any(a['id']==12562684024 and a['name']=='PROJECT_DARK_SOFTWARE_CANVAS_PILOT' and not a['expired'] for a in artifacts)
           apks=list(pathlib.Path('canvas-input').rglob('*.apk'))
           assert len(apks)==1
           raw=apks[0].read_bytes()
-          assert hashlib.sha256(raw).hexdigest()=='cace0aabfefbac510a7c35dc0660e32569159d93bd9c389d3e6c2182d5b6dada'
+          assert hashlib.sha256(raw).hexdigest()=='c52fefdbd4cb9b2123c13b6ecdb35e56949e10426d51759c13f8a763547d4e9d'
           with zipfile.ZipFile(apks[0]) as z:
               identity=json.loads(z.read('assets/build_identity.json'))
-          assert identity['sourceCommit']=='a9cad59e07d32fb9680ed384ada618cc9c00d353'
-          assert str(identity['runId'])=='40094376281'
+          assert identity['sourceCommit']=='975fba1e05bdba0671c4b5ddf9d6186189b03da1'
+          assert str(identity['runId'])=='40101239996'
           pathlib.Path('input/canvas.apk').write_bytes(raw)
           pathlib.Path('evidence/canvas-identity.json').write_text(json.dumps(identity,indent=2))
           PYCANVAS
@@ -90,7 +90,7 @@ jobs:
           mkdir -p "$ANDROID_AVD_HOME" "$ANDROID_USER_HOME"
           echo no | avdmanager create avd -n apk-capture -p "$ANDROID_AVD_HOME/apk-capture.avd" -k 'system-images;android-35;google_apis;x86_64' --force
           find "$RUNNER_TEMP" -name 'apk-capture.ini' -o -name 'config.ini' > evidence/avd-paths.txt
-          printf '\nhw.lcd.width=720\nhw.lcd.height=1280\nhw.lcd.density=240\nhw.cpu.ncore=2\n' >> "$ANDROID_AVD_HOME/apk-capture.avd/config.ini"
+          printf '\nhw.lcd.width=1080\nhw.lcd.height=1920\nhw.lcd.density=320\nhw.cpu.ncore=2\n' >> "$ANDROID_AVD_HOME/apk-capture.avd/config.ini"
           emulator -list-avds | tee evidence/avd-list.txt
           grep -qx apk-capture evidence/avd-list.txt
           # Official Ubuntu runtime dependencies, unpacked locally without root changes.
@@ -169,6 +169,7 @@ jobs:
           root.mkdir(parents=True,exist_ok=True)
           pkg=pathlib.Path('current-package.txt').read_text().strip() if pathlib.Path('current-package.txt').exists() else os.environ['APP_PACKAGE']
           
+          activity=pathlib.Path('current-activity.txt').read_text().strip() if pathlib.Path('current-activity.txt').exists() else 'com.projectdark.mobile.MainActivity'
           def run(*args,check=True):
               return subprocess.run(list(args),check=check,capture_output=True)
           def adb(*args,check=True): return run('adb',*args,check=check)
@@ -196,7 +197,7 @@ jobs:
               raise SystemExit(0)
           commands=control.get('commands',[])
           assert isinstance(commands,list) and len(commands)<=80
-          allowed={'tap','swipe','wait','snapshot','launch','reset_test_profile','load_filming_profile','save_pilot_checkpoint','restore_pilot_checkpoint','switch_canvas_variant'}
+          allowed={'tap','swipe','wait','snapshot','launch','load_filming_profile','launch_encounter'}
           for c in commands:
               assert isinstance(c,dict) and c.get('op') in allowed
               for k in ('x','y','x2','y2'):
@@ -208,52 +209,40 @@ jobs:
           prior=pathlib.Path('last-app-pid.txt')
           current=adb('shell','pidof',pkg).stdout.decode().strip()
           if prior.exists(): assert current==prior.read_text().strip(), 'App process changed; do not claim continuous pull'
-          adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
+          adb('shell','am','start','-W','-n',pkg+'/'+activity)
           time.sleep(0.4)
           snap('start')
           video=f'/sdcard/stage-{stage:02d}.mp4'
-          rec=subprocess.Popen(['adb','shell','screenrecord','--size','1280x720','--bit-rate','4000000','--time-limit','150',video],stdout=(root/'record.log').open('wb'),stderr=subprocess.STDOUT)
+          rec=subprocess.Popen(['adb','shell','screenrecord','--size','1920x1080','--bit-rate','8000000','--time-limit','150',video],stdout=(root/'record.log').open('wb'),stderr=subprocess.STDOUT)
           time.sleep(1)
           try:
               begun=time.monotonic()
               for index,c in enumerate(commands):
                   if time.monotonic()-begun>135:raise RuntimeError('Capture stage exceeded bounded duration')
                   op=c['op']
-                  if op=='tap':adb('shell','input','tap',str(round(c['x']*4/3)),str(round(c['y']*4/3)))
-                  elif op=='swipe':adb('shell','input','swipe',str(round(c['x']*4/3)),str(round(c['y']*4/3)),str(round(c['x2']*4/3)),str(round(c['y2']*4/3)),str(c.get('ms',1000)))
+                  if op=='tap':adb('shell','input','tap',str(round(c['x']*2)),str(round(c['y']*2)))
+                  elif op=='swipe':adb('shell','input','swipe',str(round(c['x']*2)),str(round(c['y']*2)),str(round(c['x2']*2)),str(round(c['y2']*2)),str(c.get('ms',1000)))
                   elif op=='wait':time.sleep(c.get('seconds',1))
                   elif op=='snapshot':snap(f'checkpoint-{index:02d}')
-                  elif op=='launch':adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
-                  elif op=='save_pilot_checkpoint':
-                      adb('shell','am','force-stop',pkg)
-                      pathlib.Path('pilot-checkpoint.tar').write_bytes(adb('exec-out','run-as',pkg,'tar','-cf','-','shared_prefs').stdout)
-                      adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
-                  elif op=='restore_pilot_checkpoint':
-                      adb('shell','am','force-stop',pkg)
-                      subprocess.run(['adb','exec-in','run-as',pkg,'tar','-xf','-'],input=pathlib.Path('pilot-checkpoint.tar').read_bytes(),check=True)
-                      adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
-                  elif op=='switch_canvas_variant':
-                      adb('shell','am','force-stop',pkg)
-                      pkg='com.projectdark.mobile.v266test.canvas'
-                      adb('install','-r','input/canvas.apk')
-                      pathlib.Path('current-package.txt').write_text(pkg)
-                      subprocess.run(['adb','exec-in','run-as',pkg,'tar','-xf','-'],input=pathlib.Path('pilot-checkpoint.tar').read_bytes(),check=True)
-                      adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
-                      time.sleep(5)
-                      adb('shell','input','tap','927','285')
+                  elif op=='launch':adb('shell','am','start','-W','-n',pkg+'/'+activity)
+                  elif op=='launch_encounter':
+                      activity='com.projectdark.mobile.CaptureEncounterActivity'
+                      pathlib.Path('current-activity.txt').write_text(activity)
+                      adb('shell','am','start','-W','-n',pkg+'/'+activity)
+                      time.sleep(1)
+                      report=adb('exec-out','run-as',pkg,'cat','files/capture-encounter.json').stdout
+                      proof=json.loads(report)
+                      assert proof.get('count')==15 and len(proof.get('monsters',[]))==15
+                      assert len({m['id'] for m in proof['monsters']})==15 and all(m['hp']>0 for m in proof['monsters'])
+                      (root/'actual-android-encounter.json').write_bytes(report)
                   elif op=='load_filming_profile':
+                      activity='com.projectdark.mobile.MainActivity'
+                      pathlib.Path('current-activity.txt').write_text(activity)
                       job=c['job']
                       adb('shell','am','force-stop',pkg)
                       adb('shell','pm','clear',pkg)
                       packed=run('tar','-C','profiles/'+job,'-cf','-','shared_prefs').stdout
                       subprocess.run(['adb','exec-in','run-as',pkg,'tar','-xf','-'],input=packed,check=True)
-                      adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
-                  elif op=='reset_test_profile':
-                      # Only the fresh, agent-created emulator profile; no user's device/data.
-                      adb('shell','am','force-stop',pkg)
-                      saved=adb('exec-out','run-as',pkg,'tar','-cf','-','shared_prefs','files',check=False)
-                      (root/'previous-test-profile.tar').write_bytes(saved.stdout)
-                      adb('shell','pm','clear',pkg)
                       adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
                   with (root/'input-timing.jsonl').open('a') as timing: timing.write(json.dumps({'index':index,'op':op,'elapsed':time.monotonic()-begun})+'\n')
           finally:
