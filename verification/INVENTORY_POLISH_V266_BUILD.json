@@ -1,0 +1,82 @@
+{
+  "version": "V266",
+  "sourceCommit": "7a4310b8538338f17244d7a6d7d63839e214f4dd",
+  "implementationCommit": "d076b410f490e55b906ed5fbeef266461ee08bb8",
+  "run": 40045415341,
+  "job": 120725887498,
+  "apkSha256": "4c07f7b1180bbc509f813054111c3ce4beb16f6dc72d00e45c88ff82aa6d0f39",
+  "apkBytes": 106540314,
+  "builtAtKST": "2026-10-24T09:34:36.296646+09:00",
+  "zipSha256": "28014ffa71791174406f12b18e50b8df9c73bf8f959ea74929d81bb1810dbab2",
+  "identity": {
+    "sourceCommit": "7a4310b8538338f17244d7a6d7d63839e214f4dd",
+    "runId": "40045415341",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "passed": [
+    "com.projectdark.mobile.EquipmentWindowV177Test.slotDirectionsFollowCurrentUserPolicyWithV178GloveAndShoeOverride",
+    "com.projectdark.mobile.LinkedFoodV187Test.allFiftyFourLabelledFoodsHaveNativeIconsAndOnlySixteenExplicitEffects"
+  ],
+  "retainedPassed": [
+    "com.projectdark.mobile.EquipmentWindowV177Test.realArtworkHasReducedHatEarringShirtAndCenteredNecklaceArmorWithoutClipping",
+    "com.projectdark.mobile.EquipmentWindowV177Test.actualEquipmentFrameShowsStarterAndBothGlovesNecklaceAndEarring",
+    "com.projectdark.mobile.LinkedFoodV187Test.foodMigrationIsSeparateFromEquipmentAndNeverDuplicatesBankOrRestock",
+    "com.projectdark.mobile.LinkedFoodV187Test.everyExplicitRecoveryUsesSourceAmountAndConsumesExactlyOnce",
+    "com.projectdark.mobile.LinkedFoodV187Test.combinedFoodHealsWhicheverResourceIsMissingWithoutFullOrDeadConsumption",
+    "com.projectdark.mobile.MagicRecallV251Test.eachSuppliedExistingTownRecallActuallyTravelsAndConsumesOnce",
+    "com.projectdark.mobile.MagicRecallV251Test.recallGrantMigratesOnceAndConsumptionSurvivesRestartWithoutRegrant",
+    "com.projectdark.mobile.MagicRecallV251Test.allTenRecallAssetsMatchExactScreenshotPixelsButOnlyFourAreRuntimeItems",
+    "com.projectdark.mobile.EquipmentHudV262Test.wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+    "com.projectdark.mobile.EquipmentHudV262Test.bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+    "com.projectdark.mobile.EquipmentHudV262Test.necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+    "com.projectdark.mobile.EquipmentHudV262Test.combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths",
+    "com.projectdark.mobile.InventoryPolishV266Test.allTenRecallsLoseOuterBlackRectangleAndKeepForegroundPixelsAndCachedIdentity",
+    "com.projectdark.mobile.InventoryPolishV266Test.consumptionTabIncludesAllReagentsFoodAndRecallsWithoutAddingOwnership",
+    "com.projectdark.mobile.InventoryPolishV266Test.everyNecklaceVisibleBoundsAreCenteredOnBothAxesAndActualEquipmentUsesSameProjection"
+  ],
+  "retainedRun": 40044934617,
+  "retainedRuntimeGuard": "app/src/main and app/build.gradle exact byte identity",
+  "correctedFailures": [
+    {
+      "case": "com.projectdark.mobile.EquipmentWindowV177Test.slotDirectionsFollowCurrentUserPolicyWithV178GloveAndShoeOverride",
+      "failure": "java.lang.AssertionError: 무기 expected:<-65536> but was:<0>"
+    },
+    {
+      "case": "com.projectdark.mobile.LinkedFoodV187Test.allFiftyFourLabelledFoodsHaveNativeIconsAndOnlySixteenExplicitEffects",
+      "failure": "java.lang.AssertionError: expected:<32> but was:<27>"
+    }
+  ],
+  "scopedChecks": 17,
+  "trackedAssetsByteExact": 1518,
+  "zipCrc": "PASS",
+  "apkCrc": "PASS",
+  "manifestCheck": "PASS",
+  "package": "com.projectdark.mobile.v266test",
+  "appLabel": "PROJECT DARK V266 TEST",
+  "status": "IMPLEMENTED_BUILD_HOST_RENDER_TOUCH_VERIFIED_CANDIDATE",
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "deviceAcceptance": "PENDING",
+  "fullRegression": "not claimed",
+  "change": "attack right10px/narrow6px; consumption reagents54foods/recalls;10recalls display matte;45renderednecklaces visible-bounds center",
+  "visualReview": [
+    "actual two-aspect HUD",
+    "actual consumption tab",
+    "all10recall before/after",
+    "45necklace montage and actual equipped window"
+  ],
+  "commonScopeRun": 40045423110,
+  "commonScopeResult": "SUCCESS; full compile intentionally skipped",
+  "artifact": 12540863804,
+  "artifactName": "PROJECT_DARK_V266_INVENTORY_POLISH",
+  "artifactBytes": 112009664,
+  "signature": "CI apksigner v2 TRUE",
+  "delivery": {
+    "file": "PROJECT_DARK_V266_TEST.apk",
+    "fileId": "file_0000000085e081f6bc60028beb49cad7",
+    "libraryFileId": "libfile_370cc81f59dc8191a539194375c98b72",
+    "localMetadataApplied": true
+  }
+}

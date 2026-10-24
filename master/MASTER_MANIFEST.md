@@ -1,3 +1,7 @@
+## V266 — 소비 분류·리콜 배경·목걸이 중앙 정렬·공격 위치
+
+사용자표시요청4건. 원본소스/소유/효과/전투불변. 최종APK소스7a4310b8/run40045415341,17scopedPASS/native표시검토,PHONE_PENDING. [변경](changes/V266_INVENTORY_POLISH.json),[영수증](../verification/INVENTORY_POLISH_V266_BUILD.json).
+
 ## V260 — 사용자 기기 방향·연타 숫자 결함 수정 중
 
 DEVICE_FAILED_USER_REPORTED: 몬스터가 멈추고 측면을 보며, 더블/트리플 피해 숫자가 하나로 보임. 설치 SHA UNKNOWN; 직전 전달 aab7b4da/V259를 기기 수용으로 간주하지 않음. 기존 branch/PR197, main41fe6def 유지. 원인 후보: AI 쿨다운 대기 중 facing 미갱신, 마지막 피해만 표시하는 single popup 덮어쓰기. 방향 재현을 old AI로 먼저 증명 후 복원 소스에 실제 UI/2·3타/기존상성·자동·이동·저장 검증. 위치 계산은 순수하게 유지, 기획/원본 근거 master/changes/V260_FACING_NUMBERS.json. 구현 후 BUILD/HOST/PHONE PENDING.

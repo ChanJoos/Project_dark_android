@@ -5,5 +5,7 @@
   "change": "attack right; consumption includes reagents/food/recalls; display-only recall matte; allnecklace visible-bounds center",
   "preserve": "source pixels,IDs,ownership,use,equipment stats,combat,facing,AUTO/grid",
   "contract": "design/INVENTORY_POLISH_V266.md",
-  "verification": "PENDING exact-source focused native/build; phone PENDING"
+  "verification": "17 scoped PASS (15 exact-runtime retained plus2corrected fixtures); twoaspect HUD/consumption/10recall/45necklace native reviewed; phone PENDING",
+  "sourceCommit": "7a4310b8538338f17244d7a6d7d63839e214f4dd",
+  "receipt": "verification/INVENTORY_POLISH_V266_BUILD.json"
 }

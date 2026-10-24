@@ -1,3 +1,13 @@
+## V266 — 공격 버튼 우측 이동·소비 분류·리콜 배경·목걸이 중앙 정렬 (2026-10-24 KST)
+
+사용자 요청4건 구현: 공격만 오른쪽10logicalpx(2340x1080에서20physicalpx, 좁은960x540에서는우측2px여백때문에6px), AUTO/12슬롯위치유지. 시약탭을 소비로 변경하여 시약·음식54종·리콜·기존회복소비를분류; 소유/효과/이동규칙불변. 리콜10종은캡처외곽연결near-black만표시시투명화/전경RGB와원본PNG보존. 목걸이는무게중심대신보이는경계의상하좌우중심을슬롯중앙에정렬;45종실제렌더검토/갑옷정책유지. 게임생산수정4파일+testpackage정체성뿐이며전투/방향/상성변경없음.
+
+구현소스d076b410, 최종APK소스 `7a4310b8538338f17244d7a6d7d63839e214f4dd`. 첫Actions40044934617에서17중15PASS, 기존검사2건은무기native20px밖샘플/음식32px고정가정실패. 검사만교정하여최종40045415341/job120725887498/artifact12540863804 SUCCESS:2교정케이스PASS+appmain/build.gradle완전동일guard로15기존PASS유지=17scopedPASS. 새기능3/HUD4/장비3/리콜3/음식4, native두화면및소비탭·리콜10전후·목걸이45montage/실제장비검토. 첫실패를PASS로재분류하지않음. common40045423110 SUCCESS/fullcompile의도적SKIP. 전체회귀/main통합별도.
+
+APK PROJECT_DARK_V266_TEST.apk /com.projectdark.mobile.v266test /built2026-10-24 09:34:36KST /106540314bytes. SHA256 `4c07f7b1180bbc509f813054111c3ce4beb16f6dc72d00e45c88ff82aa6d0f39`; ZIP `28014ffa71791174406f12b18e50b8df9c73bf8f959ea74929d81bb1810dbab2`. CRC/hash/embeddedsource+run/manifest/CIv2서명/1518mainassets정확일치PASS. IMPLEMENTED/BUILD VERIFIED/HOST_RENDER_TOUCH VERIFIED; PHONE/USER_ACCEPTANCE PENDING. main41fe6def/PR197미병합후보. V264방향실기기수용도여전히PENDING. 문서HEAD를APK소스로재라벨금지.
+
+[검증영수증](../verification/INVENTORY_POLISH_V266_BUILD.json), [표시계약](../design/INVENTORY_POLISH_V266.md), [Master](../master/changes/V266_INVENTORY_POLISH.json). 다음: exactV266실기기에서4요청표시/터치확인;이미통과소스반복빌드불필요.
+
 ## V265 — 퀵스킬 바로 오른쪽으로 공격·AUTO 하향 배치 (2026-10-24 KST)
 
 사용자 명시 요청: 두 버튼을 왼쪽 아래로 내려 모두 퀵스킬창 바로 오른쪽. AUTO 위/공격 아래 한 열, logical y428/490; 공격반경37.2(20percent 확대),AUTO16 유지. 넓은2340x1080에서 슬롯의 승인된한칸39px이동위치를유지하고 두버튼이 skill과동일한half viewport offset을사용해왼쪽/아래로붙는다. 960x540에서는크기/간격유지를위해묶음만20.2px왼쪽으로fit하여오른쪽8px여백을확보. 렌더·두입력경로·worldtap차단동일좌표. 게임runtime은GameView HUD좌표/offset뿐; 전투방향·타수·애니메이션/V264렌더불변.
