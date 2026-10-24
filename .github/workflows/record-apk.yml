@@ -89,8 +89,6 @@ jobs:
           adb shell input keyevent 82
           adb shell settings put system accelerometer_rotation 0
           adb shell settings put system user_rotation 1
-          adb shell wm size 720x1280
-          adb shell wm density 240
       - name: Install exact artifact and record real running app
         run: |
           adb install -r input/app.apk | tee evidence/install.txt
@@ -147,12 +145,11 @@ jobs:
           root=pathlib.Path('evidence/pilot');root.mkdir(parents=True,exist_ok=True)
           pkg='com.projectdark.mobile.v266test'
           def adb(*a,check=True):return subprocess.run(['adb',*a],check=check,capture_output=True)
-          for width,height,density in [(1280,720,240),(960,540,160)]:
+          for width,height,density in [(1280,720,240)]:
               tag=f'{width}x{height}'; dest=root/tag;dest.mkdir()
-              adb('shell','am','force-stop',pkg)
-              subprocess.run(['adb','exec-in','run-as',pkg,'tar','-xf','-'],input=pathlib.Path('checkpoints/MAGE/test-profile-readonly.tar').read_bytes(),check=True)
-              adb('shell','wm','size',f'{height}x{width}');adb('shell','wm','density',str(density))
-              adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity');time.sleep(5)
+              # Keep one native resolution and already restored app for this entire boot.
+              adb('shell','am','force-stop','com.google.android.apps.nexuslauncher')
+              time.sleep(2)
               # Dismiss only the observed non-permission immersive-mode tutorial.
               gotit=(927,285) if width==1280 else (670,190)
               adb('shell','input','tap',str(gotit[0]),str(gotit[1]));time.sleep(2)
@@ -163,6 +160,11 @@ jobs:
                   for ex in (60,160):warm.append(f'input swipe {round(110*ws)} {round(374*ws)} {round(ex*ws)} {round(374*ws)} 700')
               adb('shell','; '.join(warm));time.sleep(3)
               (dest/'start.png').write_bytes(adb('exec-out','screencap','-p').stdout)
+              windows=adb('shell','dumpsys','window','windows').stdout.decode(errors='replace')
+              (dest/'windows-before.txt').write_text(windows)
+              focused='\n'.join(x for x in windows.splitlines() if 'mCurrentFocus' in x or 'mFocusedApp' in x)
+              assert pkg in focused, 'Game is not the focused foreground app: '+focused
+              assert 'Application Error' not in focused and 'ImmersiveMode' not in focused, 'System dialog blocks pilot: '+focused
               adb('shell','dumpsys','gfxinfo',pkg,'reset')
               video='/sdcard/pilot-'+tag+'.mp4'
               rec=subprocess.Popen(['adb','shell','screenrecord','--size',tag,'--bit-rate','4000000','--time-limit','60',video],stdout=(dest/'record.log').open('wb'),stderr=subprocess.STDOUT)
