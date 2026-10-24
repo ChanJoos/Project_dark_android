@@ -14,8 +14,53 @@
     "domainTests": 20,
     "domainResult": "PASS"
   },
-  "androidNative": "PENDING",
-  "apk": "PENDING",
+  "androidNative": {
+    "status": "PASS",
+    "runId": 40069361873,
+    "jobId": 120799257394,
+    "sourceCommit": "2f85445979f6c51fb7561027b1a5b8f52fbc4a0f",
+    "passed": 36,
+    "failed": 0,
+    "classes": {
+      "CompanionPartyV269Test": 15,
+      "CompanionControllerV269Test": 5,
+      "CompanionNativeV269Test": 3,
+      "SkillSpatialContractTest": 5,
+      "SkillTimingV174Test.realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes": 1,
+      "InventoryPolishV266Test": 3,
+      "EquipmentHudV262Test": 4
+    },
+    "rendersReviewed": [
+      "warrior-hud-960",
+      "warrior-hud-2340",
+      "priest-management",
+      "ally-heal-protect"
+    ]
+  },
+  "apk": {
+    "sourceCommit": "2f85445979f6c51fb7561027b1a5b8f52fbc4a0f",
+    "runId": 40069361873,
+    "jobId": 120799257394,
+    "artifactId": 12550795773,
+    "apkSha256": "98cc75674b68d4166c6e6a928a64efa7adaadbe4abba1a10b608924a48a94db2",
+    "bytes": 106557986,
+    "package": "com.projectdark.mobile.v269test",
+    "label": "PROJECT DARK V269 TEST",
+    "assembleCompletedKST": "2026-10-24 15:16:09",
+    "trackedAssetsByteExact": 1518,
+    "nativeAndAdjacentTestsPassed": 36,
+    "crc": "PASS",
+    "signature": "VERIFIED_V2_APKSIG_8_7_3",
+    "zipDexTimestamp": [
+      1981,
+      1,
+      1,
+      1,
+      1,
+      2
+    ],
+    "libraryFileId": "libfile_198c24363560819187627d60f4be08ba"
+  },
   "phoneAcceptance": "PENDING_NEW_FEATURE_ONLY",
   "mainIntegration": "NOT_REQUESTED_FOR_THIS_CANDIDATE",
   "retiredV268Checks": "REMAIN_RETIRED",
@@ -30,5 +75,16 @@
       "native support input lifecycle: exercise full update between actions",
       "unrelated V174 whole-catalog snapshot differs from accepted V228 martial timings: bound adjacent check to finisher reuse; no runtime/old test edits"
     ]
+  },
+  "fullCurrentRegression": {
+    "runId": 40069399147,
+    "sourceCommit": "2f85445979f6c51fb7561027b1a5b8f52fbc4a0f",
+    "status": "WORKFLOW_FAILED_OPTIONAL_RETIRED_ARTIFACT_UPLOAD",
+    "passedGateGroups": 31,
+    "skippedGateGroups": [
+      45
+    ],
+    "failedGateGroups": [],
+    "reason": "Retired v88-v109 render generators no longer emit historical screenshot files; mandatory artifact upload aborted before gate45. Make this archival artifact optional, retain every active assertion, then rerun remaining pipeline. Exact source APK already independently built and verified in40069361873."
   }
 }

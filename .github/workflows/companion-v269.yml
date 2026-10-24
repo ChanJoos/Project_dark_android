@@ -2,6 +2,11 @@ name: V269 companion party candidate
 on:
   push:
     branches: [codex/companion-party-v269]
+    paths:
+      - app/**
+      - assets/**
+      - tools/**
+      - master/source/**
   workflow_dispatch:
 concurrency:
   group: companion-v269-${{ github.ref }}

@@ -1,3 +1,11 @@
+## V269 — 직업별 협동 동료 구현 후보 (2026-10-24 KST)
+
+사용자 “응 그렇게 이제 만들어봐”에 따라 전사·성직자 중1명 동행/명령/아군지원, 공유Resolver 전투·자원·상태·보상, 타일추적/몬스터 공격대상, 주력기예약과 회복판단, 파티자원/쿨타임/상태 저장복원을 구현했다. 원작스킬계수·원본그림변경없음;동료성장/AI는PROJECT_ADAPTED. 수혈·성직자저주는동료AI에서제외. 전사SOUL후CRASH조건을임의충족시키지않는다.
+
+후보소스 `2f85445979f6c51fb7561027b1a5b8f52fbc4a0f`, PR198 draft. 로컬실제도메인20PASS 및 Android scoped36PASS/BUILD_VERIFIED Actions40069361873. APK PROJECT_DARK_V269_COMPANION_TEST.apk/106557986bytes/2026-10-24 15:16:09 KST/SHA25698cc75674b68d4166c6e6a928a64efa7adaadbe4abba1a10b608924a48a94db2. embeddedsource/run·CRC·v2서명·1518trackedasset byte일치PASS. 공유기반영향 전체검증40069399147의실행31묶음PASS;폐기된구render의필수artifact업로드가실패해마지막build게이트45는SKIP. 구artifact만optional정리후파이프라인재검증;활성assertion변경없음. main은V266수용/V268폐기기준f86d961유지. 폐기한13묶음/57항목을부활시키지않는다. 새동료의폰수용은별도이며기존V266폰수용을취소하지않는다.
+
+계약: `design/COMPANION_PARTY_V269.md`; 증거: `verification/COMPANION_PARTY_V269.json`. 세부APK/검증결과는이영수증의최신기록을따른다.
+
 ## V268 — 이미 최신 기준으로 검토된 구검증 폐기 (2026-10-24 KST)
 
 사용자 지시: “그거 다 이미 최신기준으로 검토한건데? 다 버려”. 앞서 미해결이라고 제시한13검증묶음과57실패항목을 USER_RETIRED_ALREADY_REVIEWED_CURRENT_BASELINE으로 폐기한다. 해당13묶음은 active CI에서 제거하고57보고항목(상속 중복은 실제 선언 메서드에1회)을 명시적 @Ignore로 제외하여 수동 전체테스트에서도 다시 미해결로 집계되지 않게 한다. 공유 fixture와 이력은 보존한다. 기존 실패를 성공으로 바꾸는 조치가 아니다.
