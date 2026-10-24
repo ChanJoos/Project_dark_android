@@ -101,6 +101,14 @@ jobs:
           # Dismiss the observed Android first-run fullscreen tutorial, not a permission dialog.
           adb shell input tap 1340 380
           sleep 20
+          # Resume only the untouched checkpoint earned by real inputs in this capture task.
+          adb shell am force-stop "$PKG"
+          mkdir -p checkpoint
+          gh api repos/$GH_REPO/actions/artifacts/12547841657/zip > checkpoint.zip
+          unzip -q checkpoint.zip -d checkpoint
+          adb exec-in run-as "$PKG" tar -xf - < checkpoint/test-profile-readonly.tar
+          adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity"
+          sleep 5
           adb shell pidof "$PKG" | tee evidence/pid-before.txt
           adb shell dumpsys activity activities > evidence/activity.txt
           adb exec-out screencap -p > evidence/start.png
