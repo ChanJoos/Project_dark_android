@@ -1,21 +1,45 @@
 {
-  "stage": 8,
+  "stage": 9,
   "commands": [
     {
-      "op": "tap",
-      "x": 1628,
-      "y": 578
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "swipe",
+      "x": 220,
+      "y": 748,
+      "x2": 300,
+      "y2": 708,
+      "ms": 1200
     },
     {
       "op": "wait",
-      "seconds": 5
+      "seconds": 3
+    },
+    {
+      "op": "swipe",
+      "x": 220,
+      "y": 748,
+      "x2": 140,
+      "y2": 788,
+      "ms": 1200
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 830,
+      "y": 420
+    },
+    {
+      "op": "wait",
+      "seconds": 8
     },
     {
       "op": "snapshot"
-    },
-    {
-      "op": "wait",
-      "seconds": 6
     }
   ]
 }
