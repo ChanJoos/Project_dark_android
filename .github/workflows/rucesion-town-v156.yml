@@ -106,7 +106,11 @@ jobs:
       - name: Build requested Horror preview APK
         run: |
           pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
-          if [[ "$(git log -1 --format=%B)" == *"[inventory-polish-v266]"* ]]; then
+          if [[ "$(git log -1 --format=%B)" == *"[v266-verification-tail]"* ]]; then
+            git fetch --depth=1 origin d076b410f490e55b906ed5fbeef266461ee08bb8
+            git diff --exit-code d076b410f490e55b906ed5fbeef266461ee08bb8 HEAD -- app/src/main app/build.gradle
+            gradle --no-daemon :app:testDebugUnitTest --tests "*EquipmentWindowV177Test.slotDirectionsFollowCurrentUserPolicyWithV178GloveAndShoeOverride" --tests "*LinkedFoodV187Test.allFiftyFourLabelledFoodsHaveNativeIconsAndOnlySixteenExplicitEffects" :app:assembleDebug --stacktrace
+          elif [[ "$(git log -1 --format=%B)" == *"[inventory-polish-v266]"* ]]; then
             gradle --no-daemon :app:testDebugUnitTest --tests "*InventoryPolishV266Test" --tests "*EquipmentHudV262Test" --tests "*EquipmentWindowV177Test" --tests "*MagicRecallV251Test.allTenRecallAssetsMatchExactScreenshotPixelsButOnlyFourAreRuntimeItems" --tests "*MagicRecallV251Test.recallGrantMigratesOnceAndConsumptionSurvivesRestartWithoutRegrant" --tests "*MagicRecallV251Test.eachSuppliedExistingTownRecallActuallyTravelsAndConsumesOnce" --tests "*LinkedFoodV187Test" :app:assembleDebug --stacktrace
           elif [[ "$(git log -1 --format=%B)" == *"[combat-hud-v265]"* ]]; then
             gradle --no-daemon :app:testDebugUnitTest --tests "*EquipmentHudV262Test" :app:assembleDebug --stacktrace
@@ -1145,6 +1149,7 @@ jobs:
           if '[hud-items-v254]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V254 skill6x2; joined HP/MP+4owned-item shortcuts; normal and wide input/register/equip/consume/readonly/restart; V253 Narcoli user accepted unchanged; host native,phone pending'
           if '[compact-hud-v255]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V255 36px6x2 skill shortcuts beside centered HP/MP bars; normal/wide bounds and real input/cast/auto/potion/item/picker/restart; host native,phone pending'
           if '[v260-final-review]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V260 final17 affected AI/chase/visual checks plus38 exact-delta retained checks =55 scoped PASS; original !-based digit cells corrected, continuous stationary attacks and unchanged chase headings, independent2/3-hit numbers; old AI facing fault and two legacy failures reproduced; original/generation gait assertion now separately corrected on old runtime; full/phone acceptance pending'
+          if '[v266-verification-tail]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['retainedEvidence']={'source':'d076b410f490e55b906ed5fbeef266461ee08bb8','run':40044934617,'passed':15,'finalCorrectedCases':2,'guard':'git diff app/src/main and app/build.gradle byte-exact; only two stale fixture assertions corrected'}
           if '[inventory-polish-v266]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V266 attack right10px (narrow6px); consumption reagents/food/recalls; recall edge-connected near-black display matte preserving source bytes; every available necklace visible-bounds centered; adjacent paired equipment,food use,recall use/save; phone acceptance pending'
           if '[combat-hud-v265]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V265 combat buttons lower beside skill grid; native two-aspect render/touch checks plus gear and quick-item regression; phone acceptance pending'
           if '[contact-pose-v264]' in subprocess.check_output(['git','log','-1','--format=%B'],text=True):report['scope']='V264 source02 front/back preparation/contact mapped as four directions caused unmirrored west preparation pose; reproduce old actual bitmap failure then original-contact pixel oracle, both bodies/gear mirrors and real manual/AUTO contact captures; combat/AI/facing unchanged from V263; handset acceptance pending'

@@ -149,7 +149,7 @@
   "master/source/martial_v230/026.gif": "e48e1932c64afb95914f546516f9a73ce22d682b0a7e61507192e5ae5f3d12cb",
   "master/source/martial_v230/026.png": "f2a1e83f83e89b3e659092f9f6c278509cfd15bc0027e88a6ee02161c9a1cc91",
   "master/source/martial_v230/035.png": "00f228eae792e92ae838726f24bfa43007dd366a2c255c8a87c654c218cbcc23",
-  ".github/workflows/rucesion-town-v156.yml": "0a4f3eeec72b24057e07929d50c89e610f82a9798314ffd43a9c4f80cd27ec59",
+  ".github/workflows/rucesion-town-v156.yml": "70189ebd1eef3af56caddf6b5d3189a13aa49fc7fccea8a13577cff490e12c4d",
   "app/src/main/assets/skill-presentation/captured/manifest.json": "3715f2ea9c4b1a8fb301c9b561ef95573f9e9d19746f31c9dbc6423505591dcc",
   "app/src/test/java/com/projectdark/mobile/AllJobSkillSourceTest.java": "506ff4d84b8c4aded8745569f32130cb32ec7367de7ae64400f6f547672a1fc6",
   "tools/import_rogue_skill_references.py": "5a0e7cb984bd9d024d88b6dffac7cae3a072935ff9450f358ed26e236160e50e",
@@ -780,8 +780,9 @@
   "master/changes/V264_CONTACT_POSE.json": "d50f52cfc88e2f36fd9db7d44ce08d7de04a1435d3902eaf88970a2bf5cae2ae",
   "design/COMBAT_HUD_V265.md": "b69d00e6fb61e5acf8166ebf7ad211a0b338414b7b22866301948b54155140f1",
   "master/changes/V265_COMBAT_HUD.json": "9529016abbc253ed58ee58fa11fc2a9fa5d843c3a076580302f10b00f7b1e1ab",
-  "app/src/test/java/com/projectdark/mobile/EquipmentWindowV177Test.java": "369235aa5f3d9814613c72bb9eac7797fa1fd32c8b4c92ab739fae0b6f6dfbec",
+  "app/src/test/java/com/projectdark/mobile/EquipmentWindowV177Test.java": "8570f31f39284c2aacd4bf5fa8567d890c1ddc66294c92386271f3a1ecf1ad7a",
   "app/src/test/java/com/projectdark/mobile/InventoryPolishV266Test.java": "16508b7bbcecc5cc90ded4a1ff81778dd044795453534f87b06b4881ecccddd2",
-  "design/INVENTORY_POLISH_V266.md": "77a9268a49f3b96c365c5e1cd9d91d3f235e056c3877c95e73e4347f0604c5ea",
-  "master/changes/V266_INVENTORY_POLISH.json": "c74f37e922a4574d488af116463deffc879199033eb7736ac7833ab54bca2fa4"
+  "design/INVENTORY_POLISH_V266.md": "cf2944dbc828c0e98dc8072a87c91e0cb714f8ceb0d2dc22fb8a1be349614a70",
+  "master/changes/V266_INVENTORY_POLISH.json": "c74f37e922a4574d488af116463deffc879199033eb7736ac7833ab54bca2fa4",
+  "app/src/test/java/com/projectdark/mobile/LinkedFoodV187Test.java": "f50c179d442cb62d7ec096b35ad009b220c885377cacf730b2c3d6f1a3d9879a"
 }

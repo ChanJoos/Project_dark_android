@@ -17,7 +17,7 @@ public class EquipmentWindowV177Test {
    Bitmap out=Bitmap.createBitmap(80,80,Bitmap.Config.ARGB_8888);SourceItemIconRegistry.drawEquipmentForSlot(new Canvas(out),src,new RectF(10,10,70,70),p,slot,"fixture");
    // V178 supersedes the V177 left-glove and shoe direction after phone feedback.
    boolean expected="모자".equals(slot)||"갑옷".equals(slot);
-   assertEquals(slot,expected?Color.BLUE:Color.RED,out.getPixel(25,40));assertEquals(slot,expected?Color.RED:Color.BLUE,out.getPixel(55,40));
+   assertEquals(slot,expected?Color.BLUE:Color.RED,out.getPixel(35,40));assertEquals(slot,expected?Color.RED:Color.BLUE,out.getPixel(45,40));
   }
  }
  @Test public void realArtworkHasReducedHatEarringShirtAndCenteredNecklaceArmorWithoutClipping(){
