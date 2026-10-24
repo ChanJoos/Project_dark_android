@@ -28,7 +28,7 @@ final class CompanionPartyRules {
       if (a.heal()
           && a.job.equals("성직자")
           && healer.learned(a.id)
-          && healer.body.mp >= a.mpCost
+          && healer.body.mp >= ItemEffects.mpCost(healer.growth, a.id, a.mpCost)
           && healer.cooldown(a.id) <= 0) {
         SkillActionContract.Rule r = SkillActionContract.get(a.id);
         if (r == null || r.pattern != SkillActionContract.Pattern.ALLY) continue;
@@ -57,7 +57,7 @@ final class CompanionPartyRules {
           if (healer.learned(a.id)
               && a.status.startsWith("CLEAR_")
               && !a.status.equals("CLEAR_ALL")
-              && healer.body.mp >= a.mpCost
+              && healer.body.mp >= ItemEffects.mpCost(healer.growth, a.id, a.mpCost)
               && healer.cooldown(a.id) <= 0) {
             String clears = a.status.substring(6);
             boolean valid =
@@ -84,8 +84,10 @@ final class CompanionPartyRules {
           "SK_성직자_009"
         }) {
       SkillAbilityCatalog.Ability a = SkillAbilityCatalog.get(id);
-      if (!healer.learned(id) || a == null || healer.body.mp < a.mpCost || healer.cooldown(id) > 0)
-        continue;
+      if (!healer.learned(id)
+          || a == null
+          || healer.body.mp < ItemEffects.mpCost(healer.growth, a.id, a.mpCost)
+          || healer.cooldown(id) > 0) continue;
       String family =
           a.status.startsWith("ARMOR")
               ? "ARMOR"

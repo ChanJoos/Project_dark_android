@@ -87,7 +87,7 @@ final class CompanionAgentContext {
         && a.supported()
         && member.learned(id)
         && member.cooldown(id) <= 0
-        && member.body.mp >= a.mpCost;
+        && member.body.mp >= ItemEffects.mpCost(member.growth, a.id, a.mpCost);
   }
 
   boolean use(String target, String id) {
@@ -109,7 +109,10 @@ final class CompanionAgentContext {
 
   void basic(RuntimeState.Monster target) {
     face(target);
-    use(target.id, RuntimeCombatSession.playerAttackActionId(0));
+    use(
+        target.id,
+        RuntimeCombatSession.playerAttackActionId(
+            new EquipmentActionResolver().resolveBasicAttack(member.growth).animationAction));
   }
 
   boolean buff(String id, String family) {

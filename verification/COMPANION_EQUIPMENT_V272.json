@@ -1,0 +1,21 @@
+{
+  "revision": "V272_COMPANION_EQUIPMENT",
+  "base": "64dd3c0c7c722d6a35ede7f6f2531ee2596e7d97",
+  "local": {
+    "productionCompile": "PASS_ECJ17_ANDROID_API",
+    "domainPassed": 45,
+    "failed": 0
+  },
+  "android": "PENDING",
+  "fullCurrentRegression": "PENDING_SAVE_SCHEMA_AND_SHARED_ACTOR_GEAR_CHANGED",
+  "apk": "PENDING",
+  "main": "PR198_NOT_MERGED",
+  "phone": "PENDING_NEW_V272_ONLY",
+  "scope": "Own companion equipment window, real profession/level/stat/effect/visual projection, ownership transactions and save3 migration",
+  "sourceConditionLimits": "Unknown minima are not invented; exact legacy starter pairs grandfather restore only; new commands are strict",
+  "localFindings": [
+    "legacy starter shoes/shield pending and hat level1 cannot be rejected on old-save reconstruction; exact constructor pairs preserved",
+    "original ring definitions exist but are not pre-owned; paired-slot test explicitly grants actual source ring copies only in test",
+    "source Magic Pana job conditions unresolved; labelled JVM-only fixture exercises known staff function without changing source data"
+  ]
+}

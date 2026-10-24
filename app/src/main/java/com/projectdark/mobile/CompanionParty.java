@@ -37,6 +37,8 @@ public final class CompanionParty {
     public String target, actionId = "", map = "", notice = "동행";
     public int level = 1;
     private boolean testAccess;
+    private float equipmentRegenClock;
+    private int equipmentRegenBonus;
     public float clock, actionClock, moveClock, fromX, fromY;
     public boolean moving;
     public CharacterRenderer.Direction facing = CharacterRenderer.Direction.SW;
@@ -49,6 +51,9 @@ public final class CompanionParty {
       growth.restoreProgression(3, 0);
       growth.chooseInitialJob(j.code);
       configure(1);
+      growth.bindTwoHandLearning(() -> learned("SK_전사_008"));
+      // Only existing worn starter pieces belong to a companion; no hidden sandbox item grants.
+      growth.restoreOwnedItems(CompanionEquipment.counts(growth.equipment()), growth.equipment());
       body.hp = body.maxHp;
       body.mp = body.maxMp;
     }
@@ -73,6 +78,36 @@ public final class CompanionParty {
           120 + lv * lv * (physical ? 2 : 1), 100 + lv * lv * (physical ? 1 : 2));
       body.maxHp = growth.finalStats().maxHp;
       body.maxMp = growth.finalStats().maxMp;
+    }
+
+    void syncEquipment() {
+      FinalStats f = growth.finalStats();
+      body.maxHp = f.maxHp;
+      body.maxMp = f.maxMp;
+      body.hp = body.alive ? Math.min(body.hp, body.maxHp) : 0;
+      body.mp = Math.min(body.mp, body.maxMp);
+    }
+
+    void regenerateEquipment(float dt) {
+      int bonus = ItemEffects.regeneration(growth);
+      if (bonus != equipmentRegenBonus) {
+        equipmentRegenClock = 0;
+        equipmentRegenBonus = bonus;
+      }
+      if (!body.alive || bonus == 0) {
+        equipmentRegenClock = 0;
+        return;
+      }
+      equipmentRegenClock += dt;
+      int n = (int) (equipmentRegenClock / 25f);
+      if (n > 0) {
+        equipmentRegenClock -= n * 25f;
+        body.hp =
+            (int)
+                Math.min(
+                    body.maxHp,
+                    (long) body.hp + (long) n * ItemEffects.additionalRegeneration(growth));
+      }
     }
 
     public FinalStats stats() {
@@ -285,7 +320,10 @@ public final class CompanionParty {
     }
     for (Member m : roster.values()) m.tick(safe);
     Member m = active();
-    if (m != null) grow(s, m);
+    if (m != null) {
+      grow(s, m);
+      m.regenerateEquipment(safe);
+    }
   }
 
   private void grow(RuntimeState s, Member m) {
@@ -312,10 +350,11 @@ public final class CompanionParty {
                 .put("hp", m.body.hp)
                 .put("mp", m.body.mp)
                 .put("order", m.order.name())
-                .put("cooldowns", cds));
+                .put("cooldowns", cds)
+                .put("equipment", new JSONObject(m.growth.equipment())));
       }
       return new JSONObject()
-          .put("version", 2)
+          .put("version", 3)
           .put("selected", selected == null ? JSONObject.NULL : selected.name())
           .put("members", rows);
     } catch (JSONException e) {
@@ -326,7 +365,7 @@ public final class CompanionParty {
   public boolean restore(JSONObject json) {
     try {
       int version = json.getInt("version");
-      if (version != 1 && version != 2) return false;
+      if (version != 1 && version != 2 && version != 3) return false;
       EnumMap<Job, Member> staged = new EnumMap<>(Job.class);
       JSONArray rows = json.getJSONArray("members");
       if (rows.length() != (version == 1 ? 2 : Job.values().length)) return false;
@@ -339,6 +378,26 @@ public final class CompanionParty {
         int lv = row.getInt("level");
         if (lv < 1 || lv > 99) return false;
         m.configure(lv);
+        if (version >= 3) {
+          Map<String, String> starterEquipment = new LinkedHashMap<>(m.growth.equipment());
+          JSONObject equipment = row.getJSONObject("equipment");
+          Map<String, String> equipped = new LinkedHashMap<>();
+          Iterator<String> slots = equipment.keys();
+          while (slots.hasNext()) {
+            String slot = slots.next();
+            equipped.put(slot, equipment.getString(slot));
+          }
+          if (!m.growth.restoreOwnedItems(CompanionEquipment.counts(equipped), equipped))
+            return false;
+          if (!m.growth.equipment().equals(equipped)) return false;
+          for (Map.Entry<String, String> e : equipped.entrySet()) {
+            RpgProgressionState.RequirementResult requirement =
+                CompanionEquipment.requirement(m, e.getValue());
+            if (requirement != RpgProgressionState.RequirementResult.MET
+                && !Objects.equals(e.getValue(), starterEquipment.get(e.getKey()))) return false;
+          }
+          m.syncEquipment();
+        }
         int hp = row.getInt("hp"), mp = row.getInt("mp");
         if (hp < 0 || hp > m.body.maxHp || mp < 0 || mp > m.body.maxMp) return false;
         m.body.hp = hp;

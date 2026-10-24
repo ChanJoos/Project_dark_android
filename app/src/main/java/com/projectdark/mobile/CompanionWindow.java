@@ -17,7 +17,8 @@ final class CompanionWindow {
     FOLLOW,
     FOCUS,
     WAIT,
-    RECOVER
+    RECOVER,
+    EQUIPMENT
   }
 
   boolean open;
@@ -110,6 +111,7 @@ final class CompanionWindow {
     button(c, 260, 322, "동료 지원 선택");
     button(c, 414, 322, "자신 선택");
     button(c, 568, 322, s.party().testing() ? "테스트 회복" : "마을에서 회복");
+    buttonCompact(c, 568, 382, "동료 장비");
     UiTheme.text(c, "회복·보호 기술은 선택한 아군에게 사용합니다", 260, 399, 9, UiTheme.MUTED, false);
     c.restore();
   }
@@ -137,6 +139,7 @@ final class CompanionWindow {
       open = false;
       return Command.NONE;
     }
+    if (x >= 568 && x <= 700 && y >= 382 && y <= 409) return Command.EQUIPMENT;
     int row = y >= 185 && y <= 224 ? 0 : y >= 262 && y <= 301 ? 1 : y >= 322 && y <= 361 ? 2 : -1;
     int col = x >= 260 && x <= 392 ? 0 : x >= 414 && x <= 546 ? 1 : x >= 568 && x <= 700 ? 2 : -1;
     if (y >= 230 && y <= 257 && col >= 0)

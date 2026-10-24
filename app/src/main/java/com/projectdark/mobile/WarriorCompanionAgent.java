@@ -49,7 +49,7 @@ final class WarriorCompanionAgent implements CompanionAgent {
         && c.use(target.id, soul(m))) return;
     for (String id : new String[] {"SK_전사_006", "SK_전사_003", "SK_전사_001"})
       if (c.use(target.id, id)) return;
-    c.use(target.id, RuntimeCombatSession.playerAttackActionId(0));
+    c.basic(target);
   }
 
   private String crash(CompanionParty.Member m) {

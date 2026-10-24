@@ -1,0 +1,9 @@
+{
+  "revision": "V272_COMPANION_EQUIPMENT",
+  "authorization": "동료 장비창·직업/레벨·능력치·외형 반영",
+  "status": "IMPLEMENTED_LOCAL_VERIFIED_ANDROID_PENDING",
+  "sourceSnapshotsChanged": false,
+  "newEquipmentGrants": false,
+  "contract": "design/COMPANION_EQUIPMENT_V272.md",
+  "verification": "verification/COMPANION_EQUIPMENT_V272.json"
+}

@@ -64,7 +64,13 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   public CombatResolver.Definition resolveDefinition(String actor,CombatResolver.Definition d){
     AbelCombatProfile profile=AbelCombatProfile.forId(actor);if(profile!=null)return profile.resolve(d);
     if("player".equals(actor)&&d.actionId.startsWith("attack_proto_"))return new CombatResolver.Definition(d.actionId,d.kind,d.state,d.effectType,d.requiresLearned,d.resourceCost,BasicAttackTiming.cycle(state.rpg(),d.cooldown),d.range,BasicAttackTiming.contact(state.rpg(),d.hitTime),d.damage);
-    if(state.party().find(actor)!=null){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(d.actionId);return a==null?d:new CombatResolver.Definition(d.actionId,d.kind,d.state,d.effectType,d.requiresLearned,a.mpCost,a.cooldown,d.range,d.hitTime,d.damage);}
+    if(state.party().find(actor)!=null){
+      CompanionParty.Member m=state.party().find(actor);
+      if(d.actionId.startsWith("attack_proto_"))return new CombatResolver.Definition(d.actionId,d.kind,d.state,d.effectType,d.requiresLearned,d.resourceCost,BasicAttackTiming.cycle(m.growth,d.cooldown),d.range,BasicAttackTiming.contact(m.growth,d.hitTime),d.damage);
+      SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(d.actionId);if(a==null)return d;
+      float time=d.kind==CombatResolver.ActionKind.MAGIC?ItemEffects.castSeconds(m.growth,d.actionId,ItemEffects.baseCast(d.actionId,d.hitTime)):d.hitTime;
+      return new CombatResolver.Definition(d.actionId,d.kind,d.state,d.effectType,d.requiresLearned,ItemEffects.mpCost(m.growth,d.actionId,a.mpCost),a.cooldown,d.range,time,d.damage);
+    }
     if(!"player".equals(actor)||d.kind!=CombatResolver.ActionKind.MAGIC)return d;
     SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(d.actionId);
     int base=a==null?d.resourceCost:a.mpCost;

@@ -7,7 +7,7 @@ final class SkillAbilityExecutor {
  int actorLevel(){CompanionParty.Member m=state.party().find(actorId);return m==null?(state.rpg().normalLevel()==null?1:state.rpg().normalLevel()):m.level;}
  RuntimeState.Player actor(){return state.party().body(state,actorId);}
  FinalStats stats(){return state.party().stats(state,actorId);}
- int mpCost(String id,int base){return "player".equals(actorId)?ItemEffects.mpCost(state.rpg(),id,base):base;}
+ int mpCost(String id,int base){CompanionParty.Member m=state.party().find(actorId);return ItemEffects.mpCost(m==null?state.rpg():m.growth,id,base);}
  RuntimeState.Player friendly(String target){return state.party().body(state,target);}
  private final Map<String,SkillAbilityCatalog.Snapshot> snapshots=new HashMap<>();private final Set<String> charged=new HashSet<>();
  java.util.function.ToIntFunction<String> proficiency=id->100;java.util.function.DoubleSupplier random=Math::random;boolean testMode;
