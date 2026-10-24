@@ -93,5 +93,12 @@
     "fix": "Cancel old windup on taunt retarget; face the real party target when a new windup starts",
     "test": "CompanionWorldV269Test.rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck",
     "localResult": "PASS"
+  },
+  "liveWorldAndroidRun": {
+    "runId": 40070181040,
+    "sourceCommit": "2d7bff630462f18117fa30628ed4960b839ebf94",
+    "passed": 36,
+    "failed": 1,
+    "reason": "New real-world fixture used JVM mock RectF; move only that fixture to Robolectric Android runtime. All game production bytes unchanged by this fixture correction."
   }
 }

@@ -3,6 +3,8 @@ package com.projectdark.mobile;
 import com.projectdark.mobile.world.*;
 import java.util.*;
 
+@org.junit.runner.RunWith(org.robolectric.RobolectricTestRunner.class)
+@org.robolectric.annotation.Config(sdk = 34, manifest = org.robolectric.annotation.Config.NONE)
 public class CompanionWorldV269Test {
   @org.junit.Test
   @SuppressWarnings("unchecked")
