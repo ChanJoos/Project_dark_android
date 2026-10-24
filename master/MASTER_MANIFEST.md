@@ -1,3 +1,9 @@
+## V266 사용자 실기기 전체 통과 · main 통합 진행 (2026-10-24 KST)
+
+사용자 확인: “지금 기준에서 모두 통과야. Main통합해”. V266 APK source `7a4310b8538338f17244d7a6d7d63839e214f4dd`, SHA256 `4c07f7b1180bbc509f813054111c3ce4beb16f6dc72d00e45c88ff82aa6d0f39`의 현재 동작/외형 USER_DEVICE_ACCEPTED. 직전 확인목록의 밀집사냥 공격방향, 버튼 조작, 소비탭/리콜/목걸이 표시를 모두 통과한 사용자 보고로 기록하며 자동화 실기기 검증으로 표기하지 않는다. 이전 V264/V265/V266의 PHONE_PENDING은 이 현재 승인으로 해소; 과거 실패 이력은 보존한다.
+
+최신 main `41fe6def5120b6c33b58f609e52fbaf2ead700ee`, 승인 branch HEAD `a9113ec1210787309a0cf6ce5cdf02dca7032ace`, PR197 충돌없음. 신규 게임변경 없이 승인기준을통합한다. AGENTS의 final-main-integration 기준에 따라 full-regression을 실행하고 실제 결과를 확인한 뒤 병합. 기존 정확소스17scoped검증과 V266빌드40045415341은 유지. 현재 FULL_REGRESSION_PENDING / MAIN_MERGE_PENDING; 사용자 재승인 불필요. 다음: 전체검증 결과 진단/해소→PR197 main병합→실제 mergeSHA/CI 기록.
+
 ## V266 — 소비 분류·리콜 배경·목걸이 중앙 정렬·공격 위치
 
 사용자표시요청4건. 원본소스/소유/효과/전투불변. 최종APK소스7a4310b8/run40045415341,17scopedPASS/native표시검토,PHONE_PENDING. [변경](changes/V266_INVENTORY_POLISH.json),[영수증](../verification/INVENTORY_POLISH_V266_BUILD.json).

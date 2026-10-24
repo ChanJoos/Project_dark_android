@@ -58,7 +58,7 @@
   "branch": "codex/rucesion-coast-v157",
   "pr": 197,
   "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
-  "deviceAcceptance": "PENDING",
+  "deviceAcceptance": "USER_DEVICE_ACCEPTED",
   "fullRegression": "not claimed",
   "change": "attack right10px/narrow6px; consumption reagents54foods/recalls;10recalls display matte;45renderednecklaces visible-bounds center",
   "visualReview": [
@@ -78,5 +78,12 @@
     "fileId": "file_0000000085e081f6bc60028beb49cad7",
     "libraryFileId": "libfile_370cc81f59dc8191a539194375c98b72",
     "localMetadataApplied": true
+  },
+  "userAcceptance": {
+    "dateKST": "2026-10-24",
+    "statement": "지금 기준에서 모두 통과야. Main통합해",
+    "scope": "current V266; dense-combat facing, button operation, consumption/recall/necklace visuals",
+    "method": "user-reported physical device acceptance",
+    "apkSourceCommit": "7a4310b8538338f17244d7a6d7d63839e214f4dd"
   }
 }

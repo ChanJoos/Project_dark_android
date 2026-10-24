@@ -7,5 +7,13 @@
   "contract": "design/INVENTORY_POLISH_V266.md",
   "verification": "17 scoped PASS (15 exact-runtime retained plus2corrected fixtures); twoaspect HUD/consumption/10recall/45necklace native reviewed; phone PENDING",
   "sourceCommit": "7a4310b8538338f17244d7a6d7d63839e214f4dd",
-  "receipt": "verification/INVENTORY_POLISH_V266_BUILD.json"
+  "receipt": "verification/INVENTORY_POLISH_V266_BUILD.json",
+  "deviceAcceptance": "USER_DEVICE_ACCEPTED",
+  "userAcceptance": {
+    "dateKST": "2026-10-24",
+    "statement": "지금 기준에서 모두 통과야. Main통합해",
+    "scope": "current V266; dense-combat facing, button operation, consumption/recall/necklace visuals",
+    "method": "user-reported physical device acceptance",
+    "apkSourceCommit": "7a4310b8538338f17244d7a6d7d63839e214f4dd"
+  }
 }
