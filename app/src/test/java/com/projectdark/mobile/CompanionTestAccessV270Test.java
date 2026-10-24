@@ -54,7 +54,7 @@ public class CompanionTestAccessV270Test {
   @Test
   public void realApkEntryStartsWith99CompanionBeforeAnyQuestOrJob() throws Exception {
     assertEquals(
-        BuildConfig.APPLICATION_ID.endsWith(".v272test"), BuildConfig.COMPANION_TEST_ACCESS);
+        BuildConfig.APPLICATION_ID.matches("com[.]projectdark[.]mobile[.]v[0-9]+test"), BuildConfig.COMPANION_TEST_ACCESS);
     MainActivity a = Robolectric.buildActivity(MainActivity.class).create().get();
     assertFalse(h.field(a, "startupFailed"));
     GameView v = h.field(a, "game");
