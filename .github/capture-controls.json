@@ -1,28 +1,24 @@
 {
-  "stage": 9,
+  "stage": 10,
   "commands": [
     {
-      "op": "load_checkpoint",
-      "job": "ROGUE"
+      "op": "tap",
+      "x": 1696,
+      "y": 800
+    },
+    {
+      "op": "tap",
+      "x": 1693,
+      "y": 921
+    },
+    {
+      "op": "tap",
+      "x": 1828,
+      "y": 122
     },
     {
       "op": "wait",
-      "seconds": 3
-    },
-    {
-      "op": "tap",
-      "x": 1660,
-      "y": 56
-    },
-    {
-      "op": "tap",
-      "x": 498,
-      "y": 181
-    },
-    {
-      "op": "tap",
-      "x": 437,
-      "y": 697
+      "seconds": 0.8
     },
     {
       "op": "snapshot"
