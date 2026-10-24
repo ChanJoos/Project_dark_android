@@ -169,6 +169,35 @@ public class CompanionEquipmentNativeV272Test {
   }
 
   @Test
+  public void equippedArmorKeepsOriginalActionLayersInAllFourDirections() throws Exception {
+    GameView v = view(960, 540);
+    RuntimeState s = h.field(v, "state");
+    CompanionParty.Member m = s.party().active();
+    m.actionId = "SK_전사_001";
+    m.actionClock = .2f;
+    Map<CharacterRenderer.Direction, Bitmap> before =
+        new EnumMap<>(CharacterRenderer.Direction.class);
+    for (CharacterRenderer.Direction direction : CharacterRenderer.Direction.values()) {
+      m.facing = direction;
+      before.put(direction, worldActor(v, m));
+    }
+    open(v, 1, 0);
+    CompanionEquipmentWindow w = h.field(v, "companionEquipment");
+    equip(v, s, w, domain.armor(s, CompanionParty.Job.WARRIOR, 99), 1, 0);
+    for (CharacterRenderer.Direction direction : CharacterRenderer.Direction.values()) {
+      m.facing = direction;
+      Bitmap after = worldActor(v, m);
+      assertTrue(
+          "worn source action layer " + direction,
+          difference(before.get(direction), after, 155, 150, 245, 205) > 0);
+      save(before.get(direction), "action-before-" + direction);
+      save(after, "action-equipped-" + direction);
+      before.get(direction).recycle();
+      after.recycle();
+    }
+  }
+
+  @Test
   public void fiveJobTabsEditInactiveMembersAndActualRestartKeepsEquipment() throws Exception {
     GameView v = view(960, 540);
     RuntimeState s = h.field(v, "state");

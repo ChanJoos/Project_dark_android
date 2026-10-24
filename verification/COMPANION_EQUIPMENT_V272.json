@@ -6,8 +6,17 @@
     "domainPassed": 45,
     "failed": 0
   },
-  "android": "PENDING",
-  "fullCurrentRegression": "PENDING_SAVE_SCHEMA_AND_SHARED_ACTOR_GEAR_CHANGED",
+  "android": "PENDING_ADDED_FOUR_DIRECTION_EQUIPPED_ACTION_LAYER_TEST",
+  "fullCurrentRegression": {
+    "sourceCommit": "3268a2fa8b4dd99d777b7004b97748742715663c",
+    "runId": 40081396216,
+    "jobId": 120835573432,
+    "activeGroups": 32,
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0,
+    "reuse": "Final production/build/source-art bytes must remain identical; final delta is native action-layer test and exact reviewed CI profile only"
+  },
   "apk": "PENDING",
   "main": "PR198_NOT_MERGED",
   "phone": "PENDING_NEW_V272_ONLY",
@@ -17,5 +26,13 @@
     "legacy starter shoes/shield pending and hat level1 cannot be rejected on old-save reconstruction; exact constructor pairs preserved",
     "original ring definitions exist but are not pre-owned; paired-slot test explicitly grants actual source ring copies only in test",
     "source Magic Pana job conditions unresolved; labelled JVM-only fixture exercises known staff function without changing source data"
-  ]
+  ],
+  "firstAndroid": {
+    "sourceCommit": "3268a2fa8b4dd99d777b7004b97748742715663c",
+    "runId": 40081393297,
+    "jobId": 120835527237,
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0
+  }
 }
