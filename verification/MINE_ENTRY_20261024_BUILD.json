@@ -1,0 +1,49 @@
+{
+  "status": [
+    "IMPLEMENTED",
+    "BUILD_VERIFIED",
+    "SCOPED_NATIVE_RUNTIME_VERIFIED"
+  ],
+  "phoneAcceptance": "PENDING",
+  "mainMerged": false,
+  "source": "8be211a3ccffca6d0bb73071c0994ec3218d015b",
+  "run": 40061780890,
+  "job": 120776651696,
+  "artifact": 12548255643,
+  "diagnosticsArtifact": 12547434537,
+  "apkSha256": "b9e793795c1ab23de439907810b44d136398b85acc6befb767632732fb5d9e6d",
+  "zipSha256": "d285813bdfa703dce70ba8ee2551ccdea61fb996d308df1c6ee98db079442d66",
+  "package": "com.projectdark.mobile.v266test",
+  "bytes": 106539918,
+  "builtKST": "2026-10-24T13:22:30+09:00",
+  "tests": 15,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "entrySourceCell": [
+    12,
+    35
+  ],
+  "exitSourceCell": [
+    13,
+    35
+  ],
+  "entryWorld": [
+    2664,
+    912
+  ],
+  "spawnDoorwayExclusionPixels": 360,
+  "population": 100,
+  "firstRun": {
+    "run": 40061490199,
+    "tests": 15,
+    "failures": 8,
+    "cause": "Seven legacy fixtures did not fund current 100G travel; new exit fixture did not advance presentation to completion. Test fixtures corrected, no production change between runs."
+  },
+  "limits": [
+    "No full-suite success claimed",
+    "No physical-device or user visual acceptance",
+    "Candidate retains V266 test package; do not confuse with accepted V266 APK",
+    "No main merge"
+  ]
+}

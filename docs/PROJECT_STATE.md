@@ -1,3 +1,9 @@
+## Mine doorway arrival candidate — 2026-10-24 KST
+
+User requests arrival in front of the mine doorway, not inside a monster pack. Isolated `dot/mine-entry-arrival` candidate based on latest main bd060ac: entry source(12,35), retained exit(13,35), deliberate adjacent return supported. Remove prior ten-species welcome ring; all100monsters remain, initial/respawn homes outside360px doorway radius. Ordinary AI/combat/map art/collision/save schema unchanged.
+
+Exact source8be211a3ccffca6d0bb73071c0994ec3218d015b; Actions40061780890/job120776651696 SUCCESS,15scoped native tests0failures/errors/skips, APK artifact12548255643. APK SHA256b9e793795c1ab23de439907810b44d136398b85acc6befb767632732fb5d9e6d, built2026-10-24 13:22:30KST. Embeddedsource/run/CRC/hash/v2signature verified; native arrival screenshots reviewed. First run40061490199 failed8/15 due7unfunded100G travel fixtures and1unfinished presentation tick; corrected fixtures only and reran all15. IMPLEMENTED / BUILD_VERIFIED / SCOPED_NATIVE_RUNTIME_VERIFIED; PHONE_ACCEPTANCE and MAIN_MERGE PENDING. No full-suite claim. SameV266testpackage, different exact candidate, not acceptedV266APK. Next: exact-candidate Android installation/entry validation for requested video. [Contract](changes/MINE_ENTRY_20261024.md), [receipt](../verification/MINE_ENTRY_20261024_BUILD.json).
+
 ## V266 main 통합 완료 · 자동 회귀 미해결 항목 분리 (2026-10-24 KST)
 
 PR197 실제 병합 완료: merge `e839aa58512450f92ab5552734e6dd75b7dd7351`, branch head `85b3a3269afece0522665a223809912b3749ac74`, 이전 main41fe6def. 사용자 “지금 기준에서 모두 통과야. Main통합해”를 현재 V266 사용자 보고 실기기 수동 수용 기준으로 기록했다. 승인 APK7a4310b8/SHA2564c07f7b1180bbc509f813054111c3ce4beb16f6dc72d00e45c88ff82aa6d0f39와 병합소스의 app/src/main·app/build.gradle 차이0을 GitHub compare로 확인했다.
