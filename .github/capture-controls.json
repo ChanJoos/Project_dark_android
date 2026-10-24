@@ -1,26 +1,63 @@
 {
-  "stage": 17,
+  "stage": 18,
   "commands": [
+    {
+      "op": "tap",
+      "x": 1410,
+      "y": 750
+    },
+    {
+      "op": "tap",
+      "x": 1572,
+      "y": 56
+    },
+    {
+      "op": "snapshot"
+    },
+    {
+      "op": "tap",
+      "x": 1822,
+      "y": 182
+    },
     {
       "op": "swipe",
       "x": 220,
       "y": 748,
-      "x2": 200,
+      "x2": 220,
+      "y2": 648,
+      "ms": 2000
+    },
+    {
+      "op": "wait",
+      "seconds": 0.3
+    },
+    {
+      "op": "swipe",
+      "x": 220,
+      "y": 748,
+      "x2": 220,
       "y2": 848,
       "ms": 100
     },
     {
       "op": "wait",
-      "seconds": 0.8
+      "seconds": 0.5
     },
     {
       "op": "tap",
-      "x": 1314,
+      "x": 1392,
       "y": 912
     },
     {
       "op": "wait",
-      "seconds": 2
+      "seconds": 0.5
+    },
+    {
+      "op": "snapshot"
+    },
+    {
+      "op": "wait",
+      "seconds": 1
     },
     {
       "op": "snapshot"
