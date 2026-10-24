@@ -1,3 +1,9 @@
+## V274 — 영상 수정 후보 APK 검증·전달 완료
+
+Source `19840bf885b411d8b9e510e670869155d4746267`, PR198/branch codex/companion-party-v269; main unchanged. IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_RUNTIME_VERIFIED. Focused Actions40105712364/job120906926061 SUCCESS: independently downloaded XML15 suites,91 tests,0 failures/errors/skips. Every reviewed gate is walked through live collision and invokes actual GameView transition to its named target; NPC admission reaches reception2 and survives restart. Native16 maps/two aspect ratios/overviews/15 species four-direction poses, cache and companion/reward neighbors pass. Common Actions40105715515/job120907002178 SUCCESS, failed gates {}. Original357 retained source entries byte-identical;2 MPFs added,359 hashes validated; packaged319 Countess PNGs independently hash-verified.
+
+APK `PROJECT_DARK_V274_COUNTESS_TEST.apk`, com.projectdark.mobile.v274test,107917052 bytes; SHA256 `4310421a64a6473898da7b7cece382c86286c46250a49cb081665f61bbe2dca9`. Build completed2026-10-25 00:14:37KST. APK artifact12564488536, report12564364225; both download digests/CRC pass, embedded source/run and independent APKv2 signature verified. Saved Library libfile_ef5d765afb9081919406a2f41fdfe0a7. Inspected16 overview frames, actual exterior keeper/reception2-restored and15-species directional review. Phone/user visual acceptance PENDING. Unobserved reverse exits, original server facts and provisional boss identity joins remain explicitly ADAPTED/unresolved; do not call these source-confirmed. Receipt verification/COUNTESS_CASTLE_V274.json. Old V273 failed-device report remains history; this is a newly tested candidate, not handset confirmation.
+
 ## V274 — 사용자 영상 재검수·백작 경로 수정 후보
 
 V273는 `DEVICE_FAILED_USER_REPORTED`: NPC 외형/응접실 분기/포탈 위치/존 이름/몬스터 구성이 사용자 영상과 다름. 폰 전체 증상의 근본 원인은 재현 전 UNKNOWN; 코드에서 잘못된 NPC→LOBBY, 외부 직접입장 누락, 모든 존 공통 포탈 좌표와 잘못된 로스터를 확인하고 수정했다.
