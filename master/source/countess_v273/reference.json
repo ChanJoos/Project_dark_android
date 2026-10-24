@@ -19,8 +19,16 @@
     },
     {
       "name": "Screen_Recording_20261024_203835_YouTube.mp4",
-      "status": "ATTACHMENT_MATERIALIZATION_FAILED_NOT_READ",
-      "requestedContent": "zones1through12, monsters, attacks"
+      "status": "RECOVERED_AND_CONTACT_SHEETS_REVIEWED",
+      "requestedContent": "zones1through12, monsters, attacks",
+      "sha256": "1afd1d3134d7b0af0ce3c0b08aa07ce5f9a0f45994366d202a11bd3c775f8eee",
+      "bytes": 344682709,
+      "durationSeconds": 140.317056,
+      "resolution": [
+        2340,
+        1080
+      ],
+      "review": "Recovered full video; reviewed two overview sheets and boss detail sheet. Prior attachment failure is superseded. Zone-by-zone source map and MPF identities remain pending."
     }
   ],
   "observations": [
@@ -146,5 +154,12 @@
   ],
   "runtimeChanges": [],
   "build": "NOT_RUN_NO_GAME_CHANGE",
-  "nextAction": "Receive missing second video; identify original maps/monster assets; implement guard/exterior NPC routes with legal arrival/latches, then source-backed zones and combat, focused checks and exact APK."
+  "nextAction": "Extract client archives; identify zone maps and monster MPFs against both recovered videos; then implement authorized guard/exterior/lobby/12-zone/boss path. No reattachment needed.",
+  "resumeCheckpoint": {
+    "base": "e111ed582afac9e7b67cb3335ddb8b7fef757f90",
+    "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
+    "runtime": "NOT_IMPLEMENTED",
+    "sourceRecovery": "Original client and full map archive recovered with hashes matching retained V180 source receipts; do not download them again. Installer needs its actual installer-format extraction, 7zip direct-open failed.",
+    "nextAction": "Extract client archives; identify zone maps and monster MPFs against both recovered videos; then implement authorized guard/exterior/lobby/12-zone/boss path. No reattachment needed."
+  }
 }
