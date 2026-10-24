@@ -11,3 +11,7 @@ Exporter calls canonical F5mSaveStore checkpoint, exports typed Android SharedPr
 Verification scope adds one exporter test looping all5 jobs to previously33adjacent tests. No retired verification restored. Local diff check passed; CI pending.
 
 Final verification:34passed on d8c3fdb8/run40075882243; five profiles exported and roundtrip verified. See dedicated build receipt for exact hashes. First attempt failed unresolved LIFE source-row lookup; retry selects actual existing runtime accessory. ActualAndroidrestore remains pending, no normal-save install.
+
+## User update: all base stats255
+
+User explicitly requested every primary stat255 on every test character, instead of an ordinary earned-point allocation. Exporter now sets STR/INT/WIS/CON/DEX255 and unallocated points0 on all5 isolated profiles. Exact equipped gear modifiers remain normal, so displayed stats may differ.99promotion and current/maxHPMP1M preserved. No skill formula/global balance/user-save changes. Roundtrip checks now assert all5base values and zero remaining points, with base+equipped values in provenance. Native CI pending.

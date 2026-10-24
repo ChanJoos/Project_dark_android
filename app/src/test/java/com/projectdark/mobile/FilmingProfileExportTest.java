@@ -34,6 +34,8 @@ public class FilmingProfileExportTest {
       String[] gear=job.equals("ROGUE")?new String[]{"USER_ITEM_20261018_R01486","USER_ITEM_20261018_R01485",RequestedWeaponSourceFacts.SHINWOLDO,"IT_SHIELD_KNIGHT"}:new String[]{"USER_ITEM_20261018_R01714","USER_ITEM_20261018_R01712",RequestedWeaponSourceFacts.ROO_GRACE};
       for(String id:gear)assertEquals(id,RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));
     }
+    // User explicitly requests every base stat255 for all dedicated test characters.
+    r.restoreStats(255,255,255,255,255,0);
     // Explicit synthetic test resources, not claimed natural growth. Compensate exact current gear modifiers.
     int hpMod=r.finalStats().maxHp-r.baseMaxHp(),mpMod=r.finalStats().maxMp-r.baseMaxMp();
     r.restoreBaseResources(MILLION-hpMod,MILLION-mpMod);
@@ -53,6 +55,7 @@ public class FilmingProfileExportTest {
   void verify(GameView v,String job,Map<String,String> gear)throws Exception{
     RuntimeState s=f.field(v,"state");RpgProgressionState r=s.rpg();
     assertEquals(job,r.currentJobCode());assertEquals(99,r.normalLevel().intValue());assertTrue(r.firstAdvanced());assertEquals(RpgProgressionState.ProgressionNode.FIRST_ADVANCEMENT,r.progressionNode());
+    assertEquals(255,r.str());assertEquals(255,r.intel());assertEquals(255,r.wis());assertEquals(255,r.con());assertEquals(255,r.dex());assertEquals(0,r.statPoints());
     assertEquals(MILLION,r.finalStats().maxHp);assertEquals(MILLION,r.finalStats().maxMp);
     assertEquals(MILLION,s.player().maxHp);assertEquals(MILLION,s.player().maxMp);assertEquals(MILLION,s.player().hp);assertEquals(MILLION,s.player().mp);
     assertEquals(gear,r.equipment());assertEquals(MineTownGeometry.ID,s.currentMapId());assertEquals(500,r.gold().longValue());
@@ -86,7 +89,7 @@ public class FilmingProfileExportTest {
       for(String pref:PREFS){Map<String,?> values=new LinkedHashMap<>(f.c.getSharedPreferences(pref,0).getAll());snapshots.put(pref,values);exportPrefs(new File(root,"shared_prefs/"+pref+".xml"),values);}
       clean();for(String pref:PREFS){SharedPreferences p=f.c.getSharedPreferences(pref,0);importPrefs(new File(root,"shared_prefs/"+pref+".xml"),p);assertEquals(snapshots.get(pref),p.getAll());}
       F5mSaveStore.install(f.c);GameView restored=new GameView(f.c,true);restored.layout(0,0,960,540);restored.setSkillTestMode(true);verify(restored,job,gear);assertTrue(F5mSaveStore.writable());assertTrue(F5mSaveStore.checkpointActive());
-      JSONObject manifest=new JSONObject().put("job",job).put("level",99).put("firstAdvanced",true).put("currentHp",MILLION).put("maxHp",MILLION).put("currentMp",MILLION).put("maxMp",MILLION).put("baseHp",s.rpg().baseMaxHp()).put("baseMp",s.rpg().baseMaxMp()).put("equipment",new JSONObject(gear)).put("gold",500).put("startMap",MineTownGeometry.ID).put("auto",false).put("skillTestMode",true).put("freeSkillMp",true).put("unallocatedStatPoints",s.rpg().statPoints()).put("skillSlots",new JSONArray(Arrays.asList(skills(job)))).put("provenance","USER AUTHORIZED SYNTHETIC FILMING PROFILE: 99 promoted, postgear HP/MP each1000000. Not naturally earned progression. Test-only exporter, no global balance/production endpoint/user-save changes. Canonical checkpoint then typed XML export/import and fresh GameView reload verified. Android installation verification separate.");
+      JSONObject manifest=new JSONObject().put("job",job).put("level",99).put("firstAdvanced",true).put("currentHp",MILLION).put("maxHp",MILLION).put("currentMp",MILLION).put("maxMp",MILLION).put("baseHp",s.rpg().baseMaxHp()).put("baseMp",s.rpg().baseMaxMp()).put("equipment",new JSONObject(gear)).put("gold",500).put("startMap",MineTownGeometry.ID).put("auto",false).put("skillTestMode",true).put("freeSkillMp",true).put("unallocatedStatPoints",s.rpg().statPoints()).put("baseStats",new JSONObject().put("STR",255).put("INT",255).put("WIS",255).put("CON",255).put("DEX",255)).put("equippedStats",new JSONObject().put("STR",s.rpg().finalStats().str).put("INT",s.rpg().finalStats().intel).put("WIS",s.rpg().finalStats().wis).put("CON",s.rpg().finalStats().con).put("DEX",s.rpg().finalStats().dex)).put("skillSlots",new JSONArray(Arrays.asList(skills(job)))).put("provenance","USER AUTHORIZED SYNTHETIC FILMING PROFILE: 99 promoted, all5 base stats255, postgear HP/MP each1000000. Gear stat modifiers remain normal; displayed totals may differ from255. Not naturally earned progression. Test-only exporter, no global balance/production endpoint/user-save changes. Canonical checkpoint then typed XML export/import and fresh GameView reload verified. Android installation verification separate.");
       try(FileWriter w=new FileWriter(new File(root,"provenance.json"))){w.write(manifest.toString(2));}
       f.shot(restored,"filming-"+job);
     }
