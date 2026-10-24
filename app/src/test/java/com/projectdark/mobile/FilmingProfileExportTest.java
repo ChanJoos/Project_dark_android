@@ -47,7 +47,7 @@ public class FilmingProfileExportTest {
     QuickItemBarV254 bar=f.field(v,"quickItems");
     String[] necklaces={StarterNecklacesV259.FIRE,StarterNecklacesV259.EARTH,StarterNecklacesV259.WIND,StarterNecklacesV259.WATER};
     for(int i=0;i<4;i++)assertTrue(bar.assign(i,StarterNecklacesV259.id(necklaces[i]),r));
-    assertTrue("real LIFE necklace remains available in sandbox",r.inventory().getOrDefault("USER_ITEM_20261018_R03547",0)>0);
+    assertTrue("real LIFE necklace remains available in sandbox",r.inventory().getOrDefault(RpgProgressionState.canonicalItemId("IT_SOURCE_197_HIKARINECK_CE1F9258"),0)>0);
     assertFalse((Boolean)f.field(v,"autoAttackEnabled"));assertTrue(F5mSaveStore.checkpointActive());return v;
   }
   void verify(GameView v,String job,Map<String,String> gear)throws Exception{
