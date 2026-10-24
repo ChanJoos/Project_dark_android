@@ -18,7 +18,7 @@ public final class CountessCastleGeometry {
   found=Collections.unmodifiableList(out);cache.put(id,found);return found;
  }
  public static WorldMoveTargetController.TileCenter near(String id,int u,int v){WorldMoveTargetController.TileCenter p=at(u,v),best=null;float score=Float.MAX_VALUE;for(WorldMoveTargetController.TileCenter t:tiles(id,true)){float d=(t.x-p.x)*(t.x-p.x)+(t.y-p.y)*(t.y-p.y);if(d<score){score=d;best=t;}}if(best==null)throw new IllegalStateException("Countess connected floor "+id);return best;}
- public static WorldMoveTargetController.TileCenter entry(String id){return EXTERIOR.equals(id)?near(id,25,43):LOBBY.equals(id)?near(id,12,20):near(id,6,21);}
+ public static WorldMoveTargetController.TileCenter entry(String id){return EXTERIOR.equals(id)?near(id,25,35):LOBBY.equals(id)?near(id,12,20):near(id,6,21);}
  public static boolean inside(String id,float x,float y){return CountessCastleData.grid(id).walkable(u(x,y),v(x,y));}
  public static List<RectF> obstacles(String id){return BLOCKS.computeIfAbsent(id,k->{List<RectF> a=new ArrayList<>();HorrorCastleOriginalData.Grid g=CountessCastleData.grid(id);for(int v=0;v<g.height;v++)for(int u=0;u<g.width;u++)if(!g.walkable(u,v))a.add(new RectF(x(u,v)-13,y(u,v)-6,x(u,v)+13,y(u,v)+6));return Collections.unmodifiableList(a);});}
  public static float minX(String id){return 2000-CountessCastleData.grid(id).height*32-64;}public static float maxX(String id){return 2000+CountessCastleData.grid(id).width*32+64;}public static float maxY(String id){HorrorCastleOriginalData.Grid g=CountessCastleData.grid(id);return 240+(g.width+g.height)*16;}

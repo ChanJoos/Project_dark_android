@@ -38,7 +38,7 @@ public final class RuntimeState {
 
   public static final class Npc {
     public final String id,name,dialogue,assetStatus;public final float x,y;
-    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||id.startsWith("campaign_altar_")?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
+    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||id.startsWith("campaign_altar_")||CountessCastleTravel.GUARD.equals(id)||CountessCastleTravel.ENVOY.equals(id)?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
   }
 
   public static final class Monster {
