@@ -8,11 +8,12 @@ import org.json.*;
 /** Explicit capture-only staging. Not compiled into debug/release. No combat rule overrides. */
 public final class CaptureMineEncounter {
   public static final int COUNT=15, ORIGIN_U=90, ORIGIN_V=42;
+  static final int[] ACTOR_ORDER={0,1,2,10,11,12,5,3,13,7,4,8,9,14,6};
   public static final String LABEL="촬영 전용 테스트 · 기존 몬스터 15마리";
   static Object field(Object o,String name)throws Exception{Field f=o.getClass().getDeclaredField(name);f.setAccessible(true);return f.get(o);}
   static RuntimeState state(GameView v)throws Exception{return (RuntimeState)field(v,"state");}
   public static WorldMoveTargetController.TileCenter player(){return MineHuntGeometry.at(ORIGIN_U+6,ORIGIN_V+4);}
-  public static WorldMoveTargetController.TileCenter position(int i){int row=i/5,col=i%5-2;return MineHuntGeometry.at(ORIGIN_U+2*row+col,ORIGIN_V+row-col);}
+  public static WorldMoveTargetController.TileCenter position(int i){int row=i/5,col=(i%5-2)*2;return MineHuntGeometry.at(ORIGIN_U+2*row+col,ORIGIN_V+row-col);}
   @SuppressWarnings("unchecked") public static JSONObject stage(GameView view)throws Exception{
     RuntimeState s=state(view);RpgProgressionState r=s.rpg();
     if(!"MAGE".equals(r.currentJobCode())||r.normalLevel()!=99||!r.firstAdvanced()||r.str()!=255||r.intel()!=255||r.wis()!=255||r.con()!=255||r.dex()!=255||s.player().hp!=1000000||s.player().mp!=1000000)
@@ -24,11 +25,11 @@ public final class CaptureMineEncounter {
     WorldMoveTargetController.TileCenter p=player();s.player().x=p.x;s.player().y=p.y;
     JSONArray actors=new JSONArray();
     for(int i=0;i<COUNT;i++){
-      RuntimeState.Monster old=ordinary.get(i);WorldMoveTargetController.TileCenter at=position(i);
+      RuntimeState.Monster old=ordinary.get(ACTOR_ORDER[i]);WorldMoveTargetController.TileCenter at=position(i);
       if(!MineHuntGeometry.inside(at.x,at.y)||s.blocked(at.x,at.y))throw new IllegalStateException("Blocked staged cell "+i);
       RuntimeState.Monster m=new RuntimeState.Monster(old.id,old.name,at.x,at.y,old.maxHp,old.assetStatus);
-      m.level=old.level;m.campaignRewardProfileId=old.campaignRewardProfileId;m.respawnSeconds=old.respawnSeconds;staged.add(m);
-      actors.put(new JSONObject().put("id",m.id).put("x",m.x).put("y",m.y).put("hp",m.hp).put("maxHp",m.maxHp).put("profile",m.campaignRewardProfileId));
+      m.attackElement=old.attackElement;m.defenseElement=old.defenseElement;m.mp=old.mp;m.maxMp=old.maxMp;m.level=old.level;m.campaignRewardProfileId=old.campaignRewardProfileId;m.respawnSeconds=old.respawnSeconds;staged.add(m);
+      actors.put(new JSONObject().put("id",m.id).put("x",m.x).put("y",m.y).put("alive",m.alive).put("hp",m.hp).put("maxHp",m.maxHp).put("profile",m.campaignRewardProfileId).put("attackElement",m.attackElement).put("defenseElement",m.defenseElement));
     }
     WorldRuntimeAdapter world=(WorldRuntimeAdapter)field(view,"poteFieldAdapter");world.cancel();world.snapCameraToPlayer();view.invalidate();
     return new JSONObject().put("label",LABEL).put("staged",true).put("count",COUNT).put("map",MineHuntGeometry.ID).put("playerX",p.x).put("playerY",p.y).put("monsters",actors).put("activation","Explicit capture-only activity; Start button resumes ordinary GameView simulation").put("rules","Existing species profiles, AI, collision, HP, status, damage, skills and respawn unchanged; only initial encounter list/positions staged. Not ordinary travel footage.");

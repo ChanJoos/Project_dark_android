@@ -15,7 +15,7 @@ public final class CaptureEncounterActivity extends Activity {
     setRequestedOrientation(ActivityInfo.SCREEN_ORIENTATION_SENSOR_LANDSCAPE);
     getWindow().setFlags(WindowManager.LayoutParams.FLAG_FULLSCREEN,WindowManager.LayoutParams.FLAG_FULLSCREEN);hide();
     try{
-      F5mSaveStore.install(this);game=new GameView(this,true);game.setSkillTestMode(true);
+      F5mSaveStore.install(this);game=new GameView(this,true);game.setSkillTestMode(true);game.setOnTouchListener((v,event)->!started);
       String report=CaptureMineEncounter.stage(game).toString(2);
       try(FileOutputStream out=openFileOutput("capture-encounter.json",MODE_PRIVATE)){out.write(report.getBytes(java.nio.charset.StandardCharsets.UTF_8));}
       FrameLayout frame=new FrameLayout(this);frame.addView(game,new FrameLayout.LayoutParams(-1,-1));
