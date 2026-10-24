@@ -1,3 +1,13 @@
+## V271 — 다섯 직업 동료·직업별 독립 AI 후보 완료 (2026-10-24 KST)
+
+전사·성직자·도적·마법사·무도가5종 동료를 기존1명동행 구조에 구현하고 직업마다 독립 에이전트를 연결했다. 시작즉시Lv99/직업별모든비폐기기술 테스트 유지; 플레이어 퀘스트·직업·경험치 불변. 전사 도발/블레이드/소울·실제조건크래셔, 성직자 회복·맞는해제·보호(수혈/저주제외), 도적 동료좌표표창/은신→기습/위험관리, 마법사 추가적수면/속성·범위·거리·MP판단, 무도가 자가해독·회복/보호후실제비용다라/근접연계. 공유Resolver·실제비용·계수 및 기존원본에셋 사용. 레거시2동료저장→5직업저장 원자적호환 포함. 이동서비스LEAP/ADVANCE의 동료전용 adapter는 미구현이므로 fail-closed/AI미선택; 모든기술지식과 모든유틸자동사용은 구분한다.
+
+최종 APK source `b6e9961bd1d17620be2b2b5c5eb0d6b6cee089d4`, Actions40076725337/job120821545789: **61feature/adjacent native tests PASS/0skip/0fail**, 두화면실제터치/5직업렌더/새3직업실제GameView행동/자원·상태·재시작/닫힌HUD영역검사포함. 초기e7b18af0도60PASS였으나 실제화면검토에서 새직업버튼3개가 관리창밖HUD에남는표시버그를발견해 미전달; 최종은draw3줄만삭제하고61건전부재검증/새화면확인했다.
+
+공유기반전체32gate는 e7b18af0/Actions40076146616/job120819844500 **32PASS/0skip/0fail**. 최종production/build/assets차이는 CompanionWindow의잘못된draw3줄삭제뿐임을exact-diffguard로확인하여 공유검증유효범위를재사용한다. 최종전체32를재실행했다고표기하지않는다. 최종scope40076728407 SUCCESS/검토한정확blobprofile의commoncompile의도적SKIP. V268폐기검사는그대로폐기. 최종main통합은별도.
+
+APK PROJECT_DARK_V271_COMPANION_TEST.apk/com.projectdark.mobile.v271test/106566274bytes/2026-10-24 17:09:22 KST/SHA256 `8a70d633abc8cd5b9aabd92753841024800cc72fdb00cd8337af879ea23c33ef`. embeddedsource/run·CRC·v2서명·1518trackedmainasset byte일치PASS, 저장완료 libfile_cec692c12148819180706a74eefed53d. 최종960/2340관리창·5직업월드·새3직업행동화면검토. exactAPK폰검증/사용자시각수용PENDING; 기존V266사용자수용유지. mainf86d961미변경/PR198 draft후보. 다음은V271실기기사냥피드백, 동일통과소스재빌드불필요. 계약design/COMPANION_AGENTS_V271.md · 영수증verification/COMPANION_AGENTS_V271.json.
+
 ## V271 — 다섯 직업 동료·직업별 독립 AI 구현 진행 (2026-10-24 KST)
 
 사용자 요청: 모든 직업 캐릭터 동료와 직업별 AI 에이전트. 같은 PR198/브랜치에서 전사·성직자·도적·마법사·무도가5종 선택 및 독립 에이전트를 구현했다. 기존1명동행/시작즉시Lv99·직업별모든기술 테스트 유지. 기존 전사·성직자 운용 보존; 도적은 은신기습/표창/위험관리, 마법사는 추가적수면/속성·범위/거리·자원판단, 무도가는 자가해독·치료/보호/실제조건다라/근접연계. 공유Resolver/원작비용·계수/원본에셋 사용. 이전2인저장→5직업저장 원자적마이그레이션 포함.

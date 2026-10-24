@@ -1,3 +1,7 @@
+## V271 companion stealth acceptance evidence
+
+Actor-specific targetHidden/Resolver begin-and-contact guard is host/native verified at b6e9961b, Actions40076725337 (61 current feature/adjacent tests including real monster retaliation). Shared full32gate run40076146616 on e7b18af0 is reused through exact three-line HUD-only final delta guard. Source monster art, movement/facing/attack cadence/population unchanged. User phone acceptance PENDING. Receipt verification/COMPANION_AGENTS_V271.json.
+
 ## V271 companion stealth targeting contract
 
 New rogue companion stealth uses its own actor ID in the existing monster targetHidden gate. Only attacks targeting that companion are cancelled by its hide; attacks on player/other actors retain their prior state. No monster source art, movement/facing/attack cadence/population changes. Companion and actual monster-retaliation regressions plus current full gates required. Phone acceptance pending. Contract design/COMPANION_AGENTS_V271.md.

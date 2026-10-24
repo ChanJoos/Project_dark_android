@@ -11,5 +11,14 @@
   "sourceSnapshotsChanged": false,
   "policyEvidence": "USER+PROJECT_ADAPTED",
   "contract": "design/COMPANION_AGENTS_V271.md",
-  "verification": "verification/COMPANION_AGENTS_V271.json"
+  "verification": "verification/COMPANION_AGENTS_V271.json",
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED_CANDIDATE",
+  "runtimeSourceCommit": "b6e9961bd1d17620be2b2b5c5eb0d6b6cee089d4",
+  "focusedRun": 40076725337,
+  "focusedPassed": 61,
+  "fullSharedRun": 40076146616,
+  "fullSharedPassed": 32,
+  "fullSharedReuse": "EXACT_THREE_LINE_HUD_ONLY_DELTA_GUARD",
+  "phoneAcceptance": "PENDING",
+  "mainMerged": false
 }

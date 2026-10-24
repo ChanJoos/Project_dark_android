@@ -24,3 +24,6 @@ Party snapshot2 stores five members; snapshot1 must contain exactly the legacy w
 
 ## Verification scope
 Changed: party/agent/controller/UI, companion hit/target/stealth gates, optional party save schema. Focused: all current companion tests plus real native five-job UI/entry/restart, shared spatial/timing and HUD/inventory adjacency. Full current32gate regression is required because party save migration and shared combat adapters changed; retired V268 groups remain retired. Host/native evidence is separate from user phone/visual acceptance. APK must retain exact source/run/signature/hash proof.
+
+## Candidate evidence
+Final APK source b6e9961b, Actions40076725337/job120821545789:61feature/adjacent checks PASS, native960/2340 management/world and real GameView actions reviewed. First sourcee7b18af0 full32active gates PASS (40076146616); exact final delta removes only three accidental HUD button draws and adds the native closed-window regression. All other production, build and source-art bytes match; reuse is scoped to unchanged shared runtime, not a claim that final32were rerun. Final exact reviewed scope40076728407 PASS. APK identity/signature/CRC/1518trackedassets independently verified; receipt verification/COMPANION_AGENTS_V271.json. New handset/user visual acceptance remains pending, PR198/main unmerged.

@@ -6,18 +6,140 @@
     "domainTests": 34,
     "failed": 0
   },
-  "android": "PENDING",
-  "fullCurrentRegression": {
-    "status": "32_PASS_REUSABLE_SHARED_RUNTIME",
-    "sourceCommit": "e7b18af0b6ceb8d14baa6d7ada4d259ff7f22356",
-    "runId": 40076146616,
-    "jobId": 120819844500,
-    "finalDelta": "HUD-only three accidental button draws removed; native closed-window ROI regression added; exact reviewed scope metadata updated",
-    "reuseGuard": "Final production diff from full-verified source must contain only CompanionWindow.java three draw removals; all other production/assets/build bytes equal"
+  "android": {
+    "status": "PASS",
+    "runId": 40076725337,
+    "jobId": 120821545789,
+    "passed": 61,
+    "failed": 0,
+    "skipped": 0,
+    "classes": {
+      "com.projectdark.mobile.CompanionControllerV269Test": [
+        "followerUsesAdjacentTileStepsAndWaitCommandStopsMovement",
+        "priestUsesHealOrDispelAndNeverAttacksOrCurses",
+        "noCombatBuffSpamInTown",
+        "priestDoesNotBreakPlayerCrashReservationAndRecoversAfterContact",
+        "warriorDoesNotWakeSleepingTargetWithBasicOrLowTierAttack"
+      ],
+      "com.projectdark.mobile.CompanionAgentsV271Test": [
+        "monkDispelsPoisonAndHealsSelfWithoutHealingPlayerOrChangingItsMp",
+        "mageAreaChoiceDoesNotWakeSleepingOrIdleBystanders",
+        "mageControlsAdditionalEnemyWithoutSleepingDamageTarget",
+        "mageSelectsAdvantageousElementAndPaysItsOwnMp",
+        "hiddenCompanionCannotBeHitAndItsInactiveEffectsSurviveSwitching",
+        "legacyTwoMemberSaveAndEffectsMigrateAtomicallyAndFiveJobsPersist",
+        "mageUsesAreaForSeveralControlledTargetsAndNoBlindAllMpDump",
+        "rogueActuallyHidesThenAmbushesWithoutResettingPlayersOtherEnemy",
+        "monkUsesDefenseBeforeResourceBurstAndReallyPaysDaraResources",
+        "fiveFullyLearnedProfessionsHaveDistinctAgentsAndCorrectStats",
+        "rogueAndMonkBasicTripleProducesThreeRealContacts",
+        "endangeredMageFreezesOwnAttackerBeforeSmallSelfHeal",
+        "shurikenUsesCompanionRayAndCannotPierceFirstMonster",
+        "allAgentsRespectWaitMenusDeadActorsAndSleepingReservation"
+      ],
+      "com.projectdark.mobile.CompanionAgentsNativeV271Test": [
+        "newProfessionsRestoreRealSaveWithoutRefillingOrCompletingQuests",
+        "allFiveJobsAreReachableThroughRealTouchAtBothScreenWidths",
+        "actualViewControllerDrivesEachNewProfessionIntoItsOwnActions",
+        "closedManagementDrawsOnlyWithinTheCompanionHud"
+      ],
+      "com.projectdark.mobile.CompanionWorldV269Test": [
+        "rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck"
+      ],
+      "com.projectdark.mobile.CompanionTestAccessV270Test": [
+        "restartAndSkillTestToggleKeep99CompanionWithoutRefillingResources",
+        "learnedTriplePassiveActuallyAddsThreeCompanionBasicHits",
+        "testRecruitmentWorksInFieldAndNormalGameStaysLocked",
+        "hudCanSelectPriestWithoutProgressAndShowsTestAccess",
+        "levelDependentHealingUsesCompanion99WhilePlayerStaysOne",
+        "realApkEntryStartsWith99CompanionBeforeAnyQuestOrJob"
+      ],
+      "com.projectdark.mobile.EquipmentHudV262Test": [
+        "wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+        "bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+        "necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+        "combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths"
+      ],
+      "com.projectdark.mobile.CompanionNativeV269Test": [
+        "selectedAllyReceivesActualQuickslotHealAndProtection",
+        "recruitSelectSupportAndPersistThroughRealHudInBothAspectRatios",
+        "managementOverlayConsumesTouchesAndRecoveryDoesNotChangePlayerResources"
+      ],
+      "com.projectdark.mobile.SkillTimingV174Test": [
+        "realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes"
+      ],
+      "com.projectdark.mobile.CompanionPartyV269Test": [
+        "priestCompanionHealsPlayerWithoutSpendingPlayerMp",
+        "startingCommonerHasNoImplicitPartyAndRecruitmentRequiresJob",
+        "allyHealConsumesCasterMpAndUsesRecipientHp",
+        "friendlyDamageAndEnemyHealingAreRejected",
+        "reservationProtectsSleepAndCrashButExpiresAndEndsOnContact",
+        "companionEffectsKeepDurationAndAreRestoredWithoutTouchingPlayer",
+        "companionCannotUseUnlearnedOrWrongJobSkills",
+        "playerSelfCenteredAttackStillUsesEnemyRecipients",
+        "partySnapshotPreservesHpMpDeathCooldownAndDoesNotHealOnRejoin",
+        "invalidSnapshotDoesNotPartiallyReplaceRoster",
+        "monsterAttackCanHitCompanionAndNotPlayer",
+        "crashConditionIsNotInventedByMadSoul",
+        "hiddenRogueCanStillReceiveFriendlyHealing",
+        "supportPoliciesAvoidFullHpHealingAndPriestCurse",
+        "warriorSoulUsesCompanionHpAndCostsCompanionHp"
+      ],
+      "com.projectdark.mobile.InventoryPolishV266Test": [
+        "allTenRecallsLoseOuterBlackRectangleAndKeepForegroundPixelsAndCachedIdentity",
+        "consumptionTabIncludesAllReagentsFoodAndRecallsWithoutAddingOwnership",
+        "everyNecklaceVisibleBoundsAreCenteredOnBothAxesAndActualEquipmentUsesSameProjection"
+      ],
+      "com.projectdark.mobile.SkillSpatialContractTest": [
+        "originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId",
+        "passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic",
+        "liveGameInputRendersDistinctFinisherAndSpellEffects",
+        "targetMovesWallsAndViewportAreRecheckedAtContact",
+        "actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass"
+      ]
+    },
+    "rendersReviewed": [
+      "five-job-management-960-and2340",
+      "world-five-jobs-960-and2340",
+      "three-new-agents-active",
+      "closed-HUD-no-buttons"
+    ]
   },
-  "apk": "PENDING",
-  "main": "NOT_MERGED",
-  "phone": "PENDING",
+  "fullCurrentRegression": {
+    "fullSource": "e7b18af0b6ceb8d14baa6d7ada4d259ff7f22356",
+    "finalSource": "b6e9961bd1d17620be2b2b5c5eb0d6b6cee089d4",
+    "fullRunId": 40076146616,
+    "fullJobId": 120819844500,
+    "activeGroups": 32,
+    "passed": 32,
+    "skipped": 0,
+    "failed": 0,
+    "productionDelta": [
+      "app/src/main/java/com/projectdark/mobile/CompanionWindow.java"
+    ],
+    "deltaGuard": "PASS_exact_three_accidental_HUD_draws_removed_only",
+    "allOtherProductionAssetsAndBuildBytes": "IDENTICAL",
+    "retiredV268Groups": "REMAIN_ABSENT",
+    "currentCandidateFocusedRun": 40076725337
+  },
+  "apk": {
+    "sourceCommit": "b6e9961bd1d17620be2b2b5c5eb0d6b6cee089d4",
+    "runId": 40076725337,
+    "jobId": 120821545789,
+    "name": "PROJECT_DARK_V271_COMPANION_TEST.apk",
+    "bytes": 106566274,
+    "sha256": "8a70d633abc8cd5b9aabd92753841024800cc72fdb00cd8337af879ea23c33ef",
+    "package": "com.projectdark.mobile.v271test",
+    "label": "PROJECT DARK V271 TEST",
+    "artifactId": 12553806312,
+    "buildCompletedKST": "2026-10-24 17:09:22",
+    "crc": "PASS",
+    "trackedAssetsByteExact": 1518,
+    "signature": "VERIFIED_APKSIG_8_7_3_V2",
+    "libraryFileId": "libfile_cec692c12148819180706a74eefed53d"
+  },
+  "main": "PR198_NOT_MERGED",
+  "phone": "PENDING_NEW_V271_ONLY",
   "firstLocalFindings": [
     "self-heal actor ID must be checked even at same position; fixed shared gate",
     "Dara original contact3seconds; test advances beyond real contact, production timing unchanged"
@@ -30,5 +152,18 @@
     "fullGroups": 32,
     "status": "PASS_BUT_VISUAL_REVIEW_FOUND_CLOSED_MENU_BUTTON_LEAK",
     "delivery": "NOT_DELIVERED"
+  },
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED_CANDIDATE",
+  "sourceCommit": "b6e9961bd1d17620be2b2b5c5eb0d6b6cee089d4",
+  "scopeCI": {
+    "runId": 40076728407,
+    "status": "SUCCESS_FULL_COMPILE_INTENTIONALLY_SKIPPED_EXACT_REVIEWED_BLOBS"
+  },
+  "transferRecovery": {
+    "artifactId": 12553806312,
+    "observedIncompleteBytes": 102760448,
+    "expectedBytes": 103845896,
+    "recovery": "Validated206Content-Range missing-tail append; complete artifact SHA256 and ZIP CRC PASS",
+    "rootCause": "UNKNOWN"
   }
 }
