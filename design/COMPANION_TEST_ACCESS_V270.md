@@ -10,4 +10,4 @@ A fresh test profile immediately starts with the warrior selected. Priest select
 
 Main package: normal flag=false. Test APK: com.projectdark.mobile.v270test / PROJECT DARK V270 TEST. The test flag can be removed when returning to normal progression; no original skill coefficients or source assets change.
 
-Validation scope: five new Android tests cover the real MainActivity cold start, all class skills, no-quest HUD selection, restart and player-test toggle independence, field access and triple passive; retain the previous37 companion/adjacent checks. No retired V268 tests are restored.
+Validation scope: six new Android tests cover the real MainActivity cold start, all class skills, no-quest HUD selection, restart and player-test toggle independence, field access triple passive and companion-level healing while the player stays Lv1; retain the previous37 companion/adjacent checks. No retired V268 tests are restored.

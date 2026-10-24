@@ -104,6 +104,7 @@ public final class CompanionParty {
     testing = true;
     for (Member m : roster.values()) {
       m.testAccess = true;
+      m.growth.restoreProgression(99, 0);
       if (m.level == 99) continue;
       float hp = m.body.hp / (float) m.body.maxHp,
           mp = m.body.mp / (float) Math.max(1, m.body.maxMp);

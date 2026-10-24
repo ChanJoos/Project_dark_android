@@ -53,8 +53,8 @@ public class CompanionTestAccessV270Test {
 
   @Test
   public void realApkEntryStartsWith99CompanionBeforeAnyQuestOrJob() throws Exception {
-    assertTrue(
-        "candidate APK has explicit temporary companion access", BuildConfig.COMPANION_TEST_ACCESS);
+    assertEquals(
+        BuildConfig.APPLICATION_ID.endsWith(".v270test"), BuildConfig.COMPANION_TEST_ACCESS);
     MainActivity a = Robolectric.buildActivity(MainActivity.class).create().get();
     assertFalse(h.field(a, "startupFailed"));
     GameView v = h.field(a, "game");
@@ -62,6 +62,10 @@ public class CompanionTestAccessV270Test {
     RuntimeState s = h.field(v, "state");
     assertEquals("COMMONER", s.rpg().currentJobCode());
     assertEquals(1, s.rpg().normalLevel().intValue());
+    if (!BuildConfig.COMPANION_TEST_ACCESS) {
+      assertNull(s.party().active());
+      return;
+    }
     assertNotNull(s.party().active());
     assertEquals(CompanionParty.Job.WARRIOR, s.party().active().job);
     for (CompanionParty.Job j : CompanionParty.Job.values()) allSkills(s.party().member(j));
@@ -133,5 +137,28 @@ public class CompanionTestAccessV270Test {
     assertTrue(m.learned("SK_전사_023"));
     assertTrue(s.party().recruit(s, CompanionParty.Job.PRIEST));
     assertTrue(s.party().active().learned("SK_성직자_056"));
+  }
+
+  @Test
+  public void levelDependentHealingUsesCompanion99WhilePlayerStaysOne() {
+    RuntimeState s = new RuntimeState();
+    s.party().enableTesting(s);
+    assertTrue(s.party().recruit(s, CompanionParty.Job.PRIEST));
+    CompanionParty.Member m = s.party().active();
+    assertEquals(99, m.growth.normalLevel().intValue());
+    m.body.x = s.player().x;
+    m.body.y = s.player().y;
+    m.body.hp = 1;
+    SkillAbilityCatalog.Ability a = SkillAbilityCatalog.get("SK_성직자_001");
+    int expected =
+        SkillAbilityCatalog.amount(
+            a,
+            new SkillAbilityCatalog.Snapshot(m.stats(), m.body.hp, m.body.mp, m.level, 100, false));
+    RuntimeCombatSession c =
+        new RuntimeCombatSession(s, (actor, target) -> true, (actor, id) -> true, actor -> true);
+    assertTrue(c.submitCompanion(m.id, a.id).accepted());
+    c.tick(.3f);
+    assertEquals(1 + expected, m.body.hp);
+    assertEquals(1, s.rpg().normalLevel().intValue());
   }
 }

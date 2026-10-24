@@ -4,6 +4,7 @@ import java.util.*;
 final class SkillAbilityExecutor {
  interface Movement {boolean movePlayer(float x,float y);boolean moveMonster(RuntimeState.Monster m,float x,float y);default boolean canLeapPlayer(float x,float y){return false;}default boolean leapPlayer(float x,float y){return false;}}
  final RuntimeState state;final SkillEffectState fx;final String actorId;
+ int actorLevel(){CompanionParty.Member m=state.party().find(actorId);return m==null?(state.rpg().normalLevel()==null?1:state.rpg().normalLevel()):m.level;}
  RuntimeState.Player actor(){return state.party().body(state,actorId);}
  FinalStats stats(){return state.party().stats(state,actorId);}
  int mpCost(String id,int base){return "player".equals(actorId)?ItemEffects.mpCost(state.rpg(),id,base):base;}
@@ -43,7 +44,7 @@ final class SkillAbilityExecutor {
   return null;
  }
  static int previewMp(SkillAbilityCatalog.Ability a,int current,boolean test){return test&&a!=null&&a.damage()&&!a.formula.equals("DARA")&&(a.resourceBurst()||a.formula.equals("METEOR")||a.formula.equals("HOLY_DRAGON"))?Math.max(50000,current):current;}
- void prepare(String actor,String id){if(!actor.equals(actorId))return;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null)return;FinalStats stats=stats().withEffects(fx,actorId);snapshots.put(id,new SkillAbilityCatalog.Snapshot(stats,actor().hp,previewMp(a,actor().mp,testMode),state.rpg().normalLevel()==null?1:state.rpg().normalLevel(),proficiency.applyAsInt(id),random.getAsDouble()<.25,mpCost(id,a.mpCost)));charged.remove(id);}
+ void prepare(String actor,String id){if(!actor.equals(actorId))return;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null)return;FinalStats stats=stats().withEffects(fx,actorId);snapshots.put(id,new SkillAbilityCatalog.Snapshot(stats,actor().hp,previewMp(a,actor().mp,testMode),actorLevel(),proficiency.applyAsInt(id),random.getAsDouble()<.25,mpCost(id,a.mpCost)));charged.remove(id);}
  void finish(String actor,String id){if(actor.equals(actorId)){
   if(MartialSourceV228.ADVANCE.equals(id)){if(charged.contains(id)&&advanceLanding!=null&&movement!=null&&movement.leapPlayer(advanceLanding[0],advanceLanding[1])&&advanceTarget!=null)completedAdvanceFacing=new float[]{advanceTarget[0]-actor().x,advanceTarget[1]-actor().y};advanceLanding=null;advanceTarget=null;}
   snapshots.remove(id);charged.remove(id);}}
