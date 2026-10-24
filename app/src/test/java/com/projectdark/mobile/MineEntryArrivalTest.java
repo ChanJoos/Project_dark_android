@@ -53,8 +53,9 @@ public class MineEntryArrivalTest {
    assertFalse("arrival must not auto-exit",(Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));
    WorldRuntimeAdapter w=f.field(v,"poteFieldAdapter");
    WorldMoveTargetController.TileCenter exit=MineHuntGeometry.exit();
-   assertTrue("one-step deliberate exit is reachable",CampaignNavigationTest.walk(w,w.requestGroundWorld(exit.x,exit.y)));
-   assertTrue((Boolean)f.call(v,"checkCampaignGate",new Class<?>[]{}));
+   f.shot(v,"mine-entry-safe-arrival-"+trip);
+   w.requestGroundWorld(exit.x,exit.y);
+   f.tick(v,30); // Production update advances both tile movement and presentation before gate detection.
    assertEquals(MineTownGeometry.ID,s.currentMapId());
   }
  }
