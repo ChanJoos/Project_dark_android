@@ -26,17 +26,30 @@ public class RequestedOutfitPreviewTest {
   }
   GameView outfit(boolean mage)throws Exception{
     GameView v=f.town();RuntimeState s=f.field(v,"state");RpgProgressionState r=s.rpg();
-    r.restoreProgression(99,0);assertTrue(r.restoreJobCode(mage?"MAGE":"ROGUE"));
+    assertEquals(1,r.normalLevel().intValue());
+    // Reproducible test-only XP awards execute the normal level-growth code, never a base HP override.
+    r.restoreGrowthRandomState(20261024L);
+    while(r.normalLevel()<3)r.grantAdaptedReward(LevelExpCurve.requiredForNext(r.normalLevel()),0);
+    assertTrue(r.chooseInitialJob(mage?"MAGE":"ROGUE"));
+    while(r.normalLevel()<99)r.grantAdaptedReward(LevelExpCurve.requiredForNext(r.normalLevel()),0);
+    assertEquals(196,r.statPoints()); // Unallocated conservative test character, not an optimized build.
+    assertTrue(r.baseMaxHp()>=4510&&r.baseMaxHp()<=5490);
+    assertTrue(r.baseMaxMp()>=4510&&r.baseMaxMp()<=5490);
     r.enableEquipmentSandbox(true);
     for(String slot:new ArrayList<>(r.equipment().keySet()))r.unequip(slot);
     String[] ids=mage?new String[]{"USER_ITEM_20261018_R01714","USER_ITEM_20261018_R01712",RequestedWeaponSourceFacts.ROO_GRACE}:
-      new String[]{"USER_ITEM_20261018_R01486",RequestedWeaponSourceFacts.SHINWOLDO,"IT_SHIELD_KNIGHT"};
-    String[] art=mage?new String[]{"mu0000372","mh391","mw078"}:new String[]{"mu0000037","mw103","ms008"};
+      new String[]{"USER_ITEM_20261018_R01486","USER_ITEM_20261018_R01485",RequestedWeaponSourceFacts.SHINWOLDO,"IT_SHIELD_KNIGHT"};
+    String[] art=mage?new String[]{"mu0000372","mh391","mw078"}:new String[]{"mu0000037","mh128","mw103","ms008"};
     for(int i=0;i<ids.length;i++){
       assertEquals(ids[i],art[i],r.itemDefinitions().get(ids[i]).appearanceId);
       assertEquals(ids[i],RpgProgressionState.EquipResult.EQUIPPED,r.equip(ids[i]));
       assertEquals(ids[i],r.equippedDefinition(r.itemDefinitions().get(ids[i]).equipSlot).itemId);
     }
+    s.applyDerivedGrowth();
+    assertEquals(r.finalStats().maxHp,s.player().maxHp);
+    assertEquals(r.finalStats().maxMp,s.player().maxMp);
+    // Preview starts rested at derived maxima; no save file or global balance is changed.
+    s.player().hp=s.player().maxHp;s.player().mp=s.player().maxMp;
     // Use the actual mine manager travel card, including the candidate's arrival policy.
     r.restoreGold(100); // Fixture funds the existing travel fee, not combat stats.
     f.approach(v,"mine_town_travel");RectF card=TownTravelWindow.cardFor(MineTownGeometry.ID,MineHuntGeometry.ID);
@@ -62,6 +75,8 @@ public class RequestedOutfitPreviewTest {
   @Test public void genuineJobsRenderRequestedOutfitsInventoryAndActionSamples()throws Exception{
     for(boolean mage:new boolean[]{false,true}){
       f.reset();GameView v=outfit(mage);String prefix=mage?"mage":"rogue";
+      RuntimeState state=f.field(v,"state");
+      writeResources(state,prefix);
       screen(v,prefix+"-mine-arrival");
       ItemWindowReferenceTest.tap(v,742,28);
       assertTrue((Boolean)f.field(v,"equipmentOpen"));assertTrue((Boolean)f.field(v,"inventoryOpen"));
@@ -86,6 +101,30 @@ public class RequestedOutfitPreviewTest {
       }
       save(sheet,prefix+"-native-action-samples");
       assertEquals(mage?"MAGE":"ROGUE",((RuntimeState)f.field(v,"state")).rpg().currentJobCode());
+    }
+  }
+  void writeResources(RuntimeState state,String prefix)throws Exception{
+    RpgProgressionState r=state.rpg();
+    org.json.JSONObject data=new org.json.JSONObject().put("job",r.currentJobCode()).put("level",r.normalLevel())
+      .put("baseHp",r.baseMaxHp()).put("baseMp",r.baseMaxMp()).put("hp",state.player().hp).put("mp",state.player().mp)
+      .put("maxHp",state.player().maxHp).put("maxMp",state.player().maxMp).put("unspentPoints",r.statPoints())
+      .put("equipment",new org.json.JSONObject(r.equipment())).put("setup","Test-only normal XP growth, seed20261024; unallocated stats; exact equipment sandbox; rested. Not a player save or recorded gameplay.");
+    File target=new File("build/reports/horror-v179/requested-outfits/"+prefix+"-resources.json");target.getParentFile().mkdirs();
+    try(FileWriter writer=new FileWriter(target)){writer.write(data.toString(2));}
+  }
+  @Test public void grownCharactersRetainResourcesAndSurviveTenStrongestPhysicalBudgetHits()throws Exception{
+    for(boolean mage:new boolean[]{false,true}){
+      f.reset();GameView v=outfit(mage);RuntimeState s=f.field(v,"state");
+      int worst=0;for(AbelCombatProfile p:MineHuntMonsters.all()){
+        int hit=CombatStatPipeline.resolve(p.damage,CombatStatPipeline.Channel.PHYSICAL,p.stats(),s.rpg().finalStats()).applied;
+        worst=Math.max(worst,hit);
+      }
+      assertTrue(worst>0);int start=s.player().hp;
+      // Budget check through real defense and HP debit, not an AI/combat-timing acceptance test.
+      for(int n=0;n<10;n++)s.damagePlayer(worst);
+      assertTrue("ten strongest physical hits remain survivable",s.player().alive);
+      assertEquals(start-worst*10,s.player().hp);
+      assertEquals(s.player().maxMp,s.player().mp);
     }
   }
   @Test public void sparseShinwoldoSourceRemainsSparseWithoutFabricatedFrame(){
