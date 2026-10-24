@@ -1,0 +1,189 @@
+{
+  "revision": "V273",
+  "status": "IMPLEMENTED_BUILD_AND_SCOPED_NATIVE_VERIFIED_CANDIDATE",
+  "sourceCommit": "4e4229ad2b4e5fa3c7ab17151290cb909f8a8e86",
+  "branch": "codex/companion-party-v269",
+  "pr": 198,
+  "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
+  "android": {
+    "runId": 40101784352,
+    "jobId": 120895267977,
+    "status": "PASS",
+    "passed": 89,
+    "failed": 0,
+    "skipped": 0,
+    "classes": {
+      "com.projectdark.mobile.CompanionControllerV269Test": [
+        "followerUsesAdjacentTileStepsAndWaitCommandStopsMovement",
+        "priestUsesHealOrDispelAndNeverAttacksOrCurses",
+        "noCombatBuffSpamInTown",
+        "priestDoesNotBreakPlayerCrashReservationAndRecoversAfterContact",
+        "warriorDoesNotWakeSleepingTargetWithBasicOrLowTierAttack"
+      ],
+      "com.projectdark.mobile.CompanionAgentsV271Test": [
+        "monkDispelsPoisonAndHealsSelfWithoutHealingPlayerOrChangingItsMp",
+        "mageAreaChoiceDoesNotWakeSleepingOrIdleBystanders",
+        "mageControlsAdditionalEnemyWithoutSleepingDamageTarget",
+        "mageSelectsAdvantageousElementAndPaysItsOwnMp",
+        "hiddenCompanionCannotBeHitAndItsInactiveEffectsSurviveSwitching",
+        "legacyTwoMemberSaveAndEffectsMigrateAtomicallyAndFiveJobsPersist",
+        "mageUsesAreaForSeveralControlledTargetsAndNoBlindAllMpDump",
+        "rogueActuallyHidesThenAmbushesWithoutResettingPlayersOtherEnemy",
+        "monkUsesDefenseBeforeResourceBurstAndReallyPaysDaraResources",
+        "fiveFullyLearnedProfessionsHaveDistinctAgentsAndCorrectStats",
+        "rogueAndMonkBasicTripleProducesThreeRealContacts",
+        "endangeredMageFreezesOwnAttackerBeforeSmallSelfHeal",
+        "shurikenUsesCompanionRayAndCannotPierceFirstMonster",
+        "allAgentsRespectWaitMenusDeadActorsAndSleepingReservation"
+      ],
+      "com.projectdark.mobile.CompanionAgentsNativeV271Test": [
+        "newProfessionsRestoreRealSaveWithoutRefillingOrCompletingQuests",
+        "allFiveJobsAreReachableThroughRealTouchAtBothScreenWidths",
+        "actualViewControllerDrivesEachNewProfessionIntoItsOwnActions",
+        "closedManagementDrawsOnlyWithinTheCompanionHud"
+      ],
+      "com.projectdark.mobile.CountessCastleV273Test": [
+        "onlyCorrectNpcAtCorrectMapCanAdmitAndGuardIsActuallyCreated",
+        "narcoliDispelAndSilenceUseSharedResolutionForPlayerAndCompanion",
+        "actualMonsterAiSubmitsNarcoliThroughResolverWithRealManaAndStatus",
+        "bossCannotRespawnEarlyRevivesOnceAndBothLivesPersistAcrossMapsAndSnapshot",
+        "gateLatchRequiresLeavingArrivalAndEveryRouteCanReturn",
+        "dianaSummonsTheSourceBombOnceAndCannotSummonAfterDeath",
+        "mapSwitchRetainsKillsDamageAndDoesNotMintRewardsTwice",
+        "allOriginalMapsHaveConnectedSafeSpawnsDistinctGatesAndNativeRosters"
+      ],
+      "com.projectdark.mobile.CompanionWorldV269Test": [
+        "rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck"
+      ],
+      "com.projectdark.mobile.CompanionEquipmentV272Test": [
+        "weaponDamageAndStaffCostsUseCompanionEquipmentOnly",
+        "playerNecklaceTestBypassDoesNotBypassCompanionLevel",
+        "gearChangeCannotResurrectOrHealAndRemovedMaximumClampsOnlyOwner",
+        "ownProfessionAndLevelAreEnforcedEvenWithPlayerSandboxEnabled",
+        "legacySnapshotMigratesAndInvalidEquipmentNeverPartiallyRestores",
+        "failedCheckpointRollsBackOwnershipStatsAndLiveOrdersWithoutRefilling",
+        "cannotBorrowPlayerWornCopyOrDuplicateOneCopyAcrossCompanions",
+        "changedWeaponActuallyChangesSharedResolverDamageOnlyForItsOwner",
+        "equipmentChangesCompanionStatsAndVisualBindingWithoutPlayerChanges",
+        "ringHandsConserveCopiesAndUnequipReturnsTheExactCopy",
+        "eachJobStoresItsOwnEquipmentAndRestoresWithHpMpAndCooldowns"
+      ],
+      "com.projectdark.mobile.CompanionTestAccessV270Test": [
+        "restartAndSkillTestToggleKeep99CompanionWithoutRefillingResources",
+        "learnedTriplePassiveActuallyAddsThreeCompanionBasicHits",
+        "testRecruitmentWorksInFieldAndNormalGameStaysLocked",
+        "hudCanSelectPriestWithoutProgressAndShowsTestAccess",
+        "levelDependentHealingUsesCompanion99WhilePlayerStaysOne",
+        "realApkEntryStartsWith99CompanionBeforeAnyQuestOrJob"
+      ],
+      "com.projectdark.mobile.CompanionEquipmentNativeV272Test": [
+        "fiveJobTabsEditInactiveMembersAndActualRestartKeepsEquipment",
+        "realHudOpensOwnEquipmentAndAppliesGearAtBothWidths",
+        "equippedArmorKeepsOriginalActionLayersInAllFourDirections",
+        "unknownAndWrongJobItemsFailClosedAndFemaleGearUsesSourceBody"
+      ],
+      "com.projectdark.mobile.EquipmentHudV262Test": [
+        "wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+        "bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+        "necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+        "combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths"
+      ],
+      "com.projectdark.mobile.CompanionNativeV269Test": [
+        "selectedAllyReceivesActualQuickslotHealAndProtection",
+        "recruitSelectSupportAndPersistThroughRealHudInBothAspectRatios",
+        "managementOverlayConsumesTouchesAndRecoveryDoesNotChangePlayerResources"
+      ],
+      "com.projectdark.mobile.SkillTimingV174Test": [
+        "realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes"
+      ],
+      "com.projectdark.mobile.CompanionPartyV269Test": [
+        "priestCompanionHealsPlayerWithoutSpendingPlayerMp",
+        "startingCommonerHasNoImplicitPartyAndRecruitmentRequiresJob",
+        "allyHealConsumesCasterMpAndUsesRecipientHp",
+        "friendlyDamageAndEnemyHealingAreRejected",
+        "reservationProtectsSleepAndCrashButExpiresAndEndsOnContact",
+        "companionEffectsKeepDurationAndAreRestoredWithoutTouchingPlayer",
+        "companionCannotUseUnlearnedOrWrongJobSkills",
+        "playerSelfCenteredAttackStillUsesEnemyRecipients",
+        "partySnapshotPreservesHpMpDeathCooldownAndDoesNotHealOnRejoin",
+        "invalidSnapshotDoesNotPartiallyReplaceRoster",
+        "monsterAttackCanHitCompanionAndNotPlayer",
+        "crashConditionIsNotInventedByMadSoul",
+        "hiddenRogueCanStillReceiveFriendlyHealing",
+        "supportPoliciesAvoidFullHpHealingAndPriestCurse",
+        "warriorSoulUsesCompanionHpAndCostsCompanionHp"
+      ],
+      "com.projectdark.mobile.InventoryPolishV266Test": [
+        "allTenRecallsLoseOuterBlackRectangleAndKeepForegroundPixelsAndCachedIdentity",
+        "consumptionTabIncludesAllReagentsFoodAndRecallsWithoutAddingOwnership",
+        "everyNecklaceVisibleBoundsAreCenteredOnBothAxesAndActualEquipmentUsesSameProjection"
+      ],
+      "com.projectdark.mobile.SkillSpatialContractTest": [
+        "originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId",
+        "passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic",
+        "liveGameInputRendersDistinctFinisherAndSpellEffects",
+        "targetMovesWallsAndViewportAreRecheckedAtContact",
+        "actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass"
+      ],
+      "com.projectdark.mobile.CountessCastleNativeV273Test": [
+        "allSixteenScenesRenderNativeArtAndHaveReachableLiveWorldPortalsInBothAspectRatios",
+        "twelveRoundTripsRetainCurrentMapCacheBudgetsAndDoNotHealSavedEnemies",
+        "allFourteenNativeSpeciesHaveFourDirectionsAndCompleteIdleWalkAttackWithExactVariantAlpha",
+        "realGuardCancelConfirmAndExteriorEnvoyReachLobbyAndRestart",
+        "bossFirstDeathSecondLifeAndFinalDeathSurviveActualSaveRestartWithoutExtraRewards"
+      ]
+    },
+    "artifactId": 12563121609,
+    "artifactZipSha256": "27d4abcaf234367ffbcf24b88ed5120d8bd0cb6df7a3c6628defb428871b064d"
+  },
+  "originalSources": {
+    "maps": 16,
+    "mpfs": 14,
+    "exactNativeFrames": 215,
+    "generatedPngs": 318,
+    "sourceMapByteArrays": "PASS",
+    "sourceFrameRGBAEquality": "PASS"
+  },
+  "apk": {
+    "name": "PROJECT_DARK_V273_COUNTESS_TEST.apk",
+    "bytes": 107889383,
+    "sha256": "3451adae1b6843776a2bf3e823277c67dd77ceea68ad6384464a4dff8a8d4be5",
+    "sourceCommit": "4e4229ad2b4e5fa3c7ab17151290cb909f8a8e86",
+    "runId": 40101784352,
+    "package": "com.projectdark.mobile.v273test",
+    "label": "PROJECT DARK V273 TEST",
+    "buildCompletedKST": "2026-10-24T23:21:04+09:00",
+    "signature": "APK_SIGNATURE_VERIFIED v2=true certificates=1",
+    "crc": "PASS",
+    "trackedMainAssetsByteExact": 1518,
+    "CountessAssetsByteExact": 318,
+    "artifactId": 12563326178,
+    "artifactZipSha256": "fb7cbd635264b9ad23e41e7761ff5579746265dbe048ce5b85b84d70420f7989"
+  },
+  "fullCurrentRegression": {
+    "status": "PASS",
+    "sourceCommit": "4e4229ad2b4e5fa3c7ab17151290cb909f8a8e86",
+    "runId": 40101787130,
+    "jobId": 120895330796,
+    "activeGateGroups": 32,
+    "passed": 32,
+    "failed": 0,
+    "skipped": 0
+  },
+  "visualReview": "HOST_RENDER_REVIEWED_GUARD_NAMES_COURTYARD_LOBBY_ALL_ZONES_OVERVIEWS_FOUR_DIRECTION_ATTACKS",
+  "phone": "PENDING",
+  "unresolved": [
+    "Original server stats/spawn/timing/reward IDs; explicit ADAPTED test values",
+    "Exact Korean boss name-to-MPF joins remain provisional",
+    "Physical phone performance and user visual acceptance"
+  ],
+  "apkDelivery": {
+    "status": "SAVED",
+    "localPath": "/workspace/scratch/8027a5936a32/PROJECT_DARK_V273_COUNTESS_TEST.apk",
+    "library_file_id": "libfile_e0f647bfcde8819194b330696962a7dd",
+    "file_id": "file_000000009cdc81f5b903cc8d3b2b00b7",
+    "file_name": "PROJECT_DARK_V273_COUNTESS_TEST(1).apk",
+    "local_metadata_applied": true,
+    "existingIdenticalPublishedCopy": "libfile_3d67099305408191bd1b1c2e249985c6"
+  }
+}

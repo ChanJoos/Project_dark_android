@@ -1,0 +1,28 @@
+{
+  "revision": "V273",
+  "status": "ACCEPTED_FOR_EXPLICIT_ADAPTED_CANDIDATE",
+  "sourceCommit": "4e4229ad2b4e5fa3c7ab17151290cb909f8a8e86",
+  "producer": "Retained original maps2899/2900/2901/2934/26301..26312 and14native MPFs, pinned sources.json",
+  "contract": "design/COUNTESS_CASTLE_V273.md",
+  "consumer": [
+    "CountessCastleData",
+    "CountessCastleGeometry",
+    "CountessCastleRenderer",
+    "CountessCastleMonsters",
+    "CountessCastleRun",
+    "shared Resolver/AI/F5mSaveStore"
+  ],
+  "before": "No Countess runtime; source-analysis checkpoint only",
+  "after": "NPC admission; original layered16maps;14source species/215frames;12zone progression and separate upper boss; shared combat/status/party and persistent encounter",
+  "sourceEvidence": [
+    "master/source/countess_v273/reference.json",
+    "master/source/countess_v273/sources.json"
+  ],
+  "validation": "verification/COUNTESS_CASTLE_V273.json",
+  "canonicalServerFactsUnchanged": true,
+  "unresolved": [
+    "Original server stats/spawn/timing/reward IDs; explicit ADAPTED test values",
+    "Exact Korean boss name-to-MPF joins remain provisional",
+    "Physical phone performance and user visual acceptance"
+  ]
+}

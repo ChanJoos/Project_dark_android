@@ -1,3 +1,7 @@
+## V273 — 검증된 성 후보와 정확한 APK 전달 (2026-10-24 23:21 KST)
+
+원본16맵/14종215frame, 경비병→전령→로비/12존/상층보스, 공유전투·상태/보스2생명/소환/저장 구현 후보. Source4e4229ad, focused40101784352/job120895267977의89검사0failure/0error/0skip, full40101787130/job120895330796의현행32gate전부PASS. 실제 두화면/전체미니맵/14종공격/경비병원래이름/앞마당시작 화면검토. APK107889383bytes/2026-10-24 23:21:04KST/SHA2563451adae1b6843776a2bf3e823277c67dd77ceea68ad6384464a4dff8a8d4be5, artifact12563326178. 독립v2서명/CRC/embeddedsource+run/1518mainasset+318CountessPNG정확일치PASS. Source/통과APK를후속문서HEAD로재라벨금지. PR198미통합/mainf86d961e유지. 원작서버수치·스폰·시간·일부보스한국명↔MPF·아이템드랍은미확정또는명시ADAPTED, 새폰/시각수용PENDING. 영수증verification/COUNTESS_CASTLE_V273.json. 다음은동일소스재빌드가아닌기기피드백.
+
 ## V273 — 백작부인의성 런타임 후보 / Android 검증 대기 (2026-10-24 KST)
 
 기존 PR198/브랜치 유지, mainf86d961e 미변경. 두 번째140.317056초 영상 및 원본클라이언트 복구 완료. 원본16맵(2899/2900/2901/2934/26301~26312),14 MPF fullframe/팔레트/pivot 보존. 경비병→외부전령→응접실/1~12존/상층결계, 원본Tile/Object/Collision/Spawn/Portal 분리, 공유Resolver 나르콜리·디스펠·침묵/동료, 지역 HP/사망저장, 보스 두 생명 및 테스트 다이애나 폭탄1회 소환 구현. HP/MP/EXP/스폰/시간/연결좌표는 명시ADAPTED; 보스한국명↔MPF 정체/원작드랍·서버수치·폰수용은 미확정. 로컬 production compile/도메인8건 PASS; Android/native/새APK는PENDING. 기존V272검증은 기존범위에서보존하며 새후보통과로 재라벨금지. 다음: exact GitHub 후보→성전용+직접인접 CI→실제화면검토→APK source/run/hash 검증. 계약design/COUNTESS_CASTLE_V273.md.

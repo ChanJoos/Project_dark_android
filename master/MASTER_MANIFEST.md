@@ -1,3 +1,7 @@
+## V273 — 원본 별장 자료·테스트 런타임 후보 검증 (2026-10-24 KST)
+
+원본16map cell/SOTP와14 MPF215frame/palette/pivot를 master/source/countess_v273에 보존하고 별도 런타임 투영에 연결했다. 기존 canonical CSV를 수정하지 않는다. 미확인 서버수치/스폰/연결좌표/일부보스정체/드랍은 명시ADAPTED/PENDING으로 유지한다. Source4e4229ad:89scoped Android/32현재fullgate PASS, v2서명/CRC/source/run/1518main+318CountessPNG byte PASS. 변경 master/changes/V273_COUNTESS_CASTLE.json, 영수증verification/COUNTESS_CASTLE_V273.json. main미통합/phone미수용.
+
 ## V270 — 퀘스트와 분리한 시작 즉시 Lv99 동료 테스트 (2026-10-24 KST)
 
 사용자 요청: “처음부터 임시적으로 레벨99 모든기술을배운동료”. side-by-side 테스트 APK 진입에서 퀘스트/전직/플레이어Lv와 별개로 전사동료가 자동 동행하고 성직자로 즉시 변경된다. 두 동료는 Lv99/해당직업 모든 비폐기 기술 습득(상위써클 포함); 수혈·성직자 저주는 AI 기본운용에 넣지 않는다. 플레이어 스킬 테스트를 꺼도 동료 테스트는 유지. 레벨 의존 기술 계산도 동료 자신의99 사용. 전사 상위주력기/트리플 패시브와 성직자 상위버프 연결. 플레이어Lv/직업/EXP/퀘스트/습득정보는 건드리지 않으며 재시작 시 기존 동료 HP/MP/전투불능/쿨타임을 보존한다. 테스트에서 필드 선택/회복도 가능; 전투중/사망/동작중 제한은 유지. 일반빌드는 임시flag=false로 기존 성장규칙 유지.

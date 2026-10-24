@@ -1,6 +1,6 @@
 {
   "revision": "V273_COUNTESS_SOURCE_INTAKE",
-  "status": "RUNTIME_CANDIDATE_IMPLEMENTED_LOCAL_COMPILE_AND_DOMAIN_PASS_ANDROID_PENDING",
+  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_CANDIDATE",
   "base": "108b0f3bfc6d965e1e1b92d6d96ffd28b60d0b93",
   "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
   "sources": [
@@ -139,7 +139,6 @@
     }
   ],
   "pending": [
-    "Android/native UI source render and save/restart exact SHA checks",
     "Korean name-to-boss MPF joins remain provisional;14 source species retained",
     "Native server HP/MP/EXP/skills/timing/counts/reward IDs remain unverified; explicit ADAPTED test tuning",
     "Full source-gate topology beyond observed video sequence; mobile connective gates/arrivals ADAPTED",
@@ -159,13 +158,14 @@
     "Persistent regional HP/deaths, one boss second life, one Diana bomb summon",
     "Original atlas pivots/4directions/current-map prewarm/32floorLRU"
   ],
-  "build": "LOCAL_PRODUCTION_COMPILE_PASS_ANDROID_CI_PENDING",
-  "nextAction": "Publish exact candidate branch; run Countess Android/native and adjacent checks; inspect real screenshots; verify exact APK before delivery.",
+  "build": "PASS_SOURCE_4e4229ad_ACTIONS_40101784352",
+  "nextAction": "Deliver exact verified candidate; collect physical handset feedback. Do not rebuild unchanged validated source. Unverified original server and Korean boss identity facts remain explicit.",
   "resumeCheckpoint": {
     "base": "e111ed582afac9e7b67cb3335ddb8b7fef757f90",
     "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
     "runtime": "NOT_IMPLEMENTED",
     "sourceRecovery": "Original client and full map archive recovered with hashes matching retained V180 source receipts; do not download them again. Installer needs its actual installer-format extraction, 7zip direct-open failed.",
     "nextAction": "Extract client archives; identify zone maps and monster MPFs against both recovered videos; then implement authorized guard/exterior/lobby/12-zone/boss path. No reattachment needed."
-  }
+  },
+  "verification": "verification/COUNTESS_CASTLE_V273.json"
 }
