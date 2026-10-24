@@ -13,10 +13,14 @@ for variant, expected in [('captureSoftware', 'false'), ('debug', None)]:
         activity = next(a for a in app.findall('activity') if a.get(ANDROID+'name').endswith('.MainActivity'))
         assert activity.get(ANDROID+'hardwareAccelerated') == expected, (variant, file)
         assert app.get(ANDROID+'hardwareAccelerated') is None, (variant, 'application override')
+        encounter = [a for a in app.findall('activity') if a.get(ANDROID+'name').endswith('.CaptureEncounterActivity')]
         if variant == 'captureSoftware':
+            assert len(encounter) == 1 and encounter[0].get(ANDROID+'hardwareAccelerated') == 'false'
+            assert not encounter[0].findall('intent-filter')
             assert root.get('package') == 'com.projectdark.mobile.v266test.canvas'
             assert app.get(ANDROID+'label') == 'PROJECT DARK CANVAS PILOT'
         else:
+            assert not encounter, 'Capture activity leaked into normal debug'
             assert root.get('package') == 'com.projectdark.mobile.v266test'
             assert app.get(ANDROID+'label') == 'PROJECT DARK V266 TEST'
         print(f'{variant}: {file}: hardwareAccelerated={expected}; package={root.get("package")}')

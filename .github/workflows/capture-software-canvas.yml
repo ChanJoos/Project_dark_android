@@ -1,7 +1,7 @@
 name: Software Canvas capture pilot
 on:
   push:
-    branches: [dot/capture-software-canvas]
+    branches: [dot/capture-software-canvas, dot/capture-mine-fifteen]
   workflow_dispatch:
 permissions:
   contents: read
@@ -35,6 +35,7 @@ jobs:
           --tests '*RequestedWeaponLoadoutTest'
           --tests '*RequestedOutfitPreviewTest'
           --tests '*FilmingProfileExportTest'
+          --tests '*CaptureMineEncounterTest'
           --stacktrace
       - name: Build exact candidate
         run: |
