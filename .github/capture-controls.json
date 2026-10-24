@@ -1,29 +1,9 @@
 {
-  "stage": 16,
+  "stage": 17,
   "commands": [
     {
-      "op": "tap",
-      "x": 1470,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 3
-    },
-    {
       "op": "snapshot"
-    },
-    {
-      "op": "swipe",
-      "x": 220,
-      "y": 748,
-      "x2": 120,
-      "y2": 748,
-      "ms": 1500
-    },
-    {
-      "op": "wait",
-      "seconds": 2
     }
-  ]
+  ],
+  "finish": true
 }
