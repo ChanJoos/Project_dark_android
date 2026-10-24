@@ -50,8 +50,10 @@ public class RogueAmnesiaV236Test {
  @Test public void resolverFeedbackDoublesAfterDefenseAndOnlyAffectedMonsterThenDefeatExactlyOnce()throws Exception{
   RuntimeState s=h.state();RuntimeState.Monster m=h.add(s,"front",64,32),other=h.add(s,"other",-32,-16);RuntimeCombatSession c=h.session(s,CharacterRenderer.Direction.SE);assertTrue(c.submitFacingRogueRay(id).accepted());c.tick(.2f);
   RuntimeCombatPortAdapter p=h.h.field(c,"port");p.abilities.random=()->.99;String attack=RuntimeCombatSession.playerAttackActionId(AnimationAction.THRUST);int raw=s.rpg().finalStats().prototypePhysicalAttack();
-  CombatResolver.EffectResult r=p.applyDamage("player",m.id,attack,raw);assertEquals(raw*2,r.appliedAmount);assertEquals(raw*2,m.maxHp-m.hp);assertEquals(raw*2,m.lastDamage);
-  assertEquals(raw,p.applyDamage("player",other.id,attack,raw).appliedAmount);assertTrue(s.skillEffects().has(m.id,"AMNESIA"));
+  // Current combat resolves defense before the Amnesia multiplier; compare identical untreated stats.
+  int normal=p.applyDamage("player",other.id,attack,raw).appliedAmount;assertTrue(normal>0);assertTrue("fixture exercises defense",normal<raw);assertEquals(normal,other.maxHp-other.hp);
+  CombatResolver.EffectResult r=p.applyDamage("player",m.id,attack,raw);assertEquals(normal*2,r.appliedAmount);assertEquals(normal*2,m.maxHp-m.hp);assertEquals(normal*2,m.lastDamage);
+  assertTrue(s.skillEffects().has(m.id,"AMNESIA"));assertFalse(s.skillEffects().has(other.id,"AMNESIA"));
   m.hp=1;p.applyDamage("player",m.id,attack,raw);p.applyDamage("player",m.id,attack,raw);assertEquals(1,s.ledger().snapshot().stream().filter(e->e.type==CombatLedger.Type.MONSTER_DEFEATED&&e.targetId.equals(m.id)).count());s.tick(.01f);assertFalse(s.skillEffects().has(m.id,"AMNESIA"));
  }
  @Test public void mageConfusionUsesSamePassiveDoubleDamageWindow()throws Exception{
