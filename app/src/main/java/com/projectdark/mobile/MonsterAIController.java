@@ -9,6 +9,8 @@ import java.util.Map;
  * World locomotion and melee legality share the authored 64x32 tile-center contract.
  */
 public final class MonsterAIController {
+  private static RuntimeState.Player targetBody(RuntimeState s,RuntimeState.Monster m){RuntimeState.Player b=s.party().body(s,m.attackTarget);if(b==null||!b.alive){m.attackTarget="player";return s.player();}return b;}
+  private static boolean targetHidden(RuntimeState s,RuntimeState.Monster m){return "player".equals(m.attackTarget)&&s.skillEffects().hidden();}
   private static final float CHASE_RADIUS_B = 180f;
   static final int ATTACK_DAMAGE_B = 4;
   static final float ATTACK_COOLDOWN_B = 1.8f;
@@ -54,17 +56,17 @@ public final class MonsterAIController {
     }
     public AttackRoute route(){return AttackRoute.SHARED_RESOLVER;}
     public AttackSubmissionSnapshot submitAction(RuntimeState state,RuntimeState.Monster m,long sequence,String action){
-      state.cancelMonsterAttack(m);String target=action.equals("MONSTER_RECOVER")?m.id:"player";MonsterAutoCombatBridge.Result result=bridge.submit(m.id,target,action);
-      if(result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){CharacterRenderer.Direction f=CanonicalMeleeTileContract.facing(m.x,m.y,state.player().x,state.player().y);if(f!=null)m.visualFacing.setLocomotion(f);m.visualFacing.beginAttack();m.attackVisualRemaining=action.equals("MONSTER_RECOVER")?1.46f:AbelCombatProfile.spell(action)?1.01f:.60f;m.state=RuntimeState.Monster.State.ATTACK;}
+      state.cancelMonsterAttack(m);String target=action.equals("MONSTER_RECOVER")?m.id:m.attackTarget;MonsterAutoCombatBridge.Result result=bridge.submit(m.id,target,action);
+      if(result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){CharacterRenderer.Direction f=CanonicalMeleeTileContract.facing(m.x,m.y,targetBody(state,m).x,targetBody(state,m).y);if(f!=null)m.visualFacing.setLocomotion(f);m.visualFacing.beginAttack();m.attackVisualRemaining=action.equals("MONSTER_RECOVER")?1.46f:AbelCombatProfile.spell(action)?1.01f:.60f;m.state=RuntimeState.Monster.State.ATTACK;}
       return new AttackSubmissionSnapshot(sequence,m.id,target,action,route(),result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED?SubmissionOutcome.ACCEPTED:result.outcome==MonsterAutoCombatBridge.Outcome.ACTION_UNRESOLVED?SubmissionOutcome.ACTION_UNRESOLVED:SubmissionOutcome.REJECTED,result.rejectReason);
     }
     public AttackSubmissionSnapshot submit(RuntimeState state,RuntimeState.Monster monster,long sequence){
       if(state==null||monster==null||!state.monsterAttackReady(monster)
-          ||!CanonicalMeleeTileContract.reachable(monster.x,monster.y,state.player().x,state.player().y))
+          ||!CanonicalMeleeTileContract.reachable(monster.x,monster.y,targetBody(state,monster).x,targetBody(state,monster).y))
         return new AttackSubmissionSnapshot(sequence,monster==null?null:monster.id,"player",bridge.actionId(),route(),SubmissionOutcome.REJECTED,null);
-      CharacterRenderer.Direction lockedFacing=CanonicalMeleeTileContract.facing(monster.x,monster.y,state.player().x,state.player().y);
+      CharacterRenderer.Direction lockedFacing=CanonicalMeleeTileContract.facing(monster.x,monster.y,targetBody(state,monster).x,targetBody(state,monster).y);
       state.cancelMonsterAttack(monster);
-      MonsterAutoCombatBridge.Result result=bridge.submit(monster.id,"player");
+      MonsterAutoCombatBridge.Result result=bridge.submit(monster.id,monster.attackTarget);
       if(monster.alive&&result.outcome==MonsterAutoCombatBridge.Outcome.ACCEPTED){
         monster.visualFacing.setLocomotion(lockedFacing);monster.visualFacing.beginAttack();
         monster.attackVisualRemaining=.36f;
@@ -76,7 +78,7 @@ public final class MonsterAIController {
         case ACTION_UNRESOLVED: outcome=SubmissionOutcome.ACTION_UNRESOLVED; break;
         default: outcome=SubmissionOutcome.REJECTED; break;
       }
-      return new AttackSubmissionSnapshot(sequence,monster.id,"player",result.actionId,route(),outcome,result.rejectReason);
+      return new AttackSubmissionSnapshot(sequence,monster.id,monster.attackTarget,result.actionId,route(),outcome,result.rejectReason);
     }
   }
 
@@ -107,6 +109,7 @@ public final class MonsterAIController {
     if(priorState!=state||!mapId.equals(state.currentMapId())){tileStates.clear();priorState=state;mapId=state.currentMapId();}
     for(RuntimeState.Monster m:state.monsters()){
       if(!m.alive){tileStates.remove(m);continue;}
+      targetBody(state,m);
       MonsterDefinition def=definitions.resolve(m.campaignRewardProfileId==null?m.id:m.campaignRewardProfileId);
       boolean poteShowcase=com.projectdark.mobile.world.CampaignWorld.contains(state.currentMapId())
           &&PoteForestMonsterShowcase.containsMonster(m.id);
@@ -118,31 +121,31 @@ public final class MonsterAIController {
 
   private void tickCoastMonster(RuntimeState state,RuntimeState.Monster m,float dt,AbelCombatProfile p){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());tile.spellClock+=Math.max(0,dt);
-    if(state.skillEffects().disabled(m.id)||state.skillEffects().hidden()||state.skillEffects().has(m.id,"AGGRO_RESET")&&!state.skillEffects().has(m.id,"TAUNT")){state.cancelMonsterAttack(m);tile.resetClock();return;}
+    if(state.skillEffects().disabled(m.id)||targetHidden(state,m)||state.skillEffects().has(m.id,"AGGRO_RESET")&&!state.skillEffects().has(m.id,"TAUNT")){state.cancelMonsterAttack(m);tile.resetClock();return;}
     if(m.isMoving||m.attackVisualRemaining>0)return;if(!state.skillEffects().rooted(m.id))ensureCentered(state,m,tile);
-    float distance=(float)Math.hypot(state.player().x-m.x,state.player().y-m.y);boolean near=CanonicalMeleeTileContract.reachable(m.x,m.y,state.player().x,state.player().y);
+    float distance=(float)Math.hypot(targetBody(state,m).x-m.x,targetBody(state,m).y-m.y);boolean near=CanonicalMeleeTileContract.reachable(m.x,m.y,targetBody(state,m).x,targetBody(state,m).y);
     if(m.id.startsWith("ABEL_BERSERKER")&&m.hp<m.maxHp/2&&!state.skillEffects().has(m.id,"DAM"))state.skillEffects().put(m.id,"MONSTER_FIRE","DAM",8,120);
     if(p.id.equals("ABEL_KINGARK")&&!m.bossRecovered&&m.hp<m.maxHp*.35f&&m.mp>=16){
-      if(tile.retreatSteps<2&&!state.skillEffects().rooted(m.id)){tile.stepClock+=dt;if(tile.stepClock<MONSTER_STEP_SECONDS_B)return;tile.resetClock();WorldMoveTargetController.Direction best=null;double away=distance;for(WorldMoveTargetController.Direction d:WorldMoveTargetController.Direction.values()){double n=Math.hypot(m.x+d.dx-state.player().x,m.y+d.dy-state.player().y);if(n>away&&state.tryMoveMonster(m,d.dx,d.dy,MonsterTileCenterLocomotion.STEP_DISTANCE)){best=d;break;}}tile.retreatSteps++;if(best!=null)return;}
+      if(tile.retreatSteps<2&&!state.skillEffects().rooted(m.id)){tile.stepClock+=dt;if(tile.stepClock<MONSTER_STEP_SECONDS_B)return;tile.resetClock();WorldMoveTargetController.Direction best=null;double away=distance;for(WorldMoveTargetController.Direction d:WorldMoveTargetController.Direction.values()){double n=Math.hypot(m.x+d.dx-targetBody(state,m).x,m.y+d.dy-targetBody(state,m).y);if(n>away&&state.tryMoveMonster(m,d.dx,d.dy,MonsterTileCenterLocomotion.STEP_DISTANCE)){best=d;break;}}tile.retreatSteps++;if(best!=null)return;}
       if(m.attackCooldown<=0)lastSubmission=attackRouter.submitAction(state,m,++submissionSequence,"MONSTER_RECOVER");return;
     }
     if(distance>CHASE_RADIUS_B&&!m.provoked&&!state.skillEffects().has(m.id,"TAUNT")){tile.resetClock();return;}
     if(m.attackCooldown<=0&&tile.spellClock>=7&&!p.spell.isEmpty()&&distance<=p.range&&m.mp>=8){lastSubmission=attackRouter.submitAction(state,m,++submissionSequence,p.spell);if(lastSubmission.outcome==SubmissionOutcome.ACCEPTED){tile.spellClock=0;return;}}
     if(near){tile.resetClock();if(m.attackCooldown<=0)lastSubmission=attackRouter.submitAction(state,m,++submissionSequence,RuntimeCombatSession.MONSTER_BASIC_ACTION_ID);return;}
-    if(state.skillEffects().rooted(m.id))return;tile.stepClock+=Math.max(0,dt);if(tile.stepClock<MONSTER_STEP_SECONDS_B)return;tile.stepClock-=MONSTER_STEP_SECONDS_B;WorldMoveTargetController.Direction d=state.nextMonsterChaseStep(m,state.player().x,state.player().y);if(d!=null&&state.tryMoveMonster(m,d.dx,d.dy,MonsterTileCenterLocomotion.STEP_DISTANCE))m.state=RuntimeState.Monster.State.CHASE;
+    if(state.skillEffects().rooted(m.id))return;tile.stepClock+=Math.max(0,dt);if(tile.stepClock<MONSTER_STEP_SECONDS_B)return;tile.stepClock-=MONSTER_STEP_SECONDS_B;WorldMoveTargetController.Direction d=state.nextMonsterChaseStep(m,targetBody(state,m).x,targetBody(state,m).y);if(d!=null&&state.tryMoveMonster(m,d.dx,d.dy,MonsterTileCenterLocomotion.STEP_DISTANCE))m.state=RuntimeState.Monster.State.CHASE;
   }
 
   private void tickPrototypeMonster(RuntimeState state,RuntimeState.Monster m,float dt){
     TilePursuitState tile=tileStates.computeIfAbsent(m,key->new TilePursuitState());
     if(state.skillEffects().disabled(m.id)){state.cancelMonsterAttack(m);tile.resetClock();return;}
     boolean taunted=state.skillEffects().has(m.id,"TAUNT");
-    if(state.skillEffects().hidden()||!taunted&&state.skillEffects().has(m.id,"AGGRO_RESET")){state.cancelMonsterAttack(m);tile.resetClock();return;}
+    if(targetHidden(state,m)||!taunted&&state.skillEffects().has(m.id,"AGGRO_RESET")){state.cancelMonsterAttack(m);tile.resetClock();return;}
     if(m.isMoving){tile.resetClock();return;}
     if(!state.skillEffects().rooted(m.id))ensureCentered(state,m,tile);
-    float dx=state.player().x-m.x;
-    float dy=state.player().y-m.y;
+    float dx=targetBody(state,m).x-m.x;
+    float dy=targetBody(state,m).y-m.y;
     float d=(float)Math.sqrt(dx*dx+dy*dy);
-    boolean meleeAdjacent=CanonicalMeleeTileContract.reachable(m.x,m.y,state.player().x,state.player().y);
+    boolean meleeAdjacent=CanonicalMeleeTileContract.reachable(m.x,m.y,targetBody(state,m).x,targetBody(state,m).y);
 
     if(m.attackPrimed){
       tile.resetClock();
@@ -159,7 +162,7 @@ public final class MonsterAIController {
       if(tile.stepClock+.00001f<MONSTER_STEP_SECONDS_B)return;
       tile.stepClock-=MONSTER_STEP_SECONDS_B;
 
-      WorldMoveTargetController.Direction direction=state.nextMonsterChaseStep(m,state.player().x,state.player().y);
+      WorldMoveTargetController.Direction direction=state.nextMonsterChaseStep(m,targetBody(state,m).x,targetBody(state,m).y);
       if(direction==null){tile.resetClock();return;}
       float beforeX=m.x,beforeY=m.y;
       boolean moved=state.tryMoveMonster(m,direction.dx,direction.dy,MonsterTileCenterLocomotion.STEP_DISTANCE);
@@ -178,7 +181,7 @@ public final class MonsterAIController {
 
     tile.resetClock();
     if(meleeAdjacent&&m.attackCooldown<=0f){
-      CharacterRenderer.Direction attackFacing=CanonicalMeleeTileContract.facing(m.x,m.y,state.player().x,state.player().y);
+      CharacterRenderer.Direction attackFacing=CanonicalMeleeTileContract.facing(m.x,m.y,targetBody(state,m).x,targetBody(state,m).y);
       if(attackFacing!=null)m.visualFacing.setLocomotion(attackFacing);
       state.beginMonsterAttack(m);
     }else if(m.state==RuntimeState.Monster.State.CHASE){

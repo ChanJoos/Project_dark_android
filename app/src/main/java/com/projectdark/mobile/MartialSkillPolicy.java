@@ -9,7 +9,7 @@ final class MartialSkillPolicy {
  static boolean facingOnly(String id){return leap(id)||LINE.equals(id)||MartialSourceV228.MUYEONG.equals(id);}
  static boolean leap(String id){return LEAP.equals(id)||MartialSourceV228.ADVANCE.equals(id);}
  static float[] step(CharacterRenderer.Direction d){Direction a=Direction.valueOf(d.name());return new float[]{a.dx,a.dy};}
- static float[] position(RuntimeState s,String id){if("player".equals(id))return new float[]{s.player().x,s.player().y};for(RuntimeState.Monster m:s.monsters())if(m.alive&&m.id.equals(id))return new float[]{m.x,m.y};for(RuntimeState.Npc n:s.npcs())if(n.id.equals(id))return new float[]{n.x,n.y};return null;}
+ static float[] position(RuntimeState s,String id){CompanionParty.Member companion=s.party().find(id);if(companion!=null)return new float[]{companion.body.x,companion.body.y};if("player".equals(id))return new float[]{s.player().x,s.player().y};for(RuntimeState.Monster m:s.monsters())if(m.alive&&m.id.equals(id))return new float[]{m.x,m.y};for(RuntimeState.Npc n:s.npcs())if(n.id.equals(id))return new float[]{n.x,n.y};return null;}
  static String frontTarget(RuntimeState s,String id,CharacterRenderer.Direction facing,java.util.function.Predicate<String> visible){
   float[] d=step(facing);int reach=LEAP.equals(id)?1:3;
   for(int n=1;n<=reach;n++){float x=s.player().x+d[0]*n,y=s.player().y+d[1]*n;

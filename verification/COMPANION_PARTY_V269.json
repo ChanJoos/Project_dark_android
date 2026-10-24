@@ -1,0 +1,12 @@
+{
+  "revision":"V269_COMPANION_PARTY",
+  "baseMain":"f86d961eee066f2575b3d805a9006cde99f9119b",
+  "authorization":"응 그렇게 이제 만들어봐",
+  "scope":["warrior or priest companion","shared combat and ally support","role-aware decisions and bounded burst coordination","tile following and monster threat","HUD management and checkpoint persistence"],
+  "local":{"productionCompile":"PASS_ECJ17_ANDROID_API","domainTests":18,"domainResult":"PASS"},
+  "androidNative":"PENDING",
+  "apk":"PENDING",
+  "phoneAcceptance":"PENDING_NEW_FEATURE_ONLY",
+  "mainIntegration":"NOT_REQUESTED_FOR_THIS_CANDIDATE",
+  "retiredV268Checks":"REMAIN_RETIRED"
+}

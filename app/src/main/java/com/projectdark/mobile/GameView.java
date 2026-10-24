@@ -64,6 +64,15 @@ public final class GameView extends View {
   private final AbelSpellRenderer abelSpellFx=new AbelSpellRenderer();
   private final MonsterAIController monsterAi=new MonsterAIController(
       new MonsterAIController.SharedResolverAttackRouter(combatSession.monsterAutoBridge()));
+  private final CompanionController companions=new CompanionController(state,combatSession);
+  private final CompanionWindow companionWindow=new CompanionWindow();
+  private final CompanionController.Navigation companionNavigation=new CompanionController.Navigation(){
+    public Object identity(){return activeWorld();}
+    public java.util.List<WorldMoveTargetController.TileCenter> tiles(){return activeWorld().navigationTiles();}
+    public boolean stand(float x,float y){return activeWorld().canPartyStandAt(x,y);}
+    public boolean traverse(float ax,float ay,float bx,float by){return activeWorld().canPlayerTraverse(ax,ay,bx,by);}
+    public boolean sight(float ax,float ay,float bx,float by){return activeWorld().hasLineOfSight(ax,ay,bx,by);}
+  };
   private final InteractionController interaction=new InteractionController();
   private final CharacterRenderer characterRenderer=new CharacterRenderer();
   private final SkillPresentationCatalog skillPresentation;
@@ -78,10 +87,10 @@ public final class GameView extends View {
     public float facingX(String id){CharacterRenderer.Direction d=playerFacing.presentation();return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-32:32;}
     public float facingY(String id){CharacterRenderer.Direction d=playerFacing.presentation();return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-16:16;}
 
-    public float x(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldX();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.x;return Float.NaN;}
-    public float y(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldY();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.y;return Float.NaN;}
+    public float x(String id){CompanionParty.Member companion=state.party().find(id);if(companion!=null)return companionX(companion);if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldX();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.x;return Float.NaN;}
+    public float y(String id){CompanionParty.Member companion=state.party().find(id);if(companion!=null)return companionY(companion);if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldY();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.y;return Float.NaN;}
     public float centerX(String id){if(inPoteField)for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)&&poteFieldRenderer.monsterCenter(m,monsterFxCenter))return monsterFxCenter[0];return x(id);}
-    public float centerY(String id){if(RuntimeCombatSession.PLAYER_ID.equals(id))return y(id)-23f;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)){if(DeathVillageMonsters.actor(m.id))return m.y-26f;if(HorrorCastleMonsters.actor(m.id))return m.y-26f;if(inPoteField&&poteFieldRenderer.monsterCenter(m,monsterFxCenter))return monsterFxCenter[1];if(inReagentShop&&townInterior.kind==TownInteriorDef.Kind.INN)return m.y-5f;return m.y-10f*WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE;}return Float.NaN;}
+    public float centerY(String id){if(state.party().find(id)!=null)return y(id)-23; if(RuntimeCombatSession.PLAYER_ID.equals(id))return y(id)-23f;for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id)){if(DeathVillageMonsters.actor(m.id))return m.y-26f;if(HorrorCastleMonsters.actor(m.id))return m.y-26f;if(inPoteField&&poteFieldRenderer.monsterCenter(m,monsterFxCenter))return monsterFxCenter[1];if(inReagentShop&&townInterior.kind==TownInteriorDef.Kind.INN)return m.y-5f;return m.y-10f*WorldEntityPresentationRenderer.MONSTER_RENDER_SCALE;}return Float.NaN;}
   };
   private final WorldEntityPresentationRenderer worldEntityRenderer=new WorldEntityPresentationRenderer();
   private final RpgInventoryPresentation rpgPresentation=new RpgInventoryPresentation();
@@ -279,6 +288,7 @@ public final class GameView extends View {
   private boolean inRange(float range){return combat.inRange(state,range);}
   private void tickSkillCombat(float dt){
     skillVfx.tick(dt);abelSpellFx.tick(dt);
+    companions.tick(dt,companionNavigation,combat.target(),!companionWindow.open&&!inventoryOpen&&!equipmentOpen&&!skillWindow.open&&!interaction.dialogOpen());
     RuntimeCombatSession.FrameResult result=combatSession.tick(dt);
     for(CombatResolver.Event e:result.events)if(RuntimeCombatSession.PLAYER_ID.equals(e.actorId)){
       if(e.type==CombatResolver.EventType.ACTION_STARTED&&e.actionId.equals(activeSkillVisualId)){visualFacingSequence=e.actionSequence;visualFacingTarget=e.targetId;visualFacingReleased=false;}
@@ -452,7 +462,8 @@ public final class GameView extends View {
     if(cd>0){showFeedback(String.format(java.util.Locale.ROOT,"쿨타임 %.1f초 남음",cd),FeedbackTone.WARN);return;}
     if(isActing()||!state.player().alive)return;
     SkillActionContract.Rule rule=SkillActionContract.get(def.id);boolean self=rule!=null?rule.selfAnchored():def.targetPolicy==SkillDef.TargetPolicy.SELF;if(!self&&!requireTarget())return;
-    CombatActionOrchestrator.Submission result=combatSession.submitPlayer(self?RuntimeCombatSession.PLAYER_ID:combat.target().id,def.id);
+    String target=self?(CompanionPartyRules.allySupport(def.id)?state.party().allyTarget():RuntimeCombatSession.PLAYER_ID):combat.target().id;
+    CombatActionOrchestrator.Submission result=combatSession.submitPlayer(target,def.id);
     if(result.accepted()){acceptedPlayerActions++;if(!self)snapshotAttackFacingTarget();else playerFacing.beginAttack();activeSkillVisualId=def.id;activeSkillCastSeconds=combatSession.effectiveCastSeconds(def.id);trigger(visual);}
     else showFeedback(result.rejectReason==CombatResolver.RejectReason.NOT_LEARNED?"아직 배우지 않은 기술입니다":result.rejectReason==CombatResolver.RejectReason.RESOURCE?skillResourceFailure(def.id):result.rejectReason==CombatResolver.RejectReason.COOLDOWN?"쿨타임 중입니다":result.rejectReason==CombatResolver.RejectReason.RANGE?"대상이 사거리 밖에 있습니다":"지금 사용할 수 없습니다",FeedbackTone.WARN);
   }
@@ -471,6 +482,7 @@ public final class GameView extends View {
       combat.selectTarget(best);
       autoTargetHintClock=1f;
     }
+    if(combat.target()!=null&&state.party().holdAttack("player",combat.target().id))return;
     // Continue after the last accepted slot, never restart at a newly ready earlier slot.
     current=combat.target();
     for(int n=0;n<SkillBook.SLOT_COUNT;n++){
@@ -568,7 +580,7 @@ public final class GameView extends View {
   static float logicalWidthForView(int width,int height){float fittedScale=Math.min(width/W,height/H);return fittedScale<=0?W:width/fittedScale;}
   static float rightHudOffsetForView(int width,int height){return Math.max(0f,logicalWidthForView(width,height)-W);}
   protected void onSizeChanged(int w,int h,int ow,int oh){scale=Math.min(w/W,h/H);logicalViewportWidth=logicalWidthForView(w,h);boolean wide=logicalViewportWidth>W+.01f;ox=wide?0:(w-W*scale)/2;oy=(h-H*scale)/2;hudRightOffset=wide?logicalViewportWidth-W:0;hudCenterOffset=hudRightOffset*.5f;worldAdapter.resizeViewport(logicalViewportWidth,H);if(poteFieldAdapter!=null)poteFieldAdapter.resizeViewport(logicalViewportWidth,H);camera=activeWorld().camera();if(reagentShopAdapter!=null)reagentShopAdapter.resizeViewport(logicalViewportWidth,H);}
-  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawDamageNumbers(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){int worldSave=c.save();try{drawPoteWorld(c);}finally{c.restoreToCount(worldSave);}}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawDamageNumbers(c);drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);if(worldMap.open)worldMap.draw(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),hudCenterOffset);senseMonsterWindow.draw(c,hudCenterOffset);c.restore();}
+  protected void onDraw(Canvas c){c.drawColor(Color.BLACK);c.save();c.translate(ox,oy);c.scale(scale,scale);if(inReagentShop){drawReagentShopWorld(c);drawDamageNumbers(c);drawHud(c);drawFeedbackBanners(c);drawReagentShop(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDeath(c);if(innDialogueOpen)drawInnDialogue(c);}else{if(inPoteField){int worldSave=c.save();try{drawPoteWorld(c);}finally{c.restoreToCount(worldSave);}}else{drawWorld(c);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();}drawDamageNumbers(c);drawHud(c);drawFeedbackBanners(c);drawInventory(c);drawEquipment(c);drawStats(c);drawSkills(c);drawDialogue(c);if(inPoteField)drawReagentShop(c);drawDeath(c);}if(questJournalOpen)drawQuestJournal(c);if(worldMap.open)worldMap.draw(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),hudCenterOffset);senseMonsterWindow.draw(c,hudCenterOffset);companionWindow.draw(c,state,hudCenterOffset);c.restore();}
 
   private WorldRuntimeAdapter activeWorld(){if(inReagentShop&&reagentShopAdapter!=null)return reagentShopAdapter;return inPoteField&&poteFieldAdapter!=null?poteFieldAdapter:worldAdapter;}
 
@@ -777,6 +789,7 @@ public final class GameView extends View {
     if(townInterior.isTemple())templeRenderer.foreground(c,reagentShopAdapter,townInterior,draws,depths);
     for(TownInteriorDef.Prop o:townInterior.props){draws.add(()->townRenderer.prop(c,reagentShopAdapter,o));depths.add(o.depthY());}
     if(townInterior.hasNpc()){draws.add(()->{WorldCameraTransform.Point m=reagentShopAdapter.worldToScreen(townInterior.npcX(),townInterior.npcY());if(townInterior.isTemple())templeRenderer.npc(c,reagentShopAdapter,townInterior);else townNpcRenderer.draw(c,townInterior,m.x,m.y,CharacterRenderer.Direction.SW);drawTownNpcName(c,townInterior.npcName,m.x,m.y-Math.max(0,TownServiceArt.labelOffset(townInterior.npcId)-64));});depths.add(townInterior.npcY());}
+    {CompanionParty.Member companion=state.party().active();if(companion!=null&&companion.body.alive){draws.add(()->{c.save();c.translate(-reagentShopAdapter.camera().cameraX(),-reagentShopAdapter.camera().cameraY());drawCompanion(c);c.restore();});depths.add(companionY(companion));}}
     draws.add(()->{c.save();c.translate(-reagentShopAdapter.camera().cameraX(),-reagentShopAdapter.camera().cameraY());drawCharacter(c);c.restore();});depths.add(reagentShopAdapter.presentationPlayerY());
     for(RuntimeState.Monster rat:state.monsters())if(rat.alive){draws.add(()->{WorldCameraTransform.Point q=reagentShopAdapter.worldToScreen(rat.x,rat.y);innMouseRenderer.draw(c,rat,q.x,q.y,state.skillEffects());if(combat.target()==rat)bar(c,q.x-12,q.y-46,q.x+12,q.y-43,0xffd63442,rat.hp/(float)rat.maxHp);if(rat.damagePopupClock>0)text(c,"-"+rat.lastDamage,q.x-8,q.y-54,10);});depths.add(rat.y);}
     java.util.List<Integer> order=new java.util.ArrayList<>();for(int i=0;i<draws.size();i++)order.add(i);java.util.Collections.sort(order,(a,b)->Float.compare(depths.get(a),depths.get(b)));for(int i:order)draws.get(i).run();if(townInterior.isTemple())templeRenderer.gates(c,reagentShopAdapter,townInterior);PortalAnimation.drawMap(c,state.currentMapId(),reagentShopAdapter.camera().cameraX(),reagentShopAdapter.camera().cameraY());
@@ -813,6 +826,7 @@ public final class GameView extends View {
     actors.add(poteActor(c,0,Float.NEGATIVE_INFINITY,0,()->{drawTapMarker(c);drawCampaignGates(c);}));
     for(RuntimeState.Npc n:state.npcs())if(forestVisible(n.x,n.y,72))actors.add(poteActor(c,n.x,n.y,58,()->drawNpc(c,n)));
     for(RuntimeState.Monster m:state.monsters())if(m.alive&&forestVisible(m.x,m.y,PoteForestMonsterShowcase.bodyHeight(m.id)))actors.add(poteActor(c,m.x,m.y,PoteForestMonsterShowcase.bodyHeight(m.id),()->drawMonster(c,m)));
+    {CompanionParty.Member companion=state.party().active();if(companion!=null&&companion.body.alive)actors.add(poteActor(c,companionX(companion),companionY(companion),52,()->drawCompanion(c)));}
     actors.add(poteActor(c,activeWorld().presentationPlayerX(),activeWorld().presentationPlayerY(),52,()->drawCharacter(c)));
     if(DeathVillageGeometry.contains(state.currentMapId())){deathRenderer.draw(c,poteFieldAdapter,actors);}else if(com.projectdark.mobile.world.MineHuntGeometry.contains(state.currentMapId())){if(mineHuntRenderer==null)mineHuntRenderer=new MineHuntRenderer(getContext());mineHuntRenderer.draw(c,poteFieldAdapter,actors);}else if(com.projectdark.mobile.world.HorrorCastleGeometry.contains(state.currentMapId())){if(horrorRenderer==null)horrorRenderer=new HorrorCastleRenderer(getContext());horrorRenderer.draw(c,poteFieldAdapter,actors);}else if(MineTownGeometry.contains(state.currentMapId()))mineTownRenderer.draw(c,poteFieldAdapter,actors);else if(com.projectdark.mobile.world.RucesionTownGeometry.contains(state.currentMapId()))rucesionTownRenderer.draw(c,poteFieldAdapter,actors);else if(com.projectdark.mobile.world.AbelTownGeometry.contains(state.currentMapId()))abelTownRenderer.draw(c,poteFieldAdapter,actors);else poteFieldRenderer.drawScene(c,poteFieldAdapter,actors);PortalAnimation.drawMap(c,state.currentMapId(),camera.cameraX(),camera.cameraY());TownServiceLabels.draw(c,state.currentMapId(),camera.cameraX(),camera.cameraY(),logicalViewportWidth,H);c.save();c.translate(-camera.cameraX(),-camera.cameraY());skillVfx.draw(c,skillAnchors);c.restore();
   }
@@ -824,6 +838,7 @@ public final class GameView extends View {
     actors.add(millesDepth(c,Float.NEGATIVE_INFINITY,()->drawTapMarker(c)));
     for(RuntimeState.Npc n:state.npcs())actors.add(millesDepth(c,n.y,()->drawNpc(c,n)));
     for(RuntimeState.Monster m:state.monsters())if(m.alive)actors.add(millesDepth(c,m.y,()->drawMonster(c,m)));
+    {CompanionParty.Member companion=state.party().active();if(companion!=null&&companion.body.alive)actors.add(millesDepth(c,companionY(companion),()->drawCompanion(c)));}
     actors.add(millesDepth(c,worldAdapter.presentationPlayerY(),()->drawCharacter(c)));
     templeEntrance.add(c,actors,camera.cameraX(),camera.cameraY());
 
@@ -867,6 +882,32 @@ public final class GameView extends View {
   float renderedPlayerWorldY(){return activeWorld().presentationPlayerY();}
   private CharacterVisualBinding cachedPlayerVisuals;
   private CharacterVisualBinding playerVisuals(){if(cachedPlayerVisuals==null||!cachedPlayerVisuals.equippedBySlot().equals(state.rpg().equipment()))cachedPlayerVisuals=CharacterVisualBinding.from(state.rpg());return cachedPlayerVisuals;}
+
+  private float companionX(CompanionParty.Member m){float q=m.moving?1-m.moveClock/WorldMoveTargetController.TILE_STEP_SECONDS:1;return m.moving?m.fromX+(m.body.x-m.fromX)*q:m.body.x;}
+  private float companionY(CompanionParty.Member m){float q=m.moving?1-m.moveClock/WorldMoveTargetController.TILE_STEP_SECONDS:1;return m.moving?m.fromY+(m.body.y-m.fromY)*q:m.body.y;}
+  private void drawCompanion(Canvas c){CompanionParty.Member m=state.party().active();if(m==null||!m.body.alive||!state.currentMapId().equals(m.map))return;CharacterVisualBinding v=CharacterVisualBinding.from(m.growth);boolean acting=m.actionClock<.65f&&!m.actionId.isEmpty();SkillPresentationCatalog.Entry selected=acting?skillPresentation.get(m.actionId):null;String motion=m.moving?"WALK":acting?(selected==null?"SWING":selected.motion):"IDLE";float phase=m.moving?m.clock:m.actionClock/.65f;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(companionX(m),companionY(m),m.facing,m.moving?CharacterRenderer.State.WALK:acting?CharacterRenderer.State.ATTACK:CharacterRenderer.State.IDLE,m.clock,m.actionClock,.65f,m.body.hitFlash>0,v.equipmentVisualRef(),v.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,CharacterRenderer.EffectFamily.NONE);if(!skillBodyRenderer.draw(c,pose,"mm001",motion,phase))characterRenderer.draw(c,pose);centeredText(c,m.name,companionX(m),companionY(m)-55,8,true);bar(c,companionX(m)-18,companionY(m)-48,companionX(m)+18,companionY(m)-45,0xff71b779,m.body.hp/(float)m.body.maxHp);}
+  private void handleCompanionCommand(CompanionWindow.Command command){
+    if(command==CompanionWindow.Command.NONE)return;
+    if(command==CompanionWindow.Command.SELECT_ALLY){state.party().selectAlly();showFeedback("동료 지원 대상 선택");return;}
+    if(command==CompanionWindow.Command.SELECT_SELF){state.party().selectSelf();showFeedback("자신 지원 대상 선택");return;}
+    if(!F5mSaveStore.writable()){showFeedback("저장 상태를 확인하세요",FeedbackTone.WARN);return;}
+    if(combatSession.playerActionActive()||combatSession.companionBusy()){showFeedback("동작이 끝난 뒤 명령하세요");return;}
+    org.json.JSONObject before=state.party().snapshot();boolean changed=true;
+    switch(command){
+      case WARRIOR:changed=state.party().recruit(state,CompanionParty.Job.WARRIOR);break;
+      case PRIEST:changed=state.party().recruit(state,CompanionParty.Job.PRIEST);break;
+      case DISMISS:changed=state.party().recruit(state,null);break;
+      case RECOVER:changed=state.party().recover(state);break;
+      case FOLLOW:state.party().order(CompanionParty.Order.FOLLOW,null);break;
+      case WAIT:state.party().order(CompanionParty.Order.WAIT,null);break;
+      case FOCUS:changed=combat.target()!=null&&combat.target().alive;if(changed)state.party().order(CompanionParty.Order.FOCUS,combat.target().id);break;
+      default:changed=false;
+    }
+    if(!changed){showFeedback("전직 후 마을에서 동료를 선택하거나 유효한 공격 대상을 선택하세요",FeedbackTone.WARN);return;}
+    if(!F5mSaveStore.checkpointActive()){state.party().restore(before);showFeedback("저장 실패 · 명령 취소",FeedbackTone.WARN);return;}
+    showFeedback("동료 명령 적용");
+  }
+
   private void drawCharacter(Canvas c){if(!state.skillEffects().hidden()){drawVisibleCharacter(c);return;}float x=renderedPlayerWorldX(),y=renderedPlayerWorldY();int layer=c.saveLayerAlpha(x-96,y-128,x+96,y+32,80);try{drawVisibleCharacter(c);}finally{c.restoreToCount(layer);}}
   private void drawVisibleCharacter(Canvas c){CharacterRenderer.State presentation=characterState();CharacterVisualBinding visuals=playerVisuals();float stateDuration=isActing()?duration(action):1f;AnimationAction visualAction=presentation==CharacterRenderer.State.ATTACK?equipmentActions.resolveBasicAttack(state.rpg()).animationAction:null;CharacterRenderer.Pose pose=new CharacterRenderer.Pose(renderedPlayerWorldX(),renderedPlayerWorldY(),characterDirection(),presentation,walkClock,actionClock,stateDuration,false,visuals.equipmentVisualRef(),visuals.weaponVisualRef(),CharacterRenderer.ASSET_STATUS,characterEffectFamily(),visualAction);
     String characterBodyIdentity=visuals.sourceBodyIdentity(this.characterBodyIdentity);
@@ -911,7 +952,7 @@ public final class GameView extends View {
   private void bar(Canvas c,float l,float t,float r,float b,int color,float ratio){ratio=Math.max(0,Math.min(1,ratio));p.setColor(0xCC171416);c.drawRoundRect(new RectF(l,t,r,b),(b-t)*.3f,(b-t)*.3f,p);p.setColor(color);c.drawRoundRect(new RectF(l,t,l+(r-l)*ratio,b),(b-t)*.3f,(b-t)*.3f,p);}
 
   private QuestJournalModel.HudProjection hudQuests;
-  private void drawHud(Canvas c){hudQuests=questJournalModel.hud(f5mQuest,quest2,inPoteField,state.rpg());drawTopLeftStatus(c);int statusIndex=0;for(SkillEffectState.Effect e:state.skillEffects().playerEffects()){if(statusIndex>=3)break;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(e.source);mutedText(c,(a==null?e.kind:a.name)+" "+Math.max(1,(int)Math.ceil(e.remaining))+"초",18,153+statusIndex++*12,8);}drawQuickQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawCombatCluster(c);}
+  private void drawHud(Canvas c){hudQuests=questJournalModel.hud(f5mQuest,quest2,inPoteField,state.rpg());drawTopLeftStatus(c);int statusIndex=0;for(SkillEffectState.Effect e:state.skillEffects().playerEffects()){if(statusIndex>=3)break;SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(e.source);mutedText(c,(a==null?e.kind:a.name)+" "+Math.max(1,(int)Math.ceil(e.remaining))+"초",18,153+statusIndex++*12,8);}drawQuickQuest(c);drawTarget(c);drawMinimap(c);drawUtilityRail(c);drawChat(c);drawJoystick(c);drawCombatCluster(c);companionWindow.drawHud(c,state);}
   private void drawTopLeftStatus(Canvas c){
     float d=hudCenterOffset;Integer level=state.rpg().normalLevel();
     MobileHudStatus.draw(c,state,hudRightOffset);
@@ -1178,6 +1219,7 @@ private void drawUtilityRail(Canvas c){
   private void requestGroundMove(float x,float y){cancelSkillApproach();WorldMoveTargetController.Snapshot move=activeWorld().requestGroundScreenTap(x,y);lastMoveRequestId=move.requestId;lastMoveStatus=WorldMoveTargetController.Status.IDLE;if(move.status==WorldMoveTargetController.Status.MOVING||move.status==WorldMoveTargetController.Status.REACHED){tapMarkerX=move.targetX;tapMarkerY=move.targetY;tapMarkerClock=.7f;showFeedback(move.replacedRequestId>0?"이동 목표 변경":"이동 시작",FeedbackTone.INFO);}consumeMoveOutcome(move);}
 
   public boolean onTouchEvent(MotionEvent e){float x=(e.getX()-ox)/scale,y=(e.getY()-oy)/scale;
+    if((companionWindow.open||!worldMap.open&&!questJournalOpen&&!templeWindow.isOpen()&&!townWindow.isOpen()&&!innDialogueOpen&&!skillWindow.open&&!inventoryOpen&&!equipmentOpen&&!statsOpen&&!interaction.dialogOpen())&&(companionWindow.open||CompanionWindow.hud().contains(x,y))){if(e.getActionMasked()==MotionEvent.ACTION_DOWN){CompanionWindow.Command command=companionWindow.touch(x,y,hudCenterOffset);if(command!=null)handleCompanionCommand(command);}return true;}
     if(!worldMap.open&&!questJournalOpen&&!templeWindow.isOpen()&&!townWindow.isOpen()&&!innDialogueOpen&&!skillWindow.open&&!inventoryOpen&&!equipmentOpen&&!statsOpen&&!interaction.dialogOpen()&&state.player().alive&&quickItems.motion(e,x,y,hudRightOffset,state.rpg(),this::useQuickItem))return true;
     if(worldMap.open){if(e.getActionMasked()==MotionEvent.ACTION_DOWN)navigateMapEntrance(worldMap.touch(x,y,hudCenterOffset));return true;}if(templeWindow.isOpen())return handleReagentShopTouch(e,x,y);if(e.getActionMasked()==MotionEvent.ACTION_DOWN&&!questJournalOpen&&!MobileHudLayout.quest(hudRightOffset).contains(x,y)){questEntryPending=false;questExitPending=false;campaignAutoRoute=false;}if(questJournalOpen){QuestJournalWindow.Result r=questJournalWindow.motion(e.getActionMasked(),x,y,questJournalModel.rows(f5mQuest,quest2,inPoteField,state.rpg()),hudCenterOffset);if(r==QuestJournalWindow.Result.CLOSE)questJournalOpen=false;else if(r==QuestJournalWindow.Result.NAVIGATE){QuestJournalModel.Row selected=questJournalWindow.selected(questJournalModel.rows(f5mQuest,quest2,inPoteField,state.rpg()));questJournalOpen=false;QuestJournalModel.Row current=questJournalModel.current(f5mQuest,quest2,inPoteField,state.rpg());if(selected!=null&&current!=null&&selected.id.equals(current.id))autoNavigateQuest();else showFeedback("현재 의뢰부터 진행하세요",FeedbackTone.INFO);}return true;}if(e.getActionMasked()==MotionEvent.ACTION_DOWN&&circleHit(x,y,questIconX(hudRightOffset),UTILITY_Y0,UTILITY_R+2)){openQuestJournal();return true;}if(inPoteField&&townWindow.isOpen()){if(e.getActionMasked()==MotionEvent.ACTION_DOWN)townWindow.touch(x,y,hudCenterOffset,()->F5mSaveStore.writable()&&F5mSaveStore.checkpointActive());return true;}if(inReagentShop&&(innDialogueOpen||townWindow.isOpen()))return handleReagentShopTouch(e,x,y);if(skillWindow.open&&skillWindow.motion(e.getActionMasked(),x-hudCenterOffset,y))return true;if(inReagentShop&&e.getActionMasked()!=MotionEvent.ACTION_DOWN)return handleReagentShopTouch(e,x,y);switch(e.getActionMasked()){
     case MotionEvent.ACTION_DOWN:

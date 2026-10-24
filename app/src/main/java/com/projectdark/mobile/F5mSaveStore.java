@@ -98,6 +98,7 @@ public final class F5mSaveStore {
   }
 
   private void writeRuntime(SharedPreferences.Editor edit){
+    edit.putString("companion_party_v269",runtime.party().snapshot().toString()).putString("companion_effects_v269",runtime.skillEffects().companionSnapshot(runtime).toString());
     edit.putString("monster_elements_v258",MonsterElementsV258.snapshot(runtime).toString());
     RuntimeState.Player p=runtime.player();runtime.horror().record(runtime.currentMapId(),runtime.monsters());edit.putString("horror_castle_v179",runtime.horror().snapshot().toString());
     for(RuntimeState.Monster m:runtime.monsters())if("milles_mouse_proto".equals(m.id)){
@@ -127,6 +128,8 @@ public final class F5mSaveStore {
     r.player().hp=Math.max(0,Math.min(r.player().maxHp,p.getInt("player_hp",r.player().hp)));
     r.player().mp=Math.max(0,Math.min(r.player().maxMp,p.getInt("player_mp",r.player().mp)));
     r.player().alive=r.player().hp>0;
+    String partyJson=p.getString("companion_party_v269",null);if(partyJson!=null)try{if(!r.party().restore(new JSONObject(partyJson)))active.writable=false;}catch(Exception ex){active.writable=false;}
+    String partyEffects=p.getString("companion_effects_v269",null);if(partyEffects!=null)try{if(!r.skillEffects().restoreCompanions(r,new JSONObject(partyEffects)))active.writable=false;}catch(Exception ex){active.writable=false;}
     String effectJson=p.getString("skill_effects_v1",null);if(effectJson!=null)try{if(!r.skillEffects().restore(new org.json.JSONObject(effectJson)))active.writable=false;}catch(Exception ex){active.writable=false;}
 
     long watermark=Math.max(p.getLong("ledger_sequence",0),r.rpg().consumedCombatSequence());

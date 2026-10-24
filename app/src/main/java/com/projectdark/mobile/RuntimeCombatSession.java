@@ -44,7 +44,7 @@ public final class RuntimeCombatSession {
   /** Fail closed for the starting commoner: no skill or magic fixture is learned implicitly. */
   public static RuntimeCombatPortAdapter.LearnedActionPort startingCommonerLearnedActions(){return (actorId,actionId)->false;}
 
-  public CombatActionOrchestrator.Submission submitPlayer(String targetId,String actionId){CombatActionOrchestrator.Submission result=actions.submitManual(PLAYER_ID,targetId,actionId);if(result.accepted())port.lockDirection(PLAYER_ID,targetId,actionId);return result;}
+  public CombatActionOrchestrator.Submission submitPlayer(String targetId,String actionId){if(state.party().active()!=null){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(actionId);if(a!=null&&a.damage()&&a.resourceBurst())state.party().reserve("player",targetId,actionId,4f);}CombatActionOrchestrator.Submission result=actions.submitManual(PLAYER_ID,targetId,actionId);if(result.accepted())port.lockDirection(PLAYER_ID,targetId,actionId);else state.party().clearReservation();return result;}
   public CombatActionOrchestrator.Submission submitPlayerAttack(String targetId,int attackMode){return submitPlayer(targetId,playerAttackActionId(attackMode));}
 
   /** Resolves the equipped weapon semantic before submitting one shared Resolver action. */
@@ -63,11 +63,13 @@ public final class RuntimeCombatSession {
     }
   }
 
+  public CombatActionOrchestrator.Submission submitCompanion(String target,String action){CompanionParty.Member m=state.party().active();if(m==null)throw new IllegalStateException("no companion");CombatActionOrchestrator.Submission r=actions.submitAuto(m.id,target,action);if(r.accepted()){port.lockDirection(m.id,target,action);m.actionId=action;m.actionClock=0;}return r;}
+  public boolean companionBusy(){CompanionParty.Member m=state.party().active();return m!=null&&resolver.actionActive(m.id);}
   public MonsterAutoCombatBridge monsterAutoBridge(){return new MonsterAutoCombatBridge(actions,MONSTER_BASIC_ACTION_ID);}
 
   /** The only per-frame combat tick: cooldowns, pending hit frames, respawn sync, then one drain. */
   public FrameResult tick(float deltaSeconds){
-    float dt=Math.max(0f,deltaSeconds); port.tick(dt); actions.tick(dt); synchronizeRespawns();
+    float dt=Math.max(0f,deltaSeconds); state.party().tick(state,dt);port.tick(dt); actions.tick(dt); synchronizeRespawns();
     List<CombatResolver.Event> events=actions.drainEvents(); return new FrameResult(events,actions.actionSnapshots());
   }
 
@@ -115,8 +117,11 @@ public final class RuntimeCombatSession {
       if(MartialSkillPolicy.LINE.equals(definition.actionId)&&PLAYER_ID.equals(targetId))return null;
       float[] target=MartialSkillPolicy.position(state,targetId);
       float tx=target==null?Float.NaN:target[0],ty=target==null?Float.NaN:target[1];
+      if(CompanionPartyRules.allySupport(definition.actionId)&&state.party().friendly(targetId))return port.distance(actorId,targetId)<=192?null:CombatResolver.RejectReason.RANGE;
       return SkillActionContract.canStart(rule,state.player().x,state.player().y,tx,ty,PLAYER_ID.equals(targetId)||port.visible(targetId))?null:CombatResolver.RejectReason.RANGE;
     }
+    if(state.party().find(actorId)!=null){CompanionParty.Member m=state.party().find(actorId);RuntimeState.Monster target=findMonster(targetId);SkillActionContract.Rule r=SkillActionContract.get(definition.actionId);if(CompanionPartyRules.allySupport(definition.actionId))return state.party().friendly(targetId)&&port.distance(actorId,targetId)<=192?null:CombatResolver.RejectReason.RANGE;if(r!=null){RuntimeState.Player self=state.party().body(state,targetId);float tx=target!=null?target.x:self!=null?self.x:Float.NaN,ty=target!=null?target.y:self!=null?self.y:Float.NaN;return SkillActionContract.canStart(r,m.body.x,m.body.y,tx,ty,true)?null:CombatResolver.RejectReason.RANGE;}return target!=null&&CanonicalMeleeTileContract.reachable(m.body.x,m.body.y,target.x,target.y)?null:CombatResolver.RejectReason.RANGE;}
+    if(state.party().find(targetId)!=null&&MONSTER_BASIC_ACTION_ID.equals(definition.actionId)){RuntimeState.Monster m=findMonster(actorId);RuntimeState.Player t=state.party().body(state,targetId);return m!=null&&CanonicalMeleeTileContract.reachable(m.x,m.y,t.x,t.y)?null:CombatResolver.RejectReason.RANGE;}
     if(!isCanonicalMeleeAction(definition.actionId))return null;
     float ax,ay,tx,ty;
     if(PLAYER_ID.equals(actorId)){
