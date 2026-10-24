@@ -1,0 +1,40 @@
+{
+  "status": "ACCEPTED_ADAPTED",
+  "video": "Screen_Recording_20261021_092403_YouTube.mp4",
+  "timeSeconds": 21,
+  "nativeCrop": [
+    210,
+    0,
+    2130,
+    1080
+  ],
+  "nativeSize": [
+    640,
+    360
+  ],
+  "sourceSha256": "444d7553a9c492b67b991f6d499224f6b17e90845b04ac47c230035842ab1169",
+  "objectBox": [
+    410,
+    59,
+    538,
+    148
+  ],
+  "observedRoofAndBase": "original video source pixels; alpha silhouette cut",
+  "occlusion": "Minimap covers right roof/base corner. Small occluded area completed with translated pixels from same stone object, ADAPTED; exact hidden geometry unresolved. No generated illustration.",
+  "rightRoofPatch": [
+    469,
+    61,
+    499,
+    86,
+    499,
+    76
+  ],
+  "rightBasePatch": [
+    470,
+    123,
+    490,
+    139,
+    514,
+    110
+  ]
+}

@@ -1,0 +1,9 @@
+# V263 removal-only facing rollback
+
+User reports V262 failure with Screen_Recording_20261024_075444.mp4 and explicitly rejects stacking more corrections after asking for rollback. V262 is DEVICE_FAILED_USER_REPORTED. Installed source not exposed in video; latest delivered65330bb0. Video26.378456s shows player action/facing disagreement (review crops10s/14s and whole26s contact sheet); ROOT CAUSE UNKNOWN. Prior two synthetic coordinate/heading repros were not a reproduction of this handset run. Withdraw any implication that36 host passes certified the reported defect fixed.
+
+Remove the five-line basic HIT_FEEDBACK recipient-facing override from GameView. Restore MonsterAIController byte-for-byte from255a104c, before the positional feature. No substitute runtime helper, idle target tracking, retarget correction, geometry or renderer rewrite. CanonicalActorFacing, CombatController, CanonicalMeleeTileContract, CharacterRenderer, SkillBodyRenderer, PoteForestMonsterShowcase, RuntimeCombatSession and CombatResolver already equal that baseline and remain unchanged. Full GameView combat-event consumer and9 direction/action methods, plus RuntimeState attack/movement and port direction locks must equal baseline. Source verifier is CI tooling only.
+
+Preserve separate explicit user requests: total basic1/double2/triple3, current popup work, one-cell HUD and attack20percent, paired gear/bag and quick necklace exchange. These do not establish phone visual acceptance. Avoid broad cleanup/refactor during rollback.
+
+Retire the two V262 tests that demanded the now-rejected correction policies; retain its dense-target selection/attack check. Run bounded native basic counts/idle facing/AUTO/chase/save and unchanged equipment/HUD sanity. No claim of phone cure based on source equality. Deliver only as rollback candidate with exact source/build/hash/receipt; physical reproduction remains OPEN.

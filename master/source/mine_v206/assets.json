@@ -1,0 +1,52 @@
+{
+  "source": "Screen_Recording_20261020_160455_YouTube.mp4",
+  "sourceSha256": "ec1ed3794096bba358b000b301067c969855cbdbeb6393c289da5ee5cc23f01b",
+  "frameConvention": "V205 retained 1fps640x480 frames, firstframe001",
+  "evidence": "USER_VIDEO_SOURCE_PIXELS; new source crops preserve RGB; one-time native alpha mattes, contact shading and placement ADAPTED",
+  "assets": [
+    {
+      "id": "meadow0",
+      "frame": 65,
+      "box": [
+        226,
+        54,
+        294,
+        84
+      ],
+      "sha256": "ab3a007a166165f2f92ba7389050d55591024a703fc06fa145dd681605f85858"
+    },
+    {
+      "id": "meadow1",
+      "frame": 38,
+      "box": [
+        378,
+        236,
+        440,
+        272
+      ],
+      "sha256": "d84b32614f8e4eefcaf8913a4b2587175c294f7621d3800595cb0d8470318306"
+    },
+    {
+      "id": "meadow2",
+      "frame": 65,
+      "box": [
+        328,
+        246,
+        392,
+        278
+      ],
+      "sha256": "f0ce0289d1ae0ee62f94d4c39e5bec8d24836af1514610a06a8ee1fd4a6af28a"
+    },
+    {
+      "id": "flowers",
+      "frame": 38,
+      "box": [
+        410,
+        282,
+        440,
+        342
+      ],
+      "sha256": "32e11d6b8a6e6a465f0fb8e45ad9f63f962bd644e7298cc2bdc9b9ca3cba4a8f"
+    }
+  ]
+}

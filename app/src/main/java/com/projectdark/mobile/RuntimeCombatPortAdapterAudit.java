@@ -29,13 +29,16 @@ public final class RuntimeCombatPortAdapterAudit {
 
     int initialMp=state.player().mp;
     int initialMonsterHp=monster.hp;
+    // Combat-v3 resolves prototype actions through current FinalStats, not raw3/raw5.
+    int playerDamage=CombatStatPipeline.resolve(3,SkillRuntimeCatalog.magic("player_magic")?CombatStatPipeline.Channel.MAGIC:CombatStatPipeline.Channel.PHYSICAL,state.rpg().finalStats(),FinalStats.neutral(100,0)).applied;
+    int monsterDamage=CombatStatPipeline.resolve(5,CombatStatPipeline.Channel.PHYSICAL,FinalStats.neutral(100,0),state.rpg().finalStats()).applied;
     CombatActionOrchestrator.Submission cast=actions.submitManual("player",monster.id,"player_magic");
     if(!cast.accepted()||state.player().mp!=initialMp-8)return false;
     if(port.cooldownRemaining("player","player_magic")<=0f)return false;
     actions.tick(.19f);
     if(monster.hp!=initialMonsterHp)return false;
     actions.tick(.01f);
-    if(monster.hp!=Math.max(0,initialMonsterHp-3))return false;
+    if(monster.hp!=Math.max(0,initialMonsterHp-playerDamage))return false;
 
     CombatActionOrchestrator.Submission cooled=actions.submitManual("player",monster.id,"player_magic");
     if(cooled.rejectReason!=CombatResolver.RejectReason.COOLDOWN)return false;
@@ -49,7 +52,7 @@ public final class RuntimeCombatPortAdapterAudit {
     if(!actions.submitAuto(monster.id,"player","monster_basic").accepted())return false;
     if(state.player().hp!=beforePlayerHp)return false;
     actions.tick(.20f);
-    if(state.player().hp!=beforePlayerHp-5)return false;
+    if(state.player().hp!=beforePlayerHp-monsterDamage)return false;
     List<CombatResolver.Event> autoEvents=actions.drainEvents();
     if(!hasEffect(autoEvents,monster.id,"monster_basic",CombatResolver.InputMode.AUTO))return false;
 
@@ -66,6 +69,8 @@ public final class RuntimeCombatPortAdapterAudit {
 
     // A monster killing the player must publish PLAYER_DEFEATED only, never MONSTER_DEFEATED.
     state.revivePlayer();
+    // Revival restores spawn coordinates; put the combat fixture back in range.
+    state.player().x=monster.x;state.player().y=monster.y;
     state.player().hp=4;
     monster.alive=true;
     monster.hp=Math.max(1,monster.maxHp);

@@ -1,0 +1,889 @@
+{
+  "sourceBase": "https://lod-dressup-2.web.app/",
+  "status": "SOURCE_RECOVERY_NOT_FULL_RUNTIME_COMPLETION",
+  "assets": [
+    {
+      "appearanceId": "mu0000036",
+      "name": "헬나이트아머",
+      "type": "armor",
+      "size": [
+        969,
+        54
+      ],
+      "frameCount": 38,
+      "files": {
+        "data/type/armor/mu0000036.json": "7d7a221a902f098dafe341ef5851974e9adfd06fffbf5077413a63ee50e07dfa",
+        "atlas/armor/mu0000036.webp": "f8c68ab507d19c108a5ab33de4d5a4285eb6ffd3832069a03ba6ea5680cea760"
+      }
+    },
+    {
+      "appearanceId": "mu0000037",
+      "name": "헬시프아머",
+      "type": "armor",
+      "size": [
+        688,
+        49
+      ],
+      "frameCount": 32,
+      "files": {
+        "data/type/armor/mu0000037.json": "ca0f53811a1b0520668cf251a18d2cdb23d3420513ed3ebe4d7cd4cc9d80531a",
+        "atlas/armor/mu0000037.webp": "ada4de6ba3c4d8c2ecc5c887ed00b245254bd3e3200167a06769942d870d09da"
+      }
+    },
+    {
+      "appearanceId": "mu0000038",
+      "name": "헬소서러로브",
+      "type": "armor",
+      "size": [
+        677,
+        67
+      ],
+      "frameCount": 28,
+      "files": {
+        "data/type/armor/mu0000038.json": "71a4c1e1b3203752e05499d085e60d71af384b48e2194151815133840c8ac7b0",
+        "atlas/armor/mu0000038.webp": "312092ef22e606cd14530688376682b0c343a8f557c2fd29d497c11050866386"
+      }
+    },
+    {
+      "appearanceId": "mu0000040",
+      "name": "헬몽크아머",
+      "type": "armor",
+      "size": [
+        993,
+        88
+      ],
+      "frameCount": 42,
+      "files": {
+        "data/type/armor/mu0000040.json": "59bc93cd3127ec08d375d4f65fe0a5f3a05b25049746bdd0cbb173f0f7243779",
+        "atlas/armor/mu0000040.webp": "89790aae2283386e52740d7cca2dcd103ed7aaecf3800acc01ff378999ee8cee"
+      }
+    },
+    {
+      "appearanceId": "mw002",
+      "name": "에페",
+      "type": "weapon",
+      "size": [
+        528,
+        37
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw002.json": "d893ec4119cd6b76ee36dcd54955dd59603df9412104492ccb41365da5a5b988",
+        "atlas/weapon/mw002.webp": "b8b43b409ee291dfc66072691d82c171b104285c62f7c0807e8f7f62a473dda2"
+      }
+    },
+    {
+      "appearanceId": "mw003",
+      "name": "커틀라스",
+      "type": "weapon",
+      "size": [
+        603,
+        37
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw003.json": "172bf49d5175422ccaa254b3110b947629ca5a1f7c774c4109e972e2b449f3e1",
+        "atlas/weapon/mw003.webp": "2a3d171af8cad4372711a4f303b9c6b998cc55a2b2c9e8f2032e0ca78f5f6b60"
+      }
+    },
+    {
+      "appearanceId": "mw004",
+      "name": "세이버",
+      "type": "weapon",
+      "size": [
+        654,
+        38
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw004.json": "29ad298350bb6e8483c6b9b21f04bede5efbd81cbc1d929ebecfacea81226dbb",
+        "atlas/weapon/mw004.webp": "5db5d32df7d62b9484dfd4eaf2736452accd2751076dcc06ba989198a419c81b"
+      }
+    },
+    {
+      "appearanceId": "mw005",
+      "name": "그라디우스",
+      "type": "weapon",
+      "size": [
+        798,
+        39
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw005.json": "60447b3174b81f7e1b5f9fa5d2f406112cd460872c9ecdc79bd240477d0f6cae",
+        "atlas/weapon/mw005.webp": "053ac3be5c99f67d939dfbc199544c44244e68e205a307e224951596993ab442"
+      }
+    },
+    {
+      "appearanceId": "mw010",
+      "name": "매스커레이드",
+      "type": "weapon",
+      "size": [
+        871,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw010.json": "658e8725212add1b36a1be84a522add15fd5dfa37871364c92de157854a61173",
+        "atlas/weapon/mw010.webp": "df9fa8268521dd0f0e419e19935e6d0d50e2fd5f0df39bdf779b45642577c917"
+      }
+    },
+    {
+      "appearanceId": "mw011",
+      "name": "매스케이드",
+      "type": "weapon",
+      "size": [
+        850,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw011.json": "d4b50b345bf30f6725d1f0f6cc6f0ce2e51cf4e43f8e67c4048bff51cf7bb126",
+        "atlas/weapon/mw011.webp": "200cf14162d27fa7c825fc110565cd6e5f74845348d51cf1bfc3f5cf2a190a38"
+      }
+    },
+    {
+      "appearanceId": "mw012",
+      "name": "배틀소드",
+      "type": "weapon",
+      "size": [
+        715,
+        38
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw012.json": "4a651470950229eff65eeeaef9f14473c10b2c17562343fb6f7872e05d86d610",
+        "atlas/weapon/mw012.webp": "77a05ee187dd25b80d4cd3a2c13d669b74df3fa291a271f58ed190c4c0eb6019"
+      }
+    },
+    {
+      "appearanceId": "mw013",
+      "name": "블랙데쓰",
+      "type": "weapon",
+      "size": [
+        776,
+        40
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw013.json": "2600ef94e8fafc8f828daa6a6fbcd41bb8829df63462a893870f96d26610300d",
+        "atlas/weapon/mw013.webp": "a1578c571b4fb69be6f12ce551eab3a7f2420d617865d849bb01c55313e44b32"
+      }
+    },
+    {
+      "appearanceId": "mw014",
+      "name": "프렘벨",
+      "type": "weapon",
+      "size": [
+        621,
+        36
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw014.json": "067304dd7ec293272910e8c7001caa189a720166cb779429b9d2f81dacdb4df3",
+        "atlas/weapon/mw014.webp": "0ddcd86815c3aff907e748441b7198caad4306f167bb6747bb39b32ca509610c"
+      }
+    },
+    {
+      "appearanceId": "mw015",
+      "name": "롱소드",
+      "type": "weapon",
+      "size": [
+        665,
+        39
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw015.json": "13e44ad564eb87cab980f2631b9dce4ef387db9c80110a24476963dc2fa4b0c0",
+        "atlas/weapon/mw015.webp": "2d43bd19008908d5cb2f17f612bed940ecd6ecafa2f3c5016d07f80a3244b286"
+      }
+    },
+    {
+      "appearanceId": "mw016",
+      "name": "투핸드크레이모어",
+      "type": "weapon",
+      "size": [
+        877,
+        44
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw016.json": "6417340c117a1fa056ac995f1f45da774cb2bab13049fe7d0eb0b9c5ef9eae9d",
+        "atlas/weapon/mw016.webp": "9eaa7702a1099ff360097cc7241388a3153f22c45e3067a638a8a5da4e05ed7d"
+      }
+    },
+    {
+      "appearanceId": "mw017",
+      "name": "스틸라",
+      "type": "weapon",
+      "size": [
+        751,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw017.json": "e7af279e7d8bdfcfe45d09c8dcd885bc751effa4ef09bd08ad8cfcf5e473ed8c",
+        "atlas/weapon/mw017.webp": "a7ccb831ae96ef764bbc602ba46e9efea4fc67219dc4ab687f381b2d6ca4bebc"
+      }
+    },
+    {
+      "appearanceId": "mw018",
+      "name": "투핸드에메랄드소드",
+      "type": "weapon",
+      "size": [
+        840,
+        44
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw018.json": "79c8cc5c0a93deb94259015beca14d860299b4b73058aa321e92d496fb831412",
+        "atlas/weapon/mw018.webp": "d2ac437ab958839d99c1ad6a8425748dd8bd9fab051b67f28351de18896330ad"
+      }
+    },
+    {
+      "appearanceId": "mw019",
+      "name": "투핸드드래곤크로어",
+      "type": "weapon",
+      "size": [
+        802,
+        41
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw019.json": "f99e3abe3ca54449f22d30e6b80cb766c4b05c8b43a72a7dccd4872b73eeb1c1",
+        "atlas/weapon/mw019.webp": "240982773966e0d703c4bf3e4c6d3c6af1807b68b0edeb4f77b9d2396dc82f3b"
+      }
+    },
+    {
+      "appearanceId": "mw020",
+      "name": "드래곤슬레이어",
+      "type": "weapon",
+      "size": [
+        713,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw020.json": "ba8a991dc79f713d4446774ebb7e35c61494a91392fd778ae47be1baa8fe9e71",
+        "atlas/weapon/mw020.webp": "e713b322da6377e528bb7977bc549195dc99c4393b74b20e6c233d4e4e5a43ca"
+      }
+    },
+    {
+      "appearanceId": "mw021",
+      "name": "투핸드그레이트소드",
+      "type": "weapon",
+      "size": [
+        776,
+        44
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw021.json": "73daecb0a00ca1baeaea8d54594d30b788a802f551d479204375f255e4736151",
+        "atlas/weapon/mw021.webp": "598316a35b8d823120d52f0b608239ddac4c8a2d9a5d865cc7a69e6beaf5b807"
+      }
+    },
+    {
+      "appearanceId": "mw022",
+      "name": "투핸드엑시큐터",
+      "type": "weapon",
+      "size": [
+        765,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw022.json": "37d59b7577669ad37fef225c846109a4292cc096e4811325f4d340a8ef97d161",
+        "atlas/weapon/mw022.webp": "ac52bb09660e40af6b741ffeaf2476b0fa2b6a7ecd194a3e0e49a6ee4521d5d7"
+      }
+    },
+    {
+      "appearanceId": "mw023",
+      "name": "투핸드가이아두스",
+      "type": "weapon",
+      "size": [
+        879,
+        44
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw023.json": "29191a16a6c829fbfde140c04a08cc5ece6a7ad3cee4d95a22cd96998f2a0aba",
+        "atlas/weapon/mw023.webp": "371d3ae85b054524d0d34a6ba7e791330fca4fcb8279a36cc8cd8cf5d84cc3f6"
+      }
+    },
+    {
+      "appearanceId": "mw034",
+      "name": "우든클럽",
+      "type": "weapon",
+      "size": [
+        238,
+        34
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw034.json": "f10979a296ecc4dffa3ba3db0f963414da2333abf95278b229c47bf17cef4542",
+        "atlas/weapon/mw034.webp": "ec0d622a105cabe9cf7cb4557dd0b605b9e18c5e0be44fe71aeef8eac65c1b96"
+      }
+    },
+    {
+      "appearanceId": "mw035",
+      "name": "스파이크클럽",
+      "type": "weapon",
+      "size": [
+        257,
+        32
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw035.json": "216845b2205f7ee2d106db504e5a082049608c41fec06a59a80c65da5f13f171",
+        "atlas/weapon/mw035.webp": "63272477c74f291596844632b2e7340c93e24dfa64392127dbf6275289f9eaf8"
+      }
+    },
+    {
+      "appearanceId": "mw036",
+      "name": "자이언트클럽",
+      "type": "weapon",
+      "size": [
+        754,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw036.json": "cb8400d30b468a699170815937af2cb28360a7ba15a50a85e857f772802722b2",
+        "atlas/weapon/mw036.webp": "6ba888ba5c8c97055927319bd45e9dc608acda52e1e0306d029adddb4bd911c7"
+      }
+    },
+    {
+      "appearanceId": "mw037",
+      "name": "자이언트스톤클럽",
+      "type": "weapon",
+      "size": [
+        653,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw037.json": "d12b4d7b963bd179d0aa778d4cda738164567fa1eb46bdcd2857b8f32b1ed7b2",
+        "atlas/weapon/mw037.webp": "b748739584de5678c1ea495fb5b5d052070a3274e2791585d88e00c7825ca319"
+      }
+    },
+    {
+      "appearanceId": "mw038",
+      "name": "핸드액스",
+      "type": "weapon",
+      "size": [
+        172,
+        25
+      ],
+      "frameCount": 13,
+      "files": {
+        "data/type/weapon/mw038.json": "09bc31895a233b290440131cbfe2cf4660c7c2d9eadadb1a364ee27cd6542b4e",
+        "atlas/weapon/mw038.webp": "1b36d2aeab6a3b80369b2a74a9b6d316af7926ddcfe74b92ed514135dc01a2b5"
+      }
+    },
+    {
+      "appearanceId": "mw039",
+      "name": "액스",
+      "type": "weapon",
+      "size": [
+        369,
+        36
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw039.json": "7dafbc0ad9eff3e97d424fa97b4f1c1d17e8ea22f01d712be94ee4c083a5d1df",
+        "atlas/weapon/mw039.webp": "43f17a1df4c8268e5ce73f48b580d5b5ae7c4edc88a3b4631274b91c3836982d"
+      }
+    },
+    {
+      "appearanceId": "mw040",
+      "name": "하이브레이질액스",
+      "type": "weapon",
+      "size": [
+        356,
+        36
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw040.json": "d9533912c590bb6d4d796a56b196d8e2858c3deedec4da34a58c367c6617fd03",
+        "atlas/weapon/mw040.webp": "4c7aeddda8520c03951fe4329a127713a0a2f845800d22c95063b9e38d9d8fdb"
+      }
+    },
+    {
+      "appearanceId": "mw041",
+      "name": "자이언트스톤액스",
+      "type": "weapon",
+      "size": [
+        731,
+        42
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw041.json": "ac383523f6455401106181b2af861025e0f5d0eadf7c528920d686b60d6c6456",
+        "atlas/weapon/mw041.webp": "626fbd7ac78f8490d304e7215b3ecbed4785332cc5d67978e0591e27af6812b4"
+      }
+    },
+    {
+      "appearanceId": "mw042",
+      "name": "스톤액스",
+      "type": "weapon",
+      "size": [
+        205,
+        28
+      ],
+      "frameCount": 13,
+      "files": {
+        "data/type/weapon/mw042.json": "1a471819ce13162177df4e14cbdab0bc0d038560a34558c3f27c63c4d16e4420",
+        "atlas/weapon/mw042.webp": "5513c669fe91757e6b0427bdead991637a410241e25114ca0fbbd650b8d9b7f8"
+      }
+    },
+    {
+      "appearanceId": "mw043",
+      "name": "배틀액스",
+      "type": "weapon",
+      "size": [
+        322,
+        35
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw043.json": "4228c74aeabc91b2e4f8a8a7dd63dcae99125f03789463216e9f9c5f7a7e1f29",
+        "atlas/weapon/mw043.webp": "cf61cc49ec96c31f55a0efe344b21e39db8abf9f89153f81abdc9b55c88b0ba5"
+      }
+    },
+    {
+      "appearanceId": "mw044",
+      "name": "자이언트스톤해머",
+      "type": "weapon",
+      "size": [
+        809,
+        44
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw044.json": "c80ef863ba0e6068087e544f04c54e9ec5b5b5212926e9be8ff40d9bcaf6b4f8",
+        "atlas/weapon/mw044.webp": "21e618465b9f5bbce63f4a6c6de7b449c8512287ad27433d71f011c31be8d4eb"
+      }
+    },
+    {
+      "appearanceId": "mw047",
+      "name": "시미터",
+      "type": "weapon",
+      "size": [
+        346,
+        42
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw047.json": "269f9771c72c56f2ebb7c30957911a3548218dffaf5855ad8d2d052c345b9644",
+        "atlas/weapon/mw047.webp": "a41e191964922306e9014fac7a93e3999cab55b95866d08134af0f5fb44921d4"
+      }
+    },
+    {
+      "appearanceId": "mw048",
+      "name": "더브릴",
+      "type": "weapon",
+      "size": [
+        418,
+        38
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw048.json": "cd3fc062ae3ac34014ac20f87f28ea16c4f778ad00075875bdbf5b3f7cb6781d",
+        "atlas/weapon/mw048.webp": "e35599847514ade0ef9bc53a270d62838aaad74ceff0227285ea2069ef2c7c9b"
+      }
+    },
+    {
+      "appearanceId": "mw052",
+      "name": "체인",
+      "type": "weapon",
+      "size": [
+        192,
+        43
+      ],
+      "frameCount": 13,
+      "files": {
+        "data/type/weapon/mw052.json": "cdd025bf8cff5c6c2219251922b15b78baa6fe55722a19f878ed8dd139a363b7",
+        "atlas/weapon/mw052.webp": "94057474313386587155cfa8fe91d4e26a5cf29400578df1acfa38ebe76e461f"
+      }
+    },
+    {
+      "appearanceId": "mw053",
+      "name": "타고나이트액스",
+      "type": "weapon",
+      "size": [
+        414,
+        36
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw053.json": "8209e25579c0e6400f6499e2ff2b0e0397c87dcffe55dc1defbd8c858242a512",
+        "atlas/weapon/mw053.webp": "f875e21cd06851c5516fd0821d0e54fd60cfd4d5c2fc4aa51ff73be02d0da297"
+      }
+    },
+    {
+      "appearanceId": "mw054",
+      "name": "토마호크",
+      "type": "weapon",
+      "size": [
+        216,
+        30
+      ],
+      "frameCount": 13,
+      "files": {
+        "data/type/weapon/mw054.json": "2ec2bf7df6256548cb07673f553f7f239ccb9c1728dc9c123895fc6898edbb2c",
+        "atlas/weapon/mw054.webp": "448916fc63f4ec9ce1a3aec08265ae75ae22083159763a661df795163ccf0c4d"
+      }
+    },
+    {
+      "appearanceId": "mw055",
+      "name": "하이브레이질배틀액스",
+      "type": "weapon",
+      "size": [
+        770,
+        44
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw055.json": "dd7faa1a2309c75f282712c64ab3bd13705ee622309d242e716cc1ce42f67d7c",
+        "atlas/weapon/mw055.webp": "3ee56b9f402b7f79c9eb645718d23539cb21a9279cbd875620c5764d25314335"
+      }
+    },
+    {
+      "appearanceId": "mw056",
+      "name": "실버시미터",
+      "type": "weapon",
+      "size": [
+        343,
+        42
+      ],
+      "frameCount": 14,
+      "files": {
+        "data/type/weapon/mw056.json": "1fd28c79e78c24bc9cf1e1e0e56eb1d9904dc3398f2970ce7767dd7ae389f74f",
+        "atlas/weapon/mw056.webp": "3898dfb403b74d431068cb4f6fb47e4b286014fc2499b31b9bb29e8749f90e99"
+      }
+    },
+    {
+      "appearanceId": "mw069",
+      "name": "피닉스크로어",
+      "type": "weapon",
+      "size": [
+        868,
+        50
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw069.json": "73abcd31c6ac95bd619ea2bed1ab29c9446b8f3b5f3bac5291b4bcab669c32a1",
+        "atlas/weapon/mw069.webp": "792b43491c181e6f584c16bff2c29870f5ce9fdf9921eba1dc05d06772d93657"
+      }
+    },
+    {
+      "appearanceId": "mw076",
+      "name": "아스카론",
+      "type": "weapon",
+      "size": [
+        739,
+        41
+      ],
+      "frameCount": 26,
+      "files": {
+        "data/type/weapon/mw076.json": "85a93ef9b77db30ef6fb3330b43acf97b6db3eff2e84d62e6ea69a52afb35765",
+        "atlas/weapon/mw076.webp": "30b7c678504a7f4c55bc43bfccfc4b71fd9076b3d22bc02bbf3a4cb7a14d9f07"
+      }
+    },
+    {
+      "appearanceId": "mw088",
+      "name": "아룬다이트",
+      "type": "weapon",
+      "size": [
+        771,
+        41
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw088.json": "9b5c3cacb6c6ee11595c914cd47b8a5125df9c2047f10ebb8309f5a9139b0b80",
+        "atlas/weapon/mw088.webp": "6719d7ebd169ac1e21e77e520a367ffcb4dabcf1f16125708042eeb71ed00435"
+      }
+    },
+    {
+      "appearanceId": "mw092",
+      "name": "앵거바딜",
+      "type": "weapon",
+      "size": [
+        773,
+        41
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw092.json": "6b2f858ed8f7ca31f03e3b223e1c0a68249ed544d5e2d1519344379a4fef57e1",
+        "atlas/weapon/mw092.webp": "da35fc9a0eedc96c57167be71302f81542f5fc524a6ccf767f824c2575297776"
+      }
+    },
+    {
+      "appearanceId": "mw095",
+      "name": "피닉스소울크로어",
+      "type": "weapon",
+      "size": [
+        868,
+        50
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw095.json": "6a96287430724fb3218f79f0f6a8d01697fa9c721eefada0c31cb7c375445cce",
+        "atlas/weapon/mw095.webp": "c44a94ec0637cd18244c029aee0ac4fe93648147ff499c235ad8fd644b3aa9ab"
+      }
+    },
+    {
+      "appearanceId": "mw097",
+      "name": "헬피닉스크로어",
+      "type": "weapon",
+      "size": [
+        870,
+        50
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw097.json": "9a54bc0e0b1fedbdac80a390f6c2aeb388bbb70e8b0979a73907a4862494758a",
+        "atlas/weapon/mw097.webp": "c4db354cd877433701c972c14f6ee0714120c71225de8c0ad101e472faff6881"
+      }
+    },
+    {
+      "appearanceId": "mw098",
+      "name": "헬브레이질레이업배틀액스",
+      "type": "weapon",
+      "size": [
+        800,
+        45
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw098.json": "c7572dff11a1134bed61e49c6537a43bbf6bbfebfd2acbc95819466290145858",
+        "atlas/weapon/mw098.webp": "748cfd79972291b9b2d8aaf2a0de988db99380751bb7607fea82b1e2cca94a05"
+      }
+    },
+    {
+      "appearanceId": "mw099",
+      "name": "피닉스레이업크로어",
+      "type": "weapon",
+      "size": [
+        881,
+        50
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw099.json": "c87dcf72c420a924d57836acf0b370103c752c41b0c1885da0317c8d6858cb3b",
+        "atlas/weapon/mw099.webp": "c62fa47f7aa290769fe1de40cee20e5cefec68ace6d1254135e86c2116f51868"
+      }
+    },
+    {
+      "appearanceId": "mw100",
+      "name": "그레이트헬피닉스크로어",
+      "type": "weapon",
+      "size": [
+        825,
+        50
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw100.json": "8933a0efe14420c553227eb58016cd0c598458cb83e551e830ab63940443a673",
+        "atlas/weapon/mw100.webp": "416dd97c04441c958ca0e977483917143f39d60210c5896b4deae204303fe7be"
+      }
+    },
+    {
+      "appearanceId": "mw133",
+      "name": "다인블레이드",
+      "type": "weapon",
+      "size": [
+        980,
+        92
+      ],
+      "frameCount": 42,
+      "files": {
+        "data/type/weapon/mw133.json": "65396a2910506c46d5db0c917d8152c28d5cf494de1e7f6a75169eeb1069b0d9",
+        "atlas/weapon/mw133.webp": "e02c3355b150ca3ee7c7f506c98409ccaafd140a2fec6c8223c3437fd5cb1302"
+      }
+    },
+    {
+      "appearanceId": "mw137",
+      "name": "바스타드블레이드",
+      "type": "weapon",
+      "size": [
+        982,
+        92
+      ],
+      "frameCount": 42,
+      "files": {
+        "data/type/weapon/mw137.json": "4ff2ee87491f72339d4b3a88589f093bc965af7786ac563576f5c9748b6b2d3d",
+        "atlas/weapon/mw137.webp": "9f4350740821a811ae5d13d6a88deb0f457f87608a9618ff3f4305c599b70ad0"
+      }
+    },
+    {
+      "appearanceId": "mw170",
+      "name": "투핸드다크크로어",
+      "type": "weapon",
+      "size": [
+        1016,
+        67
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/mw170.json": "a68b1a496ce8c36fad86be1cef1ac6ab48c7581a61eaa7a817bf830c7d023daf",
+        "atlas/weapon/mw170.webp": "8669cf4cc0a81c3ff8e1a4d2629bdd23f8682c733cce269e91b49ec16fcc70d5"
+      }
+    },
+    {
+      "appearanceId": "mw186",
+      "name": "가디언바스타드액스",
+      "type": "weapon",
+      "size": [
+        979,
+        159
+      ],
+      "frameCount": 43,
+      "files": {
+        "data/type/weapon/mw186.json": "10d50db3d196809239db0b55264a3c9c89e40e7324d636e459755ae22a936a32",
+        "atlas/weapon/mw186.webp": "52e73da15a223e14ecabcc6ca67e1df8a69c2d08f55d647789f1f582bb3637a6"
+      }
+    },
+    {
+      "appearanceId": "mw203",
+      "name": "투핸드샤크블레이드",
+      "type": "weapon",
+      "size": [
+        1018,
+        132
+      ],
+      "frameCount": 43,
+      "files": {
+        "data/type/weapon/mw203.json": "eae496ea12981bd2fc1e2954be1d915b501a6bc92e9345e455b9c130aa126d3a",
+        "atlas/weapon/mw203.webp": "a1a5802cc3f41673d3f4da9354a7188d8aaeb19634bdd5a03b308ea0c4ebe058"
+      }
+    },
+    {
+      "appearanceId": "mw284",
+      "name": "히야트디그",
+      "type": "weapon",
+      "size": [
+        1009,
+        74
+      ],
+      "frameCount": 45,
+      "files": {
+        "data/type/weapon/mw284.json": "c8350eef8a5bebce90fc7e58a20a22a10a4ad23a30a95fe81dbb48e9183f6912",
+        "atlas/weapon/mw284.webp": "00cc81ec2355013fef24d5434f2c2d6993febe0e4e6a934dad6807ca0b83dd46"
+      }
+    },
+    {
+      "appearanceId": "mw288",
+      "name": "히야트스냅",
+      "type": "weapon",
+      "size": [
+        971,
+        124
+      ],
+      "frameCount": 47,
+      "files": {
+        "data/type/weapon/mw288.json": "34fcd25e128ba5c339ec9ffe9bbb68c22ad4e9adc0725d645d77f4e6cd132d08",
+        "atlas/weapon/mw288.webp": "3f7961961d076d03976b004a8e6688aa53da8674bbafc602b5c9b971b804f448"
+      }
+    },
+    {
+      "appearanceId": "mw290",
+      "name": "템플나이트스피어",
+      "type": "weapon",
+      "size": [
+        999,
+        138
+      ],
+      "frameCount": 43,
+      "files": {
+        "data/type/weapon/mw290.json": "d6c905f1c96eb7d4bd2be25805daac994f434d9d749c98ecf86b97791424f043",
+        "atlas/weapon/mw290.webp": "7541c93fc8f20c7162574e1d05a6c6cb700fb63622af73b45431fd04b859e838"
+      }
+    },
+    {
+      "appearanceId": "mw295",
+      "name": "마스터피닉스크로어",
+      "type": "weapon",
+      "size": [
+        993,
+        90
+      ],
+      "frameCount": 35,
+      "files": {
+        "data/type/weapon/mw295.json": "826f34901c20bda799a3ffb2cf6847fb355ae74c51fbb547a04abb1a15626f0d",
+        "atlas/weapon/mw295.webp": "b0835146f86508a853aaf845af751f6c89765a762d0aecc32e8e4bd5a48960d8"
+      }
+    },
+    {
+      "appearanceId": "wu0000038",
+      "name": "헬소서리스로브",
+      "type": "armor",
+      "size": [
+        642,
+        69
+      ],
+      "frameCount": 28,
+      "files": {
+        "data/type/armor/wu0000038.json": "6fd935bcbd0ab98e8edb0ff069d7561088a59397c0b595ec917229edad9032cf",
+        "atlas/armor/wu0000038.webp": "27b68d32b0c7bb211e55bdb18c93c36397299f92a0b720e3584a8f2f688587ea"
+      }
+    },
+    {
+      "appearanceId": "ww096",
+      "name": "하이브레이질그래이트배틀액스",
+      "type": "weapon",
+      "size": [
+        796,
+        45
+      ],
+      "frameCount": 27,
+      "files": {
+        "data/type/weapon/ww096.json": "8fce3794d5b065862e44ba2400e975ed1cae40763924bb27728044848c7bb4c3",
+        "atlas/weapon/ww096.webp": "d2ad2c59eda8d7de4a9980aeb51d412bc342764b314f7a82cfaa20e1bd4898ee"
+      }
+    },
+    {
+      "appearanceId": "ww141",
+      "name": "본브레이크",
+      "type": "weapon",
+      "size": [
+        1017,
+        95
+      ],
+      "frameCount": 43,
+      "files": {
+        "data/type/weapon/ww141.json": "9143ba15dd8332e4a019de61228462d0f5f8f11dde7280a4db3cedcc5e0e7f2c",
+        "atlas/weapon/ww141.webp": "48b79740839b5b0dba22e971d4ce12b8e76bfecaaa16222a8f65e04afc95a093"
+      }
+    },
+    {
+      "appearanceId": "ww145",
+      "name": "다크본브레이크",
+      "type": "weapon",
+      "size": [
+        1017,
+        95
+      ],
+      "frameCount": 43,
+      "files": {
+        "data/type/weapon/ww145.json": "d460e8907b80e4e458768b83ad67aaedbc7b7ad1a0cfcd6fab072eec19823449",
+        "atlas/weapon/ww145.webp": "9db01bc2b6cf9df7938765957126c3432a32bad1deab0f35c427e8d72c810e01"
+      }
+    },
+    {
+      "appearanceId": "ww289",
+      "name": "엠퍼러나이트소드",
+      "type": "weapon",
+      "size": [
+        1013,
+        81
+      ],
+      "frameCount": 43,
+      "files": {
+        "data/type/weapon/ww289.json": "07704afdce9bb36d510abf72a3e3a1d9f40de0ba04f30d8a4e7d19aa3ebfcc7e",
+        "atlas/weapon/ww289.webp": "4ed266bca101a7409cb3aa7d71705e31874b0074a16bcea0cb87c48876652303"
+      }
+    }
+  ],
+  "failures": []
+}

@@ -1,0 +1,25 @@
+{
+  "status": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED",
+  "userScope": "포테영상 마법4종만 일단 연결: 마레노 테라미코 플라모 아듀로",
+  "ids": [
+    "SK_마법사_001",
+    "SK_마법사_003",
+    "SK_마법사_005",
+    "SK_마법사_004"
+  ],
+  "source": "master/source/mage_v240/receipt.json",
+  "consumer": "ClassicSkillReference.loadMageVideoV240",
+  "before": "Basic4 static holds",
+  "after": "Recorded20fps contact sequences",
+  "preserved": [
+    "other-circle bindings and descriptions",
+    "V238",
+    "V239promotion5",
+    "map and monsters",
+    "combat/learning/save rules"
+  ],
+  "deferred": "User-confirmed circle3/screen4 mapping correction; excluded from this candidate",
+  "runtimeSource": "79527cd2cdb1c25f151ee6cb718c17711a010bcc",
+  "verification": "verification/POTE_BASIC4_V240_BUILD.json",
+  "phone": "PENDING"
+}

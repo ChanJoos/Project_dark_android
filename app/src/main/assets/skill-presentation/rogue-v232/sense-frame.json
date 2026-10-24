@@ -1,0 +1,41 @@
+{
+  "path": "skill-presentation/rogue-v232/sense-frame.png",
+  "sha256": "9d65b120e323ab181336266e7b2124be1a21229fcfc0a1e118c2589d3cbec9d0",
+  "source": "master/source/rogue_v232/sense-frame-capture.png",
+  "fieldTextReplacement": {
+    "source": [
+      60,
+      250,
+      730,
+      310
+    ],
+    "destinations": [
+      [
+        60,
+        90
+      ],
+      [
+        60,
+        150
+      ],
+      [
+        60,
+        210
+      ]
+    ],
+    "lastHeight": 30
+  },
+  "cursorReplacement": {
+    "source": [
+      200,
+      397,
+      250,
+      423
+    ],
+    "destination": [
+      600,
+      397
+    ]
+  },
+  "originalFrameAndHeaderRetained": true
+}

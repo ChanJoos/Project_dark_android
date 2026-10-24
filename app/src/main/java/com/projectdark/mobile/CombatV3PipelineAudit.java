@@ -3,9 +3,9 @@ public final class CombatV3PipelineAudit {
  private CombatV3PipelineAudit(){}
  public static boolean verify(){
   FinalStats n=FinalStats.neutral(100,0);
-  if(CombatStatPipeline.resolve(100,CombatStatPipeline.Channel.PHYSICAL,n,n).applied!=100)return false;
+  if(CombatStatPipeline.resolve(100,CombatStatPipeline.Channel.PHYSICAL,n,n).applied!=34)return false;
   if(ElementalDamageFormula.apply(100,"WATER","FIRE")!=100)return false;
-  if(ElementalDamageFormula.apply(100,"FIRE","FIRE")!=33)return false;
+  if(ElementalDamageFormula.apply(100,"FIRE","FIRE")!=34)return false;
   if(ElementalDamageFormula.apply(100,"EARTH","FIRE")!=60)return false;
   if(ElementalDamageFormula.apply(100,"FIRE","WATER")!=38)return false;
   RpgProgressionState r=new RpgProgressionState();FinalStats p=r.finalStats();

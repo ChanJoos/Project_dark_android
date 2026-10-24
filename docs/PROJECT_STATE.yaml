@@ -1,3 +1,427 @@
+hud_narcoli_v253:
+  status: IMPLEMENTING
+  user_report: NARCOLI_VISUAL_REJECTED_NEW_213626_VIDEO
+  required_sources: [AGENTS.md, docs/MAGIC_FX_LESSONS.md, app/src/main/java/com/projectdark/mobile/SkillBook.java, app/src/main/java/com/projectdark/mobile/SkillWindow.java, app/src/main/java/com/projectdark/mobile/SkillIconCatalog.java, app/src/main/java/com/projectdark/mobile/GameView.java, master/source/status_v249/receipt.json]
+  acceptance: 12 square slots; preserved8and10slot saves; martial icon background; left cluster; larger attack; auto above; actual recipient Narcoli comparison
+  phone: PENDING
+
+visual_source_v252:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  base: 8cff9726
+  runtime_source: c43248c04b9e42e2565a2007e44f143604d4e1ac
+  focused_run: 39951347137
+  artifact_id: 12501020646
+  native_unique_passed: 10
+  native_current_passed: 1
+  native_retained_passed: 9
+  registered_original_inventory: 272
+  source_only_original_inventory: 7
+  receipt: verification/VISUAL_SOURCE_V252_BUILD.json
+  narcoli: VIDEO_REVIEW_GIF_NOT_APPLIED
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  user_request: Rapid above hats in all directions; original inventory art for equipment and reagents; extract Narcoli GIF from supplied205939video
+  required_sources: [AGENTS.md, docs/MAGIC_FX_LESSONS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/items/catalog_v210/catalog.json, master/source/items/full_20261010/collection.json, master/source/narcoli_review_v251/receipt.json, app/src/main/java/com/projectdark/mobile/RapidHairclipV199.java, app/src/main/java/com/projectdark/mobile/SourceItemIconRegistry.java]
+  phone: PENDING
+
+magic_recall_v251:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 4d3232c565732feecdc3fe5cba8b775fc2cf603d
+  focused_run: 39922524224
+  artifact_id: 12487817994
+  native_passed: 19
+  receipt: verification/MAGIC_RECALL_V251_BUILD.json
+  library_file_id: libfile_8e9a8498b9448191a1214750a966fb08
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, docs/MAGIC_FX_LESSONS.md, master/source/status_v249/receipt.json, master/source/town_v248/receipt.json, master/source/recalls_v251/1000060685.jpg]
+  narcoli: PREVIEW_ONLY_NO_NEW_MAPPING_WITHOUT_USER_REVIEW
+  user_request: Correct Soruma recipient; retire Death; Semelia four directions centered on caster and selected monster; all10recallassets and existingtowninventory
+  phone: PENDING
+
+visual_feedback_v250:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: a5e752071792c5bdc5a442c75408a33a614365e9
+  focused_run: 39918615395
+  artifact_id: 12486256369
+  native_passed: 17
+  receipt: verification/VISUAL_FEEDBACK_V250_BUILD.json
+  library_file_id: libfile_04ed11ec19b48191a7a9c5a188bb392f
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/source/town_v248/receipt.json, master/source/items/rapid_v198/frame_audit.json, master/source/items/rapid_v198/original_sources.zip]
+  user_request: Preserve temple white light; repair Rapid duplicate layering, inventory icon reduction and Baekwonman right choice frame; register supplied recall varieties with inventory
+  recall_sources: PENDING_USER_LIST_AND_IMAGES
+  phone: PENDING
+
+status_magic_v249:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 4311a11ca096023b5fab6fb952d4ce9bdfca6233
+  focused_run: 39911143492
+  artifact_id: 12483535278
+  native_unique_passed: 40
+  native_current_passed: 11
+  native_reused_passed: 29
+  receipt: verification/STATUS_MAGIC_V249_BUILD.json
+  skill_audit: docs/V249_SKILL_AUDIT_KO.md
+  library_file_id: libfile_86832f4fd644819196ad343cfe5511e2
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, docs/MAGIC_FX_LESSONS.md, master/MASTER_MANIFEST.md, master/source/status_v249/receipt.json, master/source/mage_v241/receipt.json, master/source/death_v220/reference.json]
+  user_request: Fix reinforcement/all Kuroto anchors; one-cycle confusion/passive double damage; sleep/poison persistent; all-class Azito Milles inn; remove Clemens/Locateo; martial recipient aliases; audit missing connections
+  phone: PENDING
+
+town_portals_v248:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: e38aeba15e34a7d9c797f16af7d8c8ed2922bb87
+  focused_run: 39906861205
+  artifact_id: 12481077445
+  native_unique_passed: 40
+  native_current_passed: 8
+  native_reused_passed: 32
+  receipt: verification/TOWN_PORTALS_V248_BUILD.json
+  library_file_id: libfile_28534341b14c8191a709364a999850ec
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/MAGIC_FX_LESSONS.md, master/source/town_v248/receipt.json, master/source/town_v248/1000060746.jpg, master/source/town_v248/1000060745.png, master/source/town_v248/1000060743.jpg, master/source/town_v248/1000060739.jpg, master/source/town_v248/1000060737.jpg]
+  phone: PENDING
+
+town_services_v247:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 2367c5811a05b00b724cf2b15245239e5f262921
+  focused_run: 39900306358
+  native_unique_passed: 24
+  receipt: verification/TOWN_SERVICES_V247_BUILD.json
+  library_file_id: libfile_17636fefc1ec8191ac0521550635ee2c
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, docs/NPC_IDENTITY_STYLE_V104_CONTRACT.md, docs/B4_REAGENT_SHOP_ASSET_AUDIT.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, master/source/town_v247/receipt.json, master/source/town_v247/inn-reference.jpg, master/source/town_v247/equipment-reference.jpg, master/source/town_v247/shop-reference.jpg]
+  phone: PENDING
+
+mage_visual_v237:
+  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  source_motion: PENDING_ORIGINAL_CONTINUOUS_REFERENCE
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  phone: PENDING
+
+mage_rogue_damage_v236:
+  status: IMPLEMENTING_DEVICE_FAILED_USER_REPORTED
+  root_cause: CONFIRMED_GENERIC_COEFFICIENTS_AND_MISSING_AMNESIA_MULTIPLIER
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  phone: PENDING
+
+mage_sources_v235:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 14f50075a08123740273626d5c62108a4c023420
+  focused_run: 39781578591
+  native_runs: [39780260125, 39781578591]
+  native_unique_passed: 51
+  receipt: verification/MAGE_SOURCES_V235_BUILD.json
+  library_file_id: libfile_8837a46696348191b967a572d7bf7a9c
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/changes/V235_MAGE_SOURCES.json, master/source/mage_v235/guide.json, master/source/skill_fx/naver_magic_recovered_20261001/221564.json, master/source/skill_fx/naver_magic_recovered_20261001/254766.json, master/source/skill_fx/naver_magic_recovered_20261001/media.json, master/source/skill_fx/naver_magic_recovered_20261001/mage_bindings.json]
+  phone: PENDING
+
+rogue_combat_v234:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: 003bea4871ac480c19ab217d6ebb352641a27a04
+  focused_run: 39776318651
+  native_runs: [39774840057, 39776318651]
+  native_unique_passed: 58
+  receipt: verification/ROGUE_COMBAT_V234_BUILD.json
+  library_file_id: libfile_0fbaae6d1c288191bd603597f34a5962
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/changes/V234_ROGUE_COMBAT.json, master/source/skill_fx/naver_cafe_archive_20261001/245450.json, master/source/skill_fx/naver_cafe_archive_20261001/media.json, master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json, tools/apply_rogue_v233.py, app/src/main/java/com/projectdark/mobile/SkillAbilityData.java, app/src/main/java/com/projectdark/mobile/SkillAbilityCatalog.java]
+  accepted_martial: USER_VISUAL_ACCEPTED_UNCHANGED
+  phone: PENDING
+
+rogue_visual_v233:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  runtime_source: bd9bf2156c00bd4dd90f71613c00bacdf8afe6f5
+  focused_run: 39768250080
+  native_tests: 36
+  receipt: verification/ROGUE_VISUAL_V233_BUILD.json
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/DATA_CONSUMPTION_CONTRACT.md, master/MASTER_MANIFEST.md, master/source/skill_fx/naver_cafe_archive_20261001/rogue_bindings.json, master/source/skill_fx/naver_401229/assassination.gif, master/source/skill_fx/naver_401229/assassination_jin.gif, app/src/main/assets/skills/source_icons.json, master/changes/V233_ROGUE_VISUAL.json]
+  accepted_martial: USER_VISUAL_ACCEPTED_UNCHANGED
+  phone: PENDING
+
+martial_seven_v228:
+  status: IMPLEMENTED_BUILD_NATIVE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  accepted_contract: master/changes/V228_MARTIAL_SEVEN_SOURCE.json
+  source_video: libfile_2a630cf24fac81919793ba88d449ed0e
+  phone: PENDING
+
+worn_equipment_v225:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  runtime_source: 2fc3f37a64d594aeda2f4948ee4c77c578cd22ea
+  focused_run: 39712550369
+  native_suites: 6
+  native_tests: 32
+  receipt: verification/WORN_EQUIPMENT_V225_BUILD.json
+  accepted_contract: master/changes/V225_WORN_EQUIPMENT.json
+  scope: 14 identified humanoid types / 23 worn-equipment relations
+  rates: B temporary weapon2pct armor_and_hat3_5pct; original unknown
+  remaining: Unidentified kits and other original reward probability/quantity and collection paths remain pending
+  phone: PENDING
+
+death_access_v223:
+  status: BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/V222_ENTRY_DOORS_DENSITY_CHECKPOINT.md, app/src/main/java/com/projectdark/mobile/TownTravel.java, app/src/main/java/com/projectdark/mobile/TownTravelWindow.java]
+  runtime_source: f79f354459007d6fe2cc214319db7dba278ebbd7
+  focused_run: 39702647619
+  receipt: verification/DEATH_ACCESS_V223_BUILD.json
+  scope: Death lobby offered only by existing Mine town travel NPC Arthur; house monster addition excluded
+  phone: PENDING
+
+death_v217:
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_REFERENCE_GAPS_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  base: 828406914d494a2354462c35ed858c0ce6c1b8e8
+  runtime_source: 037da0145022dade21701e635894c4de893c44f1
+  focused_run: 39613760032
+  artifact: 12352390155
+  receipt: verification/DEATH_V217_BUILD.json
+  maps: 10
+  source_pack: master/source/death_v217/original_sources.zip
+  contract: master/changes/V217_DEATH_VILLAGE.json
+  missing_reference: Screen_Recording_20261021_205405_YouTube.mp4
+  handset: PENDING
+  original_korean_monster_name_bindings: PENDING_EXCEPT_ZOMBIE
+milles_temple_v213:
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  runtime_source: 627efe679dfa77a4f3f6daa9e1e18cb4deace439
+  focused_run: 39580282429
+  artifact: 12336915112
+  native_suites: 10
+  native_tests: 46
+  common_push_run: 39580282386
+  common_pr_run: 39580290800
+  common_status: SUCCESS
+  receipt: verification/TEMPLE_MILLES_V213_BUILD.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, docs/VILLAGE_CREATION_LESSONS.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, docs/MILLES_SOURCE_STYLE_V101_CONTRACT.md, docs/MILLES_RIVER_STYLE_V102_CONTRACT.md, docs/MILLES_CHURCH_BENCH_V103_CONTRACT.md, master/source/temple_v211/reference.json, master/source/temple_v211/entrance_repair_v213.json, master/changes/V213_MILLES_TEMPLE.json]
+  physical_phone: PENDING
+  user_visual_acceptance: PENDING
+  previous_report: DEVICE_FAILED_USER_REPORTED_MISSING_PORTALS_NPC_AND_ENTRANCE_MISMATCH
+  source_topology: ADAPTED_THREE_ROOMS_ONLY_OTHER_DEITY_SOURCE_PENDING
+  install: SEPARATE_V213_TEST_PACKAGE_OWN_PROFILE_EXISTING_APP_RETAINED
+  next: EXACT_APK_HANDSET_FEEDBACK_NO_RUNTIME_REBUILD
+
+inventory_repair_v212:
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
+  runtime_source: c9bda787ba95a26d418cf858e558eece8c63f81c
+  focused_run: 39568721180
+  native_tests: 53
+  common_status: SUCCESS
+  receipt: verification/INVENTORY_V212_BUILD.json
+  recovered_wearable_links: 1073
+  remaining_inventory_only: 47
+  repaired_icon_alpha: 60
+  phone_speed_root_cause: UNKNOWN_NOT_MEASURED
+
+post99_temple_v211:
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_VISUAL_REJECTED_V213_REPAIR
+  specification: design/POST99_TEMPLE_ADVANCEMENT_V211.md
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  runtime_source: f59b71fab20c25e98a44a6ded27bf77b856799c2
+  focused_run: 39552593128
+  native_tests: 36
+  user_purchase_rule: EXACT_HP_5_TIMES_A_PLUS_B_MINUS_50_TIMES_A_MINUS_B_MP_10_TIMES_A_PLUS_B_MINUS_25_TIMES_A_MINUS_B
+  runtime_changed: true
+  receipt: verification/TEMPLE_V211_BUILD.json
+  superseded_visual_followup: milles_temple_v213
+
+item_catalog_v210:
+  status: BUILD_HOST_NATIVE_COMMON_VERIFIED_HANDSET_PENDING
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  main_merged: false
+  runtime_source: 709dda2179042c66b292acb03a4a6275b2292a7a
+  validator_source: 72d3368db738464c4fe9e86742ae89dd988c9a23
+  focused_run: 39526757395
+  native_tests: 107
+  common_push_run: 39529789878
+  common_pr_run: 39529794836
+  common_status: SUCCESS
+  receipt: verification/ITEM_CATALOG_V210_BUILD.json
+  user_rule: ORIGINAL_VARIANTS_REMAIN_DISTINCT_NO_IMAGE_BASED_UI_GROUPING
+  canonical_items: 1772
+  source_named_identities: 1445
+  aliases_retired: 293
+  synthetic_aliases_retired: 60
+  new_inventory_only: 1120
+  source_only_wearable_motions: UNRESOLVED_EQUIP_BLOCKED
+  physical_phone: PENDING
+  user_visual_acceptance: PENDING
+
+mine_hunt_repair_v209:
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
+  runtime_source: 90845f57470ca994abce73db1ced38eb053d22a0
+  focused_run: 39516434711
+  artifact: 12308520348
+  native_tests: 44
+  receipt: verification/MINE_HUNT_V209_BUILD.json
+  reported_candidate: 5f4044d9bcd30fcbbb3d4f17d53209610c25d583
+  installed_hash: UNKNOWN
+  issues: [missing_mage_family_and_armor_owner, map_quality_rejected, weapon_icons_inconsistent_inventory_equipment]
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  phone_verified: false
+
+mine_hunt_v208:
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
+  runtime_source: 5f4044d9bcd30fcbbb3d4f17d53209610c25d583
+  focused_run: 39512080778
+  artifact: 12306557014
+  native_tests: 28
+  receipt: verification/MINE_HUNT_V208_BUILD.json
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  base_sha: 39a4158a79f67b2a053c915825f3ea9ffc16296f
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, docs/MONSTER_CREATION_MANUAL.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/MASTER_MANIFEST.md, master/source/mine_hunt_v208/catalog.json, master/source/mine_hunt_v208/reference.json, master/source/mine_hunt_v208/original_sources.zip, master/canonical/User_Item_Master_20261018.json]
+  phone_verified: false
+  original_server_stats: UNRESOLVED_SEPARATE_FROM_MOBILE_BALANCE
+
+horror_loop_v207:
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
+  runtime_source: b75b417598201b5c94588626bc02ab9b753555b3
+  focused_run: 39445126813
+  artifact: 12277035459
+  native_tests: 27
+  receipt: verification/HORROR_LOOP_V207_BUILD.json
+  phone_verified: false
+  user_visual_accepted: false
+  owner: ROOT_SINGLE_EDITOR
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  required_sources: [docs/HUNT_MAP_PERFORMANCE_LESSONS.md, master/source/horror_v207/reference.json, master/changes/V207_HORROR_LOOP.json, master/source/horror_v180/map_sources.json, design/DATA_CONTRACT.md]
+
+mine_polish_v206:
+  status: BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  runtime_source: 61e7d3073b3334dba514178affbbc465b7b93c17
+  focused_run: 39436251669
+  receipt: verification/MINE_POLISH_V206_BUILD.json
+  native_tests: 25
+  validator_source: 1956820e49d447587e34f9f376fa5fded1c1b135
+  validator_focused_run: 39441131035
+  validator_focused_status: SUCCESS
+  common_status: RUNNING
+  phone_verified: false
+  user_visual_accepted: false
+  reported_candidate: 9de2609df95ace2bb0d4a1302fbc77e551c1f933
+  report: "Tree contains blue source water; village visual quality below supplied footage."
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/DIRECTOR_BACKLOG.md, docs/VILLAGE_CREATION_LESSONS.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, master/source/mine_v203/assets.json, master/source/mine_v205/assets.json, app/src/main/java/com/projectdark/mobile/world/MineTownGeometry.java, app/src/main/java/com/projectdark/mobile/world/MineTownRenderer.java]
+
+horror_equipment_v184:
+  status: PARTIAL_BUILD_NATIVE_VERIFIED_SOURCE_GAPS
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  runtime_source: 5381b1e278a45f59024b969bb01120742e64b9ae
+  receipt: master/changes/V184_BUILD_RUNTIME_RECEIPT.json
+  focused_run: 39138901545
+  native_tests: 51
+  all_requested_equipment_complete: false
+  phone_verified: false
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/HUNT_MAP_PERFORMANCE_LESSONS.md, design/DATA_CONTRACT.md, master/canonical/User_Item_Master_20261018.json, master/source/equipment/horror_v184/runtime_catalog.json]
+
+town_props_v166:
+  status: BUILD_NATIVE_VERIFIED_COMMON_PHONE_VISUAL_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  runtime_source: 52795517849d560267d1eea979b154ef1760db13
+  checkpoint: docs/TOWN_V166_CHECKPOINT.md
+  contract: master/changes/TOWN_PROPS_V166.json
+  receipt: master/changes/V166_BUILD_RUNTIME_RECEIPT.json
+  focused_run: 38748723671
+  native_tests: 85
+  native_flowerbed_scenes: 21
+  object_family_scenes: 29
+  phone_visual: PENDING
+
+town_polish_v165:
+  status: BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  checkpoint: docs/TOWN_V165_CHECKPOINT.md
+  contract: master/changes/TOWN_POLISH_V165.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, app/src/main/assets/abel-video-v147/layout.json, app/src/main/assets/rucesion-v154/layout.json]
+
+town_quality_v164:
+  status: BUILD_NATIVE_COMMON_VERIFIED_PHONE_VISUAL_PENDING
+  active_branch: codex/rucesion-coast-v157
+  owner: ROOT_SINGLE_EDITOR
+  pull_request: 197
+  main_merged: false
+  checkpoint: docs/TOWN_V164_CHECKPOINT.md
+  contract: master/changes/TOWN_QUALITY_V164.json
+  required_sources: [AGENTS.md, docs/DIRECTOR_GUIDE.md, docs/PROJECT_DARK_DEVELOPMENT_CONSTITUTION.md, design/DATA_CONTRACT.md, design/SOURCE_OF_TRUTH.md, app/src/main/assets/abel-video-v147/layout.json, app/src/main/assets/rucesion-v154/layout.json]
+
+coast_source_pairs_v159:
+  runtime_source_sha: 615bbd278c93168b7e5f11d8145e94c9ca4f7d6a
+  focused_run: 38613954729
+  native_tests: 110
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  broader_android: EXACT_SOURCE_PR_SUCCESS_38613964684
+  receipt: master/changes/V159_BUILD_RUNTIME_RECEIPT.json
+  user_accepted_species: [LYK_TYRANT, LYK_ARIEL]
+  original_plant_eyes: UNRESOLVED_FOLIAGE_OCCLUDED
+  active_branch: codex/rucesion-coast-v157
+  pull_request: 197
+  main_merged: false
+
+coast_refinement_v158:
+  runtime_source_sha: 0e760fd8ccf5481ed7bed01fce78a02f915bed99
+  focused_run: 38575338140
+  unique_tests: 100
+  status: BUILD_NATIVE_VERIFIED_PHONE_VISUAL_PENDING
+  broader_android: EXACT_SOURCE_PR_SUCCESS_38575347594
+  duplicate_push: IN_PROGRESS_AT_CLOSURE
+  active_branch: codex/rucesion-coast-v157
+  receipt: master/changes/V158_BUILD_RUNTIME_RECEIPT.json
+  pull_request: 197
+  main_merged: false
+
 abel_third_circle_v153:
   runtime_source_sha: 6c0bdd21afcf00f32dab744d663d8740ae1c9aaf
   focused_run: 38364329715

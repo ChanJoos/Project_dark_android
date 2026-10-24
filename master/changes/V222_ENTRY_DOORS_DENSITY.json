@@ -1,0 +1,71 @@
+{
+  "revision": "V222",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "base": "c91f135995c6741a2dd2d090ac67d2d45c949da0",
+  "deviceReport": {
+    "status": "DEVICE_FAILED_USER_REPORTED",
+    "installedApkSha": "UNKNOWN",
+    "issues": [
+      "wrong outdoor arrival",
+      "underground gates detached from source doors",
+      "lag with dense monsters"
+    ]
+  },
+  "wereRat": {
+    "hpBefore": 220000,
+    "hpAfter": 180000,
+    "evidence": "U/ADAPTED requested comparable to observed164926/192707",
+    "exp": 750000
+  },
+  "outdoorArrival": {
+    "before": [
+      28,
+      10
+    ],
+    "after": [
+      12,
+      85
+    ],
+    "reason": "undo V219 first-building override; restore retained original source map spawn"
+  },
+  "doorSource": {
+    "archive": "master/source/death_v217/reference.json",
+    "objectIds": [
+      6633,
+      6639
+    ],
+    "nativeDoorCount": 10,
+    "policy": "one portal at each original doorway; legal adjacent walkable threshold drives navigation; visual ring/pin uses actual door half-tile foot. Raw cells/art/collision immutable."
+  },
+  "topology": "house1-A-B-(C/D)-E-house2; house3-C; no dungeon",
+  "adaptedConnections": [
+    "B additional D junction at14,19 is explicitly stairs because source has only2 original doors",
+    "C25,10-house3 stairs on empty walkable floor",
+    "E25,10-house2 stairs on empty walkable floor"
+  ],
+  "performance": {
+    "identifiedHotspot": "Repeated regex species split and repeated stable radius derivation inside every actor and movement-edge collision query",
+    "changes": [
+      "immutable collision radius calculated once per monster ID",
+      "species parsing uses delimiter lookup instead of regex splitting",
+      "conservative live broad-phase bounds before unchanged endpoint/reservation/segment checks"
+    ],
+    "preserved": [
+      "72field/36underground/100mine population",
+      "all live collision, moving reservations and crossing segments",
+      "AI frequency/0.60 movement/1.8attack defaults",
+      "source resolution/frame sizes/caches/vsync/save semantics"
+    ],
+    "pairedMethod": "Same current maps/spawns/HP/dense fixture in two JVM runs; before replaces only RuntimeState and PoteForestMonsterShowcase with exactV221 source3bf65b96; restore final bytes and assert clean production before final tests/APK; final run before only6000 queries/oracle and after90 fullframes; historical31cfe95b fullbefore/after also succeeded",
+    "phone": "PENDING; CPU/allocation not handset FPS"
+  },
+  "verification": [
+    "all10 original door source joins + native threshold captures",
+    "27gates bidirectional actual walking and full branching loop",
+    "original12,85 lobby arrival and full-map selection with live actor collision",
+    "500 independent point/segment/reservation oracle comparisons",
+    "paired6000 actor queries and90 actual update/draw frames for72/36/100 dense live actors",
+    "retained MonsterChasePathfinder/Performance/PoteMonsterPlayable/Movement/Ground/HUD/Restart suites"
+  ],
+  "verificationReceipt": "verification/DEATH_REPAIR_V222_BUILD.json"
+}

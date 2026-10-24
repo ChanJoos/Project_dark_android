@@ -1,0 +1,264 @@
+{
+  "sourceCommit": "511688e412fc05b1925b307d4770f1a966f67d6f",
+  "runId": "39857975662",
+  "apkBytes": 104560713,
+  "apkSha256": "b2cfb71373b2dceab82e50df9b58bdb385589999f88fa43f0491e4aac7f9f231",
+  "identity": {
+    "sourceCommit": "511688e412fc05b1925b307d4770f1a966f67d6f",
+    "runId": "39857975662",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "package": "com.projectdark.mobile.v239test",
+  "label": "PROJECT DARK V239 TEST",
+  "packagedFilesCompared": 830,
+  "zipCRC": "PASS",
+  "v2Signature": [
+    {
+      "algorithm": "0x103",
+      "certificateSha256": "3ab7939bc1d58bbbce073e091cdcedde813365778021ab1e43c7866649b70965",
+      "contentChunks": 102,
+      "signatureVerified": true,
+      "contentDigestVerified": true
+    }
+  ],
+  "builtAtKST": "2026-10-23T06:35:05.537676+09:00",
+  "focusedRun": 39857975662,
+  "focusedJob": 120101026413,
+  "focusedConclusion": "success",
+  "artifactId": 12461495013,
+  "artifactZipBytes": 127096081,
+  "artifactZipSha256": "9e9b15b7eaa8f8c1ced9fd14f81b05130a6849e7d7ede170a329fdd2c24713f2",
+  "finalNativeSuites": [
+    {
+      "name": "com.projectdark.mobile.ForestMageV239Test",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T21:33:34",
+      "hostname": "runnervm8k3b6",
+      "time": "32.447"
+    }
+  ],
+  "finalNativeExecuted": 3,
+  "unchangedNativePassedReused": 31,
+  "compositeUniqueNativePassed": 34,
+  "reusedSource": "f75761af002cd7ca9c63ab2a6b7c581c7e1d40aa",
+  "reusedRun": 39854786767,
+  "compositeTestIdentities": [
+    {
+      "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "name": "activeZeroOfOneRestores",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "name": "returnReadyOneOfOneRestores",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "name": "completedTurnInRestoresAndCannotDuplicateReward",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "name": "rpgRewardEquipmentStatsAndProgressionRestore",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestFloorCacheTest",
+      "name": "cachedFloorKeepsLegacyWorldTextureAndChunkSeamsAcrossAllMaps",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestFloorCacheTest",
+      "name": "stationaryFloorReusesChunksAndMapTravelHasBoundedMemory",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestPixelCacheTest",
+      "name": "movingPlayerMonsterAndNpcKeepExactLegacyCanopyDecisionWithTwoReadbacks",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestPixelCacheTest",
+      "name": "cachedBodyBoundsAndHandRigMatchIndependentSourceScansAndStopGrowing",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestPixelCacheTest",
+      "name": "maskKeepsEveryAlphaValueAndThresholdBoundary",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "name": "darkMarkUsesVideoAndRetainsSeventyCurseWithActualQuickslotContact",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "name": "videoSequencesHaveRealChangingFramesAndScreenAliasesShareTheirSingleSource",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "name": "screenFourUseSameVideoOnEachVisibleRecipientWithoutRepeatedMpCost",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "name": "fourSingleElementQuickslotsKeepOneRecipientAndSingleCostWithVideoFrames",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "name": "sharedCombatAuditsRunWithAndroidRuntimeInsteadOfStubJar",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "name": "reusedIndexKeepsShortestLiveRoutesAgainstIndependentBfs",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MonsterChasePerformanceTest",
+      "name": "nearbyChaseDoesNotRebuildOrSearchTheWholeLargeForest",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "monsterAttackCompletesBeforeItTurnsAndWalksTowardANewTarget",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "automaticApproachCannotEnterAMonsterReservedTile",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "attackProgressIsContinuousAndPeaksOnceAtContact",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "poteMonsterMovesAndAttacksThroughSharedCombatSession",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "autoApproachPathCostUsesLegalAdjacentTilesAndMovingTargetReservation",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "everyPamfetWalkPoseUsesTheExactCommittedStepEvenWithAnAttackFacingLock",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "everyCandidateMovesWithItsAppliedFacingAndAttacksOnlyInFourDiagonalDirections",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "monsterCannotMoveOntoPlayerTile",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.PoteMonsterPlayableRuntimeTest",
+      "name": "monstersReserveDestinationsAndDoNotOverlapDuringConcurrentSteps",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillContactRegressionTest",
+      "name": "bothCrashersHavePeakEnergyBetweenActorsInEveryDirection",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillContactRegressionTest",
+      "name": "fourCurseCrownsAreIncludedAndRenderWithoutTheOldCutoff",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillContactRegressionTest",
+      "name": "damageAndVisibleRecipientEffectStartTogetherIncludingLethalDragon",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.world.GroundTapPathTest",
+      "name": "destinationsAndShortestRoutesMatchIndependentOracles",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.world.GroundTapPathTest",
+      "name": "largeMapGroundTapDoesNotScanEveryActorForEveryTile",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.world.GroundTapPathTest",
+      "name": "requestCachesDoNotSurviveActorMovementAndLiveStepsRevalidate",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestMageV239Test",
+      "name": "newPromotionChannelsKeepCasterRegistrationAndContinuousContacts",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestMageV239Test",
+      "name": "originalForestPoseRegistrationPreservesNativeFootAndShowsEachDirection",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.ForestMageV239Test",
+      "name": "actualForestScenesRetainPopulationAndBoundFloorCacheAfterTwelveTrips",
+      "result": "PASS"
+    }
+  ],
+  "commonScopeRun": 39857984377,
+  "commonScopeConclusion": "success; full compile intentionally skipped",
+  "ciSelectorTests": 6,
+  "strictReuseGuard": "Exact GameView label/HP substitutions, reviewed exact-path tail including source-matte/trim atlases; original Pote assets, ClassicSkillReference and PoteMonsterMotion unchanged from first34PASS",
+  "vfxDecodedBytesBefore": 49299200,
+  "vfxDecodedBytesAfter": 10631328,
+  "vfxExactSourceFrameRestoration": "5/5 EXACT_RGBA_PASS; pivots adjusted by identical trim offsets",
+  "poteNativeCacheContract": "12 trips; each source/hit/curse/curse-hit <=60 textures, all4states <=35389440bytes, floor<=32chunks",
+  "implementation": "11 original MPF pose families/132samples, captured forest soil,5continuous promotion contact sequences, occupied-source label/HP placement",
+  "preserved": "Mareno, V238 DarkMark and4circle/screen4, original spirits/mantis, map geometry/populations/stats/reward/save/live collision, prewarm and cache policy",
+  "nativeVisualReview": "FinalC scene, final5sequence grid and actual51/52quickslot shots reviewed; finalA preview reviewed;132pose source bytes/directions retained from reviewed first grid",
+  "phone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pr": 197,
+  "merged": false,
+  "limitations": [
+    "Native pose samples, not full original multi-frame monster playback.",
+    "Other lower-circle/debuff footage not newly implemented in this5channel delta.",
+    "Original source Korean indexed name table and3independent labelled references remain pending; remaining joins are visual candidates.",
+    "Occluded FX pixels remain transparent; map topology remains adapted.",
+    "Full main integration remains pending: first common39854794744 catalog-vs-source-guide regeneration mismatch recorded. Focused success does not certify full regression or phone FPS."
+  ],
+  "delivery": [
+    {
+      "name": "PROJECT_DARK_V239_TEST.apk",
+      "library_file_id": "libfile_375942fe6600819199b9a73ad949f385",
+      "file_id": "file_00000000f94081fdb76339d196033842",
+      "local_metadata_applied": true
+    },
+    {
+      "name": "POTE_V239_PREVIEW.png",
+      "library_file_id": "libfile_9aa8bdb4f23c8191beeb122b6b5e302c",
+      "file_id": "file_000000002ac081f8a271151256fe1062",
+      "local_metadata_applied": true
+    },
+    {
+      "name": "POTE_V239_MONSTERS.png",
+      "library_file_id": "libfile_e20d7c49fbf48191bbf5e305cea744cf",
+      "file_id": "file_00000000b85481fd872a9c51b15dd1b1",
+      "local_metadata_applied": true
+    }
+  ]
+}

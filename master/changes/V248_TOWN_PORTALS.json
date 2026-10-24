@@ -1,0 +1,28 @@
+{
+  "version": 248,
+  "status": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED",
+  "receipt": "master/source/town_v248/receipt.json",
+  "contract": [
+    "all71maps original32frame portal",
+    "all current/future reagent and bank role sprites",
+    "all existing transport NPCs Baekwonman,100gold per successful move",
+    "Death lobby knight reagent/recall shop",
+    "exact screenshot choice borders"
+  ],
+  "verificationScope": [
+    "PortalServicesV248Test",
+    "NpcTravelV248Test",
+    "AllMapLabelsV246Test",
+    "NpcAppearanceTest",
+    "TownInteriorTest",
+    "TownNavigationV244Test",
+    "F5mRestartPersistenceMatrixTest",
+    "ForestFloorCacheTest",
+    "GroundTapPathTest"
+  ],
+  "phone": "PENDING",
+  "buildReceipt": "verification/TOWN_PORTALS_V248_BUILD.json",
+  "sourceCommit": "e38aeba15e34a7d9c797f16af7d8c8ed2922bb87",
+  "runId": 39906861205,
+  "uniqueScopedChecks": 40
+}

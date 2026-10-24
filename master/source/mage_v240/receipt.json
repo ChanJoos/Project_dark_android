@@ -1,0 +1,119 @@
+{
+  "videoName": "Screen_Recording_20261023_000206_YouTube.mp4",
+  "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+  "mappingAuthority": "User explicitly requests only Pote basic4: Mareno/Teramiko/Plamo/Adyuro. Other-circle corrections deferred.",
+  "effects": [
+    {
+      "id": "SK_마법사_001",
+      "name": "mareno",
+      "sourceInterval": [
+        53.45,
+        54.150000000000006
+      ],
+      "plateInterval": [
+        53.1,
+        53.25
+      ],
+      "sourceCrop": [
+        1390,
+        615,
+        150,
+        150
+      ],
+      "trim": [
+        23,
+        30,
+        124,
+        129
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "visiblePixels": 36817,
+      "decodedBytes": 639936,
+      "limitation": "ADAPTED inverse-screen matte; filmed actor, scenery and occluded effect pixels excluded. User-confirmed basic4 correspondence; original asset/cadence fidelity not user accepted."
+    },
+    {
+      "id": "SK_마법사_003",
+      "name": "teramiko",
+      "sourceInterval": [
+        54.3,
+        54.949999999999996
+      ],
+      "plateInterval": [
+        54.05,
+        54.199999999999996
+      ],
+      "sourceCrop": [
+        1100,
+        440,
+        160,
+        140
+      ],
+      "trim": [
+        11,
+        34,
+        145,
+        124
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "visiblePixels": 19022,
+      "decodedBytes": 771840,
+      "limitation": "ADAPTED inverse-screen matte; filmed actor, scenery and occluded effect pixels excluded. User-confirmed basic4 correspondence; original asset/cadence fidelity not user accepted."
+    },
+    {
+      "id": "SK_마법사_004",
+      "name": "adyuro",
+      "sourceInterval": [
+        57.25,
+        57.9
+      ],
+      "plateInterval": [
+        56.95,
+        57.1
+      ],
+      "sourceCrop": [
+        1390,
+        615,
+        150,
+        150
+      ],
+      "trim": [
+        13,
+        28,
+        132,
+        149
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "visiblePixels": 11602,
+      "decodedBytes": 921536,
+      "limitation": "ADAPTED inverse-screen matte; filmed actor, scenery and occluded effect pixels excluded. User-confirmed basic4 correspondence; original asset/cadence fidelity not user accepted."
+    },
+    {
+      "id": "SK_마법사_005",
+      "name": "plamo",
+      "sourceInterval": [
+        60.3,
+        61.05
+      ],
+      "plateInterval": [
+        60.05,
+        60.199999999999996
+      ],
+      "sourceCrop": [
+        1290,
+        560,
+        160,
+        150
+      ],
+      "trim": [
+        41,
+        28,
+        106,
+        112
+      ],
+      "trimRestoration": "EXACT_RGBA_PASS",
+      "visiblePixels": 5394,
+      "decodedBytes": 349440,
+      "limitation": "ADAPTED inverse-screen matte; filmed actor, scenery and occluded effect pixels excluded. User-confirmed basic4 correspondence; original asset/cadence fidelity not user accepted."
+    }
+  ]
+}

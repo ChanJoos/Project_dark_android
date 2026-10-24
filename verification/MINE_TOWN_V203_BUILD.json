@@ -1,0 +1,176 @@
+{
+  "version": "V203",
+  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "source": "963da315bcce37b6e9be472965291b97a604801e",
+  "run": 39399524458,
+  "artifact": 12254407025,
+  "artifactBytes": 98434033,
+  "builtAtKST": "2026-10-20T18:21:47.351072+09:00",
+  "apkBytes": 85796307,
+  "apkSha256": "263a68366b6e9d04bfd1d154132d53740f0702b2e257addb98a079b456eea6ef",
+  "embeddedIdentity": {
+    "sourceCommit": "963da315bcce37b6e9be472965291b97a604801e",
+    "runId": "39399524458",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "total": {
+    "tests": 31,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "suite": "com.projectdark.mobile.CurseHudV202Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.MineTownV203Test",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.ScreenMagicV201Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.TownCampaignV163Test",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "suite": "com.projectdark.mobile.TownInteriorTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "sourceAssetBytesVerified": 18,
+  "nativeCapturesReviewed": 12,
+  "features": [
+    "Milles manager dialog -> Mine -> Mine manager -> Milles; no progression/Gold/inventory grants",
+    "Only Mine inn and reagent shop; real doorway paths and safe same-town exterior returns",
+    "Inn customer walk and50Gold HP/MP rest; reagent NPC/confirmation/real purchase; saved ownership/resources",
+    "Mine town/interior preferences restore into new GameView; actual OS process-death/physical phone not verified",
+    "Both bridge paths, water/rock/building/cliff/railing collision; accepted64x32/0.60s movement",
+    "12roundtrips;32floorLRU <=8652800CPU pixel bytes, warm frames no floor rebuild; departure clears cache",
+    "Existing12town travel pairs, Milles interiors/commerce, V201screenmagic/aggro and V202curse/HUD regressions"
+  ],
+  "art": {
+    "source": "Private uploaded84s Screen_Recording_20261020_160455_YouTube.mp4",
+    "evidence": "USER_VIDEO_SOURCE_PIXELS_WITH_ADAPTED_GEOMETRY",
+    "sourceRegistration": "master/source/mine_v203/assets.json",
+    "layout": "Compact64x64 two-bank town, longer bridges, service assignments/hidden joins authored from motifs; not recovered original full map or warp coordinates",
+    "interiors": "Existing inn/reagent interior pipelines adapted; Mine interior footage not supplied",
+    "refinement": [
+      "Source facade registered across69..82camera views",
+      "Continuous world-aligned grass/water avoid alternating tile tones and mirrored ripple motifs",
+      "Continuous cliff face depth-sorted by local ground segment, with explicit front-actor capture"
+    ],
+    "limitations": [
+      "Static extracted surface materials repeat; original animated water not recovered",
+      "Original full map/collision/warp tables not recovered",
+      "Phone FPS/memory/control and user visual acceptance pending"
+    ]
+  },
+  "commonCI": [
+    {
+      "id": 39399531451,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 39399524352,
+      "name": "Validate PROJECT DARK Android",
+      "status": "in_progress",
+      "conclusion": null
+    },
+    {
+      "id": 39399524458,
+      "name": "V184 Horror portals (focused native + APK)",
+      "status": "completed",
+      "conclusion": "success"
+    }
+  ],
+  "legacyBuildMetadata": "Internal version184/1.84-mobile-horror and workflow build_evidence.scope are historical; this receipt gives actual V203 tested scope",
+  "delivery": {
+    "file": "PROJECT_DARK_V203_MINE_TEST.apk",
+    "persistentCopy": "FAILED_HTTP403 prepared current helper tools/list; local APK and exact GitHub artifact retained"
+  },
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "merged": false,
+  "ciRecovery": {
+    "validatorSource": "0d12d52c67444738fe6646cf68e61e891f8237bf",
+    "run": 39417953290,
+    "artifact": 12262885986,
+    "counts": {
+      "tests": 34,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.CurseHudV202Test",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.MineTownV203Test",
+        "tests": 6,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.NpcAppearanceTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ScreenMagicV201Test",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TownCampaignV163Test",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TownInteriorTest",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ],
+    "reason": "Earlier common39399531451/39399524352 failed stale NPC40 assertion after Mine added3; corrected test verifies43unique IDs and actual Mine service/travel registration.",
+    "appSourceAndAssets": "git diff963da315..0d12d52c -- app/src/main assets data master/assets: empty; original verified APK remains delivery source",
+    "commonPending": [
+      39417961289,
+      39417953318
+    ]
+  }
+}

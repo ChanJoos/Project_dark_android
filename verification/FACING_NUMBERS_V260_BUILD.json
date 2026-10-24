@@ -1,0 +1,87 @@
+{
+  "version": "V260",
+  "status": "BUILD_VERIFIED_SCOPED_HOST_VERIFIED",
+  "sourceCommit": "df3c0e5675e8b6617d2a83ac1e35813fc1b67a15",
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "focusedRun": 40023813177,
+  "priorRun": 40021936897,
+  "priorSource": "e1a3284ed163bc80b4a7d21cdeec0e41909fdbf6",
+  "priorArtifact": 12531900554,
+  "priorArtifactSha256": "0ffab60e443e3e19c349b3e0839d93392bb03f6490f73ea95f507e3cfce229ea",
+  "reproduction": "Old AI ce02feb8: idle cooldown target facing expected100 but was200; restored production passes all8 FacingNumbersV260Test cases.",
+  "retainedScopedPasses": 38,
+  "runtimeGuard": "Two exact production deltas: original digit ASCII offset/stream lifetime and melee-reach facing; all affected AI/chase/render17 rerun,38 exact-delta checks retained; old AI and both legacy failures reproduced on old source",
+  "candidateScope": [
+    "Idle cooldown faces live opponent; movement/attack lock/control/stealth/aggro-reset unchanged",
+    "Pure basic-only front100/side150/rear200 classification retained for other attack positions",
+    "Learned double2/triple3 independent positive hit numbers; triple wins in manual/AUTO across three jobs",
+    "Slow-frame all-hit retention, lethal popup, bounded12/0.8s popup lifecycle",
+    "Original retained font glyphs; observed rise/stack/fade adapted from provided PvE recording",
+    "Adjacent necklace/elements/auto/rogue/AI/navigation/restart regression"
+  ],
+  "visualReview": "Final exact-runtime native combo09 inspected: three independent5 numbers; glyph source-cell pixel assertions PASS. Lethal/digits native checks PASS; phone acceptance pending.",
+  "historicalFullProgressionFailure": {
+    "test": "AbelCombatV153Test.allFiveNormalJobsUsePaidEquipmentLearnedSkillsAndConsecutiveLiveAiHuntsToLevel70",
+    "status": "OPEN",
+    "detail": "Pre-V210 synthetic gear fixture expects EQUIPPED on repeated canonical toggle (UNEQUIPPED) and unresolved source requirements (REQUIREMENT_PENDING). No production requirement bypass; unrelated full Lv70 balance scenario is not certified. Reproduced in full pre-V260 source ce02feb8 (legacy-baseline.json); not introduced by V260."
+  },
+  "phone": "PENDING",
+  "originalMotionConstants": "ADAPTED; exact original client/server constants not claimed",
+  "fullRegression": "NOT_COMPLETE: latest scope40023819383 SUCCESS, full compile intentionally skipped; earlier common40023457499 Master+V12420 PASS then existing skill catalog regeneration dirty diff failure. No main integration.",
+  "reviewedRuntimeHashes": {
+    "project-dark/app/src/main/java/com/projectdark/mobile/MonsterAIController.java": "a6ecdb59f9ee85e6bd1ca2c747817c4b11bc1a39ac8a58212d571c47dd630c0d",
+    "project-dark/app/src/main/java/com/projectdark/mobile/RuntimeState.java": "b8c6c2d5c63a84c55428fee0e328e8c851aaf55c3e09fb85cf237d4ffa36c8b4",
+    "project-dark/app/src/main/java/com/projectdark/mobile/GameView.java": "bfa2e62d64e84cecbcdcadaf877ab953dd02d683ebb593be400557cf9d6790eb",
+    "project-dark/app/src/main/java/com/projectdark/mobile/MonsterCombatFacingV260.java": "4be3ced2173a309471e56c4236f265500f47c99d48b60b6442584d3a6283aeef",
+    "project-dark/app/src/main/java/com/projectdark/mobile/HitNumbersV260.java": "517d33d2bf642cb49a534dcb649ed8ff94ceb040cbafe96876462cb553635ff2",
+    "project-dark/app/src/main/java/com/projectdark/mobile/OriginalDamageDigitsV260.java": "59f6be215074853928e8a32634bb4c167867dfcdc4a6584245ca94191715e32a"
+  },
+  "focusedJob": 120654810808,
+  "artifact": 12531379208,
+  "artifactBytes": 131979779,
+  "artifactSha256": "8df2cb964ccdf5394b14d85a503608572c4a26a70a5073abdfc6daf807dfc858",
+  "apk": {
+    "sourceCommit": "df3c0e5675e8b6617d2a83ac1e35813fc1b67a15",
+    "runId": "40023813177",
+    "builtAtKST": "2026-10-24T06:08:37.423187+09:00",
+    "apkSha256": "8c2fc38b596f9cb363aa27ea4789f03c3ca286cd2d8fbb7d9a154aeb8d710d84",
+    "apkBytes": 106538494,
+    "identity": {
+      "sourceCommit": "df3c0e5675e8b6617d2a83ac1e35813fc1b67a15",
+      "runId": "40023813177",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "V260 final17 affected AI/chase/visual checks plus38 exact-delta retained checks =55 scoped PASS; original !-based digit cells corrected, continuous stationary attacks and unchanged chase headings, independent2/3-hit numbers; old AI facing fault and two legacy failures reproduced; original/generation gait assertion now separately corrected on old runtime; full/phone acceptance pending"
+  },
+  "finalScopedPasses": 17,
+  "totalScopedPasses": 55,
+  "checks": {
+    "zipAndApkCRC": "PASS",
+    "artifactAndApkSha256": "PASS",
+    "embeddedSourceRunVersion": "PASS",
+    "CI_apksigner_v2": "PASS",
+    "allTrackedMainAssetsByteExact": 1518
+  },
+  "commonRun": 40023457499,
+  "delivery": {
+    "filename": "PROJECT_DARK_V260_TEST.apk",
+    "libraryFileId": "libfile_756aa9390bc081919d7dc99fd48cea73",
+    "fileId": "file_00000000051881f9ad2d0a56e7c2fcbb",
+    "version": 1,
+    "bytes": 106538494,
+    "status": "SAVED_RECONCILED_AFTER_REPLACE_RESPONSE_TIMEOUT",
+    "reconciliation": "Read exact Library identity after helper response timeout; version1 and106538494bytes match final APK. No second write attempted."
+  },
+  "supersededSavedCandidate": {
+    "source": "0f76b7b63818a0bcb0357d3e6d6ac509cc24be08",
+    "run": 40023450652,
+    "artifact": 12531228813,
+    "apkSha256": "3b3818d64707a73c9ec5c38da8e89abd96c81847fa61f95b1387482dc7f58065",
+    "reason": "Newer final review corrects digit atlas cell and restricts idle opponent facing to melee reach."
+  },
+  "commonScopeRun": 40023819383
+}
+

@@ -1,0 +1,80 @@
+{
+  "revision": "V231_SKILL_FEEDBACK",
+  "status": "ACCEPTED",
+  "base": "c355789347102fddf467544e4fd39ea02d3f716c",
+  "userEvidence": "2026-10-22 current user: protection upper edge clipped; larger Muyeong sphere; stab icon alias; rogue warm palette; knee-forward rogue pose; larger assassin ring; original Sense panel and AUTO0.3s; shuriken throw without particles",
+  "brownIcons": [
+    "SK_도적_015",
+    "SK_도적_020",
+    "SK_도적_021",
+    "SK_도적_025",
+    "SK_도적_027"
+  ],
+  "stabProfile": {
+    "group": "e",
+    "back": [
+      8,
+      9,
+      10,
+      11,
+      8
+    ],
+    "front": [
+      12,
+      13,
+      14,
+      15,
+      12
+    ],
+    "phases": [
+      0,
+      0.15,
+      0.3333333333333333,
+      0.65,
+      0.85
+    ]
+  },
+  "beforeAfter": {
+    "protectionMaskTop": [
+      35,
+      8
+    ],
+    "muyeongScale": [
+      1,
+      1.9
+    ],
+    "assassinScale": [
+      1,
+      1.3
+    ],
+    "rogueStabGroup": [
+      "c14..23 wide squat",
+      "e8..15 forward knee"
+    ],
+    "stabIconAlias": [
+      "001",
+      "007"
+    ],
+    "sense": [
+      "feedback banner",
+      "original5row dark confirmation panel; AUTO0.3sec"
+    ],
+    "shuriken": [
+      "source particle+damage impact",
+      "throw BODY and unchanged damage only"
+    ]
+  },
+  "source": [
+    "master/source/martial_v230/029.gif",
+    "master/source/rucesion_v157/sense-44.5.png",
+    "master/source/rucesion_v157/sense-60.5.png",
+    "master/source/skill_fx/naver_cafe_archive_20261001/245450.json",
+    "master/data/Asset_Animation_Frame_Master.csv"
+  ],
+  "limits": [
+    "Rogue per-facing timing uses retained source sprites, is project timing not four-direction original acceptance",
+    "Raw source icons unchanged; five display icons recolored by user request",
+    "Sense displays live runtime stats; no invented unknown fields; MP absent in source",
+    "Existing damage numeric formulas unchanged; no catalog skill named 기공 to invent a new damage value"
+  ]
+}

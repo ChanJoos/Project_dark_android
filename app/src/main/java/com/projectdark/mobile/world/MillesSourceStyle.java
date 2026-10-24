@@ -32,6 +32,8 @@ final class MillesSourceStyle {
     if(path.contains("bench_video_cutout"))return completeBench(path);
     boolean house=path.startsWith("buildings/");boolean tree=path.startsWith("vegetation/trees/");boolean church=path.equals("landmarks/BLD_011_church.png");
     if(!house&&!tree&&!church)return old;
+    if(tree){int w=path.contains("tree_01")?256:180,h=path.contains("tree_01")?200:140;Bitmap result=Bitmap.createBitmap(w,h,Bitmap.Config.ARGB_8888);Paint p=new Paint();p.setFilterBitmap(false);float scale=Math.min((w-4f)/old.getWidth(),(h-2f)/old.getHeight());float dw=old.getWidth()*scale,dh=old.getHeight()*scale;new Canvas(result).drawBitmap(old,null,new RectF((w-dw)/2,h-dh,(w+dw)/2,h),p);return result;}
+
     String asset=tree?"style_v102/willow.png":church?"style_v102/church.png":"style_v102/log_cabin.png";
     Bitmap raw;try(InputStream in=assets.open(asset)){raw=BitmapFactory.decodeStream(in);}catch(Exception e){throw new IllegalStateException("Missing V102 production sprite "+asset,e);}
     int rw=raw.getWidth(),rh=raw.getHeight();int[] pixels=new int[rw*rh];raw.getPixels(pixels,0,rw,0,0,rw,rh);
@@ -131,7 +133,7 @@ final class MillesSourceStyle {
     return result;
   }
   Bitmap scenery(Bitmap original,String path){
-    if(path.startsWith("video_reference/")||path.startsWith("assets/")||palettes.isEmpty())return original;
+    if(path.startsWith("video_reference/")||path.startsWith("vegetation/trees/")||path.startsWith("assets/")||palettes.isEmpty())return original;
     int w=original.getWidth(),h=original.getHeight();
     // One cached native sprite, no canvas-wide blur or shader over the player/UI.
     int step=path.contains("bridge")?6:2;

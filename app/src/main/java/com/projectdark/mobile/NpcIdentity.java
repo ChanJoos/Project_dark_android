@@ -3,18 +3,21 @@ import java.util.*;
 /** ADAPTED presentation identities. Stable domain IDs, quests and saves remain authoritative. */
 public final class NpcIdentity {
  public static final String NAME_SOURCE="SSA_US_1926_2025_TOP100";
+ private static int civilianIndex;
+ private static int profileIndex(String id){return ALL==null?civilianIndex++:(id.hashCode()&0x7fffffff);}
+ public static boolean special(String id){return id.startsWith("mentor_")||id.equals("milles_guide_proto")||id.equals("milles_gate_proto")||id.endsWith("_church")||id.equals("piet_purifier");}
  public static final class Profile {
   public final String id,name,role,outfit,weapon; public final int rank;
-  Profile(String id,String name,int rank,String role,String outfit,String weapon){this.id=id;this.name=korean(name);this.rank=rank;this.role=role;this.outfit=outfit;this.weapon=weapon;}
+  Profile(String id,String name,int rank,String role,String outfit,String weapon){this.id=id;this.name=TownTravel.isManager(id)?"백원만":korean(name);this.rank=rank==0?100:rank;this.role=TownTravel.isManager(id)?"이동":role;int i=profileIndex(id);this.outfit=special(id)?outfit:"mu0000001,mh"+String.format(Locale.ROOT,"%03d",5+(i/3)%7)+",ml"+(i%2==0?"240":"243");this.weapon=special(id)?weapon:null;}
   public String label(){return name+" · "+role;}
  }
  private static final String[] NAMES={"James","Michael","John","Robert","David","William","Richard","Joseph","Thomas","Christopher","Charles","Daniel","Matthew","Anthony","Mark","Steven","Andrew","Donald","Joshua","Paul","Kevin","Kenneth","Brian","Timothy","Ronald","Jason","George","Edward","Jeffrey","Jacob","Ryan","Nicholas","Gary","Eric","Jonathan","Stephen","Larry","Justin","Benjamin","Scott","Brandon","Samuel","Alexander","Gregory","Patrick","Jack","Frank","Raymond","Dennis","Aaron","Tyler","Jerry","Jose","Nathan","Adam","Henry","Zachary","Douglas","Peter","Noah","Ethan","Kyle","Christian","Jeremy","Austin","Keith","Sean","Terry","Roger","Dylan","Walter","Gerald","Jordan","Gabriel","Carl","Bryan","Jesse","Logan","Lawrence","Elijah","Arthur","Bruce","Harold","Billy","Liam","Alan","Juan","Joe","Mason","Lucas","Randy","Willie","Wayne","Vincent","Caleb","Albert","Luke","Isaac","Bradley","Cameron"};
  private static final String[] KOREAN_NAMES={"제임스","마이클","존","로버트","데이비드","윌리엄","리처드","조셉","토머스","크리스토퍼","찰스","대니얼","매슈","앤서니","마크","스티븐","앤드루","도널드","조슈아","폴","케빈","케네스","브라이언","티머시","로널드","제이슨","조지","에드워드","제프리","제이컵","라이언","니컬러스","게리","에릭","조너선","스테픈","래리","저스틴","벤저민","스콧","브랜던","새뮤얼","알렉산더","그레고리","패트릭","잭","프랭크","레이먼드","데니스","에런","타일러","제리","호세","네이선","애덤","헨리","재커리","더글러스","피터","노아","이선","카일","크리스천","제러미","오스틴","키스","숀","테리","로저","딜런","월터","제럴드","조던","게이브리얼","칼","브라이언","제시","로건","로런스","일라이자","아서","브루스","해럴드","빌리","리엄","앨런","후안","조","메이슨","루커스","랜디","윌리","웨인","빈센트","케일럽","앨버트","루크","아이작","브래들리","캐머런"};
- public static String korean(String name){for(int i=0;i<NAMES.length;i++)if(NAMES[i].equals(name))return KOREAN_NAMES[i];return name;}
+ public static String korean(String name){if("Oliver".equals(name))return "올리버";if("Leo".equals(name))return "레오";for(int i=0;i<NAMES.length;i++)if(NAMES[i].equals(name))return KOREAN_NAMES[i];return name;}
  public static final List<Profile> ALL=Collections.unmodifiableList(Arrays.asList(
   new Profile("milles_guide_proto","James",1,"마을 경비","mu0000059,mh124,ml255","mw015"),
   new Profile("milles_gate_proto","William",6,"숲길 경비","mu0000057,mh108,ml243","mw015"),
-  new Profile("pote_travel_guide","Noah",60,"아벨·포테 이동","mu0000102,mh007,ml240",null),
+  new Profile("pote_travel_guide","Noah",60,"마을 이동 관리","mu0000102,mh007,ml240",null),
   new Profile("milles_west_proto","David",5,"서부 주민","mu0000030,mh010,ml243",null),
   new Profile("milles_market_proto","Matthew",13,"시장 상인","mu0000237,mh232,ml240",null),
   new Profile("milles_job_counselor","Michael",2,"직업 상담관","mu0000007,mh132,ml255","mw015"),
@@ -28,6 +31,8 @@ public final class NpcIdentity {
   new Profile("mentor_mage","Daniel",12,"마법사 지도자","mu0000117,mh006,ml240","mw024"),
   new Profile("mentor_cleric","Thomas",9,"성직자 지도자","mu0000210,mh011,ml243","mw026"),
   new Profile("mentor_monk","Jacob",48,"무도가 지도자","mu0000057,mh007,ml255",null),
+  new Profile("piet_town_travel","Oliver",0,"마을 이동 관리","mu0000001,mh005,ml240",null),
+  new Profile("rucesion_coast_guide","Leo",0,"해안 조사 담당","mu0000002,mh006,ml243",null),
   new Profile("piet_investigator","Ethan",61,"피에트 조사 담당","mu0000030,mh009,ml243",null),
   new Profile("piet_supplier","Joshua",19,"피에트 보급 담당","mu0000237,mh124,ml240",null),
   new Profile("piet_purifier","Samuel",42,"정화 담당","mu0000202,mh008,ml243","mw026"),
@@ -35,12 +40,12 @@ public final class NpcIdentity {
   new Profile("abel_supplier","Aaron",50,"아벨 보급","mu0000237,mh009,ml240",null),
   new Profile("interior_inn","Benjamin",39,"여관 주인","mu0000025,mh011,ml243",null),
   new Profile("abel_coast_departure","Kenneth",22,"아벨 해안 이동","mu0000055,mh132,ml255",null),
-  new Profile("abel_town_travel","Kevin",21,"밀레스 이동","mu0000102,mh006,ml243",null),
+  new Profile("abel_town_travel","Kevin",21,"마을 이동 관리","mu0000102,mh006,ml243",null),
   new Profile("abel_interior_reagent","Richard",7,"아벨 시약상","mu0000117,mh007,ml255","mw024"),
   new Profile("abel_interior_equipment","Andrew",17,"아벨 장비상","mu0000055,mh008,ml243","mw015"),
   new Profile("abel_interior_bank","Mark",15,"아벨 은행원","mu0000202,mh010,ml240",null),
   new Profile("abel_interior_church","Edward",28,"아벨 사제","mu0000210,mh132,ml255","mw026"),
-  new Profile("abel_interior_inn","George",27,"아벨 여관 주인","mu0000025,mh009,ml240",null),new Profile("rucesion_town_travel","Harold",83,"아벨 이동","mu0000102,mh124,ml255",null),new Profile("rucesion_beach_keeper","Luke",97,"해변 안내","mu0000365,mh010,ml243",null),new Profile("rucesion_interior_armor","Donald",18,"뤼케시온 방어구상","mu0000055,mh006,ml243","mw015"),new Profile("rucesion_interior_weapon","Scott",40,"뤼케시온 무기상","mu0000055,mh007,ml240","mw015"),new Profile("rucesion_interior_reagent","Jerry",52,"뤼케시온 시약상","mu0000117,mh132,ml255","mw024"),new Profile("rucesion_interior_bank_a","Christopher",10,"뤼케시온 은행원 A","mu0000202,mh124,ml255",null),new Profile("rucesion_interior_bank_b","Peter",59,"뤼케시온 은행원 B","mu0000202,mh007,ml240",null),new Profile("rucesion_interior_inn","판",69,"뤼케시온 여관 주인","mu0000025,mh005,ml255",null),new Profile("rucesion_interior_clothing","체리",71,"의상 판매","mu0000030,mh132,ml240",null)));;
+  new Profile("abel_interior_inn","George",27,"아벨 여관 주인","mu0000025,mh009,ml240",null),new Profile("rucesion_town_travel","Harold",83,"마을 이동 관리","mu0000102,mh124,ml255",null),new Profile("rucesion_beach_keeper","Luke",97,"해변 안내","mu0000365,mh010,ml243",null),new Profile("rucesion_interior_armor","Donald",18,"뤼케시온 방어구상","mu0000055,mh006,ml243","mw015"),new Profile("rucesion_interior_weapon","Scott",40,"뤼케시온 무기상","mu0000055,mh007,ml240","mw015"),new Profile("rucesion_interior_reagent","Jerry",52,"뤼케시온 시약상","mu0000117,mh132,ml255","mw024"),new Profile("rucesion_interior_bank_a","Christopher",10,"뤼케시온 은행원 A","mu0000202,mh124,ml255",null),new Profile("rucesion_interior_bank_b","Peter",59,"뤼케시온 은행원 B","mu0000202,mh007,ml240",null),new Profile("rucesion_interior_inn","판",69,"뤼케시온 여관 주인","mu0000025,mh005,ml255",null),new Profile("rucesion_interior_clothing","체리",71,"의상 판매","mu0000030,mh132,ml240",null),new Profile("mine_town_travel","Arthur",79,"마을 이동 도우미","mu0000001,mh005,ml240",null),new Profile("mine_interior_inn","앨리스",0,"마인 여관 주인","mu0000001,mh006,ml240",null),new Profile("mine_interior_reagent","필립",0,"마인 시약상","mu0000001,mh007,ml243",null),new Profile("death_village_travel","길잡이",28,"죽음의마을 이동 도우미","mu0000001,mh005,ml240",null),new Profile("death_reagent_knight","수호기사",0,"시약·리콜 상점","mu0000001,mh005,ml240",null)));;
  public static Profile forId(String id){
   if(id==null||id.isEmpty())throw new IllegalArgumentException("NPC stable ID required");
   for(Profile p:ALL)if(p.id.equals(id))return p;
@@ -50,7 +55,8 @@ public final class NpcIdentity {
   return new Profile(id,NAMES[index],index+1,"주민",clothes[0]+","+accessory[1]+","+clothes[2],null);
  }
  public static String interiorKey(String kind){return "interior_"+kind.toLowerCase(Locale.ROOT);}
- public static String interiorKey(String mapId,String kind){if(mapId.startsWith("rucesion_interior_"))return mapId;return (mapId.startsWith("abel_interior_")?"abel_":"")+interiorKey(kind);}
- public static String text(String original){if(original==null)return null;String value=original.replace("한스","윌리엄").replace("메리","벤저민").replace("멀린","헨리");for(int i=0;i<NAMES.length;i++)value=value.replace(NAMES[i],KOREAN_NAMES[i]);return value;}
+ public static String interiorKey(String mapId,String kind){if(mapId.startsWith("mine_interior_")||mapId.startsWith("rucesion_interior_"))return mapId;return (mapId.startsWith("abel_interior_")?"abel_":"")+interiorKey(kind);}
+ public static String text(String original){if(original==null)return null;String value=original.replace("한스","윌리엄").replace("메리","벤저민").replace("멀린","헨리");boolean latin=false;for(int i=0;i<value.length();i++){char ch=value.charAt(i);if(ch>='a'&&ch<='z'){latin=true;break;}}if(latin)for(int i=0;i<NAMES.length;i++)value=value.replace(NAMES[i],KOREAN_NAMES[i]);return value;}
  private NpcIdentity(){}
 }
+

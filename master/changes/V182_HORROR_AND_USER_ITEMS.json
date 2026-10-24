@@ -1,0 +1,68 @@
+{
+  "status": "IMPLEMENTED_VERIFICATION_PENDING",
+  "base": "6565a0f6",
+  "userRequest": "Resume interrupted Horror Castle corrections and admit full user item master",
+  "changes": {
+    "lobbyExits": {
+      "u": [
+        22,
+        23,
+        24,
+        25,
+        26
+      ],
+      "v": 18
+    },
+    "west": {
+      "u": [
+        24,
+        25,
+        26
+      ],
+      "v": 10
+    },
+    "upper": [
+      19,
+      2
+    ],
+    "east": {
+      "marker": [
+        47,
+        2
+      ],
+      "reachableThreshold": [
+        46,
+        2
+      ],
+      "limitation": "Original cell47,2 is blocked; shifted presentation retains legal approach cell, activation shift pending source clarification"
+    },
+    "minimapTitleCenterX": 68,
+    "monsterMpfByType": [
+      366,
+      371,
+      365,
+      370,
+      364,
+      369,
+      367,
+      372,
+      363,
+      368
+    ],
+    "items": {
+      "count": 5722,
+      "snapshot": "master/canonical/User_Item_Master_20261018.json",
+      "changedSourceRow": 4993,
+      "preferredSource": "items_02.xlsx",
+      "unknownColumns": "preserved without interpretation",
+      "runtime": "PENDING_IDENTITY_SLOT_ART_MAPPING"
+    }
+  },
+  "pending": [
+    "Horror equipment identity/stat/art source article310542 inaccessible via web tool",
+    "Entire item master runtime/inventory mapping (unknown slots/columns and duplicate identities preserved)",
+    "East portal activation at shifted blocked tile",
+    "Native and CI verification",
+    "Handset visual verification"
+  ]
+}

@@ -1,0 +1,700 @@
+{
+  "revision": "USER_CORRECTION_V240",
+  "sourceVideo": "Screen_Recording_20261023_000206_YouTube.mp4",
+  "sourceSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+  "skills": {
+    "SK_마법사_001": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v240/mareno.png",
+          "width": 101,
+          "height": 99,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 47,
+          "pivotY": 105,
+          "scale": 0.42,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "2077b38e6edda0ab2b907c4becdd9913d1091dd90e79869e471822d8b16b108a",
+          "sourceFrames": [
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.45,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.5,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.55,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.6,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.65,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.7,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.75,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.8,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.85,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.9,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 53.95,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.0,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.05,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.1,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "SK_마법사_003": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v240/teramiko.png",
+          "width": 134,
+          "height": 90,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 59,
+          "pivotY": 76,
+          "scale": 0.42,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "bdf9f0c1ba90d87eba5038bec33835627da8c62a907918e37dad1db5cf23a9ac",
+          "sourceFrames": [
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.3,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.35,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.4,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.45,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.5,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.55,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.6,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.65,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.7,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.75,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.8,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.85,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 54.9,
+              "crop": [
+                1100,
+                440,
+                160,
+                140
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "SK_마법사_004": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v240/adyuro.png",
+          "width": 119,
+          "height": 121,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 57,
+          "pivotY": 107,
+          "scale": 0.42,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "f8ce1c829be6c2657dc46ccc30e67df28f604fe1a9aba5f2812b057cc7375a9e",
+          "sourceFrames": [
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.25,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.3,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.35,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.4,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.45,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.5,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.55,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.6,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.65,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.7,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.75,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.8,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 57.85,
+              "crop": [
+                1390,
+                615,
+                150,
+                150
+              ]
+            }
+          ]
+        }
+      }
+    },
+    "SK_마법사_005": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "mage-v240/plamo.png",
+          "width": 65,
+          "height": 84,
+          "columns": 8,
+          "durationsMs": [
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50,
+            50
+          ],
+          "pivotX": 34,
+          "pivotY": 96,
+          "scale": 0.42,
+          "blend": "SCREEN",
+          "footOffsetY": 0,
+          "sourceTiming": "OBSERVED_CAPTURE_20FPS",
+          "atlasSha256": "4849f87ce9aa4202bc54385112f507010b6b9e419ebe461761e3bbaaf0510a60",
+          "sourceFrames": [
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.3,
+              "crop": [
+                1276,
+                556,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.35,
+              "crop": [
+                1276,
+                556,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.4,
+              "crop": [
+                1276,
+                556,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.45,
+              "crop": [
+                1276,
+                556,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.5,
+              "crop": [
+                1276,
+                556,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.55,
+              "crop": [
+                1276,
+                556,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.6,
+              "crop": [
+                1276,
+                556,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.65,
+              "crop": [
+                1272,
+                557,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.7,
+              "crop": [
+                1263,
+                562,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.75,
+              "crop": [
+                1253,
+                567,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.8,
+              "crop": [
+                1244,
+                571,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.85,
+              "crop": [
+                1234,
+                576,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.9,
+              "crop": [
+                1225,
+                581,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 60.95,
+              "crop": [
+                1216,
+                584,
+                160,
+                150
+              ]
+            },
+            {
+              "videoSha256": "3938241c2cf6696758ebf0bde89b194290a2dc6fc763e4da4db77cfe1bc6bc72",
+              "timestampSeconds": 61.0,
+              "crop": [
+                1208,
+                589,
+                160,
+                150
+              ]
+            }
+          ]
+        }
+      }
+    }
+  }
+}

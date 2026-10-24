@@ -28,7 +28,7 @@ public class ContinuousMoveProfileTest {
    for(int i=0;i<360;i++){
     if(i%90==0){float offset=(i/90)%2==0?384:-192;world.requestGroundWorld(originX+offset,originY+offset*.5f);}
     state.player().hp=state.player().maxHp;state.player().alive=true;
-    float x=world.presentationPlayerX(),y=world.presentationPlayerY();long a=System.nanoTime();update.invoke(view,.016f);long b=System.nanoTime();view.draw(canvas);long c=System.nanoTime();updates[i]=b-a;draws[i]=c-b;
+    float x=world.presentationPlayerX(),y=world.presentationPlayerY();long a=System.nanoTime();update.invoke(view,.016f);world.camera().follow(world.presentationPlayerX(),world.presentationPlayerY());long b=System.nanoTime();view.draw(canvas);long c=System.nanoTime();updates[i]=b-a;draws[i]=c-b;
     double delta=Math.hypot(world.presentationPlayerX()-x,world.presentationPlayerY()-y);travel+=delta;if(delta>.001)moving++;
    }
    assertTrue(scene+" actual interpolated travel",travel>20&&moving>30);Arrays.sort(updates);Arrays.sort(draws);

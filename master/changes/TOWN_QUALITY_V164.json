@@ -1,0 +1,37 @@
+{
+  "id": "TOWN_QUALITY_V164",
+  "status": "ACCEPTED",
+  "evidence": "USER_AUTHORIZED_VISUAL_REPAIR_20261015",
+  "source": [
+    "user screenshots: Rucesion streets and Milles travel dialogue",
+    "master/source/town_v164/before",
+    "master/source/town_v164/generated"
+  ],
+  "before": "372 prop instances; blurred tree; detached pergola; captured bench floor/wall residue; current town included in travel menu",
+  "after": "10native sprite replacements with fixed original canvas/anchor;22crowded adapted garden trees removed;350props remain; centered4card travel excluding current town",
+  "originalFactsChanged": false,
+  "sourceSnapshotsChanged": false,
+  "originalArtClaim": false,
+  "artStatus": "ADAPTED_GENERATED_REPAIR",
+  "scope": [
+    "Abel and Rucesion town props",
+    "all-town travel presentation"
+  ],
+  "preserved": [
+    "tile grid",
+    "source observations",
+    "service door registrations",
+    "movement",
+    "hunting gates",
+    "NPC roles",
+    "save/rewards"
+  ],
+  "tests": [
+    "TownQualityV164Test",
+    "TownCampaignV163Test",
+    "AbelTownV152Test",
+    "RucesionTownV154Test",
+    "retained source/skill/growth/cache regressions"
+  ],
+  "buildNativeStatus": "PENDING"
+}

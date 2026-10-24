@@ -1,0 +1,40 @@
+{
+  "revision": "V254",
+  "user": "6x2 skill slots; joined square HP MP potion slots plus4 item slots on their right; accept current Narcoli",
+  "skills": {
+    "columns": 6,
+    "rows": 2,
+    "size": 44,
+    "gap": 4,
+    "origin": [
+      540,
+      340
+    ]
+  },
+  "itemBar": {
+    "size": 36,
+    "gap": 0,
+    "origin": [
+      372,
+      438
+    ],
+    "fixedPotionSlots": 2,
+    "assignableItemSlots": 4
+  },
+  "itemInteraction": {
+    "emptyTap": "owned-item picker",
+    "tap": "durable use or equip; do not toggle equipped item off",
+    "longPressMs": 500,
+    "longPress": "change or clear",
+    "storage": "four canonical IDs in versioned preferences; no main save schema change"
+  },
+  "narcoli": "USER_VISUAL_ACCEPTED_CURRENT_V253; authored provenance retained",
+  "acceptance": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "source": "58984f20b8ec458b10126e7d5d1519732ff1f55a",
+  "evidence": {
+    "run": 39964073034,
+    "artifact": 12505368740,
+    "finalNativePass": 5,
+    "retainedNativePass": 42
+  }
+}

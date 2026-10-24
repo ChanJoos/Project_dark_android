@@ -19,7 +19,7 @@ public final class MobileHudV134Test {
  GameView view(){GameView v=new GameView(c);v.layout(0,0,960,540);return v;}
  @Test public void legacyEightSlotsMigrateWithoutGrantingOrLosingSkills()throws Exception{
    SkillBook b=SkillBook.load(c);assertTrue(b.learn("cast_proto",12));assertTrue(b.assign(7,"cast_proto"));JSONObject legacy=b.snapshot();JSONArray eight=new JSONArray();for(int i=0;i<8;i++)eight.put(legacy.getJSONArray("slots").get(i));legacy.put("slots",eight);
-   SkillBook restored=SkillBook.load(c);assertTrue(restored.restore(legacy));assertEquals("cast_proto",restored.slot(7));assertNull(restored.slot(8));assertNull(restored.slot(9));assertEquals(12,restored.proficiency("cast_proto"));assertEquals(10,restored.snapshot().getJSONArray("slots").length());
+   SkillBook restored=SkillBook.load(c);assertTrue(restored.restore(legacy));assertEquals("cast_proto",restored.slot(7));assertNull(restored.slot(8));assertNull(restored.slot(9));assertEquals(12,restored.proficiency("cast_proto"));assertEquals(12,restored.snapshot().getJSONArray("slots").length());
    JSONObject corrupt=restored.snapshot();corrupt.getJSONArray("slots").put(9,"unknown");assertFalse(restored.restore(corrupt));assertEquals("cast_proto",restored.slot(7));
  }
  @Test public void ninthAndTenthSkillsRegisterCastAndPersistThroughRealInput()throws Exception{
@@ -36,7 +36,7 @@ public final class MobileHudV134Test {
    v.pause();F5mSaveStore.install(c);RuntimeState saved=field(view(),"state");assertEquals(before-1,saved.rpg().inventory().get(RpgProgressionState.B_SMALL_POTION_ITEM_ID).intValue());
  }
  @Test public void boundsTrackVisibleHudInNormalAndWideViewports()throws Exception{
-   for(float d:new float[]{0,210}){assertTrue(GameView.blocksWorldTapForHud(68,73,false,d));assertTrue(GameView.blocksWorldTapForHud(790+d,104,false,d));assertTrue(GameView.blocksWorldTapForHud(456+d/2,450,false,d));assertFalse("old quest no longer intercepts the world",GameView.blocksWorldTapForHud(140,150,false,d));assertFalse("old status no longer intercepts the world",GameView.blocksWorldTapForHud(200,60,false,d));assertFalse(GameView.blocksWorldTapForHud(400+d/2,350,false,d));GameView v=view();for(int i=0;i<10;i++){RectF r=slot(v,i);assertTrue(GameView.blocksWorldTapForHud(r.centerX()+d,r.centerY(),false,d));}}
+   for(float d:new float[]{0,210}){assertTrue(GameView.blocksWorldTapForHud(68,73,false,d));assertTrue(GameView.blocksWorldTapForHud(790+d,104,false,d));assertTrue(GameView.blocksWorldTapForHud(456+d/2,450,false,d));assertFalse("old quest no longer intercepts the world",GameView.blocksWorldTapForHud(140,150,false,d));assertFalse("old status no longer intercepts the world",GameView.blocksWorldTapForHud(200,60,false,d));assertFalse(GameView.blocksWorldTapForHud(400+d/2,350,false,d));GameView v=view();for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slot(v,i);assertTrue(GameView.blocksWorldTapForHud(r.centerX()+d/2,r.centerY(),false,d));}}
  }
  @Test public void renderTenOriginalSkillIconsTownForestAndWideHud()throws Exception{
    for(int[] size:new int[][]{{960,540},{2340,1080}}){reset();GameView v=new GameView(c);v.layout(0,0,size[0],size[1]);v.setSkillTestMode(true);render(v,"town",size[0],size[1]);Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(v);render(v,"forest",size[0],size[1]);}

@@ -1,0 +1,28 @@
+{
+  "status": "ACCEPTED",
+  "source": "USER_20261017_0302_KST",
+  "before": "V176 delivered icons rejected visually",
+  "after": {
+    "flipRelativeToV176": [
+      "모자",
+      "장갑",
+      "장갑(오른손)",
+      "갑옷",
+      "신발"
+    ],
+    "scale": {
+      "모자": 0.85,
+      "귀걸이": 0.85,
+      "IT_APPEARANCE_PEASANT_SHIRT": 0.85
+    },
+    "opticalCenter": [
+      "목걸이",
+      "갑옷"
+    ]
+  },
+  "sourceArtwork": "UNCHANGED",
+  "inventoryAndStatsAndSave": "UNCHANGED",
+  "verification": "BUILD_AND_HOST_ANDROID_NATIVE_VERIFIED_60_TESTS_11_SUITES",
+  "phoneAcceptance": "PENDING",
+  "receipt": "master/changes/V177_BUILD_RUNTIME_RECEIPT.json"
+}

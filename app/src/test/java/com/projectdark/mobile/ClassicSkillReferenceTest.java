@@ -20,8 +20,8 @@ public class ClassicSkillReferenceTest {
   JSONObject references=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/classic/references.json"),StandardCharsets.UTF_8));assertEquals(85,references.getJSONArray("rows").length());
   SkillBook b=SkillBook.load(c);assertNull(b.get("SK_성직자_010"));assertEquals("경신공법",b.get("SK_무도가_033").name);assertEquals("아지토",b.get("SK_무도가_034").name);
   assertEquals(53,b.learningPolicy("SK_무도가_020").getJSONObject("stats").getInt("INT"));assertTrue(b.summary("SK_성직자_007").contains("그룹"));assertEquals(SkillActionContract.Pattern.GROUP,SkillActionContract.get("SK_성직자_007").pattern);
-  assertEquals(SkillActionContract.Pattern.SELF,SkillActionContract.get("SK_성직자_017").pattern);assertEquals(3,SkillActionContract.get("SK_무도가_003").reach);
-  assertFalse(SkillActionContract.get("SK_무도가_003").presentationAllowed());assertFalse(SkillActionContract.get("SK_성직자_025").presentationAllowed());
+  assertEquals(SkillActionContract.Pattern.SELF,SkillActionContract.get("SK_성직자_017").pattern);assertEquals(1,SkillActionContract.get("SK_무도가_003").reach);
+  assertTrue(SkillActionContract.get("SK_무도가_003").presentationAllowed());assertFalse(SkillActionContract.get("SK_성직자_025").presentationAllowed());
   assertEquals("마법",b.get("SK_무도가_020").kind);assertEquals("마법",b.get("SK_무도가_011").kind);
  }
  @Test public void everyCaptureChannelHasVerifiedSourceTimingPixelsAndTransparentFloor()throws Exception{
@@ -52,15 +52,15 @@ public class ClassicSkillReferenceTest {
   for(String id:reference.effects.keySet()){
    SkillActionContract.Rule rule=SkillActionContract.get(id);if(!rule.presentationAllowed())continue;
    F5mSaveStore.install(c);GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);RuntimeState s=field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.player().x=m.x-32;s.player().y=m.y-16;s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=20000;s.player().mp=20000;int before=m.hp;
-   ((CombatController)field(v,"combat")).selectTarget(m);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
+   ((CombatController)field(v,"combat")).selectTarget(m);((CanonicalActorFacing)field(v,"playerFacing")).setLocomotion(CharacterRenderer.Direction.SE);((com.projectdark.mobile.world.WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();
    Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(v,((SkillBook)field(v,"skillBook")).get(id));assertEquals(id,field(v,"activeSkillVisualId"));
    // Production drains queued ACTION_STARTED events in its frame tick, not in submitPlayer.
    Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(v,0f);
-   SkillVfxRenderer renderer=field(v,"skillVfx");ClassicSkillReference.Channel start=reference.channel(id,true);assertEquals(id,start==null?0:1,renderer.pulses.size());
+   SkillVfxRenderer renderer=field(v,"skillVfx");ClassicSkillReference.Channel start=reference.channel(id,true);assertEquals(id,start==null||MartialSkillPolicy.LINE.equals(id)?0:1,renderer.pulses.size());
    for(SkillVfxRenderer.Pulse pulse:renderer.pulses){assertTrue(pulse.caster);assertEquals("classic",pulse.sheet);assertEquals("player",pulse.anchor);}
    tick.invoke(v,("마법".equals(rule.kind)?((RuntimeCombatSession)field(v,"combatSession")).effectiveCastSeconds(id):rule.contact)+.001f);
    ClassicSkillReference.Channel contact=reference.channel(id,false);List<SkillVfxRenderer.Pulse> targets=new ArrayList<>();for(SkillVfxRenderer.Pulse pulse:renderer.pulses)if(!pulse.caster&&!pulse.sheet.equals("impact"))targets.add(pulse);
-   if(rule.pattern==SkillActionContract.Pattern.SCREEN&&contact!=null)assertTrue(id,targets.size()>=1);else assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals("classic",pulse.sheet);if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(s.monsters().stream().anyMatch(monster->monster.id.equals(pulse.anchor)));else assertEquals(id,id.startsWith("SK_무도가_")?(MartialCaptureRegistration.recipient(id,false)?m.id:"player"):(contact.casterAnchor||rule.selfAnchored()?"player":m.id),pulse.anchor);pulse.age=SkillFxAuditTest.sourcePeakAge(renderer,pulse);}
+   if(rule.pattern==SkillActionContract.Pattern.SCREEN&&contact!=null)assertTrue(id,targets.size()>=1);else assertEquals(id,contact==null?0:1,targets.size());for(SkillVfxRenderer.Pulse pulse:targets){assertEquals(MartialSkillPolicy.LINE.equals(id)?"martial-line":CurseSkullFx.variant(id)>=0?"curse-skull":id.equals("SK_마법사_043")?"meteor-source":"classic",pulse.sheet);if(rule.pattern==SkillActionContract.Pattern.SCREEN)assertTrue(s.monsters().stream().anyMatch(monster->monster.id.equals(pulse.anchor)));else assertEquals(id,id.startsWith("SK_무도가_")?(MartialCaptureRegistration.recipient(id,false)?m.id:"player"):(contact.casterAnchor||rule.selfAnchored()?"player":m.id),pulse.anchor);pulse.age=SkillFxAuditTest.sourcePeakAge(renderer,pulse);}
    if(rule.heal())assertEquals(id,before,m.hp);
    if(id.equals("SK_성직자_040")||id.startsWith("SK_마법사_")||id.equals("SK_성직자_013")||id.equals("SK_무도가_020")||id.equals("SK_성직자_003")||id.equals("SK_무도가_002")||id.equals("SK_성직자_005")){
     Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File out=new File("build/reports/device-review/classic-"+id+".png");out.getParentFile().mkdirs();try(FileOutputStream f=new FileOutputStream(out)){image.compress(Bitmap.CompressFormat.PNG,100,f);}

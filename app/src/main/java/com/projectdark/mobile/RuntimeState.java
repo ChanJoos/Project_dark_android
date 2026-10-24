@@ -13,6 +13,14 @@ import java.util.Arrays;
  * [ADAPTED] Screen-space geometry validates mobile controls before verified tile collision exists.
  */
 public final class RuntimeState {
+  /** Captures live actor objects so a failed paid transfer cannot respawn or heal the source map. */
+  static final class TravelSnapshot {
+    final String map;final float[] at;final List<Npc> npcs;final List<Monster> monsters;final List<RectF> obstacles;final org.json.JSONObject campaign,effects,horror;
+    TravelSnapshot(RuntimeState s){map=s.currentMapId;at=new float[]{s.currentMinX,s.currentMaxX,s.currentMinY,s.currentMaxY,s.player.x,s.player.y,s.player.spawnX,s.player.spawnY};npcs=new ArrayList<>(s.npcs);monsters=new ArrayList<>(s.monsters);obstacles=new ArrayList<>(s.obstacles);campaign=s.rpg.campaign().snapshot();effects=s.skillEffects.snapshot();horror=s.horror.snapshot();}
+  }
+  TravelSnapshot captureTravel(){return new TravelSnapshot(this);}
+  void restoreTravel(TravelSnapshot b){currentMapId=b.map;currentMinX=b.at[0];currentMaxX=b.at[1];currentMinY=b.at[2];currentMaxY=b.at[3];player.x=b.at[4];player.y=b.at[5];player.spawnX=b.at[6];player.spawnY=b.at[7];npcs.clear();npcs.addAll(b.npcs);monsters.clear();monsters.addAll(b.monsters);obstacles.clear();obstacles.addAll(b.obstacles);terrainIndex=null;rpg.campaign().restore(b.campaign);skillEffects.restore(b.effects);horror.restore(b.horror);}
+
   public enum BootMode { MILLES, POTE_01_PROTOTYPE }
 
   public static final float WORLD_MIN_X=WorldDef.MIN_X,WORLD_MAX_X=WorldDef.MAX_X,WORLD_MIN_Y=WorldDef.MIN_Y,WORLD_MAX_Y=WorldDef.MAX_Y;
@@ -35,11 +43,14 @@ public final class RuntimeState {
 
   public static final class Monster {
     public enum State { SPAWN,IDLE,WANDER,DETECT,CHASE,ATTACK,DEAD,RESPAWN }
-    public final String id,name,assetStatus;public final float spawnX,spawnY;public float x,y;
+    public final String id,name,assetStatus;public final float spawnX,spawnY,collisionRadius;public float x,y;
     /** Selected only by the mobile 2-circle field adapter; null keeps unknown prototypes fail-closed. */
     public String campaignRewardProfileId;
+    public String attackElement,defenseElement;
     public float moveStartX,moveStartY,moveTargetX,moveTargetY,moveElapsed,moveDuration;
     public boolean isMoving;
+    /** Ephemeral damage aggro for this actor life; never bypasses live movement collision. */
+    public boolean provoked;
     public int hp;public final int maxHp;public boolean alive=true;
     public int level,mp,maxMp;public float manaClock;public boolean bossRecovered;
     public State state=State.SPAWN;
@@ -47,16 +58,20 @@ public final class RuntimeState {
     public boolean attackPrimed=false;
     public final CanonicalActorFacing visualFacing=new CanonicalActorFacing(CharacterRenderer.Direction.SE);
     public int lastDamage=0;
+    final HitNumbersV260 damageNumbers=new HitNumbersV260();
     public int detourSign=1;
     public float detourClock=0f;
     /** Per-actor animation phase used to animate single-pose candidate art. */
     public float animationClock=0f;
     public float respawnSeconds=4f;
-    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;state=State.IDLE;}
+    Monster(String id,String name,float x,float y,int hp,String assetStatus){this.id=id;this.name=name;this.assetStatus=assetStatus;spawnX=x;spawnY=y;this.x=x;this.y=y;this.hp=hp;maxHp=hp;collisionRadius=collisionRadiusForId(id);MonsterElementsV258.spawn(this);state=State.IDLE;}
   }
 
   private final BootMode bootMode;
   private String currentMapId;
+  private final HorrorCastleRun horror=new HorrorCastleRun();
+  public HorrorCastleRun horror(){return horror;}
+  public void restoreHorrorEncounter(){if(com.projectdark.mobile.world.HorrorCastleGeometry.contains(currentMapId)){monsters.clear();monsters.addAll(HorrorCastleMonsters.spawn(currentMapId,horror.seed()));horror.apply(monsters);}}
   private float currentMinX=WorldDef.MIN_X,currentMaxX=WorldDef.MAX_X,currentMinY=WorldDef.MIN_Y,currentMaxY=WorldDef.MAX_Y;
   private final WorldDef world=new WorldDef();
   private final Player player;
@@ -145,7 +160,9 @@ public final class RuntimeState {
   public RpgProgressionState rpg(){return rpg;}
   private int appliedBaseMaxHp=100,appliedBaseMaxMp=100;
   public void applyDerivedGrowth(){
-    int newMaxHp=rpg.maxHpGrowth(),newMaxMp=rpg.maxMpGrowth();
+    int hpBonus=0,mpBonus=0;
+    for(String id:rpg.equipment().values()){RpgProgressionState.ItemDefinition d=rpg.itemDefinitions().get(id);if(d!=null){hpBonus+=d.statModifiers.getOrDefault("HP",0);mpBonus+=d.statModifiers.getOrDefault("MP",0);}}
+    int newMaxHp=Math.max(1,rpg.baseMaxHp()+hpBonus),newMaxMp=Math.max(0,rpg.baseMaxMp()+mpBonus);
     int earnedHp=Math.max(0,rpg.baseMaxHp()-appliedBaseMaxHp),earnedMp=Math.max(0,rpg.baseMaxMp()-appliedBaseMaxMp);
     appliedBaseMaxHp=rpg.baseMaxHp();appliedBaseMaxMp=rpg.baseMaxMp();
     player.maxHp=newMaxHp;player.maxMp=newMaxMp;
@@ -174,8 +191,8 @@ public final class RuntimeState {
     if(d==null)throw new IllegalArgumentException("interior");
     if(WorldDef.ID.equals(currentMapId)){suspendedMillesMonsters.clear();suspendedMillesMonsters.addAll(monsters);suspendedMillesNpcs.clear();suspendedMillesNpcs.addAll(npcs);suspendedMillesObstacles.clear();suspendedMillesObstacles.addAll(obstacles);}
     currentMapId=d.mapId;monsters.clear();npcs.clear();obstacles.clear();terrainIndex=null;obstacles.addAll(d.obstacles());
-    npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
-    currentMinX=d.minX();currentMaxX=d.maxX();currentMinY=d.MIN_Y;currentMaxY=d.maxY();
+    if(!d.mapId.endsWith("_temple_hub"))npcs.add(new Npc("town_keeper",d.npcName,d.npcX(),d.npcY(),"",WorldDef.ASSET_STATUS));
+    currentMinX=d.minX();currentMaxX=d.maxX();currentMinY=d.minY();currentMaxY=d.maxY();
     player.spawnX=d.spawnX();player.spawnY=d.spawnY();player.x=player.spawnX;player.y=player.spawnY;
   }
   public void leaveTownInterior(float x,float y){monsters.clear();monsters.addAll(suspendedMillesMonsters);npcs.clear();npcs.addAll(suspendedMillesNpcs);obstacles.clear();terrainIndex=null;obstacles.addAll(suspendedMillesObstacles);currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;player.spawnX=WorldDef.PLAYER_SPAWN_X;player.spawnY=WorldDef.PLAYER_SPAWN_Y;player.x=x;player.y=y;}
@@ -190,14 +207,20 @@ public final class RuntimeState {
     for(Monster monster:monsters)if(campaignRewards.find(monster.id)!=null)monster.campaignRewardProfileId=monster.id;
     player.spawnX=com.projectdark.mobile.world.PoteFieldDef.ENTRY_X;player.spawnY=com.projectdark.mobile.world.PoteFieldDef.ENTRY_Y;player.x=player.spawnX;player.y=player.spawnY;
   }
-  public void enterCampaignMap(String id,boolean fromNext){id=com.projectdark.mobile.world.AbelTownGeometry.canonical(id);
+  public void enterCampaignMap(String id,boolean fromNext){id=com.projectdark.mobile.world.AbelCoastGeometry.canonical(com.projectdark.mobile.world.AbelTownGeometry.canonical(id));
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
-    com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
-    int zone=map.zone;monsters.addAll(CampaignMonsters.spawnForMap(id));
-    if(com.projectdark.mobile.world.RucesionTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.RucesionTownGeometry.x(41,43),com.projectdark.mobile.world.RucesionTownGeometry.y(41,43));npcs.add(new Npc("rucesion_town_travel","해럴드",t.x,t.y,"아벨 마을로 돌아갈 수 있습니다.","ADAPTED"));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.RucesionTownGeometry.x(15,24),com.projectdark.mobile.world.RucesionTownGeometry.y(15,24));npcs.add(new Npc("rucesion_beach_keeper","루크",t.x,t.y,"뤼케시온 해변은 다음 확장 지역입니다.","ADAPTED"));}
-    else if(com.projectdark.mobile.world.AbelTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.AbelTownGeometry.x(25,14),com.projectdark.mobile.world.AbelTownGeometry.y(25,14));npcs.add(new Npc("abel_town_travel",NpcIdentity.forId("abel_town_travel").label(),t.x,t.y,"밀레스마을로 돌아갈 수 있습니다.",F5mAdaptedPrologueQuest.PROVENANCE));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.AbelTownGeometry.x(81,39),com.projectdark.mobile.world.AbelTownGeometry.y(81,39));npcs.add(new Npc("abel_coast_departure",NpcIdentity.forId("abel_coast_departure").label(),t.x,t.y,"아벨해안으로 이동합니다. Lv41 · 포테 조사 완료",F5mAdaptedPrologueQuest.PROVENANCE));}
+    horror.record(currentMapId,monsters);if(com.projectdark.mobile.world.HorrorCastleGeometry.room(currentMapId)==com.projectdark.mobile.world.HorrorCastleGeometry.ROOM_COUNT&&com.projectdark.mobile.world.HorrorCastleGeometry.roomId(1).equals(id)&&horror.clear(currentMapId,monsters))horror.start();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    int zone=map.zone;monsters.addAll(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)?HorrorCastleMonsters.spawn(id,horror.seed()):CampaignMonsters.spawnForMap(id));horror.apply(monsters);
+    // This roster contains new lives. Reused species#slot keys must not inherit old-map effects.
+    for(Monster fresh:monsters)skillEffects.clear(fresh.id);
+    if(com.projectdark.mobile.world.DeathVillageGeometry.contains(id)){if(com.projectdark.mobile.world.DeathVillageGeometry.LOBBY.equals(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("death_village_travel","죽음의마을 이동 도우미",t.x,t.y,"마을 안의 세 건물과 지하로 이어지는 길을 살펴보세요.","ADAPTED_ORIGINAL_SOURCE"));com.projectdark.mobile.world.WorldMoveTargetController.TileCenter shop=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,t.x+96,t.y+48);npcs.add(new Npc("death_reagent_knight","수호기사",shop.x,shop.y,"시약과 마을 리콜을 판매합니다.","ORIGINAL_MNS028_USER_ASSIGNED_SERVICE"));}}
+    else if(com.projectdark.mobile.world.MineHuntGeometry.contains(id)||com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)){ /* Dedicated return portals, no generic forest NPC. */ }
+    else if(com.projectdark.mobile.world.MineTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("mine_town_travel","마인 이동 도우미",t.x,t.y,"밀레스를 비롯한 마을로 이동할 수 있습니다.","ADAPTED_USER_VIDEO"));}
+    else if(com.projectdark.mobile.world.RucesionTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,TownTravel.center(id).x,TownTravel.center(id).y);npcs.add(new Npc("rucesion_town_travel","해럴드",t.x,t.y,"모든 마을로 이동할 수 있습니다.","ADAPTED"));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.RucesionTownGeometry.x(15,24),com.projectdark.mobile.world.RucesionTownGeometry.y(15,24));npcs.add(new Npc("rucesion_beach_keeper","루크",t.x,t.y,"뤼케시온 해변으로 이동합니다. Lv71 이상 · 시험 모드 미리보기 가능","ADAPTED"));}
+    else if(com.projectdark.mobile.world.RucesionCoastGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,map.entryX+96,map.entryY-48);npcs.add(new Npc("rucesion_coast_guide","해안 안내인",t.x,t.y,"모래길 이동 표식으로 구역을 이동하세요. 아리엘 파티 이벤트는 준비 중입니다.","ADAPTED"));}
+    else if(com.projectdark.mobile.world.AbelTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,TownTravel.center(id).x,TownTravel.center(id).y);npcs.add(new Npc("abel_town_travel",NpcIdentity.forId("abel_town_travel").label(),t.x,t.y,"모든 마을로 이동할 수 있습니다.",F5mAdaptedPrologueQuest.PROVENANCE));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.AbelTownGeometry.x(81,39),com.projectdark.mobile.world.AbelTownGeometry.y(81,39));npcs.add(new Npc("abel_coast_departure",NpcIdentity.forId("abel_coast_departure").label(),t.x,t.y,"아벨해안으로 이동합니다. Lv41 · 포테 조사 완료",F5mAdaptedPrologueQuest.PROVENANCE));}
     else if(com.projectdark.mobile.world.AbelCoastGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,map.entryX+96,map.entryY-48);npcs.add(new Npc("abel_coast_guide","패트릭",guide.x,guide.y,"해안 조사와 사냥 안내. 킹아크퍼스의 숨겨진 길은 조사 중입니다.","B/ADAPTED"));if(zone==10){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter supplier=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,map.entryX+160,map.entryY+48);npcs.add(new Npc("abel_supplier","에런",supplier.x,supplier.y,"회복약과 기존 장비를 보급합니다.","B/ADAPTED"));}}
-    else if(zone==0){npcs.add(new Npc("piet_investigator","이선",768,512,"피에트 조사와 서신을 담당합니다.","ADAPTED"));npcs.add(new Npc("piet_supplier","조슈아",864,560,"조사 장비와 보급품을 준비하세요.","ADAPTED"));npcs.add(new Npc("piet_purifier","새뮤얼",672,560,"숲의 정수를 정화합니다.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"지도자",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"숙련 기술과 장비를 지도합니다.","ADAPTED"));}
+    else if(zone==0){npcs.add(new Npc("piet_town_travel",NpcIdentity.forId("piet_town_travel").label(),TownTravel.center(id).x,TownTravel.center(id).y,"모든 마을로 이동할 수 있습니다.","ADAPTED"));npcs.add(new Npc("piet_investigator","이선",768,512,"피에트 조사와 서신을 담당합니다.","ADAPTED"));npcs.add(new Npc("piet_supplier","조슈아",864,560,"조사 장비와 보급품을 준비하세요.","ADAPTED"));npcs.add(new Npc("piet_purifier","새뮤얼",672,560,"숲의 정수를 정화합니다.","ADAPTED"));for(String job:CampaignProgress.JOBS)npcs.add(new Npc(CampaignProgress.mentor(job),"지도자",608+Arrays.asList(CampaignProgress.JOBS).indexOf(job)*64,656,"숙련 기술과 장비를 지도합니다.","ADAPTED"));}
     else {com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guide=map.nearest(map.entryX+96,map.entryY+16);npcs.add(new Npc("pote_trail_guide","알렉산더",guide.x,guide.y,"숲길 안내와 조사 의뢰", "ADAPTED"));if(zone==3&&!"MAP_POTE_04".equals(id)){float[][] sites={{720,560},{1536,760},{2300,1040}};for(int i=0;i<3;i++){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter altar=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,sites[i][0],sites[i][1]);npcs.add(new Npc("campaign_altar_"+i,"정화 제단 "+(i+1),altar.x,altar.y,"제단 정화", "ADAPTED"));}}}
     com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(id,fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
   }
@@ -212,7 +235,7 @@ public final class RuntimeState {
   public boolean tryMove(float dx,float dy){if(!player.alive||skillEffects.rooted("player"))return false;float bx=player.x,by=player.y;float nx=clamp(player.x+dx,currentMinX,currentMaxX),ny=clamp(player.y+dy,currentMinY,currentMaxY);if(playerCanOccupy(nx,player.y))player.x=nx;if(playerCanOccupy(player.x,ny))player.y=ny;return player.x!=bx||player.y!=by;}
 
   public boolean tryMoveMonster(Monster m,float desiredDx,float desiredDy,float distance){
-    if(m==null||!m.alive)return false;
+    if(m==null||!m.alive||skillEffects.rooted(m.id))return false;
     MonsterDiagonalLocomotion.Step applied=MonsterDiagonalLocomotion.select(
         m.x,m.y,desiredDx,desiredDy,distance,m.visualFacing.locomotion(),m.detourSign,
         new MonsterDiagonalLocomotion.Occupancy(){
@@ -287,6 +310,11 @@ public final class RuntimeState {
       if(other==self||!other.alive)continue;
       float min=radius+monsterCollisionRadius(other)+ACTOR_CLEARANCE;
       float minSquared=min*min;
+      // Conservative live bounds only. Detailed endpoint/reservation/crossing checks remain below.
+      float fromX=self==null?x:self.x,fromY=self==null?y:self.y;
+      float otherX=other.isMoving?other.moveTargetX:other.x,otherY=other.isMoving?other.moveTargetY:other.y;
+      if(Math.max(fromX,x)+min<Math.min(other.x,otherX)||Math.min(fromX,x)-min>Math.max(other.x,otherX)
+          ||Math.max(fromY,y)+min<Math.min(other.y,otherY)||Math.min(fromY,y)-min>Math.max(other.y,otherY))continue;
       if(distanceSquared(x,y,other.x,other.y)<minSquared)return true;
       // An in-flight destination is reserved, so two AI updates cannot choose the same tile.
       if(other.isMoving&&distanceSquared(x,y,other.moveTargetX,other.moveTargetY)<minSquared)return true;
@@ -296,9 +324,13 @@ public final class RuntimeState {
     }
     return false;
   }
-  private float monsterCollisionRadius(Monster monster){
-    return "milles_mouse_proto".equals(monster.id)?7f:"POTE_MANTIS".equals(PoteForestMonsterShowcase.species(monster.id))?18f:"POTE_LYCAN".equals(PoteForestMonsterShowcase.species(monster.id))?16f:MONSTER_RADIUS;
+  private float monsterCollisionRadius(Monster monster){return monster.collisionRadius;}
+  private static float collisionRadiusForId(String id){
+    int separator=id==null?-1:id.indexOf('#');String species=separator<0?id:id.substring(0,separator);
+    if(species!=null&&species.startsWith("LYK_"))return species.equals("LYK_ARIEL")||species.equals("LYK_TYRANT")||species.endsWith("KOATL")?18f:14f;
+    return "milles_mouse_proto".equals(id)?7f:"POTE_MANTIS".equals(species)?18f:"POTE_LYCAN".equals(species)?16f:MONSTER_RADIUS;
   }
+
   private boolean npcOccupied(float x,float y,float radius){
     for(Npc n:npcs){float min=radius+NPC_RADIUS+ACTOR_CLEARANCE;if(distance(x,y,n.x,n.y)<min)return true;}
     return false;
@@ -349,8 +381,8 @@ public final class RuntimeState {
   public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);m.attackVisualRemaining=.36f;damagePlayer(damage);if(m.alive)m.state=m.attackVisualRemaining>0f?Monster.State.ATTACK:Monster.State.IDLE;}
   public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;m.attackVisualRemaining=0f;m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}}
 
-  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.isMoving=false;m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.attackVisualRemaining=0f;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=m.respawnSeconds;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
-  public void damagePlayer(int amount){if(amount<=0||!player.alive)return;skillEffects.stopRest();player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.state=Monster.State.IDLE;}}}
+  public void damage(Monster m,int amount){if(m==null||!m.alive||amount<=0)return;boolean amnesia=skillEffects.has(m.id,"AMNESIA");if(amnesia)amount=(int)Math.min(Integer.MAX_VALUE,(long)amount*2);m.provoked=true;if(!amnesia)skillEffects.remove(m.id,"AGGRO_RESET");m.hp=Math.max(0,m.hp-amount);m.hitFlash=.14f;m.damagePopupClock=.65f;m.lastDamage=amount;m.damageNumbers.add(amount,m.x,m.y);ledger.add(CombatLedger.Type.MONSTER_HIT,"player",m.id,amount);if(m.hp==0){m.isMoving=false;m.provoked=false;m.alive=false;m.state=Monster.State.DEAD;m.attackCooldown=0f;m.attackWindup=0f;m.attackPrimed=false;m.attackVisualRemaining=0f;m.visualFacing.endAttack();m.detourClock=0f;m.respawnClock=m.respawnSeconds;ledger.add(CombatLedger.Type.MONSTER_DEFEATED,"player",m.id,0);}}
+  public void damagePlayer(int amount){if(amount<=0||!player.alive||skillEffects.has("player","INVINCIBLE"))return;skillEffects.stopRest();player.hp=Math.max(0,player.hp-amount);player.hitFlash=.18f;ledger.add(CombatLedger.Type.PLAYER_HIT,"monster","player",amount);if(player.hp==0){player.alive=false;ledger.add(CombatLedger.Type.PLAYER_DEFEATED,"monster","player",0);for(Monster m:monsters)if(m.alive){cancelMonsterAttack(m);m.provoked=false;m.state=Monster.State.IDLE;}}}
   public void revivePlayer(){skillEffects.clear("player");player.x=player.spawnX;player.y=player.spawnY;player.hp=player.maxHp;player.mp=player.maxMp;player.alive=true;player.hitFlash=0f;ledger.add(CombatLedger.Type.PLAYER_REVIVED,"runtime","player",0);}
 
   private float equipmentRegenClock;private int previousEquipmentRegen;
@@ -362,7 +394,7 @@ public final class RuntimeState {
     int ticks=(int)(equipmentRegenClock/25f);if(ticks<=0)return;equipmentRegenClock-=ticks*25f;
     player.hp=(int)Math.min(player.maxHp,(long)player.hp+(long)ticks*ItemEffects.additionalRegeneration(rpg));
   }
-  public void tick(float dt){tickEquipmentRegeneration(dt);skillEffects.tick(this,Math.max(0f,dt));player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){tickMonsterMovement(m,dt);if(m.alive&&m.maxMp>0){m.manaClock+=Math.max(0,dt);if(m.manaClock>=1){int gain=(int)m.manaClock;m.mp=Math.min(m.maxMp,m.mp+gain*2);m.manaClock-=gain;}}m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);float priorAttackVisual=m.attackVisualRemaining;if(!m.attackPrimed)m.attackVisualRemaining=Math.max(0f,m.attackVisualRemaining-dt);if(priorAttackVisual>0f&&m.attackVisualRemaining<=0f&&!m.attackPrimed){m.visualFacing.endAttack();if(m.alive&&m.state==Monster.State.ATTACK)m.state=Monster.State.IDLE;}m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive)m.animationClock+=Math.max(0f,dt);if(m.alive)continue;if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){if(!monsterCanOccupy(m,m.spawnX,m.spawnY))continue;m.state=Monster.State.SPAWN;skillEffects.clear(m.id);m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.mp=m.maxMp;m.bossRecovered=false;m.attackCooldown=0f;m.attackWindup=0f;m.attackVisualRemaining=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.lastDamage=0;m.hitFlash=0f;m.damagePopupClock=0f;m.animationClock=0f;m.isMoving=false;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
+  public void tick(float dt){tickEquipmentRegeneration(dt);skillEffects.tick(this,Math.max(0f,dt));player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){m.damageNumbers.tick(Math.max(0f,dt));tickMonsterMovement(m,dt);if(m.alive&&m.maxMp>0){m.manaClock+=Math.max(0,dt);if(m.manaClock>=1){int gain=(int)m.manaClock;m.mp=Math.min(m.maxMp,m.mp+gain*2);m.manaClock-=gain;}}m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);float priorAttackVisual=m.attackVisualRemaining;if(!m.attackPrimed)m.attackVisualRemaining=Math.max(0f,m.attackVisualRemaining-dt);if(priorAttackVisual>0f&&m.attackVisualRemaining<=0f&&!m.attackPrimed){m.visualFacing.endAttack();if(m.alive&&m.state==Monster.State.ATTACK)m.state=Monster.State.IDLE;}m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive)m.animationClock+=Math.max(0f,dt);if(m.alive)continue;if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){if(!monsterCanOccupy(m,m.spawnX,m.spawnY))continue;m.state=Monster.State.SPAWN;MonsterElementsV258.spawn(m);skillEffects.clear(m.id);m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.mp=m.maxMp;m.bossRecovered=false;m.provoked=false;m.attackCooldown=0f;m.attackWindup=0f;m.attackVisualRemaining=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.damageNumbers.clear();m.lastDamage=0;m.hitFlash=0f;m.damagePopupClock=0f;m.animationClock=0f;m.isMoving=false;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
 
   private static void tickMonsterMovement(Monster m,float dt){if(!m.isMoving)return;m.moveElapsed=Math.min(m.moveDuration,m.moveElapsed+Math.max(0f,dt));float t=m.moveDuration<=0f?1f:m.moveElapsed/m.moveDuration;float eased=t*t*(3f-2f*t);m.x=m.moveStartX+(m.moveTargetX-m.moveStartX)*eased;m.y=m.moveStartY+(m.moveTargetY-m.moveStartY)*eased;if(t>=1f){m.x=m.moveTargetX;m.y=m.moveTargetY;m.isMoving=false;}}
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}

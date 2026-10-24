@@ -1,0 +1,284 @@
+{
+  "source": "2367c5811a05b00b724cf2b15245239e5f262921",
+  "run": 39900306358,
+  "captures": [
+    {
+      "path": "MAP_ABEL_COAST-gate.png",
+      "sha256": "6d22a5f02c547ee97e4ea5a01fe4e8ed6023a8efd3aab0ac953eb8071a433263"
+    },
+    {
+      "path": "MAP_ABEL_COAST-lobby.png",
+      "sha256": "05507197c5c1cb46fcc2a2b5250ec019e4966f3f3de6f4737a5c357e19863050"
+    },
+    {
+      "path": "MAP_RUCESION_COAST-gate.png",
+      "sha256": "f73ab4b4fdd1ac05270ca4ab84a2b1e450ab3d2fa50da23e691ffde29ac78005"
+    },
+    {
+      "path": "MAP_RUCESION_COAST-lobby.png",
+      "sha256": "8bc7a8a6efd10c657622d164548e5a99cb1d4ee71b97df1b5efd26f2e7b2b298"
+    },
+    {
+      "path": "abel_interior_bank-scene.png",
+      "sha256": "38b6f451073a4488e935e92b1565dbc63c08c3180e3b2c36a51464a9df48be8e"
+    },
+    {
+      "path": "abel_interior_church-scene.png",
+      "sha256": "034e7791a935124693fd12abcdb229e5abf36cff7ec742554cacd52fbd2078d0"
+    },
+    {
+      "path": "abel_interior_equipment-confirm.png",
+      "sha256": "80dfd61453979ec6a93f4ab8625d0de867229765b9f7632f28fa0d11768b3507"
+    },
+    {
+      "path": "abel_interior_equipment-scene.png",
+      "sha256": "32699d455f511a893104f24ad8ca1b8b91f7f432d5a5b5d5ef5c7f1c455c8161"
+    },
+    {
+      "path": "abel_interior_equipment-sell.png",
+      "sha256": "ce620d7342a8f3cebd309f96b53a24b2c338e6135184a0255d21f03aa42aec64"
+    },
+    {
+      "path": "abel_interior_equipment-shop.png",
+      "sha256": "62882f96d9054d688252518c1630ab94a6741b591c56e2e183155e79912e4f4d"
+    },
+    {
+      "path": "abel_interior_equipment-source-actor.png",
+      "sha256": "76c9a4b08a03e1c60d447cca38e5de29df56ec09f3271b5cfe32779aa01cea7e"
+    },
+    {
+      "path": "abel_interior_equipment-tooltip.png",
+      "sha256": "2987c4588a3dbc083c4cc90e5bcdee7a4462093e119bd017a04dd1aae4d462f3"
+    },
+    {
+      "path": "abel_interior_inn-scene.png",
+      "sha256": "24f48b4a29fce95015529b97b4651bd2f1a2a4c4175173eb68e2a014404efb03"
+    },
+    {
+      "path": "abel_interior_inn-source-actor.png",
+      "sha256": "23031b10b8f3c608ccac30125854ec1993bc8225095e443d1838679ab1ffc029"
+    },
+    {
+      "path": "abel_interior_reagent-confirm.png",
+      "sha256": "0461777d9b2075ecc9d556ad9af0607ab656687f333b5ddbe9b8d74f343c1657"
+    },
+    {
+      "path": "abel_interior_reagent-scene.png",
+      "sha256": "281ffe8c2852b8bd9668ee0d5abc1051b4cf42a380308eb63d79174bd27092a5"
+    },
+    {
+      "path": "abel_interior_reagent-sell.png",
+      "sha256": "5a206fd5cb665dab435358f5cc76cbfd28d477488e8b1c42eb5814b5c773771b"
+    },
+    {
+      "path": "abel_interior_reagent-shop.png",
+      "sha256": "02dae6b3ea2d910bfbc7ff410e02e3605ff1ce6a87b7c09f04436cbdb9580c39"
+    },
+    {
+      "path": "abel_interior_reagent-tooltip.png",
+      "sha256": "a0542ea4409ee8b3d774e6252fe453829e6e144d8e8950870dc4c5bb56f49fb3"
+    },
+    {
+      "path": "milles_interior_bank-scene.png",
+      "sha256": "3d42f1dc0daace1c97c144157d0671c2c0af996daecc62237bff43b86af36a95"
+    },
+    {
+      "path": "milles_interior_church-scene.png",
+      "sha256": "7df53f6acda092d1e00b640193791ff0dc457fa04428f6a37860caf15710f7e2"
+    },
+    {
+      "path": "milles_interior_inn-scene.png",
+      "sha256": "9b8e5795bdf2d84920aaa0105765fe61f812434e949e99959a01903ccd21df54"
+    },
+    {
+      "path": "milles_interior_inn-source-actor.png",
+      "sha256": "23031b10b8f3c608ccac30125854ec1993bc8225095e443d1838679ab1ffc029"
+    },
+    {
+      "path": "milles_interior_potion_shop-confirm.png",
+      "sha256": "a78700d80a7ba37f9ea9b12aaf6b52aeefce2db8a5bda65850dcdf3950afe5c5"
+    },
+    {
+      "path": "milles_interior_potion_shop-scene.png",
+      "sha256": "ed4137d0f213c46f9131a52a429c0351f5be5a249c8a343dc64801987010e2fd"
+    },
+    {
+      "path": "milles_interior_potion_shop-sell.png",
+      "sha256": "5e56a7bd190384c4a0a1c8437e98b25ec2905805ef495b152cb79bec4a41956f"
+    },
+    {
+      "path": "milles_interior_potion_shop-shop.png",
+      "sha256": "619fa31f924a80696a90b115e49f48f2d5f0dde81b6b237eb18f71ebeaff3628"
+    },
+    {
+      "path": "milles_interior_potion_shop-tooltip.png",
+      "sha256": "aad561d703c3952e4ce835c9cf685b7281e53fe4d76346bf48314593df103acb"
+    },
+    {
+      "path": "milles_interior_weapon_shop-confirm.png",
+      "sha256": "052376a59ecd7ce0b3950e0438de98c9b4cf2678c3ce60716a9bb531b76de2b8"
+    },
+    {
+      "path": "milles_interior_weapon_shop-scene.png",
+      "sha256": "9062eb90e060627f496ddab4bdf2e287b9c17f53c155db896e32aceb69ae44d6"
+    },
+    {
+      "path": "milles_interior_weapon_shop-sell.png",
+      "sha256": "aa4d9e11c6b115e32ea8b9c3ab85abbdec229f90dea2d8d018b89087c5469fd7"
+    },
+    {
+      "path": "milles_interior_weapon_shop-shop.png",
+      "sha256": "95f283b989ad96bde11d149336febb52cd91d26269c27df255ddb7031c937768"
+    },
+    {
+      "path": "milles_interior_weapon_shop-source-actor.png",
+      "sha256": "76c9a4b08a03e1c60d447cca38e5de29df56ec09f3271b5cfe32779aa01cea7e"
+    },
+    {
+      "path": "milles_interior_weapon_shop-tooltip.png",
+      "sha256": "e7eba38cbe7bf839680272f5f294cc1500568bd311ced8ee3fa0654bd6ec9ccc"
+    },
+    {
+      "path": "mine_interior_inn-scene.png",
+      "sha256": "52ab85267f3f90c5b769c6b7cca2a957ab7068f74676ae8b95c1dd3a0e15d472"
+    },
+    {
+      "path": "mine_interior_inn-source-actor.png",
+      "sha256": "23031b10b8f3c608ccac30125854ec1993bc8225095e443d1838679ab1ffc029"
+    },
+    {
+      "path": "mine_interior_reagent-confirm.png",
+      "sha256": "492ebe486d249149e387670bf734dda9509cec6312cce96b29a06e235400e935"
+    },
+    {
+      "path": "mine_interior_reagent-scene.png",
+      "sha256": "994bb4367842ce4e8458eddba2e8c1d7e313ebed8f3253b1645b40a3e14a787b"
+    },
+    {
+      "path": "mine_interior_reagent-sell.png",
+      "sha256": "ed1dc0f63661f866a09a2e6bff2f4848e62a73aa7481cc99bb0f763ecd000cde"
+    },
+    {
+      "path": "mine_interior_reagent-shop.png",
+      "sha256": "d46caa7ef2013ee2d398d847363660a07d7050d4562bb057cb7e81b4ee57e15d"
+    },
+    {
+      "path": "mine_interior_reagent-tooltip.png",
+      "sha256": "8cc7685ca485f434c0162b36624dd2c29bbbfa5d5ad5c58d6c9dae70eb1e690b"
+    },
+    {
+      "path": "rucesion_interior_armor-confirm.png",
+      "sha256": "23f0eaa303e70d9b930e7dc945489fae4981c76145062e60d73d3def5cdc6ac5"
+    },
+    {
+      "path": "rucesion_interior_armor-scene.png",
+      "sha256": "776d3d92d330d38998d7c476f188253ae2ac579a9701c5766a9e6ea2f9613713"
+    },
+    {
+      "path": "rucesion_interior_armor-sell.png",
+      "sha256": "178bb2b223ae67ee1cbf9e5c52f3ac6aa6a2b60bb8e1a33d1e1e97408c70cd7f"
+    },
+    {
+      "path": "rucesion_interior_armor-shop.png",
+      "sha256": "9c3e7478455fff5a62072b932daa236dd1f2d628b0c5b742e08263f07f65e820"
+    },
+    {
+      "path": "rucesion_interior_armor-source-actor.png",
+      "sha256": "76c9a4b08a03e1c60d447cca38e5de29df56ec09f3271b5cfe32779aa01cea7e"
+    },
+    {
+      "path": "rucesion_interior_armor-tooltip.png",
+      "sha256": "67fac132aeb2934d531f9ebb53c17d12256a12a4a3c187ab37c8475d55297b81"
+    },
+    {
+      "path": "rucesion_interior_bank_a-scene.png",
+      "sha256": "65718dc6d4e32512fa78e34c456ed054caf338d5569070068610ffbfdcbbecf0"
+    },
+    {
+      "path": "rucesion_interior_bank_b-scene.png",
+      "sha256": "81da3f42a267428629a9edb44854b40a1566b6c616d11b90812b2525a11c3936"
+    },
+    {
+      "path": "rucesion_interior_clothing-confirm.png",
+      "sha256": "9bb8bbd52f8b2a58cdac5e371544193d775f809f9a6c0d6d9e5b1ee23830e41b"
+    },
+    {
+      "path": "rucesion_interior_clothing-scene.png",
+      "sha256": "90b51d77990a6315ff9756a0607222d7c4d89a2069ca01167d39a8c875f926e4"
+    },
+    {
+      "path": "rucesion_interior_clothing-sell.png",
+      "sha256": "514077c2ebb1413bb6df11ebaeb6bab27b9ce798fb8332c65a41222ab56187f2"
+    },
+    {
+      "path": "rucesion_interior_clothing-shop.png",
+      "sha256": "f1fec86d14e0f8f77cf2475e0285e8228b7cd65c45d98349bb1dbcc3a4fe77a2"
+    },
+    {
+      "path": "rucesion_interior_clothing-source-actor.png",
+      "sha256": "76c9a4b08a03e1c60d447cca38e5de29df56ec09f3271b5cfe32779aa01cea7e"
+    },
+    {
+      "path": "rucesion_interior_clothing-tooltip.png",
+      "sha256": "ed71247841278663aa242cd1ba3b590ed071f5a36f814a85e8cce602c70e10d6"
+    },
+    {
+      "path": "rucesion_interior_inn-scene.png",
+      "sha256": "f486aa56904f0cb374cd72c57a339dc2fd22edf216ce6fdf7df565752a26198a"
+    },
+    {
+      "path": "rucesion_interior_inn-source-actor.png",
+      "sha256": "23031b10b8f3c608ccac30125854ec1993bc8225095e443d1838679ab1ffc029"
+    },
+    {
+      "path": "rucesion_interior_reagent-confirm.png",
+      "sha256": "dde23628e20dff4db03dcb79bb4844184b73a2c01ac2eb0644736ce6f2e6d2e6"
+    },
+    {
+      "path": "rucesion_interior_reagent-scene.png",
+      "sha256": "ef21c0427280db1239a475404acda623a0bfb009d7dbf79ad8196c90992875f3"
+    },
+    {
+      "path": "rucesion_interior_reagent-sell.png",
+      "sha256": "c24203240c516448f217d9faf80a6cd7415fd89ec3f17c154fc025db4a1cdcde"
+    },
+    {
+      "path": "rucesion_interior_reagent-shop.png",
+      "sha256": "5d87511edec962a3fc1399e4e58ee7c742809537c6ff6909dfafbf95115438a6"
+    },
+    {
+      "path": "rucesion_interior_reagent-tooltip.png",
+      "sha256": "7b4093e71311407db1195cb46359731952edc1cd2b277fe7c6dd1eb80cfee236"
+    },
+    {
+      "path": "rucesion_interior_weapon-confirm.png",
+      "sha256": "e369fa54887c97882ee3643e0026b216e4b52874c49a92497aa8bcc14584b7ec"
+    },
+    {
+      "path": "rucesion_interior_weapon-scene.png",
+      "sha256": "3793b6769c4497c83a12ac902123981f55567c3f99727434fc1cf4eb6932ba25"
+    },
+    {
+      "path": "rucesion_interior_weapon-sell.png",
+      "sha256": "a4cf0ee21be89a838e5caf4ae9605bf089ee9fc0751b0b4bc6249017dd1f5980"
+    },
+    {
+      "path": "rucesion_interior_weapon-shop.png",
+      "sha256": "02701afcbc05b3d767109c5c4a9f87fd43c8326cde7986a96e52d4f86748c088"
+    },
+    {
+      "path": "rucesion_interior_weapon-source-actor.png",
+      "sha256": "76c9a4b08a03e1c60d447cca38e5de29df56ec09f3271b5cfe32779aa01cea7e"
+    },
+    {
+      "path": "rucesion_interior_weapon-tooltip.png",
+      "sha256": "a045993d54ba908cc8fa2b690a2eaadac6e3a714a7284045ac8dc9852b70e63f"
+    }
+  ],
+  "reviewedServiceScenes": 19,
+  "reviewedRetailShops": 9,
+  "coastalLobbies": 2,
+  "sourceNpcPixelRoutes": 9,
+  "actualRetailTransactions": "BUY/SELL/durable save/failed save rollback/restart/quantity/top/close on9scenes",
+  "actualLegacyInputs": "Milles,Abel,Rucesion,Mine and onboarding automatic guide pass"
+}

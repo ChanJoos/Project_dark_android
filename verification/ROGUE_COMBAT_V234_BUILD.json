@@ -1,0 +1,316 @@
+{
+  "sourceCommit": "003bea4871ac480c19ab217d6ebb352641a27a04",
+  "runId": "39776318651",
+  "builtAtKST": "2026-10-22T21:14:44.009479+09:00",
+  "apkSha256": "51f3ce535dd8ee948cfc087f78d44abfd6cc8a44fd7c6b1f68eff496449f28e1",
+  "apkBytes": 102327188,
+  "identity": {
+    "sourceCommit": "003bea4871ac480c19ab217d6ebb352641a27a04",
+    "runId": "39776318651",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V234 source Seupgyeok blue and per-ID original colours;no duplicated generic impact;source actor cleanup;straight nearest throw1..4;real rogue damage trace;phone pending",
+  "artifactZipSha256": "0c25552275289cd90be18207509c3ca65d8a6191b7df3a298c7562c170e779ba",
+  "artifactId": 12424901291,
+  "nativeRuntimeEquivalentSource": "261b73b7bca37ac0a9637c0423157d5f56b5eb3d",
+  "nativeRuns": [
+    39774840057,
+    39776318651
+  ],
+  "initialNativeArtifact": 12425015131,
+  "initialNativeZipSha256": "56d1d00f698f5353b4aa645c4803e64d23a0a6fce5840457df9c166ec4dfa743",
+  "tailNativeSuites": [
+    {
+      "name": "com.projectdark.mobile.SkillSpatialContractTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueReviewV229Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "nativeSuites": [
+    {
+      "name": "com.projectdark.mobile.SkillSpatialContractTest",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillQuickslotApproachTest",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillPresentationTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueVisualV233Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueRepairV232Test",
+      "tests": "7",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillFeedbackV231Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueReviewV229Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueCombatV234Test",
+      "tests": "6",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MartialSevenV228Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillAbilityRuntimeTest",
+      "tests": "11",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "nativePassed": 58,
+  "v2CertificateSha256": "bb70adeeb20a085461694ca14e85d16095fdd82e69c52495f02b9db1956214bc",
+  "package": "com.projectdark.mobile.v234test",
+  "label": "PROJECT DARK V234 TEST",
+  "frozenV233AssetFilesVerified": 42,
+  "changedPackagedAssetsVerified": [
+    "app/src/main/assets/skill-presentation/captured/assassination.png",
+    "app/src/main/assets/skill-presentation/captured/assassination_jin.png",
+    "app/src/main/assets/skill-presentation/captured/manifest.json",
+    "app/src/main/assets/skill-presentation/catalog.json",
+    "app/src/main/assets/skill-presentation/rogue/cfcd39e6a1fb7ca3.png",
+    "app/src/main/assets/skill-presentation/rogue/manifest.json"
+  ],
+  "damageTrace": [
+    {
+      "id": "SK_도적_001",
+      "raw": 438,
+      "applied": 438,
+      "hpBefore": 1000000,
+      "hpAfter": 999562,
+      "damagePopup": 438,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_003",
+      "raw": 309,
+      "applied": 309,
+      "hpBefore": 1000000,
+      "hpAfter": 999691,
+      "damagePopup": 309,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_007",
+      "raw": 578,
+      "applied": 578,
+      "hpBefore": 1000000,
+      "hpAfter": 999422,
+      "damagePopup": 578,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_014",
+      "raw": 847,
+      "applied": 847,
+      "hpBefore": 1000000,
+      "hpAfter": 999153,
+      "damagePopup": 847,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_015",
+      "raw": 867,
+      "applied": 867,
+      "hpBefore": 1000000,
+      "hpAfter": 999133,
+      "damagePopup": 867,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_020",
+      "raw": 63360,
+      "applied": 63360,
+      "hpBefore": 1000000,
+      "hpAfter": 936640,
+      "damagePopup": 63360,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 10000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_021",
+      "raw": 1166,
+      "applied": 1166,
+      "hpBefore": 1000000,
+      "hpAfter": 998834,
+      "damagePopup": 1166,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_022",
+      "raw": 1166,
+      "applied": 1166,
+      "hpBefore": 1000000,
+      "hpAfter": 998834,
+      "damagePopup": 1166,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_023",
+      "raw": 1166,
+      "applied": 1166,
+      "hpBefore": 1000000,
+      "hpAfter": 998834,
+      "damagePopup": 1166,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_027",
+      "raw": 95000,
+      "applied": 95000,
+      "hpBefore": 1000000,
+      "hpAfter": 905000,
+      "damagePopup": 95000,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 10000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_028",
+      "raw": 1277,
+      "applied": 1277,
+      "hpBefore": 1000000,
+      "hpAfter": 998723,
+      "damagePopup": 1277,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_029",
+      "raw": 1277,
+      "applied": 1277,
+      "hpBefore": 1000000,
+      "hpAfter": 998723,
+      "damagePopup": 1277,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    },
+    {
+      "id": "SK_도적_030",
+      "raw": 1277,
+      "applied": 1277,
+      "hpBefore": 1000000,
+      "hpAfter": 998723,
+      "damagePopup": 1277,
+      "casterHpBefore": 100000,
+      "casterHpAfter": 100000,
+      "testMode": false
+    }
+  ],
+  "phone": "PENDING",
+  "fullRegression": "NOT_CLAIMED; prior unrelated Abel five-job equipment journey remains open",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "jobId": 119816056867,
+  "commonScopeRun": 39776328160,
+  "signature": "CI apksigner V2 PASS; downloaded archive/APK hash+CRC+certificate and embedded source/run checked",
+  "visualReview": [
+    "native per-ID source-colour grid",
+    "native actor-free assassin20/27 multiframe strips",
+    "normal OFF quickslot damage015/020 production scenes"
+  ],
+  "libraryFileId": "libfile_0fbaae6d1c288191bd603597f34a5962",
+  "libraryFileName": "PROJECT_DARK_V234_TEST.apk",
+  "numericLimits": "Ordinary ROGUE coefficients remain existing ADAPTED values, not authenticated original damage numbers",
+  "failuresResolved": [
+    {
+      "run": 39774425967,
+      "reason": "test trace Files.writeString unavailable on Android compilation surface",
+      "resolution": "compatible FileOutputStream"
+    },
+    {
+      "run": 39774840057,
+      "reason": "two stale test fixtures: no explicit throw facing and retired031 fifth hit",
+      "resolution": "explicit SE target facing and retired031 exclusion/4 linked hits"
+    },
+    {
+      "run": 39776113235,
+      "reason": "shallow checkout omitted exact native evidence base",
+      "resolution": "fetch exact base before strict no-runtime-delta guard"
+    }
+  ]
+}

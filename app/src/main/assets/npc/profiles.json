@@ -22,12 +22,13 @@
     },
     {
       "id": "pote_travel_guide",
-      "name": "Noah",
+      "name": "백원만",
       "rank": 60,
-      "role": "아벨·포테 이동",
+      "role": "이동",
       "outfit": "mu0000102,mh007,ml240",
       "weapon": null,
-      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE",
+      "sourceSprite": "town-v248/travel.png"
     },
     {
       "id": "milles_west_proto",
@@ -72,7 +73,8 @@
       "role": "시약상",
       "outfit": "mu0000117,mh132,ml240",
       "weapon": "mw024",
-      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE",
+      "sourceSprite": "town-v248/reagent.png"
     },
     {
       "id": "interior_equipment",
@@ -90,7 +92,8 @@
       "role": "은행원",
       "outfit": "mu0000202,mh006,ml243",
       "weapon": null,
-      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE",
+      "sourceSprite": "town-v248/bank.png"
     },
     {
       "id": "interior_church",
@@ -202,12 +205,13 @@
     },
     {
       "id": "abel_town_travel",
-      "name": "Kevin",
+      "name": "백원만",
       "rank": 21,
-      "role": "밀레스 이동",
+      "role": "이동",
       "outfit": "mu0000102,mh006,ml243",
       "weapon": null,
-      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE",
+      "sourceSprite": "town-v248/travel.png"
     },
     {
       "id": "abel_interior_reagent",
@@ -216,7 +220,8 @@
       "role": "아벨 시약상",
       "outfit": "mu0000117,mh007,ml255",
       "weapon": "mw024",
-      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE",
+      "sourceSprite": "town-v248/reagent.png"
     },
     {
       "id": "abel_interior_equipment",
@@ -234,7 +239,8 @@
       "role": "아벨 은행원",
       "outfit": "mu0000202,mh010,ml240",
       "weapon": null,
-      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE"
+      "rationale": "등록된 원본 의상 조합; ADAPTED 미국 top100 이름; 고정 SW IDLE",
+      "sourceSprite": "town-v248/bank.png"
     },
     {
       "id": "abel_interior_church",
@@ -256,12 +262,21 @@
     },
     {
       "id": "abel_coast_departure",
-      "name": "Kenneth",
+      "name": "백원만",
       "rank": 22,
-      "role": "아벨 해안 이동",
+      "role": "이동",
       "outfit": "mu0000055,mh132,ml255",
       "weapon": null,
-      "rationale": "V148 distinct real wearable profile; fixed SW IDLE"
+      "rationale": "V148 distinct real wearable profile; fixed SW IDLE",
+      "sourceSprite": "town-v248/travel.png"
+    },
+    {
+      "id": "death_reagent_knight",
+      "name": "수호기사",
+      "role": "시약·리콜 상점",
+      "sourceSprite": "town-v248/death-knight.png",
+      "evidence": "USER_ASSIGNED_ORIGINAL_MNS028"
     }
-  ]
+  ],
+  "servicePolicyV248": "TownInteriorDef kind binds present/future reagent/bank/inn/equipment; all actual transport roles use 백원만/mns019/fare100"
 }

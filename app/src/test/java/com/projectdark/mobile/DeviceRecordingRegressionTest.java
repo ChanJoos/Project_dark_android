@@ -23,7 +23,7 @@ public class DeviceRecordingRegressionTest {
   @Test public void productionAttackDelaysDamageAndUsesEquippedWeapon()throws Exception{
     GameView view=new GameView(context);RuntimeState s=(RuntimeState)field(view,"state");
     RuntimeState.Monster target=s.monsters().get(0);s.player().x=target.x-32;s.player().y=target.y-16;
-    assertEquals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,s.rpg().equipment().get(RpgProgressionState.WEAPON_SLOT));
+    assertEquals(RpgProgressionState.canonicalItemId(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID),s.rpg().equipment().get(RpgProgressionState.WEAPON_SLOT));
     ((WorldRuntimeAdapter)field(view,"worldAdapter")).snapCameraToPlayer();
     ((CombatController)field(view,"combat")).selectTarget(target);
     int hp=target.hp;attack(view);assertEquals("damage must wait for contact",hp,target.hp);assertEquals("SWING",field(view,"action").toString());
@@ -44,7 +44,12 @@ public class DeviceRecordingRegressionTest {
     assertEquals(F5mAdaptedPrologueQuest.State.ACTIVE,((F5mAdaptedPrologueQuest)field(view,"f5mQuest")).state());assertFalse(interaction.dialogOpen());
   }
   @Test public void inventoryNamesDoNotContainInternalEvidenceLabels(){
-    for(RpgInventoryPresentation.ItemRow row:new RpgInventoryPresentation().inventoryRows(new RpgProgressionState()))assertFalse(row.name,row.name.contains("["));
+    boolean originalEventName=false;
+    for(RpgInventoryPresentation.ItemRow row:new RpgInventoryPresentation().inventoryRows(new RpgProgressionState())){
+      for(String internal:new String[]{"[ADAPTED]","[ADAPTED PLAYTEST]","[PENDING WEARABLE FRAMES]","[B]"})assertFalse(row.name,row.name.contains(internal));
+      if(row.name.equals("[2012설날]가오리연"))originalEventName=true;
+    }
+    assertTrue("original source event qualifiers must remain visible",originalEventName);
   }
   @Test public void obstacleInteriorIsBlockedAndClearSpaceBelowItIsUsable(){
     RuntimeState s=new RuntimeState();WorldRuntimeAdapter world=new WorldRuntimeAdapter(s,960,540);

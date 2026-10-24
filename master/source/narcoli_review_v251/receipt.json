@@ -1,0 +1,67 @@
+{
+  "status": "PREVIEW_ONLY_USER_REVIEW_REQUIRED",
+  "rejectedCurrentMapping": "EFA364 electric zigzags suppressed from live SLEEP drawing; no replacement automatically applied",
+  "video": "Screen_Recording_20261021_205405_YouTube(2).mp4",
+  "videoSha256": "223c845d4c5287975701e45a76d4c4af93fc8552378fb1ea8be7ea7692dcc0e2",
+  "finding": "Rewatched underground sequences; no unambiguous named Narcoli cast isolated. EPF028/032 have genuine Z symbols. Shape candidacy is not identity proof.",
+  "candidates": [
+    {
+      "source": "efct028",
+      "playback": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "previewIntervalMs": 150,
+      "identity": "Z_SLEEP_SYMBOL_CANDIDATE_NOT_CONFIRMED_KOREAN_NARCOLI",
+      "sourcePivots": [
+        [
+          55,
+          70
+        ],
+        [
+          55,
+          70
+        ],
+        [
+          55,
+          70
+        ],
+        [
+          55,
+          70
+        ]
+      ]
+    },
+    {
+      "source": "efct032",
+      "playback": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "previewIntervalMs": 150,
+      "identity": "Z_SLEEP_SYMBOL_CANDIDATE_NOT_CONFIRMED_KOREAN_NARCOLI",
+      "sourcePivots": [
+        [
+          55,
+          97
+        ],
+        [
+          55,
+          97
+        ],
+        [
+          55,
+          97
+        ],
+        [
+          55,
+          97
+        ]
+      ]
+    }
+  ]
+}

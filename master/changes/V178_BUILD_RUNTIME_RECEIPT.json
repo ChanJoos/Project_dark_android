@@ -1,0 +1,72 @@
+{
+  "status": "IMPLEMENTED_BUILD_VERIFIED_HOST_ANDROID_NATIVE_VERIFIED",
+  "sourceCommit": "c9b8b6d308f3543b13fd60b74920cdfa2cc8e4c5",
+  "branch": "codex/rucesion-coast-v157",
+  "pullRequest": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "candidate": "UNMERGED_TEST_APP",
+  "focused": {
+    "run": 38947398033,
+    "job": 117129880568,
+    "conclusion": "SUCCESS",
+    "tests": 63,
+    "suites": 12,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "wholeCatalogRasterAudit": {
+    "earrings": 15,
+    "ringsBothSlots": 20,
+    "glovesBothSlots": 41,
+    "shoes": 17
+  },
+  "reviewedFrames": [
+    "equipment-v178/variants.png",
+    "equipment-v178/starter.png"
+  ],
+  "nativeArtifact": 12066298558,
+  "nativeArchiveSha256": "6d5fd4587a6a219f3f7a3eae6ff8a99f31d4789ef2f63e32392c3a018426bdf6",
+  "apkArtifact": 12066183498,
+  "apkArchiveSha256": "bc95f02746fb0cbaa69485b231ae0aca5e0e3b4985ffc8752e5fbac88e49e40f",
+  "apk": {
+    "name": "PROJECT_DARK_V178_TEST.apk",
+    "applicationId": "com.projectdark.mobile.v178test",
+    "versionCode": 178,
+    "versionName": "1.78-equipment-slots",
+    "builtSeoul": "2026-10-17T03:30:07.414680+09:00",
+    "apkBytes": 80780255,
+    "apkSha256": "79857e16f0b5ffc80f789766ecafb27177809d21a8332174d815f6db0110c7e0"
+  },
+  "fullCommon": [
+    {
+      "run": 38947398083,
+      "job": 117129880980,
+      "conclusion": "SUCCESS",
+      "successfulGradleExecutions": 26
+    },
+    {
+      "run": 38947407637,
+      "job": 117129913443,
+      "conclusion": "SUCCESS",
+      "successfulGradleExecutions": 26
+    }
+  ],
+  "resumption": "Recovered existing saved files; verified APK hash,byte size,ZIP CRC and embedded source/run/version; no rebuild or reupload",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "savedFiles": [
+    {
+      "name": "PROJECT_DARK_V178_TEST.apk",
+      "library_file_id": "libfile_1dda6fc944608191affd4dbd06400ba6",
+      "file_id": "file_00000000b44481fd80c407cd98388acb",
+      "localMetadataApplied": true
+    },
+    {
+      "name": "PROJECT_DARK_V178_EQUIPMENT.png",
+      "library_file_id": "libfile_f478443372408191b1b9b5df3bf045f7",
+      "file_id": "file_000000007d948206b664d4cf8e9f6e6b",
+      "localMetadataApplied": true
+    }
+  ]
+}

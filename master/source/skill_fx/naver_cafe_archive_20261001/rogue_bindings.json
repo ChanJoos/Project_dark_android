@@ -1,5 +1,5 @@
 {
-  "revision": "ROGUE_REVIEWED_CHANNELS_V1",
+  "revision": "ROGUE_SOURCE_BINDINGS_V229_USER_ARTICLE_ICONS",
   "rows": [
     {
       "id": "SK_공통_001",
@@ -517,6 +517,18 @@
         "limitations": "Only unobscured pixels in the reviewed recipient region are recovered; actor overlap stays absent. One captured facing.",
         "rejectWarmActorPixels": false,
         "yellowOnly": false
+      },
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 42,
+        "crop": [
+          0,
+          0,
+          37,
+          41
+        ],
+        "labelName": "백스탭",
+        "identityBasis": "User requests icons displayed in exact article section; original source label may be absent or reuse the lower skill label."
       }
     },
     {
@@ -633,6 +645,18 @@
         "baseline": "TEMPORAL_MIN",
         "whiteOnly": true,
         "limitations": "Source region intentionally excludes actors/UI. Smoke uses bright desaturated source pixels because no empty-background frame exists. Backslash binds an isolated front glint to each resolved front/back recipient; mirrored geometry is project-selected."
+      },
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 40,
+        "crop": [
+          0,
+          0,
+          41,
+          41
+        ],
+        "labelName": "백슬래쉬",
+        "identityBasis": "User requests icons displayed in exact article section; original source label may be absent or reuse the lower skill label."
       }
     },
     {
@@ -647,6 +671,23 @@
           43
         ],
         "labelName": "자물쇠열기"
+      }
+    },
+    {
+      "id": "SK_도적_027",
+      "icon": {
+        "articleId": 245450,
+        "imageIndex": 44,
+        "crop": [
+          2,
+          3,
+          42,
+          43
+        ],
+        "labelName": "암살격진",
+        "identityBasis": "User requests icons displayed in exact article section; original source label may be absent or reuse the lower skill label.",
+        "visibleSourceLabel": "암살격",
+        "sectionHeading": "25. 암살격진"
       }
     }
   ],

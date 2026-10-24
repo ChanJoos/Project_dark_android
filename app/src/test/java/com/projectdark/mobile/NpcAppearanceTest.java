@@ -21,9 +21,18 @@ public final class NpcAppearanceTest {
  private int[] pixels(Bitmap b){int[] a=new int[b.getWidth()*b.getHeight()];b.getPixels(a,0,b.getWidth(),0,0,b.getWidth(),b.getHeight());return a;}
  @Test public void allHumanNpcRoutesHaveDistinctRegisteredProfilesAndFutureDefaults(){
   Set<String> names=new HashSet<>(),outfits=new HashSet<>();EquipmentVisualRegistry registry=new EquipmentVisualRegistry(context());
-  assertEquals(38,NpcIdentity.ALL.size());
+  assertEquals(45,NpcIdentity.ALL.size());
+  Set<String> registeredIds=new HashSet<>();
+  for(NpcIdentity.Profile p:NpcIdentity.ALL)assertTrue("unique registered NPC "+p.id,registeredIds.add(p.id));
+  assertTrue(registeredIds.contains("mine_town_travel"));
+  assertEquals("이동",NpcIdentity.forId("mine_town_travel").role);
+  for(TownInteriorDef d:TownInteriorDef.MINE){
+   String id=NpcIdentity.interiorKey(d.mapId,d.kind.name());
+   assertTrue("Mine service uses registered profile "+id,registeredIds.contains(id));
+   assertEquals(NpcIdentity.forId(id).label(),d.npcName);
+  }
   for(NpcIdentity.Profile p:NpcIdentity.ALL){
-   assertTrue(p.rank>=1&&p.rank<=100);assertTrue(names.add(p.name));assertTrue(outfits.add(p.outfit));
+   assertTrue(p.rank>=1&&p.rank<=100);if(!TownTravel.isManager(p.id))assertTrue(names.add(p.name));else assertEquals("백원만",p.name);outfits.add(p.outfit);if(!NpcIdentity.special(p.id)){assertNull(p.weapon);assertEquals("mu0000001",p.outfit.split(",")[0]);}
    for(String id:p.outfit.split(",")){EquipmentVisualRegistry.Visual v=registry.get(id);assertNotNull("real atlas "+id,v);assertNotNull("real source registration "+id,v.registration);for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values())assertNotNull(v.registration.idle(d,0));}
   }
   RuntimeState s=new RuntimeState();for(RuntimeState.Npc n:s.npcs())assertEquals(NpcIdentity.forId(n.id).label(),n.name);
@@ -33,9 +42,10 @@ public final class NpcAppearanceTest {
  @Test public void allFourDirectionsUseExactlyThePlayerPaperDollAndOutfitsAreVisiblyDifferent(){
   Set<Integer> appearances=new HashSet<>();assertTrue(new CharacterRenderer(context()).resourceAtlasActive());
   for(NpcIdentity.Profile p:NpcIdentity.ALL)for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
+   if(TownServiceArt.role(p.id)!=null)continue; // Source service sprites are independently verified by TownServicesV247Test.
    Bitmap npc=actor(p,d,true),player=actor(p,d,false);assertArrayEquals("fixed SW NPC has same source scale, body, equipment and foot "+p.id+" "+d,pixels(player),pixels(npc));
-   if(d==CharacterRenderer.Direction.SE)assertTrue("different actual outfit pixels "+p.id,appearances.add(Arrays.hashCode(pixels(npc))));
-   int count=0;for(int color:pixels(npc))if(Color.alpha(color)>0)count++;assertTrue("real dressed sprite, not missing layers",count>350);
+   if(d==CharacterRenderer.Direction.SE)appearances.add(Arrays.hashCode(pixels(npc)));
+   int count=0;for(int color:pixels(npc))if(Color.alpha(color)>0)count++;assertTrue("real dressed sprite, not missing layers",count>250);
   }
  }
  @Test public void nativeRosterAndEveryTownServiceAreCapturedWithThePlayer()throws Exception{

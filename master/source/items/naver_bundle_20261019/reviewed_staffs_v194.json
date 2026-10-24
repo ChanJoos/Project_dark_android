@@ -1,0 +1,50 @@
+[
+  {
+    "name": "홀리완드",
+    "source": "301364/source_00.png",
+    "sourceLabelTop": 569,
+    "missingSourceFrames": {
+      "01": [],
+      "02": []
+    },
+    "files": {
+      "data/type/weapon/mw162.json": "b3ead918b0182094addc08c66423be4cdcef16d9fe99e561977e5df2c5268757",
+      "atlas/weapon/mw162.webp": "ba7a9d8d638412cfbe545fcfe52ad3d91c7b582de0f62be6aaf8a51b1e95ad09"
+    },
+    "itemId": "USER_ITEM_20261018_R01401",
+    "appearanceId": "mw162",
+    "completeIdleWalkAction": true
+  },
+  {
+    "name": "다크디아나",
+    "source": "301172/source_01.png",
+    "sourceLabelTop": 287,
+    "missingSourceFrames": {
+      "01": [],
+      "02": []
+    },
+    "files": {
+      "data/type/weapon/mw094.json": "18c6ab1ec9f77765b622d8ca1e947701183839cf82df279ae3ba66bce74078fe",
+      "atlas/weapon/mw094.webp": "e273119c7b24f7ec7475891761169c2c8a6c98571abde5ee24682cda46fd875d"
+    },
+    "itemId": "USER_ITEM_20261018_R05275",
+    "appearanceId": "mw094",
+    "completeIdleWalkAction": true
+  },
+  {
+    "name": "블로우웨이브",
+    "source": "301172/source_01.png",
+    "sourceLabelTop": 2772,
+    "missingSourceFrames": {
+      "01": [],
+      "02": []
+    },
+    "files": {
+      "data/type/weapon/mw276.json": "efa98fb6f8903691ec16f5c4effd0d859b114ceb8ca6e7e6d5dbe802ad192197",
+      "atlas/weapon/mw276.webp": "679ae5075b565df7a3df980355359f83e16b56ea6d404f04b882a1517cb6e3c9"
+    },
+    "itemId": "USER_ITEM_20261018_R03696",
+    "appearanceId": "mw276",
+    "completeIdleWalkAction": true
+  }
+]

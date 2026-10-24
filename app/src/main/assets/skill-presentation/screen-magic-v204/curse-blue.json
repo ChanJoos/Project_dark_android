@@ -1,0 +1,17 @@
+{
+  "path": "screen-magic-v204/curse-blue.png",
+  "width": 90,
+  "height": 120,
+  "columns": 4,
+  "durationsMs": [
+    120,
+    200,
+    320,
+    240
+  ],
+  "pivotX": 45,
+  "pivotY": 60,
+  "scale": 1,
+  "blend": "NORMAL",
+  "atlasSha256": "73aab4c640326c164790d02e878c0b663332c5e131e22077c4a0442d2315d7e4"
+}

@@ -38,7 +38,7 @@ public final class ReagentShopInteriorRenderer {
   }
   private void drawPortal(Canvas c,WorldRuntimeAdapter w,float wx,float wy){
     if(portal==null)return;WorldCameraTransform.Point q=w.worldToScreen(wx,wy);
-    c.drawBitmap(portal,null,new RectF(Math.round(q.x-32),Math.round(q.y-16),Math.round(q.x+32),Math.round(q.y+16)),px);
+    com.projectdark.mobile.PortalAnimation.draw(c,q.x,q.y);
   }
   private void drawFoot(Canvas c,WorldRuntimeAdapter w,Bitmap b,float wx,float wy,float scale){
     if(b==null)return;WorldCameraTransform.Point q=w.worldToScreen(wx,wy);float ww=b.getWidth()*scale,hh=b.getHeight()*scale;

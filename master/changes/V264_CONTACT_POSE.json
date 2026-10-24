@@ -1,0 +1,22 @@
+{
+  "version": "V264",
+  "status": "ACCEPTED_RESIDUAL_DEFECT_TASK",
+  "deviceReport": "DEVICE_FAILED_USER_REPORTED V263; installed SHA unknown/latesteca4d745",
+  "video": {
+    "name": "Screen_Recording_20261024_081540.mp4",
+    "libraryFileId": "libfile_1556c6c0b3748191bac77952c1d935a4",
+    "sha256": "7e653f7c20d466c2c6df5efbb3e3cefc63e4134263392668c2c962f2a3d43982",
+    "duration": 29.390678
+  },
+  "diagnosis": "source02 preparation/contact misused as four directions; west composite not mirrored",
+  "change": "only SkillPresentationCatalog contact selection and SkillBodyRenderer west mirror",
+  "unchanged": "GameView,AI,facing locks,target selection,damage,counts,assets",
+  "verification": "27 scoped native checks PASS; old actual west bitmap defect reproduced, final source-contact pixels exact; build/artifact verified; PHONE/USER_VISUAL_ACCEPTANCE PENDING",
+  "sourceObservations": {
+    "frontHeadToIdle": "BODY02/2 top12rows matches IDLE01/1 head pixels100percent at best translation,>=65opaque overlap;02/3 matches99.17percent",
+    "westRendering": "old source02 bypasses west mirror and selects a different pose by horizontal direction",
+    "classification": "OBSERVED source pixels/old code; preparation/contact semantics are source-based interpretation, not original engine timing authority"
+  },
+  "evidence": "verification/CONTACT_POSE_V264_BUILD.json",
+  "sourceCommit": "b8ec4fdacabe38776dd1589eacd264b1fdf8e411"
+}

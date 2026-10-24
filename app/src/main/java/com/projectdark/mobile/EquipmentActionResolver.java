@@ -35,7 +35,7 @@ public final class EquipmentActionResolver {
       return new Result(itemId,appearanceId,explicitOverride,
           appearanceId==null?null:SOURCE_NAMED_APPEARANCE,EXPLICIT_GAME_ACTION);
     if(weapon!=null&&weapon.basicAttackAction!=null)
-      return new Result(itemId,appearanceId,weapon.basicAttackAction,
+      return new Result(itemId,appearanceId,WeaponCombatProfile.basicAction(weapon),
           appearanceId==null?null:SOURCE_NAMED_APPEARANCE,ADAPTED_PLAYTEST_ACTION);
     return new Result(itemId,appearanceId,AnimationAction.PUNCH,
         appearanceId==null?null:SOURCE_NAMED_APPEARANCE,UNARMED_RUNTIME);
@@ -43,3 +43,4 @@ public final class EquipmentActionResolver {
 
   public Result resolveBasicAttack(RpgProgressionState rpg){return resolve(rpg,null);}
 }
+

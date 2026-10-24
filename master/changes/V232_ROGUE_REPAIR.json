@@ -1,0 +1,47 @@
+{
+  "revision": "V232_ROGUE_REPAIR",
+  "status": "ACCEPTED",
+  "user": "2026-10-22 current turn; all martial skills accepted; rogue pose is not bow;freeze icons excepttrapfind1alias/slash;retire031;hide look/untargetable;original Sense frame/facing1..2",
+  "motions": {
+    "group": "c",
+    "back": [
+      10,
+      8,
+      8,
+      10,
+      10
+    ],
+    "front": [
+      4,
+      13,
+      13,
+      4,
+      4
+    ],
+    "phases": [
+      0,
+      0.15,
+      0.3333333333333333,
+      0.7,
+      0.85
+    ],
+    "idleEdges": true
+  },
+  "source": "master/source/rogue_v232/reference.json",
+  "rules": {
+    "SK_도적_002": {
+      "reach": "2",
+      "minReach": "1",
+      "spatialEvidence": "U_V232_FACING_TWO_TILES",
+      "note": "바라보는 방향 전방 1~2칸 몬스터만 확인. 자동 접근·회전하지 않음; 가림/이동 대상 접촉 시 재검증."
+    }
+  },
+  "retired": "SK_도적_031",
+  "limits": [
+    "Per-phase timing is project selection; original source contact pose preserved, no generated BODY",
+    "Sense source frame texture/header/scroll/Close retained; dynamic text is runtime typography",
+    "Hide blocks new and pending incoming monster actions while active;dealing damage still ends existing stealth rule",
+    "Source monster stats not invented;live runtime data displayed"
+  ],
+  "sourcePreparationRecovery": "Actual IDLE before .15 and after .70; source GIF idle/contact/contact/idle, no overhead weapon-ready substitute"
+}

@@ -1,0 +1,23 @@
+{
+  "id": "V238_MAGE_VIDEO",
+  "status": "ACCEPTED",
+  "sourceReceipt": "master/source/mage_video_v238/receipt.json",
+  "ids": [
+    "SK_마법사_026",
+    "SK_마법사_027",
+    "SK_마법사_028",
+    "SK_마법사_029",
+    "SK_마법사_030",
+    "SK_마법사_031",
+    "SK_마법사_032",
+    "SK_마법사_033",
+    "SK_마법사_046"
+  ],
+  "mechanics": "UNCHANGED",
+  "evidence": "USER_REQUEST + VIDEO_OBSERVATION; occlusion reconstruction ADAPTED",
+  "verification": "BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "phone": "PENDING",
+  "sourceCommit": "dc6f1426b61a1584bd819ceed312e82b42002514",
+  "receipt": "verification/MAGE_VIDEO_V238_BUILD.json",
+  "visualAcceptance": "PENDING"
+}

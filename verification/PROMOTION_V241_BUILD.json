@@ -1,0 +1,51 @@
+{
+  "sourceCommit": "296656066627ef40d3a5210ca2bc70e489bc3907",
+  "runId": "39868184395",
+  "builtAtKST": "2026-10-23T07:57:11.987260+09:00",
+  "apkSha256": "3a03e1b85c7b3676c5f9d85aef6a5b5569d3988081319f276fff30ec9c17ffee",
+  "apkBytes": 105096882,
+  "identity": {
+    "sourceCommit": "296656066627ef40d3a5210ca2bc70e489bc3907",
+    "runId": "39868184395",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V241 eight complete original EPF promotions: per-frame pixel equality/whole-envelope/no tile crop, original Dark Mark CURSE70,14normal promotion quickslots, unchanged Pote basic4 and adjacent contact; phone visual pending",
+  "artifactId": 12465645971,
+  "jobId": 120135595632,
+  "artifactZipSha256": "4b5e0b98ce59108894b799b249792ecca8baea564c21e336a2c56bb74d7e1b56",
+  "artifactZipBytes": 161597828,
+  "signature": "CI apksigner APK V2 PASS; downloaded APK digest matches the signed CI artifact",
+  "packagedPresentationFilesByteVerified": 711,
+  "manifestPackage": "com.projectdark.mobile.v241test",
+  "manifestLabel": "PROJECT DARK V241 TEST",
+  "verification": "IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_NATIVE_VERIFIED",
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pr": 197,
+  "unmerged": true,
+  "testSuites": [
+    {
+      "name": "com.projectdark.mobile.MageBasicV240Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MagePromotionV241Test",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ]
+}

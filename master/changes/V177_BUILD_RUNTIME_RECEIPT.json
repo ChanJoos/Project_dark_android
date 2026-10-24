@@ -1,0 +1,72 @@
+{
+  "status": "IMPLEMENTED_BUILD_VERIFIED_HOST_ANDROID_NATIVE_VERIFIED",
+  "sourceCommit": "cc04c5df18df5ba602eefbfd93a5792ad5b6c7ce",
+  "pullRequest": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "candidate": "UNMERGED",
+  "focusedRun": 38944875080,
+  "focusedJob": 117121347420,
+  "focusedConclusion": "SUCCESS",
+  "junit": {
+    "tests": 60,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 11,
+  "nativeArtifact": 12064538782,
+  "nativeArchiveSha256": "69bc68c7efb2d9723cbb6fee054f226a7e731296c98d10a28c8ec8ea0ff8043d",
+  "apkArtifact": 12065651052,
+  "apkArchiveSha256": "b2df2cd8b15f892f986ca5acf2f6adc0d396c882c505f4a1431ffc166f4ee50c",
+  "apk": {
+    "applicationId": "com.projectdark.mobile.v177test",
+    "versionCode": 177,
+    "versionName": "1.77-equipment-icons",
+    "builtSeoul": "2026-10-17T03:11:56.375558+09:00",
+    "apkBytes": 80780283,
+    "apkSha256": "a5661ba16b3a3c991663ca94e1ecb346d3afcf32e859747c3fc19f3e17a8431d"
+  },
+  "runtimeScreenshotReviewed": [
+    "equipment-v177/starter.png",
+    "equipment-v177/filled.png",
+    "equipment-v177/armor.png"
+  ],
+  "alphaCentroidMeasured": {
+    "starterShirt": [
+      49.817074,
+      50.102642
+    ],
+    "fireNecklace": [
+      49.93897,
+      50.03521
+    ],
+    "jiponArmor": [
+      49.96962,
+      49.92032
+    ]
+  },
+  "centroidTarget": [
+    50,
+    50
+  ],
+  "fullCommonRuns": {
+    "38944875040": "IN_PROGRESS_AT_DELIVERY",
+    "38944884968": "IN_PROGRESS_DUPLICATE_AT_DELIVERY"
+  },
+  "phoneAcceptance": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "savedFiles": [
+    {
+      "name": "PROJECT_DARK_V177_TEST.apk",
+      "library_file_id": "libfile_5ba2cbc1e3d481918287c00e852cf39c",
+      "file_id": "file_0000000000d481f59f08ba424a512078",
+      "localMetadataApplied": true
+    },
+    {
+      "name": "PROJECT_DARK_V177_EQUIPMENT.png",
+      "library_file_id": "libfile_94e8d75fe14c8191b21f54916082d9a1",
+      "file_id": "file_000000005ecc81f8be572b0c44d98128",
+      "localMetadataApplied": true
+    }
+  ]
+}

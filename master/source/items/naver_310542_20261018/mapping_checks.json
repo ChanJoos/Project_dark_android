@@ -1,0 +1,230 @@
+{
+  "status": "SOURCE_RECOVERY_ONLY_NOT_INVENTORY_COMPLETE",
+  "checks": [
+    {
+      "name": "피닉스크로어",
+      "sourceRows": [
+        1570
+      ],
+      "sourceCells": [
+        [
+          "피닉스크로어",
+          "피닉스크로어",
+          34,
+          300000,
+          1,
+          0,
+          0,
+          0,
+          1000000,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          99,
+          0,
+          0,
+          "224m264",
+          "25m28",
+          2
+        ]
+      ],
+      "appearanceAssets": [
+        "master/assets/items/weapon/mw069_피닉스크로어.webp"
+      ],
+      "mappingStatus": "MATCHED_ORIGINAL_ATLAS_AND_REGISTRATION_RUNTIME_PENDING",
+      "registrationAvailable": true
+    },
+    {
+      "name": "엑시큐터",
+      "sourceRows": [
+        2855
+      ],
+      "sourceCells": [
+        [
+          "엑시큐터",
+          "엑시큐터",
+          17,
+          25500,
+          1,
+          0,
+          0,
+          0,
+          60000,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          99,
+          0,
+          0,
+          "90m120",
+          "8m11",
+          2
+        ]
+      ],
+      "appearanceAssets": [],
+      "mappingStatus": "REFERENCE_MATCHED_REGISTRATION_PENDING"
+    },
+    {
+      "name": "투핸드엑시큐터",
+      "sourceRows": [
+        1776
+      ],
+      "sourceCells": [
+        [
+          "투핸드엑시큐터",
+          "투핸드엑시큐터",
+          34,
+          76500,
+          1,
+          0,
+          0,
+          0,
+          120000,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          1,
+          0,
+          99,
+          0,
+          0,
+          "180m240",
+          "16m22",
+          2
+        ]
+      ],
+      "appearanceAssets": [
+        "master/assets/items/weapon/mw022_투핸드엑시큐터.webp"
+      ],
+      "mappingStatus": "REFERENCE_MATCHED_REGISTRATION_PENDING",
+      "registrationAvailable": true
+    },
+    {
+      "name": "샤크블레이드",
+      "sourceRows": [
+        3544
+      ],
+      "sourceCells": [
+        [
+          "샤크블레이드",
+          "샤크블레이드",
+          10,
+          3500000,
+          1,
+          0,
+          0,
+          0,
+          1000000,
+          8,
+          5,
+          5,
+          500,
+          500,
+          -1,
+          -1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          99,
+          0,
+          0,
+          "280m500",
+          "190m390",
+          2
+        ]
+      ],
+      "appearanceAssets": [],
+      "mappingStatus": "REFERENCE_MATCHED_REGISTRATION_PENDING"
+    },
+    {
+      "name": "히야트디그",
+      "sourceRows": [
+        1250
+      ],
+      "sourceCells": [
+        [
+          "히야트디그",
+          "히야트디그",
+          6,
+          3000000,
+          1,
+          0,
+          0,
+          0,
+          500000,
+          0,
+          8,
+          8,
+          1750,
+          1750,
+          1,
+          2,
+          0,
+          -2,
+          2,
+          2,
+          1,
+          99,
+          0,
+          2,
+          "390m410",
+          "460m490",
+          2
+        ]
+      ],
+      "appearanceAssets": [
+        "master/assets/items/weapon/mw284_히야트디그.webp"
+      ],
+      "mappingStatus": "REFERENCE_MATCHED_REGISTRATION_PENDING",
+      "registrationAvailable": false
+    }
+  ],
+  "phoenix": {
+    "registrationUrl": "https://lod-dressup-2.web.app/data/type/weapon/mw069.json",
+    "atlasUrl": "https://lod-dressup-2.web.app/atlas/weapon/mw069.webp",
+    "atlasSize": [
+      868,
+      50
+    ],
+    "frameCount": 27,
+    "frameBounds": "PASS",
+    "preservedIconEqualsIdle0": true,
+    "files": {
+      "mw069.json": "73abcd31c6ac95bd619ea2bed1ab29c9446b8f3b5f3bac5291b4bcab669c32a1",
+      "mw069.webp": "792b43491c181e6f584c16bff2c29870f5ce9fdf9921eba1dc05d06772d93657"
+    }
+  },
+  "remaining": [
+    "Verify every article weapon and attribute/enhancement variant identity",
+    "Recover all other original atlases and their matching pose/anchor registrations",
+    "Identify all ten Horror armor/weapon/shield kits from original evidence; similar colors are not identity proof",
+    "Runtime stats, inventory grants, character equip/action rendering and per-item checks not yet implemented"
+  ]
+}

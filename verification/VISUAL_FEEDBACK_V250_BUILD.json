@@ -1,0 +1,161 @@
+{
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "source": "a5e752071792c5bdc5a442c75408a33a614365e9",
+  "run": 39918615395,
+  "job": 120298106835,
+  "artifact": 12486256369,
+  "build": {
+    "sourceCommit": "a5e752071792c5bdc5a442c75408a33a614365e9",
+    "runId": "39918615395",
+    "builtAtKST": "2026-10-23T16:37:43.746795+09:00",
+    "apkSha256": "fafd89775183f97b55928210303e83b4556f1e946505be6c9c043da454536be2",
+    "apkBytes": 106347601,
+    "identity": {
+      "sourceCommit": "a5e752071792c5bdc5a442c75408a33a614365e9",
+      "runId": "39918615395",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "V250 preserved temple white light; Rapid disjoint depth routing; source choice caps and actual paid travel; inventory reduction/weapon projection and shared windows; phone pending; recall list/images pending"
+  },
+  "independent": {
+    "apkSha256": "fafd89775183f97b55928210303e83b4556f1e946505be6c9c043da454536be2",
+    "apkBytes": 106347601,
+    "identity": {
+      "sourceCommit": "a5e752071792c5bdc5a442c75408a33a614365e9",
+      "runId": "39918615395",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "manifest": {
+      "manifest": {
+        "versionCode": 184,
+        "versionName": "1.84-mobile-horror",
+        "compileSdkVersion": 35,
+        "compileSdkVersionCodename": "15",
+        "package": "com.projectdark.mobile.v250test",
+        "platformBuildVersionCode": 35,
+        "platformBuildVersionName": 15
+      },
+      "application": {
+        "theme": 2130837504,
+        "label": "PROJECT DARK V250 TEST",
+        "debuggable": 4294967295,
+        "extractNativeLibs": 0
+      }
+    },
+    "signature": "APKv2 RSA-SHA256 cryptographic signature + certificate public key + full chunk content digest PASS",
+    "packagedSourceByteMatches": 754,
+    "skillPresentationFiles": 727,
+    "townSourceFiles": 26,
+    "npcProfiles": 1
+  },
+  "native": {
+    "totals": [
+      17,
+      0,
+      0,
+      0
+    ],
+    "suites": [
+      {
+        "suite": "com.projectdark.mobile.VisualFeedbackV250Test",
+        "counts": [
+          4,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.NpcTravelV248Test",
+        "counts": [
+          3,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.InventoryFeedbackV199Test",
+        "counts": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.TempleMillesV213Test",
+        "counts": [
+          5,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.WeaponIconsV209Test",
+        "counts": [
+          2,
+          0,
+          0,
+          0
+        ]
+      },
+      {
+        "suite": "com.projectdark.mobile.InventoryRepairV212Test",
+        "counts": [
+          1,
+          0,
+          0,
+          0
+        ]
+      }
+    ]
+  },
+  "zip": {
+    "bytes": 135928879,
+    "sha256": "f632cdc5a9402b1c0c53f3def771644e700e65ca5744dfd390397d4bd3ee0aeb",
+    "crc": "PASS"
+  },
+  "sourceAudit": "tools/check_town_v248.py PASS",
+  "localProductionAndAllTestCompile": "PASS after new test import fix",
+  "initialFailure": {
+    "source": "24f7757524407edcb67a1381c4bf6a614af0a3e6",
+    "run": 39918388319,
+    "cause": "New fixture lacked import com.projectdark.mobile.world.WorldRuntimeAdapter",
+    "fix": "a5e7520 test import only; production unchanged; no failed runtime tests suppressed"
+  },
+  "scopeSelector": {
+    "run": 39918624541,
+    "status": "SUCCESS_FULL_COMPILE_SKIPPED",
+    "localTests": 6
+  },
+  "library": {
+    "fileId": "file_00000000de0081f6a2bd31eba5600118",
+    "libraryFileId": "libfile_04ed11ec19b48191a7a9c5a188bb392f",
+    "saved": true,
+    "metadataApplied": true
+  },
+  "review": {
+    "totalNativePNGs": 43,
+    "reviewed": [
+      "temple-preserved-white-light",
+      "actual-travel-menu",
+      "travel-caps",
+      "21paid travel menu contact sheet",
+      "rapid-known-tiers",
+      "actual-inventory",
+      "actual-equipped-rapid",
+      "361weapon icon gallery"
+    ],
+    "claims": "Host native review; no phone/user visual acceptance or full original Korean appearance equivalence"
+  },
+  "pending": [
+    "User recall variety list and images: asset/inventory integration not done without source",
+    "Rapid level85 exact source remains unresolved",
+    "Physical phone/user visual acceptance",
+    "Separate full gate before main integration"
+  ]
+}

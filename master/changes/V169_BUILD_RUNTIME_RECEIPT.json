@@ -1,0 +1,123 @@
+{
+  "sourceCommit": "381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
+  "pullRequest": 197,
+  "mainMerged": false,
+  "focused": {
+    "run": 38835692405,
+    "job": 116764191949,
+    "status": "SUCCESS",
+    "tests": 166,
+    "suites": 29,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "common": [
+    {
+      "run": 38835692455,
+      "job": 116764192141,
+      "status": "SUCCESS"
+    },
+    {
+      "run": 38835701504,
+      "job": 116764221400,
+      "status": "SUCCESS"
+    }
+  ],
+  "apk": {
+    "sourceCommit": "381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
+    "runId": "38835692405",
+    "versionCode": 169,
+    "versionName": "1.69-motion-hud-frame",
+    "applicationId": "com.projectdark.mobile.v169test",
+    "updateCompatibleWithV167": false,
+    "apkSha256": "2e9336186a51c3d5fc54bd8a705252b16420c5020801b9bf96c4098bd6f759cc",
+    "apkBytes": 80443361,
+    "builtSeoul": "2026-10-16T10:43:00.352264+09:00",
+    "scope": "V169 source c twohand blades, consistent four-facing basic/skill renderer, visible joystick, cached actor visual projection and weapon rigs, lean resource projection; retained persisted random CON/WIS growth and actual level-up receipt; asymmetric two-hand/shield equip; Chungryong two-hand BODY; reagent-shop town managers/arrival; shared orange Curum and original Maradium HUD artwork; retained V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    }
+  },
+  "apkArtifact": 12019576707,
+  "nativeArtifact": 12019067267,
+  "apkArchiveSha256": "fd402908270e90a215bb0b4d8bf2f67e83efff1602f98a8c452edbccd2227826",
+  "nativeArchiveSha256": "8acf35f0bf00f7950fd833faa4c87c7ec401cb197b6c714e746da9d626164573",
+  "libraryFile": "libfile_3797a609ea348191aecd148286aab95f",
+  "nativeReview": {
+    "motionProfiles": 17,
+    "exteriorMaps": 19,
+    "interiors": 17,
+    "contactAndHudSheetsReviewed": 8,
+    "sourceBodyFilesByteEqual": 268,
+    "physicalPhone": "PENDING",
+    "userVisual": "PENDING"
+  },
+  "continuous": {
+    "source": "381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
+    "environment": "Robolectric native CPU; no physical phone FPS claim",
+    "framesPerScene": 360,
+    "scenes": [
+      {
+        "map": "MILLES",
+        "monsters": 3,
+        "tiles": 4176,
+        "travel": 263.6958015695292,
+        "movingFrames": 277,
+        "updateMedianMs": 0.135576,
+        "updateP95Ms": 0.54421,
+        "updateP99Ms": 0.868947,
+        "updateMaxMs": 15.35061,
+        "renderMedianMs": 14.23015,
+        "renderP95Ms": 26.614787,
+        "renderP99Ms": 42.247596,
+        "renderMaxMs": 1939.712071
+      },
+      {
+        "map": "MAP_POTE_01",
+        "monsters": 72,
+        "tiles": 7075,
+        "travel": 142.58096206023575,
+        "movingFrames": 151,
+        "updateMedianMs": 0.125555,
+        "updateP95Ms": 0.362549,
+        "updateP99Ms": 1.076112,
+        "updateMaxMs": 11.398544,
+        "renderMedianMs": 9.25092,
+        "renderP95Ms": 16.061941,
+        "renderP99Ms": 18.327033,
+        "renderMaxMs": 249.779346
+      },
+      {
+        "map": "MAP_POTE_03",
+        "monsters": 108,
+        "tiles": 10222,
+        "travel": 214.5618036012228,
+        "movingFrames": 226,
+        "updateMedianMs": 0.113192,
+        "updateP95Ms": 0.17047,
+        "updateP99Ms": 1.505323,
+        "updateMaxMs": 8.04253,
+        "renderMedianMs": 7.473949,
+        "renderP95Ms": 7.972358,
+        "renderP99Ms": 11.385592,
+        "renderMaxMs": 15.800621
+      }
+    ]
+  },
+  "comparisonBaseline": "ab59ce463f40091b67345ba4354a867f39ed27b1 (intermediate before route cache, not V168)",
+  "limitations": [
+    "Host CPU/native samples are not phone FPS",
+    "First Milles cold-frame maximum ~1.94sec not improved in host test",
+    "Some source garments have no action groups and use standing overlays",
+    "Existing original equipment/stat source gaps preserved"
+  ],
+  "resume": "Completed: inspect exact V169 phone feedback. Retain source/artifact; no rebuild or artwork regeneration on interruption.",
+  "implementation": "IMPLEMENTED",
+  "build": "VERIFIED",
+  "hostAndroidNative": "VERIFIED",
+  "delivery": "SAVED_AND_DELIVERED"
+}

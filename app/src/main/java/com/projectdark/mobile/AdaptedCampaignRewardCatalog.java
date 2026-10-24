@@ -31,6 +31,10 @@ public final class AdaptedCampaignRewardCatalog {
     // Preserve CanonicalMonsterRewardCatalog; override only admitted mobile campaign instances.
     add(m,"POTE_SPIRIT","포테 C · 깊은 숲",40000,82);
     for(AbelCombatProfile p:AbelCombatProfile.all())add(m,p.id,"아벨해안 · 모바일 3써클",p.exp,p.gold);
+    for(AbelCombatProfile p:RucesionCombatProfiles.all())add(m,p.id,"뤼케시온해안 · 영상/임시 적용",p.exp,p.gold);
+    for(int t=0;t<10;t++)for(int e=0;e<4;e++)add(m,String.format(java.util.Locale.ROOT,"HORROR_%02d_%d",t,e),"호러캐슬 / Master U+B",HorrorCastleMonsters.EXP[t],0);
+    for(AbelCombatProfile p:MineHuntMonsters.all())add(m,p.id,"광산 / "+MineHuntMonsters.POLICY,p.exp,p.gold);
+    for(AbelCombatProfile p:DeathVillageMonsters.all())add(m,p.id,"죽음의마을 / "+DeathVillageMonsters.POLICY,p.exp,p.gold);
     rewards=Collections.unmodifiableMap(m);
   }
   private static void add(Map<String,Reward> m,String id,String zone,int exp,long gold){m.put(id,new Reward(id,zone,exp,gold));}

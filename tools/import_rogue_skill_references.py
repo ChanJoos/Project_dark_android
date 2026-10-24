@@ -57,3 +57,12 @@ for binding in bindings['rows']:
 (OUT/'manifest.json').write_text(json.dumps(manifest,ensure_ascii=False,indent=2)+'\n')
 (OUT/'references.json').write_text(json.dumps({'revision':bindings['revision'],'rows':references},ensure_ascii=False,indent=2)+'\n')
 print('Rogue icons',len(references),'reviewed effects/no-particle IDs',len(manifest['skills']),'channels',sum(len(v['channels']) for v in manifest['skills'].values()))
+
+import runpy
+runpy.run_path(str(ROOT/"tools/apply_skill_feedback_v231.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v232.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v233.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v234.py"))

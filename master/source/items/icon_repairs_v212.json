@@ -1,0 +1,810 @@
+{
+  "status": "SOURCE_ALPHA_REPAIR_CANDIDATE",
+  "items": [
+    {
+      "itemId": "IT_NA_FOOD_293294_00",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        25,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 93
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_01",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        62,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 93
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_02",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        99,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 468
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_03",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        136,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 446
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_04",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        173,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 352
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_05",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        210,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 248
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_06",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        247,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 591
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_07",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        284,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 259
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_08",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        321,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 287
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_09",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        358,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 574
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_10",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        395,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 544
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_11",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        432,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 639
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_12",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        469,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 198
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_13",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        506,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 190
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_14",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        543,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 255
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_15",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        580,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 342
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_16",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        617,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 342
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_17",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        654,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 123
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_18",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        691,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 465
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_19",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        734,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 612
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_20",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        771,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 612
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_21",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        808,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 162
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_22",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        845,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 494
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_23",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        891,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 128
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_24",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        891,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 172
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_25",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        928,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 496
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_26",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        928,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 298
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_27",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        965,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 269
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_28",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        965,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 457
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_29",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1002,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 270
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_30",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1002,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 304
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_31",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1039,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 528
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_32",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1039,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 467
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_33",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1076,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 374
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_34",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1076,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 418
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_35",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1113,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 402
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_36",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1113,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 204
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_37",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1150,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 299
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_38",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1150,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 442
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_39",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1187,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 369
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_40",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1187,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 158
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_41",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1224,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 247
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_42",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1224,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 143
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_43",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        20,
+        1261,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 439
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_44",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        305,
+        1261,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 403
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_45",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1306,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 370
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_46",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1343,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 472
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_47",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1380,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 236
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_48",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1417,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 265
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_49",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1454,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 220
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_50",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1491,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 277
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_51",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1528,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 524
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_52",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1565,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 398
+    },
+    {
+      "itemId": "IT_NA_FOOD_293294_53",
+      "sourceArchive": "archives/293294.zip",
+      "sourceMember": "293294/source_01.png",
+      "sourceSha256": "466310038ee20dc2ae4970bc3a8dc25379584f13fb596eda66581803d1bda5f9",
+      "crop": [
+        2,
+        1625,
+        32,
+        32
+      ],
+      "mask": "REVIEWED_LIT_FOREGROUND_LOCAL_MATTE_ENCLOSED_DARK_MATERIAL_SOURCE_RGB",
+      "foregroundPixels": 220
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05141",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/259752.zip",
+      "sourceMember": "259752/source_00.jpg",
+      "sourceSha256": "1032b457c92fe306cae0ca461f6c38b6f60f14ff76ba95dec47aeb3a51e9e6c8",
+      "mask": "REVIEWED_INTERIOR_WING_MATTE_SOURCE_RGB",
+      "foregroundPixels": 50
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05145",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/259752.zip",
+      "sourceMember": "259752/source_01.jpg",
+      "sourceSha256": "16acacde43f41189d959f12ff3965bc66298e0791795d66c0ee81afdda789327",
+      "mask": "REVIEWED_INTERIOR_WING_MATTE_SOURCE_RGB",
+      "foregroundPixels": 76
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05144",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/259752.zip",
+      "sourceMember": "259752/source_02.jpg",
+      "sourceSha256": "a7077a521f7cbdf25383d31fa8b9c1cd79d1156699b3bb64a482234c51c48b94",
+      "mask": "REVIEWED_INTERIOR_WING_MATTE_SOURCE_RGB",
+      "foregroundPixels": 85
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05143",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/259752.zip",
+      "sourceMember": "259752/source_03.jpg",
+      "sourceSha256": "3d584b416e499c901a24f9990f3cc33248db088cec804dfc5451484f4bd4dd3c",
+      "mask": "REVIEWED_INTERIOR_WING_MATTE_SOURCE_RGB",
+      "foregroundPixels": 38
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R05142",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/259752.zip",
+      "sourceMember": "259752/source_04.jpg",
+      "sourceSha256": "b9e4490304f1d1a6682812f89550cf2d932ed042341495819633e606e3b5cd4f",
+      "mask": "REVIEWED_INTERIOR_WING_MATTE_SOURCE_RGB",
+      "foregroundPixels": 78
+    },
+    {
+      "itemId": "USER_ITEM_20261018_R01339",
+      "sourceArchive": "master/source/items/naver_bundle_20261019/archives/259752.zip",
+      "sourceMember": "259752/source_03.jpg",
+      "sourceSha256": "3d584b416e499c901a24f9990f3cc33248db088cec804dfc5451484f4bd4dd3c",
+      "mask": "REVIEWED_INTERIOR_WING_MATTE_SOURCE_RGB",
+      "foregroundPixels": 38
+    }
+  ],
+  "atlasSha256": "70794f134a49cdf3627820f0f968c9950cd5af06e5c6d300dc3de0712cc979c0"
+}

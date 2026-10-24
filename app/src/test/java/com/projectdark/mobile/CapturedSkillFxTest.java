@@ -37,7 +37,7 @@ public class CapturedSkillFxTest {
       Method use=GameView.class.getDeclaredMethod("useBookSkill",SkillBook.Entry.class);use.setAccessible(true);use.invoke(v,((SkillBook)field(v,"skillBook")).get(id));
       assertEquals(id,field(v,"activeSkillVisualId"));SkillVfxRenderer renderer=field(v,"skillVfx");assertTrue("no invented caster pulse",renderer.pulses.isEmpty());
       Method tick=GameView.class.getDeclaredMethod("tickSkillCombat",float.class);tick.setAccessible(true);tick.invoke(v,SkillActionContract.get(id).contact+.001f);
-      assertEquals(1,renderer.pulses.stream().filter(f->f.sheet.equals("capture")).count());SkillVfxRenderer.Pulse pulse=renderer.pulses.stream().filter(f->f.sheet.equals("capture")).findFirst().get();assertEquals("capture",pulse.sheet);assertEquals(new CapturedSkillFx(c).get(id).directional?RuntimeCombatSession.PLAYER_ID:m.id,pulse.anchor);assertFalse(pulse.caster);
+      assertEquals(1,renderer.pulses.stream().filter(f->f.sheet.equals("capture")).count());SkillVfxRenderer.Pulse pulse=renderer.pulses.stream().filter(f->f.sheet.equals("capture")).findFirst().get();assertEquals("capture",pulse.sheet);assertEquals(new CapturedSkillFx(c).get(id).directional&&!SkillVfxRenderer.recipientFinisher(id)?RuntimeCombatSession.PLAYER_ID:m.id,pulse.anchor);assertFalse(pulse.caster);
       pulse.age=.16f;Bitmap image=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(image));File out=new File("build/reports/device-review/captured-"+id+".png");out.getParentFile().mkdirs();try(FileOutputStream stream=new FileOutputStream(out)){image.compress(Bitmap.CompressFormat.PNG,100,stream);}
       renderer.tick(pulse.duration);assertTrue(renderer.pulses.isEmpty());
     }
@@ -45,3 +45,4 @@ public class CapturedSkillFxTest {
   private static String sha(byte[] b)throws Exception{StringBuilder s=new StringBuilder();for(byte v:MessageDigest.getInstance("SHA-256").digest(b))s.append(String.format(Locale.ROOT,"%02x",v&255));return s.toString();}
   @SuppressWarnings("unchecked") private static <T>T field(Object o,String n)throws Exception{Field f=o.getClass().getDeclaredField(n);f.setAccessible(true);return(T)f.get(o);}
 }
+

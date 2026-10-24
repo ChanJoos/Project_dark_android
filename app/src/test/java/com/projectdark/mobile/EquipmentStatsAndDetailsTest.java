@@ -4,20 +4,21 @@ import org.junit.Test;
 public final class EquipmentStatsAndDetailsTest {
  @Test public void starterEquipmentProjectsIntoFinalStats(){
    RpgProgressionState r=new RpgProgressionState();FinalStats f=r.finalStats();
-   assertEquals(3,f.dam);assertEquals(1,f.hit);assertEquals(-4,f.ac);assertEquals(4,f.dex);
+   assertEquals(0,f.dam);assertEquals(0,f.hit);assertEquals(-4,f.ac);assertEquals(3,f.dex);
    assertEquals(4,f.weaponMinAttack);assertEquals(14,f.weaponMaxAttack);
-   assertEquals(21,f.prototypePhysicalAttack());
+   assertEquals(18,f.prototypePhysicalAttack());
  }
  @Test public void unequipImmediatelyChangesFinalStats(){
    RpgProgressionState r=new RpgProgressionState();int atk=r.finalStats().prototypePhysicalAttack();
    assertEquals(RpgProgressionState.EquipResult.UNEQUIPPED,r.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID));
-   assertEquals(atk-4,r.finalStats().prototypePhysicalAttack());assertEquals(0,r.finalStats().dam);assertEquals(0,r.finalStats().hit);
+   assertEquals(18,atk);assertEquals(17,r.finalStats().prototypePhysicalAttack());assertEquals(0,r.finalStats().dam);assertEquals(0,r.finalStats().hit);
    assertEquals(RpgProgressionState.EquipResult.UNEQUIPPED,r.equip(RpgProgressionState.STARTER_SHIELD_ITEM_ID));
-   assertEquals(-2,r.finalStats().ac);
+   assertEquals(-4,r.finalStats().ac);assertTrue(r.itemDefinitions().get(RpgProgressionState.STARTER_SHIELD_ITEM_ID).statModifiers.isEmpty());
+   assertEquals(RpgProgressionState.EquipResult.UNEQUIPPED,r.equip(RpgProgressionState.STARTER_SHIRT_ITEM_ID));assertEquals(0,r.finalStats().ac);
  }
- @Test public void sourceMasterGapRemainsExplicitlyAdapted(){
+ @Test public void sourceMokdoOptionsResolveButUnidentifiedShoesStayPending(){
    RpgProgressionState r=new RpgProgressionState();
-   assertEquals(RpgProgressionState.Evidence.ADAPTED,r.itemDefinitions().get(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID).evidence);
-   assertEquals(RpgProgressionState.Evidence.ADAPTED,r.itemDefinitions().get("IT_SHOES").evidence);
+   assertEquals(RpgProgressionState.Evidence.U,r.itemDefinitions().get(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID).evidence);
+   assertEquals(RpgProgressionState.Evidence.PENDING,r.itemDefinitions().get("IT_SHOES").evidence);assertTrue(r.itemDefinitions().get("IT_SHOES").statModifiers.isEmpty());
  }
 }

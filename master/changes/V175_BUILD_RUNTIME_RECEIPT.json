@@ -1,0 +1,68 @@
+{
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED",
+  "source": "eb8e28d2869d50e333e92aff12654ee34d644189",
+  "pr": 197,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "focused": {
+    "run": 38914427926,
+    "job": 117018126464,
+    "status": "SUCCESS",
+    "tests": 50,
+    "suites": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "nativeArtifact": 12052341441,
+    "archiveSha256": "f08a84c635302523ed5afdc11c77a3a8010e29e8bc1eb82aff864a8d1e428379"
+  },
+  "common": {
+    "run": 38914428443,
+    "job": 117018126726,
+    "status": "IN_PROGRESS",
+    "duplicateRun": 38914437664,
+    "duplicateJob": 117018158905,
+    "knownPassedRelated": [
+      "Verify V99 equipment UI fonts, all modal input and wide native rendering",
+      "Verify item window source crops and input"
+    ],
+    "pendingStep": "Verify skill window, shared combat and restart persistence",
+    "baselineDuration": "V174 successful38903287739:12:57:23Z to13:11:16Z (13m53s). Candidate delivery follows passed scoped50+common UI/window checks; no claim remaining full common complete."
+  },
+  "apk": {
+    "sourceCommit": "eb8e28d2869d50e333e92aff12654ee34d644189",
+    "runId": "38914427926",
+    "versionCode": 175,
+    "versionName": "1.75-equipment-window",
+    "applicationId": "com.projectdark.mobile.v175test",
+    "updateCompatibleWithV167": false,
+    "apkSha256": "99938d23084f8055f14852b7b2f53e80db69f2e00a5d927cd43bcceedd05d7a8",
+    "apkBytes": 80617040,
+    "builtSeoul": "2026-10-16T23:20:29.094718+09:00",
+    "scope": "V175 user screenshot equipment skin,15 functional slots,paired ornaments and six live FinalStats; retained all34 martial skill audit: facing actor leap/valid landing, eight-second freeze/root, synchronous front3-cell clean Baekbo contacts, equal incoming reflection, invincibility/DOT and drain clamp; retained martial icon alias, BODY-attached missing outfit clips and shared basic cadence; retained test-mode learned eligibility and startup restore ordering for twohand equip; retained independent linked basic hits, learned twohand equip gate, user-requested shared 1.0s basic cooldown with retained 0.80s twohand visual recovery; retained source c twohand blades, consistent four-facing basic/skill renderer, visible joystick, cached actor visual projection and weapon rigs, lean resource projection; retained persisted random CON/WIS growth and actual level-up receipt; asymmetric two-hand/shield equip; Chungryong two-hand BODY; reagent-shop town managers/arrival; shared orange Curum and original Maradium HUD artwork; retained V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    },
+    "artifact": 12052316602,
+    "archiveSha256": "a93f71206ad80464571b7343f3d6f8f181a8636eeb353d939fb8ac72e53845b2",
+    "library_file_id": "libfile_8a08a4f8d954819196ebf4b06a478fef",
+    "file_id": "file_00000000d17481f58de7652bd8e56bef"
+  },
+  "visual": {
+    "nativeOverview": "REVIEWED",
+    "slotCount": 15,
+    "sourcePanel": "master/source/equipment_window_v175/reference.jpg",
+    "retained": "exact crop frame/header/rivets/stat labels/number bevels and slot border pixels",
+    "adaptation": "omitted source cells filled from exposed source texture; live actor/icons; empty-slot glyphs; close button; six actual FinalStats numbers; details only on selection",
+    "savedScreenshot": "libfile_53a1aaed5c9c8191b44a86e6a13d9cd7"
+  },
+  "phone": "PENDING",
+  "initialFailure": {
+    "source": "79456b9d625e26cdcc9f59d46cc6363735b1065a",
+    "run": 38913913746,
+    "result": "49/50 passed; adjacent border pixels produced1px touching input overlap. Source border preserved; touch bounds69source pixels, verified no overlaps at final source."
+  },
+  "next": "Phone review. Do not regenerate skin/rebuild saved exact APK just after interruption."
+}

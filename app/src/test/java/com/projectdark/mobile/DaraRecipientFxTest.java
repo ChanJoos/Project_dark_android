@@ -18,7 +18,7 @@ public class DaraRecipientFxTest {
     setup();GameView v=new GameView(c);v.layout(0,0,960,540);v.setSkillTestMode(true);
     RuntimeState s=TownInteriorTest.field(v,"state");RuntimeState.Monster m=s.monsters().get(0);
     for(RuntimeState.Monster other:s.monsters())other.attackCooldown=100;
-    s.player().hp=100;s.player().mp=90;m.hp=1000;s.skillEffects().put(m.id,"qa","ROOT",1,60);
+    s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=16000;s.player().mp=7000;m.hp=1000000;s.skillEffects().put(m.id,"qa","ROOT",1,60);
     float dx=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-32:32;
     float dy=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-16:16;
     s.player().x=m.x-dx;s.player().y=m.y-dy;
@@ -32,7 +32,7 @@ public class DaraRecipientFxTest {
   void visible(GameView v,RuntimeState.Monster m,String name)throws Exception{
     SkillVfxRenderer fx=TownInteriorTest.field(v,"skillVfx");assertEquals(1,fx.pulses.stream().filter(this::source).count());
     assertTrue(fx.pulses.stream().anyMatch(p->source(p)&&p.anchor.equals(m.id)));
-    assertFalse("zero damage must not create damage impact",fx.pulses.stream().anyMatch(p->p.sheet.equals("impact")));
+    assertTrue("real damage has its own contact feedback",fx.pulses.stream().anyMatch(p->p.sheet.equals("impact")));
     tick(v,.15f);
     SkillVfxRenderer.Anchors anchors=TownInteriorTest.field(v,"skillAnchors");
     Bitmap effect=Bitmap.createBitmap(320,240,Bitmap.Config.ARGB_8888);Canvas canvas=new Canvas(effect);
@@ -47,23 +47,23 @@ public class DaraRecipientFxTest {
   @Test public void lowResourceQuickslotReleaseIsVisibleOnRecipientInFourDirections()throws Exception{
     for(CharacterRenderer.Direction d:CharacterRenderer.Direction.values()){
       GameView v=start(d);RuntimeState s=TownInteriorTest.field(v,"state");RuntimeState.Monster m=s.monsters().get(0);use(v);
-      tick(v,2.99f);assertEquals(1000,m.hp);assertFalse(((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).pulses.stream().anyMatch(this::source));
-      tick(v,.02f);assertEquals("formula remains zero",1000,m.hp);assertEquals(100,s.player().hp);assertEquals(90,s.player().mp);
+      tick(v,2.99f);assertEquals(1000000,m.hp);assertFalse(((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).pulses.stream().anyMatch(this::source));
+      tick(v,.02f);assertTrue("real formula damages recipient",m.hp<1000000);assertEquals(16000,s.player().hp);assertEquals(7000,s.player().mp);
       visible(v,m,d.toString());
     }
   }
   @Test public void lowResourceInnReleaseUsesActualMouseAnchor()throws Exception{
     setup();InnDetailQuestFxTest inn=new InnDetailQuestFxTest();inn.c=c;GameView v=inn.start();inn.place(v);
-    v.setSkillTestMode(true);RuntimeState s=TownInteriorTest.field(v,"state");s.player().hp=100;s.player().mp=90;
+    v.setSkillTestMode(true);RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=16000;s.player().mp=7000;
     for(RuntimeState.Monster other:s.monsters())other.attackCooldown=100;
-    RuntimeState.Monster m=s.monsters().get(0);int hp=m.hp;
+    RuntimeState.Monster m=s.monsters().get(0);m.hp=1000000;int hp=m.hp;
     ((SkillBook)TownInteriorTest.field(v,"skillBook")).assign(0,"SK_무도가_020");use(v);tick(v,3.01f);
-    assertEquals(hp,m.hp);visible(v,m,"inn");
+    assertTrue(m.hp<hp);visible(v,m,"inn");
   }
   @Test public void cancelledReleaseAndNormalMissDoNotEmitTestBurst()throws Exception{
     GameView v=start(CharacterRenderer.Direction.SE);RuntimeState s=TownInteriorTest.field(v,"state");use(v);s.damage(s.monsters().get(0),s.monsters().get(0).hp);tick(v,3.01f);
     assertFalse(((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).pulses.stream().anyMatch(this::source));
-    v=start(CharacterRenderer.Direction.SE);((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).testAccess=false;use(v);tick(v,3.01f);
+    v=start(CharacterRenderer.Direction.SE);s=TownInteriorTest.field(v,"state");s.player().mp=0;TownInteriorTest.tap(v,672,429);tick(v,3.01f);
     assertFalse(((SkillVfxRenderer)TownInteriorTest.field(v,"skillVfx")).pulses.stream().anyMatch(this::source));
   }
 }

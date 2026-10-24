@@ -1,0 +1,84 @@
+{
+  "runtimeSource": "2e38f3784a2a3e998016dd623f2be32d4777781c",
+  "baseMain": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "implementation": "IMPLEMENTED",
+  "build": "VERIFIED",
+  "runtime": "HOST_ANDROID_NATIVE_VERIFIED",
+  "phone": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "focused": {
+    "run": 38866455170,
+    "job": 116860304383,
+    "status": "SUCCESS",
+    "tests": 185,
+    "suites": 33,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "newCases": 3,
+    "independentArtifactJUnit": "PASS"
+  },
+  "common": {
+    "push": {
+      "run": 38866455116,
+      "job": 116860304220,
+      "status": "SUCCESS",
+      "successfulGradleExecutions": 26,
+      "sourceIdentityVerified": true
+    },
+    "pr": {
+      "run": 38866460300,
+      "job": 116860319913,
+      "status": "IN_PROGRESS_DUPLICATE"
+    }
+  },
+  "apk": {
+    "sourceCommit": "2e38f3784a2a3e998016dd623f2be32d4777781c",
+    "runId": "38866455170",
+    "versionCode": 172,
+    "versionName": "1.72-martial-cloth",
+    "applicationId": "com.projectdark.mobile.v172test",
+    "updateCompatibleWithV167": false,
+    "apkSha256": "103bfd0f9eac360e8a192519674fb597af21444b6e7604b9210d404f00e241bb",
+    "apkBytes": 80445873,
+    "builtSeoul": "2026-10-16T16:26:35.224890+09:00",
+    "scope": "V172 martial icon alias, BODY-attached missing outfit clips and shared basic cadence; retained test-mode learned eligibility and startup restore ordering for twohand equip; retained independent linked basic hits, learned twohand equip gate, user-requested shared 1.0s basic cooldown with retained 0.80s twohand visual recovery; retained source c twohand blades, consistent four-facing basic/skill renderer, visible joystick, cached actor visual projection and weapon rigs, lean resource projection; retained persisted random CON/WIS growth and actual level-up receipt; asymmetric two-hand/shield equip; Chungryong two-hand BODY; reagent-shop town managers/arrival; shared orange Curum and original Maradium HUD artwork; retained V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    }
+  },
+  "artifacts": [
+    {
+      "id": 12031921352,
+      "name": "martial-cloth-v172-native-2e38f3784a2a3e998016dd623f2be32d4777781c",
+      "digest": "sha256:e5b14ab09e13a5619637eea042a7cfc50413c68e3603caa26dcaae24489534b2",
+      "size": 168869119
+    },
+    {
+      "id": 12031493943,
+      "name": "martial-cloth-v172-apk-2e38f3784a2a3e998016dd623f2be32d4777781c",
+      "digest": "sha256:3dc0b25f28f363028c291fe5974a663bd007645735de0f7520878e07a016f5c2",
+      "size": 79337337
+    }
+  ],
+  "archiveAndEmbeddedIdentity": "PASS",
+  "sourceBodyAndCatalogByteEquality": "PASS_268_BODY_PLUS_CATALOG",
+  "hostVisualReview": "REVIEWED_BOTH_BODY_FOUR_DIRECTIONS_AND_NINE_MARTIAL_FAMILIES; phone and user acceptance pending",
+  "saveStatus": "SAVED",
+  "saved": {
+    "local_path": "/workspace/scratch/ec71835a364a/delivery/PROJECT_DARK_V172_TEST.apk",
+    "purpose": "create_library_file",
+    "status": "succeeded",
+    "file_id": "file_0000000095b481f596da085a52796c61",
+    "library_file_id": "libfile_4511bbf60b948191a26418ab3c2b674f",
+    "file_name": "PROJECT_DARK_V172_TEST.apk",
+    "local_metadata_applied": true,
+    "path": "/PROJECT_DARK_V172_TEST.apk",
+    "current_version_number": 0
+  },
+  "deliveryStatus": "READY_FOR_USER"
+}

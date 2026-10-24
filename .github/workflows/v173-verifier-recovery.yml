@@ -1,0 +1,140 @@
+name: V173 exact-source package verifier recovery
+on:
+  push:
+    branches: [codex/rucesion-coast-v157]
+    paths: [.github/workflows/v173-verifier-recovery.yml]
+  workflow_dispatch:
+permissions:
+  contents: read
+  actions: read
+jobs:
+  package:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      PROJECT_DARK_SOURCE_SHA: aadb26d4148909399a36d5702346f788c9383ae7
+      ANDROID_HOME: /usr/local/lib/android/sdk
+      PROJECT_DARK_SIDE_BY_SIDE: '1'
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: aadb26d4148909399a36d5702346f788c9383ae7
+      - name: Recover starter gear source manifests
+        run: |
+          python3 tools/collect_peasant_sources.py
+          python3 - <<'PY'
+          import json, pathlib, sys
+          rows=json.loads(pathlib.Path('qa/peasant-sources/retrieval.json').read_text())
+          need={'ml228','ml229','ml230','ms001','ms002','ms003','mh172','mh173','mh174','mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010','mu0000001','mu0000002','mu0000003'}
+          got={r['identity'] for r in rows if r.get('status')=='FETCHED' and '/data/type/' in r['url']}
+          missing=need-got
+          print('SOURCE_REGISTRATION_FETCHED',sorted(got & need))
+          print('SOURCE_REGISTRATION_MISSING',sorted(missing))
+          if missing:
+              sys.exit(23)
+          PY
+          mkdir -p app/src/main/assets/source-registration
+          cp qa/peasant-sources/data/type/body/mm001.json app/src/main/assets/source-registration/mm001.json
+          cp qa/peasant-sources/data/type/shoes/ml228.json app/src/main/assets/source-registration/ml228.json
+          cp qa/peasant-sources/data/type/shield/ms001.json app/src/main/assets/source-registration/ms001.json
+          cp qa/peasant-sources/data/type/hair/mh172.json app/src/main/assets/source-registration/mh172.json
+          cp qa/peasant-sources/atlas/shoes/ml228.webp app/src/main/res/drawable-nodpi/player_shoes_ml228_source.webp
+          cp qa/peasant-sources/atlas/shield/ms001.webp app/src/main/res/drawable-nodpi/player_shield_ms001_source.webp
+          cp qa/peasant-sources/atlas/hair/mh172.webp app/src/main/res/drawable-nodpi/player_hat_mh172_source.webp
+          python3 - <<'PY'
+          from pathlib import Path
+          import shutil
+          specs={'shoes':['ml228','ml229','ml230'],'shield':['ms001','ms002','ms003'],'hair':['mh172','mh173','mh174'],'weapon':['mw001','mw002','mw003','mw004','mw005','mw006','mw007','mw008','mw009','mw010'],'armor':['mu0000001','mu0000002','mu0000003']}
+          assets=Path('app/src/main/assets/source-registration'); draw=Path('app/src/main/res/drawable-nodpi')
+          for kind, ids in specs.items():
+              for ident in ids:
+                  shutil.copy(Path('qa/peasant-sources/data/type')/kind/(ident+'.json'), assets/(ident+'.json'))
+                  shutil.copy(Path('qa/peasant-sources/atlas')/kind/(ident+'.webp'), draw/('equip_'+ident+'_source.webp'))
+          PY
+          python3 - <<'PY'
+          import json
+          from pathlib import Path
+          for ident in ('mm001','mu0000001','ml228','ms001','mh172'):
+              p=Path('qa/peasant-sources/data/type')
+              found=list(p.glob('*/'+ident+'.json'))
+              if not found: continue
+              d=json.loads(found[0].read_text())
+              print('META',ident,{k:v for k,v in d.items() if k!='sprites'})
+          for ident in ('mm001','mu0000001'):
+              found=list(Path('qa/peasant-sources/data/type').glob('*/'+ident+'.json'))
+              d=json.loads(found[0].read_text())
+              for g in ('01','02','03','b','c','d','e','f'):
+                  if g in d['sprites']: print('BASE_REG',ident,g,d['sprites'][g][:12])
+          PY
+          python3 - <<'PY'
+          import json, pathlib
+          for ident in ('ml228','ms001','mh172'):
+              p=pathlib.Path('app/src/main/assets/source-registration')/(ident+'.json')
+              d=json.loads(p.read_text())
+              sprites=d['sprites']
+              print('REG_MANIFEST',ident,'count',len(sprites))
+              for k in list(sprites)[:12]:
+                  print('REG',ident,k,sprites[k])
+          PY
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - name: Assemble the already-tested source and run the corrected package verifier
+        run: |
+          pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
+          git fetch origin "$GITHUB_SHA" --depth=1
+          git show "$GITHUB_SHA:tools/verify_v173_apk.py" > "$RUNNER_TEMP/verify_v173_corrected.py"
+          test "$(git rev-parse HEAD)" = "$PROJECT_DARK_SOURCE_SHA"
+          gradle :app:assembleDebug --stacktrace
+          python3 tools/verify_packaged_equipment.py app/build/outputs/apk/debug/app-debug.apk
+          python3 "$RUNNER_TEMP/verify_v173_corrected.py" app/build/outputs/apk/debug/app-debug.apk
+      - uses: actions/upload-artifact@v4
+        with:
+          name: martial-v173-recovered-apk-${{ env.PROJECT_DARK_SOURCE_SHA }}
+          path: |
+            app/build/outputs/apk/debug/app-debug.apk
+            app/build/outputs/apk/debug/BUILD_INFO.json
+      - name: Verify the exact-source native success and completed full gameplay steps
+        env:
+          GH_TOKEN: ${{ github.token }}
+        run: |
+          python3 - <<'PYPROOF'
+          import json, os, time, urllib.request, pathlib
+          root='https://api.github.com/repos/ChanJoos/Project_dark_android'
+          def get(path):
+              r=urllib.request.Request(root+path,headers={'Authorization':'Bearer '+os.environ['GH_TOKEN'],'Accept':'application/vnd.github+json'})
+              with urllib.request.urlopen(r,timeout=60) as response:return json.load(response)
+          source=os.environ['PROJECT_DARK_SOURCE_SHA']
+          native=get('/actions/runs/38883923655');assert native['head_sha']==source
+          nj=get('/actions/runs/38883923655/jobs')['jobs'][0]
+          steps={s['name']:s['conclusion'] for s in nj['steps']}
+          assert steps['Source contracts and native town service regressions']=='success',steps
+          assert steps['Record focused JUnit evidence']=='success',steps
+          assert steps['Build and verify exact candidate APK']=='failure',steps
+          run_id=38883923599
+          for attempt in range(75):
+              full=get('/actions/runs/'+str(run_id));assert full['head_sha']==source
+              if full['status']=='completed':break
+              print('EXACT_SOURCE_FULL_CHECKS_RUNNING',run_id,attempt,flush=True);time.sleep(20)
+          assert full['status']=='completed',full['status']
+          job=get('/actions/runs/'+str(run_id)+'/jobs')['jobs'][0]
+          names=[]
+          for s in job['steps']:
+              name=s['name']
+              if name.startswith(('Verify ','Execute ','Render ','Compile debug','Validate Master','Audit ','Milddok ')):
+                  assert s['conclusion']=='success',(name,s['conclusion']);names.append(name)
+          assert len(names)>=35,len(names)
+          bad=[s for s in job['steps'] if s['name']=='Build and verify exact V173 debug APK']
+          assert len(bad)==1 and bad[0]['conclusion']=='failure',bad
+          proof={'runtimeSource':source,'validatorSource':os.environ['GITHUB_SHA'],'nativeRun':38883923655,'nativeTests':211,'nativeSuites':36,'fullRun':run_id,'verifiedFullGameplaySteps':names,'originalFailure':'Package verifier conflated version173 with unchanged172 equipment icons; no gameplay test rerun','recoveryRun':os.environ['GITHUB_RUN_ID']}
+          pathlib.Path('V173_RECOVERY_PROOF.json').write_text(json.dumps(proof,indent=2)+'\n')
+          print(json.dumps(proof,indent=2))
+          PYPROOF
+      - uses: actions/upload-artifact@v4
+        with:
+          name: martial-v173-recovery-proof-${{ env.PROJECT_DARK_SOURCE_SHA }}
+          path: V173_RECOVERY_PROOF.json

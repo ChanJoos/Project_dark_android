@@ -1,0 +1,1246 @@
+{
+  "status": "31_MALE_ROGUE_MONK_CLOTHES_NOT_ALL_LINK_ITEMS",
+  "admitted": [
+    {
+      "name": "밀레스노미쉬레더",
+      "appearanceId": "mu0000049",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04142",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "밀레스",
+      "historicalStats": {
+        "AC": -20,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000049.json": "2f1186a9dc8d5137ab7fc746c4348dbcf583d782befda13acb00f8b71d26b2fa",
+        "atlas/armor/mu0000049.webp": "941c274ed39c051b14ea2215df4e8ee1a5be75401417422352e204397f9ba625"
+      },
+      "stats": {
+        "AC": -20,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4142,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "루어스노미쉬레더",
+      "appearanceId": "mu0000050",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04966",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "루어스",
+      "historicalStats": {
+        "AC": -20,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000050.json": "86d1d5909af545b5b082367f3b42409352fbe9774c39630be554bfc5a83cc23a",
+        "atlas/armor/mu0000050.webp": "cadfa5493a41ea030e1fc351603350bf33f9e0582340d1b90a4a414070220cc3"
+      },
+      "stats": {
+        "AC": -20,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4966,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "뤼케시온노미쉬레더",
+      "appearanceId": "mu0000048",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04705",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "뤼케시온",
+      "historicalStats": {
+        "AC": -20,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000048.json": "f5998917980e42894de485a3f06cc91909a9f20f2ad92496896de9539f1ea3e9",
+        "atlas/armor/mu0000048.webp": "a119aa95ac3c7a9f4cf20e60e151ba866774a61e0c4bce0b0cb7320a861e6003"
+      },
+      "stats": {
+        "AC": -20,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4705,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "수오미노미쉬레더",
+      "appearanceId": "mu0000047",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R03295",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "수오미",
+      "historicalStats": {
+        "AC": -20,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000047.json": "b439531bbb439334176b13ec4df30665c31f1009c169ab49c987a14839069d06",
+        "atlas/armor/mu0000047.webp": "4217cc6a6b48446d031572e8bdeb56944f1f775c5dd030dd01fe956175cc8702"
+      },
+      "stats": {
+        "AC": -20,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 3295,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "오렌노미쉬레더",
+      "appearanceId": "mu0000242",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R02753",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "오렌",
+      "historicalStats": {
+        "AC": -20,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000242.json": "0933ea145883eeb5952e67fe2a22b4faacd0a970713f582e38f9c4c3448a3976",
+        "atlas/armor/mu0000242.webp": "0c52155927f8de56d7ff9bba2f11d26d6d2b1a8135b2a3e3b2c7a52a8e181b7d"
+      },
+      "stats": {
+        "AC": -20,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 2753,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "루어스팔루텐",
+      "appearanceId": "mu0000090",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04769",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 3,
+      "town": "루어스",
+      "historicalStats": {
+        "AC": -30,
+        "requiredLevel": 41,
+        "weight": 9
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000090.json": "52a3943e4e146e6dcf7ea6d0d60a2cd8bd6dd3b37430b6e3df79a95d022d2e73",
+        "atlas/armor/mu0000090.webp": "61223059650cb19579e800ed8a7fc57d66d4c00bfdc6baa198b2765735f17fde"
+      },
+      "stats": {
+        "AC": -30,
+        "HIT": 0,
+        "DAM": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 4769,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {
+        "HP": "ㅁ"
+      }
+    },
+    {
+      "name": "수오미팔루텐",
+      "appearanceId": "mu0000087",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R03098",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 3,
+      "town": "수오미",
+      "historicalStats": {
+        "AC": -30,
+        "requiredLevel": 41,
+        "weight": 9
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000087.json": "0ab12b0079d15bf0a9ea5909a93e5122d9ed5984e3a20a037037d148f6cb7f6e",
+        "atlas/armor/mu0000087.webp": "98f93ffd5209b0b95541c494b73f18bf7db04a5c9b877481bc7601dbc3bbd386"
+      },
+      "stats": {
+        "AC": -30,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 3098,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "오렌팔루텐",
+      "appearanceId": "mu0000243",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R02563",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 3,
+      "town": "오렌",
+      "historicalStats": {
+        "AC": -30,
+        "requiredLevel": 41,
+        "weight": 9
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000243.json": "2a0a85ea0f70879ab66817c7501e37704291bc074c5c6599ce85717620ece23e",
+        "atlas/armor/mu0000243.webp": "00ad70d2557f86154e68b01ce415b1d9e8f94db45772c86724f41037d2ae8fb8"
+      },
+      "stats": {
+        "AC": -30,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 2563,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "밀레스바르도클",
+      "appearanceId": "mu0000130",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04057",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "밀레스",
+      "historicalStats": {
+        "AC": -50,
+        "requiredLevel": 99,
+        "weight": 18
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000130.json": "0de4514f2d25350b7580bc30e15e6d2b97f597b9640cf307c3cb1351037b978d",
+        "atlas/armor/mu0000130.webp": "e78c566b499c3e319a33984fa5b30e09df99dc283d1733d917e65b0a0e2d3c4b"
+      },
+      "stats": {
+        "AC": -50,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 4057,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "루어스바르도클",
+      "appearanceId": "mu0000129",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04880",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "루어스",
+      "historicalStats": {
+        "AC": -50,
+        "requiredLevel": 99,
+        "weight": 18
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000129.json": "574750b6527297ea6afbe648c0829351b7f52c6cfdc2bfce8580d047eef0ef91",
+        "atlas/armor/mu0000129.webp": "795e8bdf9248fed6276b884b9e036953f9e192c0473e7cc8d8cdd4c5c1cbe31b"
+      },
+      "stats": {
+        "AC": -50,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 4880,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "뤼케시온바르도클",
+      "appearanceId": "mu0000128",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04619",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "뤼케시온",
+      "historicalStats": {
+        "AC": -50,
+        "requiredLevel": 99,
+        "weight": 18
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000128.json": "b27f1c51b8eef41767bf81405afc2a8ad9665e9a59e47be67d1aa3a5228285e1",
+        "atlas/armor/mu0000128.webp": "2769e86865f4e1267bc0f045c41f765759350be201b00eeca684e1f3ba6922fd"
+      },
+      "stats": {
+        "AC": -50,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 4619,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "수오미바르도클",
+      "appearanceId": "mu0000127",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R03209",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "수오미",
+      "historicalStats": {
+        "AC": -50,
+        "requiredLevel": 99,
+        "weight": 18
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000127.json": "0c26eddb4f9545bac844c0988f802fdb9e2cf2dadb506df9427f58e49682ea72",
+        "atlas/armor/mu0000127.webp": "ec0aa0a340488f84d08bf27c8c541b596c2e8031696a2bf957f0e8cdab9f5bce"
+      },
+      "stats": {
+        "AC": -50,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 3209,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "오렌바르도클",
+      "appearanceId": "mu0000245",
+      "articleId": "292009",
+      "source": "292009/source_00.png",
+      "itemId": "USER_ITEM_20261018_R02682",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "오렌",
+      "historicalStats": {
+        "AC": -51,
+        "requiredLevel": 99,
+        "weight": 12
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000245.json": "ce7ca264ada72c23dc083ee749657c45e7af7a80dd5e3be126da46a360aa8ba1",
+        "atlas/armor/mu0000245.webp": "06a95358f03bcdb31a15ace2283ec2eb24fd85c08ad1aeb01ac664c83f0f410a"
+      },
+      "stats": {
+        "AC": -51,
+        "HIT": 10,
+        "DAM": 1,
+        "HP": -900,
+        "MP": 0,
+        "STR": 0,
+        "DEX": -5,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 2682,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "밀레스도복",
+      "appearanceId": "mu0000082",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04117",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 1,
+      "town": "밀레스",
+      "historicalStats": {
+        "AC": -10,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000082.json": "0b40748803c2338e06ad59e17237b6fcc12c50c6d8e0bc5fa9439af5bd981585",
+        "atlas/armor/mu0000082.webp": "6a507134967d25b22a1e0746e483346bc3a1d9e06dc588ab39435e31234a5973"
+      },
+      "stats": {
+        "AC": -10,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 4117,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "루어스도복",
+      "appearanceId": "mu0000081",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04941",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 1,
+      "town": "루어스",
+      "historicalStats": {
+        "AC": -10,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000081.json": "412be0f1510037fad2259d40c227b3dd145015b15b8ec0f815c504791b816bfb",
+        "atlas/armor/mu0000081.webp": "6ec84d3d650124887166ec64b4ee485b0c738c24dcaee04077885b127add0af1"
+      },
+      "stats": {
+        "AC": -10,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 4941,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "뤼케시온도복",
+      "appearanceId": "mu0000080",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04680",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 1,
+      "town": "뤼케시온",
+      "historicalStats": {
+        "AC": -10,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000080.json": "b0c7d88256c20ca22cfc929103956b778a0dcb17e3469b5a2637f9fb35e57bfa",
+        "atlas/armor/mu0000080.webp": "9ce8e764acad7602b579eea2655bb5ad928ad7e8aa78b68319bc90d55dec38cf"
+      },
+      "stats": {
+        "AC": -10,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 4680,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "수오미도복",
+      "appearanceId": "mu0000079",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R03270",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 1,
+      "town": "수오미",
+      "historicalStats": {
+        "AC": -10,
+        "requiredLevel": 1,
+        "weight": 4
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000079.json": "c016809ee40a06e9d68ee4ffa0901b2d152ffd7baad27cbea201d581b600abf7",
+        "atlas/armor/mu0000079.webp": "2db029a32208ff00e42be47f543dfad78dfd45a3768bb13bfdf62b0669f4d04d"
+      },
+      "stats": {
+        "AC": -10,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 3270,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "오렌도복",
+      "appearanceId": "mu0000231",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R02728",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 1,
+      "town": "오렌",
+      "historicalStats": {
+        "AC": -10,
+        "requiredLevel": 1,
+        "weight": 1
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000231.json": "0ff719fa6941de8ee185d9e2cddb5aadbed88285e8e945a13ae29b9dc2101443",
+        "atlas/armor/mu0000231.webp": "41b3b454e3c725bdb02c7a5bd7060adc1f2f2720474c46cf33014c68c0eb99f4"
+      },
+      "stats": {
+        "AC": -10,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 1,
+      "currentStatSourceRow": 2728,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "루어스단도복",
+      "appearanceId": "mu0000060",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04956",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "루어스",
+      "historicalStats": {
+        "AC": -19,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000060.json": "86b0d1e5aac9a86d71b8426ccc0b9460edef7032c28c8bdf5ff74e55c85d3cc7",
+        "atlas/armor/mu0000060.webp": "38ba0e445cb2576f275b62b1485d93fe03d33e0fa1cb5829b9094602ee9450cd"
+      },
+      "stats": {
+        "AC": -19,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4956,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "뤼케시온단도복",
+      "appearanceId": "mu0000061",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04695",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "뤼케시온",
+      "historicalStats": {
+        "AC": -19,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000061.json": "960b61fb019adfc20229905e6d2df9f9fdefd48d49ba2c8c7d39c667adb95495",
+        "atlas/armor/mu0000061.webp": "f2e146de824d070ed0ab7e7d7dda2dc76060835ec4597ff1d12a02b85b32f90f"
+      },
+      "stats": {
+        "AC": -19,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 4695,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "수오미단도복",
+      "appearanceId": "mu0000062",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R03285",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 2,
+      "town": "수오미",
+      "historicalStats": {
+        "AC": -19,
+        "requiredLevel": 11,
+        "weight": 6
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000062.json": "b4d6e0436d4fcc739605a79c0f66e0fc0e38bd1477987f9aa968ef9b708d9ee2",
+        "atlas/armor/mu0000062.webp": "ca3243b866ddf3965a05db3a04fe588b24458b53aa0a0f63d887af3f814fd76a"
+      },
+      "stats": {
+        "AC": -19,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 11,
+      "currentStatSourceRow": 3285,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "밀레스천지도복",
+      "appearanceId": "mu0000100",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R03997",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 3,
+      "town": "밀레스",
+      "historicalStats": {
+        "AC": -29,
+        "requiredLevel": 41,
+        "weight": 8
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000100.json": "b2396cd38db0596fa5faad53dd0240fb3e22690e8418887ff054c575cff5831c",
+        "atlas/armor/mu0000100.webp": "71479922be0561790dc8206090b507725842f55e53948814a167c235b824b174"
+      },
+      "stats": {
+        "AC": -29,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 3997,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "루어스천지도복",
+      "appearanceId": "mu0000102",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04820",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 3,
+      "town": "루어스",
+      "historicalStats": {
+        "AC": -29,
+        "requiredLevel": 41,
+        "weight": 8
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000102.json": "171249a85c158c9025704dccab9e8348c77489acc69ddc399255a8be93c646e9",
+        "atlas/armor/mu0000102.webp": "f3432db4cb448c8e4f7b2a0ef04f1704490d3a6d56cbf964df27f971e582d600"
+      },
+      "stats": {
+        "AC": -29,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 4820,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "뤼케시온천지도복",
+      "appearanceId": "mu0000101",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04559",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 3,
+      "town": "뤼케시온",
+      "historicalStats": {
+        "AC": -29,
+        "requiredLevel": 41,
+        "weight": 8
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000101.json": "d17727c119fd3288886dc8d1ae5279900e8786754112424cbb31378dd9dcbbfc",
+        "atlas/armor/mu0000101.webp": "1e59df919094806e77eda690ec87e63d5fb90ecfdba79b86272f2e68f0f88ec9"
+      },
+      "stats": {
+        "AC": -29,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 4559,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "오렌천지도복",
+      "appearanceId": "mu0000230",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R02614",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 3,
+      "town": "오렌",
+      "historicalStats": {
+        "AC": -29,
+        "requiredLevel": 41,
+        "weight": 8
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000230.json": "ed40d39d8351e74533f0ee2306f7596996e547879d98b6bb3e79bbdb8f208d32",
+        "atlas/armor/mu0000230.webp": "3dae3dd54ae8a534473e4df0444a424e349eac239ba40febf5c267d9fe2546aa"
+      },
+      "stats": {
+        "AC": -29,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 41,
+      "currentStatSourceRow": 2614,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "밀레스선풍도복",
+      "appearanceId": "mu0000122",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04042",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 4,
+      "town": "밀레스",
+      "historicalStats": {
+        "AC": -38,
+        "requiredLevel": 71,
+        "weight": 11
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000122.json": "c996f63631e90b66e9498efbb3ce8638981413d3857ff5a1784b3ed5ba342339",
+        "atlas/armor/mu0000122.webp": "b2d320bcf57403b37d2dfe590d65632dbf6777deb6223dc38137e18f5a443644"
+      },
+      "stats": {
+        "AC": -38,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 71,
+      "currentStatSourceRow": 4042,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "루어스선풍도복",
+      "appearanceId": "mu0000121",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04865",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 4,
+      "town": "루어스",
+      "historicalStats": {
+        "AC": -38,
+        "requiredLevel": 71,
+        "weight": 11
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000121.json": "5dc10fbce14dcd0321b854b556d466ceeaac302de3c6b5790b1e1dc32fc463d0",
+        "atlas/armor/mu0000121.webp": "2fc1e187b8c70abde08f166e70b33dbc9e8de4fc7d85c568c8ed0f4ef37e9202"
+      },
+      "stats": {
+        "AC": -38,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 71,
+      "currentStatSourceRow": 4865,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "오렌선풍도복",
+      "appearanceId": "mu0000234",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R02666",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 4,
+      "town": "오렌",
+      "historicalStats": {
+        "AC": -38,
+        "requiredLevel": 71,
+        "weight": 11
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000234.json": "81bf2f4012c6a0a1352fb2b22b78adad5ef1ceacb383b1e9ff8c1a83942e54a8",
+        "atlas/armor/mu0000234.webp": "201c8f8cd2a1d1c42c649887855f8f99cf4e13d9b6566a87b5d725df351e9365"
+      },
+      "stats": {
+        "AC": -38,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 71,
+      "currentStatSourceRow": 2666,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "뤼케시온태산도복",
+      "appearanceId": "mu0000141",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R04519",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "뤼케시온",
+      "historicalStats": {
+        "AC": -48,
+        "requiredLevel": 99,
+        "weight": 14
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000141.json": "56d36ff4cf7d8093ca33a3e52e330dd9a1aa6f2b849e82a1fcfac994674ac7bb",
+        "atlas/armor/mu0000141.webp": "2e63260e138ec5176894b6480ea3ac0c1bf58bac2ec832435684108027cd3530"
+      },
+      "stats": {
+        "AC": -48,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 4519,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "수오미태산도복",
+      "appearanceId": "mu0000139",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R03109",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "수오미",
+      "historicalStats": {
+        "AC": -48,
+        "requiredLevel": 99,
+        "weight": 14
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000139.json": "f4ce137e9417805367d6e8d9351519d2cede16a661509f4f4e654995e9e90959",
+        "atlas/armor/mu0000139.webp": "1d6a8431c747065a2414fb96b7d459c036c1e935b64302c26343e3d1dc9296d6"
+      },
+      "stats": {
+        "AC": -48,
+        "HIT": 0,
+        "DAM": 0,
+        "HP": 0,
+        "MP": 0,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": 0,
+        "REGEN": 0,
+        "MAGIC_DEFENSE": 0
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 3109,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    },
+    {
+      "name": "오렌태산도복",
+      "appearanceId": "mu0000235",
+      "articleId": "291223",
+      "source": "291223/source_00.png",
+      "itemId": "USER_ITEM_20261018_R02574",
+      "sourceSection": "REVIEWED_MALE_VILLAGE_TABLE",
+      "tier": 5,
+      "town": "오렌",
+      "historicalStats": {
+        "AC": -51,
+        "requiredLevel": 99,
+        "weight": 12
+      },
+      "completeIdleWalkAction": true,
+      "sourceBase": "https://lod-dressup-2.web.app/",
+      "files": {
+        "data/type/armor/mu0000235.json": "13c75fe4ae87298580ec2dd7a22aaadba1355cb2cd8a0230292849dbfc55031b",
+        "atlas/armor/mu0000235.webp": "74c56e23b2b0e5ec3e5673fa137aad4123917982fe4cba58efaf9b215e314af8"
+      },
+      "stats": {
+        "AC": -51,
+        "HIT": 5,
+        "DAM": 1,
+        "HP": -500,
+        "MP": -250,
+        "STR": 0,
+        "DEX": 0,
+        "INT": 0,
+        "WIS": 0,
+        "CON": -5,
+        "REGEN": 5,
+        "MAGIC_DEFENSE": 1
+      },
+      "requiredLevel": 99,
+      "currentStatSourceRow": 2574,
+      "normalJobRequirements": "PENDING_SANDBOX_REVIEW",
+      "status": "IMPLEMENTED_PENDING_NATIVE_VERIFICATION",
+      "unresolvedStats": {}
+    }
+  ]
+}

@@ -1,0 +1,47 @@
+{
+  "revision": "V209_USER_REJECTED_V208_REPAIR",
+  "base": "e290e5f068057a477af34fb6c01bc68253cd7f71",
+  "userReport": "Missing Hell mage, mine map visual rejected, inconsistent weapon/staff icon orientation and equipment mismatch",
+  "rootCause": {
+    "missingMage": "V208 retained an unobserved skeletal153 candidate instead of original red-hood mage68",
+    "dropRoles": "horned white-orange thief155 and red martial monk238 were misidentified; robe caster68 missing",
+    "icons": "many retained illustrations were held-weapon crops, inconsistent axes; equipment additionally enlarged source relative to inventory",
+    "map": "geometry matches31observed recording regions; original128sec excerpt is not full932sec YouTube; generic rectangular minimap and arbitrary middle-map portal did not preserve source entrance presentation"
+  },
+  "labelEvidence": {
+    "url": "http://gamezone.live/board_vJGK77/720468",
+    "kind": "B historical fan guide, labelled monster images retained unchanged",
+    "mage68": "헬소서러 -> mage robe",
+    "mage158": "헬소서러스 -> female mage robe",
+    "roleLimit": "thief/monk original worn-armor shapes crosschecked; exact original server stats/drop tables not recovered"
+  },
+  "casterPriestRobePolicy": "Same original robe silhouette exists as mage/priest equipment; both robed casters award both registered robe families as explicit mobile policy. Exact original priest drop association remains unverified, no invented priest sprite is added.",
+  "weaponPolicy": "Shared32px NE diagonal display projection from existing retained source alpha, nearest sampling; source files/hashes and actor weapons unchanged. Same bitmap and draw path in actual inventory/equipment callbacks.",
+  "mapChanges": "Original-cell minimap; arrival12,34 and return13,35 at observed entrance notch; initial species visible around entrance; title follows recorded 카스마늄제1·3갱도. Raw150x102cells unchanged. Tall foreground that obscures the player fades at the entrance, as observed at recording28sec. Collision, source alpha and all source bytes remain unchanged.",
+  "mapAudit": "31/32four-second samples match source foreground landmarks; one HUD OCR unresolved. Does not prove unseen complete current-server map.",
+  "fullYoutube": "Metadata932seconds recovered;720p/360p/storyboard media returned195-byte SiteUnavailable HTML; never treated as decoded video.",
+  "referencePhotos": [
+    {
+      "file": "01-1000060513.jpg",
+      "sha256": "f3e545f0c4f9d70a4bc8e016e24d93fa146ef43bbd6ac96d92b298341969fd0f",
+      "evidence": "U",
+      "direction": "weapon/staff inventory icons run lower-left to upper-right; same image in equipment"
+    },
+    {
+      "file": "02-1000060514.jpg",
+      "sha256": "cd678350ccc2226c3a729275c183715523d4d4206fb76ff01b9b9c168e4c705a",
+      "evidence": "U",
+      "direction": "weapon/staff inventory icons run lower-left to upper-right; same image in equipment"
+    }
+  ],
+  "validation": {
+    "status": "BUILD_HOST_NATIVE_VERIFIED_HANDSET_COMMON_PENDING",
+    "runtimeSource": "90845f57470ca994abce73db1ced38eb053d22a0",
+    "run": 39516434711,
+    "artifact": 12308520348,
+    "nativeTests": 44,
+    "receipt": "verification/MINE_HUNT_V209_BUILD.json",
+    "phoneVerified": false
+  },
+  "phone": "PENDING"
+}

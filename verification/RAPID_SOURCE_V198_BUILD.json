@@ -1,0 +1,38 @@
+{
+  "tests": 2,
+  "failures": 0,
+  "errors": 0,
+  "skips": 0,
+  "sourceBytesMatched": 32,
+  "evidence": {
+    "sourceCommit": "c369c3c66f1478b4e8ca96bb94b287549f2bf055",
+    "runId": "39203262100",
+    "builtAtKST": "2026-10-19T14:13:46.151370+09:00",
+    "apkSha256": "49438a2157cb3974ff1895771bd28ff8fd0055826f1b6fb39776180253c6df0b",
+    "apkBytes": 85459685,
+    "identity": {
+      "sourceCommit": "c369c3c66f1478b4e8ca96bb94b287549f2bf055",
+      "runId": "39203262100",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending"
+  },
+  "run": 39203262100,
+  "job": 117900548299,
+  "artifact": 12164652894,
+  "archiveSha256": "a6ca3b777216d39c4f9130afb33f10d9eba07b5f2860ddcce5281aa7eac73bd9",
+  "testScope": "RapidSourceV198Test: exact 32 packaged source bytes + both bodies' idle/contact registrations, NOT the workflow's static Horror scope string",
+  "visualBinding": "PENDING",
+  "phone": "PENDING",
+  "sourceFrameAudit": 2142,
+  "originalFailure": {
+    "run": 39202340286,
+    "job": 117897777656,
+    "tests": 96,
+    "failures": 1,
+    "failed": "legacy-graphics Rapid frame bounds",
+    "repair": "Use Android NATIVE graphics; original bytes/registrations/asserted bounds preserved; test messages now include decoded dimensions"
+  },
+  "wholeLinkBundle": "PARTIAL"
+}

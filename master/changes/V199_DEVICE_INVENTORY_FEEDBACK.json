@@ -1,0 +1,117 @@
+{
+  "status": "HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "userReport": "DEVICE_FAILED_USER_REPORTED",
+  "deliveredSource": "b2ae261f247a712e4a89764938fd46da094fd6e8",
+  "issues": [
+    "Back-facing155garment icons",
+    "Screenshot icon backgrounds",
+    "Missing Rapid avatar layers",
+    "Duplicate-looking inventory IDs"
+  ],
+  "sourcePreservation": true,
+  "sourcePose": {
+    "before": "01/f0 back",
+    "after": "01/f1 front",
+    "scope": 155
+  },
+  "displayMatte": {
+    "sourceCrops": 48,
+    "rapidSocketIcons": 6,
+    "status": "ADAPTED_DISPLAY_PROJECTION_NOT_SOURCE_REWRITE",
+    "method": "Source wood texture palette, border-only frame palette and tiny dark background-remnant removal",
+    "initialMethod": "REJECTED_IN_LOCAL_QA_BROAD_CORNER_DISTANCE_REMOVED_BROWN_ITEM_PIXELS",
+    "review": "48 original/derived icons visually compared; dark leather items use existing complete native source artwork",
+    "nativeLeatherIconAliases": {
+      "USER_ITEM_20261018_R05062": "IT_LEGGING_LEATHER",
+      "USER_ITEM_20261018_R04290": "IT_LEGGING_LEATHER"
+    },
+    "nativeSource": "master/assets/equipment/accessories_20261009/155_kawaguri.png",
+    "nativeMask": "master/assets/equipment/background_masks_v126/155_kawaguri.png",
+    "mappingEvidence": "Same leather-gaiter shape: first crop 97.36% foreground RGB match within12 with offset(-1,0); second is vertically offset and source-cropped. Existing original artwork supplies full icon; no stat/save mapping changes."
+  },
+  "rapid": {
+    "sourceArchive": "master/source/items/rapid_v198/original_sources.zip",
+    "providerMetadata": "master/source/items/naver_bundle_20261019/provider_name_snapshot_20261019.zip",
+    "tiers": {
+      "R05141": 146,
+      "R05145": 147,
+      "R05143": 148,
+      "R01339": 148,
+      "R05142": 149
+    },
+    "slotProjection": "ADAPTED_BACK_CAPE_TO_TWO_ORNAMENT_SLOTS",
+    "genderNormalization": "mm001 mg/mc; wm001 wg/wc",
+    "unresolved": [
+      "Lv85 exact appearance",
+      "Dye semantics"
+    ]
+  },
+  "duplicatePolicy": "UI semantic equality with explicit-zero stat normalization and source-only metadata excluded; unknown/different requirements/effects/looks stay separate.843raw ->816display rows; quantities/save IDs unchanged.",
+  "validation": {
+    "build": {
+      "sourceCommit": "d3695a9bd388028d2dab62cb8e5c60eb48e106d8",
+      "runId": "39234192902",
+      "builtAtKST": "2026-10-19T19:10:40.307943+09:00",
+      "apkSha256": "4c656c19f442158a15fb4848fc28014efc4f0585f4b3f3616ccc7d14da1c83c7",
+      "apkBytes": 85464185,
+      "identity": {
+        "sourceCommit": "d3695a9bd388028d2dab62cb8e5c60eb48e106d8",
+        "runId": "39234192902",
+        "versionCode": 184,
+        "versionName": "1.84-mobile-horror"
+      },
+      "scope": "Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending",
+      "scopeWarning": "Embedded report retains historical Horror scope; actual executed classes are independently parsed from104 JUnit cases."
+    },
+    "counts": {
+      "suites": 24,
+      "tests": 104,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "archiveSHA256": "3ca3181628cf620065bd97a82a76ff4b55e6bb90783875553d79a55c5d844f07",
+    "assetFilesUnchangedVs99de": 4129,
+    "duplicateRows": {
+      "raw": 843,
+      "grouped": 816
+    },
+    "artifactId": 12178966456,
+    "status": "HOST_NATIVE_VERIFIED_PHONE_PENDING",
+    "phone": "PENDING",
+    "sourcePreservation": "4129 APK asset files excluding build_identity.json are byte-identical to source99de candidate",
+    "scope": "V199 inventory artwork, background projection, grouping, Rapid runtime; catalog and renderer regressions",
+    "visualReview": [
+      "155 front garment sheet",
+      "48 accessory sheet on green background",
+      "40 Rapid idle cells, both bodies/four directions",
+      "actual inventory and equipped Rapid screens"
+    ],
+    "library": {
+      "library_file_id": "libfile_83c02cecd68481918a59d9d16924cc53",
+      "file_id": "file_00000000f92c81f5a11230c56db85f5b",
+      "filename": "PROJECT_DARK_V199_TEST.apk"
+    },
+    "followup": {
+      "source": "7ef3fdc86467552b7b93c115ce68cfbdd432e5d5",
+      "run": 39235621965,
+      "job": 118003849883,
+      "status": "SUCCESS",
+      "scope": [
+        "ItemWindowReferenceTest",
+        "InventoryFeedbackV199Test",
+        "RapidSourceV198Test"
+      ],
+      "basis": "Guarded diff permits only ItemWindowReferenceTest and workflow; production source unchanged. Job log BUILD SUCCESSFUL in2m40s.104-case delivery JUnit independently parsed; follow-up log verified.",
+      "correctedOldFailure": "39234192560 failed old all-IDs-as-separate-cells assertion; now checks semantic alias reachability, UI row selection, total quantities and unchanged save inventory/equipment."
+    },
+    "common": {
+      "runs": [
+        39235628590,
+        39235622143
+      ],
+      "status": "IN_PROGRESS_LAST_OBSERVED_NOT_CLAIMED_PASSED"
+    }
+  },
+  "phone": "PENDING"
+}

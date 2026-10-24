@@ -54,7 +54,7 @@ public class MagicRuntimeV137Test {
   }
   @Test public void twoInstantSlotsRotateInAutoWithoutAnyMeleeApproachOrWaitSeconds()throws Exception{
     GameView v=mage(true);RuntimeState s=field(v,"state");RuntimeState.Monster m=distantTarget(v);SkillBook book=field(v,"skillBook");book.clearSlot(2);float x=s.player().x,y=s.player().y;int hp=m.hp;
-    tap(v,926,507);advance(v,1.55f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertTrue(m.hp<hp);assertTrue(book.proficiency(MARENO)>51);assertTrue(book.proficiency(EARTH)>51);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);assertNull(((SkillApproachController)field(v,"skillApproach")).skillId);assertFalse(((WorldRuntimeAdapter)field(v,"worldAdapter")).presentationMoving());render(v,"auto-two-elemental-slots");
+    tap(v,((Number)field(v,"AUTO_X")).floatValue()+((Number)field(v,"hudRightOffset")).floatValue(),((Number)field(v,"AUTO_Y")).floatValue());advance(v,1.55f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertTrue(m.hp<hp);assertTrue(book.proficiency(MARENO)>51);assertTrue(book.proficiency(EARTH)>51);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);assertNull(((SkillApproachController)field(v,"skillApproach")).skillId);assertFalse(((WorldRuntimeAdapter)field(v,"worldAdapter")).presentationMoving());render(v,"auto-two-elemental-slots");
   }
   @Test public void kurotoHasNoTwoSecondReuseDelayButSharesThreePerSecondSpellCadence()throws Exception{
     GameView v=mage(false);RuntimeState s=field(v,"state");RuntimeCombatSession session=field(v,"combatSession");s.player().hp=1000;int mp=s.player().mp;

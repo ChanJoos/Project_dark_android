@@ -1,0 +1,408 @@
+{
+  "screenFxAliases": {
+    "SK_마법사_030": "SK_마법사_026",
+    "SK_마법사_031": "SK_마법사_027",
+    "SK_마법사_032": "SK_마법사_028",
+    "SK_마법사_033": "SK_마법사_029"
+  },
+  "preservedSourceRoutes": [
+    {
+      "id": "SK_마법사_026",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/6109e59b3c6c3170.jpg",
+          "sha256": "89bbac1e7a15831a29e871642a6290591513e5e15a7a2282c5249b07e76235a2",
+          "index": 5
+        }
+      ],
+      "atlasSha256": "e025d7012db859b3c838b2ce0c9b3ded7a76f54e7a08a7251d6cfbb4567c261e",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_027",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/ea542f5d4ac101bb.jpg",
+          "sha256": "5b633ab4e7edd6f6f4ec0060fd219fa284a1ce419e50b841e163f65b80c9e7f4",
+          "index": 11
+        }
+      ],
+      "atlasSha256": "72cb465b2f9f67ccb294cfe40612ed4cba1295321699251f3844e0450c68c391",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_028",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/e88d27b4e0ac62a5.jpg",
+          "sha256": "e9e90f7f11fc20d9f6fd1a0a1cbeb2dae8ccc25e4052937df837be2063b7f492",
+          "index": 17
+        }
+      ],
+      "atlasSha256": "80793e653fc81967a5a3fd09f31fd27503ee10c397e26100cc3c69307e8a5ffb",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_029",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/f267a228e0c4dcae.jpg",
+          "sha256": "53d55dc12c48efbeee9418ff0e6aab52984b86c1b75e4ad9fa36d31efe2c2d1b",
+          "index": 23
+        }
+      ],
+      "atlasSha256": "07079a5a3eae9ef044085cbf18406d748cc7babb03a8fe7313839afb3b204858",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_039",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/d524ca9016d5d0d3.png",
+          "sha256": "d8f566950e152e94e974ae761f31c187dcefc526ac0e8cbdbde1abcb63f687e3",
+          "index": 13
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/b349272c475d7605.png",
+          "sha256": "f79ebf9d96e1b7c61b487bbde050556fb78b87a4251b8569c10d70e72f3b7d0e",
+          "index": 14
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/7bba7857a28a78ef.png",
+          "sha256": "72614fe8852ac6668b5216d0bf7d19638a98be76f9846faab762c764297086f0",
+          "index": 15
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/3fd41bb969848e99.png",
+          "sha256": "4d60e7be6267452f78b1940865a78a44cfdb9db4ca637947aecbf48b4de79a5e",
+          "index": 16
+        }
+      ],
+      "atlasSha256": "9d6fc4514903bc12b1969e72f686ae6c3faa3a3437c7f0d21544a647b48b6179",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_040",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/56f1712d253709e4.png",
+          "sha256": "873148604fd7758761ee4631ded081c6e07a746e7ab45dd48e625473050ccb91",
+          "index": 17
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/eafcfa9bc1e7c491.png",
+          "sha256": "02f71a453cdbbfe64ff2f03083e11cc7a2c169c8cd84f8f97fc04f953aff1712",
+          "index": 18
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/80fe4bb4e6c99efa.png",
+          "sha256": "110e53116de32f91a624d7007d57006a0c84a9eaaea058f790261766d976582c",
+          "index": 19
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/8e7dcd2e9b5fd968.png",
+          "sha256": "85b779a244fc25c449e274d1d926af30cd7e2fbcab7129013dc3f2803562c0d2",
+          "index": 20
+        }
+      ],
+      "atlasSha256": "dd7e6638c56559ac557c6ae5fbfed66d42af1ba8fcdcbd2ed2587f9345a7a25f",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_041",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/09ad0dec266ad981.png",
+          "sha256": "944fd8e2a8b710e18ec298680e212a45dd2b00f54c3390a7e8a51fe81b847fff",
+          "index": 21
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/3fbd9442863f5c82.png",
+          "sha256": "3035fbd0deacceb173d47d24e3293391e73538c1a12996dad0d665d99ae35612",
+          "index": 22
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/609aabda3b0cfdf4.png",
+          "sha256": "c28648e01adb7674a6323decb2c6d962a19b998d49619d048a63733326f46eb1",
+          "index": 23
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/074a79b599ee3e30.png",
+          "sha256": "41b0bda80d77b3fccb4e22308abb566ddc3dbee169a4a87e01e78ffd3a060e71",
+          "index": 24
+        }
+      ],
+      "atlasSha256": "01645183b8b6887817a67de30ff2831e79bd28d260b80171396a8362475cc42e",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_042",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/d51b8ff3415de39f.png",
+          "sha256": "95fe00976a8efe4f7b39b539191f27ed87a954baf7b1d8f1ea6b8551b3aaf57a",
+          "index": 25
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/cf822dc4730e5774.png",
+          "sha256": "ab5064fcbd80c3896fb1e98cd1ee60ab671a3522eccdd485872e5b691b82bdd4",
+          "index": 26
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/5cdd9014924da231.png",
+          "sha256": "d5fc9c1c16748dc95cdf67283ce034586e1c4efa9d265bdaf48b6f388d001686",
+          "index": 27
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/d52dc452bdd4cec9.png",
+          "sha256": "03de4627f2cbb1f46055e224aa15ebedda480cead9e8717f6f9f44bc6e71110a",
+          "index": 28
+        }
+      ],
+      "atlasSha256": "4547613b2d8a027097ec4ae37af430fb657252f7dcd7d72b2dc6e013bf40a93a",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_043",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/bdaa6dcfdb9f9d4d.png",
+          "sha256": "c5988c8cc92db447550d35715bc47432d2da0191f9e53bd96f4b9603ade26a67",
+          "index": 0
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/27516af2451925fc.png",
+          "sha256": "7cc9f53e382a8951d0515e5ecab37cd8e9ff4916c5a907f6a54e63c12a0fd4c3",
+          "index": 1
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/43526a074d87f8f8.png",
+          "sha256": "c58cfced848d414294a2c7f4e9120d60aa6009bfb2be9a81348244f8c03df050",
+          "index": 2
+        }
+      ],
+      "atlasSha256": "767517d91eeab4b7d290120dc4607d937c396e40960b5e54960f3951a61859ca",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_044",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/72f33f60649272ea.png",
+          "sha256": "da9574c909bb3e8d044c4899b76495af1ece3c22781d4e978709b2685b2c9b58",
+          "index": 9
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/e1b10bfd856fc063.png",
+          "sha256": "a642928cd8ef4bb8b38ca895f69eb41be0c948c0ae36e0fb99c4e60da13dfdbc",
+          "index": 10
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/a5016bb700cc270e.png",
+          "sha256": "2c7e30632908ab17974186424847861f82ae32ffcda059a8f0af1125acdadb29",
+          "index": 11
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/4164f32d3629d5a3.png",
+          "sha256": "15af243e47c6507b63b71c51e166e774b43eb32db82ee11b5b708d6558570643",
+          "index": 12
+        }
+      ],
+      "atlasSha256": "79e6efb8b3785d68d07288ffdd7c2add435ef63a4f88a238f29adebed60346ac",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_045",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/3666046a0cfbcc8b.png",
+          "sha256": "84f6319d3f231e01d4564949b3e20b33688eb2495f1ce42b067e0ffbc888de64",
+          "index": 3
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/60f9490bfe942d8b.png",
+          "sha256": "1ee91ab137806824b55768bf31e0034eb0ba67273cb9f8bf5bde5ad63ec9d935",
+          "index": 4
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/ed0a3a2ee1fe8e45.png",
+          "sha256": "771bcae0a7b1aeef39768ff04cea6b91d16e1dff21da0cfd6f74d2c8a35774eb",
+          "index": 5
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/cb1a78dc6e2cb675.png",
+          "sha256": "739d5e994fd3fe5286bc50d5bb817283559bdb7802e14091dbee7a31274a8fc9",
+          "index": 6
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/afa71947c348c020.png",
+          "sha256": "6152e2c62f89254e4014ca8b146cf3c1161cbf57d888c7179102a85384c0ebdf",
+          "index": 7
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/fa0cebd83f1d5907.png",
+          "sha256": "a17e9265a2878bbd4df6dde45cde8977c1c3fceea0d453537d11601d284d4dc7",
+          "index": 8
+        }
+      ],
+      "atlasSha256": "2b97febb2d40e60fe5031b62a24873bf459d015445d1ee0d4b2f7d822ab19a16",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_046",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/929b70ac749a8c69.png",
+          "sha256": "c4cb1dbbcc45d89eb02ce7f04bd2c4b84e8884c7d9cc27f14206ed64973fe224",
+          "index": 29
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/f958575b72faea0b.png",
+          "sha256": "afa56976b170cb7be7d0d7527ae5a212d86e37f1f85f1ecc213330ca7a00eca3",
+          "index": 30
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/40cf30bfaa41e3ad.png",
+          "sha256": "ac253932ed98c7d0ad3e5cf84b3ad5e4ed98586db286c46002665f211bc50ebc",
+          "index": 31
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/3bf1fbbcbf41f724.png",
+          "sha256": "4086985fc9017d9e7958c9ac53c95f89e8296542924d74f912ebc756ec2f8fdb",
+          "index": 32
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/b17d9fdbacf8d926.png",
+          "sha256": "008a8d3869191181b9b2bf7752bcf4578480227e5ab02ff14cc72fe2439b77c1",
+          "index": 33
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/cc97dfb2afe392ba.png",
+          "sha256": "391a8fc932d078a5431e54d978922dff39398bccb9c1d4ba678f99d1abb1124d",
+          "index": 34
+        }
+      ],
+      "atlasSha256": "e294b884fe5e923c76e8ec0423302f0d6eec485598e853e0f638490069ff3af4",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_047",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/13726f3bd922d833.png",
+          "sha256": "a1b62546c53744e7b85014c95e36cd4f6d0e9a5a4db8ce58f757e79e44bf364e",
+          "index": 35
+        }
+      ],
+      "atlasSha256": "ebb1a733ee4967b9d2acd5b5e6a22f9cc6c26c7ecfd7a064cfc34c531306b60b",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_048",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/0aabf644f78e9550.png",
+          "sha256": "c7c25c26077c48afff4e2836c4e0474eedfe038f1b76db285b3c235411a598d7",
+          "index": 36
+        }
+      ],
+      "atlasSha256": "a9a021f2ae2581754d580991f071151631a3b398d2747b6664beb321e4109de7",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_049",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/f45c21fbfcb7115a.png",
+          "sha256": "3d86667971b7c90b01e535fef672a19a845e3d78b4008bb0e0b07978039a71f0",
+          "index": 37
+        }
+      ],
+      "atlasSha256": "e4eac7a03776d40f3b8cd7a649c368b8921818fdbae655a695ef144f45ed3dac",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_050",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/84e2fac5da866c9a.png",
+          "sha256": "6af61a292c5461d9992ad790b56419441f4ea1b67dc663f509993c6f1acdd6d8",
+          "index": 38
+        }
+      ],
+      "atlasSha256": "017c5c3a39874326634f55a14c20b7a12a5695c18f79beaa45aecd36e979f1ac",
+      "timing": "PROJECT_STATIC_HOLD_FADE"
+    },
+    {
+      "id": "SK_마법사_051",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/c29f838f82f84233.png",
+          "sha256": "0c6f75b0e4828e6c3184a9acda98e8a45e1135544574488f4b39ea33a071bd5b",
+          "index": 39
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/7aeee1e5e6c159f6.png",
+          "sha256": "695207774f4fd05e8768d90af45b1607f4d3a0b4f9bddea24dfebe202835e0d4",
+          "index": 40
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/8e05a361ffb69d09.png",
+          "sha256": "14b421f0ac66f2902c57f797ccd4ea4419a61ec0c666705d5ed7d5b2bc80cd70",
+          "index": 41
+        }
+      ],
+      "atlasSha256": "71f421207cc30f22f1edf2f177ab2dc17b673fb226c561dc0bf4852409fa90ee",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    },
+    {
+      "id": "SK_마법사_052",
+      "sourceFrames": [
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/50f929d5328616a4.png",
+          "sha256": "0a24055d428565b403272958aea9f32859aa9f6c880f8de822c57fd012730ffc",
+          "index": 42
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/855368ff84e52ec7.png",
+          "sha256": "23135616cc9e48e5a7ffc04b5a2f3cb3d224b122aa8f8b58ad089409550fd3d8",
+          "index": 43
+        },
+        {
+          "path": "master/source/skill_fx/naver_magic_recovered_20261001/a90dd7ecd94ee325.png",
+          "sha256": "26d61a396c2eec5db00bbf36f697d01bc22b108ba125577bb0b3edff4138373a",
+          "index": 44
+        }
+      ],
+      "atlasSha256": "1eb0e6adcedcf6b6a58164ec981077c13775c8b6159dc22f53b5896412672cee",
+      "timing": "PROJECT_CAPTURE_FRAME_ORDER_NOT_ORIGINAL_CADENCE"
+    }
+  ],
+  "lowerRowOnly": {
+    "수": [
+      3,
+      4,
+      5
+    ],
+    "토": [
+      9,
+      10,
+      11
+    ],
+    "풍": [
+      15,
+      16,
+      17
+    ],
+    "화": [
+      21,
+      22,
+      23
+    ]
+  },
+  "guideUnlistedPreserved": [
+    "SK_마법사_054",
+    "SK_마법사_055",
+    "SK_마법사_057"
+  ]
+}

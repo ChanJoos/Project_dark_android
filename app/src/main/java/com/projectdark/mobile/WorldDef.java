@@ -20,7 +20,7 @@ public final class WorldDef {
 
   // B4 device correction: keep meaningful traversable space west of the reagent shop so the shop is not pinned to the map edge.
   public static final float MIN_X=-512f,MAX_X=2304f,MIN_Y=48f,MAX_Y=1600f;
-  public static final float PLAYER_SPAWN_X=620f,PLAYER_SPAWN_Y=560f;
+  public static final float PLAYER_SPAWN_X=736f,PLAYER_SPAWN_Y=704f;
 
   public enum LayerKind { TILE, OBJECT, COLLISION, NPC, MONSTER_SPAWN, PORTAL }
   public static final class LayerStatus { public final LayerKind kind; public final String evidence,status; LayerStatus(LayerKind k,String e,String s){kind=k;evidence=e;status=s;} }
@@ -40,6 +40,7 @@ public final class WorldDef {
       if(door==null)b.add(new RectF(f.left,f.top,f.right,f.bottom));
       else{float half=40,top=door.y-28;b.add(new RectF(f.left,f.top,f.right,top));b.add(new RectF(f.left,top,door.x-half,f.bottom));b.add(new RectF(door.x+half+32,top,f.right,f.bottom));}
     }
+    for(float[] foot:TempleEntranceRenderer.archFeet())b.add(new RectF(foot[0],foot[1],foot[2],foot[3]));
     blockers=Collections.unmodifiableList(b);
 
     List<NpcSpawn> n=new ArrayList<>();
@@ -47,12 +48,9 @@ public final class WorldDef {
     // Field travel belongs at the player's first readable decision point, not at a remote map edge.
     // One canonical diagonal step from the initial spawn keeps the NPC visible without blocking spawn occupancy.
     // Keep outdoor NPCs one isometric step northwest of their prior anchors.
-    n.add(new NpcSpawn("pote_travel_guide","아벨·포테 이동 안내인",512.0f,544.0f,"포테의 숲과 아벨해안 이동을 안내합니다.",ASSET_STATUS));
+    n.add(new NpcSpawn("pote_travel_guide","마을 이동 관리인",512.0f,544.0f,"모든 마을과 포테의 숲으로 이동할 수 있습니다.",ASSET_STATUS));
     n.add(new NpcSpawn("milles_job_counselor","마이클 · 직업 상담관",930.0f,630.0f,"기본 수련을 마쳤다면 다섯 직업의 전투 방식과 입문 장비를 안내해 주겠네.",ASSET_STATUS));
-    String[] mentors={"mentor_warrior","mentor_rogue","mentor_mage","mentor_cleric","mentor_monk"};
-    for(int i=0;i<mentors.length;i++)n.add(new NpcSpawn(mentors[i],"직업 지도자",1056f+i*64f,592f,"직업 기술 실습과 장비 점검을 도와줍니다.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_gate_proto","한스 · 숲길 경비 [ADAPTED]",758.0f,1434.0f,"남쪽 숲길에 팜팻 흔적이 보여. 준비가 되면 내게 말해.",ASSET_STATUS));
-    n.add(new NpcSpawn("milles_west_proto","서부 지점 [B]",253.0f,689.0f,"서쪽 길을 따라가면 장비상점과 주민들의 집이 나옵니다.",ASSET_STATUS));
+    // V247: the five redundant outdoor mentors now report to the existing job counselor.
     n.add(new NpcSpawn("milles_market_proto","동부 시장 안내 지점 [B]",1868.0f,804.0f,"시장에서는 필요한 물건을 미리 챙기세요. 강을 건널 때는 다리를 이용하시고요.",ASSET_STATUS));
     npcSpawns=Collections.unmodifiableList(n);
 
@@ -63,6 +61,7 @@ public final class WorldDef {
     monsterSpawns=Collections.unmodifiableList(m);
 
     List<PortalSpawn> p=new ArrayList<>();
+    p.add(new PortalSpawn("temple_door","milles_interior_temple_lobby",TempleEntranceRenderer.X,TempleEntranceRenderer.Y,40f,"USER_VIDEO_TEMPLE_V211","ADAPTED_PLACEMENT_ORIGINAL_TEMPLE_ENTRY"));
     // Building exteriors stay fully solid. Entry is exclusively through front-door portal triggers.
     // Door threshold itself is the portal. Keep it wider than one player radius so diagonal tile stepping cannot skip the trigger.
     p.add(new PortalSpawn("potion_shop_door","milles_interior_potion_shop",com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").x,com.projectdark.mobile.world.MillesDoorAnchors.forId("potion_shop_door").y,18f,EVIDENCE_GEOMETRY,"B_BUILDING_ENTRY_PORTAL_ACTIVE"));

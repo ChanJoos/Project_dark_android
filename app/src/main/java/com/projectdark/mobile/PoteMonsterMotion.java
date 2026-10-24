@@ -14,6 +14,7 @@ public final class PoteMonsterMotion {
     out.pose="idle";out.lift=out.lean=out.stride=out.lunge=out.recoil=0f;
     out.articulated=false;
     String species=PoteForestMonsterShowcase.species(id);
+    if("LYK_RED_HACON".equals(species))species="LYK_BLUE_HACON"; // color pair shares the same gait
     boolean plant=species!=null&&(species.contains("PAMFET")||species.contains("PURPLE")
         ||species.contains("RED")||species.contains("GREEN")||species.contains("SILVER")&&!species.contains("WOLF"));
     if("walk".equals(state)){
@@ -33,6 +34,9 @@ public final class PoteMonsterMotion {
       }
       out.articulated=true;
     }else out.lift=(float)Math.sin(clock*4.5f)*.35f;
+    // Original poses contain articulated limbs and source attack shapes already.
+    // Translate at contact; do not rubber-sheet those indexed pixels.
+    if(PoteForestMonsterShowcase.originalPote(id)){out.articulated=false;out.lift=out.lean=out.stride=0f;}
     if(hitRemaining>0f){
       float age=.14f-Math.min(.14f,hitRemaining);
       out.recoil=2.2f*(float)Math.sin(Math.PI*clamp(age/.14f));

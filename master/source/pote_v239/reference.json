@@ -1,0 +1,21 @@
+{
+  "revision": "V239",
+  "source": "https://s3.amazonaws.com/kru-downloads/da/DarkAges741single.exe",
+  "installerSha256": "dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093",
+  "extraction": "REWise 0673bb358c4e42b111ec2e4d29c85258d3187a9a",
+  "identityEvidence": "User video 000206, forest scene and named quest/recipient at 35s; existing Monster_Master fan roster. Pamfet colors/AntGiant/WolfRider observed, other source joins visually matched candidates; Korean indexed name table unavailable. Three independent labelled references PENDING_REFERENCE.",
+  "sourceFiles": {
+    "mns000.pal": "ecf05b101c09df6309f695c12d642fd8a8b725701a2bbfad309b0773d7701b76",
+    "mns259.mpf": "9cf911947ce66a45e149671fa0e5b814b09f8c21f05bae19c5e39d0f654aceae",
+    "mns260.mpf": "0b9497eb4cba2563b0b2c605803b2643aeb1916ecbdf8848ef677622626af590",
+    "mns261.mpf": "b53a547c8414979cf1dd0ae592229cc13064e6f6b03589cd4f73cd63ec7eda63",
+    "mns262.mpf": "cab1d4811c81f0978e36d9bf952c40b520ead7444ce8aef7d89acee70721d673",
+    "mns264.mpf": "0bf41201a7b278f3dedcce81bf86474a4ec4b809dc605d72c676e914b9a7f79c",
+    "mns265.mpf": "511a29f5c0fff08ef47e21a810031c6f5fd672ae5dd87051edee737612c206c9",
+    "mns274.mpf": "93476bd5c08f174a975c034a776363e980e5e3bf31e73b219144597c2017a9b4",
+    "mns275.mpf": "8827ef8ae88223cdf6cec4464d44a7f7941f63473f0aebf565a858c70aa85a63",
+    "mns276.mpf": "10d4a0094f19e28e9ca279d170594d0ec7a47e5db251ad8f07fc37bbbb6a5134",
+    "mns277.mpf": "896b59e4eb98bf0818048764abc557b28132d05e5bc4a18f11b9594205f29f7f",
+    "mns278.mpf": "1adec2a84bbf97a5b4f577c406ca7f72a34964d98da2f4be412167433d0a72f7"
+  }
+}

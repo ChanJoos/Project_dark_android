@@ -1,0 +1,150 @@
+{
+  "schema": 1,
+  "version": 161,
+  "status": "IMPLEMENTED_BUILD_AND_NATIVE_VERIFIED_DELIVERY_COMPLETE",
+  "runtimeSource": "b7d1f0a52214e88a0dbb6eb46466e8dba29aaf76",
+  "branch": "codex/rucesion-coast-v157",
+  "pullRequest": 197,
+  "mainBase": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "mainMerged": false,
+  "focused": {
+    "run": 38636656452,
+    "job": 116101434216,
+    "conclusion": "SUCCESS",
+    "tests": {
+      "tests": 120,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 18
+    }
+  },
+  "commonAndroid": {
+    "pullRequestRun": 38636665925,
+    "pullRequestJob": 116101468060,
+    "pushRun": 38636656320,
+    "pushJob": 116101434881,
+    "conclusion": "SUCCESS",
+    "decodedLogsChecked": true
+  },
+  "apk": {
+    "sourceCommit": "b7d1f0a52214e88a0dbb6eb46466e8dba29aaf76",
+    "runId": "38636656452",
+    "versionCode": 161,
+    "versionName": "1.61-abel-source-shapes",
+    "applicationId": "com.projectdark.mobile.v161test",
+    "apkSha256": "c715fc1c47d8125d81bfc994a048385c7e0f0487e4610221ff1bc3685eb73b9f",
+    "apkBytes": 80459941,
+    "builtSeoul": "2026-10-15T06:05:26.068905+09:00",
+    "phoneAcceptance": "PENDING"
+  },
+  "artifacts": [
+    {
+      "kind": "apk",
+      "id": 11928557359,
+      "archiveSha256": "ac37491a4729174837557a88e6578335a95e93320d157f761fd5868a642494ce"
+    },
+    {
+      "kind": "native",
+      "id": 11928198298,
+      "archiveSha256": "34f2512e3e594fad7b132f3f2a6c57c0072a0b7526e0641bce40e647d76c9884"
+    }
+  ],
+  "independentVerification": {
+    "archiveSHAAndCRC": "PASS",
+    "packagedSourceFileBytesChecked": 1130,
+    "nativeTests": {
+      "tests": 120,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "suites": 18
+    },
+    "sourceIdentity": "PASS",
+    "nativeRatios": [
+      "V161_NATIVE_RATIO ABEL_TURTLE 0.8703704 0.5185185",
+      "V161_NATIVE_RATIO ABEL_ARKPUS 0.8333333 1.0",
+      "V161_NATIVE_RATIO ABEL_PONG 0.7592593 0.5925926",
+      "V161_NATIVE_RATIO ABEL_CATERPILLAR 0.8518519 0.6481481",
+      "V161_NATIVE_RATIO ABEL_GRAB 0.8888889 0.8148148",
+      "V161_NATIVE_RATIO ABEL_OBS_SLATE 0.962963 0.6481481",
+      "V161_NATIVE_RATIO ABEL_OCTOPUS 1.074074 1.0",
+      "V161_NATIVE_RATIO ABEL_OBS_PURPLE_EGG 0.6111111 0.962963",
+      "V161_NATIVE_RATIO ABEL_GAS 0.7037037 0.962963",
+      "V161_NATIVE_RATIO ABEL_OBS_PURPLE_MAW 0.7777778 0.9259259",
+      "V161_NATIVE_RATIO ABEL_BERSERKER 1.037037 0.962963",
+      "V161_NATIVE_RATIO ABEL_KINGARK_FAKE 3.1851852 2.574074",
+      "V161_NATIVE_RATIO ABEL_KINGARK 3.1851852 2.574074"
+    ],
+    "poses": "13runtimeIDs x4directions x idle/walk/attack actual native renders reviewed",
+    "cacheAndPerformance": {
+      "scope": "Robolectric renderer CPU, not handsetFPS",
+      "p95Ms": 2.117406,
+      "p99Ms": 2.779085,
+      "maxMs": 3.201713,
+      "sourceHitPairsMax": 60,
+      "floorPixelBound": 8652800,
+      "trips": 12
+    }
+  },
+  "implemented": {
+    "auditedRuntimeIds": 13,
+    "reconstructedFamilies": [
+      "Turtle",
+      "Pong",
+      "Caterpillar",
+      "Arkpus",
+      "Slate",
+      "Octopus",
+      "PurpleMaw"
+    ],
+    "newFrames": 84,
+    "sourceRatioObservations": 10,
+    "rucesion10": "USER_ACCEPTED_ART_SIZE_PALETTE_MOTION_PRESERVED",
+    "worldAICombatSaveRewards": "RETAINED"
+  },
+  "limitations": [
+    "Generated reference reconstruction; original atlas/cadence unavailable",
+    "KingArk fake/real and purple floating body exact source ratios remain obscured/unresolved",
+    "Manual source envelopes have observation tolerance, not pixel-perfect client extraction",
+    "Historical canonical Crab visual join and old Abel dungeon Slug/Escomoid region joins remain pending; no invented additional coast species"
+  ],
+  "userVisualAcceptance": "PENDING",
+  "physicalHandset": "PENDING",
+  "previousFailures": [
+    {
+      "source": "c5f530506f1e99b56ec5329a0dc752e3d4ccc0ed",
+      "run": 38635940154,
+      "cause": "Path ambiguous import before tests"
+    },
+    {
+      "source": "0e196f96bee5a24c005417cd81a6167bd35c330d",
+      "run": 38636327966,
+      "cause": "Android bootclasspath lacks Files.readString; replaced with UTF8 readAllBytes"
+    }
+  ],
+  "delivery": [
+    {
+      "file": "PROJECT_DARK_V161_ABEL.apk",
+      "libraryFileId": "libfile_eebd44c6c6a88191aae94cb298ae67ed",
+      "version": 0,
+      "sha256": "c715fc1c47d8125d81bfc994a048385c7e0f0487e4610221ff1bc3685eb73b9f",
+      "bytes": 80459941
+    },
+    {
+      "file": "V161_TURTLE_PONG_CATERPILLAR.png",
+      "libraryFileId": "libfile_fdffc0dfbbf08191803695e67e8cbec6",
+      "version": 0,
+      "sha256": "5c968520e48165c87c36f1f790fc5be8aa410bd8cdfe52ac6c76786c564161af",
+      "bytes": 193638
+    },
+    {
+      "file": "V161_ABEL_ORIGINAL_BEFORE_AFTER.png",
+      "libraryFileId": "libfile_026ac6c6f5648191821fe20ee1b6cf9f",
+      "version": 1,
+      "sha256": "53ed91509467eef7464f206e4b9a61e01598ddb689b53d1bb0dbdc805c1c0757",
+      "bytes": 899561
+    }
+  ],
+  "resume": "Token limit interrupted final packaging after native/APK validation. Scratch was pruned. Same committed source and exact Actions ZIPs restored with identical digests; no art regeneration or native test rerun. Full common checks completed while interrupted."
+}

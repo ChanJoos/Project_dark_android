@@ -45,19 +45,20 @@ final class ItemEffects {
   case "아리펠스탭":return "일반 마법 시전 -1초 · 저주 1초";
   case "홀리머큐리아":return "회복 마법 시전시간 0초 (즉시 회복)";
   default:return "";}}
- static int healHp(String id){if(RpgProgressionState.REAGENT_CURANUM_ITEM_ID.equals(id))return 1000;if("IT_REAGENT_CURUM".equals(id))return 200;if("IT_REAGENT_EXCURANUM".equals(id))return 10000;if(RpgProgressionState.B5_SMALL_HP_POTION_ITEM_ID.equals(id))return RpgProgressionState.B5_SMALL_HP_POTION_HEAL;return 0;}
- static int healMp(String id){return "IT_B_MP_POTION".equals(id)?100:0;}
+ static int healHp(String id){if(RpgProgressionState.REAGENT_CURANUM_ITEM_ID.equals(id))return 1000;if("IT_REAGENT_CURUM".equals(id))return 200;if("IT_REAGENT_EXCURANUM".equals(id))return 10000;if(RpgProgressionState.B5_SMALL_HP_POTION_ITEM_ID.equals(id))return RpgProgressionState.B5_SMALL_HP_POTION_HEAL;return LinkedFoodCatalogV187.hp(id);}
+ static int healMp(String id){return "IT_B_MP_POTION".equals(id)?100:LinkedFoodCatalogV187.mp(id);}
  static boolean usable(String id){return healHp(id)>0||healMp(id)>0||RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID.equals(id);}
  static int regeneration(RpgProgressionState r){int n=0;for(String id:r.equipment().values()){RpgProgressionState.ItemDefinition d=r.itemDefinitions().get(id);if(d!=null)n+=d.statModifiers.getOrDefault("REGEN",0);}return Math.max(0,n);}
  static int additionalRegeneration(RpgProgressionState r){return (int)Math.min(Integer.MAX_VALUE,(long)r.baseMaxHp()*regeneration(r)/1000);}
  static List<String> description(RpgProgressionState.ItemDefinition d){
   List<String> lines=new ArrayList<>();if(d==null)return lines;
+  if(RpgProgressionState.WEAPON_SLOT.equals(d.equipSlot))lines.add(WeaponCombatProfile.label(d)+" · 장착 시 손 점유와 공격 동작 적용");
   int hp=healHp(d.itemId),mp=healMp(d.itemId);
   if(hp>0)lines.add("사용 시 HP "+hp+" 회복 · 최대 HP 초과 불가");
   if(mp>0)lines.add("사용 시 MP "+mp+" 회복 · 최대 MP 초과 불가");
   if(hp>0||mp>0)lines.add("회복할 자원이 없거나 사망 상태면 소모되지 않습니다.");
   if(RpgProgressionState.REAGENT_DIBENOMUM_ITEM_ID.equals(d.itemId))lines.add("시험 기능: 자신의 중독 해제 · 중독 시만 소모 · 원작 아이템 규칙 미확정");
-  if(RpgProgressionState.RECALL_MILLES_ITEM_ID.equals(d.itemId))lines.add("살아 있을 때 밀레스마을 시작 위치로 귀환 · 1개 소모");
+  if(TownTravel.recallDestination(d.name)!=null)lines.add("살아 있을 때 "+TownTravel.forMap(TownTravel.recallDestination(d.name)).title+" 이동 도착점으로 귀환 · 1개 소모");
   if(RpgProgressionState.REAGENT_KOMADIUM_ITEM_ID.equals(d.itemId))lines.add("코마 상태 동료 회복용 · 동료/코마 대상 기능 미구현");
   if("IT_REAGENT_HOLYWATER".equals(d.itemId))lines.add("성수의 원작 사용 효과는 미확정 · 현재 사용 불가");
   String staff=staffDescription(d.name);if(!staff.isEmpty()){lines.add(staff);lines.add("재사용 대기시간·물리 공격에는 적용되지 않습니다.");}
@@ -71,6 +72,7 @@ final class ItemEffects {
    else if(d.evidence==RpgProgressionState.Evidence.ADAPTED||d.evidence==RpgProgressionState.Evidence.B)lines.add("일부 수치는 현재 게임의 시험 설정입니다.");
    else if(d.evidence==RpgProgressionState.Evidence.FAN||d.evidence==RpgProgressionState.Evidence.V||d.evidence==RpgProgressionState.Evidence.O||d.evidence==RpgProgressionState.Evidence.U)lines.add("장착 시 표시된 능력치·속성 적용 · 원작 전체 특수 기능 검증 전");
   }else if(lines.isEmpty())lines.add(d.itemId.contains("TOKEN")||d.itemId.contains("ESSENCE")?"퀘스트·진행용 재료 · 직접 사용/장착 불가":"용도·원작 효과 미확정 · 직접 사용/장착 불가");
+  LinkedItemSourceFactsV196.Facts facts=LinkedItemSourceFactsV196.get(d.itemId);if(facts!=null){lines.add(facts.label);if(!facts.unresolvedStats.isEmpty())lines.add(facts.unresolvedStats);}
   return Collections.unmodifiableList(lines);
  }
  static String actionLabel(RpgProgressionState.ItemDefinition d,RpgProgressionState r,boolean equipped){return usable(d.itemId)||r.isRecall(d.itemId)?"사용":d.equippable()?equipped?"해제":"장착":"사용 불가";}

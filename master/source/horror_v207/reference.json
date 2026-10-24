@@ -1,0 +1,44 @@
+{
+  "references": [
+    {
+      "file": "01-1000060346.jpg",
+      "room": 13,
+      "sha256": "921a230215f4a46548f29d192df53154b5ddbdbeb7441c99a0ddd5cf9418ee96",
+      "evidence": "USER_SCREENSHOT_ROOM_LABEL",
+      "privacy": "Raw phone UI not published"
+    },
+    {
+      "file": "02-1000060344.jpg",
+      "room": 15,
+      "sha256": "1542a80f696983678baeaeae95ee38d5bdbf27e804be2b1bd2e44a35dc25b7d3",
+      "evidence": "USER_SCREENSHOT_ROOM_LABEL",
+      "privacy": "Raw phone UI not published"
+    },
+    {
+      "file": "03-1000060336.jpg",
+      "room": 14,
+      "sha256": "3555d712c005da1faabc14537d48fcc0469fa725144a505d6588d1d3b794c18b",
+      "evidence": "USER_SCREENSHOT_ROOM_LABEL",
+      "privacy": "Raw phone UI not published"
+    },
+    {
+      "file": "04-1000060332.jpg",
+      "room": 12,
+      "sha256": "9ad804ff445886836728a58ae11a329f6d7cb1123878befc7392657f137375df",
+      "evidence": "USER_SCREENSHOT_ROOM_LABEL",
+      "privacy": "Raw phone UI not published"
+    },
+    {
+      "file": "05-1000060334.jpg",
+      "room": 12,
+      "sha256": "1563520f46c6513ca7a38c8d99288ebf894c3c3777884bf6d161e664e2094132",
+      "evidence": "USER_SCREENSHOT_ROOM_LABEL",
+      "privacy": "Raw phone UI not published"
+    }
+  ],
+  "geometry": "ADAPTED_SCREENSHOT_GUIDED; native room03wall/floor and retained tile pieces. Exact original maps12..15not recovered.",
+  "room12": "Two right wall fireplaces, bust, desk and chair, floor books",
+  "room13": "Curtains, gold chair, wall shelf and door",
+  "room14": "Corner armchair, writing stand, foreground paired stone figures",
+  "room15": "Curtains/bed motif/busts, right paintings and door; clipped/occluded bed approximated with native upholstery, not exact recovered bed pixels"
+}

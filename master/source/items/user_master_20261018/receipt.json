@@ -1,0 +1,131 @@
+{
+  "sources": [
+    {
+      "file": "items_01.xlsx",
+      "originalName": "어둠템 01.xlsx",
+      "sha256": "35f9d8d5b0be321efd151043028c1a23ecfcf780a873ae25db8f8c6335af233b",
+      "sheets": [
+        {
+          "sheet": "Sheet1",
+          "rows": 5723,
+          "columns": 27,
+          "csv": "items_01_Sheet1.csv"
+        },
+        {
+          "sheet": "Sheet2",
+          "rows": 0,
+          "columns": 1,
+          "csv": "items_01_Sheet2.csv"
+        },
+        {
+          "sheet": "Sheet3",
+          "rows": 0,
+          "columns": 1,
+          "csv": "items_01_Sheet3.csv"
+        }
+      ]
+    },
+    {
+      "file": "items_02.xlsx",
+      "originalName": "어둠템 02.xlsx",
+      "sha256": "aef783a5527b4274add04a04605d1366b71c6ef906c341941f22f1ede7db4d2d",
+      "sheets": [
+        {
+          "sheet": "Sheet1",
+          "rows": 5723,
+          "columns": 27,
+          "csv": "items_02_Sheet1.csv"
+        },
+        {
+          "sheet": "Sheet2",
+          "rows": 0,
+          "columns": 1,
+          "csv": "items_02_Sheet2.csv"
+        },
+        {
+          "sheet": "Sheet3",
+          "rows": 0,
+          "columns": 1,
+          "csv": "items_02_Sheet3.csv"
+        }
+      ]
+    }
+  ],
+  "recordCount": 5722,
+  "differences": [
+    {
+      "row": 4993,
+      "before": [
+        "라",
+        "루딘의모자",
+        1,
+        5000000,
+        0,
+        0,
+        0,
+        0,
+        1000000,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        99,
+        0,
+        0,
+        0,
+        0,
+        0
+      ],
+      "after": [
+        "루딘의모자",
+        "루딘의모자",
+        1,
+        5000000,
+        0,
+        0,
+        0,
+        0,
+        1000000,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        99,
+        0,
+        0,
+        0,
+        0,
+        0
+      ]
+    }
+  ],
+  "unknownColumns": [
+    4,
+    5,
+    6,
+    7,
+    8,
+    20,
+    21,
+    23,
+    24,
+    27
+  ],
+  "canonical": "master/canonical/User_Item_Master_20261018.json"
+}

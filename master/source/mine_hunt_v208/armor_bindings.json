@@ -1,0 +1,24 @@
+[
+  {
+    "itemId": "USER_ITEM_20261018_R01486",
+    "appearanceId": "mu0000037",
+    "name": "헬씨프아머",
+    "statsEvidence": "U",
+    "appearanceIdentity": "Hell thief name spelling alias",
+    "files": {
+      "data/type/armor/mu0000037.json": "ca0f53811a1b0520668cf251a18d2cdb23d3420513ed3ebe4d7cd4cc9d80531a",
+      "atlas/armor/mu0000037.webp": "ada4de6ba3c4d8c2ecc5c887ed00b245254bd3e3200167a06769942d870d09da"
+    }
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R01482",
+    "appearanceId": "mu0000039",
+    "name": "헬프리스트로브",
+    "statsEvidence": "U",
+    "appearanceIdentity": "Original priest80 appearance; Korean exact separate identity remains provisional",
+    "files": {
+      "data/type/armor/mu0000039.json": "3a3117f4ea9ca351c571e671971197f27ec779d4ba52f31dca33fa79d08719a8",
+      "atlas/armor/mu0000039.webp": "abc819b5331541d95edd9bbaeaa84207f170a243b4a5e3fd87281d47f93e973b"
+    }
+  }
+]

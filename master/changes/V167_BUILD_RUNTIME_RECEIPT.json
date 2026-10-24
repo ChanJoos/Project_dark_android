@@ -1,0 +1,69 @@
+{
+  "source": "cf2fa4f5808a550231253c815fbd193ac95da339",
+  "run": "38795839946",
+  "identity": {
+    "sourceCommit": "cf2fa4f5808a550231253c815fbd193ac95da339",
+    "runId": "38795839946",
+    "versionCode": 167,
+    "versionName": "1.67-combat-town-integration"
+  },
+  "build": {
+    "sourceCommit": "cf2fa4f5808a550231253c815fbd193ac95da339",
+    "runId": "38795839946",
+    "versionCode": 167,
+    "versionName": "1.67-combat-town-integration",
+    "applicationId": "com.projectdark.mobile.v167test",
+    "apkSha256": "1069418a75e33574bf80ddc37a3c8aba97ddbc733ea007d8e95c0f8070d4a6de",
+    "apkBytes": 80440637,
+    "builtSeoul": "2026-10-16T04:48:15.710938+09:00",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    },
+    "updateCompatibleWithV166": false,
+    "scope": "Equipment/job mapping; stat/combat and CON/WIS future growth; one/two-hand four-facing motion; recipient-centered finishers and Dara resources/damage; local hunts; Abel arrival and garden cleanup."
+  },
+  "apkSha256": "1069418a75e33574bf80ddc37a3c8aba97ddbc733ea007d8e95c0f8070d4a6de",
+  "apkBytes": 80440637,
+  "archives": [
+    {
+      "artifact": 12002038581,
+      "sha256": "9d6d156cd8fd90e58b83164084956a735229ee9a1021ccce323417a3a7610d06",
+      "bytes": 79331398
+    },
+    {
+      "artifact": 12001953899,
+      "sha256": "b817bf5034758af9357ef7fba06df9ea4cf89812b7603e9328e8ddd47b61b0be",
+      "bytes": 111376243
+    }
+  ],
+  "focused": {
+    "tests": 125,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": 20,
+  "rawCiBuildInfoScopeSuperseded": "V167 shared Abel/Rucesion flowerbed repair at21 unchanged placements; captured sidewalk removed; same182x109canvas/92x98anchor. Native flowerbed coverage, all29loaded prop families, V165 continuous lamps/service signs/three destinations/NPC-player equality and existing town/combat/save regressions. Runtime Java, movement, collision, NPC scale and trees unchanged. Phone/user visual acceptance PENDING.",
+  "candidateBranch": "codex/rucesion-coast-v157",
+  "pullRequest": "https://github.com/ChanJoos/Project_dark_android/pull/197",
+  "phoneRuntimeAcceptance": "PENDING",
+  "originalEquipmentData": "INCOMPLETE: 441 audited; 55 empty numeric maps (including elemental necklaces); 264 unresolved job restrictions. ADAPTED data remains distinct.",
+  "metadataCorrection": "External BUILD_INFO scope copied old flowerbed-only prose. Corrected receipt does not modify or relabel APK bytes/source identity.",
+  "commonRegression": {
+    "source": "cf2fa4f5808a550231253c815fbd193ac95da339",
+    "run": 38795839918,
+    "job": 116631863401,
+    "status": "completed",
+    "conclusion": "success",
+    "url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38795839918"
+  },
+  "nativeQa": {
+    "fourFacingWeaponMatrix": "REVIEWED",
+    "abelArrival": "REVIEWED",
+    "flowerbedScenesReviewed": 11,
+    "physicalPhone": "PENDING"
+  }
+}

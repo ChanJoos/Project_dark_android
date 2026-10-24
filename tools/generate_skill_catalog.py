@@ -32,7 +32,27 @@ assert all_jobs['status']=='ACCEPTED'
 assert hashlib.sha256((root/all_jobs['sourceSnapshot']).read_bytes()).hexdigest()==all_jobs['sourceSnapshotSha256']
 assert all_jobs['evidenceQuote'] in json.loads((root/all_jobs['sourceSnapshot']).read_text())['text']
 for entry in entries:entry.update(all_jobs['overrides'].get(entry['id'],{}))
+timing=json.loads((root/'master/changes/V174_SKILL_TIMING.json').read_text())
+assert timing['status']=='ACCEPTED'
+for correction in timing.get('kindCorrections',[]):
+    assert hashlib.sha256((root/correction['sourceSnapshot']).read_bytes()).hexdigest()==correction['sourceSnapshotSha256']
+    sourceRows=json.loads((root/correction['sourceSnapshot']).read_text())
+    assert any(r['id']==correction['id'] and '마법' in r['circle'] for r in sourceRows)
+    next(e for e in entries if e['id']==correction['id'])['kind']=correction['after']
 assert len({e['id'] for e in entries})==len(entries)
 p=root/'app/src/main/assets/skills/catalog.json' ;p.parent.mkdir(parents=True,exist_ok=True)
 p.write_text(json.dumps(entries,ensure_ascii=False,indent=2)+'\n',encoding='utf-8')
 print(f'{len(entries)} skill catalog entries')
+
+# Accepted source-labelled martial overlay follows the legacy projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))
+
+# User-selected rogue source icons and separate motion families.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v229.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v230.py"))
+
+# Final accepted overlays preserve the V266 user-approved runtime projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"replay_accepted_skill_overlays_v267.py"))

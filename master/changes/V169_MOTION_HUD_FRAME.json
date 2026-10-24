@@ -1,0 +1,46 @@
+{
+  "changeId": "V169_MOTION_HUD_FRAME",
+  "status": "ACCEPTED_USER_REQUEST",
+  "baseline": "cd167454950bdaabe18f1a71c3fb0c10ff498590",
+  "deviceReport": {
+    "version": 168,
+    "status": "DEVICE_FAILED_USER_REPORTED",
+    "items": [
+      "twohand animation does not match retained source",
+      "onehand non-SE directions wrong",
+      "Rucesion coast joystick disappears",
+      "global lag, not movement speed"
+    ]
+  },
+  "sourceEvidence": {
+    "twohand": "retained identity_v128 source-registration/mw016.json: groups01/02/c; no e; existing male/female body c and weapon c exact cell registration",
+    "onehand": "retained mm001/wm001 group02 has all4 original facings; shared SkillBodyRenderer avoids legacy west double mirror",
+    "originalCadence": "project phase selection; precise original timing unresolved"
+  },
+  "changes": [
+    "twohand body and blade same c source group/index",
+    "male/female basic and skill shared source path",
+    "predecoded body clips and cached fallback hand rigs",
+    "cached equipment visual projection",
+    "resource HP/MP projection without two full FinalStats/map builds each tick",
+    "joystick contrast on pale/dark ground and isolate world Canvas from HUD",
+    "skip English name conversion scans for Korean/numeric-only labels",
+    "reuse immutable job/legacy/forest routes and ID index instead of nested per-frame route builds"
+  ],
+  "preserved": [
+    "source raster bytes",
+    "movement timing and lattice",
+    "collision/pathfinding/populations",
+    "combat contact and damage",
+    "save/ownership/growth"
+  ],
+  "validation": {
+    "source": "381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
+    "focused": "SUCCESS:38835692405;166tests/29suites;0failures/errors/skips",
+    "common": "SUCCESS:38835692455 and38835701504; exact runtime source381e7e6ed7e9d40cf8c2f030d7cf42e760f1b991",
+    "phone": "PENDING",
+    "visual": "PENDING",
+    "native": "SUCCESS:19exterior/17interior HUD+input;17motion profiles/2bodies/4facings;8sheets reviewed",
+    "receipt": "master/changes/V169_BUILD_RUNTIME_RECEIPT.json"
+  }
+}

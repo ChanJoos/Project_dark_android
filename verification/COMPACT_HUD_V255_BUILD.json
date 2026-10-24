@@ -1,0 +1,20 @@
+{
+  "sourceCommit": "2fa9c3ad7760d3dd5fafd8daf957aeec85dff718",
+  "runId": "39966531212",
+  "builtAtKST": "2026-10-23T23:09:35.977136+09:00",
+  "apkSha256": "b1f51c8303f7fa376aea9bdae510fea67f0f0d2b4eaf800f51d44c42e40c2553",
+  "apkBytes": 106529642,
+  "identity": {
+    "sourceCommit": "2fa9c3ad7760d3dd5fafd8daf957aeec85dff718",
+    "runId": "39966531212",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V255 36px6x2 skill shortcuts beside centered HP/MP bars; normal/wide bounds and real input/cast/auto/potion/item/picker/restart; host native,phone pending",
+  "nativeTests": 19,
+  "artifactId": 12507796335,
+  "artifactSha256": "5db188a4f45c389af2498ca3945d74c25ac60c6eac7708e2ebe8fb7136b12d89",
+  "phone": "PENDING",
+  "commonRun": 39966544357,
+  "commonStatus": "FAIL: stale reviewed MASTER_MANIFEST caused FULL fallback; unchanged skill catalog generator dirty-tree mismatch before native tests; not final integration"
+}

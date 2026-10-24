@@ -1,0 +1,229 @@
+{
+  "status": "ACCEPTED",
+  "evidence": "USER_DIRECTIVE_20261015",
+  "classification": "ADAPTED_MOBILE",
+  "scope": [
+    "all four existing towns connected by central managers without town level gates",
+    "plain civilian shirts/hair/shoes; guards mentors clergy exceptions",
+    "remove unused Milles west/gate markers; retain market keeper for M04",
+    "18 Rucesion quests follow E18; earned-EXP deficit milestone99; no Ariel party ritual bypass"
+  ],
+  "sourceSnapshots": "unchanged",
+  "quests": [
+    {
+      "id": "F01",
+      "title": "뤼케시온 조사 등록",
+      "npc": "rucesion_beach_keeper",
+      "map": "MAP_RUCESION_TOWN",
+      "kind": "VISIT",
+      "targets": "MAP_RUCESION_TOWN",
+      "level": 70,
+      "goal": 1,
+      "rewardLevel": 71
+    },
+    {
+      "id": "F02",
+      "title": "해안 대기방 답사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST",
+      "kind": "VISIT",
+      "targets": "MAP_RUCESION_COAST",
+      "level": 71,
+      "goal": 1,
+      "rewardLevel": 72
+    },
+    {
+      "id": "F03",
+      "title": "블루하콘 조사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_1C",
+      "kind": "KILL",
+      "targets": "LYK_BLUE_HACON",
+      "level": 72,
+      "goal": 5,
+      "rewardLevel": 74
+    },
+    {
+      "id": "F04",
+      "title": "레드하콘 조사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_1C",
+      "kind": "KILL",
+      "targets": "LYK_RED_HACON",
+      "level": 74,
+      "goal": 5,
+      "rewardLevel": 76
+    },
+    {
+      "id": "F05",
+      "title": "아크퍼스 해역",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_1C",
+      "kind": "KILL",
+      "targets": "LYK_ARKPUS",
+      "level": 76,
+      "goal": 5,
+      "rewardLevel": 78
+    },
+    {
+      "id": "F06",
+      "title": "플렌트아크퍼스 조사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_1C",
+      "kind": "KILL",
+      "targets": "LYK_PLANT_ARKPUS",
+      "level": 78,
+      "goal": 5,
+      "rewardLevel": 80
+    },
+    {
+      "id": "F07",
+      "title": "두 번째 해안 답사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_2C",
+      "kind": "VISIT",
+      "targets": "MAP_RUCESION_COAST_2C",
+      "level": 80,
+      "goal": 1,
+      "rewardLevel": 81
+    },
+    {
+      "id": "F08",
+      "title": "카카포의 서식지",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_2C",
+      "kind": "KILL",
+      "targets": "LYK_KAKAPO",
+      "level": 81,
+      "goal": 6,
+      "rewardLevel": 83
+    },
+    {
+      "id": "F09",
+      "title": "독성 개체 조사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_2C",
+      "kind": "KILL",
+      "targets": "LYK_POISON_KAKAPO",
+      "level": 83,
+      "goal": 6,
+      "rewardLevel": 85
+    },
+    {
+      "id": "F10",
+      "title": "두 하콘의 위협",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_2C",
+      "kind": "PAIR",
+      "targets": "LYK_BLUE_HACON,LYK_RED_HACON",
+      "level": 85,
+      "goal": 10,
+      "rewardLevel": 87
+    },
+    {
+      "id": "F11",
+      "title": "깊은 해안 답사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_3B",
+      "kind": "VISIT",
+      "targets": "MAP_RUCESION_COAST_3B",
+      "level": 87,
+      "goal": 1,
+      "rewardLevel": 88
+    },
+    {
+      "id": "F12",
+      "title": "코아틀의 영역",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_3B",
+      "kind": "KILL",
+      "targets": "LYK_KOATL",
+      "level": 88,
+      "goal": 6,
+      "rewardLevel": 90
+    },
+    {
+      "id": "F13",
+      "title": "일렉코아틀 조사",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_3B",
+      "kind": "KILL",
+      "targets": "LYK_ELECT_KOATL",
+      "level": 90,
+      "goal": 6,
+      "rewardLevel": 92
+    },
+    {
+      "id": "F14",
+      "title": "두 코아틀 제압",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_3B",
+      "kind": "PAIR",
+      "targets": "LYK_KOATL,LYK_ELECT_KOATL",
+      "level": 92,
+      "goal": 10,
+      "rewardLevel": 94
+    },
+    {
+      "id": "F15",
+      "title": "해안의 폭군",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_3B",
+      "kind": "KILL",
+      "targets": "LYK_TYRANT",
+      "level": 94,
+      "goal": 1,
+      "rewardLevel": 96
+    },
+    {
+      "id": "F16",
+      "title": "깊은 해안 안전 확보",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_3B",
+      "kind": "PAIR",
+      "targets": "LYK_KAKAPO,LYK_POISON_KAKAPO",
+      "level": 96,
+      "goal": 12,
+      "rewardLevel": 97
+    },
+    {
+      "id": "F17",
+      "title": "폭군 재출현 저지",
+      "npc": "rucesion_coast_guide",
+      "map": "MAP_RUCESION_COAST_3B",
+      "kind": "KILL",
+      "targets": "LYK_TYRANT",
+      "level": 97,
+      "goal": 2,
+      "rewardLevel": 98
+    },
+    {
+      "id": "F18",
+      "title": "뤼케시온 최종 보고",
+      "npc": "rucesion_beach_keeper",
+      "map": "MAP_RUCESION_TOWN",
+      "kind": "VISIT",
+      "targets": "MAP_RUCESION_TOWN",
+      "level": 98,
+      "goal": 1,
+      "rewardLevel": 99
+    }
+  ],
+  "civilianAppearance": {
+    "garment": "mu0000001",
+    "head": "registered wigs mh005..mh011",
+    "weapon": null,
+    "shield": null,
+    "excludes": [
+      "mu0000002 leather tunic",
+      "mu0000003 martial outfit"
+    ],
+    "specialExceptions": [
+      "guard",
+      "job mentor",
+      "clergy",
+      "purifier"
+    ]
+  },
+  "verificationReceipt": "V163_BUILD_RUNTIME_RECEIPT.json"
+}

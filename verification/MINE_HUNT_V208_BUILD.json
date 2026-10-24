@@ -1,0 +1,96 @@
+{
+  "sourceCommit": "5f4044d9bcd30fcbbb3d4f17d53209610c25d583",
+  "runId": "39512080778",
+  "builtAtKST": "2026-10-21T08:03:34.245212+09:00",
+  "apkSha256": "212770b1ef373f6da34f4c4cd47d15c495a7a6d5627c0a1c7813767a74d577cf",
+  "apkBytes": 88085830,
+  "identity": {
+    "sourceCommit": "5f4044d9bcd30fcbbb3d4f17d53209610c25d583",
+    "runId": "39512080778",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V208 original mine2102, ten native appearances, Mine NPC travel, shared combat, direct armor/axe/dagger inventory rewards, cache and save regressions; original server stats and full-map current-version parity unresolved; handset pending",
+  "artifactId": 12306557014,
+  "archiveSha256": "103db7e93ed45b335ee6969daae3b62bba64e182f7ef750718d856280931fdd5",
+  "candidate": true,
+  "mainMerged": false,
+  "nativeSuites": [
+    {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.HorrorCastleLoopV207Test"
+    },
+    {
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MineHuntV208Test"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MinePolishV206Test"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MineTownV203Test"
+    },
+    {
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.MonsterChasePerformanceTest"
+    },
+    {
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "name": "com.projectdark.mobile.ScreenMagicV204Test"
+    }
+  ],
+  "nativeTests": 28,
+  "nativeSourcePngFilesVerified": 244,
+  "nativeToUploadedVideoParity": {
+    "coordinate": [
+      102,
+      76
+    ],
+    "videoSeconds": 120,
+    "tentativeMatches": 141,
+    "inliers": 73,
+    "cartRegionInliers": 60,
+    "medianErrorPixels": 0.6331930163387272,
+    "limit": "Observed region only; not unseen full-map or server warp/spawn/identity proof"
+  },
+  "nativeCaptureCount": 127,
+  "phoneVerified": false,
+  "userVisualAccepted": false,
+  "sourceUncertainties": [
+    "Some Korean monster identities and armor relations provisional; MPF153 associated candidate not positively sighted in this excerpt",
+    "Exact server stats and rates unresolved; all numeric combat, spawn/reward/drop rates are separate mobile balance",
+    "Original retained map150x102; complete current Korean server-version parity not established"
+  ],
+  "commonCI": {
+    "push": 39512080858,
+    "pullRequest": 39512090159,
+    "status": "PENDING_AT_RECEIPT"
+  },
+  "deliveryName": "PROJECT_DARK_V208_TEST.apk",
+  "internalVersionNote": "Legacy184/1.84 retained; source/run identify actual V208 content",
+  "librarySave": {
+    "status": "FAILED_BEFORE_UPLOAD",
+    "reason": "HTTP403 during current helper hosted apps discovery",
+    "fallback": "Verified local APK and immutable GitHub artifact12306557014 remain available"
+  }
+}

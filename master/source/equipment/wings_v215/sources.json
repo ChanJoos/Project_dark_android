@@ -1,0 +1,138 @@
+[
+  {
+    "id": "MG045",
+    "name": "스노우엔젤윙",
+    "files": {
+      "atlas/back/MG045.webp": "841c966ea805c1f6209dd811979f981092c0d474b98421389aae6998d9638f28",
+      "data/type/back/MG045.json": "4a1604e30309f780e841342a16040d37a74561d25883064dedae1d577a7c037b"
+    }
+  },
+  {
+    "id": "Mg046",
+    "name": "서큐버스윙",
+    "files": {
+      "atlas/back/Mg046.webp": "df5bd3b7bdebba94606eea9ae8f4c246302f5af77f6e806714b0bd8a85211beb",
+      "data/type/back/Mg046.json": "7648e66728a177708bf5afcb7ba67a85afd70415621a83d04aaa1d61609cfec2"
+    }
+  },
+  {
+    "id": "Mg047",
+    "name": "엔도르앤트윙",
+    "files": {
+      "atlas/back/Mg047.webp": "a3336a5ceede3a5575948bf56f8ee8e7b39c92956b847da75d08db716eb64d15",
+      "data/type/back/Mg047.json": "4b91f85badc2fac2ea42323a365214f844f989a9e8bfceddb4d631b2d6bae9bf"
+    }
+  },
+  {
+    "id": "mg087",
+    "name": "루시퍼윙",
+    "files": {
+      "atlas/back/mg087.webp": "e578df81aff2dea9f48e49050d96450f6f452abb05844e0d54a6213bf638f96c",
+      "data/type/back/mg087.json": "2f5ea372ff412f83520aa017c2ed6a2b33454e92823479e872f334cd1e8ddee4"
+    }
+  },
+  {
+    "id": "mg090",
+    "name": "쁘띠윙",
+    "files": {
+      "atlas/back/mg090.webp": "71acf9fc9e5d84d41dcacd1b648011c9ed3ca71821c18821daa1f01edfe41bd5",
+      "data/type/back/mg090.json": "8c7c8db4f5bb40930eb2fd32c4e09e167f2372e8029a2523b14440063be0d3fe"
+    }
+  },
+  {
+    "id": "mg142",
+    "name": "불꽃날개",
+    "files": {
+      "atlas/back/mg142.webp": "e54e7c4fdcd333d44dcb5dd7b03c5dc0d469984c61f502aa79b9e06e90693307",
+      "data/type/back/mg142.json": "627a73a811ed887f99eb4611373e751d538e16266eb82a19ea6964f0828a30e6"
+    }
+  },
+  {
+    "id": "mg164",
+    "name": "화룡날개",
+    "files": {
+      "atlas/back/mg164.webp": "9d2b5da9e38f0b716cb645cad639dd79016d3a6bdbada82cc161890b1654d819",
+      "data/type/back/mg164.json": "775fedda3a77deb358a52d1f10eb20a800e5215970d58836a6639c13e09d9213"
+    }
+  },
+  {
+    "id": "mg165",
+    "name": "퀸버터플라이윙FX",
+    "files": {
+      "atlas/back/mg165.webp": "6aad5485b3b41935c11fdf47c96048b6ea459b6b848006af7e023731ce90941a",
+      "data/type/back/mg165.json": "4dae53878317463417f30888950696998c2b954cdcc8f01f7686967b8d2ac892"
+    }
+  },
+  {
+    "id": "mg198",
+    "name": "다누의윙",
+    "files": {
+      "atlas/back/mg198.webp": "8b569b6abc69d126f56313d3ee44d6f6d7fbdd844b0d60002efb8cef22b431f4",
+      "data/type/back/mg198.json": "1a5afca310447fcf708618d9d6ae05b56f030259a81c5bd4587a7d47f74d8bef"
+    }
+  },
+  {
+    "id": "mg216",
+    "name": "페어리윙",
+    "files": {
+      "atlas/back/mg216.webp": "b3ca738ba43086259d8ee94f83d47021c460281798589fa669707b2250465238",
+      "data/type/back/mg216.json": "8c871420dd2a3301c9eca0eb4b3c04d8154e02c52358b3f4dbf26eddd49e56d5"
+    }
+  },
+  {
+    "id": "mg239",
+    "name": "스켈톤윙",
+    "files": {
+      "atlas/back/mg239.webp": "cbe1e1e520fa1a33c8d8517c5f2b0fe763ff5589364b5faff1f8b734a0186e5a",
+      "data/type/back/mg239.json": "40baa8ba8707bbdd6df5ffbb65f04e5db23cbfb0f87d84c2fe094580589607bb"
+    }
+  },
+  {
+    "id": "mg252",
+    "name": "루캐트의윙FX",
+    "files": {
+      "atlas/back/mg252.webp": "7954ef889b43e14ac5d3d25ce8c8c873997efbdfe4886e5de241c7c1eb2e30b1",
+      "data/type/back/mg252.json": "4b4a422e89dc34b847d75832b7f59b5a6df950413de8ec29f0a87530e081ec1d"
+    }
+  },
+  {
+    "id": "mg253",
+    "name": "루캐티의윙FX",
+    "files": {
+      "atlas/back/mg253.webp": "3fbb78d81e5385f92de778fa783e35e355bc7ed83c5a6fc0afd92e12de42eee1",
+      "data/type/back/mg253.json": "b88541597e6bec1d4d2b250b72d67e3616445b9e8374311e84554443facdcbab"
+    }
+  },
+  {
+    "id": "mg266",
+    "name": "마족날개",
+    "files": {
+      "atlas/back/mg266.webp": "5b5e5c71c9bdbb488977d3b3dbf1a6e02ee7091f6640cb1dc10119000c61848f",
+      "data/type/back/mg266.json": "787a95ed225a88464f5a5194ae391d79082b7e3a702587515f1ce81045076220"
+    }
+  },
+  {
+    "id": "mg285",
+    "name": "루캐트의윙",
+    "files": {
+      "atlas/back/mg285.webp": "8f62bdcd779cc986ba1598107963a0843d82d412c797db8d14e9dfc646e21bff",
+      "data/type/back/mg285.json": "25838580dcd3caaa40ca2130ecc620fdc5624c1930b9fa30eccb825abf24bd34"
+    }
+  },
+  {
+    "id": "wg090",
+    "name": "쁘띠윙",
+    "files": {
+      "atlas/back/wg090.webp": "cdf8b6efbcd23045c6c364d396abc4bc00baf292dd36c5923196141e38a82bd1",
+      "data/type/back/wg090.json": "a0bd8019abb03f6f095b234ba0b4222de2d1b334b45c449fe79f63174115a603"
+    }
+  },
+  {
+    "id": "wg142",
+    "name": "화이어윙",
+    "files": {
+      "atlas/back/wg142.webp": "5b0b369b3440514fda4e79863956e3c4cdc22373946adc0e8fa85c8516225618",
+      "data/type/back/wg142.json": "62c5350d36c8b862b0c21265f5f0c2df941d44ffbecdcc06f6df769ac8a9ca72"
+    }
+  }
+]

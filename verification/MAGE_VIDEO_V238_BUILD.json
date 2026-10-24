@@ -1,0 +1,245 @@
+{
+  "sourceCommit": "dc6f1426b61a1584bd819ceed312e82b42002514",
+  "runId": "39806023052",
+  "builtAtKST": "2026-10-23T00:37:19.825801+09:00",
+  "apkSha256": "83f3b3b9e809a0bcec1ed64055b74dc612f2b21cbf2a456cd01d450110ff69f5",
+  "apkBytes": 103624802,
+  "identity": {
+    "sourceCommit": "dc6f1426b61a1584bd819ceed312e82b42002514",
+    "runId": "39806023052",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V238 supplied continuous video: dark mark + four circle4 single spells and four screen aliases, normal contacts/MP/visible recipients, retirement/save and Amnesia, five Android shared-combat audits; reconstructed occluded pixels and phone visual pending",
+  "artifactId": 12437692690,
+  "artifactZipSha256": "ed7d6aec46d587106e811c56e99a14f2f90f836dca5c7aa11cc88700ca15fa93",
+  "nativeSuites": [
+    {
+      "name": "com.projectdark.mobile.MageVideoV238Test",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T15:35:57",
+      "hostname": "runnervmxehtw",
+      "time": "21.222"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T15:36:45",
+      "hostname": "runnervmxehtw",
+      "time": "20.028"
+    }
+  ],
+  "latestNativePassed": 8,
+  "unchangedNativePassedReused": 30,
+  "compositeUniqueNativePassed": 38,
+  "reusedRunId": 39803951433,
+  "limitations": [
+    "Capture reconstruction, not recovered occluded native frames. Earth lobe reflection and fire growth adapted.",
+    "Handset and user visual acceptance PENDING; main unmerged."
+  ],
+  "allPackagedPresentationFilesVerified": 691,
+  "apkPackage": "com.projectdark.mobile.v238test",
+  "compositeTestIdentities": [
+    {
+      "class": "com.projectdark.mobile.MageSourcesV235Test",
+      "method": "all54GuideIconsOverrideBookAndQuickslotAndEveryDescriptionIsTheDisplayedText",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageSourcesV235Test",
+      "method": "allFourteenPromotionSpellsReachNormalQuickslotContactWithSourceEffectsAndCorrectAnchors",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "method": "darkMarkUsesVideoAndRetainsSeventyCurseWithActualQuickslotContact",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "method": "fourSingleElementQuickslotsKeepOneRecipientAndSingleCostWithVideoFrames",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "method": "screenFourUseSameVideoOnEachVisibleRecipientWithoutRepeatedMpCost",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "method": "sharedCombatAuditsRunWithAndroidRuntimeInsteadOfStubJar",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVideoV238Test",
+      "method": "videoSequencesHaveRealChangingFramesAndScreenAliasesShareTheirSingleSource",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVisualV237Test",
+      "method": "eightPromotionsRemoveRecordedActorMasksWithoutRepaintingSourceColorsAndRenderNative",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.MageVisualV237Test",
+      "method": "helphuraRetiresAndOldSaveSlotsAreCleanedPraboLivesInFifthCircle",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.RogueAmnesiaV236Test",
+      "method": "everyHitDuringTenSecondsDoublesActualHpPopupAndLedgerThenAggressionReturns",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.RogueAmnesiaV236Test",
+      "method": "lowStatDamageHasDistinctRoleStrengthAndCurrentHpFinisherRemainsHonest",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.RogueAmnesiaV236Test",
+      "method": "mageConfusionKeepsItsExistingBreakOnDamageAndNoDouble",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.RogueAmnesiaV236Test",
+      "method": "normalQuickslotIgnoresSelectedFarTargetWithoutWalkingOrTurning",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.RogueAmnesiaV236Test",
+      "method": "rayRechecksNearestVisibilityDirectionAndWallsAtContact",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.RogueAmnesiaV236Test",
+      "method": "resolverFeedbackDoublesAfterDefenseAndOnlyAffectedMonsterThenDefeatExactlyOnce",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.RogueAmnesiaV236Test",
+      "method": "sameFourFacingRayCellsAsShurikenNearestOnlyAndNoHpDamage",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillContactRegressionTest",
+      "method": "bothCrashersHavePeakEnergyBetweenActorsInEveryDirection",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillContactRegressionTest",
+      "method": "damageAndVisibleRecipientEffectStartTogetherIncludingLethalDragon",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillContactRegressionTest",
+      "method": "fourCurseCrownsAreIncludedAndRenderWithoutTheOldCutoff",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "method": "latestSquareIconUsesExactReferenceCropPixels",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "method": "originalPanelsAndAllCatalogItemsRemainReachableThroughProductionInput",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "method": "realScrollClipsHitsAndNeverMovesTheWorld",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "catalogPreservesMasterAndCommonerCannotUseOrRegister",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "checkpointRestoresLearnedActionsAndSlotsAtomically",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "commonerCanActuallyLearnRegisterAndUseBasicAttackThroughProductionInput",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "curanumPurchaseToLearningUsesRealShopInputAndPersists",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "goldMaterialsAndSaveFailureAreTransactional",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "instantHealDuplicateSlotsShareCadenceWithoutDoubleCharge",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "latestCaptureCorrectsStaffIntWisAndWarriorPrerequisitePair",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "learnedLeapRegistersAndRestoresWithImplementedCombatSupport",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "modalSelectionLeavesMovementAndTickActiveAndRenders",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "normalLearningRequiresMatchingJobAndRetainsAtomicCosts",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "policiesCoverEveryIdAndShowConcreteStatsCostsAndItems",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "readonlySaveCannotChargeLearningOrChangeSlots",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "referenceIconsUseExactIdsAndUnknownDoesNotBorrowArt",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "selectedSkillAndQuickSlotUseTheSharedCombatGate",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "shopFailureAndEarlyEconomyHaveNoPartialPayment",
+      "result": "PASS"
+    },
+    {
+      "class": "com.projectdark.mobile.SkillWindowTest",
+      "method": "unsupportedArchiveNeverChargesAndDefaultListIsPlayable",
+      "result": "PASS"
+    }
+  ],
+  "independentApkV2SignatureAndContentDigest": "PASS",
+  "signerSha256": "be03a48385b654ade1f5f48f66c40b7d11bbbc150ea694425b70d10109e0b38f",
+  "nativeRenderReview": "Reviewed final five sequence grid and actual GameView contact registration; preliminary source water/fire reflection rejected and superseded. Captured occlusions/compression remain; no user visual acceptance.",
+  "libraryFileId": "libfile_98fc554fa3008191a71abf7ef70bb9fa",
+  "deliveryFilename": "PROJECT_DARK_V238_TEST.apk"
+}

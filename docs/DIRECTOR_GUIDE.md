@@ -40,7 +40,7 @@ Director는 매 실행 가능한 도구로 활성 상태·마지막 실행·실�
 
 - 구현/호출 연결, compile, 실제 실행한 관련 rule/integration audits, assembleDebug와 APK 존재, Android 실행, 시각 acceptance를 각각 기록한다.
 - audit 클래스 컴파일과 audit 실행은 다르다. 기존 CI가 컴파일만 하면 실행 공백을 드러내고 필요한 관련 검증을 연결한다.
-- 최신 build SHA의 이동/NPC/타깃/공격/사망 정확히 1회/보상/성장/프로세스 재시작 복원으로 공동 루프를 검증한다.
+- 공동 루프 전체(이동/NPC/타깃/공격/사망 정확히 1회/보상/성장/프로세스 재시작 복원)는 최종 통합과 공통 기반 변경 때 검증한다. 개별 수정은 변경 기능과 직접 영향받는 경로를 먼저 검증하며, 전체 루프 재검사를 모든 후보 APK의 선행조건으로 삼지 않는다. 구체적인 선택·확대·재사용 기준은 `../AGENTS.md`의 “Change-scoped verification”을 따른다.
 - 마을 지형·충돌·캐릭터 외형도 실제 Android 증거로 판정한다. 환경 미확보는 해당 runtime gate 미검증이며 독립 구현을 멈출 사유는 아니다.
 - 보상 snapshot만으로 process restart 완료라고 하지 않는다. 앱 종료 후 동일 상태·중복 보상 방지를 확인해야 한다.
 - 사용자에게 가치 있는 결과가 있으면 exact-SHA APK와 Asia/Seoul 빌드 시각, 변경/검증/미검증을 전달한다. mockup·atlas preview는 runtime screenshot이 아니다.

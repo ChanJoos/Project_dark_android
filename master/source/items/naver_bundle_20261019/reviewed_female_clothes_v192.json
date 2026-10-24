@@ -1,0 +1,1073 @@
+[
+  {
+    "name": "밀레스꼬뜨",
+    "appearanceId": "wu0000067",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04152",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000067.json": "62330a99444f5abd9c1d0f6186ad55b7359e477eaa4d915b91868ba25994cb4e",
+      "atlas/armor/wu0000067.webp": "2d7c7b2abed0704b67ad5152be83060588b4a4b5c921bd22312ebe234793494b"
+    }
+  },
+  {
+    "name": "루어스꼬뜨",
+    "appearanceId": "wu0000069",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04976",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000069.json": "434761154d6fc4932f158ad974170fc2f0f3c9409bf619073ff611efd73e33f9",
+      "atlas/armor/wu0000069.webp": "3d5d065f3e3d27af908fe9cf88a78dfca7b7b97b13d0450f1a7848decd341597"
+    }
+  },
+  {
+    "name": "뤼케시온꼬뜨",
+    "appearanceId": "wu0000068",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04715",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000068.json": "ce76a830bc96e315381ab7948138a882a79d6261f3619baa9256800f39972d8b",
+      "atlas/armor/wu0000068.webp": "7bf7ae2e8a65df9bcb8bf5fa24db1f7a4fd507f05e44ba874fc65992d4584837"
+    }
+  },
+  {
+    "name": "수오미꼬뜨",
+    "appearanceId": "wu0000070",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03305",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000070.json": "7923682b0a4eeaa78a74d026097a6c7bf522937da4b2c4f0b4402cda91c39a21",
+      "atlas/armor/wu0000070.webp": "0465652ff00bb3d64853f0f21b50c7cbf428f906e36d0de5546fcb40e5645f9f"
+    }
+  },
+  {
+    "name": "오렌꼬뜨",
+    "appearanceId": "wu0000241",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02763",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -8,
+      "requiredLevel": 1,
+      "weight": 1
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000241.json": "656f7ba6ccb155d917587b5f9c6711636ebcb0de143cd5eb4188bf40ee08a470",
+      "atlas/armor/wu0000241.webp": "1c90df0d6963f5709fdd5651b5214eb2bb7c21938e59e7be3371656de822f1ad"
+    }
+  },
+  {
+    "name": "밀레스브리간딘",
+    "appearanceId": "wu0000047",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04047",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -20,
+      "requiredLevel": 11,
+      "weight": 6
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000047.json": "3006954a78ce686e5ea48cfa5760f639667e07436a2669210b4e344b7b1dcd2e",
+      "atlas/armor/wu0000047.webp": "584102a6501079aca4b29470c897b1e2eab80b524c8fc20ffd5d45a2e3007d83"
+    }
+  },
+  {
+    "name": "루어스브리간딘",
+    "appearanceId": "wu0000048",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04870",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -20,
+      "requiredLevel": 11,
+      "weight": 6
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000048.json": "c5723e098326da52945268cfe03c58c3f3839122623650781752147c09d4cce8",
+      "atlas/armor/wu0000048.webp": "cdc3a1e3b5661833028de70af53a71f7bb20792def124790b58016b9d54e4293"
+    }
+  },
+  {
+    "name": "뤼케시온브리간딘",
+    "appearanceId": "wu0000049",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04609",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -20,
+      "requiredLevel": 11,
+      "weight": 6
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000049.json": "07af09df6993ec3b2dcbadce5a1f75390834c5eb71101b7c5891652cc2513435",
+      "atlas/armor/wu0000049.webp": "e6ae3c7bdbe39438f0011aef417139fd436d5a3ad8f637ae54b86738e98ee569"
+    }
+  },
+  {
+    "name": "수오미브리간딘",
+    "appearanceId": "wu0000050",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03199",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -20,
+      "requiredLevel": 11,
+      "weight": 6
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000050.json": "c3dd1865d2916d9caa51b6dc846f3034f56405d8529c0a37de194c848f24dd77",
+      "atlas/armor/wu0000050.webp": "eafe71c4040f2bef62545233a7901fab94ca7a2a53d556e5079bf08180068d39"
+    }
+  },
+  {
+    "name": "오렌브리간딘",
+    "appearanceId": "wu0000242",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02671",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -16,
+      "requiredLevel": 11,
+      "weight": 5
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000242.json": "302bdf54dc0266ec3c205d4bdd9f7ea6e7b78bc297fb46740779e4a719cfa009",
+      "atlas/armor/wu0000242.webp": "9fae64d2ad7d76dca8312ac8c0fc5eaa9ba48d205f36b38c2de46edca28d7989"
+    }
+  },
+  {
+    "name": "밀레스코르스",
+    "appearanceId": "wu0000087",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03977",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 3,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -30,
+      "requiredLevel": 41,
+      "weight": 9
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000087.json": "f76c615670724f3e4e57193689171b41dced165cfa09be2b51a9784af4ef39c5",
+      "atlas/armor/wu0000087.webp": "b402c5b6dc550281b125641b66d31cb6f6745ffd700585ac97a86f038c3c17a2"
+    }
+  },
+  {
+    "name": "루어스코르스",
+    "appearanceId": "wu0000090",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04800",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 3,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -30,
+      "requiredLevel": 41,
+      "weight": 9
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000090.json": "2292776aded41b950d25c638d43971a2ff5f56cdf5daaef515a917c3a7fa2d2c",
+      "atlas/armor/wu0000090.webp": "58a6731369280db897e6253d0d0d0d9fa410d5ac28893b64a5812c88b0a4bbc6"
+    }
+  },
+  {
+    "name": "뤼케시온코르스",
+    "appearanceId": "wu0000089",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04539",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 3,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -30,
+      "requiredLevel": 41,
+      "weight": 9
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000089.json": "2e3d628660e8c4976f8f6609c98c43100b3e3fd4d976b78e48cb98d721b7f14d",
+      "atlas/armor/wu0000089.webp": "434cbd11a90ade1fe1b7a4f05f7bcd9de11580ca667ea95b8f830598cffbbc6d"
+    }
+  },
+  {
+    "name": "수오미코르스",
+    "appearanceId": "wu0000088",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03129",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 3,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -30,
+      "requiredLevel": 41,
+      "weight": 9
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000088.json": "2cef90547f1fab6b7b78930f3f785bd8ed720029ce0c74af9d691cbf0e541e4e",
+      "atlas/armor/wu0000088.webp": "b87c6d03ed55dd9d9f781692d75d2d9ffa229af328b45bda330a113d45789cc5"
+    }
+  },
+  {
+    "name": "오렌코르스",
+    "appearanceId": "wu0000244",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02594",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 3,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -30,
+      "requiredLevel": 41,
+      "weight": 9
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000244.json": "a145ce8676c12c7028a85a4714703298b624d2c40f4b1f936c68fc4af2a25f34",
+      "atlas/armor/wu0000244.webp": "c4c695278539fd227b66bfdd5d825adc8e72e59d5ffd001c505801457b8c1e4a"
+    }
+  },
+  {
+    "name": "밀레스페플로스",
+    "appearanceId": "wu0000110",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03941",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -42,
+      "requiredLevel": 71,
+      "weight": 13
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000110.json": "3b2d0a390aad3e435d2b9670aa436bb5ad416a74b4a700de8a7899b83d8602a1",
+      "atlas/armor/wu0000110.webp": "ba61003a4e10e1b407029e390531fff63bdf172cb0943d50f7b660bcf7fed269"
+    }
+  },
+  {
+    "name": "루어스페플로스",
+    "appearanceId": "wu0000149",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04764",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -42,
+      "requiredLevel": 71,
+      "weight": 13
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000149.json": "c228bd10302a611f93697132f8589a0064d458c6e60ee36caff3cd45af7538ad",
+      "atlas/armor/wu0000149.webp": "1b60b7177e7a359cf33162ad3e17e6ba39098b0fcd6bbeaefd745d60e824ed5e"
+    }
+  },
+  {
+    "name": "뤼케시온페플로스",
+    "appearanceId": "wu0000148",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04503",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -42,
+      "requiredLevel": 71,
+      "weight": 13
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000148.json": "ab25d4a91051ccecee91acafcdad531f087094650751475fbce94de2a9454f9a",
+      "atlas/armor/wu0000148.webp": "309a2fef43b52770918c9a3489231e69c27037b55e2f5e9b1e408a9f520c6f16"
+    }
+  },
+  {
+    "name": "수오미페플로스",
+    "appearanceId": "wu0000147",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03093",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -42,
+      "requiredLevel": 71,
+      "weight": 13
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000147.json": "b81687fcba1074853289d20f4f0ceaaf22c9f8a49900b66f0ab2fe645673c5c4",
+      "atlas/armor/wu0000147.webp": "34f5432ceb86ea86887e8ce974e8ee596a27acc1370c4f9198d33ca14f204fff"
+    }
+  },
+  {
+    "name": "오렌페플로스",
+    "appearanceId": "wu0000243",
+    "articleId": "292009",
+    "source": "292009/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02558",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -42,
+      "requiredLevel": 71,
+      "weight": 13
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000243.json": "be19934bb0036daf25939dbc391c2158c6da40b9c382a05769d82aa47fe6770a",
+      "atlas/armor/wu0000243.webp": "126d4c97f7cf5123f42d665d5eed0df7c680f4b2e3dbfa4b17a72cad5b80130d"
+    }
+  },
+  {
+    "name": "밀레스연무복",
+    "appearanceId": "wu0000080",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04012",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000080.json": "2aa6a013319afc67aee3e8a75529a6f1594920d9f21c20b79288e3be924afa5f",
+      "atlas/armor/wu0000080.webp": "0a90e5e0e8c424c5c31d461061b30583728bc8a0e99a013a05ab9dc0721cc4bf"
+    }
+  },
+  {
+    "name": "루어스연무복",
+    "appearanceId": "wu0000079",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04835",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000079.json": "43d399e0868435f63c920944befbfc345db93714a36bad956359025d1d778c73",
+      "atlas/armor/wu0000079.webp": "a510e80061b0be7fd720568b2301344a05a7b01bd1347f0fc11dfde1db00715d"
+    }
+  },
+  {
+    "name": "뤼케시온연무복",
+    "appearanceId": "wu0000082",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04574",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000082.json": "e2da8dafa1703536952e247fa7266611130b12f49448f83c8e61974cf063a422",
+      "atlas/armor/wu0000082.webp": "cc563664c060b78034018b0d7b507736271a391d0153d5b12d6b85583e3b55d4"
+    }
+  },
+  {
+    "name": "수오미연무복",
+    "appearanceId": "wu0000081",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03164",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000081.json": "d107a27b8e9217a209fb8664b7f4b04ba56640cb674f03201e0f553c3927fc01",
+      "atlas/armor/wu0000081.webp": "25626cc182d66538b573080ef482c3dab3936ad83f2bf646b4408bef4a9cbdaf"
+    }
+  },
+  {
+    "name": "오렌연무복",
+    "appearanceId": "wu0000231",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02629",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -10,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000231.json": "9ec2dbc4d0c0f0a8226d25df488aafa9ec95e0f17a0b8a22d1e3c7827ec224cc",
+      "atlas/armor/wu0000231.webp": "7e45fcc614318b9eb8e55072a4d6846623e77adf607803dea4fd314ef8c2bb38"
+    }
+  },
+  {
+    "name": "밀레스연무도복",
+    "appearanceId": "wu0000061",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04017",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -19,
+      "requiredLevel": 11,
+      "weight": 6
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000061.json": "bfc80132c0cd58c993f1eeae9f6119ace65ec8a7c5a193d29c7affafa4acd6a8",
+      "atlas/armor/wu0000061.webp": "fb6dd50950e1f1a22d3262b62ee282d45f6fef4b24bac99b1ed13f040a80a457"
+    }
+  },
+  {
+    "name": "루어스연무도복",
+    "appearanceId": "wu0000062",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04840",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -19,
+      "requiredLevel": 11,
+      "weight": 6
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000062.json": "b13be5210c24729e13cff1646bbdfa93d4cf6227cdfe17057645d998d5f3f44f",
+      "atlas/armor/wu0000062.webp": "c2cd756d736d6466195415c6d8b0bb00199eee26c40de0bd095a48b8773458b8"
+    }
+  },
+  {
+    "name": "뤼케시온연무도복",
+    "appearanceId": "wu0000059",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04579",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -19,
+      "requiredLevel": 11,
+      "weight": 6
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000059.json": "e5102c6efca3c984fb9f47de346620cf8ec76024e22ca04677d73aeb90661b50",
+      "atlas/armor/wu0000059.webp": "aa4433937f9690f9515920c3c1e11b11964e5b1a8e5c3a9c6467b5dd63bf29cd"
+    }
+  },
+  {
+    "name": "밀레스풍전도복",
+    "appearanceId": "wu0000122",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03926",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -38,
+      "requiredLevel": 71,
+      "weight": 11
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000122.json": "2f50e2893eb2628083587dc6c49ae1922b8ad5aee7d79c327f984bfd291bcf1c",
+      "atlas/armor/wu0000122.webp": "da8aeb49f9a0425285c8623e57dedf95bf0b24f1351461569d77989c6d9116f2"
+    }
+  },
+  {
+    "name": "뤼케시온풍전도복",
+    "appearanceId": "wu0000120",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04488",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -38,
+      "requiredLevel": 71,
+      "weight": 11
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000120.json": "90e37407789868ddf14cf379ff1d5964558b5a1d6c5978b3a9981ae7d0cf3be5",
+      "atlas/armor/wu0000120.webp": "f8156e96cddaa8a9105987384676fea58500e6685c1d29a071b4b92ea47fc280"
+    }
+  },
+  {
+    "name": "수오미풍전도복",
+    "appearanceId": "wu0000119",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03078",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -38,
+      "requiredLevel": 71,
+      "weight": 11
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000119.json": "e32f51cc0d554fc2fd49b8cf93198f76e582cd99ea68b724a6418515286c0190",
+      "atlas/armor/wu0000119.webp": "0a543b6322b00aa9751cfdb545b02e2057a18d18e8abee23dca13bc2ed34da76"
+    }
+  },
+  {
+    "name": "오렌풍전도복",
+    "appearanceId": "wu0000234",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02548",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -38,
+      "requiredLevel": 71,
+      "weight": 11
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000234.json": "6e666cdae855a6a0b0cbc02d518850716071ed943753b98362f5fff47cbf6a35",
+      "atlas/armor/wu0000234.webp": "d07e4b77bd8ba80adb5fffcc83cf1bd95b33580c169dca1e93ac81412b643774"
+    }
+  },
+  {
+    "name": "밀레스대양도복",
+    "appearanceId": "wu0000142",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04122",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -48,
+      "requiredLevel": 99,
+      "weight": 14
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000142.json": "a3dc4c9091eac32a305315768a49840df8f06747c7cf73fa49adc4a3011b2d6b",
+      "atlas/armor/wu0000142.webp": "daaeba35c01943795ec5477f4b6beb0a31db2b467b71c610bf1a352e13c3c970"
+    }
+  },
+  {
+    "name": "뤼케시온대양도복",
+    "appearanceId": "wu0000140",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04685",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -48,
+      "requiredLevel": 99,
+      "weight": 14
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000140.json": "ce04ba726c073e9d31941abe152ebf56a56b4bddb1029a688d4c43a5e9d74108",
+      "atlas/armor/wu0000140.webp": "25f1ab435ca61adc136a5908c2d172fbed4920a6ff838225063a59272f930dfa"
+    }
+  },
+  {
+    "name": "수오미대양도복",
+    "appearanceId": "wu0000139",
+    "articleId": "291223",
+    "source": "291223/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03275",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -48,
+      "requiredLevel": 99,
+      "weight": 14
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000139.json": "3a0df579f9170bef50e8e5a011d712358007ead180278e7945feb5421cf2154d",
+      "atlas/armor/wu0000139.webp": "ef16067b57c9d9e941943016aa7b3fbaffeb1f7b5f884913781f10a441b0237f"
+    }
+  },
+  {
+    "name": "오렌로브",
+    "appearanceId": "wu0000236",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02708",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 1,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -8,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000236.json": "8b64a6aeaacc5c2f81c449148e7573ce2f18ecb49588cea471a347ca71127bd1",
+      "atlas/armor/wu0000236.webp": "dacdec77908d88fe38ebacb8408ebc9bda89e54635e190a3d58c358f66a3eb75"
+    }
+  },
+  {
+    "name": "밀레스미스틱로브",
+    "appearanceId": "wu0000056",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04062",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 5
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000056.json": "1a25ffd1ac6fec7114b34aa21f13cc33d2fc9da397f7d39958789a7ae9c2761f",
+      "atlas/armor/wu0000056.webp": "270408334f3c11ca89f4baefa62e6c891fc926d73c23f2836d035ae4d10d7fff"
+    }
+  },
+  {
+    "name": "루어스미스틱로브",
+    "appearanceId": "wu0000058",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04885",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 5
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000058.json": "3eb701532f2495822e8a1115aa53fa42cc08872ddbc10651d7c3e0e8927ceba4",
+      "atlas/armor/wu0000058.webp": "095db53e3d10435f125b15ecbd1c8caf6bf648f7af5d705732206b46f8e03f43"
+    }
+  },
+  {
+    "name": "뤼케시온미스틱로브",
+    "appearanceId": "wu0000055",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04624",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 5
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000055.json": "731dcc7452eddafa7918776e1f7e4ddc9e24d3facd8a24a6095b388f1faaa000",
+      "atlas/armor/wu0000055.webp": "8e30978dc513a1b43cbe4e6ca40caffe365c2ddd397c349d52dcbb2c745a6f07"
+    }
+  },
+  {
+    "name": "수오미미스틱로브",
+    "appearanceId": "wu0000057",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03214",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 5
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000057.json": "aa818be97dff4e541e94ece384c50676e85399d2d684b4c2a01747b29abffd29",
+      "atlas/armor/wu0000057.webp": "dfb4aaf297c8c5386238e38f58157e02c197f5e47039b444ad936bbb3ab8cfa2"
+    }
+  },
+  {
+    "name": "오렌미스틱로브",
+    "appearanceId": "wu0000237",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02687",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 2,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 5
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000237.json": "e63674c6a9b5a3980a4357dba17aaab0d002af5da7bd0c2bf0c61558cd86d08a",
+      "atlas/armor/wu0000237.webp": "f04d2988ee33fa57e1e8dc482bff1996a6e794b1852f96acbfcabb8146523bf3"
+    }
+  },
+  {
+    "name": "밀레스홀리로브",
+    "appearanceId": "wu0000118",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03913",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -34,
+      "requiredLevel": 71,
+      "weight": 10
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000118.json": "c3f8505765d66e1a9665c3d3fb90824213f4fb8af815cb5e28089089c6c1237f",
+      "atlas/armor/wu0000118.webp": "0d7f5b3e0ad86953746887aa2f27d5d1ad8ad50928e20aec06d3102031b554d0"
+    }
+  },
+  {
+    "name": "루어스홀리로브",
+    "appearanceId": "wu0000117",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04736",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -34,
+      "requiredLevel": 71,
+      "weight": 10
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000117.json": "6f860941bf0fdf1fa9cbbd389680a3cee1cb377e9bde4d87e062373c4e24eadc",
+      "atlas/armor/wu0000117.webp": "59d0e73697b5ba15508903fc1b9e4a4ad52e3c6cc2c19e976ea5092e0d67102b"
+    }
+  },
+  {
+    "name": "뤼케시온홀리로브",
+    "appearanceId": "wu0000116",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04475",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -34,
+      "requiredLevel": 71,
+      "weight": 10
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000116.json": "574a89a70c9e892b5ccea1c8dca727c8fc7cb772a7d2bfac5d4840d91ca0e4c8",
+      "atlas/armor/wu0000116.webp": "ce31ce0ba4522786cf8df70188a89888053fb1af722a61a37a301400066d918e"
+    }
+  },
+  {
+    "name": "수오미홀리로브",
+    "appearanceId": "wu0000115",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03065",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -34,
+      "requiredLevel": 71,
+      "weight": 10
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000115.json": "62efc6f8e207a094731dbda13697142dd6f1d2c9bcfea811e7d09861c4dceee1",
+      "atlas/armor/wu0000115.webp": "41f29e692cb07ead77b809cdf33b46251d60fbb6caed8e0ec702e0f47a8cf1f8"
+    }
+  },
+  {
+    "name": "오렌홀리로브",
+    "appearanceId": "wu0000239",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02530",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 4,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -34,
+      "requiredLevel": 71,
+      "weight": 10
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000239.json": "d098169ac5a85abd6dac66a0298cb9da1a25e6fca9d4bcb8a347377c36ba7f84",
+      "atlas/armor/wu0000239.webp": "3c7156bd45824dd29a52005d42fc7eaaa9617826713e8c52be8e3c285b496bbc"
+    }
+  },
+  {
+    "name": "밀레스매직로브",
+    "appearanceId": "wu0000138",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04082",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "밀레스",
+    "historicalStats": {
+      "AC": -43,
+      "requiredLevel": 99,
+      "weight": 14
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000138.json": "36db9f0d88d6aa11b1074af49ac59d51be88e4a0d5cad04cab867ea7126be5bb",
+      "atlas/armor/wu0000138.webp": "b4b33b141ce3d82486035059e29920b9254e3ced2810822388f4d29ab3aa793c"
+    }
+  },
+  {
+    "name": "루어스매직로브",
+    "appearanceId": "wu0000137",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04906",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "루어스",
+    "historicalStats": {
+      "AC": -43,
+      "requiredLevel": 99,
+      "weight": 14
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000137.json": "2e2391e6195018c019c09439816bbb69177b5cac673e7a4601b570b057e083df",
+      "atlas/armor/wu0000137.webp": "d49e37fc035931b71d1d4b9186a29d2389f7e7ac7dc5f929f595cd0630064d2f"
+    }
+  },
+  {
+    "name": "뤼케시온매직로브",
+    "appearanceId": "wu0000136",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R04645",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "뤼케시온",
+    "historicalStats": {
+      "AC": -43,
+      "requiredLevel": 99,
+      "weight": 14
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000136.json": "a6f967b38d36e74ba15d016d3fce6493e898b7428d696cc60bab27828157eb55",
+      "atlas/armor/wu0000136.webp": "286ad9602a524272fda4043165230e2267a67dc822f142ed99bdc31308ee7851"
+    }
+  },
+  {
+    "name": "수오미매직로브",
+    "appearanceId": "wu0000135",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R03235",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "수오미",
+    "historicalStats": {
+      "AC": -43,
+      "requiredLevel": 99,
+      "weight": 14
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000135.json": "572f3c84db7cd2eadc24ecbb005f783504cba29e69aa97c180422fd965fae5fe",
+      "atlas/armor/wu0000135.webp": "0e8d210a491d340ca55792c3f75fff6ac6875d2db6173cade0befa9061cb8bcc"
+    }
+  },
+  {
+    "name": "오렌매직로브",
+    "appearanceId": "wu0000240",
+    "articleId": "290588",
+    "source": "290588/source_00.png",
+    "itemId": "USER_ITEM_20261018_R02703",
+    "sourceSection": "MANUALLY_REVIEWED_FEMALE_VILLAGE_TABLE",
+    "tier": 5,
+    "town": "오렌",
+    "historicalStats": {
+      "AC": -45,
+      "requiredLevel": 99,
+      "weight": 10
+    },
+    "completeIdleWalkAction": true,
+    "sourceBase": "https://lod-dressup-2.web.app/",
+    "files": {
+      "data/type/armor/wu0000240.json": "86b3115186c3a6481eb946c2e995ebb6cddb5ab763659c3113590d657ddc6c57",
+      "atlas/armor/wu0000240.webp": "465ab293d5b79506bbd1211bbced1ccc62a560a4b1a239fe7a5adbd9b8d5bdc3"
+    }
+  }
+]

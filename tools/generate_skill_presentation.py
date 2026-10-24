@@ -20,6 +20,7 @@ profiles={
  'SPIN_KICK':{'group':'d','back':[10,11,12,13,14,15,16,17,10],'front':[14,15,16,17,10,11,12,13,14],'phases':[0,.15,1/3,.43,.52,.60,.68,.76,.85]},
  'JUMP_KICK':{'group':'c','back':[24,25,26],'front':[27,28,29]},
  'SWING':{'group':'02','back':[0],'front':[2]},
+ 'TWO_HAND':{'group':'c','back':[0,1,2,3],'front':[4,5,6,7],'phases':[0,.23,1/3,.5]},
  'JUMP':{'group':'f','back':[4],'front':[5]},
  'RAISE':{'group':'f','back':[0,1,0],'front':[2,3,2]},
  'IDLE':{'group':'01','back':[0],'front':[1]},
@@ -27,7 +28,7 @@ profiles={
 }
 decisions=list(csv.DictReader((ROOT/'docs/SKILL_ACTION_DECISIONS.csv').open()))
 decisions_by_id={r['id']:r for r in decisions}
-assert len(decisions_by_id)==len(catalog)==221
+assert len(decisions_by_id)==len(catalog)==222
 assert set(decisions_by_id)=={r['id'] for r in catalog}
 entries=[]
 for r in catalog:
@@ -59,3 +60,33 @@ for r in decisions:
 java='package com.projectdark.mobile;\n\n/** Generated from the reviewed per-ID decisions; do not infer rules from skill names. */\nfinal class SkillActionData {\n  static final String[][] ROWS={\n'+'\n'.join(data_rows)+'\n  };\n}\n'
 (ROOT/'app/src/main/java/com/projectdark/mobile/SkillActionData.java').write_text(java)
 print(f'{len(entries)} reviewed skill mappings; {len(manifest)} unchanged original body frames')
+
+# Accepted source-labelled martial overlay follows the legacy projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v228.py"))
+
+# User-selected rogue source icons and separate motion families.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v229.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_martial_v230.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_skill_feedback_v231.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v232.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v233.py"))
+
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v234.py"))
+
+# User V235: source Mage icons/descriptions only; no acquisition import.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_mage_v235.py"))
+
+# V236 user combat correction must follow older projections.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_rogue_v236.py"))
+
+# V243 final circle-specific caster-cross contract follows prior source overlays.
+runpy.run_path(str(Path(__file__).resolve().parent/"apply_mage_v243.py"))
+
+# Final accepted overlays preserve the V266 user-approved runtime projection.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"replay_accepted_skill_overlays_v267.py"))

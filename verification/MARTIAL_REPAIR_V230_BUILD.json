@@ -1,0 +1,190 @@
+{
+  "revision": "V230_MARTIAL_REPAIR_BUILD",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "sourceCommit": "81326bd6fe04a744a695708ee729420fe1bb4c05",
+  "sameJavaAndSourcePixelsAs": "cec835b613ae1578fad3fa819fe31d9531ef07d6",
+  "onlyRuntimeDelta": "Protection channel pivot103,92 measured from original caster feet",
+  "runId": 39748879696,
+  "nativeRuns": [
+    39746341109,
+    39747442663,
+    39747755348,
+    39748879696
+  ],
+  "totalDistinctTests": 55,
+  "unresolvedFailures": 0,
+  "fullRegression": false,
+  "apk": {
+    "name": "PROJECT_DARK_V230_TEST.apk",
+    "package": "com.projectdark.mobile.v230test",
+    "label": "PROJECT DARK V230 TEST",
+    "builtAtKST": "2026-10-22T17:39:41.179631+09:00",
+    "bytes": 101753717,
+    "sha256": "0d3876eb9bee85bca4260a83478012b79b038b50b237ef4c927ad21d0f17d02d",
+    "certificateSha256": "9392e54c73611befbe121fe1a5ff276a3591e60d61b8799d91aacfb89181d923",
+    "signature": "CI apksigner V2 PASS; downloaded ZIP/APK CRC/hash, embedded source/run, binary label/package independently verified"
+  },
+  "packagedSourceFilesMatched": 20,
+  "separateInstall": true,
+  "oldDataCopied": false,
+  "scope": "Forward actor1..3 target-relative leap, NPC/monster, attack/final-facing including lethal, live-target and random side fallback; Bunggak SIDE_KICK;four-adjacent Pacheon excluding diagonal/far;seven original31px transparent-corner icons;original Muyeong/protection GIF projection;accepted Yeoncheon FX/numeric rules unchanged",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "limits": [
+    "Phone/user visual acceptance pending",
+    "Inverse SCREEN alpha remains an approximation; one original source facing and occluded pixels",
+    "New .v230test does not inherit old app-private saves;stable signing remains open"
+  ],
+  "nativeEvidence": {
+    "firstRun": 39746341109,
+    "firstCases": 53,
+    "normalizedRun": 39747442663,
+    "normalizedCases": 21,
+    "latestDistinct": 55,
+    "unresolvedFailures": 0,
+    "cases": {
+      "com.projectdark.mobile.SkillSpatialContractTest.originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId": true,
+      "com.projectdark.mobile.SkillSpatialContractTest.passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic": true,
+      "com.projectdark.mobile.SkillSpatialContractTest.liveGameInputRendersDistinctFinisherAndSpellEffects": true,
+      "com.projectdark.mobile.SkillSpatialContractTest.targetMovesWallsAndViewportAreRecheckedAtContact": true,
+      "com.projectdark.mobile.SkillSpatialContractTest.actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass": true,
+      "com.projectdark.mobile.SkillContactRegressionTest.bothCrashersHavePeakEnergyBetweenActorsInEveryDirection": true,
+      "com.projectdark.mobile.SkillContactRegressionTest.fourCurseCrownsAreIncludedAndRenderWithoutTheOldCutoff": true,
+      "com.projectdark.mobile.SkillContactRegressionTest.damageAndVisibleRecipientEffectStartTogetherIncludingLethalDragon": true,
+      "com.projectdark.mobile.SkillPresentationTest.allCatalogIdsAndBothBodiesHaveBoundedDirectionalFrames": true,
+      "com.projectdark.mobile.SkillPresentationTest.twoChannelsAreSeparatedDeduplicatedAndCancelled": true,
+      "com.projectdark.mobile.SkillPresentationTest.realFieldSkillInputDrivesCasterThenHitAndHealRecipient": true,
+      "com.projectdark.mobile.SkillPresentationTest.originalFramesAndCurrentEquipmentRenderForEachGenderDirectionPose": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.all34MartialSkillsHaveLiveEffectsInNormalAndTestModes": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.leapValidatesActorLandingsEvenInActorOverlapRoomsAndNeverCrossesTerrain": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.martialBuffsChangeDefenseEvasionBasicDamageRegenerationAndSpeed": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.freezeStopsMovementAndPendingAttacksButRootStillAllowsAdjacentAttackForExactlyEightSeconds": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.actualQuickslotsLeapOverNpcAndApplyInvincibilityWithoutSelectionOrApproach": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.lineHitsAllThreeCellsTogetherOnlyFacingAndEmitsOneCleanContactPerVictim": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.reflectionRedirectsEqualPhysicalAndMagicDamageAndInvincibilityBlocksDamageAndPoison": true,
+      "com.projectdark.mobile.MartialMechanicsV173Test.facingLeapCrossesMonsterOrNpcAndRejectsAbsentWrongSideAndBlockedLandings": true,
+      "com.projectdark.mobile.MartialRepairV230Test.exactSourceIconsAndCompleteSourceFxRenderAndFade": true,
+      "com.projectdark.mobile.MartialRepairV230Test.missingForwardTargetBlockedLandingAndSideTargetDoNotSpendOrMove": true,
+      "com.projectdark.mobile.MartialRepairV230Test.forwardMonsterAndNpcAtEveryDistanceUseTargetRelativeLandingAndFaceBackEvenAfterKill": true,
+      "com.projectdark.mobile.MartialRepairV230Test.pacheonHitsOnlyFourAdjacentDirectionsAndBungsinUsesBunggakProfile": true,
+      "com.projectdark.mobile.RogueReviewV229Test.reviewedActiveDaggerAndThrowMotionsReachNormalQuickslotContactAndNativeDraw": true,
+      "com.projectdark.mobile.RogueReviewV229Test.seupgyeokAndGiseupRetainDistinctIconsDescriptionsLevelsSlotsAndDurableIds": true,
+      "com.projectdark.mobile.RogueReviewV229Test.all25ArticleIconsWinOnBookAndQuickslotsWithoutChangingOtherJobs": true,
+      "com.projectdark.mobile.RogueReviewV229Test.throwsNeverUseKickGroupAndStabsHaveEquippedLungeInBothBodiesAllFacings": true,
+      "com.projectdark.mobile.MartialSevenV228Test.tripleAttackIsLinkedToBasicAndSelfProtectionReducesActualIncomingDamage": true,
+      "com.projectdark.mobile.MartialSevenV228Test.allSevenIconsAndCaptureChannelsRenderWithoutFloorOrSourcePeople": true,
+      "com.projectdark.mobile.MartialSevenV228Test.advanceAttacksThenLeapsOverTargetAndRejectsBlockedOrCancelledLanding": true,
+      "com.projectdark.mobile.MartialSevenV228Test.newIdAndRenamedTripleSurviveDurableRestartWithoutChangingOldLeap": true,
+      "com.projectdark.mobile.MartialSevenV228Test.muyeongHitsEveryRecipientNActualTimesInAllFourDirections": true,
+      "com.projectdark.mobile.MartialSevenV228Test.allSixActiveSkillsUseRealNormalQuickslotsAndNativeRecipientOrCasterEffects": true,
+      "com.projectdark.mobile.MartialSevenV228Test.muyeongSamplesCardinalityAtFirstContactAndKeepsOtherRecipientsAfterFirstDies": true,
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.activeZeroOfOneRestores": true,
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.returnReadyOneOfOneRestores": true,
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.completedTurnInRestoresAndCannotDuplicateReward": true,
+      "com.projectdark.mobile.F5mRestartPersistenceMatrixTest.rpgRewardEquipmentStatsAndProgressionRestore": true,
+      "com.projectdark.mobile.SkillWindowReferenceTest.latestSquareIconUsesExactReferenceCropPixels": true,
+      "com.projectdark.mobile.SkillWindowReferenceTest.originalPanelsAndAllCatalogItemsRemainReachableThroughProductionInput": true,
+      "com.projectdark.mobile.SkillWindowReferenceTest.realScrollClipsHitsAndNeverMovesTheWorld": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.suppliedClassicAnchorsAreExactAndThresholdsNeverBecomeMinimumOneDamage": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.persistedTimedBuffSurvivesRealGameViewRestartAndRegularRegenSurvivesHit": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.allSupportedStatusesAreReachableThroughProductionEffectDispatch": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.statusRoundTripRetainsRemainingDurationWithoutMutatingBaseStats": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.completeDefenseBlocksPhysicalButMagicStillHitsAndDalmaIgnoresDefense": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.spinQuickslotStartsWithoutSelectionFacingOrApproachAndHitsOnlyFourNeighbors": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.areaUltimateChargesOnceUsesOneResourceSnapshotAndNoTargetCostsNothing": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.everyCatalogIdHasAnExplicitAbilityAndDamageScalesByRealStats": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.cursesBuffsFreezePoisonDispelAndExpiryChangeRealCombat": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.allActiveDamageActionsActuallyReachTheResolverWithTheirOwnFormulas": true,
+      "com.projectdark.mobile.SkillAbilityRuntimeTest.daraWaitsThenUsesReleaseResourcesOnceAndCancellationDoesNotDrain": true,
+      "com.projectdark.mobile.MartialRepairV230Test.advanceSharesRandomSideFallbackAndRevalidatesMovedTargetAtContact": true,
+      "com.projectdark.mobile.MartialRepairV230Test.normalQuickslotCrossesUnselectedNpcOrLethalMonsterWithAttackPoseAndFinalFacing": true
+    }
+  },
+  "nativeArtifactProof": [
+    {
+      "run": 39746341109,
+      "artifact": 12411489125,
+      "zipSha256": "cd158b1c8b9ec1337e1a5626dfc4dd71ff36aa14c72bb3724bbc662721446c2b",
+      "result": "53cases51pass2failure; failed remote-target direction tests repaired, all cases resolved by subsequent exact sources"
+    },
+    {
+      "run": 39747442663,
+      "artifact": 12411709402,
+      "zipSha256": "54a43b3aece711ff4aa2381490d78f2b6a0dd60772b5b859dacfe1b6d38839be",
+      "result": "21casesPASS; direction normalized, actual NPC/lethal normal-input, fallback/live-target, unchangedbase leap"
+    },
+    {
+      "run": 39747755348,
+      "artifact": 12412326843,
+      "zipSha256": "4809cce51ad5cf7cbefea14aa4e54bd9d47445f19c297414ceb78bfb35b3a2c2",
+      "result": "2casesPASS; runtime identical to normalized source; central normal-input visual fixtures, candidate not delivered due protection anchor review"
+    }
+  ],
+  "history": {
+    "intermediateRun39747189716": "21cases17pass4fail with same unnormalized remote target direction;superseded and not delivered",
+    "visualCorrection": "Prior99,109 source pivot placed protection above torso; measured original caster foot103,92. Sole runtime delta from cec835b6, exact JSON guard. Source PNG and Java bytes unchanged."
+  },
+  "finalArtifact": {
+    "id": 12412333886,
+    "name": "PROJECT_DARK_V230_MARTIAL_REPAIR",
+    "size_in_bytes": 112743461,
+    "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/12412333886",
+    "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/12412333886/zip",
+    "expired": false,
+    "created_at": "2026-10-22T08:39:46Z",
+    "expires_at": "2027-01-20T08:35:29Z",
+    "updated_at": "2026-10-22T08:39:46Z",
+    "digest": "sha256:4e6fe6fb1e77f816e16720659fd3f59bca39b9ca2bbd923de6135b7670f8e93a",
+    "workflow_run": {
+      "id": 39748879696,
+      "repository_id": 1362092000,
+      "head_repository_id": 1362092000,
+      "head_branch": "codex/rucesion-coast-v157",
+      "head_sha": "81326bd6fe04a744a695708ee729420fe1bb4c05"
+    }
+  },
+  "finalNative": [
+    {
+      "name": "com.projectdark.mobile.MartialRepairV230Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T08:38:06",
+      "hostname": "runnervmxehtw",
+      "time": "8.418"
+    },
+    {
+      "name": "com.projectdark.mobile.MartialSevenV228Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T08:38:16",
+      "hostname": "runnervmxehtw",
+      "time": "17.783"
+    }
+  ],
+  "concurrencyAudit": "PASS in final exact-source workflow",
+  "scopeRun": 39748886757,
+  "sourceIconProof": "7 original31x31 exact RGBA, all original transparent corners;14 raw retained icon/GIF SHA256 verified",
+  "sourceQuality": "Host-native central normal captures and three continuous source sequences inspected; protection torso core assertion PASS; one-source-facing/inverse-SCREEN limitations remain",
+  "sourceRegistration": {
+    "protectionFoot": [
+      103,
+      92
+    ],
+    "source": "master/source/martial_v230/029.gif, idle original frame0"
+  },
+  "librarySave": {
+    "local_path": "/workspace/scratch/191b5a941369/delivery230-final/PROJECT_DARK_V230_TEST.apk",
+    "purpose": "create_library_file",
+    "status": "succeeded",
+    "file_id": "file_00000000fbc481f59b74f9cb662b4ad7",
+    "library_file_id": "libfile_a6ad85ab0750819182bb75bb4b38eecc",
+    "file_name": "PROJECT_DARK_V230_TEST.apk",
+    "local_metadata_applied": true,
+    "path": "/PROJECT_DARK_V230_TEST.apk",
+    "current_version_number": 0
+  }
+}

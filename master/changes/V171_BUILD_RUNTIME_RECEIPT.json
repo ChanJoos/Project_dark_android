@@ -1,0 +1,77 @@
+{
+  "sourceCommit": "18fb16ef866d5b88878451ca3d5729a33ec0d0ec",
+  "focused": {
+    "run": 38862282516,
+    "job": 116847064030,
+    "status": "SUCCESS",
+    "tests": 182,
+    "suites": 32,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "userPathCases": [
+      "actualFreshActivityTestLearnedStateAllowsInventoryEquipAndKeepsShieldRule",
+      "testModeTwoHandSurvivesRestartBeforeEquipmentValidation",
+      "disablingTestModeRemovesPreviewOnlyWeaponWithoutLosingInventory",
+      "normalSavedModeStillRequiresRealLearningAndRetainsLearnedEquipOnRestart"
+    ]
+  },
+  "common": {
+    "pushRun": 38862282488,
+    "pushJob": 116847063857,
+    "pushStatus": "SUCCESS",
+    "successfulGradleExecutions": 26,
+    "prRun": 38862291565,
+    "prJob": 116847093258,
+    "prStatus": "IN_PROGRESS_DUPLICATE",
+    "sourceCommit": "18fb16ef866d5b88878451ca3d5729a33ec0d0ec"
+  },
+  "apk": {
+    "sourceCommit": "18fb16ef866d5b88878451ca3d5729a33ec0d0ec",
+    "runId": "38862282516",
+    "versionCode": 171,
+    "versionName": "1.71-test-twohand",
+    "applicationId": "com.projectdark.mobile.v171test",
+    "updateCompatibleWithV167": false,
+    "apkSha256": "733c324dd027195d8e07b69a53938b22bace4ae20161f1fd43ea6ed60fa8983b",
+    "apkBytes": 80444453,
+    "builtSeoul": "2026-10-16T15:45:03.997015+09:00",
+    "scope": "V171 test-mode learned eligibility and startup restore ordering for twohand equip; retained independent linked basic hits, learned twohand equip gate, video-adapted 0.80s twohand cycle; retained source c twohand blades, consistent four-facing basic/skill renderer, visible joystick, cached actor visual projection and weapon rigs, lean resource projection; retained persisted random CON/WIS growth and actual level-up receipt; asymmetric two-hand/shield equip; Chungryong two-hand BODY; reagent-shop town managers/arrival; shared orange Curum and original Maradium HUD artwork; retained V167 equipment/job mapping and explicit weapon ranges; STR/INT/DEX combat and CON/WIS future level growth integration; one/two-hand four-facing motion and weapon-hand alignment; recipient-centered non-Crasher finishers; Dara resource prerequisite and damage; town-local hunting destinations; collision-free Abel travel arrival; Abel six flowerbeds, overlapping-tree removal and pavement cleanup. Source artwork preserved; original equipment gaps and phone/user visual acceptance PENDING.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    }
+  },
+  "artifacts": {
+    "apk": {
+      "id": 12030192023,
+      "archiveSha256": "029ff01baf196166a67bc64d78347443c5bcf178735cc599bb06446affc36605"
+    },
+    "native": {
+      "id": 12029448892,
+      "archiveSha256": "80887b7152c6a838b0ebf2088a98284c0cc9df1c176c179270bbf108595efa90"
+    }
+  },
+  "library": {
+    "id": "libfile_d2511ce2fd5481918bb1a094c3cf849f",
+    "fileId": "file_0000000027e082309be14a1652c0a4e5",
+    "status": "SAVED",
+    "name": "PROJECT_DARK_V171_TEST.apk"
+  },
+  "verification": {
+    "zipCrcAndArchiveDigests": "PASS",
+    "apkSizeAndHash": "PASS",
+    "embeddedSourceRunVersion": "PASS",
+    "all268BodyAndCatalogBytes": "PASS",
+    "junitIndependentlyParsed": "182/32 all PASS including4actualActivity/inventory/restart cases",
+    "phone": "PENDING"
+  },
+  "delivery": {
+    "status": "DELIVERED",
+    "mainMerged": false,
+    "pr": 197,
+    "phone": "PENDING"
+  }
+}

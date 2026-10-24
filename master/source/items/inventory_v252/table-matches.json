@@ -1,0 +1,2565 @@
+[
+  {
+    "source": "306941/source_01.png",
+    "y": 273,
+    "ids": [
+      "USER_ITEM_20261018_R01881"
+    ],
+    "name": "크리샤오르",
+    "error": 0.0,
+    "native": [
+      "item004.epf",
+      129,
+      0,
+      9,
+      3
+    ],
+    "crop": [
+      12,
+      276,
+      24,
+      302
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "y": 398,
+    "ids": [
+      "USER_ITEM_20261018_R01914"
+    ],
+    "name": "커스프람베르그",
+    "error": 0.0,
+    "native": [
+      "item013.epf",
+      119,
+      0,
+      9,
+      3
+    ],
+    "crop": [
+      11,
+      400,
+      23,
+      426
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "y": 1302,
+    "ids": [
+      "USER_ITEM_20261018_R03838"
+    ],
+    "name": "반보우",
+    "error": 32.146341463414636,
+    "native": [
+      "item006.epf",
+      44,
+      0,
+      1,
+      0
+    ],
+    "crop": [
+      3,
+      1302,
+      34,
+      1334
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "y": 1418,
+    "ids": [
+      "USER_ITEM_20261018_R05109"
+    ],
+    "name": "레드반보우",
+    "error": 29.525714285714287,
+    "native": [
+      "item052.epf",
+      103,
+      0,
+      2,
+      0
+    ],
+    "crop": [
+      5,
+      1420,
+      32,
+      1452
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "y": 1536,
+    "ids": [
+      "USER_ITEM_20261018_R01879"
+    ],
+    "name": "큰개미씨의보우",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "306941/source_01.png",
+    "y": 1766,
+    "ids": [
+      "USER_ITEM_20261018_R02772"
+    ],
+    "name": "영월궁",
+    "error": 0.0,
+    "native": [
+      "item009.epf",
+      244,
+      0,
+      2,
+      1
+    ],
+    "crop": [
+      4,
+      1768,
+      32,
+      1797
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 1021,
+    "ids": [
+      "USER_ITEM_20261018_R05262"
+    ],
+    "name": "단검",
+    "error": 2.388888888888889,
+    "native": [
+      "item001.epf",
+      90,
+      0,
+      11,
+      3
+    ],
+    "crop": [
+      14,
+      1024,
+      24,
+      1048
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 1137,
+    "ids": [
+      "USER_ITEM_20261018_R03535"
+    ],
+    "name": "설단검",
+    "error": 2.388888888888889,
+    "native": [
+      "item001.epf",
+      90,
+      0,
+      11,
+      3
+    ],
+    "crop": [
+      14,
+      1140,
+      24,
+      1164
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 1872,
+    "ids": [
+      "USER_ITEM_20261018_R04366"
+    ],
+    "name": "매단검",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      250,
+      0,
+      11,
+      3
+    ],
+    "crop": [
+      14,
+      1878,
+      23,
+      1902
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 1990,
+    "ids": [
+      "USER_ITEM_20261018_R02486"
+    ],
+    "name": "월단검",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      254,
+      0,
+      9,
+      4
+    ],
+    "crop": [
+      10,
+      1993,
+      24,
+      2017
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 2106,
+    "ids": [
+      "USER_ITEM_20261018_R05473"
+    ],
+    "name": "광단검",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      253,
+      0,
+      12,
+      3
+    ],
+    "crop": [
+      15,
+      2111,
+      23,
+      2134
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 2338,
+    "ids": [
+      "USER_ITEM_20261018_R01478"
+    ],
+    "name": "혈단검",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      255,
+      0,
+      11,
+      4
+    ],
+    "crop": [
+      12,
+      2342,
+      24,
+      2366
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 2686,
+    "ids": [
+      "USER_ITEM_20261018_R05502"
+    ],
+    "name": "곡단도",
+    "error": 0.0,
+    "native": [
+      "item002.epf",
+      251,
+      0,
+      9,
+      10
+    ],
+    "crop": [
+      13,
+      2694,
+      22,
+      2711
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 3267,
+    "ids": [
+      "USER_ITEM_20261018_R03682"
+    ],
+    "name": "비설표",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      220,
+      0,
+      6,
+      6
+    ],
+    "crop": [
+      8,
+      3270,
+      29,
+      3291
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 3383,
+    "ids": [
+      "USER_ITEM_20261018_R03666"
+    ],
+    "name": "비중표",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      220,
+      0,
+      6,
+      6
+    ],
+    "crop": [
+      8,
+      3389,
+      29,
+      3410
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 3499,
+    "ids": [
+      "USER_ITEM_20261018_R03687"
+    ],
+    "name": "비매표",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      220,
+      0,
+      6,
+      6
+    ],
+    "crop": [
+      8,
+      3507,
+      29,
+      3528
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 3731,
+    "ids": [
+      "USER_ITEM_20261018_R03692"
+    ],
+    "name": "비광표",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      221,
+      0,
+      5,
+      6
+    ],
+    "crop": [
+      8,
+      3737,
+      31,
+      3760
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 3857,
+    "ids": [
+      "USER_ITEM_20261018_R03671"
+    ],
+    "name": "비일표",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      221,
+      0,
+      5,
+      6
+    ],
+    "crop": [
+      8,
+      3851,
+      31,
+      3874
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 3963,
+    "ids": [
+      "USER_ITEM_20261018_R03681"
+    ],
+    "name": "비연표",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      222,
+      0,
+      7,
+      9
+    ],
+    "crop": [
+      10,
+      3969,
+      29,
+      3988
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 4089,
+    "ids": [
+      "USER_ITEM_20261018_R03652"
+    ],
+    "name": "비혈표",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      222,
+      0,
+      7,
+      9
+    ],
+    "crop": [
+      10,
+      4088,
+      29,
+      4107
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 4432,
+    "ids": [
+      "USER_ITEM_20261018_R01852"
+    ],
+    "name": "타고나이트채찍",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 4548,
+    "ids": [
+      "USER_ITEM_20261018_R04173"
+    ],
+    "name": "미스릴채찍",
+    "error": 0.0,
+    "native": [
+      "item002.epf",
+      255,
+      0,
+      3,
+      12
+    ],
+    "crop": [
+      5,
+      4555,
+      32,
+      4568
+    ]
+  },
+  {
+    "source": "300060/source_01.png",
+    "y": 868,
+    "ids": [
+      "USER_ITEM_20261018_R04990"
+    ],
+    "name": "루비나반지",
+    "error": 0.0,
+    "native": [
+      "item006.epf",
+      242,
+      0,
+      2,
+      4
+    ],
+    "crop": [
+      4,
+      860,
+      33,
+      885
+    ]
+  },
+  {
+    "source": "300060/source_01.png",
+    "y": 1861,
+    "ids": [
+      "USER_ITEM_20261018_R05113"
+    ],
+    "name": "레드가넷반지",
+    "error": 0.0,
+    "native": [
+      "item013.epf",
+      132,
+      0,
+      1,
+      6
+    ],
+    "crop": [
+      4,
+      1855,
+      35,
+      1880
+    ]
+  },
+  {
+    "source": "300060/source_02.png",
+    "y": 55,
+    "ids": [
+      "USER_ITEM_20261018_R03771"
+    ],
+    "name": "별반지",
+    "error": 46.2010582010582,
+    "native": [
+      "item031.epf",
+      166,
+      0,
+      0,
+      1
+    ],
+    "crop": [
+      3,
+      45,
+      34,
+      75
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 983,
+    "ids": [
+      "USER_ITEM_20261018_R04282"
+    ],
+    "name": "메투스의금반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      205,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      975,
+      32,
+      997
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1347,
+    "ids": [
+      "USER_ITEM_20261018_R03562"
+    ],
+    "name": "산호반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      211,
+      0,
+      2,
+      9
+    ],
+    "crop": [
+      5,
+      1342,
+      33,
+      1361
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1442,
+    "ids": [
+      "USER_ITEM_20261018_R05030"
+    ],
+    "name": "로오의산호반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      211,
+      0,
+      2,
+      9
+    ],
+    "crop": [
+      5,
+      1436,
+      33,
+      1455
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1575,
+    "ids": [
+      "USER_ITEM_20261018_R04263"
+    ],
+    "name": "메투스의산호반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      211,
+      0,
+      2,
+      9
+    ],
+    "crop": [
+      5,
+      1576,
+      33,
+      1595
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1617,
+    "ids": [
+      "USER_ITEM_20261018_R03348"
+    ],
+    "name": "셔스의산호반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      211,
+      0,
+      2,
+      9
+    ],
+    "crop": [
+      5,
+      1613,
+      33,
+      1632
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1752,
+    "ids": [
+      "USER_ITEM_20261018_R05018"
+    ],
+    "name": "로오의자수정반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      209,
+      0,
+      2,
+      5
+    ],
+    "crop": [
+      4,
+      1745,
+      32,
+      1770
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2180,
+    "ids": [
+      "USER_ITEM_20261018_R04250"
+    ],
+    "name": "메투스의호안석반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      208,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2176,
+      32,
+      2198
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2260,
+    "ids": [
+      "USER_ITEM_20261018_R03335"
+    ],
+    "name": "셔스의호안석반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      208,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2256,
+      32,
+      2278
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2682,
+    "ids": [
+      "USER_ITEM_20261018_R04265"
+    ],
+    "name": "메투스의사파이어반지",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2719,
+    "ids": [
+      "USER_ITEM_20261018_R03350"
+    ],
+    "name": "셔스의사파이어반지",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "292242/source_01.png",
+    "y": 504,
+    "ids": [
+      "USER_ITEM_20261018_R05211"
+    ],
+    "name": "대지의홀디트링",
+    "error": 0.0,
+    "native": [
+      "item006.epf",
+      99,
+      0,
+      8,
+      7
+    ],
+    "crop": [
+      9,
+      499,
+      29,
+      520
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "y": 1551,
+    "ids": [
+      "USER_ITEM_20261018_R01388"
+    ],
+    "name": "화려한귀걸이",
+    "error": 0.0,
+    "native": [
+      "item007.epf",
+      71,
+      0,
+      10,
+      1
+    ],
+    "crop": [
+      13,
+      1541,
+      24,
+      1571
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "y": 1947,
+    "ids": [
+      "USER_ITEM_20261018_R04461"
+    ],
+    "name": "리젠트다이아귀걸이",
+    "error": 2.6036269430051813,
+    "native": [
+      "item052.epf",
+      95,
+      0,
+      5,
+      2
+    ],
+    "crop": [
+      6,
+      1936,
+      29,
+      1964
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "y": 2146,
+    "ids": [
+      "USER_ITEM_20261018_R04461"
+    ],
+    "name": "리젠트다이아귀걸이",
+    "error": 3.0567375886524824,
+    "native": [
+      "item052.epf",
+      96,
+      0,
+      5,
+      1
+    ],
+    "crop": [
+      6,
+      2134,
+      29,
+      2162
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "y": 2838,
+    "ids": [
+      "USER_ITEM_20261018_R05484"
+    ],
+    "name": "골드베리하프",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      115,
+      0,
+      9,
+      9
+    ],
+    "crop": [
+      13,
+      2848,
+      26,
+      2861
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "y": 2954,
+    "ids": [
+      "USER_ITEM_20261018_R01582"
+    ],
+    "name": "프린세스하프",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      178,
+      0,
+      7,
+      8
+    ],
+    "crop": [
+      11,
+      2961,
+      29,
+      2979
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "y": 3070,
+    "ids": [
+      "USER_ITEM_20261018_R01357"
+    ],
+    "name": "황금나무의하프",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      179,
+      0,
+      7,
+      8
+    ],
+    "crop": [
+      10,
+      3077,
+      28,
+      3095
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "y": 3302,
+    "ids": [
+      "USER_ITEM_20261018_R03653"
+    ],
+    "name": "비파",
+    "error": 0.0,
+    "native": [
+      "item009.epf",
+      242,
+      0,
+      6,
+      7
+    ],
+    "crop": [
+      9,
+      3306,
+      32,
+      3327
+    ]
+  },
+  {
+    "source": "292933/source_01.png",
+    "y": 304,
+    "ids": [
+      "USER_ITEM_20261018_R03895"
+    ],
+    "name": "바다의마기아목걸이",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "292933/source_01.png",
+    "y": 1960,
+    "ids": [
+      "USER_ITEM_20261018_R01306"
+    ],
+    "name": "흑요석몽크목걸이(토)",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "292933/source_00.png",
+    "y": 386,
+    "ids": [
+      "USER_ITEM_20261018_R01947"
+    ],
+    "name": "칸의목걸이",
+    "error": 3.7382716049382716,
+    "native": [
+      "item009.epf",
+      49,
+      0,
+      4,
+      1
+    ],
+    "crop": [
+      6,
+      380,
+      30,
+      408
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 873,
+    "ids": [
+      "USER_ITEM_20261018_R04303"
+    ],
+    "name": "매직프람베르그",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 1313,
+    "ids": [
+      "USER_ITEM_20261018_R05011"
+    ],
+    "name": "로운",
+    "error": 0.0,
+    "native": [
+      "item007.epf",
+      180,
+      0,
+      11,
+      11
+    ],
+    "crop": [
+      14,
+      1322,
+      24,
+      1334
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 1474,
+    "ids": [
+      "USER_ITEM_20261018_R03545"
+    ],
+    "name": "샤인",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      114,
+      0,
+      11,
+      11
+    ],
+    "crop": [
+      14,
+      1483,
+      24,
+      1493
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 1634,
+    "ids": [
+      "USER_ITEM_20261018_R04432"
+    ],
+    "name": "마론비쥬",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      176,
+      0,
+      11,
+      11
+    ],
+    "crop": [
+      14,
+      1644,
+      25,
+      1658
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 1800,
+    "ids": [
+      "USER_ITEM_20261018_R04445"
+    ],
+    "name": "림피드비쥬",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      177,
+      0,
+      11,
+      11
+    ],
+    "crop": [
+      13,
+      1808,
+      24,
+      1822
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "y": 1810,
+    "ids": [
+      "USER_ITEM_20261018_R04305"
+    ],
+    "name": "매직파나",
+    "error": 0.0,
+    "native": [
+      "item003.epf",
+      17,
+      0,
+      0,
+      1
+    ],
+    "crop": [
+      3,
+      1811,
+      34,
+      1842
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "y": 2201,
+    "ids": [
+      "USER_ITEM_20261018_R04341"
+    ],
+    "name": "매직가디언스태프",
+    "error": 0.0,
+    "native": [
+      "item013.epf",
+      60,
+      0,
+      4,
+      4
+    ],
+    "crop": [
+      6,
+      2201,
+      30,
+      2226
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 354,
+    "ids": [
+      "USER_ITEM_20261018_R05308"
+    ],
+    "name": "뉴비각반",
+    "error": 1.5662100456621004,
+    "native": [
+      "item052.epf",
+      120,
+      0,
+      7,
+      5
+    ],
+    "crop": [
+      8,
+      348,
+      27,
+      371
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 401,
+    "ids": [
+      "USER_ITEM_20261018_R05554"
+    ],
+    "name": "가죽각반",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 539,
+    "ids": [
+      "USER_ITEM_20261018_R05062"
+    ],
+    "name": "로오의가죽각반",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 691,
+    "ids": [
+      "USER_ITEM_20261018_R04290"
+    ],
+    "name": "메투스의가죽각반",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 1562,
+    "ids": [
+      "USER_ITEM_20261018_R05426"
+    ],
+    "name": "금각반",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      239,
+      0,
+      4,
+      6
+    ],
+    "crop": [
+      6,
+      1558,
+      30,
+      1580
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 1854,
+    "ids": [
+      "USER_ITEM_20261018_R03368"
+    ],
+    "name": "셔스의금각반",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      239,
+      0,
+      4,
+      6
+    ],
+    "crop": [
+      7,
+      1848,
+      31,
+      1870
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 1967,
+    "ids": [
+      "USER_ITEM_20261018_R05107"
+    ],
+    "name": "레드하트각반",
+    "error": 0.0,
+    "native": [
+      "item007.epf",
+      258,
+      0,
+      5,
+      4
+    ],
+    "crop": [
+      7,
+      1961,
+      29,
+      1985
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 2050,
+    "ids": [
+      "USER_ITEM_20261018_R03564"
+    ],
+    "name": "산호각반",
+    "error": 0.0,
+    "native": [
+      "item007.epf",
+      255,
+      0,
+      6,
+      6
+    ],
+    "crop": [
+      8,
+      2044,
+      29,
+      2066
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 2614,
+    "ids": [
+      "USER_ITEM_20261018_R02509"
+    ],
+    "name": "용각반",
+    "error": 0.0,
+    "native": [
+      "item004.epf",
+      113,
+      0,
+      3,
+      2
+    ],
+    "crop": [
+      5,
+      2607,
+      31,
+      2635
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 2693,
+    "ids": [
+      "USER_ITEM_20261018_R02508"
+    ],
+    "name": "용맹의각반",
+    "error": 0.0,
+    "native": [
+      "item006.epf",
+      22,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2691,
+      30,
+      2711
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 2780,
+    "ids": [
+      "USER_ITEM_20261018_R03786"
+    ],
+    "name": "베네티가죽클립",
+    "error": 0.0,
+    "native": [
+      "item006.epf",
+      21,
+      0,
+      2,
+      4
+    ],
+    "crop": [
+      5,
+      2778,
+      31,
+      2803
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 2942,
+    "ids": [
+      "USER_ITEM_20261018_R03785"
+    ],
+    "name": "베네티미스릴클립",
+    "error": 44.059590316573555,
+    "native": [
+      "item001.epf",
+      177,
+      0,
+      1,
+      0
+    ],
+    "crop": [
+      3,
+      2935,
+      34,
+      2966
+    ]
+  },
+  {
+    "source": "303248/source_00.png",
+    "y": 1961,
+    "ids": [
+      "USER_ITEM_20261018_R05189"
+    ],
+    "name": "돈파",
+    "error": 0.0,
+    "native": [
+      "item013.epf",
+      62,
+      0,
+      3,
+      8
+    ],
+    "crop": [
+      6,
+      1966,
+      32,
+      1985
+    ]
+  },
+  {
+    "source": "303248/source_00.png",
+    "y": 2766,
+    "ids": [
+      "USER_ITEM_20261018_R01718"
+    ],
+    "name": "펄스비트",
+    "error": 25.190140845070424,
+    "native": [
+      "item051.epf",
+      183,
+      0,
+      5,
+      6
+    ],
+    "crop": [
+      7,
+      2768,
+      30,
+      2789
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "y": 569,
+    "ids": [
+      "USER_ITEM_20261018_R01401"
+    ],
+    "name": "홀리완드",
+    "error": 2.1164658634538154,
+    "native": [
+      "item009.epf",
+      149,
+      0,
+      6,
+      8
+    ],
+    "crop": [
+      9,
+      573,
+      27,
+      591
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 287,
+    "ids": [
+      "USER_ITEM_20261018_R05275"
+    ],
+    "name": "다크디아나",
+    "error": 0.0,
+    "native": [
+      "item004.epf",
+      133,
+      0,
+      4,
+      5
+    ],
+    "crop": [
+      7,
+      290,
+      30,
+      313
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 2772,
+    "ids": [
+      "USER_ITEM_20261018_R03696"
+    ],
+    "name": "블로우웨이브",
+    "error": 2.71071953010279,
+    "native": [
+      "item051.epf",
+      185,
+      0,
+      1,
+      0
+    ],
+    "crop": [
+      3,
+      2772,
+      34,
+      2804
+    ]
+  },
+  {
+    "source": "301364/source_00.png",
+    "y": 1613,
+    "ids": [
+      "USER_ITEM_20261018_R01435"
+    ],
+    "name": "홀리가디언스태프",
+    "error": 0.0,
+    "native": [
+      "item013.epf",
+      64,
+      0,
+      2,
+      3
+    ],
+    "crop": [
+      4,
+      1616,
+      34,
+      1642
+    ]
+  },
+  {
+    "source": "292242/source_01.png",
+    "y": 265,
+    "ids": [
+      "IT_SOURCE_146_HORUDEITORINGU_358D472E"
+    ],
+    "name": "홀디트링",
+    "error": 0.0,
+    "native": [
+      "item006.epf",
+      98,
+      0,
+      8,
+      7
+    ],
+    "crop": [
+      8,
+      260,
+      28,
+      281
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "y": 1072,
+    "ids": [
+      "USER_ITEM_20261018_R02205"
+    ],
+    "name": "진주목걸이",
+    "error": 0.0,
+    "native": [
+      "item004.epf",
+      152,
+      0,
+      3,
+      9
+    ],
+    "crop": [
+      5,
+      1068,
+      31,
+      1086
+    ]
+  },
+  {
+    "source": "292933/source_00.png",
+    "y": 2302,
+    "ids": [
+      "USER_ITEM_20261018_R02359"
+    ],
+    "name": "자수정목걸이",
+    "error": 51.842731829573935,
+    "native": [
+      "item013.epf",
+      250,
+      0,
+      0,
+      5
+    ],
+    "crop": [
+      3,
+      2292,
+      35,
+      2317
+    ]
+  },
+  {
+    "source": "292933/source_01.png",
+    "y": 643,
+    "ids": [
+      "IT_SOURCE_197_CRYSTAL_5911EC0D"
+    ],
+    "name": "크리스탈목걸이",
+    "error": 0.0,
+    "native": [
+      "item006.epf",
+      240,
+      0,
+      3,
+      6
+    ],
+    "crop": [
+      5,
+      637,
+      30,
+      659
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 358,
+    "ids": [
+      "IT_SOURCE_193_WATERBELT_383B7970",
+      "USER_ITEM_20261018_R03893"
+    ],
+    "name": "바다의 벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      240,
+      0,
+      1,
+      6
+    ],
+    "crop": [
+      4,
+      353,
+      34,
+      375
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 395,
+    "ids": [
+      "IT_SOURCE_193_EARTHBELT_226B231D",
+      "USER_ITEM_20261018_R05227"
+    ],
+    "name": "대지의 벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      243,
+      0,
+      1,
+      6
+    ],
+    "crop": [
+      4,
+      391,
+      34,
+      413
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 432,
+    "ids": [
+      "IT_SOURCE_193_WINDBELT_AF012333",
+      "USER_ITEM_20261018_R03866"
+    ],
+    "name": "바람의 벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      242,
+      0,
+      1,
+      6
+    ],
+    "crop": [
+      4,
+      427,
+      34,
+      449
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 469,
+    "ids": [
+      "IT_SOURCE_193_FIREBELT_449392D4",
+      "USER_ITEM_20261018_R01380"
+    ],
+    "name": "화염의 벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      241,
+      0,
+      1,
+      6
+    ],
+    "crop": [
+      4,
+      465,
+      34,
+      487
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1028,
+    "ids": [
+      "IT_BELT_WATER_LEATHER",
+      "USER_ITEM_20261018_R03900"
+    ],
+    "name": "바다의 가죽벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      234,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1022,
+      34,
+      1044
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1063,
+    "ids": [
+      "IT_BELT_EARTH_LEATHER",
+      "USER_ITEM_20261018_R05234"
+    ],
+    "name": "대지의 가죽벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      234,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1059,
+      34,
+      1081
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1100,
+    "ids": [
+      "IT_BELT_WIND_LEATHER",
+      "USER_ITEM_20261018_R03873"
+    ],
+    "name": "바람의 가죽벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      234,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1096,
+      34,
+      1118
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1138,
+    "ids": [
+      "IT_BELT_FIRE_LEATHER",
+      "USER_ITEM_20261018_R01387"
+    ],
+    "name": "화염의 가죽벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      234,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1133,
+      34,
+      1155
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1416,
+    "ids": [
+      "IT_SOURCE_193_GOLDBELT_E78C2A09",
+      "USER_ITEM_20261018_R03899"
+    ],
+    "name": "바다의 금벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      236,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1408,
+      34,
+      1430
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1451,
+    "ids": [
+      "IT_SOURCE_193_GOLDBELT_43AC2098",
+      "USER_ITEM_20261018_R05233"
+    ],
+    "name": "대지의 금벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      236,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1445,
+      34,
+      1467
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1488,
+    "ids": [
+      "IT_SOURCE_193_GOLDBELT_F5E4AA12",
+      "USER_ITEM_20261018_R03872"
+    ],
+    "name": "바람의 금벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      236,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1481,
+      34,
+      1503
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 1526,
+    "ids": [
+      "IT_SOURCE_193_FIREBELT_449392D4",
+      "USER_ITEM_20261018_R01380"
+    ],
+    "name": "화염의 벨트",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      236,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      1518,
+      34,
+      1540
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 2236,
+    "ids": [
+      "IT_SOURCE_MINIMOB_4"
+    ],
+    "name": "다크그레이벨트(수)+1",
+    "error": 51.360971524288104,
+    "native": [
+      "item008.epf",
+      236,
+      0,
+      1,
+      1
+    ],
+    "crop": [
+      3,
+      2224,
+      33,
+      2253
+    ]
+  },
+  {
+    "source": "293205/source_00.png",
+    "y": 3866,
+    "ids": [
+      "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038",
+      "USER_ITEM_20261018_R02284"
+    ],
+    "name": "주작의 벨트",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      40,
+      0,
+      1,
+      7
+    ],
+    "crop": [
+      4,
+      3860,
+      34,
+      3883
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 802,
+    "ids": [
+      "IT_SOURCE_155_DOUGURI_A82A5522"
+    ],
+    "name": "동각반",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      249,
+      0,
+      6,
+      6
+    ],
+    "crop": [
+      8,
+      797,
+      29,
+      819
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 2003,
+    "ids": [
+      "IT_SOURCE_155_GURINHATOGURI_871D87FC",
+      "USER_ITEM_20261018_R05433"
+    ],
+    "name": "그린하트각반",
+    "error": 0.0,
+    "native": [
+      "item007.epf",
+      257,
+      0,
+      5,
+      4
+    ],
+    "crop": [
+      7,
+      1996,
+      29,
+      2020
+    ]
+  },
+  {
+    "source": "293869/source_00.png",
+    "y": 2124,
+    "ids": [
+      "IT_SOURCE_155_AKUAGURI_C4398D7E"
+    ],
+    "name": "아쿠아각반",
+    "error": 0.0,
+    "native": [
+      "item007.epf",
+      254,
+      0,
+      6,
+      6
+    ],
+    "crop": [
+      8,
+      2118,
+      29,
+      2140
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 416,
+    "ids": [
+      "IT_SOURCE_152_ROORING_4759F2BA"
+    ],
+    "name": "로오의반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      206,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      5,
+      410,
+      33,
+      432
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 458,
+    "ids": [
+      "IT_SOURCE_152_KENTETU_8B92FCD7"
+    ],
+    "name": "현철반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      210,
+      0,
+      2,
+      5
+    ],
+    "crop": [
+      4,
+      449,
+      32,
+      473
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 768,
+    "ids": [
+      "IT_SOURCE_152_KIN_67A36C40",
+      "USER_ITEM_20261018_R05424"
+    ],
+    "name": "금반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      205,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      762,
+      32,
+      784
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1038,
+    "ids": [
+      "USER_ITEM_20261018_R03367"
+    ],
+    "name": "셔스의 금반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      205,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      1033,
+      32,
+      1055
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1657,
+    "ids": [
+      "IT_SOURCE_152_SISUISYOU_11310F31"
+    ],
+    "name": "자수정반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      209,
+      0,
+      2,
+      5
+    ],
+    "crop": [
+      4,
+      1651,
+      32,
+      1676
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 1926,
+    "ids": [
+      "IT_SOURCE_152_TORAME_B1522F0F"
+    ],
+    "name": "호안석반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      208,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      1920,
+      32,
+      1942
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2323,
+    "ids": [
+      "IT_RING_GORU"
+    ],
+    "name": "고루반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      214,
+      0,
+      2,
+      4
+    ],
+    "crop": [
+      4,
+      2315,
+      32,
+      2341
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2547,
+    "ids": [
+      "IT_SOURCE_152_SAFAIA_81A4D338"
+    ],
+    "name": "사파이어반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      212,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2542,
+      32,
+      2564
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2621,
+    "ids": [
+      "USER_ITEM_20261018_R05032"
+    ],
+    "name": "로오의 사파이어반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      212,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2616,
+      32,
+      2638
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2694,
+    "ids": [
+      "USER_ITEM_20261018_R04265"
+    ],
+    "name": "메투스의 사파이어반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      212,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2690,
+      32,
+      2712
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2731,
+    "ids": [
+      "USER_ITEM_20261018_R03350"
+    ],
+    "name": "셔스의 사파이어반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      212,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2727,
+      32,
+      2749
+    ]
+  },
+  {
+    "source": "300060/source_00.png",
+    "y": 2773,
+    "ids": [
+      "IT_SOURCE_152_RYOKUGYOKU_7AB8ADDD"
+    ],
+    "name": "녹옥반지",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      213,
+      0,
+      2,
+      7
+    ],
+    "crop": [
+      4,
+      2766,
+      32,
+      2788
+    ]
+  },
+  {
+    "source": "300060/source_01.png",
+    "y": 1933,
+    "ids": [
+      "USER_ITEM_20261018_R05521"
+    ],
+    "name": "강화된레드가넷반지",
+    "error": 0.0,
+    "native": [
+      "item013.epf",
+      132,
+      0,
+      1,
+      6
+    ],
+    "crop": [
+      4,
+      1928,
+      35,
+      1953
+    ]
+  },
+  {
+    "source": "300060/source_02.png",
+    "y": 430,
+    "ids": [
+      "IT_SOURCE_152_SUZAKUNOYUBIWA_98951BA8"
+    ],
+    "name": "주작의반지",
+    "error": 0.0,
+    "native": [
+      "item008.epf",
+      212,
+      0,
+      3,
+      7
+    ],
+    "crop": [
+      6,
+      425,
+      31,
+      445
+    ]
+  },
+  {
+    "source": "300060/source_02.png",
+    "y": 598,
+    "ids": [
+      "IT_SOURCE_152_KEKONYUBIWA_2892DC6B"
+    ],
+    "name": "결혼반지",
+    "error": 0.0,
+    "native": [
+      "item004.epf",
+      108,
+      0,
+      2,
+      5
+    ],
+    "crop": [
+      4,
+      592,
+      33,
+      617
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "y": 1114,
+    "ids": [
+      "IT_WARDROBE_MW009",
+      "USER_ITEM_20261018_R04308"
+    ],
+    "name": "매직쥬피티아",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      133,
+      0,
+      6,
+      6
+    ],
+    "crop": [
+      7,
+      1115,
+      28,
+      1137
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "y": 1230,
+    "ids": [
+      "IT_WARDROBE_MW007",
+      "USER_ITEM_20261018_R04329"
+    ],
+    "name": "매직마르시아",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      131,
+      0,
+      5,
+      5
+    ],
+    "crop": [
+      8,
+      1232,
+      30,
+      1254
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "y": 1462,
+    "ids": [
+      "IT_WARDROBE_MW026",
+      "USER_ITEM_20261018_R04330"
+    ],
+    "name": "매직루나",
+    "error": 29.859835100117785,
+    "native": [
+      "item005.epf",
+      50,
+      0,
+      4,
+      5
+    ],
+    "crop": [
+      7,
+      1461,
+      32,
+      1481
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "y": 1578,
+    "ids": [
+      "IT_WARDROBE_MW027",
+      "USER_ITEM_20261018_R04340"
+    ],
+    "name": "매직가이아",
+    "error": 35.601706036745405,
+    "native": [
+      "item009.epf",
+      120,
+      0,
+      1,
+      1
+    ],
+    "crop": [
+      3,
+      1581,
+      33,
+      1611
+    ]
+  },
+  {
+    "source": "301172/source_00.png",
+    "y": 1694,
+    "ids": [
+      "IT_WARDROBE_MW059",
+      "USER_ITEM_20261018_R04319"
+    ],
+    "name": "매직솔라",
+    "error": 0.0,
+    "native": [
+      "item001.epf",
+      183,
+      0,
+      1,
+      2
+    ],
+    "crop": [
+      3,
+      1692,
+      33,
+      1721
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 471,
+    "ids": [
+      "USER_ITEM_20261018_R04311"
+    ],
+    "name": "매직아룬다이트",
+    "error": 0.0,
+    "native": [
+      "item013.epf",
+      117,
+      0,
+      2,
+      0
+    ],
+    "crop": [
+      3,
+      471,
+      32,
+      503
+    ]
+  },
+  {
+    "source": "301172/source_01.png",
+    "y": 1962,
+    "ids": [
+      "USER_ITEM_20261018_R01249"
+    ],
+    "name": "히야트마법가지",
+    "error": 48.33804143126177,
+    "native": [
+      "item002.epf",
+      38,
+      0,
+      5,
+      4
+    ],
+    "crop": [
+      10,
+      1961,
+      31,
+      1985
+    ]
+  },
+  {
+    "source": "303248/source_00.png",
+    "y": 1845,
+    "ids": [
+      "USER_ITEM_20261018_R04174"
+    ],
+    "name": "미스릴배틀핸드",
+    "error": 0.0,
+    "native": [
+      "item006.epf",
+      89,
+      0,
+      8,
+      5
+    ],
+    "crop": [
+      10,
+      1849,
+      25,
+      1869
+    ]
+  },
+  {
+    "source": "303248/source_00.png",
+    "y": 2300,
+    "ids": [
+      "USER_ITEM_20261018_R01251"
+    ],
+    "name": "히야트글러브",
+    "error": 39.16815476190476,
+    "native": [
+      "item052.epf",
+      35,
+      0,
+      2,
+      2
+    ],
+    "crop": [
+      5,
+      2304,
+      33,
+      2333
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 2570,
+    "ids": [
+      "IT_NATIVE_V210_BA3539FA42DFD892"
+    ],
+    "name": "아수라",
+    "error": 0.0,
+    "native": [
+      "item004.epf",
+      211,
+      0,
+      9,
+      4
+    ],
+    "crop": [
+      11,
+      2573,
+      25,
+      2597
+    ]
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 4316,
+    "ids": [
+      "IT_WARDROBE_MW029",
+      "USER_ITEM_20261018_R02181"
+    ],
+    "name": "채찍",
+    "error": 1000000000.0,
+    "native": null,
+    "crop": null
+  },
+  {
+    "source": "306941/source_00.png",
+    "y": 4664,
+    "ids": [
+      "IT_WARDROBE_MW051",
+      "USER_ITEM_20261018_R04989"
+    ],
+    "name": "루비 채찍",
+    "error": 0.0,
+    "native": [
+      "item002.epf",
+      256,
+      0,
+      3,
+      12
+    ],
+    "crop": [
+      6,
+      4672,
+      33,
+      4685
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "y": 1070,
+    "ids": [
+      "USER_ITEM_20261018_R02501"
+    ],
+    "name": "우드보우",
+    "error": 0.0,
+    "native": [
+      "item007.epf",
+      178,
+      0,
+      2,
+      2
+    ],
+    "crop": [
+      4,
+      1071,
+      31,
+      1098
+    ]
+  },
+  {
+    "source": "306941/source_01.png",
+    "y": 1650,
+    "ids": [
+      "USER_ITEM_20261018_R01250"
+    ],
+    "name": "히야트디그",
+    "error": 3.32360097323601,
+    "native": [
+      "item051.epf",
+      238,
+      0,
+      2,
+      5
+    ],
+    "crop": [
+      5,
+      1654,
+      34,
+      1677
+    ]
+  }
+]

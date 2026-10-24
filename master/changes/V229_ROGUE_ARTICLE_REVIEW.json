@@ -1,0 +1,96 @@
+{
+  "id": "V229_ROGUE_ARTICLE_REVIEW",
+  "status": "ACCEPTED",
+  "sourceUrl": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/245450",
+  "sourceSnapshot": "master/source/skill_fx/naver_cafe_archive_20261001/245450.json",
+  "sourceSha256": "11cb118503c09f8ef4914ba21bb6be98d05fa7f4c6009c43fa9ecb4bf2cfb29f",
+  "user": "Use article icons; review motions; 습격 and 기습 are distinct skills.",
+  "liveReview": "2026-10-22 browser opened exact article,54 images; reviewed retained GIF frames7/13/21/23/29/31/33/36/37/39/41/43/45 and original BODY c/e/f sheets.",
+  "motions": {
+    "SK_도적_001": "ROGUE_STAB",
+    "SK_도적_007": "ROGUE_STAB",
+    "SK_도적_014": "ROGUE_STAB",
+    "SK_도적_015": "ROGUE_STAB",
+    "SK_도적_019": "ROGUE_STAB",
+    "SK_도적_020": "ROGUE_STAB",
+    "SK_도적_021": "ROGUE_STAB",
+    "SK_도적_022": "ROGUE_STAB",
+    "SK_도적_023": "ROGUE_STAB",
+    "SK_도적_027": "ROGUE_STAB",
+    "SK_도적_028": "ROGUE_STAB",
+    "SK_도적_029": "ROGUE_STAB",
+    "SK_도적_030": "ROGUE_STAB",
+    "SK_도적_003": "ROGUE_THROW",
+    "SK_도적_005": "ROGUE_THROW",
+    "SK_도적_006": "ROGUE_THROW"
+  },
+  "profiles": {
+    "ROGUE_STAB": {
+      "group": "c",
+      "back": [
+        14,
+        16,
+        17,
+        18,
+        14
+      ],
+      "front": [
+        19,
+        21,
+        22,
+        23,
+        19
+      ],
+      "phases": [
+        0,
+        0.15,
+        0.3333333333333333,
+        0.65,
+        0.85
+      ]
+    },
+    "ROGUE_THROW": {
+      "group": "e",
+      "back": [
+        28,
+        29,
+        30,
+        31,
+        28
+      ],
+      "front": [
+        32,
+        33,
+        34,
+        35,
+        32
+      ],
+      "phases": [
+        0,
+        0.15,
+        0.3333333333333333,
+        0.65,
+        0.85
+      ]
+    }
+  },
+  "catalog": {
+    "SK_도적_015": {
+      "effect": "대상이 모르게 갑자기 공격하는 4써클 기술. 승급 기술 기습과 별개의 기술."
+    },
+    "SK_도적_023": {
+      "effect": "대상의 방어력을 낮추면서 불시에 공격하는 승급 기본기술. 습격과 별개."
+    }
+  },
+  "summaries": {
+    "SK_도적_015": "대상이 모르게 갑자기 공격하는 4써클 기술입니다. 승급 기본기술인 기습과 별개입니다.",
+    "SK_도적_023": "대상의 방어력을 낮추면서 불시에 공격하는 승급 기본기술입니다. 습격의 강화판으로 통합하지 않습니다."
+  },
+  "limits": [
+    "Original GIFs are historical community evidence. c/e family/frame timing is a reviewed project selection, not a full original4-direction validation.",
+    "Article section13 calls its captured GIF 기습 despite 습격 heading. Keep IDs/icons separate; no automatic GIF23 assignment or renaming.",
+    "Backslash icon40 is author-supplied under23; author calls it WindBlade?. Use user-requested source pixels without asserting official identity. Backstab icon42 has no table label.",
+    "Article section25 reuses an icon visibly labelled 암살격 for 암살격진. Keep two IDs and stats.",
+    "Unavailable services/second-job archery are not added by an icon/motion review. Shared damage/resources/save IDs unchanged."
+  ]
+}

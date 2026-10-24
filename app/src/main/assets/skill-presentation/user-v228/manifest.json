@@ -1,0 +1,321 @@
+{
+  "skills": {
+    "SK_무도가_035": {
+      "name": "허공답보",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-035.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "131476379361e9c20e09136524cbb54b1d11bb0ad331ebcada53146dc43d53ab",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            59,
+            60,
+            61,
+            62,
+            63,
+            64
+          ],
+          "opaquePixelCounts": [
+            37,
+            37,
+            27,
+            30,
+            30,
+            37
+          ]
+        }
+      }
+    },
+    "SK_무도가_027": {
+      "name": "트리플어택",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-027.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "9bf5fa469dda7ae9c3230bb7d996ab208dbc4b820a6db31d5c581a6b6c6791f4",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            48,
+            49,
+            50,
+            51
+          ],
+          "opaquePixelCounts": [
+            3,
+            13,
+            13,
+            13
+          ]
+        }
+      }
+    },
+    "SK_무도가_024": {
+      "name": "연천단각",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-024.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "cb0e534d7df28061762ffc870b3175a2f6e018796e4c5eceafc53f83a58ba5b6",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            149,
+            150,
+            151,
+            152,
+            153,
+            154,
+            155,
+            156,
+            157
+          ],
+          "opaquePixelCounts": [
+            20,
+            20,
+            567,
+            79,
+            79,
+            0,
+            30,
+            30,
+            30
+          ]
+        }
+      }
+    },
+    "SK_무도가_025": {
+      "name": "붕신선각",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-025.png",
+          "width": 240,
+          "height": 148,
+          "columns": 4,
+          "durationsMs": [
+            67,
+            67
+          ],
+          "pivotX": 140,
+          "pivotY": 122,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "39920923580a2fb36b333f428d96da73ab3058c9a8262b2ad48e0e8b4c7b4dd2",
+          "source": "libfile_2a630cf24fac81919793ba88d449ed0e",
+          "frameIndices": [
+            149,
+            150
+          ],
+          "opaquePixelCounts": [
+            17,
+            17
+          ]
+        }
+      }
+    },
+    "SK_무도가_026": {
+      "name": "파천각",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-026.png",
+          "width": 217,
+          "height": 134,
+          "columns": 4,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "pivotX": 103,
+          "pivotY": 111,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "08e070f0fb0323ed7e0c9a0216a4f0547b5bc4e284d7acd1eecd11cd8978e77c",
+          "source": "master/source/martial_v230/026.gif",
+          "frameIndices": [
+            9,
+            10,
+            11,
+            12,
+            13,
+            14,
+            15,
+            -1
+          ],
+          "opaquePixelCounts": [
+            265,
+            299,
+            284,
+            250,
+            243,
+            133,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "SK_무도가_028": {
+      "name": "무영신공",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-028.png",
+          "width": 217,
+          "height": 134,
+          "columns": 4,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            300,
+            100,
+            100
+          ],
+          "pivotX": 128,
+          "pivotY": 74,
+          "scale": 1.9,
+          "blend": "NORMAL",
+          "anchor": "RECIPIENT",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": -25,
+          "atlasSha256": "7849501f16887a334575942dae67a854117f6d5c82fb581d3923b58cbd306a10",
+          "source": "master/source/martial_v230/028.gif",
+          "frameIndices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            -1
+          ],
+          "opaquePixelCounts": [
+            175,
+            665,
+            0,
+            0,
+            0,
+            0
+          ]
+        }
+      }
+    },
+    "SK_무도가_029": {
+      "name": "자기보호",
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "path": "user-v228/fx-029.png",
+          "width": 217,
+          "height": 134,
+          "columns": 4,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "pivotX": 103,
+          "pivotY": 92,
+          "scale": 1.0,
+          "blend": "SCREEN",
+          "anchor": "CASTER",
+          "registration": "VISUAL_CENTER",
+          "footOffsetY": 0,
+          "atlasSha256": "447c5094be41af420a19990b491ba80ad1722e46b7bd2ebc60a1599b50200131",
+          "source": "master/source/martial_v230/029.gif",
+          "frameIndices": [
+            1,
+            2,
+            3,
+            4,
+            5,
+            6,
+            7,
+            8,
+            9,
+            -1
+          ],
+          "opaquePixelCounts": [
+            146,
+            1301,
+            2613,
+            3601,
+            3730,
+            3786,
+            3757,
+            3052,
+            2348,
+            0
+          ]
+        }
+      }
+    }
+  }
+}

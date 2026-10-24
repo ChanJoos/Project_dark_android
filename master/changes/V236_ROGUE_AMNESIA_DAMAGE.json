@@ -1,0 +1,56 @@
+{
+  "id": "V236_ROGUE_AMNESIA_DAMAGE",
+  "status": "ACCEPTED",
+  "feedback": "DEVICE_FAILED_USER_REPORTED: damage too weak, same per technique; Amnesia same ray range as shuriken, temporary passive, incoming damage x2. Prior V234 checked arithmetic connectivity, not suitable balance.",
+  "base": "5f13b85130d44c7b56d47865b46ad1bae66bd3df",
+  "amnesia": {
+    "id": "SK_도적_005",
+    "range": [
+      1,
+      4
+    ],
+    "target": "nearest visible living monster on current facing ray; no approach/rotation/pierce",
+    "durationSeconds": 10,
+    "durationEvidence": "ADAPTED existing ability duration; user did not specify exact seconds",
+    "incomingMultiplier": 2,
+    "evidence": "USER_20261022",
+    "persistsThroughDamage": true,
+    "expiry": "existing timed AGGRO_RESET expires; natural aggression/provocation resumes"
+  },
+  "damage": {
+    "evidence": "PROJECT_ADAPTED_V236_NOT_ORIGINAL_COEFFICIENTS",
+    "reason": "Remove same-circle acquisition-burden coefficients reused across distinct offensive roles. User requests playable stronger differentiated damage. No authoritative exact original ordinary skill numbers found.",
+    "formula": "(weapon midpoint + STR*1.8 + DEX*2.2 + DAM) * per-ID coefficient * proficiency factor",
+    "coefficients": {
+      "SK_도적_001": 2,
+      "SK_도적_007": 4,
+      "SK_도적_014": 8,
+      "SK_도적_015": 20,
+      "SK_도적_021": 10,
+      "SK_도적_022": 16,
+      "SK_도적_023": 50,
+      "SK_도적_028": 22,
+      "SK_도적_029": 21,
+      "SK_도적_030": 18
+    },
+    "roles": "stab2 < gouge4 < double8 < wild10 < slash16 < backslash18 < ambush20 < backstab21 < ambush+22 < surprise50; ambush+ retains PDF +10% relationship, surprise >2x ambush",
+    "untouched": [
+      "shuriken basic formula",
+      "HP-based assassin/assassin+ coefficients, critical and resource costs",
+      "other jobs",
+      "monster HP/AC/EXP",
+      "equipment",
+      "save IDs"
+    ],
+    "sourceContext": [
+      "attached skills PDF upgrade roles; exact coefficients unresolved",
+      "attached214818video LV26/HP8333/STR12/DEX17; Horror monsters80k..140k",
+      "master/data/Skill_Master.csv"
+    ]
+  },
+  "verification": {
+    "status": "PENDING",
+    "scope": "Amnesia all directions1..4/nearest/contact/LOS/normal quickslot; timed passive and doubled actual HP/popup/ledger, recovery; independent low-stat damage table and normal quickslots; directly affected shared combat/AI/death/reward paths",
+    "phone": "PENDING"
+  }
+}

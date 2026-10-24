@@ -71,17 +71,29 @@ public final class RuntimeCombatSession {
     List<CombatResolver.Event> events=actions.drainEvents(); return new FrameResult(events,actions.actionSnapshots());
   }
 
+  public void setPlayerFacing(java.util.function.Supplier<CharacterRenderer.Direction> f){port.setPlayerFacing(f);}
+  public CombatActionOrchestrator.Submission submitFacingMartial(String id){
+    if(!MartialSkillPolicy.facingOnly(id))throw new IllegalArgumentException(id);
+    String target=MartialSourceV228.line(id)?PLAYER_ID:port.frontTarget(id);
+    return submitPlayer(target==null?"NO_FRONT_ACTOR":target,id);
+  }
+  public CombatActionOrchestrator.Submission submitFacingSense(){String target=RogueSkillPolicy.frontTarget(state,port.facing(),port::visible);return submitPlayer(target==null?"NO_FRONT_MONSTER":target,RogueSkillPolicy.SENSE);}
+  public CombatActionOrchestrator.Submission submitFacingShuriken(){return submitFacingRogueRay(RogueSkillPolicy.SHURIKEN);}
+  public CombatActionOrchestrator.Submission submitFacingRogueRay(String id){if(!RogueSkillPolicy.ray(id))throw new IllegalArgumentException(id);String target=RogueSkillPolicy.frontTarget(state,id,port.facing(),port::visible);return submitPlayer(target==null?"NO_FRONT_MONSTER":target,id);}
+  public float[] takeAdvanceFacing(){float[] d=port.abilities.completedAdvanceFacing;port.abilities.completedAdvanceFacing=null;return d;}
   public void setSkillTestMode(boolean enabled){port.setSkillTestMode(enabled);}
   public void setSkillProficiency(java.util.function.ToIntFunction<String> p){port.setSkillProficiency(p);}
   public void setSkillMovement(SkillAbilityExecutor.Movement m){port.setSkillMovement(m);}
   public String takeSkillNotice(){return port.takeSkillNotice();}
   public boolean useUtility(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null||!a.supported()||!port.actorAlive(PLAYER_ID)||!port.canAct(PLAYER_ID)||!port.hasResource(PLAYER_ID,ItemEffects.mpCost(state.rpg(),id,a.mpCost))||!port.learned(PLAYER_ID,id)||!port.cooldownReady(PLAYER_ID,id)||port.actionReady(PLAYER_ID,PLAYER_ID,id,true)!=null)return false;port.prepareAction(PLAYER_ID,id);port.consumeResource(PLAYER_ID,ItemEffects.mpCost(state.rpg(),id,a.mpCost));port.commitCooldown(PLAYER_ID,id,a.cooldown);port.applyDamage(PLAYER_ID,PLAYER_ID,id,0);port.finishAction(PLAYER_ID,id);return true;}
   public float cooldownRemaining(String actorId,String actionId){return port.cooldownRemaining(actorId,actionId);}
+  public boolean actionLineOfSight(String target,String action){return port.hasActionLineOfSight(PLAYER_ID,target,action);}
   public void setSkillVisibility(java.util.function.Predicate<String> visible){port.setVisible(visible);}
   public void setBasicHits(java.util.function.IntSupplier hits){port.setBasicHits(hits);}
   public Map<String,CombatResolver.Definition> actionDefinitions(){return actions.definitions();}
   public float effectiveCastSeconds(String id){CombatResolver.Definition d=actions.definitions().get(id);return d==null?Float.NaN:port.resolveDefinition(PLAYER_ID,d).hitTime;}
   public int effectiveMpCost(String id){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a==null?0:ItemEffects.mpCost(state.rpg(),id,a.mpCost);}
+  public void cancelForMapTransition(){resolver.cancelForMapTransition();actions.drainEvents();}
   public boolean playerActionActive(){return resolver.actionActive(PLAYER_ID);}
 
   public static String playerAttackActionId(int attackMode){
@@ -100,9 +112,9 @@ public final class RuntimeCombatSession {
   private CombatResolver.RejectReason canonicalMeleeRejectReason(String actorId,String targetId,CombatResolver.Definition definition,CombatResolver.InputMode mode){
     SkillActionContract.Rule rule=SkillActionContract.get(definition.actionId);
     if(rule!=null&&PLAYER_ID.equals(actorId)){
-      RuntimeState.Monster target=findMonster(targetId);
-      float tx=PLAYER_ID.equals(targetId)?state.player().x:target==null?Float.NaN:target.x;
-      float ty=PLAYER_ID.equals(targetId)?state.player().y:target==null?Float.NaN:target.y;
+      if(MartialSkillPolicy.LINE.equals(definition.actionId)&&PLAYER_ID.equals(targetId))return null;
+      float[] target=MartialSkillPolicy.position(state,targetId);
+      float tx=target==null?Float.NaN:target[0],ty=target==null?Float.NaN:target[1];
       return SkillActionContract.canStart(rule,state.player().x,state.player().y,tx,ty,PLAYER_ID.equals(targetId)||port.visible(targetId))?null:CombatResolver.RejectReason.RANGE;
     }
     if(!isCanonicalMeleeAction(definition.actionId))return null;

@@ -1,0 +1,248 @@
+{
+  "source": "9e77bf10d13355eb0b5798f935b3c3419fb83207",
+  "build": {
+    "sourceCommit": "9e77bf10d13355eb0b5798f935b3c3419fb83207",
+    "runId": "38684851326",
+    "versionCode": 163,
+    "versionName": "1.63-town-quest-99",
+    "applicationId": "com.projectdark.mobile.v163test",
+    "updateCompatibleWithV113": false,
+    "apkSha256": "190a039254c401e01f94dcd2622dbb71f8132d6e86fe0994fe2e5c970549d5d8",
+    "apkBytes": 80467129,
+    "builtSeoul": "2026-10-15T14:09:36.151255+09:00",
+    "scope": "V163 all-town travel, civilian NPC presentation and18Rucesion quests through99; retains normal Pong palette from supplied normal/faded pair and combat-owned CURSE exact-alpha prewarmed RGB variants; expiry/clear/respawn/fresh-map restoration; four states60textures each max35,389,440bytes. Retains V161 all13 Abel coast reference audit;7families84 newly source-referenced poses; occupied-alpha/player ratio calibration for10 observed species, floating purple scale and obscured KingArk pair explicitly unresolved. Accepted Rucesion10 art/scale/motion and shared AI/collision/reward/save/cache retained. Generated direction/action reconstruction is not an original atlas claim.",
+    "bossPoses": 12,
+    "phoneAcceptance": "PENDING",
+    "userVisualAcceptance": {
+      "RucesionMonsters": "USER_ACCEPTED_20261015",
+      "AbelCalibrationAndMaps": "PENDING"
+    }
+  },
+  "apkSha256": "190a039254c401e01f94dcd2622dbb71f8132d6e86fe0994fe2e5c970549d5d8",
+  "apkBytes": 80467129,
+  "native": {
+    "tests": 52,
+    "suites": 8,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "detail": [
+      {
+        "name": "com.projectdark.mobile.CampaignNavigationTest",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.NpcAppearanceTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.RuntimeCheckpointTest",
+        "tests": 15,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.RucesionServicesV156Test",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.QuestJournalTest",
+        "tests": 10,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.MonsterCurseV162Test",
+        "tests": 8,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TownCampaignV163Test",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.CampaignProgressTest",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "jobs": [
+    {
+      "job": "WARRIOR",
+      "level": 99,
+      "quests": 18,
+      "realFinalContactDefeats": 79,
+      "fullHpBalanceVerified": false
+    },
+    {
+      "job": "ROGUE",
+      "level": 99,
+      "quests": 18,
+      "realFinalContactDefeats": 79,
+      "fullHpBalanceVerified": false
+    },
+    {
+      "job": "MAGE",
+      "level": 99,
+      "quests": 18,
+      "realFinalContactDefeats": 79,
+      "fullHpBalanceVerified": false
+    },
+    {
+      "job": "CLERIC",
+      "level": 99,
+      "quests": 18,
+      "realFinalContactDefeats": 79,
+      "fullHpBalanceVerified": false
+    },
+    {
+      "job": "MARTIAL_ARTIST",
+      "level": 99,
+      "quests": 18,
+      "realFinalContactDefeats": 79,
+      "fullHpBalanceVerified": false
+    }
+  ],
+  "physicalPhone": "PENDING",
+  "fullHpRucesionBalance": "NOT_VERIFIED; final-contact fixtures validate quest plumbing, not fullHP resource balance",
+  "focused": {
+    "run": 38684851326,
+    "job": 116257257969,
+    "conclusion": "success",
+    "apkArtifact": 11949663928,
+    "nativeArtifact": 11949164293
+  },
+  "commonRegression": {
+    "originalRun": 38680860868,
+    "originalConclusion": "failure in old travel-button coordinate; prior configured steps9-39 passed",
+    "continuationSource": "508c24b856a7f9a4b8863b032caefa79dc32a2d2",
+    "continuationRun": 38684725847,
+    "continuationJob": 116256858224,
+    "conclusion": "success",
+    "remainingSteps": "Original40-51; six Gradle invocations and retained combat/growth/rule audits passed",
+    "finalRuntimeDelta": "Only civilian garment metadata NpcIdentity:3shirts->plain shirt1; final52focused tests cover this delta"
+  },
+  "files": {
+    "PROJECT_DARK_V163_TOWN_QUEST_99.apk": {
+      "bytes": 80467129,
+      "sha256": "190a039254c401e01f94dcd2622dbb71f8132d6e86fe0994fe2e5c970549d5d8"
+    },
+    "V163_TOWN_TRAVEL.png": {
+      "bytes": 671444,
+      "sha256": "1c4b78c40dcb5b60744ba2d7dac549925a0006d06e58609934ff2b47821c11e7"
+    },
+    "V163_FINAL_LEVEL99.png": {
+      "bytes": 604297,
+      "sha256": "8002ad55d7c89bd4f5089f834dcccbc11128bd9f80f28c8522bbdad9b3775eb2"
+    },
+    "V163_FINAL_REPORT.png": {
+      "bytes": 511143,
+      "sha256": "78ace6e3164083dd557c507b57d32b40498be8ad46f12370302bcbcdc0ffb483"
+    },
+    "V163_TOWN_QUEST_REVIEW.md": {
+      "bytes": 2995,
+      "sha256": "4f702704a5705d2d8731a54226f6b7f81d481f6b47168d128f791d26babe0309"
+    }
+  },
+  "sourceArtifacts": [
+    {
+      "id": 11949663928,
+      "name": "town-v163-apk-9e77bf10d13355eb0b5798f935b3c3419fb83207",
+      "size_in_bytes": 79350331,
+      "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11949663928",
+      "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11949663928/zip",
+      "expired": false,
+      "created_at": "2026-10-15T05:09:41Z",
+      "expires_at": "2027-01-13T05:04:54Z",
+      "updated_at": "2026-10-15T05:09:41Z",
+      "digest": "sha256:5e721fc53fd2409f13600f28f5c2799e107105fe70c5a2f0e6c36870967522e2",
+      "workflow_run": {
+        "id": 38684851326,
+        "repository_id": 1362092000,
+        "head_repository_id": 1362092000,
+        "head_branch": "codex/rucesion-coast-v157",
+        "head_sha": "9e77bf10d13355eb0b5798f935b3c3419fb83207"
+      }
+    },
+    {
+      "id": 11949164293,
+      "name": "town-v163-native-9e77bf10d13355eb0b5798f935b3c3419fb83207",
+      "size_in_bytes": 41341986,
+      "url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11949164293",
+      "archive_download_url": "https://api.github.com/repos/ChanJoos/Project_dark_android/actions/artifacts/11949164293/zip",
+      "expired": false,
+      "created_at": "2026-10-15T05:09:38Z",
+      "expires_at": "2027-01-13T05:04:54Z",
+      "updated_at": "2026-10-15T05:09:38Z",
+      "digest": "sha256:5442277cc59d69e527ff9484e2d6afb6b958ecadc52410d50e355c127d5f0141",
+      "workflow_run": {
+        "id": 38684851326,
+        "repository_id": 1362092000,
+        "head_repository_id": 1362092000,
+        "head_branch": "codex/rucesion-coast-v157",
+        "head_sha": "9e77bf10d13355eb0b5798f935b3c3419fb83207"
+      }
+    }
+  ],
+  "fullCommonFinalSourceRuns": [
+    {
+      "run": 38684858042,
+      "job": 116257277959,
+      "status": "in_progress",
+      "conclusion": null,
+      "step": [
+        {
+          "name": "Verify V110 learning and retained phone-default quest actions and full campaign route audit",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 19
+        }
+      ]
+    },
+    {
+      "run": 38684851441,
+      "job": 116257258296,
+      "status": "in_progress",
+      "conclusion": null,
+      "step": [
+        {
+          "name": "Verify V110 learning and retained phone-default quest actions and full campaign route audit",
+          "status": "in_progress",
+          "conclusion": null,
+          "number": 19
+        }
+      ]
+    }
+  ],
+  "fullCommonFinalSourceStatus": "IN_PROGRESS_AT_DELIVERY; focused52pass plus prior common steps9-39 and repaired remaining40-51 are independent coverage; do not label full final-source CI green",
+  "delivery": {
+    "savedFiles": 6,
+    "localArchiveShaAndCRCVerified": true,
+    "apkSourceVerified": true,
+    "nativeScreensReviewed": [
+      "town travel",
+      "final report",
+      "level99"
+    ],
+    "mainMerged": false
+  }
+}

@@ -1,0 +1,19 @@
+{
+  "version": 171,
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_FULL_PUSH_VERIFIED_DELIVERED",
+  "deviceReport": "V170 DEVICE_FAILED_USER_REPORTED: all skills shown learned at fresh test start, twohand equip refused",
+  "sourceCause": "GameView equipped using SkillBook.owned while test mode and skill UI use learned; MainActivity initialized test mode after GameView restored/normalized equipment",
+  "userCanon": "Test-mode all-learned includes Twohand Attack for equip; normal mode retains actual learned requirement",
+  "changes": [
+    "Gate uses same learned truth as UI/combat",
+    "MainActivity passes initial mode before saved equipment normalization",
+    "Turning test mode off removes preview-only equipped twohand without deleting owned items"
+  ],
+  "scope": "No attack animation/timing, growth, map, movement or performance changes",
+  "verification": {
+    "actualActivityInventoryTouchAndRestart": "4cases PASS; focused182/32 SUCCESS at18fb16ef",
+    "fullPush": "38862282488/job116847063857 SUCCESS,26Gradle successes",
+    "duplicatePr": "IN_PROGRESS_DUPLICATE",
+    "phone": "PENDING"
+  }
+}

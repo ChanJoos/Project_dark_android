@@ -1,0 +1,274 @@
+{
+  "id": "V228_MARTIAL_SEVEN_SOURCE",
+  "status": "ACCEPTED",
+  "source": "master/source/martial_v228/reference.json",
+  "labels": [
+    "SK_무도가_035",
+    "SK_무도가_027",
+    "SK_무도가_024",
+    "SK_무도가_025",
+    "SK_무도가_026",
+    "SK_무도가_028",
+    "SK_무도가_029"
+  ],
+  "updates": {
+    "catalog": {
+      "SK_무도가_024": {
+        "evidence": "U+V_VIDEO_20261022",
+        "source": "master/source/martial_v228/reference.json"
+      },
+      "SK_무도가_025": {
+        "evidence": "U+V_VIDEO_20261022",
+        "source": "master/source/martial_v228/reference.json"
+      },
+      "SK_무도가_026": {
+        "evidence": "U+V_VIDEO_20261022",
+        "source": "master/source/martial_v228/reference.json"
+      },
+      "SK_무도가_027": {
+        "name": "트리플어택",
+        "effect": "기본공격 3회 타격; 구 표기 트리플펀치의 저장 ID 유지",
+        "evidence": "U+V_VIDEO_20261022",
+        "source": "master/source/martial_v228/reference.json"
+      },
+      "SK_무도가_028": {
+        "kind": "마법",
+        "effect": "전방3칸의 유효 대상 수만큼 각 대상에게 반복 타격; 기존 MP×4/풍속성 공식 유지",
+        "evidence": "U+V_VIDEO_20261022",
+        "source": "master/source/martial_v228/reference.json"
+      },
+      "SK_무도가_029": {
+        "kind": "마법",
+        "evidence": "U+V_VIDEO_20261022",
+        "source": "master/source/martial_v228/reference.json"
+      }
+    },
+    "abilities": {
+      "SK_무도가_024": {},
+      "SK_무도가_025": {},
+      "SK_무도가_026": {},
+      "SK_무도가_027": {
+        "name": "트리플어택"
+      },
+      "SK_무도가_028": {
+        "description": "기존 MP×4/풍속성; 전방3칸 대상 N명에게 각각 N회 타격. MP 소모/수치는 기존 프로젝트 값으로 원작 미확정.",
+        "cooldown": 0,
+        "cooldownEvidence": "PROJECT_SHARED_MAGIC_CADENCE_V228",
+        "cooldownSource": "master/changes/V228_MARTIAL_SEVEN_SOURCE.json",
+        "mpCost": 0
+      },
+      "SK_무도가_029": {
+        "cooldown": 0,
+        "cooldownEvidence": "PROJECT_SHARED_MAGIC_CADENCE_V228",
+        "cooldownSource": "master/changes/V228_MARTIAL_SEVEN_SOURCE.json",
+        "mpCost": 0
+      }
+    },
+    "rules": {
+      "SK_무도가_024": {
+        "caster": "NONE",
+        "targetFx": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": "-1",
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228"
+      },
+      "SK_무도가_025": {
+        "caster": "NONE",
+        "targetFx": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": "-1",
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228"
+      },
+      "SK_무도가_026": {
+        "caster": "NONE",
+        "targetFx": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": "-1",
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228"
+      },
+      "SK_무도가_027": {
+        "name": "트리플어택",
+        "caster": "NONE",
+        "targetFx": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": "-1",
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228"
+      },
+      "SK_무도가_028": {
+        "kind": "마법",
+        "caster": "NONE",
+        "targetFx": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": "-1",
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "contact": "0.24",
+        "note": "바라보는 방향 전방3칸. 첫 접촉 시 유효 대상 수만큼 각 대상 반복 타격. 피해/자원 공식은 기존 값 유지."
+      },
+      "SK_무도가_029": {
+        "kind": "마법",
+        "caster": "NONE",
+        "targetFx": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": "-1",
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "contact": "0.24"
+      }
+    },
+    "presentation": {
+      "SK_무도가_024": {
+        "caster": "NONE",
+        "target": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": -1,
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "originalEffectVerified": true
+      },
+      "SK_무도가_025": {
+        "caster": "NONE",
+        "target": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": -1,
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "originalEffectVerified": true
+      },
+      "SK_무도가_026": {
+        "caster": "NONE",
+        "target": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": -1,
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "originalEffectVerified": true
+      },
+      "SK_무도가_027": {
+        "name": "트리플어택",
+        "caster": "NONE",
+        "target": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": -1,
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "originalEffectVerified": true
+      },
+      "SK_무도가_028": {
+        "kind": "마법",
+        "caster": "NONE",
+        "target": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": -1,
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "originalEffectVerified": true,
+        "note": "바라보는 방향 전방3칸. 첫 접촉 시 유효 대상 수만큼 각 대상 반복 타격. 피해/자원 공식은 기존 값 유지."
+      },
+      "SK_무도가_029": {
+        "kind": "마법",
+        "caster": "NONE",
+        "target": "SOURCE_V228",
+        "targetSheet": "user-v228",
+        "targetRow": -1,
+        "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+        "originalEffectVerified": true
+      }
+    }
+  },
+  "added": {
+    "catalog": {
+      "id": "SK_무도가_035",
+      "name": "허공답보",
+      "job": "무도가",
+      "stage": "1차승급",
+      "kind": "기술",
+      "circle": "승급",
+      "effect": "전방3칸을 뛰어넘으며 공격. 이형환위와 별개.",
+      "target": "적",
+      "range": "전방3칸",
+      "resource": "기존 프로젝트 일반기술 MP0; 원작 자원 미확정",
+      "limit": "지형 경로와 착지 칸이 모두 유효해야 발동",
+      "requirements": "승급 기본기술. 영상상 재료/요구스탯 없음; 현재 모바일 직업 규칙 적용.",
+      "requirementValues": {},
+      "requirementStatus": "U+V",
+      "legacy": "",
+      "evidence": "U+V_VIDEO_20261022",
+      "source": "master/source/martial_v228/reference.json"
+    },
+    "abilities": {
+      "id": "SK_무도가_035",
+      "name": "허공답보",
+      "job": "무도가",
+      "circle": 6,
+      "kind": "DAMAGE",
+      "formula": "MARTIAL",
+      "coefficient": 2.912,
+      "status": "ADVANCE_3",
+      "mpCost": 0,
+      "cooldown": 3.5,
+      "cooldownEvidence": "RETAINED_ADAPTED_PENDING_ORIGINAL",
+      "cooldownSource": null,
+      "duration": 18,
+      "allMp": false,
+      "evidence": "U_VIDEO_BEHAVIOR_B_REUSED_MARTIAL_BALANCE_V228",
+      "source": "master/source/martial_v228/reference.json",
+      "description": "전방3칸 이동 공격; 지형/착지 차단 시 미발동. 피해 계수2.912/MP0/재사용3.5초는 기존 연천단각 프로젝트 값의 임시 재사용이며 원작 미확정."
+    },
+    "rules": {
+      "id": "SK_무도가_035",
+      "name": "허공답보",
+      "job": "무도가",
+      "kind": "기술",
+      "mode": "ACTIVE",
+      "pattern": "FRONT",
+      "reach": "3",
+      "minReach": "1",
+      "spatialEvidence": "U_LABELLED_VIDEO_V228",
+      "spatialSource": "master/source/martial_v228/reference.json",
+      "motion": "JUMP_KICK",
+      "caster": "NONE",
+      "targetFx": "SOURCE_V228",
+      "targetSheet": "user-v228",
+      "targetRow": "-1",
+      "motionEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+      "mechanic": "DAMAGE_ADAPTED_BALANCE",
+      "hits": "1",
+      "contact": "0.14",
+      "note": "전방3칸 이동 공격. 이형환위의 1칸 대상 넘기와 별개; 충돌/착지 검사 후 접촉 완료 때 이동."
+    },
+    "presentation": {
+      "id": "SK_무도가_035",
+      "name": "허공답보",
+      "job": "무도가",
+      "kind": "기술",
+      "motion": "JUMP_KICK",
+      "caster": "NONE",
+      "target": "SOURCE_V228",
+      "targetSheet": "user-v228",
+      "targetRow": -1,
+      "targetAnchor": "TARGET",
+      "poseEvidence": "SOURCE_BODY_AND_LABELLED_MARTIAL_CAPTURE_REVIEW_V80",
+      "effectEvidence": "U_LABELLED_VIDEO_SOURCE_PIXELS_APPROXIMATE_MATTING_V228",
+      "originalEffectVerified": true,
+      "combatStatus": "EXISTING_RUNTIME_ONLY",
+      "note": "전방3칸 이동 공격. 이형환위의 1칸 대상 넘기와 별개; 충돌/착지 검사 후 접촉 완료 때 이동."
+    }
+  },
+  "learning": {
+    "stats": {
+      "STR": 0,
+      "INT": 0,
+      "WIS": 0,
+      "CON": 0,
+      "DEX": 0
+    },
+    "gold": 0,
+    "items": {},
+    "summary": "승급 기본기술 · 재료 없음; 모바일 직업 조건 적용",
+    "evidence": "U+V_VIDEO_20261022"
+  },
+  "behavior": [
+    "허공답보 is a new distinct stableID035; old 이형환위003 unchanged.",
+    "027 old triple-punch ID retained with user-confirmed display name 트리플어택.",
+    "Muyeong uses N contacts per recipient where N is valid recipient count at first contact; rechecks alive/viewport/range on each hit.",
+    "028/029 community table explicitly says 승급 마법; shared spell cadence applies.",
+    "024/025/026 retain existing damage coefficients and shapes; original maximum Pacheon radius remains unknown.",
+    "029 retains existing protective effect strength/duration; source does not specify numbers."
+  ],
+  "validation": "PENDING source-specific native and build; phone pending"
+}

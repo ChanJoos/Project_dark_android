@@ -1,0 +1,996 @@
+[
+  {
+    "name": "고기",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      25,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 1,
+    "itemId": "IT_NA_FOOD_293294_00",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "닭고기",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      62,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 2,
+    "itemId": "IT_NA_FOOD_293294_01",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "샌드위치",
+    "hp": 100,
+    "mp": 0,
+    "crop": [
+      2,
+      99,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 3,
+    "itemId": "IT_NA_FOOD_293294_02",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "소고기 스테이크",
+    "hp": 500,
+    "mp": 0,
+    "crop": [
+      2,
+      136,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 4,
+    "itemId": "IT_NA_FOOD_293294_03",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "도이치맥주",
+    "hp": 0,
+    "mp": 10,
+    "crop": [
+      2,
+      173,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 5,
+    "itemId": "IT_NA_FOOD_293294_04",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "치즈",
+    "hp": 0,
+    "mp": 30,
+    "crop": [
+      2,
+      210,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 6,
+    "itemId": "IT_NA_FOOD_293294_05",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "과일바구니",
+    "hp": 150,
+    "mp": 0,
+    "crop": [
+      2,
+      247,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 7,
+    "itemId": "IT_NA_FOOD_293294_06",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "피크닉샌드위치",
+    "hp": 300,
+    "mp": 0,
+    "crop": [
+      2,
+      284,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 8,
+    "itemId": "IT_NA_FOOD_293294_07",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "과일술",
+    "hp": 0,
+    "mp": 50,
+    "crop": [
+      2,
+      321,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 9,
+    "itemId": "IT_NA_FOOD_293294_08",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "양고기스테이크정식",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      358,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 10,
+    "itemId": "IT_NA_FOOD_293294_09",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "바베큐치킨",
+    "hp": 500,
+    "mp": 0,
+    "crop": [
+      2,
+      395,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 11,
+    "itemId": "IT_NA_FOOD_293294_10",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "마이소시아정식",
+    "hp": 800,
+    "mp": 0,
+    "crop": [
+      2,
+      432,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 12,
+    "itemId": "IT_NA_FOOD_293294_11",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "와인한잔",
+    "hp": 0,
+    "mp": 15,
+    "crop": [
+      2,
+      469,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 13,
+    "itemId": "IT_NA_FOOD_293294_12",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "시원한 물",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      506,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 14,
+    "itemId": "IT_NA_FOOD_293294_13",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "절인 소고기",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      543,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 15,
+    "itemId": "IT_NA_FOOD_293294_14",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "후추",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      580,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 16,
+    "itemId": "IT_NA_FOOD_293294_15",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "설탕",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      617,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 17,
+    "itemId": "IT_NA_FOOD_293294_16",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "빵",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      654,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 18,
+    "itemId": "IT_NA_FOOD_293294_17",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "짜장면",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      691,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 19,
+    "itemId": "IT_NA_FOOD_293294_18",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "델리초코렛",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      734,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 20,
+    "itemId": "IT_NA_FOOD_293294_19",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "고디바초코렛",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      771,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 21,
+    "itemId": "IT_NA_FOOD_293294_20",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "체리캔디",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      808,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 22,
+    "itemId": "IT_NA_FOOD_293294_21",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "캔디부케",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      845,
+      32,
+      32
+    ],
+    "section": "UPPER_TABLE",
+    "sourceRow": 23,
+    "itemId": "IT_NA_FOOD_293294_22",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "와인",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      891,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 1,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_23",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "브랜디",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      891,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 1,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_24",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "벌꿀",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      928,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 2,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_25",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "우유",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      928,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 2,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_26",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "파이 한조각",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      965,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 3,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_27",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "파이",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      965,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 3,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_28",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "포도주(작은병)",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1002,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 4,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_29",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "포도주(큰병)",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1002,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 4,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_30",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "오믈렛",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1039,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 5,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_31",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "잼과식빵",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1039,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 5,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_32",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "빨간 사과",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1076,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 6,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_33",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "감",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1076,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 6,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_34",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "피치",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1113,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 7,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_35",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "딸기",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1113,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 7,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_36",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "키위",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1150,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 8,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_37",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "바나나",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1150,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 8,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_38",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "포도",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1187,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 9,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_39",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "파",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1187,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 9,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_40",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "무우",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1224,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 10,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_41",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "당근",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1224,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 10,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_42",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "맛있는 케이크",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      20,
+      1261,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 11,
+    "sourceColumn": 1,
+    "itemId": "IT_NA_FOOD_293294_43",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "휘시 버거",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      305,
+      1261,
+      32,
+      32
+    ],
+    "section": "MIDDLE_TWO_COLUMN_TABLE",
+    "sourceRow": 11,
+    "sourceColumn": 2,
+    "itemId": "IT_NA_FOOD_293294_44",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "라쿠아트",
+    "hp": 500,
+    "mp": 150,
+    "crop": [
+      2,
+      1306,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 1,
+    "itemId": "IT_NA_FOOD_293294_45",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "아프리코튼",
+    "hp": 0,
+    "mp": 500,
+    "crop": [
+      2,
+      1343,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 2,
+    "itemId": "IT_NA_FOOD_293294_46",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "파프리카",
+    "hp": 0,
+    "mp": 1000,
+    "crop": [
+      2,
+      1380,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 3,
+    "itemId": "IT_NA_FOOD_293294_47",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "바나스",
+    "hp": 2500,
+    "mp": 0,
+    "crop": [
+      2,
+      1417,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 4,
+    "itemId": "IT_NA_FOOD_293294_48",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "블루피치",
+    "hp": 0,
+    "mp": 2500,
+    "crop": [
+      2,
+      1454,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 5,
+    "itemId": "IT_NA_FOOD_293294_49",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  },
+  {
+    "name": "복숭아만두",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      1491,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 6,
+    "itemId": "IT_NA_FOOD_293294_50",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "복숭아 만두 세트",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      1528,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 7,
+    "itemId": "IT_NA_FOOD_293294_51",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "쑥밥세트",
+    "hp": 0,
+    "mp": 0,
+    "crop": [
+      2,
+      1565,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 8,
+    "itemId": "IT_NA_FOOD_293294_52",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "PENDING_NO_EFFECT_INVENTED"
+  },
+  {
+    "name": "영지버섯",
+    "hp": 100000,
+    "mp": 0,
+    "crop": [
+      2,
+      1625,
+      32,
+      32
+    ],
+    "section": "LOWER_TABLE",
+    "sourceRow": 9,
+    "itemId": "IT_NA_FOOD_293294_53",
+    "source": "293294/source_01.png",
+    "sourceArchive": "archives/293294.zip",
+    "sourceAuthority": "HISTORICAL_FAN_TABLE",
+    "effectStatus": "EXPLICIT_HP_MP"
+  }
+]

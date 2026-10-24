@@ -1,0 +1,309 @@
+{
+  "revision": "V225_WORN_EQUIPMENT",
+  "status": "ACCEPTED",
+  "acceptedPolicy": "U: 인간형 몬스터는 외형상 실제 착용한 무기/갑옷/모자를 드랍; 그 외 원작 근거를 따른다.",
+  "base": "82218df8dd372eff190e7095c7c4d24f5359c330",
+  "before": "Mine-only 3.5% armor / 2% weapon; both casters share male mage and priest robe; no hats or Horror drops.",
+  "after": [
+    {
+      "species": "MINE_03",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R05210",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "MINE_05",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01486",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R01485",
+          "slot": "hat",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R05502",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "MINE_06",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01494",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R01493",
+          "slot": "hat",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R01533",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "MINE_07",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01487",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "MINE_08",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01490",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "MINE_09",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01489",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R01488",
+          "slot": "hat",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_00",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01494",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_02",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01486",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R01591",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_03",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01591",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_04",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01489",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R04330",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_05",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01487",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R04330",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_06",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01482",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        },
+        {
+          "itemId": "USER_ITEM_20261018_R02939",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_07",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R02939",
+          "slot": "weapon",
+          "quantity": 1,
+          "configuredProbability": 0.02,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    },
+    {
+      "species": "HORROR_08",
+      "items": [
+        {
+          "itemId": "USER_ITEM_20261018_R01490",
+          "slot": "armor",
+          "quantity": 1,
+          "configuredProbability": 0.035,
+          "rateEvidence": "B_TEMPORARY_NOT_ORIGINAL",
+          "originalProbability": null
+        }
+      ]
+    }
+  ],
+  "sourceCells": "Existing User_Item_Master_20261018 item IDs and retained original MPFs; raw snapshots immutable.",
+  "evidence": [
+    {
+      "path": "master/source/mine_hunt_v208/original_sources.zip",
+      "sha256": "5b3df533a29635bff3a33f39364ade1e10d3413adae9fb3a61a320e3b870df73"
+    },
+    {
+      "path": "master/source/horror_v180/original_monsters.zip",
+      "sha256": "19537cfc17d0507593dce2d49a1040272c0785c4ad3f9e2f5f685c6648a3b7e2"
+    },
+    {
+      "path": "master/source/mine_hunt_v209/repair_contract.json",
+      "sha256": "15e4b6ce90c57e076044f804512f9318757899e5e572390de2d266d7f8619fb6"
+    },
+    {
+      "path": "master/source/equipment/horror_v184/receipt.json",
+      "sha256": "114805fb5d7b61c7cc2d1337334d9ca9e2b723bfd4697b91030fe3d80b92014b"
+    },
+    {
+      "path": "master/source/mine_hunt_v208/armor_bindings.json",
+      "sha256": "c233c459a9c39a39c9e7b1abebbd8dd2e94ce514a0b3d1e27b56f9f46a25d00e"
+    }
+  ],
+  "visualReview": "Original MPF idle frame contact sheet versus retained original wearable atlas frames. Visual item association V; permission to drop U; probabilities B. Does not establish original server drop table.",
+  "conditionalException": "User worn-equipment rule overrides 2026 Horror item-removal policy for these identified equipment relations only. No removed original random loot restored.",
+  "pending": [
+    "Mine soldier0/1/2 exact equipment identities",
+    "Mine caster scythe and other unlabelled accessories",
+    "Horror female warrior/rogue/cleric/monk exact armor IDs; no male-ID substitution",
+    "Horror warrior weapon variant and unidentified hats/shields",
+    "Pote humanoid/Abel berserker/Ruce tyrant/Death armed humanoid equipment exact IDs",
+    "Original random drop rates and quantities from V224 audit; no new quest/junk emission until resolved"
+  ],
+  "ratePolicy": "Implementation provisional choice: retain existing weapon2%, armor3.5%, extend armor3.5% to hats. Not user-selected numerical rates and not original probabilities. Each eligible item independently sampled once per defeat; no guaranteed kit.",
+  "save": "Existing item IDs/ownership format and exactly-once death ledger retained; no save migration.",
+  "verification": {
+    "status": "IMPLEMENTED_TEST_PENDING",
+    "suites": [
+      "WornEquipmentV225Test",
+      "MineHuntV208Test",
+      "MineHuntV209Test",
+      "AdaptedCampaignRewardTest",
+      "HorrorCastleLoopV207Test",
+      "F5mRestartPersistenceMatrixTest"
+    ]
+  }
+}

@@ -73,3 +73,7 @@ shared['skills'][recipient]=dict(channels=classic['skills'][donor]['channels'],n
     mapping='EXACT_NAME_PROJECT_SOURCE_FORM_REUSE',limitation='Labelled Mage Bardo source reused by name; Cleric-specific original footage is not verified.')
 (SHARED/'manifest.json').write_text(json.dumps(shared,ensure_ascii=False,indent=2)+'\n');(SHARED/'references.json').write_text(json.dumps(dict(revision=shared['revision'],rows=srefs),ensure_ascii=False,indent=2)+'\n')
 print('Warrior:',len(references),'icons,',len(manifest['skills']),'source shapes; shared:',len(srefs),'icons,',len(shared['skills']),'source forms')
+
+# Complete later accepted projections after historical source imports.
+import runpy
+runpy.run_path(str(Path(__file__).resolve().parent/"replay_accepted_skill_overlays_v267.py"))

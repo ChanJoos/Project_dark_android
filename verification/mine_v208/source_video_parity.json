@@ -1,0 +1,54 @@
+{
+  "algorithm": "SIFT 0.70 ratio and RANSAC similarity, threshold3px",
+  "recordingSha256": "9bca1e3f0cb9ed6f03f378f8d249f065f7e9873c7a403d0f00ee1ee26c5895d8",
+  "source": "lod2102 original bytes, original client tile/palette renderer",
+  "regions": [
+    {
+      "recordingSeconds": 100,
+      "visibleHudCoordinate": [
+        78,
+        82
+      ],
+      "tentativeMatches": 387,
+      "inliers": 147,
+      "inlierMedianErrorPixels": 0.6299431854808234,
+      "transform": [
+        [
+          1.8650532454028734,
+          0.0002310642304046014,
+          126.02844337600726
+        ],
+        [
+          -0.0002310642304046014,
+          1.8650532454028734,
+          -168.45670174360282
+        ]
+      ]
+    },
+    {
+      "recordingSeconds": 120,
+      "visibleHudCoordinate": [
+        102,
+        76
+      ],
+      "tentativeMatches": 450,
+      "inliers": 176,
+      "inlierMedianErrorPixels": 0.5539524392818402,
+      "transform": [
+        [
+          1.865612049829633,
+          0.0003325501622702237,
+          125.53937273182807
+        ],
+        [
+          -0.0003325501622702237,
+          1.865612049829633,
+          -168.95313516038593
+        ]
+      ],
+      "cartRegionInliers": 42,
+      "wallRegionInliers": 120
+    }
+  ],
+  "limit": "Only these observed regions verified. No claim of complete current Korean server map, warp/spawn table or identities."
+}

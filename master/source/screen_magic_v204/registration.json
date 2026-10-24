@@ -1,0 +1,30 @@
+{
+  "status": "ACCEPTED_USER_REQUEST_20261020",
+  "originalSha256": {
+    "01-1000060431.jpg": "cc418200192a8847aae384a1be780c67fcdfbc52eb0620e1d3f1fecc93a37637",
+    "02-1000060433.jpg": "ff9a0df4f5db700af63526a9f40165dd800c137ad9e5f6b48412b3aa73c799f9",
+    "03-1000060430.gif": "6ee8a93feb9875898ae4f9e980624b0e2070468b03344d764a95b053aec86d13"
+  },
+  "formulas": {
+    "METEOR": "max(0, MP-12960)*1.5",
+    "HOLY_DRAGON": "max(0, MP-12960)*1.8"
+  },
+  "mpCost": 12960,
+  "element": "DARK",
+  "meteorCastSeconds": 2,
+  "evidence": "User supplied original-client screenshots; source context/version not independently dated. Fixed base cost; existing staff reductions retained. Modern upgrades unspecified.",
+  "fx": "Source GIF colors/silhouette/cadence; stationary frame0 floor differenced, alpha edge matting adapted. Original raw GIF retained; no invented frames.",
+  "curse": {
+    "shape": "Original pink user screenshot1000060427, crop(300,120,1260,1390), no redrawn skull geometry",
+    "crop": "curse-original-pink-crop.png",
+    "cropSha256": "fd31616b42bfa4a516781fb9bd7f3b2a58250257596697f06f4cfeca1549864e",
+    "processing": "Chroma+white matte removes wooden floor; Lanczos90x120 downsamples screenshot compression; subpixel unsharp cleanup preserves silhouette; four project hold/fade alpha frames, original cadence not recovered",
+    "palette": "Source pink, hue shift blue-58/yellow+71/red+28 in PIL HSV256; white bone cores retained; labels from user4color screenshots",
+    "originalScreenshotSha256": {
+      "1000060427.jpg": "9210a196aeeae1bb762fd13361311242a132cbf6a3f9a717aadee572cfe25e14",
+      "1000060426.jpg": "92e26baae6d690ced2883bf21200e04937d6f640beb71d131f84af948b447f0f",
+      "1000060424.jpg": "8a7250e8d201654f307a0d58257d5f0ff931f0dfeb1d4fac1d5f5305bd42df70",
+      "1000060425.jpg": "5ff3b65a26ffd0fae187fd737093761b0c3ecb89f5e20112236c3ee6bee69175"
+    }
+  }
+}

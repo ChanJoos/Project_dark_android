@@ -1,0 +1,152 @@
+[
+  {
+    "name": "뤼케시온팔루텐",
+    "articleId": "292009",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R04508"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "오렌키톤",
+    "articleId": "292009",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02579"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "밀레스단도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R04132"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "오렌단도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02743"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "수오미천지도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R03149"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "루어스태산도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R04780"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "오렌카쿰",
+    "articleId": "292009",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02599"
+    ],
+    "matchingAppearances": [
+      "wu0000245",
+      "wu1000032"
+    ],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "수오미연무도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R03169"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "오렌연무도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02634"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "밀레스풍월도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R03931"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "오렌풍월도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02553"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "루어스풍전도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R04749"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "오렌대양도복",
+    "articleId": "291223",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02733"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "밀레스카스뮴플레이트",
+    "articleId": "291457",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R03987"
+    ],
+    "matchingAppearances": [
+      "wu0000099",
+      "wu0000146"
+    ],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "오렌아마존아머",
+    "articleId": "291457",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02644"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  },
+  {
+    "name": "실버플레이트아머",
+    "articleId": "291457",
+    "matchingItemIds": [
+      "USER_ITEM_20261018_R02962"
+    ],
+    "matchingAppearances": [],
+    "reason": "EXACT_UNIQUE_SOURCE_IDENTITY_NOT_ESTABLISHED"
+  }
+]

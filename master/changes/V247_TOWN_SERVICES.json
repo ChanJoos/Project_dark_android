@@ -1,0 +1,24 @@
+{
+  "id": "V247_TOWN_SERVICES",
+  "status": "ACCEPTED",
+  "date": "2026-10-23",
+  "source": "User supplied1000060733/731/735 photographs; retained original741 installer",
+  "before": "Five redundant Milles mentors; player paper dolls for all services; adapted generic shop UI; extra coastal gate halo",
+  "after": "Five Milles mentors removed, J01/J02 targets existing counselor, original9inn/equipment NPC sprites via common role registry, original shop/dialogue/bitmapfont for all9current retail shops and campaign supplies, no coastal yellow halo",
+  "stableIds": "Quest IDs/progress/save/items/prices/conserved durable trades retained; Piet J03 mentors retained",
+  "evidence": "master/source/town_v247/receipt.json",
+  "code": [
+    "WorldDef",
+    "CampaignProgress",
+    "NpcActorRenderer",
+    "TownServiceArt",
+    "TownInteriorDef",
+    "TownShopWindow",
+    "ClassicShopSkin",
+    "GameView"
+  ],
+  "verification": "24 unique relevant PASS: final8native39900306358 plus16unchangednative39899353646 guarded;18sourcepixel assetchecks;68nativecaptures;APKcryptographic/digest/package/source verification PASS",
+  "phone": "PENDING",
+  "runtimeSource": "2367c5811a05b00b724cf2b15245239e5f262921",
+  "receipt": "verification/TOWN_SERVICES_V247_BUILD.json"
+}

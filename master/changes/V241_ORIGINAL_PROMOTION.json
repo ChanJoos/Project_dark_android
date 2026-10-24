@@ -1,0 +1,28 @@
+{
+  "revision": "V241",
+  "status": "ACCEPTED",
+  "source": "User235706video+retained254766labelledcaptures+originalDarkAges741roh.dat",
+  "before": "video/static matte with actor/HP holes and limited envelopes",
+  "after": "8 complete original palette EPF sequences with perframe nativefoot and unionenvelope",
+  "ids": [
+    "SK_마법사_039",
+    "SK_마법사_040",
+    "SK_마법사_041",
+    "SK_마법사_042",
+    "SK_마법사_045",
+    "SK_마법사_046",
+    "SK_마법사_051",
+    "SK_마법사_052"
+  ],
+  "unchanged": [
+    "044originalidentityunconfirmed",
+    "basic4",
+    "damage",
+    "MP",
+    "learning",
+    "world",
+    "save"
+  ],
+  "validation": "7nativePASS/run39868184395/source296656066627ef40d3a5210ca2bc70e489bc3907; verification/PROMOTION_V241_BUILD.json",
+  "device": "DEVICE_FAILED_USER_REPORTED on predecessor; new phone acceptance pending"
+}

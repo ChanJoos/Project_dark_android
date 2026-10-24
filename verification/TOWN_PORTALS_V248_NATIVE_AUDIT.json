@@ -1,0 +1,435 @@
+{
+  "maps": 71,
+  "groups": 130,
+  "atlasBytes": 583680,
+  "records": [
+    {
+      "map": "milles_runtime_proto",
+      "groups": 7,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_ABEL_TOWN",
+      "groups": 5,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_RUCESION_TOWN",
+      "groups": 7,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_MINE_TOWN",
+      "groups": 3,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_LOBBY",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_POTE_01",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_POTE_02",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_PIET_CAMP",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_POTE_03",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_POTE_D_BOSS",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_ABEL_COAST",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_ABEL_COAST_1A",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_ABEL_COAST_2A",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_ABEL_COAST_3B",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_ABEL_COAST_4C",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_POTE_04",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_RUCESION_COAST",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_RUCESION_COAST_1C",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_RUCESION_COAST_2C",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_RUCESION_COAST_3B",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_RUCESION_ARIEL_ROOM",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_MINE_HUNT_3",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_FIELD",
+      "groups": 4,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_1",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_2",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_HOUSE_3",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_UNDER_A",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_UNDER_B",
+      "groups": 3,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_UNDER_C",
+      "groups": 3,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_UNDER_D",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_DEATH_UNDER_E",
+      "groups": 3,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_LOBBY",
+      "groups": 4,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_1",
+      "groups": 11,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_CORRIDOR_2",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_01",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_02",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_03",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_04",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_05",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_06",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_07",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_08",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_09",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_10",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_11",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_12",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_13",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_14",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "MAP_HORROR_ROOM_15",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_potion_shop",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_weapon_shop",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_bank",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_church",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_inn",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_temple_lobby",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_temple_hub",
+      "groups": 2,
+      "animatedDifference": true
+    },
+    {
+      "map": "milles_interior_temple_seo",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "abel_interior_reagent",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "abel_interior_equipment",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "abel_interior_bank",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "abel_interior_church",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "abel_interior_inn",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "rucesion_interior_armor",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "rucesion_interior_weapon",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "rucesion_interior_reagent",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "rucesion_interior_bank_a",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "rucesion_interior_bank_b",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "rucesion_interior_inn",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "rucesion_interior_clothing",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "mine_interior_inn",
+      "groups": 1,
+      "animatedDifference": true
+    },
+    {
+      "map": "mine_interior_reagent",
+      "groups": 1,
+      "animatedDifference": true
+    }
+  ],
+  "sourceCommit": "e38aeba15e34a7d9c797f16af7d8c8ed2922bb87",
+  "runId": "39906861205",
+  "currentNativeCases": [
+    {
+      "class": "com.projectdark.mobile.PortalServicesV248Test",
+      "name": "deathKnightIsReachableAndSellsRealReagentsAndRecallsThroughSharedShop",
+      "passed": true
+    },
+    {
+      "class": "com.projectdark.mobile.PortalServicesV248Test",
+      "name": "allSeventyOneActualMapsDrawSharedAnimatedGroupsAndReuseFloorCaches",
+      "passed": true
+    },
+    {
+      "class": "com.projectdark.mobile.PortalServicesV248Test",
+      "name": "presentAndFutureServiceAndTransportRolesUseFullExactOriginalPixels",
+      "passed": true
+    },
+    {
+      "class": "com.projectdark.mobile.TempleMillesV213Test",
+      "name": "entranceArchesFitInsideWorldAndStaticRoutesAreReused",
+      "passed": true
+    },
+    {
+      "class": "com.projectdark.mobile.TempleMillesV213Test",
+      "name": "npcAndDoorWalkingReachGodPurchaseBothResourcesReturnAndReenter",
+      "passed": true
+    },
+    {
+      "class": "com.projectdark.mobile.TempleMillesV213Test",
+      "name": "inspectWholeVillageDistrictsAndStableRenderer",
+      "passed": true
+    },
+    {
+      "class": "com.projectdark.mobile.TempleMillesV213Test",
+      "name": "recoveredBackArchKeepsAllThreeOriginalStonePillars",
+      "passed": true
+    },
+    {
+      "class": "com.projectdark.mobile.TempleMillesV213Test",
+      "name": "allGateContactsAreWalkableAndDoNotReplaceNpcTiles",
+      "passed": true
+    }
+  ],
+  "reusedNativeCases": 32,
+  "uniqueNativeCases": 40,
+  "finalPngCount": 85,
+  "retainedTravelNpcRun": 39905956948,
+  "retainedTravelNpcPng": 115,
+  "originalFirstPngCount": 96,
+  "manualVisualReview": {
+    "all71MapPortalScenes": true,
+    "sourceNpcRoles": 20,
+    "townMenuRoutes": 21,
+    "all71FirstContactPages": 9,
+    "final70MapScenes": "pixel-identical to previously reviewed71 scene set, only Milles changed",
+    "finalMillesTempleAndEntranceFull": "reviewed; old beam absent, original ring only",
+    "oldWhiteBeamPixelRGBA": [
+      252,
+      251,
+      240,
+      255
+    ],
+    "finalSamePixelRGBA": [
+      42,
+      95,
+      13,
+      255
+    ],
+    "choiceFrameRightHudContamination": "removed using mirrored original clean left border pixels"
+  },
+  "phone": "PENDING",
+  "userVisualAcceptance": "PENDING"
+}

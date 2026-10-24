@@ -32,11 +32,15 @@ public class PoteRewardsV123Test {
       assertFalse(AdaptedPoteQuestRewards.items(CampaignProgress.find("B06"),r).containsKey("IT_B_CAMPAIGN_"+job+"_11"));
     }
   }
-  @Test public void departureGearBecomesUsableAtElevenWithoutReplacingCurrentOutfit()throws Exception{
-    for(String job:CampaignProgress.JOBS){RpgProgressionState r=reportReady("M06",job);Map<String,String> equipped=new LinkedHashMap<>(r.equipment());
+  @Test public void departureGearKeepsOriginalLevelGatesWithoutReplacingCurrentOutfit()throws Exception{
+    for(String job:CampaignProgress.JOBS){RpgProgressionState r=reportReady("M06",job);Map<String,String> equipped=new LinkedHashMap<>(r.equipment());Map<String,Integer> owned=new LinkedHashMap<>(r.inventory());
       assertTrue(r.campaign().claim("M06",r));assertEquals(Integer.valueOf(11),r.normalLevel());assertEquals(equipped,r.equipment());
       for(String id:new String[]{"IT_B_CAMPAIGN_"+job+"_11","IT_B_CAMPAIGN_TOOL_"+job+"_11"}){
-        assertEquals(Integer.valueOf(1),r.inventory().get(id));assertEquals(RpgProgressionState.RequirementResult.MET,r.currentRequirements(id));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));
+        String canonical=RpgProgressionState.canonicalItemId(id);assertEquals(Integer.valueOf(owned.getOrDefault(canonical,0)+1),r.inventory().get(canonical));assertFalse(r.inventory().containsKey(id));RpgProgressionState.ItemDefinition original=r.itemDefinitions().get(canonical);
+        if(r.inventoryOnlyItem(canonical)){assertEquals(RpgProgressionState.RequirementResult.PENDING,r.currentRequirements(id));assertEquals(RpgProgressionState.EquipResult.REQUIREMENT_PENDING,r.equip(id));continue;}
+        if(original.requiredLevel!=null&&original.requiredLevel>11){assertEquals(RpgProgressionState.RequirementResult.LEVEL_NOT_MET,r.currentRequirements(id));if(canonical.equals(r.equipment().get(original.equipSlot)))r.unequip(original.equipSlot);assertEquals(RpgProgressionState.EquipResult.REQUIREMENT_NOT_MET,r.equip(id));r.restoreProgression(original.requiredLevel,0L);}
+        if(!original.jobRestrictionResolved||r.inventoryOnlyItem(canonical)){assertEquals(job+" "+original.name,RpgProgressionState.RequirementResult.PENDING,r.currentRequirements(id));assertEquals(RpgProgressionState.EquipResult.REQUIREMENT_PENDING,r.equip(id));r.restoreProgression(11,0L);continue;}
+        assertEquals(job+" "+original.name,RpgProgressionState.RequirementResult.MET,r.currentRequirements(id));String slot=r.itemDefinitions().get(canonical).equipSlot;if(canonical.equals(r.equipment().get(slot)))r.unequip(slot);assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(id));assertEquals(canonical,r.equipment().get(slot));r.restoreProgression(11,0L);
       }
     }
   }
@@ -58,7 +62,7 @@ public class PoteRewardsV123Test {
   @Test public void elementRewardsActuallyEquipAndFallbackShopsSellAllFourPairs()throws Exception{
     RpgProgressionState r=reportReady("C04","MAGE");assertTrue(r.campaign().claim("C04",r));
     assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_NECK_FIRE_PEARL"));assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip("IT_BELT_FIRE_LEATHER"));
-    assertEquals("화염",r.itemDefinitions().get(r.equipment().get("목걸이")).attackElement);assertEquals("화염",r.itemDefinitions().get(r.equipment().get("벨트")).defenseElement);
+    assertEquals("FIRE",ElementalDamageFormula.normalize(r.itemDefinitions().get(r.equipment().get("목걸이")).attackElement));assertEquals("화염",r.itemDefinitions().get(r.equipment().get("벨트")).defenseElement);
     for(String element:new String[]{"WATER","WIND","EARTH","FIRE"})for(String id:new String[]{"IT_NECK_"+element+"_PEARL","IT_BELT_"+element+"_LEATHER"})assertNotNull(TownCommerce.find(com.projectdark.mobile.world.TownInteriorDef.Kind.EQUIPMENT,id));
   }
   @Test public void journalShowsExactRingAndNamedEquipmentRatherThanOnlyExpGold()throws Exception{

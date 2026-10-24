@@ -19,7 +19,7 @@ public class SkillWindowTest {
   Context context;
   @Before public void setup(){context=RuntimeEnvironment.getApplication();context.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(context);}
   @Test public void catalogPreservesMasterAndCommonerCannotUseOrRegister(){
-    SkillBook b=SkillBook.load(context);assertEquals(224,b.entries().size());assertEquals("숏블레이드",b.get("SK_전사_001").name);
+    SkillBook b=SkillBook.load(context);assertEquals(225,b.entries().size());assertEquals("숏블레이드",b.get("SK_전사_001").name);
     assertEquals(0,b.list(false,true).size());assertFalse(b.usable("cast_proto"));assertFalse(b.assign(0,"cast_proto"));
     assertTrue(b.learn("SK_전사_001",0));assertTrue(b.usable("SK_전사_001"));assertTrue(b.assign(0,"SK_전사_001"));
     assertFalse(b.learn("unknown",10));assertFalse(b.learn("cast_proto",101));
@@ -94,8 +94,8 @@ public class SkillWindowTest {
     Method update=GameView.class.getDeclaredMethod("update",float.class);update.setAccessible(true);update.invoke(v,.34f);tap(v,duplicate.centerX(),duplicate.centerY());assertEquals(38,r.player().mp);
     session.tick(.01f);assertEquals(68,r.player().hp);
   }
-  @Test public void learnedUnimplementedSkillRegistersAndRestoresWithoutPretendingCombatSupport() throws Exception {
-    SkillBook b=SkillBook.load(context);assertTrue(b.learn("SK_무도가_003",0));assertTrue(b.assign(2,"SK_무도가_003"));assertFalse("unwired recipient must not pretend execution support",b.usable("SK_무도가_003"));SkillBook restored=SkillBook.load(context);assertTrue(restored.restore(b.snapshot()));assertEquals("SK_무도가_003",restored.slot(2));assertTrue(restored.learned("SK_무도가_003"));assertFalse(restored.usable("SK_무도가_003"));
+  @Test public void learnedLeapRegistersAndRestoresWithImplementedCombatSupport() throws Exception {
+    SkillBook b=SkillBook.load(context);b.bindJob(()->"MARTIAL_ARTIST");assertTrue(b.learn("SK_무도가_003",0));assertTrue(b.assign(2,"SK_무도가_003"));assertTrue("V173 leap is implemented for the learned martial job",b.usable("SK_무도가_003"));SkillBook restored=SkillBook.load(context);restored.bindJob(()->"MARTIAL_ARTIST");assertTrue(restored.restore(b.snapshot()));assertEquals("SK_무도가_003",restored.slot(2));assertTrue(restored.learned("SK_무도가_003"));assertTrue(restored.usable("SK_무도가_003"));
     for(SkillDef d:SkillRuntimeCatalog.definitions())assertNotNull("all adaptation IDs must be real Master IDs",b.get(d.id));
   }
   @Test public void commonerCanActuallyLearnRegisterAndUseBasicAttackThroughProductionInput() throws Exception {
@@ -126,7 +126,7 @@ public class SkillWindowTest {
   }
   @Test public void curanumPurchaseToLearningUsesRealShopInputAndPersists() throws Exception {
     GameView v=new GameView(context);v.layout(0,0,960,540);RuntimeState r=field(v,"state");job(r,"CLERIC");r.rpg().restoreStats(3,45,32,3,3,0);r.rpg().restoreGold(200);int initialCuranum=r.rpg().inventory().getOrDefault("IT_REAGENT_CURANUM",0);
-    Method enter=GameView.class.getDeclaredMethod("enterReagentShop");enter.setAccessible(true);enter.invoke(v);TownShopWindow shop=field(v,"townWindow");shop.open(com.projectdark.mobile.world.TownInteriorDef.ALL.get(0),r);tap(v,400,267);tap(v,780,387);tap(v,586,305);assertEquals(150L,r.rpg().gold().longValue());assertEquals(Integer.valueOf(initialCuranum+1),r.rpg().inventory().get("IT_REAGENT_CURANUM"));render(v,"skill-window-material-purchased.png");
+    Method enter=GameView.class.getDeclaredMethod("enterReagentShop");enter.setAccessible(true);enter.invoke(v);TownShopWindow shop=field(v,"townWindow");shop.open(com.projectdark.mobile.world.TownInteriorDef.ALL.get(0),r);shop.guide("IT_REAGENT_CURANUM",false);tap(v,ClassicShopSkin.LEFT+570*ClassicShopSkin.SCALE,335*ClassicShopSkin.SCALE);tap(v,ClassicShopSkin.LEFT+510*ClassicShopSkin.SCALE,290*ClassicShopSkin.SCALE);assertEquals(150L,r.rpg().gold().longValue());assertEquals(Integer.valueOf(initialCuranum+1),r.rpg().inventory().get("IT_REAGENT_CURANUM"));render(v,"skill-window-material-purchased.png");
     Method leave=GameView.class.getDeclaredMethod("leaveReagentShop");leave.setAccessible(true);leave.invoke(v);SkillWindow w=field(v,"skillWindow");w.open=true;w.magic=true;w.job="성직자";w.selectedId="SK_성직자_011";w.detailPage=1;render(v,"skill-window-purchase-ready.png");tap(v,700,400);SkillBook b=field(v,"skillBook");assertTrue(b.learned(w.selectedId));assertEquals(0L,r.rpg().gold().longValue());assertEquals(initialCuranum,r.rpg().inventory().getOrDefault("IT_REAGENT_CURANUM",0).intValue());
     tap(v,850,400);tap(v,725,460);assertEquals(w.selectedId,b.slot(1));assertEquals(1,w.flashSlot);assertTrue(w.message.contains("등록"));render(v,"skill-window-shop-learned.png");w.close();r.player().hp=5;r.player().mp=50;Method rect=GameView.class.getDeclaredMethod("slotRect",int.class);rect.setAccessible(true);RectF slot=(RectF)rect.invoke(v,1);tap(v,slot.centerX(),slot.centerY());assertEquals(27,r.player().mp);tap(v,slot.centerX(),slot.centerY());assertEquals(27,r.player().mp);RuntimeCombatSession session=field(v,"combatSession");session.tick(.3f);assertEquals(r.player().maxHp,r.player().hp);assertTrue(F5mSaveStore.checkpointActive());
     F5mSaveStore.install(context);RuntimeState restored=new RuntimeState();F5mSaveStore.restoreRewardsActive(restored.rpg());SkillBook rb=SkillBook.load(context);F5mSaveStore.restoreAndBindSkillsActive(rb);assertEquals(0L,restored.rpg().gold().longValue());assertTrue(rb.learned("SK_성직자_011"));assertEquals(initialCuranum,restored.rpg().inventory().getOrDefault("IT_REAGENT_CURANUM",0).intValue());assertEquals("SK_성직자_011",rb.slot(1));

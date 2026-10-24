@@ -1,0 +1,2562 @@
+[
+  {
+    "itemId": "IT_EARRING_DOUBLE_SILVER",
+    "native": [
+      "item001.epf",
+      229,
+      0,
+      6,
+      9
+    ],
+    "error": 1.5321637426900585,
+    "assetPath": "equipment-icons/146_souginiyaringu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_SANGOSEKIIYARINGU_BD93B8B9",
+    "native": [
+      "item006.epf",
+      94,
+      0,
+      12,
+      7
+    ],
+    "error": 2.7916666666666665,
+    "assetPath": "equipment-icons/146_sangosekiiyaringu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_RUBIIYARINGU_FA45A3F9",
+    "native": [
+      "item001.epf",
+      232,
+      0,
+      11,
+      14
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/146_rubiiyaringu.png",
+    "offset": [
+      0,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_RI-ZENTO_DC68008A",
+    "native": [
+      "item007.epf",
+      70,
+      0,
+      6,
+      3
+    ],
+    "error": 1.6214689265536724,
+    "assetPath": "equipment-icons/146_ri-zento.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_HORUDEITORINGU_358D472E",
+    "native": [
+      "item006.epf",
+      98,
+      0,
+      8,
+      7
+    ],
+    "error": 2.3703703703703702,
+    "assetPath": "equipment-icons/146_horudeitoringu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_KAENHORUDEITO_964F13A2",
+    "native": [
+      "item006.epf",
+      95,
+      0,
+      8,
+      7
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/146_kaenhorudeito.png",
+    "offset": [
+      -1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_KAZEHORUDEITO_FDA3F599",
+    "native": [
+      "item006.epf",
+      96,
+      0,
+      8,
+      7
+    ],
+    "error": 1.808641975308642,
+    "assetPath": "equipment-icons/146_kazehorudeito.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_DAITIHORUDEITO_6523D03A",
+    "native": [
+      "item006.epf",
+      99,
+      0,
+      8,
+      7
+    ],
+    "error": 2.1934156378600824,
+    "assetPath": "equipment-icons/146_daitihorudeito.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_UMIHORUDEITO_652BB8EC",
+    "native": [
+      "item006.epf",
+      97,
+      0,
+      7,
+      7
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/146_umihorudeito.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_146_HADEEAR_84C2EB0E",
+    "native": [
+      "item007.epf",
+      71,
+      0,
+      10,
+      1
+    ],
+    "error": 1.59375,
+    "assetPath": "equipment-icons/146_hadeear.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU1_6FDB18DA",
+    "native": [
+      "item001.epf",
+      75,
+      0,
+      6,
+      11
+    ],
+    "error": 2.5268199233716473,
+    "assetPath": "equipment-icons/150_kutu1.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_150_JAPANUNIFORM02_8A8DE823",
+    "native": [
+      "item007.epf",
+      167,
+      0,
+      6,
+      9
+    ],
+    "error": 2.64336917562724,
+    "assetPath": "equipment-icons/150_japanuniform02.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU41_24CE5A29",
+    "native": [
+      "item001.epf",
+      113,
+      0,
+      6,
+      11
+    ],
+    "error": 1.293103448275862,
+    "assetPath": "equipment-icons/150_kutu41.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_150_KUTU56_83C01E8B",
+    "native": [
+      "item001.epf",
+      76,
+      0,
+      6,
+      11
+    ],
+    "error": 2.4061302681992336,
+    "assetPath": "equipment-icons/150_kutu56.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_150_SAFIAN_0C302BDB",
+    "native": [
+      "item001.epf",
+      94,
+      0,
+      5,
+      11
+    ],
+    "error": 2.5482866043613708,
+    "assetPath": "equipment-icons/150_safian.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_150_MISURIRUBUTU_4580A69D",
+    "native": [
+      "item004.epf",
+      115,
+      0,
+      6,
+      10
+    ],
+    "error": 1.4230019493177388,
+    "assetPath": "equipment-icons/150_misurirubutu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_ROORING_4759F2BA",
+    "native": [
+      "item001.epf",
+      206,
+      0,
+      2,
+      7
+    ],
+    "error": 1.7570281124497993,
+    "assetPath": "equipment-icons/152_rooring.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_KENTETU_8B92FCD7",
+    "native": [
+      "item001.epf",
+      210,
+      0,
+      2,
+      5
+    ],
+    "error": 1.201121794871795,
+    "assetPath": "equipment-icons/152_kentetu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_KIN_67A36C40",
+    "native": [
+      "item001.epf",
+      205,
+      0,
+      2,
+      7
+    ],
+    "error": 2.2439759036144578,
+    "assetPath": "equipment-icons/152_kin.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_TORAME_B1522F0F",
+    "native": [
+      "item001.epf",
+      208,
+      0,
+      2,
+      7
+    ],
+    "error": 1.7536231884057971,
+    "assetPath": "equipment-icons/152_torame.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_SAFAIA_81A4D338",
+    "native": [
+      "item001.epf",
+      212,
+      0,
+      2,
+      7
+    ],
+    "error": 1.685737976782753,
+    "assetPath": "equipment-icons/152_safaia.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_RING_GORU",
+    "native": [
+      "item001.epf",
+      214,
+      0,
+      2,
+      4
+    ],
+    "error": 2.1946308724832213,
+    "assetPath": "equipment-icons/152_korou.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_RYOKUGYOKU_7AB8ADDD",
+    "native": [
+      "item001.epf",
+      213,
+      0,
+      2,
+      7
+    ],
+    "error": 2.639473684210526,
+    "assetPath": "equipment-icons/152_ryokugyoku.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_RING_SILVERAQUA",
+    "native": [
+      "item007.epf",
+      230,
+      0,
+      2,
+      5
+    ],
+    "error": 2.2983257229832574,
+    "assetPath": "equipment-icons/152_silveraqua.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_RUBI_1313E2F4",
+    "native": [
+      "item006.epf",
+      242,
+      0,
+      2,
+      4
+    ],
+    "error": 2.7772727272727273,
+    "assetPath": "equipment-icons/152_rubi.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_TOPAZUYUBIWA_A13CED6E",
+    "native": [
+      "item005.epf",
+      36,
+      0,
+      0,
+      5
+    ],
+    "error": 2.7409679618268576,
+    "assetPath": "equipment-icons/152_topazuyubiwa.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_SUZAKUNOYUBIWA_98951BA8",
+    "native": [
+      "item008.epf",
+      212,
+      0,
+      3,
+      7
+    ],
+    "error": 2.0901116427432216,
+    "assetPath": "equipment-icons/152_suzakunoyubiwa.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_152_KEKONYUBIWA_2892DC6B",
+    "native": [
+      "item004.epf",
+      108,
+      0,
+      2,
+      5
+    ],
+    "error": 0.9350282485875706,
+    "assetPath": "equipment-icons/152_kekonyubiwa.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_GURINHATOGURI_871D87FC",
+    "native": [
+      "item007.epf",
+      257,
+      0,
+      5,
+      4
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/155_gurinhatoguri.png",
+    "offset": [
+      0,
+      1
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_AKUAGURI_C4398D7E",
+    "native": [
+      "item007.epf",
+      254,
+      0,
+      6,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/155_akuaguri.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_KINGURI_1D935B28",
+    "native": [
+      "item001.epf",
+      239,
+      0,
+      4,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/155_kinguri.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_GORUDENPURETOGURI_7FFBB6A1",
+    "native": [
+      "item007.epf",
+      251,
+      0,
+      6,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/155_gorudenpuretoguri.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_YUMOU_47B94777",
+    "native": [
+      "item006.epf",
+      22,
+      0,
+      2,
+      7
+    ],
+    "error": 1.6316287878787878,
+    "assetPath": "equipment-icons/155_yumou.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_RYUGURI_A6E43C6B",
+    "native": [
+      "item004.epf",
+      113,
+      0,
+      3,
+      2
+    ],
+    "error": 2.5692883895131087,
+    "assetPath": "equipment-icons/155_ryuguri.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_BENETHIKAWAKURIPU_4E5BD103",
+    "native": [
+      "item006.epf",
+      21,
+      0,
+      2,
+      4
+    ],
+    "error": 1.6481481481481481,
+    "assetPath": "equipment-icons/155_benethikawakuripu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_155_AB10_A6AAE9C2",
+    "native": [
+      "item012.epf",
+      0,
+      3,
+      8,
+      7
+    ],
+    "error": 2.1794871794871793,
+    "assetPath": "equipment-icons/155_ab10.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_GINTE_D06DD1FA",
+    "native": [
+      "item001.epf",
+      227,
+      0,
+      1,
+      2
+    ],
+    "error": 2.0375586854460095,
+    "assetPath": "equipment-icons/170_ginte.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_GINTE_R_166E6D7D",
+    "native": [
+      "item007.epf",
+      210,
+      0,
+      1,
+      2
+    ],
+    "error": 1.9943661971830986,
+    "assetPath": "equipment-icons/170_ginte_r.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_KINTEBUKURO_7E1109C9",
+    "native": [
+      "item001.epf",
+      228,
+      0,
+      1,
+      2
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/170_kintebukuro.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_MAJIKURISUTO_695C046E",
+    "native": [
+      "item004.epf",
+      112,
+      0,
+      1,
+      2
+    ],
+    "error": 2.404320987654321,
+    "assetPath": "equipment-icons/170_majikurisuto.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_KUREARISUTO_EB00C792",
+    "native": [
+      "item013.epf",
+      2,
+      0,
+      2,
+      2
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/170_kurearisuto.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_GINUDEWA_98AFCA6F",
+    "native": [
+      "item001.epf",
+      224,
+      0,
+      6,
+      4
+    ],
+    "error": 1.7556131260794474,
+    "assetPath": "equipment-icons/170_ginudewa.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_KINUDEWA_9D051BB4",
+    "native": [
+      "item001.epf",
+      225,
+      0,
+      6,
+      4
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/170_kinudewa.png",
+    "offset": [
+      1,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_NOESUDEWAMAS_C12A1A72",
+    "native": [
+      "item007.epf",
+      217,
+      0,
+      2,
+      3
+    ],
+    "error": 2.4413793103448276,
+    "assetPath": "equipment-icons/170_noesudewamas.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_BUREISA_BC0CFFF2",
+    "native": [
+      "item004.epf",
+      116,
+      0,
+      5,
+      1
+    ],
+    "error": 1.9606533036377134,
+    "assetPath": "equipment-icons/170_bureisa.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_RYUUUDEWA_01F1AC5F",
+    "native": [
+      "item004.epf",
+      156,
+      0,
+      6,
+      4
+    ],
+    "error": 2.3223070398642918,
+    "assetPath": "equipment-icons/170_ryuuudewa.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_170_JUNOABUREISU_BB4EED95",
+    "native": [
+      "item009.epf",
+      107,
+      0,
+      6,
+      3
+    ],
+    "error": 2.937669376693767,
+    "assetPath": "equipment-icons/170_junoabureisu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_193_ZEMUBELT_KI_E92C1218",
+    "native": [
+      "item008.epf",
+      33,
+      0,
+      1,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/193_zemubelt_ki.png",
+    "offset": [
+      0,
+      1
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_193_SUZAKUNOBERUTO_C5505038",
+    "native": [
+      "item008.epf",
+      40,
+      0,
+      1,
+      7
+    ],
+    "error": 2.782816229116945,
+    "assetPath": "equipment-icons/193_suzakunoberuto.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_KAENNEKU_584513F2",
+    "native": [
+      "item001.epf",
+      204,
+      0,
+      3,
+      8
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/197_kaenneku.png",
+    "offset": [
+      0,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_DAICHINEKU_E75BD4C9",
+    "native": [
+      "item001.epf",
+      196,
+      0,
+      0,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/197_daichineku.png",
+    "offset": [
+      1,
+      -2
+    ]
+  },
+  {
+    "itemId": "IT_NECK_FIRE_PEARL",
+    "native": [
+      "item004.epf",
+      148,
+      0,
+      3,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/197_shinjyu-kaen.png",
+    "offset": [
+      0,
+      -2
+    ]
+  },
+  {
+    "itemId": "IT_NECK_WIND_PEARL",
+    "native": [
+      "item004.epf",
+      147,
+      0,
+      3,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/197_shinjyu-kaze.png",
+    "offset": [
+      0,
+      -2
+    ]
+  },
+  {
+    "itemId": "IT_NECK_EARTH_PEARL",
+    "native": [
+      "item001.epf",
+      193,
+      0,
+      3,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/197_shinjyu-daichi.png",
+    "offset": [
+      0,
+      -2
+    ]
+  },
+  {
+    "itemId": "IT_NECK_WATER_PEARL",
+    "native": [
+      "item004.epf",
+      146,
+      0,
+      3,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/197_shinjyu-umi.png",
+    "offset": [
+      0,
+      -2
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_HI_3C371C7E",
+    "native": [
+      "item004.epf",
+      142,
+      0,
+      2,
+      9
+    ],
+    "error": 2.3065134099616857,
+    "assetPath": "equipment-icons/197_magira_hi.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_KAZE_E3B6280F",
+    "native": [
+      "item004.epf",
+      141,
+      0,
+      2,
+      9
+    ],
+    "error": 1.5019157088122606,
+    "assetPath": "equipment-icons/197_magira_kaze.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_TI_01801011",
+    "native": [
+      "item004.epf",
+      140,
+      0,
+      2,
+      9
+    ],
+    "error": 2.1762452107279695,
+    "assetPath": "equipment-icons/197_magira_ti.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_MAGIRA_UMI_8EB93900",
+    "native": [
+      "item004.epf",
+      139,
+      0,
+      2,
+      9
+    ],
+    "error": 2.1226053639846745,
+    "assetPath": "equipment-icons/197_magira_umi.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_HI_62C3AF8C",
+    "native": [
+      "item008.epf",
+      12,
+      0,
+      5,
+      2
+    ],
+    "error": 2.5191570881226055,
+    "assetPath": "equipment-icons/197_zemstone_hi.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_KAZE_88EE1EDC",
+    "native": [
+      "item008.epf",
+      11,
+      0,
+      5,
+      2
+    ],
+    "error": 1.7279693486590038,
+    "assetPath": "equipment-icons/197_zemstone_kaze.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_TI_5D6A1048",
+    "native": [
+      "item008.epf",
+      13,
+      0,
+      5,
+      2
+    ],
+    "error": 2.4272030651340994,
+    "assetPath": "equipment-icons/197_zemstone_ti.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_ZEMSTONE_UMI_62F2D328",
+    "native": [
+      "item008.epf",
+      14,
+      0,
+      5,
+      1
+    ],
+    "error": 2.396551724137931,
+    "assetPath": "equipment-icons/197_zemstone_umi.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_CRYSTAL_5911EC0D",
+    "native": [
+      "item006.epf",
+      240,
+      0,
+      3,
+      6
+    ],
+    "error": 2.360967184801382,
+    "assetPath": "equipment-icons/197_crystal.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_HICRYSTAL_A94FCE06",
+    "native": [
+      "item006.epf",
+      239,
+      0,
+      3,
+      6
+    ],
+    "error": 2.535405872193437,
+    "assetPath": "equipment-icons/197_hicrystal.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_KAZECRYSTAL_2C35EA1B",
+    "native": [
+      "item006.epf",
+      238,
+      0,
+      3,
+      6
+    ],
+    "error": 1.9792746113989637,
+    "assetPath": "equipment-icons/197_kazecrystal.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_TICRYSTAL_A90E7D50",
+    "native": [
+      "item006.epf",
+      237,
+      0,
+      3,
+      6
+    ],
+    "error": 2.4559585492227978,
+    "assetPath": "equipment-icons/197_ticrystal.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_UMICRYSTAL_21B5EDA7",
+    "native": [
+      "item006.epf",
+      236,
+      0,
+      3,
+      6
+    ],
+    "error": 2.3696027633851466,
+    "assetPath": "equipment-icons/197_umicrystal.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_DARKNECK_38E272A2",
+    "native": [
+      "item004.epf",
+      109,
+      0,
+      5,
+      4
+    ],
+    "error": 2.6474543707973104,
+    "assetPath": "equipment-icons/197_darkneck.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_197_HIKARINECK_CE1F9258",
+    "native": [
+      "item004.epf",
+      110,
+      0,
+      5,
+      6
+    ],
+    "error": 2.4425675675675675,
+    "assetPath": "equipment-icons/197_hikarineck.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_TEST_WEAPON_MW002",
+    "native": [
+      "item001.epf",
+      86,
+      0,
+      8,
+      7
+    ],
+    "error": 0.8368794326241135,
+    "assetPath": "item-icons/8956a8316ba1_epe.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_TEST_WEAPON_MW003",
+    "native": [
+      "item001.epf",
+      87,
+      0,
+      4,
+      5
+    ],
+    "error": 1.8888888888888888,
+    "assetPath": "item-icons/e7fe2e00743a_katorasu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHOP_WEAPON_MW005",
+    "native": [
+      "item001.epf",
+      170,
+      0,
+      3,
+      3
+    ],
+    "error": 2.4145299145299144,
+    "assetPath": "item-icons/a14293fb487b_gradius.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_JOB_WARRIOR_WEAPON",
+    "native": [
+      "item001.epf",
+      88,
+      0,
+      3,
+      2
+    ],
+    "error": 2.153225806451613,
+    "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_JOB_ROGUE_WEAPON",
+    "native": [
+      "item001.epf",
+      86,
+      0,
+      8,
+      7
+    ],
+    "error": 0.8368794326241135,
+    "assetPath": "item-icons/8956a8316ba1_epe.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_JOB_MAGE_WAND",
+    "native": [
+      "item001.epf",
+      182,
+      0,
+      0,
+      0
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/minimob87_magic_satia.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_SMALL_POTION",
+    "native": [
+      "item001.epf",
+      47,
+      0,
+      8,
+      8
+    ],
+    "error": 2.1695402298850577,
+    "assetPath": "item-icons/3eea1156dd88_kuranumu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_MP_POTION",
+    "native": [
+      "item001.epf",
+      46,
+      0,
+      8,
+      8
+    ],
+    "error": 2.278735632183908,
+    "assetPath": "item-icons/7731b247ebe5_maradhiumu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_REAGENT_KOMADIUM",
+    "native": [
+      "item001.epf",
+      45,
+      0,
+      8,
+      8
+    ],
+    "error": 2.1408045977011496,
+    "assetPath": "item-icons/77eb642c6391_komadhiumu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_REAGENT_DIBENOMUM",
+    "native": [
+      "item001.epf",
+      50,
+      0,
+      8,
+      8
+    ],
+    "error": 2.5301724137931036,
+    "assetPath": "item-icons/8addf7f9f927_dhibenonumu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_REAGENT_CURANUM",
+    "native": [
+      "item001.epf",
+      47,
+      0,
+      8,
+      8
+    ],
+    "error": 2.1695402298850577,
+    "assetPath": "item-icons/3eea1156dd88_kuranumu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_REAGENT_CURUM",
+    "native": [
+      "item001.epf",
+      47,
+      0,
+      8,
+      8
+    ],
+    "error": 2.1695402298850577,
+    "assetPath": "item-icons/3eea1156dd88_kuranumu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_REAGENT_HOLYWATER",
+    "native": [
+      "item046.epf",
+      6,
+      0,
+      8,
+      3
+    ],
+    "error": 2.7971014492753623,
+    "assetPath": "item-icons/70dbaf29c4e0_seimeinomizud.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_TRAINING_TOKEN",
+    "native": [
+      "item004.epf",
+      238,
+      0,
+      5,
+      10
+    ],
+    "error": 1.6685393258426966,
+    "assetPath": "item-icons/3b31e3382634_ounomonsyou.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_PURIFIED_ESSENCE",
+    "native": [
+      "item003.epf",
+      120,
+      0,
+      12,
+      14
+    ],
+    "error": 1.089430894308943,
+    "assetPath": "item-icons/8501f2305ff1_1.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_11",
+    "native": [
+      "item001.epf",
+      88,
+      0,
+      3,
+      2
+    ],
+    "error": 2.153225806451613,
+    "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_26",
+    "native": [
+      "item001.epf",
+      88,
+      0,
+      3,
+      2
+    ],
+    "error": 2.153225806451613,
+    "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_41",
+    "native": [
+      "item001.epf",
+      88,
+      0,
+      3,
+      2
+    ],
+    "error": 2.153225806451613,
+    "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_56",
+    "native": [
+      "item001.epf",
+      88,
+      0,
+      3,
+      2
+    ],
+    "error": 2.153225806451613,
+    "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_WARRIOR_65",
+    "native": [
+      "item001.epf",
+      88,
+      0,
+      3,
+      2
+    ],
+    "error": 2.153225806451613,
+    "assetPath": "item-icons/d08a9c24d6f2_longsword.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_11",
+    "native": [
+      "item001.epf",
+      86,
+      0,
+      8,
+      7
+    ],
+    "error": 0.8368794326241135,
+    "assetPath": "item-icons/8956a8316ba1_epe.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_26",
+    "native": [
+      "item001.epf",
+      86,
+      0,
+      8,
+      7
+    ],
+    "error": 0.8368794326241135,
+    "assetPath": "item-icons/8956a8316ba1_epe.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_41",
+    "native": [
+      "item001.epf",
+      86,
+      0,
+      8,
+      7
+    ],
+    "error": 0.8368794326241135,
+    "assetPath": "item-icons/8956a8316ba1_epe.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_56",
+    "native": [
+      "item001.epf",
+      86,
+      0,
+      8,
+      7
+    ],
+    "error": 0.8368794326241135,
+    "assetPath": "item-icons/8956a8316ba1_epe.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_ROGUE_65",
+    "native": [
+      "item001.epf",
+      86,
+      0,
+      8,
+      7
+    ],
+    "error": 0.8368794326241135,
+    "assetPath": "item-icons/8956a8316ba1_epe.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_11",
+    "native": [
+      "item001.epf",
+      182,
+      0,
+      0,
+      0
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/minimob87_magic_satia.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_26",
+    "native": [
+      "item001.epf",
+      182,
+      0,
+      0,
+      0
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/minimob87_magic_satia.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_41",
+    "native": [
+      "item001.epf",
+      182,
+      0,
+      0,
+      0
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/minimob87_magic_satia.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_56",
+    "native": [
+      "item001.epf",
+      182,
+      0,
+      0,
+      0
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/minimob87_magic_satia.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MAGE_65",
+    "native": [
+      "item001.epf",
+      182,
+      0,
+      0,
+      0
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/minimob87_magic_satia.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_COPPER",
+    "native": [
+      "item001.epf",
+      188,
+      0,
+      8,
+      2
+    ],
+    "error": 2.483011937557392,
+    "assetPath": "item-icons/0347dae45a7d_tate26.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_IRON",
+    "native": [
+      "item001.epf",
+      189,
+      0,
+      8,
+      0
+    ],
+    "error": 1.8911739502999143,
+    "assetPath": "item-icons/5f19df039041_tate41.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_EXORCISM",
+    "native": [
+      "item001.epf",
+      192,
+      0,
+      8,
+      4
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/a82027a55f56_toematate.png",
+    "offset": [
+      -1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_SILVER",
+    "native": [
+      "item001.epf",
+      92,
+      0,
+      10,
+      7
+    ],
+    "error": 2.544581618655693,
+    "assetPath": "item-icons/2fedfc34d33e_tate56.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_PAPAYA",
+    "native": [
+      "item006.epf",
+      31,
+      0,
+      7,
+      5
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/3d37f6cbc797_papayatate.png",
+    "offset": [
+      0,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_KNIGHT",
+    "native": [
+      "item001.epf",
+      190,
+      0,
+      8,
+      2
+    ],
+    "error": 2.21875,
+    "assetPath": "item-icons/cedf7ab2d1fd_gisidan.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_PHOBOS",
+    "native": [
+      "item006.epf",
+      78,
+      0,
+      8,
+      3
+    ],
+    "error": 2.6233062330623307,
+    "assetPath": "item-icons/95bde1f20c92_fobo.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_BROKEN_PHOBOS",
+    "native": [
+      "item006.epf",
+      76,
+      0,
+      9,
+      3
+    ],
+    "error": 2.7038152610441766,
+    "assetPath": "item-icons/a6404a874bfb_warefobosu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SHIELD_DEATHKNIGHT",
+    "native": [
+      "item006.epf",
+      36,
+      0,
+      4,
+      4
+    ],
+    "error": 2.6125175808720114,
+    "assetPath": "item-icons/4ae5b623b810_desunaito.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_WARDROBE_MW014",
+    "native": [
+      "item001.epf",
+      172,
+      0,
+      4,
+      3
+    ],
+    "error": 2.4467353951890036,
+    "assetPath": "item-icons/9607c2759659_branble.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_WARDROBE_MW048",
+    "native": [
+      "item002.epf",
+      253,
+      0,
+      2,
+      2
+    ],
+    "error": 2.8596491228070176,
+    "assetPath": "item-icons/24d7454738af_daburiru.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_WARDROBE_MW050",
+    "native": [
+      "item002.epf",
+      255,
+      0,
+      3,
+      12
+    ],
+    "error": 1.9479606188466947,
+    "assetPath": "item-icons/f236d7e7885f_misurirumuti.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_SOURCE_MINIMOB_2",
+    "native": [
+      "item008.epf",
+      14,
+      0,
+      5,
+      1
+    ],
+    "error": 2.396551724137931,
+    "assetPath": "equipment-icons/197_zemstone_umi.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_26",
+    "native": [
+      "item001.epf",
+      228,
+      0,
+      1,
+      2
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/170_kintebukuro.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_41",
+    "native": [
+      "item001.epf",
+      228,
+      0,
+      1,
+      2
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/170_kintebukuro.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_56",
+    "native": [
+      "item001.epf",
+      228,
+      0,
+      1,
+      2
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/170_kintebukuro.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_B_CAMPAIGN_TOOL_MARTIAL_ARTIST_65",
+    "native": [
+      "item001.epf",
+      228,
+      0,
+      1,
+      2
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/170_kintebukuro.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R04990",
+    "native": [
+      "item006.epf",
+      242,
+      0,
+      2,
+      4
+    ],
+    "error": 2.7772727272727273,
+    "assetPath": "equipment-icons/152_rubi.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R05211",
+    "native": [
+      "item006.epf",
+      99,
+      0,
+      8,
+      7
+    ],
+    "error": 2.1934156378600824,
+    "assetPath": "equipment-icons/146_daitihorudeito.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R01388",
+    "native": [
+      "item007.epf",
+      71,
+      0,
+      10,
+      1
+    ],
+    "error": 1.59375,
+    "assetPath": "equipment-icons/146_hadeear.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R05426",
+    "native": [
+      "item001.epf",
+      239,
+      0,
+      4,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "equipment-icons/155_kinguri.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R02509",
+    "native": [
+      "item004.epf",
+      113,
+      0,
+      3,
+      2
+    ],
+    "error": 2.5692883895131087,
+    "assetPath": "equipment-icons/155_ryuguri.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R02508",
+    "native": [
+      "item006.epf",
+      22,
+      0,
+      2,
+      7
+    ],
+    "error": 1.6316287878787878,
+    "assetPath": "equipment-icons/155_yumou.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R03786",
+    "native": [
+      "item006.epf",
+      21,
+      0,
+      2,
+      4
+    ],
+    "error": 1.6481481481481481,
+    "assetPath": "equipment-icons/155_benethikawakuripu.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_02",
+    "native": [
+      "item007.epf",
+      58,
+      0,
+      2,
+      4
+    ],
+    "error": 1.971264367816092,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_02.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_04",
+    "native": [
+      "item007.epf",
+      60,
+      0,
+      6,
+      4
+    ],
+    "error": 2.852059925093633,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_04.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_05",
+    "native": [
+      "item007.epf",
+      61,
+      0,
+      8,
+      9
+    ],
+    "error": 1.853046594982079,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_05.png",
+    "offset": [
+      -1,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_07",
+    "native": [
+      "item007.epf",
+      64,
+      0,
+      6,
+      10
+    ],
+    "error": 2.2648809523809526,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_07.png",
+    "offset": [
+      0,
+      -2
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_08",
+    "native": [
+      "item007.epf",
+      65,
+      0,
+      9,
+      3
+    ],
+    "error": 2.7691131498470947,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_08.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_11",
+    "native": [
+      "item007.epf",
+      68,
+      0,
+      1,
+      2
+    ],
+    "error": 2.4930429522081066,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_11.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_12",
+    "native": [
+      "item007.epf",
+      69,
+      0,
+      11,
+      7
+    ],
+    "error": 2.038812785388128,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_12.png",
+    "offset": [
+      -1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_15",
+    "native": [
+      "item009.epf",
+      200,
+      0,
+      7,
+      7
+    ],
+    "error": 2.257425742574257,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_15.png",
+    "offset": [
+      -1,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_16",
+    "native": [
+      "item009.epf",
+      200,
+      0,
+      7,
+      7
+    ],
+    "error": 2.257425742574257,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_16.png",
+    "offset": [
+      -1,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_18",
+    "native": [
+      "item002.epf",
+      94,
+      0,
+      2,
+      4
+    ],
+    "error": 2.7325925925925927,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_18.png",
+    "offset": [
+      0,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_21",
+    "native": [
+      "item001.epf",
+      41,
+      0,
+      7,
+      9
+    ],
+    "error": 2.218274111675127,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_21.png",
+    "offset": [
+      -1,
+      1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_23",
+    "native": [
+      "item001.epf",
+      38,
+      0,
+      11,
+      8
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_23.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_25",
+    "native": [
+      "item002.epf",
+      62,
+      0,
+      4,
+      4
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_25.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_27",
+    "native": [
+      "item009.epf",
+      69,
+      0,
+      5,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_27.png",
+    "offset": [
+      1,
+      2
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_33",
+    "native": [
+      "item009.epf",
+      126,
+      0,
+      5,
+      5
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_33.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_35",
+    "native": [
+      "item009.epf",
+      111,
+      0,
+      4,
+      7
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_35.png",
+    "offset": [
+      0,
+      1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_37",
+    "native": [
+      "item009.epf",
+      113,
+      0,
+      6,
+      8
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_37.png",
+    "offset": [
+      0,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_39",
+    "native": [
+      "item009.epf",
+      109,
+      0,
+      7,
+      3
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_39.png",
+    "offset": [
+      0,
+      1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_41",
+    "native": [
+      "item009.epf",
+      79,
+      0,
+      1,
+      4
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_41.png",
+    "offset": [
+      1,
+      4
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_43",
+    "native": [
+      "item009.epf",
+      197,
+      0,
+      3,
+      5
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_43.png",
+    "offset": [
+      1,
+      -1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_45",
+    "native": [
+      "item006.epf",
+      172,
+      0,
+      1,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_45.png",
+    "offset": [
+      0,
+      1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_46",
+    "native": [
+      "item006.epf",
+      164,
+      0,
+      4,
+      3
+    ],
+    "error": 1.856175972927242,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_46.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_48",
+    "native": [
+      "item006.epf",
+      170,
+      0,
+      4,
+      3
+    ],
+    "error": 1.9312169312169312,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_48.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_49",
+    "native": [
+      "item006.epf",
+      171,
+      0,
+      7,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_49.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_50",
+    "native": [
+      "item013.epf",
+      86,
+      0,
+      5,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_50.png",
+    "offset": [
+      3,
+      1
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_51",
+    "native": [
+      "item013.epf",
+      87,
+      0,
+      4,
+      3
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_51.png",
+    "offset": [
+      1,
+      0
+    ]
+  },
+  {
+    "itemId": "IT_NA_FOOD_293294_52",
+    "native": [
+      "item013.epf",
+      100,
+      0,
+      3,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/food_v187_IT_NA_FOOD_293294_52.png",
+    "offset": [
+      0,
+      -1
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R04282",
+    "native": [
+      "item001.epf",
+      205,
+      0,
+      2,
+      7
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R04282.png",
+    "offset": [
+      0,
+      -5
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R05030",
+    "native": [
+      "item001.epf",
+      211,
+      0,
+      2,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R05030.png",
+    "offset": [
+      1,
+      -5
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R03348",
+    "native": [
+      "item001.epf",
+      211,
+      0,
+      2,
+      9
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R03348.png",
+    "offset": [
+      1,
+      -3
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R05018",
+    "native": [
+      "item001.epf",
+      209,
+      0,
+      2,
+      5
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R05018.png",
+    "offset": [
+      0,
+      -2
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R04250",
+    "native": [
+      "item001.epf",
+      208,
+      0,
+      2,
+      7
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R04250.png",
+    "offset": [
+      0,
+      -1
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R03335",
+    "native": [
+      "item001.epf",
+      208,
+      0,
+      2,
+      7
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R03335.png",
+    "offset": [
+      0,
+      -1
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R03368",
+    "native": [
+      "item001.epf",
+      239,
+      0,
+      4,
+      6
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R03368.png",
+    "offset": [
+      1,
+      -2
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R03785",
+    "native": [
+      "item006.epf",
+      23,
+      0,
+      0,
+      1
+    ],
+    "error": 0.0,
+    "assetPath": "item-icons/accessory_v189_USER_ITEM_20261018_R03785.png",
+    "offset": [
+      0,
+      1
+    ]
+  },
+  {
+    "itemId": "USER_ITEM_20261018_R02284",
+    "native": [
+      "item008.epf",
+      40,
+      0,
+      1,
+      7
+    ],
+    "error": 2.782816229116945,
+    "assetPath": "equipment-icons/193_suzakunoberuto.png",
+    "offset": [
+      0,
+      0
+    ]
+  }
+]

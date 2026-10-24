@@ -1,0 +1,125 @@
+{
+  "reference": "Pixel-wise mode of24 distinct original31px martial icons; only outer3px/transparent silhouette consumed; interior glyph pixels are NOT painted from this reference",
+  "inputs": [
+    {
+      "id": "SK_무도가_002",
+      "path": "skill-presentation/classic/icons/b049d439de86916b.png",
+      "sha256": "286dc88dd70bf695f4e83536e5ce6b60d607d470d891abe3d359bcddc07b8daf"
+    },
+    {
+      "id": "SK_무도가_003",
+      "path": "skill-presentation/classic/icons/b25c3d0c73e05c06.png",
+      "sha256": "9032f77c29f459793ac0db55f93a621e51e8a7d841aab5332a768c873b0f74a1"
+    },
+    {
+      "id": "SK_무도가_005",
+      "path": "skill-presentation/classic/icons/3a75750cfa1be613.png",
+      "sha256": "84e4342f297ad4c2d95f1b444665a3e009dbc6264039ed698913f9a51f9786ba"
+    },
+    {
+      "id": "SK_무도가_032",
+      "path": "skill-presentation/classic/icons/58ef84a2c0e9a98e.png",
+      "sha256": "9c2cbcd71a0446579a97d1b13f2f6d92be6e7a2ed3038bf4421125780cfe834d"
+    },
+    {
+      "id": "SK_무도가_004",
+      "path": "skill-presentation/classic/icons/e1af9635d53db2a9.png",
+      "sha256": "5c5ae2e781cc82587c5da2f71842900eea3141030b26435c6aab084b339a3496"
+    },
+    {
+      "id": "SK_무도가_030",
+      "path": "skill-presentation/classic/icons/855d63ac553aa57c.png",
+      "sha256": "5e9f2abef3461cfe1cb0c4a3385eb21b09ae2314aaa0d977e336a62b869439cc"
+    },
+    {
+      "id": "SK_무도가_031",
+      "path": "skill-presentation/classic/icons/787b8aac8f25d9ff.png",
+      "sha256": "5e82895cb3193f475e6b132e9014510ef0e6ff39a1301d21fa0c74b26805f6f4"
+    },
+    {
+      "id": "SK_무도가_007",
+      "path": "skill-presentation/classic/icons/ec3cc7df3bd43a96.png",
+      "sha256": "29fe2a97f0b83c958405838442e78f65d8298148ca100971e482e70cf7eb09dc"
+    },
+    {
+      "id": "SK_무도가_010",
+      "path": "skill-presentation/classic/icons/e01569483af6e4c6.png",
+      "sha256": "d4a6b4ba22b32b460adee24d0eef60a010e022ce3e0081aaef9e22c6646ecaca"
+    },
+    {
+      "id": "SK_무도가_008",
+      "path": "skill-presentation/classic/icons/6842133f43d83d72.png",
+      "sha256": "86e093ddd43bad0b171f30c5fb1dea3ca95fd9357a469e12c01775806c7e9712"
+    },
+    {
+      "id": "SK_무도가_011",
+      "path": "skill-presentation/classic/icons/8590e1fef012c969.png",
+      "sha256": "3b50e7b0a8a24145c8e7092c03a35373322312a5f6a04579ded0dd3d232e7caa"
+    },
+    {
+      "id": "SK_무도가_012",
+      "path": "skill-presentation/classic/icons/05a92dd160260aaa.png",
+      "sha256": "0a427a4697d805f28a62e02253d32db02f8be4cadf62e4c1559773672687ed40"
+    },
+    {
+      "id": "SK_무도가_013",
+      "path": "skill-presentation/classic/icons/c7a855d680a91b95.png",
+      "sha256": "2a197dc371e61ee0cca2f89365bac9e5fc0e2587ccbe1ecf3a72c221c76c7fee"
+    },
+    {
+      "id": "SK_무도가_014",
+      "path": "skill-presentation/classic/icons/60cb66f3b623c6ff.png",
+      "sha256": "b8918ea09e9eabd5ec290d53538cb42523eb35db334375268ee68a8eee9d22fb"
+    },
+    {
+      "id": "SK_무도가_018",
+      "path": "skill-presentation/classic/icons/e5bc88028a5d0924.png",
+      "sha256": "79be24a5b7561fe9d247241cbc6df0bc705f6911b1b7892c3cc251a7f126db89"
+    },
+    {
+      "id": "SK_무도가_019",
+      "path": "skill-presentation/classic/icons/38ba623db10491a5.png",
+      "sha256": "47b5525c645524e0e2a4901bca2db21771ba7b7e26df4bf5689fec66e3958963"
+    },
+    {
+      "id": "SK_무도가_015",
+      "path": "skill-presentation/classic/icons/88f6e7fdee5044f9.png",
+      "sha256": "61a7f5db745d4a308b7b64beabd1a15a5d0e32704515fa5aa12cf1b10741b280"
+    },
+    {
+      "id": "SK_무도가_016",
+      "path": "skill-presentation/classic/icons/4c0afefbec830a23.png",
+      "sha256": "286a63c1f23cff242132c6a07f6df2ee2b4f1bcbd7acc7b3112ab9046caaa85a"
+    },
+    {
+      "id": "SK_무도가_017",
+      "path": "skill-presentation/classic/icons/6f8499ce3d7d8fd3.png",
+      "sha256": "95a4c933fd1a5589e1d4415d3383954f74025b2ee0c38902b999020952216222"
+    },
+    {
+      "id": "SK_무도가_034",
+      "path": "skill-presentation/classic/icons/d141193105ffcbf5.png",
+      "sha256": "4daf2f1e3488440528be576374184c17b2e18ae09b41bc4508680612bf74ff79"
+    },
+    {
+      "id": "SK_무도가_023",
+      "path": "skill-presentation/classic/icons/d80b03f0396761d7.png",
+      "sha256": "fa1ffdf58d41687e712723f7bca49c394a08454faf1000195e203f6fc522a591"
+    },
+    {
+      "id": "SK_무도가_021",
+      "path": "skill-presentation/classic/icons/26f1f77a0a6a208d.png",
+      "sha256": "9bb6a7deefe5752594c265bed494ff71a7bbe7908cc0ab4ca10530071e397893"
+    },
+    {
+      "id": "SK_무도가_022",
+      "path": "skill-presentation/classic/icons/50d68ab2acea8666.png",
+      "sha256": "8da03cba45712b0f3945fb1542e0d2d8f22fe91751988f67e1f849b1325525d2"
+    },
+    {
+      "id": "SK_무도가_020",
+      "path": "skill-presentation/classic/icons/466909ddde4fb1a6.png",
+      "sha256": "aad63327a81bf1e86738736d2739cb2cda7fca0b283a568d64fab85c1ad3c919"
+    }
+  ]
+}

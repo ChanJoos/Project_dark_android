@@ -1,0 +1,11 @@
+{
+  "source": "c5f530506f1e99b56ec5329a0dc752e3d4ccc0ed",
+  "focusedRun": 38635940154,
+  "focusedJob": 116099010068,
+  "commonPR": 38635952212,
+  "commonJob": 116099051822,
+  "stage": "compileDebugUnitTestJavaWithJavac",
+  "rootCause": "java.nio.file.Path wildcard conflicts with android.graphics.Path",
+  "fix": "Explicit java.nio.file.Path and Files import; retain assertions; update V143 art keys and superseded fixed canvas ratio for source-calibrated species",
+  "nativeExecuted": false
+}

@@ -1,0 +1,199 @@
+{
+  "sourceCommit": "cce0fc2ab0a0dd81c6f39e2daaba4e03bba448df",
+  "runId": "39587030505",
+  "builtAtKST": "2026-10-21T19:50:45.589140+09:00",
+  "apkSha256": "c7e24b41434b2ece563824eb62a7823c2b4a137088e98877b061317559d1d5d7",
+  "apkBytes": 99048281,
+  "identity": {
+    "sourceCommit": "cce0fc2ab0a0dd81c6f39e2daaba4e03bba448df",
+    "runId": "39587030505",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V214 compact live HUD avoids full reward/story formatting; host CPU and moving-frame regression; physical handset pending",
+  "revision": "V214_FRAME_PERFORMANCE",
+  "status": "BUILD_HOST_NATIVE_COMMON_VERIFIED_PHONE_PENDING",
+  "artifact": {
+    "id": 12340561725,
+    "run": 39587030505,
+    "zipSha256": "05de19ae0583f9caeab2ac11bf83f87315c5f8497887c77f155cfd7c843e3c01"
+  },
+  "mainMerged": false,
+  "branch": "codex/rucesion-coast-v157",
+  "pullRequest": 197,
+  "mainSha": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "phoneVerified": false,
+  "package": "com.projectdark.mobile.v214test",
+  "label": "PROJECT DARK V214 TEST",
+  "legacySaveMigration": false,
+  "retainedWearableFilesVerified": 2146,
+  "apkManifestVerified": true,
+  "apkCrcAndIdentityVerified": true,
+  "signature": {
+    "v2VerifiedByCI": true,
+    "job": 119178366602
+  },
+  "delivery": {
+    "apk": "PROJECT_DARK_V214_TEST.apk",
+    "saved": true
+  },
+  "performance": {
+    "environment": "host native CPU; not phone FPS",
+    "inventory": 1772,
+    "fullJournal": {
+      "p50ms": 2.440506,
+      "p95ms": 5.314927,
+      "p99ms": 12.590068,
+      "maxms": 12.590068
+    },
+    "compactHud": {
+      "p50ms": 0.264549,
+      "p95ms": 0.359472,
+      "p99ms": 1.222492,
+      "maxms": 1.222492
+    },
+    "wholeFrame": {
+      "p50ms": 14.316328,
+      "p95ms": 25.477951,
+      "p99ms": 29.661397,
+      "maxms": 31.26953
+    },
+    "drawWorld": {
+      "p50ms": 5.885961,
+      "p95ms": 6.828252,
+      "p99ms": 7.042865,
+      "maxms": 7.042865
+    },
+    "drawHud": {
+      "p50ms": 5.476704,
+      "p95ms": 8.792317,
+      "p99ms": 14.049386,
+      "maxms": 14.049386
+    }
+  },
+  "movement": {
+    "source": "cce0fc2ab0a0dd81c6f39e2daaba4e03bba448df",
+    "environment": "Robolectric native CPU; no physical phone FPS claim",
+    "framesPerScene": 360,
+    "scenes": [
+      {
+        "map": "MILLES",
+        "monsters": 3,
+        "tiles": 4176,
+        "travel": 263.6958015695292,
+        "movingFrames": 277,
+        "updateMedianMs": 0.168214,
+        "updateP95Ms": 0.55695,
+        "updateP99Ms": 1.023293,
+        "updateMaxMs": 13.370902,
+        "renderMedianMs": 12.112986,
+        "renderP95Ms": 20.900971,
+        "renderP99Ms": 31.757354,
+        "renderMaxMs": 1478.87844
+      },
+      {
+        "map": "MAP_POTE_01",
+        "monsters": 72,
+        "tiles": 7075,
+        "travel": 142.58096206023575,
+        "movingFrames": 151,
+        "updateMedianMs": 0.299983,
+        "updateP95Ms": 0.605854,
+        "updateP99Ms": 3.260134,
+        "updateMaxMs": 7.809721,
+        "renderMedianMs": 10.371552,
+        "renderP95Ms": 15.447548,
+        "renderP99Ms": 22.886224,
+        "renderMaxMs": 211.581079
+      },
+      {
+        "map": "MAP_POTE_03",
+        "monsters": 108,
+        "tiles": 10222,
+        "travel": 214.5618036012228,
+        "movingFrames": 226,
+        "updateMedianMs": 0.33862,
+        "updateP95Ms": 0.514555,
+        "updateP99Ms": 1.713622,
+        "updateMaxMs": 7.607936,
+        "renderMedianMs": 8.359329,
+        "renderP95Ms": 11.53099,
+        "renderP99Ms": 14.792105,
+        "renderMaxMs": 21.88799
+      }
+    ]
+  },
+  "commonCI": {
+    "push": 39587030492,
+    "pullRequest": 39587037431,
+    "status": "SUCCESS"
+  },
+  "testSuites": 7,
+  "testCount": 31,
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "earlierAttempt": {
+    "source": "bd5ff2a7452467f257223e771c26484cb289817e",
+    "run": 39586214168,
+    "result": "30/31 tests pass; new fixture attempted basic job restore at level1; fixture corrected to level3, no production rule relaxation"
+  },
+  "limitations": [
+    "Host CPU is not phone FPS; severe V213 phone lag root cause not fully established.",
+    "Moving render cold maxima remain 1478.87844ms Milles,211.581079ms first forest; not claimed eliminated.",
+    "Paired projection profile used level99 COMMONER because original benchmark restored job before level; parity test independently covers all five valid basic jobs.",
+    "14 named shields remain appearanceId=null with unverified worn source identity; stats/icons work, no substitute sprite assigned.",
+    "New test app uses separate storage; existing V213 app/save retained."
+  ],
+  "testDetails": [
+    {
+      "name": "com.projectdark.mobile.TempleMillesV213Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.ContinuousMoveProfileTest",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.FramePerformanceV214Test",
+      "tests": "2",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.InventoryRepairV212Test",
+      "tests": "5",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.QuestJournalTest",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MobileHudV135Test",
+      "tests": "4",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ]
+}

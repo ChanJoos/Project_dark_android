@@ -15,10 +15,14 @@ final class SkillPresentationCatalog {
   SkillPresentationCatalog(Context c){try{JSONObject j=new JSONObject(new String(PresentationAssetBytes.read(c,"skill-presentation/catalog.json"),StandardCharsets.UTF_8));profiles=j.getJSONObject("profiles");frames=j.getJSONObject("frames");JSONArray a=j.getJSONArray("skills");for(int i=0;i<a.length();i++){Entry e=new Entry(a.getJSONObject(i));if(entries.put(e.id,e)!=null)throw new IllegalStateException("duplicate presentation ID");}}catch(Exception e){throw new IllegalStateException("skill presentation catalog",e);}}
   Entry get(String id){return entries.get(id);}
   String frameKey(String body,String motion,CharacterRenderer.Direction d,float phase){
+    if("WALK".equals(motion))return body+"/01/"+ShirtSourceRegistration.idleFrame(d,CharacterRenderer.paperDollAtlasColumn(CharacterRenderer.State.WALK,phase));
     JSONObject p=profiles.optJSONObject(motion);if(p==null)return null;String group=p.optString("group");
     boolean back=d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE;
+    // Source02 has preparation/contact pairs for the back and front views.
+    // Left views mirror the same contact, rather than selecting the preparation frame.
+    if("02".equals(group))return body+"/02/"+(back?1:3);
     JSONArray a=p.optJSONArray(back?"back":"front");if(a==null||a.length()==0)return null;
-    float q=Math.max(0,Math.min(.999f,phase));int n=Math.min(a.length()-1,(int)(q*a.length()));
+    float q=Math.max(0,Math.min(.999f,phase));if(p.optBoolean("idleEdges")&&(q<.15f||q>=.70f))return frameKey(body,"IDLE",d,0);int n=Math.min(a.length()-1,(int)(q*a.length()));
     JSONArray stops=p.optJSONArray("phases");if(stops!=null){n=0;for(int i=1;i<stops.length()&&i<a.length();i++)if(q+.00001f>=stops.optDouble(i))n=i;}
     return body+"/"+group+"/"+a.optInt(n);
   }

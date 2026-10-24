@@ -1,0 +1,419 @@
+{
+  "schemaVersion": 1,
+  "revision": "V257",
+  "registeredAtKST": "2026-10-24",
+  "status": "USER_ACCEPTED_DESIGN_REFERENCE_RUNTIME_PENDING",
+  "sourceId": "SRC_USER_ELEMENT_TABLE_20261024",
+  "source": {
+    "file": "master/source/element_v257/1000060687.jpg",
+    "sha256": "8f49ac734cf605055377e2c34377b3b546236b41bd46f8db5da370d977e2c865",
+    "originalFilename": "1000060687.jpg",
+    "visibleCommunity": "성천직자의어둠의전설",
+    "visibleTitle": "속성정리표",
+    "url": null,
+    "postDate": null,
+    "evidence": [
+      "U",
+      "FAN"
+    ],
+    "authority": "User designates this screenshot as original-game design reference; community provenance, not independently verified official Nexon data."
+  },
+  "orientation": {
+    "rows": "defense",
+    "columns": "attack",
+    "order": [
+      "NONE",
+      "WATER",
+      "EARTH",
+      "WIND",
+      "FIRE",
+      "WOOD",
+      "METAL",
+      "DARK",
+      "LIFE"
+    ]
+  },
+  "elements": [
+    {
+      "id": "NONE",
+      "label": "무속성"
+    },
+    {
+      "id": "WATER",
+      "label": "수(물)"
+    },
+    {
+      "id": "EARTH",
+      "label": "토(대지)"
+    },
+    {
+      "id": "WIND",
+      "label": "풍(바람)"
+    },
+    {
+      "id": "FIRE",
+      "label": "화(화염)"
+    },
+    {
+      "id": "WOOD",
+      "label": "목(숲)"
+    },
+    {
+      "id": "METAL",
+      "label": "금(강철)"
+    },
+    {
+      "id": "DARK",
+      "label": "암흑"
+    },
+    {
+      "id": "LIFE",
+      "label": "생명"
+    }
+  ],
+  "tables": [
+    {
+      "id": "observed_damage",
+      "title": "모든속성공격 대미지표",
+      "unit": "damage",
+      "conditionCaption": "AC0, 마구찌르기",
+      "values": [
+        [
+          6200,
+          24500,
+          24500,
+          24500,
+          24500,
+          24500,
+          24500,
+          24500,
+          24500
+        ],
+        [
+          3800,
+          6200,
+          18300,
+          11000,
+          6900,
+          9000,
+          5300,
+          13450,
+          13450
+        ],
+        [
+          3800,
+          6900,
+          6200,
+          18300,
+          11000,
+          20000,
+          9000,
+          13450,
+          13450
+        ],
+        [
+          3800,
+          11000,
+          6900,
+          6200,
+          18300,
+          9000,
+          20000,
+          13450,
+          13450
+        ],
+        [
+          3800,
+          18300,
+          11000,
+          6900,
+          6200,
+          5300,
+          9000,
+          13450,
+          13450
+        ],
+        [
+          3800,
+          9000,
+          5300,
+          9000,
+          20000,
+          6200,
+          13000,
+          13450,
+          13450
+        ],
+        [
+          3800,
+          20000,
+          9000,
+          5300,
+          9000,
+          13000,
+          6200,
+          13450,
+          13450
+        ],
+        [
+          3800,
+          8800,
+          8800,
+          8800,
+          8800,
+          8800,
+          8800,
+          6200,
+          16000
+        ],
+        [
+          3800,
+          9800,
+          9800,
+          9800,
+          9800,
+          9800,
+          9800,
+          16000,
+          6200
+        ]
+      ]
+    },
+    {
+      "id": "neutral_defense_100_percent",
+      "title": "무속성방어일때 속성공격을 받을 시 대미지 100% 기준표",
+      "unit": "percent",
+      "referenceDamage": 24500,
+      "values": [
+        [
+          25,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100,
+          100
+        ],
+        [
+          16,
+          25,
+          75,
+          45,
+          28,
+          37,
+          22,
+          55,
+          55
+        ],
+        [
+          16,
+          28,
+          25,
+          75,
+          45,
+          82,
+          37,
+          55,
+          55
+        ],
+        [
+          16,
+          45,
+          28,
+          25,
+          75,
+          37,
+          82,
+          55,
+          55
+        ],
+        [
+          16,
+          75,
+          45,
+          28,
+          25,
+          22,
+          37,
+          55,
+          55
+        ],
+        [
+          16,
+          37,
+          22,
+          37,
+          82,
+          25,
+          53,
+          55,
+          55
+        ],
+        [
+          16,
+          82,
+          37,
+          22,
+          37,
+          55,
+          25,
+          55,
+          55
+        ],
+        [
+          16,
+          36,
+          36,
+          36,
+          36,
+          36,
+          36,
+          25,
+          65
+        ],
+        [
+          16,
+          40,
+          40,
+          40,
+          40,
+          40,
+          40,
+          65,
+          25
+        ]
+      ],
+      "referenceDamageEvidence": "INFERRED_FROM_OBSERVED_TABLE_NOT_AN_EXPLICIT_ORIGINAL_FORMULA"
+    },
+    {
+      "id": "four_element_advantage_100_percent",
+      "title": "(수토풍화)속성공격시 대미지 100% 기준표",
+      "unit": "percent",
+      "referenceDamage": 18300,
+      "values": [
+        [
+          34,
+          134,
+          134,
+          134,
+          134,
+          134,
+          134,
+          134,
+          134
+        ],
+        [
+          21,
+          34,
+          100,
+          60,
+          38,
+          49,
+          29,
+          73,
+          73
+        ],
+        [
+          21,
+          38,
+          34,
+          100,
+          60,
+          109,
+          49,
+          73,
+          73
+        ],
+        [
+          21,
+          60,
+          38,
+          34,
+          100,
+          49,
+          109,
+          73,
+          73
+        ],
+        [
+          21,
+          100,
+          60,
+          38,
+          34,
+          29,
+          49,
+          73,
+          73
+        ],
+        [
+          21,
+          49,
+          29,
+          49,
+          109,
+          34,
+          71,
+          73,
+          73
+        ],
+        [
+          21,
+          109,
+          49,
+          29,
+          49,
+          71,
+          34,
+          73,
+          73
+        ],
+        [
+          21,
+          48,
+          48,
+          48,
+          48,
+          48,
+          48,
+          34,
+          87
+        ],
+        [
+          21,
+          54,
+          54,
+          54,
+          54,
+          54,
+          54,
+          87,
+          34
+        ]
+      ],
+      "referenceDamageEvidence": "INFERRED_FROM_OBSERVED_TABLE_NOT_AN_EXPLICIT_ORIGINAL_FORMULA"
+    }
+  ],
+  "sourceDiscrepancies": [
+    {
+      "id": "ELEMENT_V257_D01",
+      "defense": "METAL",
+      "attack": "WOOD",
+      "table": "neutral_defense_100_percent",
+      "printedPercent": 55,
+      "observedDamage": 13000,
+      "referenceDamage": 24500,
+      "derivedPercent": 53.06122448979592,
+      "otherTablePrintedPercent": 71,
+      "resolution": "Preserve printed55; do not auto-correct or derive a universal runtime multiplier; resolve before runtime projection."
+    }
+  ],
+  "runtime": {
+    "applied": false,
+    "formulaRounding": null,
+    "rawDamageMeaning": null,
+    "priority": "This reference supersedes legacy BALANCED Element_Matrix.csv as design evidence; historical file retained; ElementalDamageFormula.java still has legacy candidate behavior."
+  }
+}

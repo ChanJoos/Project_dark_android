@@ -16,9 +16,9 @@ public class SkillAbilityRuntimeTest {
  Context context;
  @Before public void before(){context=RuntimeEnvironment.getApplication();context.getSharedPreferences("project_dark_f5m_v1",0).edit().clear().commit();F5mSaveStore.install(context);}
  RuntimeState state()throws Exception{RuntimeState s=new RuntimeState();s.rpg().restoreStats(50,50,50,50,50,0);s.rpg().restoreProgression(80,0);s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=20000;s.player().mp=20000;s.player().x=s.player().y=0;List<RuntimeState.Monster> list=field(s,"monsters");list.clear();int i=0;for(float[] d:new float[][]{{32,16},{-32,-16},{32,-16},{-32,16},{64,0}})list.add(new RuntimeState.Monster("m"+i++,"fixture",d[0],d[1],1000000,"ADAPTED_TEST"));return s;}
- RuntimeCombatSession session(RuntimeState s){return new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);}
+ RuntimeCombatSession session(RuntimeState s){RuntimeCombatSession c=new RuntimeCombatSession(s,(a,t)->true,(a,id)->true,a->true);c.setSkillMovement(new SkillAbilityExecutor.Movement(){public boolean movePlayer(float x,float y){s.player().x=x;s.player().y=y;return true;}public boolean moveMonster(RuntimeState.Monster m,float x,float y){return false;}public boolean canLeapPlayer(float x,float y){return s.canPlayerOccupyActors(x,y);}public boolean leapPlayer(float x,float y){return movePlayer(x,y);}});return c;}
  @Test public void everyCatalogIdHasAnExplicitAbilityAndDamageScalesByRealStats()throws Exception{
-  assertEquals(221,SkillAbilityCatalog.all().size());RuntimeState s=state();FinalStats low=s.rpg().finalStats();s.rpg().restoreStats(99,99,99,99,99,0);FinalStats high=s.rpg().finalStats();int offensive=0,heals=0;
+  assertEquals(222,SkillAbilityCatalog.all().size());RuntimeState s=state();FinalStats low=s.rpg().finalStats();s.rpg().restoreStats(99,99,99,99,99,0);FinalStats high=s.rpg().finalStats();int offensive=0,heals=0;
   for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all()){
    assertNotNull(a.id,a.evidence);assertFalse(a.id,a.description.isEmpty());
    if(a.damage()||a.heal()){
@@ -26,7 +26,7 @@ public class SkillAbilityRuntimeTest {
     int h=SkillAbilityCatalog.amount(a,new SkillAbilityCatalog.Snapshot(high,40000,40000,99,100,false));
     assertTrue(a.id+" positive",n>0);assertTrue(a.id+" monotonic",h>=n);if(a.damage())offensive++;else heals++;
    }
-  }assertEquals(77,offensive);assertEquals(16,heals);
+  }assertEquals(78,offensive);assertEquals(16,heals);
   assertTrue(ordinary("SK_무도가_007",low)>ordinary("SK_무도가_002",low));assertTrue(ordinary("SK_마법사_026",low)>ordinary("SK_마법사_001",low));
  }
  int ordinary(String id,FinalStats s){return SkillAbilityCatalog.amount(SkillAbilityCatalog.get(id),new SkillAbilityCatalog.Snapshot(s,20000,20000,80,100,false));}
@@ -37,9 +37,9 @@ public class SkillAbilityRuntimeTest {
   assertEquals(0,SkillAbilityCatalog.amount(SkillAbilityCatalog.get("SK_마법사_043"),x));assertEquals(67600,ordinary("SK_전사_015",stats));
   assertEquals(0,CombatStatPipeline.resolveSkill(0,CombatStatPipeline.Channel.PHYSICAL,stats,stats).applied);
  }
- @Test public void all77DamageActionsActuallyReachTheResolverWithTheirOwnFormulas()throws Exception{
+ @Test public void allActiveDamageActionsActuallyReachTheResolverWithTheirOwnFormulas()throws Exception{
   Set<Integer> distinct=new HashSet<>();
-  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.damage()){
+  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.damage()&&a.supported()){
    RuntimeState s=state();RuntimeCombatSession c=session(s);SkillActionContract.Rule r=SkillActionContract.get(a.id);
    if(a.formula.equals("CRASH"))s.player().hp=1;
    s.skillEffects().put("player","SK_도적_011","STEALTH",1,30);
@@ -94,7 +94,7 @@ public class SkillAbilityRuntimeTest {
   SkillBook b=SkillBook.load(context);b.learn("SK_전사_009",50);b.assign(0,"SK_전사_009");b.learn("SK_전사_010",0);assertFalse(b.learned("SK_전사_009"));assertEquals("SK_전사_010",b.slot(0));
  }
  @Test public void allSupportedStatusesAreReachableThroughProductionEffectDispatch()throws Exception{
-  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.kind.equals("STATUS")){
+  for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all())if(a.kind.equals("STATUS")&&a.supported()){
    RuntimeState s=state();RuntimeCombatSession c=session(s);SkillActionContract.Rule r=SkillActionContract.get(a.id);
    if(r.minReach>1){s.monsters().get(0).x=32*r.minReach;s.monsters().get(0).y=16*r.minReach;}
    if(a.status.equals("BASIC"))continue;

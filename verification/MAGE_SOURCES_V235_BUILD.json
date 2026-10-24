@@ -1,0 +1,291 @@
+{
+  "sourceCommit": "14f50075a08123740273626d5c62108a4c023420",
+  "runId": "39781578591",
+  "builtAtKST": "2026-10-22T21:52:32.982690+09:00",
+  "apkSha256": "b6add9366630d74ae371fb3e6e19907fa39b7cabd93ad6d4500d8f928058ca89",
+  "apkBytes": 102557610,
+  "identity": {
+    "sourceCommit": "14f50075a08123740273626d5c62108a4c023420",
+    "runId": "39781578591",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V235 guide54 byte-exact icons and source descriptions;no acquisition import;lower-three element sources;screen4 third-tier recipient FX;promotion14 and dedicated Dark Mark;phone pending",
+  "artifactId": 12426962921,
+  "artifactZipSha256": "90f47e719b96a42c8cc17781b32a4a4325f17a084d9775ba49cd63bfa430ad21",
+  "nativeSuites": [
+    {
+      "name": "com.projectdark.mobile.MageSourcesV235Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "nativePassed": 51,
+  "initialNativeRun": 39780260125,
+  "initialArtifactId": 12426018540,
+  "initialArtifactZipSha256": "3a465d22337693c4c6256039f6c54aade6ee7983c1bfe474bad39f042d744bf6",
+  "initialNativeSuites": [
+    {
+      "name": "com.projectdark.mobile.SkillSpatialContractTest",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:46:43",
+      "hostname": "runnervmxehtw",
+      "time": "19.765"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:45:56",
+      "hostname": "runnervmxehtw",
+      "time": "28.314"
+    },
+    {
+      "name": "com.projectdark.mobile.RagnarokSourceCaptureTest",
+      "tests": "2",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:44:42",
+      "hostname": "runnervmxehtw",
+      "time": "11.57"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillPresentationTest",
+      "tests": "4",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:46:27",
+      "hostname": "runnervmxehtw",
+      "time": "14.793"
+    },
+    {
+      "name": "com.projectdark.mobile.CurseHudV202Test",
+      "tests": "4",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:42:31",
+      "hostname": "runnervmxehtw",
+      "time": "11.609"
+    },
+    {
+      "name": "com.projectdark.mobile.ScreenMagicV201Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:45:38",
+      "hostname": "runnervmxehtw",
+      "time": "4.955"
+    },
+    {
+      "name": "com.projectdark.mobile.ScreenMagicV204Test",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:45:43",
+      "hostname": "runnervmxehtw",
+      "time": "10.153"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueReviewV229Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:45:28",
+      "hostname": "runnervmxehtw",
+      "time": "4.934"
+    },
+    {
+      "name": "com.projectdark.mobile.RogueCombatV234Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:44:56",
+      "hostname": "runnervmxehtw",
+      "time": "30.494"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowTest",
+      "tests": "16",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:47:19",
+      "hostname": "runnervmxehtw",
+      "time": "21.627"
+    },
+    {
+      "name": "com.projectdark.mobile.MartialSevenV228Test",
+      "tests": "1",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:44:02",
+      "hostname": "runnervmxehtw",
+      "time": "18.173"
+    },
+    {
+      "name": "com.projectdark.mobile.MageSourcesV235Test",
+      "tests": "5",
+      "skipped": "0",
+      "failures": "1",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:43:20",
+      "hostname": "runnervmxehtw",
+      "time": "36.121"
+    },
+    {
+      "name": "com.projectdark.mobile.SkillWindowReferenceTest",
+      "tests": "3",
+      "skipped": "0",
+      "failures": "0",
+      "errors": "0",
+      "timestamp": "2026-10-22T12:47:05",
+      "hostname": "runnervmxehtw",
+      "time": "13.23"
+    }
+  ],
+  "compositeBasis": "50 unchanged native passes plus one corrected MP assertion rerun; app/src/main identical between sources",
+  "v2CertificateSha256": "69f45d0db864bd4f7ec59f02c43bdeff9ee28b803e69cb2857e57222758d612e",
+  "package": "com.projectdark.mobile.v235test",
+  "label": "PROJECT DARK V235 TEST",
+  "frozenV234PresentationFilesVerified": 631,
+  "changedPackagedAssetsVerified": [
+    "app/src/main/assets/skill-presentation/mage-v235/coverage.json",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/001.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/002.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/003.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/004.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/005.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/006.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/007.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/008.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/009.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/010.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/011.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/012.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/013.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/014.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/015.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/016.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/017.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/018.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/019.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/020.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/021.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/022.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/023.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/024.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/025.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/026.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/027.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/028.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/029.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/030.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/031.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/032.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/033.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/034.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/035.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/036.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/037.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/038.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/039.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/040.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/041.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/042.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/043.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/044.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/045.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/046.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/047.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/048.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/049.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/050.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/051.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/052.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/053.png",
+    "app/src/main/assets/skill-presentation/mage-v235/icons/056.png",
+    "app/src/main/assets/skill-presentation/mage-v235/references.json",
+    "app/src/main/assets/skills/catalog.json",
+    "app/src/main/assets/skills/mobile_learning.json"
+  ],
+  "sourceGuideIconsVerified": 54,
+  "screenElementTrace": [
+    {
+      "id": "SK_마법사_030",
+      "recipients": [
+        "mage-source-target",
+        "third",
+        "second"
+      ],
+      "damagePerRecipient": 1358,
+      "mpBefore": 50000,
+      "mpAfter": 49932
+    },
+    {
+      "id": "SK_마법사_031",
+      "recipients": [
+        "mage-source-target",
+        "third",
+        "second"
+      ],
+      "damagePerRecipient": 1358,
+      "mpBefore": 50000,
+      "mpAfter": 49932
+    },
+    {
+      "id": "SK_마법사_032",
+      "recipients": [
+        "mage-source-target",
+        "third",
+        "second"
+      ],
+      "damagePerRecipient": 1358,
+      "mpBefore": 50000,
+      "mpAfter": 49932
+    },
+    {
+      "id": "SK_마법사_033",
+      "recipients": [
+        "mage-source-target",
+        "third",
+        "second"
+      ],
+      "damagePerRecipient": 1358,
+      "mpBefore": 50000,
+      "mpAfter": 49932
+    }
+  ],
+  "acquisitionPolicyCoreSha256": "37a66a77bdc9502e6bad7429db3ad85f58e68e505ad401eb0e89173180d983b8",
+  "catalogCoreSha256": "281e5a9c3da4391516b0088001a3a9e90746bd2fc6f3dff25cb5306516bb37dc",
+  "phone": "PENDING",
+  "fullRegression": "NOT_CLAIMED; scoped candidate. Existing unrelated Abel5-job gear journey remains for final integration",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "pullRequest": 197,
+  "libraryFileId": "libfile_8837a46696348191b967a572d7bf7a9c",
+  "commonScopeRun": 39781590537,
+  "buildStatus": "SUCCESS",
+  "hostVisualReview": [
+    "54-source-icons-both-surfaces",
+    "source-description-043",
+    "promotion-46-original-sigil",
+    "screen-element-0"
+  ],
+  "implementation": "COMPLETE",
+  "runtime": "SCOPED_HOST_NATIVE_VERIFIED",
+  "visualAcceptance": "PHONE_USER_PENDING"
+}

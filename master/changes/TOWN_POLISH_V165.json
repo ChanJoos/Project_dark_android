@@ -1,0 +1,18 @@
+{
+  "id": "TOWN_POLISH_V165",
+  "status": "ACCEPTED",
+  "evidence": "USER_V164_FEEDBACK_AND_LAMP_CORRECTION_20261015",
+  "source": [
+    "master/source/town_v165/reference.json",
+    "user explicitly replaces trees with streetlamps"
+  ],
+  "before": "Broken/disconnected lamp posts, inconsistent service labels, verbose travel window and unimplemented Piet destination. NPC smallness user report, root cause pending measurement.",
+  "after": "5lamp repairs with preserved canvas/anchors; shared cached service signs on Milles/Abel/Rucesion; three short destinations excluding current town and Piet; identical-source NPC/player pixel measurement.",
+  "npcScaleChanged": false,
+  "treesChanged": false,
+  "worldCollisionChanged": false,
+  "oldPietSavesPreserved": true,
+  "artStatus": "ADAPTED_SOURCE_REFERENCED_RECONSTRUCTION",
+  "phoneVisualAcceptance": "PENDING",
+  "validation": "EXACT_SOURCE_F4626096_FOCUSED83_AND_FULL_COMMON_PR_PUSH_SUCCESS"
+}

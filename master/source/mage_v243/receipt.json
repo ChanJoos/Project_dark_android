@@ -1,0 +1,670 @@
+{
+  "revision": "V243",
+  "status": "USER_APPROVED_PREVIEW",
+  "source": "Retained Original741 roh.dat",
+  "installerSha256": "dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093",
+  "preview": "CIRCLE3_MOTION_PREVIEW.gif;CIRCLE3_FRAME_PREVIEW.png",
+  "screenshotEvidence": [
+    "1000060725.jpg",
+    "1000060723.jpg",
+    "1000060721.jpg",
+    "1000060719.jpg"
+  ],
+  "identity": "User approved this exact four-sequence preview2026-10-23; third independent source PENDING_REFERENCE",
+  "timing": "Original EFA interval, one full sequence; Korean gameplay repetition not independently verified",
+  "sequences": [
+    {
+      "id": "SK_마법사_013",
+      "element": "water",
+      "source": "efct235.efa",
+      "sourceSha256": "39445927f7e6eb249d1c80b4632e49a9d23dd07f698b0778f263f106b229d4bc",
+      "blendCode": 2,
+      "intervalMs": 80,
+      "frames": [
+        {
+          "index": 0,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "9ccee2dd582081cf1b091a2833efa8083fa3e88941569a99b6b9008a19674872"
+        },
+        {
+          "index": 1,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "1bd575810bbebe2c46d3415bef39402835285f170709e0627b726b4d18e46015"
+        },
+        {
+          "index": 2,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "d74d051ac1ec04c168f325eea9ec3955cc58f077312f515d07a2009029ef254b"
+        },
+        {
+          "index": 3,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "c45ed2d89f04bed8345bf2da648dfce615663aa94aa4b237ab051067f63fa180"
+        },
+        {
+          "index": 4,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "2e4a631bae9dcbde383ebc01691cf3833cc36212375494ec39c198e2706444d2"
+        },
+        {
+          "index": 5,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "c998c4461b5f5fb2e4e769cdc1053921cd5d058a20fdbb209eb6dee7b5b3d4c3"
+        },
+        {
+          "index": 6,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "62236abac076b790f3a18fdb6ba38fe6669534a62229272df072cfc60d4d5860"
+        },
+        {
+          "index": 7,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "1e9e13e9dbc21c766a7daedf386ee6442f9358ed1060a92df92a8e6176e8b938"
+        },
+        {
+          "index": 8,
+          "sourcePivot": [
+            114,
+            154
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "4cfa849cb3e4d683a935d787fdd952f7712fb51d1f580addeaa2545c0696e6f2"
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_014",
+      "element": "earth",
+      "source": "efct251.efa",
+      "sourceSha256": "40766527bf4e00b46bee198a20fe61e32cb38d935fa73e0f5ce29d3714c214a0",
+      "blendCode": 2,
+      "intervalMs": 65,
+      "frames": [
+        {
+          "index": 0,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "1c9af6aefceb32c5ed9f1fd6e3e362066f65626f9a1b49a6359d9793276b70f4"
+        },
+        {
+          "index": 1,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "27fdabf0492183e2b873151cb9eee7bb9e47cb57ea2aaeaba6a6715c54669bb4"
+        },
+        {
+          "index": 2,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "83a90717ce719c18deedd2dac0fb632ddf86f4fff0139cfd7746bff4f8363391"
+        },
+        {
+          "index": 3,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "9b1fe41ee2425cb548b33e76c6b7afa5424704d3f2fc3ffdde0db6a935036c04"
+        },
+        {
+          "index": 4,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "03b7b76a6535e1b4b9cf8ce950f50e6cd3ede7a234422ec5cf1d8f260864e827"
+        },
+        {
+          "index": 5,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "35b81a9a9bcc3e05d7d8ca35f89819f762feaab66e5289c02ceed03084259a91"
+        },
+        {
+          "index": 6,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "fd361daa236cb0dfc1e9315f32a94b83d90ea88b2c86cc57ad43cf9f2245a9da"
+        },
+        {
+          "index": 7,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "2d8406213bda230e5ed4c0a6791837a9c552b51a11bca66ee1ad71bea687b046"
+        },
+        {
+          "index": 8,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "87a9ea5e06c950e2a2feeab4052d02e01c28d07883d9aca5cdaffbdee75d0de8"
+        },
+        {
+          "index": 9,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "167134ec268ade84a0f64d07c03d09667997ff2582c42c33b88d482c5672f7ad"
+        },
+        {
+          "index": 10,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "d7c94712949e3c9534c7e57a960b275dca19ed709375f7539ce6cb00d40d49c8"
+        },
+        {
+          "index": 11,
+          "sourcePivot": [
+            76,
+            91
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "3d03ed575d05b041aa74bfdc6b9dfe657cda70b2d3a10b41fdd0b803caf1250b"
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_015",
+      "element": "wind",
+      "source": "efct241.efa",
+      "sourceSha256": "6f8f406bfbe1ce2ab321821a26bd9c48519adf36157bd6155bf276f9ac35278a",
+      "blendCode": 1,
+      "intervalMs": 110,
+      "frames": [
+        {
+          "index": 0,
+          "sourcePivot": [
+            75,
+            92
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "2208545a4c6604ce450c9f022fde9c62b41d305e61c65cbff4951719e5eab62a"
+        },
+        {
+          "index": 1,
+          "sourcePivot": [
+            75,
+            92
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "ad597c1d7d991fd91d2063f6116fff8e37784b6d6e25e702183f74aca3889a08"
+        },
+        {
+          "index": 2,
+          "sourcePivot": [
+            75,
+            92
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "7a41dd0063875b7d42bcee817a6e53d6450af3f8888734ab2910055ebb1badfc"
+        },
+        {
+          "index": 3,
+          "sourcePivot": [
+            75,
+            92
+          ],
+          "sourceSize": [
+            160,
+            120
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 336,
+          "rgbaSha256": "275ca35edd8350dc5717aa346dc4dcdaa0521c6c310280e814791562f6e72006"
+        }
+      ]
+    },
+    {
+      "id": "SK_마법사_016",
+      "element": "fire",
+      "source": "efct238.efa",
+      "sourceSha256": "21837efbf3b277eb24ca5bbcfe159864fbb55564e4b884ce649377f6b791129d",
+      "blendCode": 2,
+      "intervalMs": 75,
+      "frames": [
+        {
+          "index": 0,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "1f9ec1e38703e20f0847176d53ebdbb6d5cf16a7809b45668ead9a3877b88a82"
+        },
+        {
+          "index": 1,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "0bed21853f28cddea9a9864681ea06151d49305304da12947770724546ad6f3d"
+        },
+        {
+          "index": 2,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "f81af1b937decbd9f96b5ee60c6d63e95935d4abfefcfade5cd378a7a302486d"
+        },
+        {
+          "index": 3,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "61c96b0c6f6dda2d2ce1143948135bd5df65f75b6b4a2c438588c59a0ff4264e"
+        },
+        {
+          "index": 4,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "7891fef613e9bcee9055f23c595afeed5df15358edb11c550942aab81535b3f7"
+        },
+        {
+          "index": 5,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "2571aec9436d0bcd64eccbb46eab04cb5a26629c8d82ef686ffa88a3d344be80"
+        },
+        {
+          "index": 6,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "abcd27e7360dbd2f5e67f848b07501c8367e1b974cd86d2c073a9f685663bfe5"
+        },
+        {
+          "index": 7,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "3115e9b462753054a2b80597791bc885ff6d4d807572ef48e1438fc73f9c2b67"
+        },
+        {
+          "index": 8,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "5d2c668e6d92ff169c45dcc2e6229abee71242d5391dd677fde22087b4fcef6d"
+        },
+        {
+          "index": 9,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "741548fbeafa600d7f9735d19365f4d9760df3d58c8032017cf06b624fbc2c25"
+        },
+        {
+          "index": 10,
+          "sourcePivot": [
+            116,
+            124
+          ],
+          "sourceSize": [
+            240,
+            180
+          ],
+          "placement": [
+            2,
+            2
+          ],
+          "rowPitch": 496,
+          "rgbaSha256": "c7affcedb12e76df86aa1cdd7aa5a37484646f1f910c331d5bff16b8b4bab8b3"
+        }
+      ]
+    }
+  ],
+  "decodedBytes": 7698944
+}

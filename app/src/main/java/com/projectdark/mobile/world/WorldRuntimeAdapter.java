@@ -28,6 +28,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   private final WorldMoveTargetController movement;
   private final WorldStepInterpolator presentation;
   private final List<WorldMoveTargetController.TileCenter> navigationTiles;
+  private final java.util.Set<Long> tileCenters=new java.util.HashSet<>();
   private final float sceneMinX,sceneMaxX,sceneMinY,sceneMaxY;
   private final List<RectF> sceneObstacles;
   private final TerrainObstacleIndex terrainIndex;
@@ -42,6 +43,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     List<WorldMoveTargetController.TileCenter> centers=new ArrayList<>();
     for(AdaptedMillesIsometricTileLayer.Tile tile:map.tiles())centers.add(new WorldMoveTargetController.TileCenter(tile.centerX,tile.centerY));
     navigationTiles=Collections.unmodifiableList(centers);
+    indexTileCenters();
     sceneMinX=map.bounds().minX;sceneMaxX=map.bounds().maxX;sceneMinY=map.bounds().minY;sceneMaxY=map.bounds().maxY;
     sceneObstacles=runtime.obstacles();terrainIndex=new TerrainObstacleIndex(sceneObstacles);actorsBlockMovement=true;
     snapPlayerToNearestTraversableTile();
@@ -64,6 +66,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     if(runtime==null||tiles==null||tiles.isEmpty())throw new IllegalArgumentException("runtime and authored tiles required");
     this.runtime=runtime;this.map=null;
     this.navigationTiles=Collections.unmodifiableList(new ArrayList<>(tiles));
+    indexTileCenters();
     sceneMinX=minX;sceneMaxX=maxX;sceneMinY=minY;sceneMaxY=maxY;
     sceneObstacles=obstacles==null?Collections.emptyList():Collections.unmodifiableList(new ArrayList<>(obstacles));this.actorsBlockMovement=actorsBlockMovement;terrainIndex=new TerrainObstacleIndex(sceneObstacles);
     snapPlayerToNearestTraversableTile();
@@ -73,6 +76,9 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     presentation=new WorldStepInterpolator(tileStepSeconds(),runtime.player().x,runtime.player().y);
     CharacterRenderer.setPresentationWalkClock(0f);
   }
+
+  /** Temporary render-only full-map projection; always restore the exact live camera. */
+  public void withOverviewCamera(float width,float height,Runnable draw){WorldCameraTransform live=camera;try{camera=map!=null?map.newCamera(width,height):new WorldCameraTransform(sceneMinX,sceneMaxX,sceneMinY,sceneMaxY,width,height);camera.snapTo((sceneMinX+sceneMaxX)/2,(sceneMinY+sceneMaxY)/2);draw.run();}finally{camera=live;}}
 
   public RuntimeState runtime(){return runtime;}
   public WorldMapProjection map(){return map;}
@@ -199,6 +205,12 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     return true;
   }
 
+  /** A leap ignores intervening actors, but its landing and entire terrain path remain legal. */
+  public boolean canPlayerLeapTo(float x,float y){
+    if(!canPlayerOccupy(x,y)||!runtime.canPlayerOccupyActors(x,y))return false;
+    float ax=runtime.player().x,ay=runtime.player().y;int n=Math.max(1,(int)Math.ceil(distance(ax,ay,x,y)/4));
+    for(int i=1;i<=n;i++){float q=i/(float)n;if(terrainIndex.blocked(ax+(x-ax)*q,ay+(y-ay)*q,RuntimeState.PLAYER_RADIUS))return false;}return true;
+  }
   /** Obstacle-only sight test; actors do not occlude their own attack endpoints. */
   public boolean hasCombatLineOfSight(String actorId,String targetId){
     float[] a=combatPosition(actorId),b=combatPosition(targetId);if(a==null||b==null)return false;
@@ -214,6 +226,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     return true;
   }
   private float[] combatPosition(String id){
+    for(RuntimeState.Npc n:runtime.npcs())if(n.id.equals(id))return new float[]{n.x,n.y};
     if("player".equals(id))return new float[]{runtime.player().x,runtime.player().y};
     for(RuntimeState.Monster m:runtime.monsters())if(m.id.equals(id))return new float[]{m.x,m.y};
     return null;
@@ -251,15 +264,24 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   private void snapPlayerToNearestTraversableTile(){
+    if(tileCenters.contains(tileKey(runtime.player().x,runtime.player().y))&&canPlayerStandAt(runtime.player().x,runtime.player().y))return;
     WorldMoveTargetController.TileCenter best=null;float bestDistance=Float.MAX_VALUE;
     for(WorldMoveTargetController.TileCenter tile:navigationTiles){
-      if(!canPlayerStandAt(tile.x,tile.y))continue;
       float dx=tile.x-runtime.player().x,dy=tile.y-runtime.player().y,d=dx*dx+dy*dy;
-      if(d<bestDistance){bestDistance=d;best=tile;}
+      // Leap already supplies a tile center. Do not collision-test the entire map
+      // while resetting its presentation; live occupancy is still checked here.
+      if(d>=bestDistance||!canPlayerStandAt(tile.x,tile.y))continue;
+      bestDistance=d;best=tile;
+      if(d==0f)break;
     }
     if(best==null)throw new IllegalStateException("no traversable spawn tile");
     runtime.player().x=best.x;runtime.player().y=best.y;
   }
+  private static long tileKey(float x,float y){return ((long)Float.floatToIntBits(x)<<32)|(Float.floatToIntBits(y)&0xffffffffL);}
+  private float coordinateMinX,coordinateMinY;
+  public int tileCoordinateX(float x,float y){return Math.round((x/32f-y/16f)/2f-coordinateMinX);}
+  public int tileCoordinateY(float x,float y){return Math.round((x/32f+y/16f)/2f-coordinateMinY);}
+  private void indexTileCenters(){coordinateMinX=Float.POSITIVE_INFINITY;coordinateMinY=Float.POSITIVE_INFINITY;for(WorldMoveTargetController.TileCenter t:navigationTiles){tileCenters.add(tileKey(t.x,t.y));coordinateMinX=Math.min(coordinateMinX,(t.x/32f-t.y/16f)/2f);coordinateMinY=Math.min(coordinateMinY,(t.x/32f+t.y/16f)/2f);}}
 
   private RuntimeState.Monster findMonster(String id){if(id==null)return null;for(RuntimeState.Monster m:runtime.monsters())if(id.equals(m.id))return m;return null;}
 

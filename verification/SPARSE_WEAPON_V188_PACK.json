@@ -1,0 +1,11 @@
+{
+  "entries": 54,
+  "bytes": 57124,
+  "sha256": "50da5dd3eb4e7a24110a97f7cbfd9848c904c150fba2db98728e23d76ef44cd4",
+  "gitBlob": "c4b4e9dcca2edc27e41a7309b4cf763cf828ff82",
+  "status": "CRC_VERIFIED_SOURCE_POSES_PARTIAL_NATIVE_PENDING",
+  "foodRun": {
+    "id": 39175471437,
+    "conclusion": "success"
+  }
+}

@@ -13,28 +13,29 @@ final class SourceEquipmentRegistration {
     final Rect src; final float dx,dy;
     Frame(Rect src,float dx,float dy){this.src=src;this.dx=dx;this.dy=dy;}
   }
-  private final JSONObject body,gear;
-  private SourceEquipmentRegistration(JSONObject body,JSONObject gear){this.body=body;this.gear=gear;}
+  private final JSONObject body,gear;private final String identity;
+  private SourceEquipmentRegistration(JSONObject body,JSONObject gear,String id){this.body=body;this.gear=gear;this.identity=id;}
   static SourceEquipmentRegistration load(Context context,String identity){
     if(context==null||identity==null)return null;
     try{
-      JSONObject b=new JSONObject(read(context,"source-registration/mm001.json"));
+      JSONObject b=new JSONObject(read(context,"source-registration/"+(identity.startsWith("w")?"wm001":"mm001")+".json"));
       JSONObject g=new JSONObject(read(context,"source-registration/"+identity+".json"));
-      return new SourceEquipmentRegistration(b,g);
+      return new SourceEquipmentRegistration(b,g,identity);
     }catch(Throwable ignored){return null;}
   }
   Frame idle(CharacterRenderer.Direction direction,int column){
     int frame=ShirtSourceRegistration.idleFrame(direction,column);
     return frame("01",frame);
   }
-  Frame action(int sourceIndex){return frame("02",sourceIndex);}
+  Frame action(int sourceIndex){return frame("02",sourceIndex,WingShieldV215.actionFrame(identity,sourceIndex));}
   Frame idleByIndex(int index){return frame("01",index);}
-  private Frame frame(String group,int index){
+  private Frame frame(String group,int index){return frame(group,index,index);}
+  private Frame frame(String group,int bodyIndex,int gearIndex){
     try{
       JSONArray bs=body.getJSONObject("sprites").getJSONArray(group);
       JSONArray gs=gear.getJSONObject("sprites").getJSONArray(group);
-      if(index<0||index>=bs.length()||index>=gs.length())return null;
-      JSONObject b=bs.getJSONObject(index),g=gs.getJSONObject(index);
+      JSONObject b=sourceFrame(bs,bodyIndex),g=sourceFrame(gs,gearIndex);
+      if(b==null||g==null)return null;
       int bw=b.getInt("w"),bh=b.getInt("h"),gw=g.getInt("w"),gh=g.getInt("h");
       float bx=(float)b.getDouble("px")*bw, by=-(float)b.getDouble("py")*bh;
       float gx=(float)g.getDouble("px")*gw, gy=-(float)g.getDouble("py")*gh;
@@ -43,8 +44,17 @@ final class SourceEquipmentRegistration {
       return new Frame(new Rect(g.getInt("sx"),g.getInt("sy"),g.getInt("sx")+gw,g.getInt("sy")+gh),dx,dy);
     }catch(Throwable ignored){return null;}
   }
+  /** Source frame IDs are sparse: array position is not an animation frame ID. */
+  static JSONObject sourceFrame(JSONArray frames,int frameId){
+    if(frames==null||frameId<0)return null;
+    for(int n=0;n<frames.length();n++){
+      JSONObject frame=frames.optJSONObject(n);
+      if(frame!=null&&frame.optInt("f",-1)==frameId)return frame;
+    }
+    return null;
+  }
   private static String read(Context c,String path)throws Exception{
-    InputStream in=c.getAssets().open(path);byte[] buf=new byte[8192];StringBuilder out=new StringBuilder();int n;
+    InputStream in;try{in=c.getAssets().open(path.replace("source-registration/","extended-wearables-v215/"));}catch(java.io.FileNotFoundException extendedMissing){try{in=c.getAssets().open(path.replace("source-registration/","wearables-v212/registrations/"));}catch(java.io.FileNotFoundException missing){in=c.getAssets().open(path);}}byte[] buf=new byte[8192];StringBuilder out=new StringBuilder();int n;
     while((n=in.read(buf))>0)out.append(new String(buf,0,n,StandardCharsets.UTF_8));in.close();return out.toString();
   }
 }

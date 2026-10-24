@@ -1,0 +1,42 @@
+{
+  "sourceCommit": "eb0c979f8d30d0272df52fc20cb065a5054b1cb6",
+  "runId": "39132348710",
+  "builtAtKST": "2026-10-18T22:46:31.258087+09:00",
+  "apkSha256": "da4df42f9048eaab97188a06c9b5b40c0e5441afdb49a43f476042c83bc4193a",
+  "apkBytes": 83634542,
+  "identity": {
+    "sourceCommit": "eb0c979f8d30d0272df52fc20cb065a5054b1cb6",
+    "runId": "39132348710",
+    "versionCode": 183,
+    "versionName": "1.83-mobile-horror"
+  },
+  "scope": "13-room automatic last-kill progression; no room NPCs; shifted Milles-return portals; transition cancellation/facing reset; single-target release tracking; fixed multi-recipient orientation; labels, caches, save and skill regressions",
+  "nativeTestCounts": {
+    "tests": 41,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "nativeSuites": [
+    "com.projectdark.mobile.MartialHudAutoRegressionTest",
+    "com.projectdark.mobile.HorrorCastleV179Test",
+    "com.projectdark.mobile.SkillPresentationTest",
+    "com.projectdark.mobile.MartialDefenseStarRegressionTest",
+    "com.projectdark.mobile.HorrorCastleMobileV183Test",
+    "com.projectdark.mobile.MartialMechanicsV173Test",
+    "com.projectdark.mobile.MartialClothCadenceV172Test"
+  ],
+  "status": "BUILD_AND_FOCUSED_NATIVE_VERIFIED",
+  "artifactId": 12138184924,
+  "artifactZipSha256": "588aa5b7c51762d7405b9d1dfc4f3372e783503be81d683d180fa4682e78bade",
+  "mainMerged": false,
+  "libraryFileId": "libfile_ee953daa9e9c8191b7fb3367ebcd5e91",
+  "commonCI": {
+    "run": 39132352529,
+    "job": 117689968255,
+    "status": "IN_PROGRESS"
+  },
+  "phoneAcceptance": "PENDING",
+  "equipmentRequest1": "NOT_COMPLETE",
+  "articleWeaponRequest2": "SOURCE_CAPTURED_NOT_RUNTIME_COMPLETE"
+}

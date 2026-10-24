@@ -1,0 +1,16 @@
+{
+  "status": "ACCEPTED_SOURCE_STAGE_ONLY_RUNTIME_PENDING",
+  "source": "master/source/mine_hunt_v208/catalog.json",
+  "before": "No mine-hunt source contract; three Hell armor definitions already admitted by V184.",
+  "after": "Five photo armor rows cross-referenced; missing thief AC explicitly sourced from master, unknown map/roster/combat/drop odds remain null.",
+  "reason": "User requests original square mine, all original monsters/atlases, worn-equipment direct inventory drops and top-end mobile rewards.",
+  "evidence": "Current user armor photo + 20261018 item Master; dated research source distinctions retained in catalog.",
+  "affectedConsumers": [
+    "Future Mine hunting geometry/renderer/monster catalog",
+    "Existing shared combat/reward/save path",
+    "Existing mine_town_travel NPC"
+  ],
+  "runtimeChange": false,
+  "saveChange": false,
+  "validation": "python3 tools/validate_mine_hunt_v208.py"
+}

@@ -1,0 +1,50 @@
+{
+  "sourceCommit": "5381b1e278a45f59024b969bb01120742e64b9ae",
+  "runId": "39138901545",
+  "builtAtKST": "2026-10-19T00:14:38.384284+09:00",
+  "apkSha256": "52b1a31cf6993d843f02a2575c6317ae8ca4ab5f1a76860704b9c783e0920603",
+  "apkBytes": 83800726,
+  "identity": {
+    "sourceCommit": "5381b1e278a45f59024b969bb01120742e64b9ae",
+    "runId": "39138901545",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending",
+  "nativeCounts": {
+    "tests": 51,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "artifactId": 12140588352,
+  "archiveSha256": "143cc260a735ce5cdba63b73effd219ad3719b8d77cc67c5a956c18b30bdb9c2",
+  "allRequestedEquipmentComplete": false,
+  "implementedSourceRows": 53,
+  "uniqueAppearances": {
+    "weapons": 50,
+    "armor": 3
+  },
+  "portalCounts": {
+    "lobbyMilles": 5,
+    "lobbyWest": 5,
+    "lobbyEast": 1,
+    "lobbyUpper": 1,
+    "corridorReturns": 4,
+    "roomDoorRings": false
+  },
+  "saveFix": "One-time validated migration; bank ownership prevents duplicate grant; removed gear stays removed after restart",
+  "physicalPhone": "PENDING",
+  "broaderCI": {
+    "39138901546": "SUCCESS",
+    "39138905397": "SUCCESS"
+  },
+  "remaining": [
+    "Eight sparse original weapon action registrations",
+    "Exact ten Horror monster armor/weapon/shield associations and original shield stats",
+    "Article enhancement/attribute variant appearance mappings",
+    "Female body route",
+    "Hel thief armor source spelling differs from user row and needs explicit identity mapping",
+    "Original rooms12/13 remain unresolved and outside this repair"
+  ]
+}

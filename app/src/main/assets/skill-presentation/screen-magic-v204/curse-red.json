@@ -1,0 +1,17 @@
+{
+  "path": "screen-magic-v204/curse-red.png",
+  "width": 90,
+  "height": 120,
+  "columns": 4,
+  "durationsMs": [
+    120,
+    200,
+    320,
+    240
+  ],
+  "pivotX": 45,
+  "pivotY": 60,
+  "scale": 1,
+  "blend": "NORMAL",
+  "atlasSha256": "3593342beb465bf0b9ad4aedada68fc43e6ae602e0f3ef35f2eb7616ff3a9904"
+}

@@ -1,0 +1,1427 @@
+{
+  "evidence": "ADAPTED_GENERATED_REFERENCE_RECONSTRUCTION",
+  "canvas": [
+    192,
+    192
+  ],
+  "groundY": 184,
+  "alphaCutoff": 32,
+  "families": {
+    "arkpus": {
+      "sourceSha256": "c3bfe3e92b51a192dc81c2a3d96f62edb0c6de6a7451724d52670798c9f246a9",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "familyScale": 0.5207100591715976,
+      "frames": [
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/idle_nw.png",
+          "crop": [
+            42,
+            31,
+            338,
+            351
+          ],
+          "bounds": [
+            19,
+            17,
+            173,
+            184
+          ],
+          "sha256": "6b58c34b07cf0364bb408a859d84d3c08899acfd0271fff423c3af4fb47e4b3e"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/idle_ne.png",
+          "crop": [
+            392,
+            31,
+            696,
+            351
+          ],
+          "bounds": [
+            17,
+            17,
+            175,
+            184
+          ],
+          "sha256": "08bce045c2b9722da0fb7886dd36029c96e405a5f92802dac89c8ea46d570dea"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/idle_sw.png",
+          "crop": [
+            745,
+            39,
+            1065,
+            357
+          ],
+          "bounds": [
+            12,
+            18,
+            179,
+            184
+          ],
+          "sha256": "aaa1263f5b44903e972fb3b5f7a0d55ddb0fd0cfd67f013421f87a71e2670ca4"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/idle_se.png",
+          "crop": [
+            1110,
+            31,
+            1417,
+            357
+          ],
+          "bounds": [
+            16,
+            14,
+            176,
+            184
+          ],
+          "sha256": "79cbbd05e04c3b90e2a0c1a3e00d9c735ae6b9fbbb177070a79daa9ac8937613"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/walk_nw.png",
+          "crop": [
+            30,
+            376,
+            345,
+            677
+          ],
+          "bounds": [
+            14,
+            27,
+            178,
+            184
+          ],
+          "sha256": "2a737ba9168c21980c15f1b5f35ce30b23ffd18040c68e1cbb195342adcaa385"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/walk_ne.png",
+          "crop": [
+            384,
+            376,
+            703,
+            677
+          ],
+          "bounds": [
+            13,
+            27,
+            179,
+            184
+          ],
+          "sha256": "a31a176cb69814ba9f79c26667f2faa0f69154f0781e739bfc3f1c73edd2df73"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/walk_sw.png",
+          "crop": [
+            745,
+            379,
+            1075,
+            682
+          ],
+          "bounds": [
+            10,
+            26,
+            182,
+            184
+          ],
+          "sha256": "497d6501fabe65b8754d71ed475ba3f4c93df05a61f4764ed46e490629db0849"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/walk_se.png",
+          "crop": [
+            1120,
+            379,
+            1424,
+            682
+          ],
+          "bounds": [
+            17,
+            26,
+            175,
+            184
+          ],
+          "sha256": "9eca7ef0b248a475af8c3321e0364f9d4b8f61a8f967e9b7cf123862645c61ff"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/attack_nw.png",
+          "crop": [
+            22,
+            709,
+            348,
+            1043
+          ],
+          "bounds": [
+            11,
+            10,
+            181,
+            184
+          ],
+          "sha256": "c4430f8f9a52860e247325426c30d217bd36fe51135e22d6b2c3f5968e8054fc"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/attack_ne.png",
+          "crop": [
+            381,
+            715,
+            713,
+            1043
+          ],
+          "bounds": [
+            9,
+            13,
+            182,
+            184
+          ],
+          "sha256": "2e5ab7278c27db7f6371f8da98996b7f6ab5f467bf5bbd07f68b77aedbc683e6"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/attack_sw.png",
+          "crop": [
+            736,
+            712,
+            1074,
+            1038
+          ],
+          "bounds": [
+            8,
+            14,
+            184,
+            184
+          ],
+          "sha256": "5ffd63402ae1f47d65b5f11ea416004330217b3c3f81c4cac3664eb8d89f78ec"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/arkpus/attack_se.png",
+          "crop": [
+            1107,
+            712,
+            1437,
+            1033
+          ],
+          "bounds": [
+            10,
+            17,
+            182,
+            184
+          ],
+          "sha256": "59cd9bce53b08b011e6a45c29070bc039462317a8a80113597fcd8fd075ad981"
+        }
+      ]
+    },
+    "caterpillar": {
+      "sourceSha256": "491b2711e081a25c4c3fdf1731a78aba008d6eac0faa2f18157a2b109eecbd1e",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "familyScale": 0.5131195335276968,
+      "frames": [
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/idle_nw.png",
+          "crop": [
+            41,
+            111,
+            346,
+            362
+          ],
+          "bounds": [
+            17,
+            55,
+            174,
+            184
+          ],
+          "sha256": "5c216aeacb1dde1fe9aeb172b7e1f9cdddb52ab15933ae39b296fc23db59efee"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/idle_ne.png",
+          "crop": [
+            405,
+            114,
+            675,
+            360
+          ],
+          "bounds": [
+            26,
+            58,
+            165,
+            184
+          ],
+          "sha256": "74a817868c22f15d6795eac7f5d06634f2789d4c6724b6ea3c6d80686f0b0f4b"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/idle_sw.png",
+          "crop": [
+            733,
+            149,
+            1049,
+            359
+          ],
+          "bounds": [
+            15,
+            76,
+            177,
+            184
+          ],
+          "sha256": "74b9a431f40d9422af8e3b457edea5f456bc154a5fd1acd4b4a0d2f22d509f93"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/idle_se.png",
+          "crop": [
+            1117,
+            142,
+            1427,
+            364
+          ],
+          "bounds": [
+            16,
+            70,
+            175,
+            184
+          ],
+          "sha256": "dddc1b8ce6d565f235c48873eb25b11fabb65806acab3337e1294f41170d89c1"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/walk_nw.png",
+          "crop": [
+            31,
+            422,
+            360,
+            681
+          ],
+          "bounds": [
+            11,
+            51,
+            180,
+            184
+          ],
+          "sha256": "f2fc32e5c4ebc0c620ca124537a70219a9ee3e9502fad7bcba191b056102c38f"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/walk_ne.png",
+          "crop": [
+            401,
+            436,
+            700,
+            680
+          ],
+          "bounds": [
+            19,
+            59,
+            172,
+            184
+          ],
+          "sha256": "ddd2d031ea52e6acdbcb65d1569bdb4ce3465b25ed6d2cddd6d21ab77cba2bbf"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/walk_sw.png",
+          "crop": [
+            721,
+            474,
+            1064,
+            683
+          ],
+          "bounds": [
+            8,
+            77,
+            184,
+            184
+          ],
+          "sha256": "f2776d23a0b81faca46abe131b8264d98ff09b751047c7112f453dc5e7355a42"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/walk_se.png",
+          "crop": [
+            1101,
+            467,
+            1424,
+            692
+          ],
+          "bounds": [
+            13,
+            69,
+            179,
+            184
+          ],
+          "sha256": "1d98bca8a466552435e23a6ed547a00e65ec2e255571c796b2b5b8d8ed0cd89a"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/attack_nw.png",
+          "crop": [
+            31,
+            737,
+            372,
+            1030
+          ],
+          "bounds": [
+            8,
+            34,
+            183,
+            184
+          ],
+          "sha256": "6db06031e14582f3a1f8f3a58b60e0d6ddb849bbe82019d8f33c0ecfabad1621"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/attack_ne.png",
+          "crop": [
+            399,
+            745,
+            697,
+            1030
+          ],
+          "bounds": [
+            19,
+            38,
+            172,
+            184
+          ],
+          "sha256": "7b1e668bf7b141f5c18a8decf529edf44f5868318c36e6caaee52b2cad6bbac8"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/attack_sw.png",
+          "crop": [
+            730,
+            773,
+            1059,
+            1022
+          ],
+          "bounds": [
+            11,
+            56,
+            180,
+            184
+          ],
+          "sha256": "c36ae8ed3884a9d7113f37c3ec47cdbebf310a5fc89ef08b14e4bc1f7f59a899"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/caterpillar/attack_se.png",
+          "crop": [
+            1095,
+            769,
+            1433,
+            1029
+          ],
+          "bounds": [
+            9,
+            51,
+            182,
+            184
+          ],
+          "sha256": "293a534aa847dcd93b3d56c96f0969e8935967811337212801c9d8bbf1420215"
+        }
+      ]
+    },
+    "maw": {
+      "sourceSha256": "9744c24823daed84b1cc7a2d6014e6eebe931234e24013dc4a747240bb2cc9be",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "familyScale": 0.4985835694050991,
+      "frames": [
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/idle_nw.png",
+          "crop": [
+            42,
+            71,
+            338,
+            364
+          ],
+          "bounds": [
+            22,
+            38,
+            170,
+            184
+          ],
+          "sha256": "d78f13a0aa40fc8ad8abf50947c61c40a48fb14b94a76e7580e710a22952b292"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/idle_ne.png",
+          "crop": [
+            415,
+            79,
+            687,
+            372
+          ],
+          "bounds": [
+            28,
+            38,
+            164,
+            184
+          ],
+          "sha256": "2bba04bbbf522d38a58bb37dc1e1d90cdebe2bea6924de4e02edffc91ad26c01"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/idle_sw.png",
+          "crop": [
+            750,
+            79,
+            1030,
+            395
+          ],
+          "bounds": [
+            26,
+            26,
+            166,
+            184
+          ],
+          "sha256": "a5f2ab15143b70423db3debc95845dbbcc8e9e49f1da2d27a98d8a66eb9e2fd6"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/idle_se.png",
+          "crop": [
+            1128,
+            75,
+            1417,
+            391
+          ],
+          "bounds": [
+            24,
+            26,
+            168,
+            184
+          ],
+          "sha256": "6470d5f0c77789050b325c42a2a13500ecc82c3045dd035773b37b582f08b5e3"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/walk_nw.png",
+          "crop": [
+            30,
+            442,
+            350,
+            715
+          ],
+          "bounds": [
+            16,
+            48,
+            176,
+            184
+          ],
+          "sha256": "af43dde3e25ff072bf04ef9145349c87805831f49a3e3a68ae8e3be7c94954a6"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/walk_ne.png",
+          "crop": [
+            397,
+            455,
+            697,
+            715
+          ],
+          "bounds": [
+            21,
+            54,
+            171,
+            184
+          ],
+          "sha256": "db9ea40047431010b03d287868df37c8f060a0bc9f45f9eff34a01e7e0b87507"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/walk_sw.png",
+          "crop": [
+            739,
+            442,
+            1057,
+            730
+          ],
+          "bounds": [
+            16,
+            40,
+            175,
+            184
+          ],
+          "sha256": "5c0eed60c985ba991a0048f3239f331db79254f7bfd8d352e3badc81595db93d"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/walk_se.png",
+          "crop": [
+            1128,
+            442,
+            1426,
+            718
+          ],
+          "bounds": [
+            21,
+            46,
+            170,
+            184
+          ],
+          "sha256": "0ca50111c15b8e723fe4c359d434fdd64d2221c2836d6f1c84ff91425940a89e"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/attack_nw.png",
+          "crop": [
+            15,
+            755,
+            368,
+            1044
+          ],
+          "bounds": [
+            8,
+            40,
+            184,
+            184
+          ],
+          "sha256": "1d018331d98ae68c964711eba107ab56da53aa937da79275ed3e50c1094d0b91"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/attack_ne.png",
+          "crop": [
+            397,
+            780,
+            718,
+            1053
+          ],
+          "bounds": [
+            16,
+            48,
+            176,
+            184
+          ],
+          "sha256": "b38a2c6cb2f19d8839ae511b603577676092b102a178f477ff23f7a64613cf47"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/attack_sw.png",
+          "crop": [
+            740,
+            774,
+            1073,
+            1060
+          ],
+          "bounds": [
+            13,
+            41,
+            179,
+            184
+          ],
+          "sha256": "5c430878ab61e095f8978235703c07cc81d803a7330261cbca476395ec059bdc"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/maw/attack_se.png",
+          "crop": [
+            1112,
+            774,
+            1443,
+            1055
+          ],
+          "bounds": [
+            13,
+            44,
+            178,
+            184
+          ],
+          "sha256": "71b040da2e80c1c0601c7d711407592a9f501dc3a3438982a228d4a8e149761a"
+        }
+      ]
+    },
+    "octopus": {
+      "sourceSha256": "c53e27a0ad6c8a262b3c1b08006730265caa3564458089975001908113109f8f",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "familyScale": 0.5146198830409356,
+      "frames": [
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/idle_nw.png",
+          "crop": [
+            30,
+            68,
+            370,
+            360
+          ],
+          "bounds": [
+            8,
+            34,
+            183,
+            184
+          ],
+          "sha256": "d4b5fb3d263d5ee5ca3d436c169fc12f5c8ce71a78ce077cf1da707144d89b28"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/idle_ne.png",
+          "crop": [
+            406,
+            68,
+            724,
+            349
+          ],
+          "bounds": [
+            14,
+            39,
+            178,
+            184
+          ],
+          "sha256": "255306e76a11791636c33cad1aec3de03a494094aa111b6f81b21df16c02686d"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/idle_sw.png",
+          "crop": [
+            740,
+            68,
+            1059,
+            372
+          ],
+          "bounds": [
+            14,
+            28,
+            178,
+            184
+          ],
+          "sha256": "662805d2a29e24458f717b3aed2226975fcb8709d3bb1c86a6986a4905932281"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/idle_se.png",
+          "crop": [
+            1094,
+            66,
+            1419,
+            366
+          ],
+          "bounds": [
+            12,
+            30,
+            179,
+            184
+          ],
+          "sha256": "8d34b8fb932c3003c1f9ab24bf2af86ba4ee2d74cf48325bbbe890bf4d762d31"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/walk_nw.png",
+          "crop": [
+            23,
+            408,
+            365,
+            680
+          ],
+          "bounds": [
+            8,
+            44,
+            184,
+            184
+          ],
+          "sha256": "72e7426fa3bfced40dc6d233618b5fe622f82f56c17710f7bbfdf3032a211a3f"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/walk_ne.png",
+          "crop": [
+            401,
+            407,
+            728,
+            687
+          ],
+          "bounds": [
+            12,
+            40,
+            180,
+            184
+          ],
+          "sha256": "a800ab2c87e4a3f77d780bdb444386c0bd43a537cf1a7e198cce3360ebbd0867"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/walk_sw.png",
+          "crop": [
+            736,
+            407,
+            1072,
+            697
+          ],
+          "bounds": [
+            9,
+            35,
+            182,
+            184
+          ],
+          "sha256": "702c44fba8203fdd7b3a3bd69ef9b0f66c43a2efa9bff5e877632672bedd9e55"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/walk_se.png",
+          "crop": [
+            1111,
+            405,
+            1429,
+            686
+          ],
+          "bounds": [
+            14,
+            39,
+            178,
+            184
+          ],
+          "sha256": "56b9bcafa08e8aa38502029a9514893008355545a6ddade983505cb8c73a180f"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/attack_nw.png",
+          "crop": [
+            50,
+            720,
+            370,
+            1035
+          ],
+          "bounds": [
+            13,
+            22,
+            178,
+            184
+          ],
+          "sha256": "53c84ef3e8c8de2a427f5a3cf18929ed3726a7ae442e74d3247a2f0ded357ded"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/attack_ne.png",
+          "crop": [
+            405,
+            744,
+            720,
+            1030
+          ],
+          "bounds": [
+            15,
+            37,
+            177,
+            184
+          ],
+          "sha256": "4060a5369c023cb2536f0e5b433ccc1bfc0b529370fc5e341afeebf2435b0e39"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/attack_sw.png",
+          "crop": [
+            743,
+            753,
+            1081,
+            1037
+          ],
+          "bounds": [
+            9,
+            38,
+            183,
+            184
+          ],
+          "sha256": "e1bccbd38b64374b2639277877bcdc5e34e739dabe13314d2d869d99146746ff"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/octopus/attack_se.png",
+          "crop": [
+            1114,
+            737,
+            1423,
+            1037
+          ],
+          "bounds": [
+            16,
+            30,
+            175,
+            184
+          ],
+          "sha256": "edb3b4e266d34b6232efb7681e66e52659468c4f17c94ed773c5fcb1c44b096b"
+        }
+      ]
+    },
+    "pong": {
+      "sourceSha256": "36bb4cb95cc5838870a1c84ca9486e9befdbf9130038b518edf0869af2442d05",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "familyScale": 0.5349544072948328,
+      "frames": [
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/idle_nw.png",
+          "crop": [
+            43,
+            178,
+            333,
+            410
+          ],
+          "bounds": [
+            18,
+            60,
+            173,
+            184
+          ],
+          "sha256": "61bc526d9767e45d4cb2bb4d9cfe343170a82f6278cb563f38addcbd57287175"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/idle_ne.png",
+          "crop": [
+            399,
+            176,
+            693,
+            411
+          ],
+          "bounds": [
+            17,
+            58,
+            174,
+            184
+          ],
+          "sha256": "c524aab7ce3f5730a90583cb751120866c4bd029cab520fd10e2969828d200bb"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/idle_sw.png",
+          "crop": [
+            738,
+            182,
+            1050,
+            411
+          ],
+          "bounds": [
+            12,
+            61,
+            179,
+            184
+          ],
+          "sha256": "afab6929a33bca78fc75330925f8bd51e0fad0c996a2902ccee08db43ca2f128"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/idle_se.png",
+          "crop": [
+            1106,
+            178,
+            1407,
+            402
+          ],
+          "bounds": [
+            15,
+            64,
+            176,
+            184
+          ],
+          "sha256": "6355be3edffad42ecfd3e1fea15799ff58e614b007f9cbf7b3072f1191fdcaf8"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/walk_nw.png",
+          "crop": [
+            36,
+            513,
+            351,
+            706
+          ],
+          "bounds": [
+            11,
+            81,
+            180,
+            184
+          ],
+          "sha256": "394c5d179f20a9cd00ef677ba34a01904593ffb8262cc03fe3036f305ab7277a"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/walk_ne.png",
+          "crop": [
+            403,
+            514,
+            708,
+            703
+          ],
+          "bounds": [
+            14,
+            83,
+            177,
+            184
+          ],
+          "sha256": "0134f03a4e82e345e83ccf44d4bb4a02d26c826aee36b24bb918b1285fe8936c"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/walk_sw.png",
+          "crop": [
+            738,
+            527,
+            1065,
+            713
+          ],
+          "bounds": [
+            8,
+            84,
+            183,
+            184
+          ],
+          "sha256": "59e85fe87c370c8be3cd369a43b9f599cede223e0a11e03fe952c7a9b72ab38c"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/walk_se.png",
+          "crop": [
+            1106,
+            517,
+            1416,
+            694
+          ],
+          "bounds": [
+            13,
+            89,
+            179,
+            184
+          ],
+          "sha256": "01516b928141899edefdf10b135cc8119a074547ad8794d5f92164f8b37a80bf"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/attack_nw.png",
+          "crop": [
+            26,
+            814,
+            355,
+            1015
+          ],
+          "bounds": [
+            8,
+            76,
+            184,
+            184
+          ],
+          "sha256": "5a889d3392751a6629cc4ebcef262eebf234f305990d841cafe1458c2ac488b2"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/attack_ne.png",
+          "crop": [
+            407,
+            820,
+            712,
+            1014
+          ],
+          "bounds": [
+            14,
+            80,
+            177,
+            184
+          ],
+          "sha256": "0f21f1a3ce96c5617457dc73faf5c5e6fdae157f1d8fe73907274723ae2de7f6"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/attack_sw.png",
+          "crop": [
+            738,
+            817,
+            1060,
+            1014
+          ],
+          "bounds": [
+            10,
+            79,
+            182,
+            184
+          ],
+          "sha256": "33a1b08980f594986d08bbfc6ceb7ca896071883927bcbdbc1e255905e4218fa"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/pong/attack_se.png",
+          "crop": [
+            1107,
+            817,
+            1429,
+            1008
+          ],
+          "bounds": [
+            10,
+            82,
+            182,
+            184
+          ],
+          "sha256": "473154bf073378c3ae933b2bd5d3dbaee96fcf74c26fdd074be9e3e7ce6223e5"
+        }
+      ]
+    },
+    "slate": {
+      "sourceSha256": "704e11ad12e952b22c9775d4f7be83b72d28a08ac2586b112575cebc2a05cc4c",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "familyScale": 0.504297994269341,
+      "frames": [
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/idle_nw.png",
+          "crop": [
+            17,
+            121,
+            351,
+            373
+          ],
+          "bounds": [
+            12,
+            57,
+            180,
+            184
+          ],
+          "sha256": "e9e7e5b851ffea251b7c773bcc44ceb33d549b3028fda66da92d8af36dcb5049"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/idle_ne.png",
+          "crop": [
+            382,
+            119,
+            685,
+            367
+          ],
+          "bounds": [
+            19,
+            59,
+            172,
+            184
+          ],
+          "sha256": "10abea5a81a1d4b48fa2b4ef5004e0ddbfcc92173fb23f7e7588fef35fcbdf3b"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/idle_sw.png",
+          "crop": [
+            720,
+            121,
+            1055,
+            373
+          ],
+          "bounds": [
+            11,
+            57,
+            180,
+            184
+          ],
+          "sha256": "e0d0abb6e0e0a6872198fd45be71f8697c0e2777e01eb898a090fb55fd8b0729"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/idle_se.png",
+          "crop": [
+            1100,
+            121,
+            1431,
+            374
+          ],
+          "bounds": [
+            12,
+            56,
+            179,
+            184
+          ],
+          "sha256": "be956698c8e72783cb11243b0bc7f79465e49d72a6cdaef0b4aa39dc96560605"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/walk_nw.png",
+          "crop": [
+            16,
+            471,
+            346,
+            689
+          ],
+          "bounds": [
+            13,
+            74,
+            179,
+            184
+          ],
+          "sha256": "c821504f55ebf68af2ebc66919e022b0da950756c6aba819652e5be03459e74e"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/walk_ne.png",
+          "crop": [
+            377,
+            467,
+            703,
+            687
+          ],
+          "bounds": [
+            14,
+            73,
+            178,
+            184
+          ],
+          "sha256": "6996a01ce0c88356990c5ada118381c0bf7222eec0a13af370a1cbf8f21a672e"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/walk_sw.png",
+          "crop": [
+            729,
+            484,
+            1075,
+            690
+          ],
+          "bounds": [
+            9,
+            80,
+            183,
+            184
+          ],
+          "sha256": "8c97e79a32fc3d094be89a275095710553d789ec4f2cb809025c29281a96b60d"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/walk_se.png",
+          "crop": [
+            1103,
+            479,
+            1430,
+            689
+          ],
+          "bounds": [
+            13,
+            78,
+            178,
+            184
+          ],
+          "sha256": "37b6ea0ab157df9aca5fbfb69c86a3a73716a49429cb6aea194ff414c883e705"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/attack_nw.png",
+          "crop": [
+            31,
+            766,
+            351,
+            1023
+          ],
+          "bounds": [
+            15,
+            54,
+            176,
+            184
+          ],
+          "sha256": "b80e613bb358b2eba27a5dd893476b064c4069fb0191918a11cba7ecdb041030"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/attack_ne.png",
+          "crop": [
+            378,
+            772,
+            707,
+            1025
+          ],
+          "bounds": [
+            13,
+            56,
+            179,
+            184
+          ],
+          "sha256": "3e664555a71244edc90dfc848acd669254a90648eaa8f5a6a36d7b7a3f17e6df"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/attack_sw.png",
+          "crop": [
+            726,
+            769,
+            1075,
+            1036
+          ],
+          "bounds": [
+            8,
+            49,
+            184,
+            184
+          ],
+          "sha256": "0c91a08d77a61309723e0ddae8dd3f4aecb2830c2800a7453f9b56d21f681434"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/slate/attack_se.png",
+          "crop": [
+            1106,
+            768,
+            1430,
+            1036
+          ],
+          "bounds": [
+            14,
+            49,
+            177,
+            184
+          ],
+          "sha256": "42bffbed95b67b54c34a2c833e3b4b8074f4d09a3644d0d4b2824a34c1ea6e19"
+        }
+      ]
+    },
+    "turtle": {
+      "sourceSha256": "54dd794a683c34be2cfe6b652246d6e92ba9e2fcd67a94a933b4ee91faf4ce8e",
+      "sourceSize": [
+        1448,
+        1086
+      ],
+      "familyScale": 0.5482866043613707,
+      "frames": [
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/idle_nw.png",
+          "crop": [
+            24,
+            179,
+            325,
+            379
+          ],
+          "bounds": [
+            13,
+            74,
+            178,
+            184
+          ],
+          "sha256": "8ce0698e4133ca9bdc11c76574907400c92c6a3a7fd068bd9ec352e4fda8b52a"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/idle_ne.png",
+          "crop": [
+            390,
+            179,
+            688,
+            387
+          ],
+          "bounds": [
+            14,
+            70,
+            177,
+            184
+          ],
+          "sha256": "b950e1d6f73c0ba5611d5769298199ff23c76805b27cbe963591b4b2ae3eefee"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/idle_sw.png",
+          "crop": [
+            754,
+            183,
+            1062,
+            379
+          ],
+          "bounds": [
+            11,
+            77,
+            180,
+            184
+          ],
+          "sha256": "cf8e78bc4ed1ebbf9cca989545823860bc12b999ba770a82dd8a10ff31681ef3"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/idle_se.png",
+          "crop": [
+            1135,
+            179,
+            1429,
+            379
+          ],
+          "bounds": [
+            15,
+            74,
+            176,
+            184
+          ],
+          "sha256": "4ad1d56b6da8be583da306ed7906caa879ceaa2b604bd2e47fe38f4731315796"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/walk_nw.png",
+          "crop": [
+            24,
+            487,
+            321,
+            692
+          ],
+          "bounds": [
+            14,
+            72,
+            177,
+            184
+          ],
+          "sha256": "2c69893b5b9bed8e4da2fd1e8653595ada49431f49d6b44702bfa549ee60d119"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/walk_ne.png",
+          "crop": [
+            403,
+            488,
+            687,
+            690
+          ],
+          "bounds": [
+            18,
+            73,
+            174,
+            184
+          ],
+          "sha256": "18ce55ca7f89e0b76802b449f7807093640bc081d99f1ac6a6a59a9d4b767517"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/walk_sw.png",
+          "crop": [
+            754,
+            490,
+            1067,
+            683
+          ],
+          "bounds": [
+            10,
+            78,
+            182,
+            184
+          ],
+          "sha256": "d1ac7c9720f97710e7b69a578bdbe68d41ad45a1e2210c7aaabbc50b438e84d0"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/walk_se.png",
+          "crop": [
+            1138,
+            487,
+            1429,
+            688
+          ],
+          "bounds": [
+            16,
+            74,
+            176,
+            184
+          ],
+          "sha256": "f2401b8d93f3b54407ba47c02959959f5cf26326c887da4597800b558fba9d39"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/attack_nw.png",
+          "crop": [
+            31,
+            797,
+            344,
+            993
+          ],
+          "bounds": [
+            10,
+            77,
+            182,
+            184
+          ],
+          "sha256": "ebb26884ed13e413117d2285cba544a80c48c7a312877a5b63e7792eb2f77e33"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/attack_ne.png",
+          "crop": [
+            397,
+            805,
+            718,
+            996
+          ],
+          "bounds": [
+            8,
+            79,
+            184,
+            184
+          ],
+          "sha256": "e46b5b1a9a2e1d912d983b5ecaa2a45a9f3100b91a34c18738a674cd5624368c"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/attack_sw.png",
+          "crop": [
+            744,
+            802,
+            1062,
+            996
+          ],
+          "bounds": [
+            9,
+            78,
+            183,
+            184
+          ],
+          "sha256": "377af3bc060097f70b5ec766c3ad8fec689d50f4ad1ab5fdda46717ae7d09c44"
+        },
+        {
+          "path": "pote_monsters_generated_v1/sprites/abel_v161/turtle/attack_se.png",
+          "crop": [
+            1108,
+            802,
+            1429,
+            996
+          ],
+          "bounds": [
+            8,
+            78,
+            184,
+            184
+          ],
+          "sha256": "4eab1ef444a65798da3dac90719a4b976460e586970b349a154559320b6d0110"
+        }
+      ]
+    }
+  },
+  "originalAnimationVerified": false,
+  "userVisualAcceptance": "PENDING"
+}

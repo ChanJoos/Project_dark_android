@@ -5,18 +5,18 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v156test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V156 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v266test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V266 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
-        versionCode 156
-        versionName '1.56-rucesion-services'
+        versionCode 184
+        versionName '1.84-mobile-horror'
         buildConfigField 'String', 'SOURCE_SHA', '"' + (System.getenv('PROJECT_DARK_SOURCE_SHA') ?: 'LOCAL_UNVERIFIED') + '"'
     }
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile, layout.buildDirectory.dir('generated/wearables-v212').get().asFile, layout.buildDirectory.dir('generated/death-v217').get().asFile]
         }
     }
     testOptions {
@@ -26,6 +26,7 @@ android {
             maxHeapSize = '1546m'
             maxParallelForks = 1
             forkEvery = 1
+            testLogging { exceptionFormat = 'full' }
         }
     }
     compileOptions { sourceCompatibility JavaVersion.VERSION_17; targetCompatibility JavaVersion.VERSION_17 }
@@ -46,7 +47,7 @@ tasks.register('writeBuildIdentity') {
     doLast {
         def out = layout.buildDirectory.file('generated/build-identity/build_identity.json').get().asFile
         out.parentFile.mkdirs()
-        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 156, versionName: '1.56-rucesion-services']) + '\n'
+        out.text = groovy.json.JsonOutput.toJson([sourceCommit: identitySource, runId: identityRun, versionCode: 184, versionName: '1.84-mobile-horror']) + '\n'
     }
 }
 tasks.named('preBuild').configure { dependsOn('writeBuildIdentity') }
@@ -60,6 +61,24 @@ tasks.register('extractWardrobeV128', Copy) {
 }
 tasks.named('preBuild').configure { dependsOn('extractWardrobeV128') }
 
+tasks.register('extractHorrorEquipmentV184', Copy) {
+    from(zipTree(rootProject.file('master/source/equipment/horror_v184/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractHorrorEquipmentV184').configure { dependsOn('extractWardrobeV128') }
+tasks.named('preBuild').configure { dependsOn('extractHorrorEquipmentV184') }
+
+// Regenerate the reviewed sheets with exact per-family crop/projection metadata.
+tasks.register('generateAbelV161', Exec) {
+    inputs.files(rootProject.fileTree('master/source/abel_v161') { include '*.png' })
+    inputs.file(rootProject.file('tools/build_abel_v161.py'))
+    outputs.dir(layout.buildDirectory.dir('generated/abel-v161-pack'))
+    workingDir rootProject.projectDir
+    commandLine 'python3', 'tools/build_abel_v161.py'
+}
+
 // One synchronized pack removes obsolete species even on incremental builds.
 tasks.register('extractAbelV139', Sync) {
     from(zipTree(rootProject.file('master/assets/abel_v139/generated_assets.zip'))) {
@@ -70,7 +89,165 @@ tasks.register('extractAbelV139', Sync) {
     }
     from(zipTree(rootProject.file('master/assets/abel_v141/generated_assets.zip')))
     from(zipTree(rootProject.file('master/assets/abel_v142/generated_assets.zip')))
+    from(zipTree(rootProject.file('master/assets/rucesion_v158/generated_assets.zip')))
+    from(zipTree(layout.buildDirectory.file('generated/abel-v161-pack/generated_assets.zip')))
     into(layout.buildDirectory.dir('generated/abel-v139'))
     includeEmptyDirs = false
 }
+tasks.named('extractAbelV139').configure { dependsOn('generateAbelV161') }
 tasks.named('preBuild').configure { dependsOn('extractAbelV139') }
+
+
+// Original Horror source decoding is offline and limited to retained source entries.
+tasks.register('generateHorrorV180', Exec) {
+    workingDir rootProject.projectDir
+    commandLine 'python3', 'tools/build_horror_v180.py'
+    inputs.files(rootProject.fileTree('master/source/horror_v180'), rootProject.file('tools/build_horror_v180.py'), rootProject.file('tools/horror_original_formats.py'), file('src/main/java/com/projectdark/mobile/world/HorrorCastleOriginalData.java'))
+    outputs.dir(layout.buildDirectory.dir('generated/horror-v180-pack'))
+}
+tasks.named('preBuild').configure { dependsOn('generateHorrorV180') }
+
+// Reviewed linked-article slice. Original sources stay in Master archives.
+tasks.register('extractLinkedItemsV185', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedItemsV185').configure { dependsOn('extractHorrorEquipmentV184') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedItemsV185') }
+
+tasks.register('extractLinkedClothingV186', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_clothes.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedClothingV186').configure { dependsOn('extractLinkedItemsV185') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedClothingV186') }
+
+tasks.register('extractLinkedFoodV187', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_foods.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedFoodV187').configure { dependsOn('extractLinkedClothingV186') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedFoodV187') }
+
+tasks.register('extractSparseWeaponsV188', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_sparse_weapons.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractSparseWeaponsV188').configure { dependsOn('extractLinkedFoodV187') }
+tasks.named('preBuild').configure { dependsOn('extractSparseWeaponsV188') }
+
+tasks.register('extractLinkedAccessoriesV189', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_accessories_v189.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedAccessoriesV189').configure { dependsOn('extractSparseWeaponsV188') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedAccessoriesV189') }
+
+tasks.register('extractMaleClothesV190', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_male_clothes_v190.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractMaleClothesV190').configure { dependsOn('extractLinkedAccessoriesV189') }
+tasks.named('preBuild').configure { dependsOn('extractMaleClothesV190') }
+
+tasks.register('extractFemaleClothesV192', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_female_clothes_v192.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractFemaleClothesV192').configure { dependsOn('extractMaleClothesV190') }
+tasks.named('preBuild').configure { dependsOn('extractFemaleClothesV192') }
+
+tasks.register('extractLinkedAccessoriesV193', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_accessories_v193.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedAccessoriesV193').configure { dependsOn('extractFemaleClothesV192') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedAccessoriesV193') }
+
+tasks.register('extractLinkedStaffsV194', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_staffs_v194.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractLinkedStaffsV194').configure { dependsOn('extractLinkedAccessoriesV193') }
+tasks.named('preBuild').configure { dependsOn('extractLinkedStaffsV194') }
+
+tasks.register('extractRecoveredWeaponsV195', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_recovered_weapons_v195.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractRecoveredWeaponsV195').configure { dependsOn('extractLinkedStaffsV194') }
+tasks.named('preBuild').configure { dependsOn('extractRecoveredWeaponsV195') }
+
+tasks.register('extractExpandedClothesV197', Copy) {
+    from(zipTree(rootProject.file('master/source/items/naver_bundle_20261019/generated_expanded_clothes_v197.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractExpandedClothesV197').configure { dependsOn('extractRecoveredWeaponsV195') }
+tasks.named('preBuild').configure { dependsOn('extractExpandedClothesV197') }
+
+tasks.register('extractRapidSourcesV198', Copy) {
+    from(zipTree(rootProject.file('master/source/items/rapid_v198/generated_assets.zip')))
+    into(layout.buildDirectory.dir('generated/wardrobe-v128'))
+    includeEmptyDirs = false
+    eachFile { f -> if (file('src/main/assets/' + f.path).exists()) f.exclude() }
+}
+tasks.named('extractRapidSourcesV198').configure { dependsOn('extractExpandedClothesV197') }
+tasks.named('preBuild').configure { dependsOn('extractRapidSourcesV198') }
+
+// Offline exact-source mine tiles/objects and ten MPF appearances.
+tasks.register('generateMineHuntV208', Exec) {
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/build_mine_hunt_v208.py'
+ inputs.files(rootProject.fileTree('master/source/mine_hunt_v208'),rootProject.file('tools/build_mine_hunt_v208.py'),rootProject.file('tools/horror_original_formats.py'))
+ outputs.dir(layout.buildDirectory.dir('generated/mine-hunt-v208'))
+}
+tasks.named('preBuild').configure { dependsOn('generateMineHuntV208') }
+
+tasks.register('generateTempleV211', Exec) {
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/build_temple_v211.py', '--check'
+ inputs.files(rootProject.fileTree('master/source/temple_v211'), rootProject.file('tools/build_temple_v211.py'), rootProject.file('tools/extract_temple_entrance_v211.py'), rootProject.file('tools/horror_original_formats.py'), file('src/main/java/com/projectdark/mobile/world/TempleOriginalData.java'))
+ outputs.dir(layout.buildDirectory.dir('generated/temple-v211'))
+}
+tasks.named('preBuild').configure { dependsOn 'generateTempleV211' }
+
+android.sourceSets.main.java.srcDir(layout.buildDirectory.dir('generated/wearables-java-v212'))
+tasks.register('recoverWearablesV212', Exec) {
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/recover_wearables_v212.py'
+ inputs.files(rootProject.file('tools/recover_wearables_v212.py'),rootProject.file('master/source/items/wearables_v212.json.gz'))
+ outputs.dirs(layout.buildDirectory.dir('generated/wearables-v212'),layout.buildDirectory.dir('generated/wearables-java-v212'))
+}
+tasks.named('preBuild').configure { dependsOn 'recoverWearablesV212' }
+
+// Original Death Village tile/MPF source pack, generated offline and hash checked.
+tasks.register('generateDeathV217', Exec) {
+ inputs.files(rootProject.fileTree('master/source/death_v217'),rootProject.fileTree('master/source/death_v220'))
+ inputs.file(rootProject.file('tools/build_death_v217.py'))
+ outputs.dir(layout.buildDirectory.dir('generated/death-v217'))
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/build_death_v217.py'
+}
+tasks.named('preBuild').configure { dependsOn('generateDeathV217') }

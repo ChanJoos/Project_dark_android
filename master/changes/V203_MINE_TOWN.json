@@ -1,0 +1,22 @@
+{
+  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "base": "3c796b66acaf7aaf9cb8efb8de06dd3f6900f532",
+  "source": "USER_VIDEO Screen_Recording_20261020_160455_YouTube.mp4",
+  "evidence": "SOURCE_PIXEL_ASSETS_ADAPTED_TOPOLOGY",
+  "services": [
+    "mine_interior_inn",
+    "mine_interior_reagent"
+  ],
+  "newNPC": "mine_town_travel",
+  "lessons": [
+    "no screenshot-as-map/generic shapes",
+    "same world/runtime movement/camera/depth",
+    "actual threshold and exterior return",
+    "blocked source geometry plus connected bridge routes",
+    "prewarm/index/bounded floor32cache",
+    "real travel/shop/rest/save and exact-SHA APK"
+  ],
+  "phone": "PENDING; preference reload tested, OS process-death pending",
+  "verification": "verification/MINE_TOWN_V203_BUILD.json",
+  "assetCount": 18
+}

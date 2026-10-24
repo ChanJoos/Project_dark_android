@@ -1,0 +1,234 @@
+{
+  "revision": "V179_HORROR_FIRST_PLAYABLE",
+  "video": {
+    "library_file_id": "libfile_4b5c620ef9488191a7a6560282e1d363",
+    "timestamps": [
+      5,
+      26
+    ],
+    "viewScale": "1170x540",
+    "unseenRooms": "ADAPTED_LAYOUTS_FROM_OBSERVED_THEMES"
+  },
+  "humans": [
+    {
+      "type": 0,
+      "body": "mm001",
+      "wardrobe": "mu0000017",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 1,
+      "body": "wm001",
+      "wardrobe": "wu0000017",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 2,
+      "body": "mm001",
+      "wardrobe": "mu0000025",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 3,
+      "body": "wm001",
+      "wardrobe": "wu0000025",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 4,
+      "body": "mm001",
+      "wardrobe": "mu0000020",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 5,
+      "body": "wm001",
+      "wardrobe": "wu0000020",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 6,
+      "body": "mm001",
+      "wardrobe": "mu0000057",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 7,
+      "body": "wm001",
+      "wardrobe": "wu0000057",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 8,
+      "body": "mm001",
+      "wardrobe": "mu0000013",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    },
+    {
+      "type": 9,
+      "body": "wm001",
+      "wardrobe": "wu0000013",
+      "projection": "SOURCE_PIVOT_COMPOSITE / ADAPTED_MONSTER_WARDROBE",
+      "states": [
+        "idle",
+        "walk0",
+        "walk1",
+        "walk2",
+        "walk3",
+        "attack"
+      ],
+      "directionOrder": [
+        "NW",
+        "NE",
+        "SW",
+        "SE"
+      ]
+    }
+  ],
+  "files": {
+    "carpet.png": "30a7ce2eb138ef8c3109d28579c833ea43ab0a696727c7efb612174e1423b173",
+    "chair.png": "9a1ee8a3eb407a2efbde2f6465dae3c999c3dae0072a0a0f021ca0f0878bacee",
+    "door.png": "95035d056ef8de41db8a5bbc6de2695f532ac446fc745a85ef64da641a3ac586",
+    "human_0.png": "2ef2ce620ad1c78032f9e59b168ea5a5b629c8afc28febd6a307c6160c6d0223",
+    "human_1.png": "130a2533d0a177980023a0acd0a7186cf3cb63c4646e8da5091efe71b313f5f1",
+    "human_2.png": "a640f5c763fe602abb7b3fa9038fa4653a5d3fa27841c8afba9f1e27ecb3a466",
+    "human_3.png": "b8b5d8d2280869344077e008e908c5435a13ca0fd63ae1f729636e5267955596",
+    "human_4.png": "1c2f79c3636eec81cd709900f478c6acedf26c99591b9be00bdac81e8621b0c0",
+    "human_5.png": "381d4b6e3b54912ad7782f6f7293e65e0ff75455fb255c444e157df978ffa229",
+    "human_6.png": "4ade8946d34eb9524edd214c5ef836c05abdcfb6c06e27cbc5b0250044e6fb5c",
+    "human_7.png": "549840320c229e3b5ccd346676cf97433ecee8ad1e6ae331f279a791ff5ebc98",
+    "human_8.png": "7ad85dbb18eadfdd386b532445bb553c22b634b3f145a6bf6e88d39d930db688",
+    "human_9.png": "6b32420e78740f4769b971b1bf644ef46d8472fa9e26c2913a3c9c240c1ef57a",
+    "sofa.png": "b01e436995172f2b18dd0450c98dee3eab3e578aafa964f07610562c7f47f5b9",
+    "table.png": "8eb1855a0215862664e1aa7dd4d17d6640f5cf0ccc292327155bf450458fec8d",
+    "tiger.png": "4b31510a6b8fe1a8d0c28fa0702db16ff2939cd588edc63b353fcb289149a3a3",
+    "wall.png": "52e1ec505e70f9a968df698c88aec378b59cb5d8672a0574da13a3159203c253",
+    "wood.png": "9cc394d75cf986580e15e3e5bbc113ea9a2ad4bf7e409e233fc6590800c5dd36"
+  }
+}

@@ -1,0 +1,101 @@
+{
+  "sourceCommit": "b75b417598201b5c94588626bc02ab9b753555b3",
+  "runId": "39445126813",
+  "builtAtKST": "2026-10-21T00:08:29.322262+09:00",
+  "apkSha256": "310d6f03c9fc6556b3c2ecae9bffc0cb1fc0c6c5ce5c0ee4f27c115e7b0a877e",
+  "apkBytes": 86633757,
+  "identity": {
+    "sourceCommit": "b75b417598201b5c94588626bc02ab9b753555b3",
+    "runId": "39445126813",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "Exact12lobbyHUDportal cells/old-cell rejection;15room source-tile scenes; two complete15->1fresh laps; everyroom door->lobby with living monsters; partial next-lap save/restart;12cache trips; V204screenmagic/V206Mine regressions.",
+  "artifactId": 12277035459,
+  "archiveBytes": 125167422,
+  "archiveSha256": "d5e46e3a5d4951f0d1150119aff9547fead298a6f65bb47713310b4e1efd7e5c",
+  "apk": "PROJECT_DARK_V207_TEST.apk",
+  "nativePngByteMatches": 647,
+  "candidate": true,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "status": "BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "librarySaving": "FAILED HTTP403before upload; local verified file and immutable Actions artifact retained",
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.HorrorCastleLoopV207Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.HorrorCastleMobileV183Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.HorrorCastleV179Test",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.HorrorDoorsV200Test",
+      "tests": 5,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MinePolishV206Test",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ScreenMagicV204Test",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "screenshots": [
+    {
+      "artifactPath": "app/build/reports/horror-v179/v200/v207-lobby.png",
+      "sha256": "db2f3d117bc86a5fac5fd2863613cff9b6d7e8d4ddfa62bf649660ad72277242",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER_REVIEWED"
+    },
+    {
+      "artifactPath": "app/build/reports/horror-v179/v200/v207-room-12.png",
+      "sha256": "47928fab02ad6a62b67da0b7172ce31a1b9f65970cad42c80319c4f9884a42bf",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER_REVIEWED"
+    },
+    {
+      "artifactPath": "app/build/reports/horror-v179/v200/v207-room-13.png",
+      "sha256": "e2806961ea00e451b146c250ce39ff44814331f1aeebd491fc6b2949e0cf8803",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER_REVIEWED"
+    },
+    {
+      "artifactPath": "app/build/reports/horror-v179/v200/v207-room-14.png",
+      "sha256": "4ebdffb58f59b98937d1f47a2efacba38e505383c498959974e4b8554ba6202e",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER_REVIEWED"
+    },
+    {
+      "artifactPath": "app/build/reports/horror-v179/v200/v207-room-15.png",
+      "sha256": "7c0466733ae184ffc8756e9a71d3210f4fd5351eaecb504b004eef2db42819af",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER_REVIEWED"
+    }
+  ],
+  "tests": 27,
+  "limits": [
+    "Physical handset/OS process-death/user visual acceptance pending",
+    "Rooms12..15are screenshot-guided native tile adaptations; unseen layout and clipped bed furniture remain inferred, not exact original-map recovery",
+    "Historical internal184version/old workflow scope labels retained; embedded source/run identify actual delivered content",
+    "Full common runs39445126635/39445136079still pending; no blanket commonPASSclaim"
+  ]
+}

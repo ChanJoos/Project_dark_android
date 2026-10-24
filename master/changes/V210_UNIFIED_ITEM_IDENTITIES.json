@@ -1,0 +1,20 @@
+{
+  "status": "ACCEPTED",
+  "authority": "2026-10-21 user explicitly corrected duplicate scope: preserve original deity variants, unify assistant-created duplicate equipment",
+  "base": "b36aeadce9f274115303b5e18b172edc3cecd4f7",
+  "source": "master/source/items/catalog_v210/catalog.json",
+  "before": "60 invented training/campaign gear IDs and duplicate independent source registrations carry inconsistent numbers",
+  "after": "Explicit compatibility aliases to one original identity; old saved quantities and equipped/banked items canonicalize atomically. Distinct original names/stats preserved regardless of shared textures; no image grouping UI.",
+  "art": "Packed existing original icon sources plus all named native preview identities; immutable sources and per-item source receipts retained",
+  "limitations": [
+    "Native preview-only additions have no fabricated wearable motions or requirements and remain equip-blocked",
+    "2024 native source rows lack original names; no invented identities or stats",
+    "Full original game item completeness is not inferred from retained source scope"
+  ],
+  "validation": "BUILD_HOST_ANDROID_VERIFIED_107_TESTS_COMMON_CI_SUCCESS_HANDSET_PENDING",
+  "runtimeSource": "709dda2179042c66b292acb03a4a6275b2292a7a",
+  "verificationReceipt": "verification/ITEM_CATALOG_V210_BUILD.json",
+  "compatibilityPolicy": "Reuse existing resolved legacy runtime restrictions only to fill missing canonical restrictions; exclude synthetic IT_B_ conditions. This is not proof of all original job restrictions.",
+  "migration": "Canonicalize bag/equipment/bank before all historical one-time grants; banked or already-owned canonical items never receive a duplicate compatibility grant.",
+  "tutorial": "Adapted T04/T05 keep stable quest IDs/milestones, use known Epe at300G instead of unidentified shoes, and match canonical transaction/equipment IDs."
+}

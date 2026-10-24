@@ -1,0 +1,56 @@
+{
+  "id": "COMBAT-TOWN-V167",
+  "status": "ACCEPTED",
+  "baseline": "6c65711380f93a0f994327ddbff297bf5152ab70",
+  "userEvidence": "2026-10-15 post-V166 Rucesion hunt and Abel screenshot",
+  "sourceReferences": [
+    "master/data/Asset_Master.csv:mw016,mw018,mw019,mw021,mw022,mw023,mw170,mw203",
+    "design/CHARACTER_STAT_SYSTEM_V1.md",
+    "master/changes/V138_ALL221_SKILL_AUDIT.json"
+  ],
+  "implementation": [
+    "Explicit two-hand grip and mutually-exclusive shield; preserved source stats",
+    "Four-facing source02 registration and source BODY e two-hand candidate (ADAPTED mapping)",
+    "Resource-based recipient finishers except crashers use stable source-pixel union centre",
+    "Dara no longer bypasses actual prerequisite to show zero-damage release",
+    "CON/WIS next-growth projection from same accumulated growth policy",
+    "Town-local hunting buttons preserve normal unlock gates; Abel manager-adjacent arrival",
+    "Abel 16->6 beds; remove overlapping5trees and163 redundant grass cells; bed blocking shares geometry",
+    "Source02 uses actual four-direction indices without a second mirror",
+    "Source-body e16-23 motion reuses established Chungryong twohand timing; generic source blades follow current BODY hand",
+    "Finisher effect centres use actual prewarmed sprite alpha bounds and contact motion; metadata cache cleared per map",
+    "12 later campaign weapons keep existing8-8 fallback but now expose attack range; all68 weapons audited",
+    "41 exact armour class joins and64 explicitly adapted town palette base-option joins; other unknown source options remain pending",
+    "Abel arrival separated64-120worldpx from manager",
+    "Captured finisher union centred at recipient instead of directional source pivot",
+    "Epe and established Mage/Cleric wand aliases use the same existing THRUST semantics by source appearance (mw002,mw024,mw008), rather than choosing SWING for test items and THRUST for class versions. Explicit skills still override weapon semantics."
+  ],
+  "unchangedOriginalFacts": [
+    "No fabricated missing equipment stats/jobs",
+    "Dara existing historical (HP+MP-1440)*3.38 retained; uploaded wiki describes a conflicting era, unresolved",
+    "Growth formula remains B, not original confirmed formula"
+  ],
+  "validation": "Resume source114 focused tests/3 failures and common78/1 failure; fixes prepared, new exact-source CI pending.",
+  "pending": [
+    "All-equipment actual audit pending CI; no claim all original item options recovered",
+    "Two-hand exact original animation cadence/source linkage needs native visual review",
+    "Physical phone and user visual acceptance pending"
+  ],
+  "resumeValidation": {
+    "source": "3402275d7fa84a79e092a9540c188e9955ff4346",
+    "focusedRun": 38756453105,
+    "focusedTests": 114,
+    "focusedFailures": 3,
+    "focusedErrors": 0,
+    "focusedSkipped": 0,
+    "commonRun": 38756463083,
+    "commonFirst78TestsFailures": 1,
+    "failures": [
+      "12 campaign weapons lacked MinATK/MaxATK metadata",
+      "Abel arrival inside manager occupancy",
+      "stale16-bed layout assertion",
+      "obsolete caster pivot assertion for recipient finisher"
+    ]
+  },
+  "sourcePreservation": "V130 source catalog restored byte-for-byte (blob8af99da4599839c46f2621dcf34c2502769cdc83).12later campaign ranges are accepted additive change V167_CAMPAIGN_WEAPON_EXTENSIONS.json; runtime generator consumes extension.105armour requirement receipts remain a separate additive change."
+}

@@ -1,0 +1,33 @@
+{
+  "id": "V212_INVENTORY_REPAIR",
+  "status": "ACCEPTED",
+  "evidence": "U",
+  "source": "2026-10-21 user device report: slowdown, missing equipped rendering and Rapid/food background fragments",
+  "before": "V210 inventory-only additions and repeated full inventory projections/socket artifacts",
+  "after": "Exact named source wearable binding; revision-cached projections and ownership serialization; source-local alpha repairs",
+  "impact": [
+    "ItemWindow",
+    "RpgProgressionState",
+    "F5mSaveStore",
+    "wearable source build",
+    "SourceItemIconRegistry"
+  ],
+  "verification": {
+    "runtime": "c9bda787ba95a26d418cf858e558eece8c63f81c",
+    "focusedRun": 39568721180,
+    "tests": 53,
+    "failures": 0,
+    "handset": "PENDING",
+    "wholeGameSpeed": "USER_REPORTED_ROOT_CAUSE_UNKNOWN",
+    "common": {
+      "push": 39568721140,
+      "pullRequest": 39568729484,
+      "conclusion": "SUCCESS"
+    }
+  },
+  "limits": [
+    "no physical handset FPS claim",
+    "no new stats/names/aliases",
+    "original missing contact poses remain explicit source omissions"
+  ]
+}

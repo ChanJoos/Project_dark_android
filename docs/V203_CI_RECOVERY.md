@@ -1,0 +1,9 @@
+# V203 Mine CI continuation — 2026-10-20
+
+Delivered runtime source remains `963da315bcce37b6e9be472965291b97a604801e`, focused run39399524458/artifact12254407025, built2026-10-20T18:21:47.351072+09:00, APK85796307bytes/SHA256263a68366b6e9d04bfd1d154132d53740f0702b2e257addb98a079b456eea6ef. APK restored from the immutable archive and archive/APK hashes, CRC and embedded source/run reverified after workspace maintenance. Current prepared saving helper still fails HTTP403 before upload; local download and GitHub artifact retained.
+
+The earlier common runs39399531451 and39399524352 FAILED at NpcAppearanceTest's stale `40` roster assertion after Mine added3registered NPCs. Commit0d12d52c67444738fe6646cf68e61e891f8237bf updates expected roster43, unique IDs, Mine travel role and both Mine service IDs/labels; all existing source registrations and actual four-direction paper-doll checks remain. It adds NpcAppearanceTest to the Mine-focused workflow and updates its changed-path guard. No app/main/assets/domain changes.
+
+Common CI reuses only15independently successful steps9..23 from run39399531451/job118550596068 when every changed path is test/CI/doc/recipe-only and app/src/main tree exactly matches963da315. It re-executes the failed step24 and all remaining configured steps; no failed step is marked passed. Focused39417953290 and common39417961289/39417953318 run exact validator source0d12d52c. Focused run39417953290 SUCCESS; independently fetched and CRC-checked6JUnit XML suites:34tests,0failures/errors/skips, including all3NpcAppearanceTest checks. Common39417961289/39417953318 still running at this checkpoint; the formerly failing step24 now passed.
+
+Physical handset performance, real OS process-death and user visual acceptance remain pending. Main41fe6def remains unmerged.

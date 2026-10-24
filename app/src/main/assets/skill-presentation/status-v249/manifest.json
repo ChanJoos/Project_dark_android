@@ -1,0 +1,244 @@
+{
+  "revision": "V249",
+  "skills": {
+    "SK_마법사_044": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "status-v249/reinforce.png",
+          "width": 244,
+          "height": 184,
+          "columns": 8,
+          "durationsMs": [
+            56,
+            56,
+            56,
+            56,
+            56,
+            56,
+            56,
+            56,
+            56,
+            56
+          ],
+          "pivotX": 118,
+          "pivotY": 115,
+          "scale": 1,
+          "blend": "SCREEN",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "atlasSha256": "ff280cbbeac98a7ce23188dbd2de53fa9113ff683873632cb23c591e90d2f779",
+          "sourceTiming": "ORIGINAL_EFA_HEADER"
+        }
+      }
+    },
+    "SK_공통_010": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "status-v249/heal.png",
+          "width": 73,
+          "height": 70,
+          "columns": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "pivotX": 38,
+          "pivotY": 57,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "atlasSha256": "e77dfb3b4e18515ee417fd245f55f18fc7b509bb7307ddb8ae189f37a9756cac",
+          "sourceTiming": "ORIGINAL_ORDER_PROJECT_INTERVAL"
+        }
+      }
+    },
+    "SK_무도가_032": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "status-v249/heal.png",
+          "width": 73,
+          "height": 70,
+          "columns": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "pivotX": 38,
+          "pivotY": 57,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "atlasSha256": "e77dfb3b4e18515ee417fd245f55f18fc7b509bb7307ddb8ae189f37a9756cac",
+          "sourceTiming": "ORIGINAL_ORDER_PROJECT_INTERVAL"
+        }
+      }
+    },
+    "SK_성직자_058": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "status-v249/heal.png",
+          "width": 73,
+          "height": 70,
+          "columns": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "pivotX": 38,
+          "pivotY": 57,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "atlasSha256": "e77dfb3b4e18515ee417fd245f55f18fc7b509bb7307ddb8ae189f37a9756cac",
+          "sourceTiming": "ORIGINAL_ORDER_PROJECT_INTERVAL"
+        }
+      }
+    },
+    "SK_마법사_056": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "status-v249/heal.png",
+          "width": 73,
+          "height": 70,
+          "columns": 8,
+          "durationsMs": [
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100,
+            100
+          ],
+          "pivotX": 38,
+          "pivotY": 57,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "atlasSha256": "e77dfb3b4e18515ee417fd245f55f18fc7b509bb7307ddb8ae189f37a9756cac",
+          "sourceTiming": "ORIGINAL_ORDER_PROJECT_INTERVAL"
+        }
+      }
+    },
+    "SK_마법사_006": {
+      "channels": {
+        "RECIPIENT_CONTACT": {
+          "anchor": "RECIPIENT",
+          "path": "status-v249/confusion.png",
+          "width": 40,
+          "height": 24,
+          "columns": 8,
+          "durationsMs": [
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60,
+            60
+          ],
+          "pivotX": 19,
+          "pivotY": 62,
+          "scale": 1,
+          "blend": "NORMAL",
+          "filterBitmap": false,
+          "footOffsetY": 0,
+          "atlasSha256": "0e0c5ace878f442a656b3de3edf6e5f4402b6d0af6979ae87761abe09c3b010a",
+          "sourceTiming": "ORIGINAL_ORDER_PROJECT_INTERVAL"
+        }
+      }
+    }
+  },
+  "persistent": {
+    "SLEEP": {
+      "anchor": "RECIPIENT",
+      "path": "status-v249/sleep.png",
+      "width": 61,
+      "height": 89,
+      "columns": 8,
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "pivotX": 30,
+      "pivotY": 74,
+      "scale": 1,
+      "blend": "ADDITIVE",
+      "filterBitmap": false,
+      "footOffsetY": 0,
+      "atlasSha256": "3e37236aef3014c398c18768012a68d6b43ec65c87afd36829f30f63e962da7e",
+      "sourceTiming": "ORIGINAL_EFA_HEADER"
+    },
+    "POISON": {
+      "anchor": "RECIPIENT",
+      "path": "status-v249/poison.png",
+      "width": 59,
+      "height": 57,
+      "columns": 8,
+      "durationsMs": [
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100,
+        100
+      ],
+      "pivotX": 36,
+      "pivotY": 61,
+      "scale": 1,
+      "blend": "NORMAL",
+      "filterBitmap": false,
+      "footOffsetY": 0,
+      "atlasSha256": "5386e5af53a3c67bbcd70f47635492ebe2c05fb137a44f31e40c6593effb1b74",
+      "sourceTiming": "ORIGINAL_ORDER_PROJECT_INTERVAL"
+    }
+  }
+}

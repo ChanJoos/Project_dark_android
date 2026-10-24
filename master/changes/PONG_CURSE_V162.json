@@ -1,0 +1,37 @@
+{
+  "status": "ACCEPTED_IMPLEMENTED_BUILD_NATIVE_VERIFIED",
+  "userCanon": "Normal Pong is vivid; curses Lento/Bardo/Depreco/Pravo etc fade monster colors.",
+  "before": "V161 cursed reference mistaken for normal; CURSE had no body color presentation.",
+  "after": "Normal and blue-cursed Pong materials follow the raw video pair. Actual timed CURSE selects exact-alpha prewarmed variants. Expiry/correct dispel/death-respawn/fresh campaign life restores normal; actual indoor and outdoor mouse paths both read live combat effects.",
+  "evidence": "master/source/abel_v162/reference.json",
+  "sourceCells": [
+    "Skill_Ability CURSE20/35/50/65/70 and CLEAR_CURSE variants"
+  ],
+  "validation": "128tests/19suites zero failures/errors/skips plus common PR/push26successful Gradle invocations each; independently verified exact APK/ZIP and2067packaged-source comparisons on delivery runner. Physical phone/user visual acceptance pending.",
+  "preserved": "V161 source84 bytes/alpha/size/poses, Rucesion10 normal appearance, original combat status authority, cache pairs, AI/world/rewards/save.",
+  "freshActorLifetime": "Campaign rosters are newly instantiated: clear effects for incoming IDs so species#slot reuse cannot inherit an outgoing curse; player lifetime unchanged.",
+  "priorBuildFailure": {
+    "source": "8d91d1a0aca19b041218ae0d53e728c1a1b7d1cd",
+    "run": 38660233744,
+    "reason": "Unsupported Android ComposeColorFilter compile error; replaced with equivalent precomputed cursed hit tint in68c93d4."
+  },
+  "implementationRevision": "Scaled color filter rejected after native0->3/63->0 edge-alpha changes. Prewarm exact-alpha RGB variants and hit variants; map-scoped60perstate, total35,389,440bytes plus786,432mouse variant bytes. Test limits and map entry clear; no per-frame coloring.",
+  "validationFailure": {
+    "source": "fbec696c68ae499ae865087efb4e82b8f434af09",
+    "run": 38661340294,
+    "tests": 6,
+    "failures": 2,
+    "reason": "Native scaled filter changes transparent alpha. Exact-alpha assertions retained."
+  },
+  "focusedSelectionRepair": "The V161 source class name is retained; new MonsterCurseV162Test runs explicitly first and in final combined suite. Early focused build success did not execute new curse tests and is not feature acceptance.",
+  "visualIteration": "3a05d68 passed exact-alpha and126native tests, but own reference comparison found oversaturated orange/neon normal Pong. Final material projection now follows independent source gold193/139/91 and violet91/37/121 patch medians; added independent native palette acceptance test. Prior126success is not final APK acceptance.",
+  "pongCurseCalibration": "Observed16s blue77.5/60.5/153 and warm212/157/96 medians calibrate Pong-specific curse materials. Independent native normal+curse sample checks. Other species keep generic fading; no invented original palette identity.",
+  "indoorIntegration": "Final live-call audit found indoor drawReagentShopWorld still called the legacy no-effects mouse overload. Route indoor combat effects too, and add an actual GameView inn scene curse/dispel pixel regression, beyond the standalone mouse renderer test.",
+  "verifiedSource": "6f3ac7b900299330b7e15c1d374f3d56048c86db",
+  "receipt": "master/changes/V162_BUILD_RUNTIME_RECEIPT.json",
+  "delivery": {
+    "artifactId": 11943270122,
+    "url": "https://github.com/ChanJoos/Project_dark_android/actions/runs/38666940549/artifacts/11943270122",
+    "localFileAttachment": "Unavailable execution environment; GitHub delivery prepared without changing runtime source."
+  }
+}

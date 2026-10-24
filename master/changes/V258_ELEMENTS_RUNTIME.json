@@ -1,0 +1,54 @@
+{
+  "revision": "V258",
+  "user": "apply original element table; every monster natural random attack/defense except supported current mine dark majority; research original",
+  "base": "1e582830db71420acffcb6f93ea1b8da06058b94",
+  "status": "IMPLEMENTED_BUILD_SCOPED_HOST_VERIFIED_PHONE_PENDING",
+  "affected": [
+    "app/src/main/java/com/projectdark/mobile/ElementalDamageFormula.java",
+    "app/src/main/java/com/projectdark/mobile/MonsterElementsV258.java",
+    "app/src/main/java/com/projectdark/mobile/RuntimeState.java",
+    "app/src/main/java/com/projectdark/mobile/FinalStats.java",
+    "app/src/main/java/com/projectdark/mobile/RuntimeCombatPortAdapter.java",
+    "app/src/main/java/com/projectdark/mobile/SenseMonsterWindow.java",
+    "app/src/main/java/com/projectdark/mobile/MineHuntMonsters.java",
+    "app/src/main/java/com/projectdark/mobile/F5mSaveStore.java",
+    "app/src/main/java/com/projectdark/mobile/CombatV3PipelineAudit.java",
+    "app/src/test/java/com/projectdark/mobile/ElementsV258Test.java",
+    ".github/workflows/rucesion-town-v156.yml",
+    "app/build.gradle",
+    "master/canonical/Monster_Element_Policy_V258.json",
+    "master/canonical/Element_Runtime_V258.json"
+  ],
+  "verificationPlan": {
+    "feature": "10 new tests:81 exact reference cells,aliases/safety,16pair independence,all active hunting maps,respawn,real necklace/belt/manualAUTO/magic,save/sense",
+    "adjacent": "27 existing auto6/magic7/restart4/equipment3/Abel4/rogue sense3",
+    "broader": "shared combat foundation changes require full integration attempt; common full pipeline retains known catalog-generation gate; no full-pass claim"
+  },
+  "evidence": {
+    "source": "255a104c69cb09bfc4c760d9c0c98210502bae05",
+    "run": "39977747900",
+    "artifact": 12512317256,
+    "apkSha256": "d28930e9b74b5385d66cb9865b57deb66f8069e807a847bc0c1571309c6b1210",
+    "tests": 40,
+    "extraEquipmentProof": {
+      "source": "b2cac9f1240b033c8339cdbf82c0143fbef63224",
+      "runId": 39978518320,
+      "jobId": 120499367273,
+      "artifactId": 12513005577,
+      "archiveSha256": "626dba85a8c37efa8050577fb7a57b1f9431817de867943b4e153253ea38e094",
+      "tests": 1,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0,
+      "guard": "exact APK runtime/assets unchanged; test/workflow only"
+    },
+    "integration": {
+      "runId": 39978531235,
+      "jobId": 120499514618,
+      "status": "FULL_BLOCKED",
+      "masterPreservation": "original Sources.csv restored exact blob e6b1a885b4d7bfe8df1546916968be7e3ef18d0f; separate canonical source registration",
+      "adjacentGate": "V124 equipment/accessory/reward/skill-learning20 tests PASS after old NONE1.0 fixture correction",
+      "blocker": "unchanged skill catalog generator rewrites approved descriptions in app/src/main/assets/skills/catalog.json; git diff gate failed; later full stages not run"
+    }
+  }
+}

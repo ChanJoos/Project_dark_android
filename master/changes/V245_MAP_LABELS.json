@@ -1,0 +1,11 @@
+{
+  "changeId": "V245_MAP_LABELS",
+  "status": "ACCEPTED",
+  "source": "USER20261023 V244 Milles map duplicate names",
+  "before": "12thresholds become12maplabels,5paired door names overlap",
+  "after": "7same-destination connected entrance clusters, centroid labels and real portal targets",
+  "grouping": "same targetMapId and72worldpixel adjacency; separate distant/disconnected portals and different destinations",
+  "unchanged": "raw portal geometry, collision, travel, start/recall positions, save schema, gameplay, assets",
+  "validation": "LOCAL_COMPILE_PASS; Android focused6checks and visual/APK pending",
+  "phone": "PENDING"
+}

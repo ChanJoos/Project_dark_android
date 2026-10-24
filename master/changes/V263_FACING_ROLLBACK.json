@@ -1,0 +1,15 @@
+{
+  "version": "V263",
+  "status": "ACCEPTED_USER_ROLLBACK",
+  "deviceReport": "DEVICE_FAILED_USER_REPORTED V262; installed SHA unknown/latest65330bb0; no phone cure claimed",
+  "video": {
+    "name": "Screen_Recording_20261024_075444.mp4",
+    "libraryFileId": "libfile_c07b8f5f1a3c81919c53069a820f5e41",
+    "sha256": "7a86278ce9ecd77a2fd995d0934f46b19afd0e3ea585cb8a5168df12a6f0c823",
+    "duration": 26.378456
+  },
+  "baseline": "255a104c69cb09bfc4c760d9c0c98210502bae05",
+  "runtime": "remove basic contact facing override; restore exact monster AI; no new correction",
+  "kept": "independent explicitly requested basic1/2/3, HUD and equipment/necklace changes",
+  "verification": "34 scoped native PASS + exact pre-position source guard oneca4d745, Actions40037138309/artifact12538041249; handset video root UNKNOWN, phone acceptance PENDING; verification/FACING_ROLLBACK_V263_BUILD.json"
+}

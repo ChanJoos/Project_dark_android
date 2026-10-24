@@ -1,0 +1,39 @@
+{
+  "sourceVideoSha256": "e78837191c5aabb3b35aa0b6eb550f2d0bb6400baec29c589e140eec9e7515e5",
+  "sourceSeconds": 8,
+  "recordingCrop": [
+    210,
+    0,
+    1920,
+    1080
+  ],
+  "resize": [
+    640,
+    360
+  ],
+  "patchCrop": [
+    600,
+    220,
+    640,
+    280
+  ],
+  "patchSha256": "282c05bb6c3bf3292b20d342fb25fab0c9747c22ce1c6abe8ee2dcbf549f1dfb",
+  "affineInliers": 71,
+  "affine": [
+    [
+      0.999867845,
+      0.000117246126,
+      -39.5596368
+    ],
+    [
+      -0.000117246126,
+      0.999867845,
+      19.8902048
+    ]
+  ],
+  "purpose": "Visible original front-column lower pixels, hidden by hotbar in reference frame10. Existing reference affine independently confirmed. Original color retained; no invented pillar ends.",
+  "limits": [
+    "Left arch lower far foot remains UI-obscured and is clipped before overlay pixels, not fabricated.",
+    "Current mobile surrounding village placement differs from the full video village."
+  ]
+}

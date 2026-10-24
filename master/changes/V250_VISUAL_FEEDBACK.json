@@ -1,0 +1,22 @@
+{
+  "status": "ACCEPTED_USER_CORRECTION_IMPLEMENTED_CI_PENDING",
+  "base": "a0c66db866de8b23343103ef66c48f57cea471c0",
+  "source": [
+    "master/source/town_v248/receipt.json",
+    "master/source/items/rapid_v198/original_sources.zip"
+  ],
+  "before": [
+    "temple white platform/light removed",
+    "selected right cap contains HUD",
+    "Rapid also drawn as generic wing",
+    "nearest rotation and reductions discard thin icon lines"
+  ],
+  "after": [
+    "both temple source layers restored",
+    "selected border clean symmetric original cap",
+    "Rapid and generic wing routes disjoint",
+    "filtered reduction and4x weapon projection"
+  ],
+  "recalls": "PENDING_USER_LIST_AND_IMAGES",
+  "phone": "PENDING"
+}

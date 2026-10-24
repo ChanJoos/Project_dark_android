@@ -1,0 +1,97 @@
+{
+  "sourceCommit": "037da0145022dade21701e635894c4de893c44f1",
+  "runId": "39613760032",
+  "builtAtKST": "2026-10-21T23:08:17.589037+09:00",
+  "apkSha256": "61a58b7d0feb729cd605a87c3444de14db98df9adfe16f0376b753ca19720689",
+  "apkBytes": 101661704,
+  "identity": {
+    "sourceCommit": "037da0145022dade21701e635894c4de893c44f1",
+    "runId": "39613760032",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V217 ten original-source death village scenes and user A/B/C-D/E topology, bidirectional house3 stairs, static caches/live collision/direct rewards/save; reference-name gaps and handset pending",
+  "apkFile": "PROJECT_DARK_V217_TEST.apk",
+  "manifest": {
+    "manifest.versionCode": 184,
+    "manifest.versionName": "1.84-mobile-horror",
+    "manifest.compileSdkVersion": 35,
+    "manifest.compileSdkVersionCodename": "15",
+    "manifest.package": "com.projectdark.mobile.v217test",
+    "manifest.platformBuildVersionCode": 35,
+    "manifest.platformBuildVersionName": 15,
+    "uses-sdk.minSdkVersion": 26,
+    "uses-sdk.targetSdkVersion": 35,
+    "application.theme": 2130837504,
+    "application.label": "PROJECT DARK V217 TEST",
+    "application.debuggable": 4294967295,
+    "application.extractNativeLibs": 0
+  },
+  "retainedEarlierAssetFiles": 3154,
+  "native": {
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "signatureV2": "RSA_SIGNATURE_AND_1MIB_CONTENT_DIGEST_VERIFIED",
+  "handset": "PENDING",
+  "userVisualAcceptance": "PENDING",
+  "adjacentNativeReuse": {
+    "source": "17056366fc76b0a5a548517f380f4f5bc3a48afd",
+    "run": 39612638119,
+    "tests": 13,
+    "status": "PASS",
+    "scope": "NPC appearance,all town manager pairs,ground path,chase,restart matrix; affected production code byte-identical"
+  },
+  "originalReferenceGaps": "205405 upload failed; outdoor/lobby source selection, individual original Korean monster names except zombie and original server numbers not certified",
+  "focused": {
+    "source": "037da0145022dade21701e635894c4de893c44f1",
+    "run": 39613760032,
+    "job": 119269177599,
+    "artifact": 12352390155,
+    "zipBytes": 118392992,
+    "zipSha256": "c60e0d0843f0cc4406b8973f8f8a8e112c62cd2a73ab17bbfe5780229d197e16",
+    "status": "SUCCESS",
+    "suites": 1,
+    "tests": 7,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "common": {
+    "run": 39613770995,
+    "scope": "SUCCESS_EXACT_REVIEWED_BLOBS",
+    "fullCompile": "INTENTIONALLY_SKIPPED",
+    "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+    "merged": false
+  },
+  "hostFrames": {
+    "scenario": "12 map-switch first frames; native host, not phone FPS",
+    "samplesMs": [
+      9.205153,
+      17.008635,
+      10.06439,
+      16.317337,
+      9.345445,
+      16.169745,
+      8.498396,
+      24.361478,
+      11.67448,
+      18.399871,
+      8.44771,
+      22.172174
+    ],
+    "p50Ms": 13.9221125,
+    "p95Ms": 23.1573608,
+    "p99Ms": 24.120654560000002,
+    "maxMs": 24.361478,
+    "atlasMaxBytes": 8847360,
+    "floorChunkLimit": 32,
+    "floorPixelByteLimit": 8652800
+  },
+  "visualReview": "Actual22 native captures reviewed, including3 outdoor doors,3 houses,5 basements,C↔house3stairs and4-source-species direction sheet; original layout/name gaps remain as listed",
+  "generatedAssetFiles": 825,
+  "sourceDecodedAssetFiles": 824,
+  "adaptedStairFiles": 1
+}

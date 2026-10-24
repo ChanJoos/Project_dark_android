@@ -1,0 +1,174 @@
+{
+  "status": "ACCEPTED",
+  "policy": "Add12 later campaign weapon ranges at the pre-existing8-8 ADAPTED fallback; preserve V130 source catalog bytes and original option receipts.",
+  "weapons": [
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_41",
+      "name": "롱소드 · 수련 · 41",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_56",
+      "name": "롱소드 · 수련 · 56",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_WARRIOR_65",
+      "name": "롱소드 · 수련 · 65",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_ROGUE_41",
+      "name": "에페 · 수련 · 41",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_ROGUE_56",
+      "name": "에페 · 수련 · 56",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_ROGUE_65",
+      "name": "에페 · 수련 · 65",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_MAGE_41",
+      "name": "매직새티아 · 수련 · 41",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_MAGE_56",
+      "name": "매직새티아 · 수련 · 56",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_MAGE_65",
+      "name": "매직새티아 · 수련 · 65",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_CLERIC_41",
+      "name": "홀리머큐리아 · 수련 · 41",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_CLERIC_56",
+      "name": "홀리머큐리아 · 수련 · 56",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    },
+    {
+      "id": "IT_B_CAMPAIGN_TOOL_CLERIC_65",
+      "name": "홀리머큐리아 · 수련 · 65",
+      "stats": {
+        "MinATK": 8,
+        "MaxATK": 8
+      },
+      "level": null,
+      "status": "PROJECT_ADAPTED",
+      "source": null,
+      "sourceRow": null,
+      "note": "수련 장비 시험 공격력 8~8 · 추가 DAM/능력치 별도 적용",
+      "existingAdaptedOptions": true
+    }
+  ]
+}

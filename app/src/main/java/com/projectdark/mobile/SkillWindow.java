@@ -9,6 +9,7 @@ final class SkillWindow {
   interface Actions {
     void use(SkillBook.Entry entry);boolean canLearn(SkillBook.Entry entry);void learn(SkillBook.Entry entry);
     SkillAcquisition.Quote quote(SkillBook.Entry entry);long gold();boolean save();float cooldown(String id);
+    default String currentPower(String id){return "";}
     default float castSeconds(String id){return Float.NaN;}
     default int mpCost(String id,int base){return base;}
     String requirements(SkillBook.Entry entry);void notice(String text);default void testMode(boolean enabled){}
@@ -49,7 +50,7 @@ final class SkillWindow {
   float maxScroll(){List<Item> items=layout();return items.isEmpty()?0:Math.max(0,items.get(items.size()-1).rect.bottom+12-VIEWPORT.bottom);}
   RectF rectFor(String id){for(Item i:layout())if(i.entry.id.equals(id)){RectF r=new RectF(i.rect);r.offset(0,-scroll);return r;}return null;}
   void reveal(String id){for(Item i:layout())if(i.entry.id.equals(id)){scroll=Math.max(0,Math.min(maxScroll(),i.rect.top-155));return;}}
-  static RectF bookSlot(int i){float x=646+(i%5)*54,y=441+(i/5)*43;return new RectF(x,y,x+50,y+39);}
+  static RectF bookSlot(int i){float x=646+(i%6)*45,y=441+(i/6)*43;return new RectF(x,y,x+41,y+39);}
   static RectF jobTab(int i){return new RectF(44+i*82,77,126+i*82,104);}
   void showJob(String value){job=value;reset();}
   void draw(Canvas c,Actions a){if(!open)return;
@@ -74,7 +75,7 @@ final class SkillWindow {
     button(c,LEARN,e==null?"습득":book.learned(e.id)?"습득 완료":!supported?"습득 불가":q.gold==0?"습득 · 무료":"습득 · "+number(q.gold)+" G",e!=null&&a.canLearn(e));
     button(c,REGISTER,choosingSlot?"등록 취소":"퀵슬롯 등록",supported&&book.learned(e.id));
     fitted(c,message.isEmpty()?choosingSlot?"등록할 슬롯을 선택하세요":"퀵슬롯":message,646,433,266,10,message.isEmpty()?MUTED:messageColor,false);
-    for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=bookSlot(i);fill(c,r.left,r.top,r.right,r.bottom,UiTheme.SURFACE);outline(c,r,choosingSlot||i==flashSlot?GOLD:UiTheme.LINE,1);label(c,""+(i+1),r.left+4,r.top+11,9,MUTED,false);SkillBook.Entry sl=book.get(book.slot(i));if(sl!=null){icon(c,sl,new RectF(r.left+14,r.top+4,r.left+44,r.top+34));float cd=a.cooldown(sl.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb5000000);center(c,seconds(cd),r.centerX(),r.centerY()+4,11,TEXT);}}}
+    for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=bookSlot(i);fill(c,r.left,r.top,r.right,r.bottom,UiTheme.SURFACE);outline(c,r,choosingSlot||i==flashSlot?GOLD:UiTheme.LINE,1);label(c,""+(i+1),r.left+4,r.top+11,9,MUTED,false);SkillBook.Entry sl=book.get(book.slot(i));if(sl!=null){icon(c,sl,new RectF(r.left+7,r.top+5,r.right-3,r.bottom-4));float cd=a.cooldown(sl.id);if(cd>0){fill(c,r.left,r.top,r.right,r.bottom,0xb5000000);center(c,seconds(cd),r.centerX(),r.centerY()+4,11,TEXT);}}}
   }
   private void drawCard(Canvas c,SkillBook.Entry e,RectF r,Actions a){UiTheme.slot(c,r,e.id.equals(selectedId),book.learned(e.id));
     RectF art=new RectF(r.left+5,r.top+4,r.right-5,r.top+43);icon(c,e,art);
@@ -83,12 +84,17 @@ final class SkillWindow {
     float cd=a.cooldown(e.id);if(cd>0){fill(c,art.left,art.top,art.right,art.bottom,0xb9000000);center(c,seconds(cd),art.centerX(),art.centerY()+4,12,TEXT);}
   }
   private String resourceLabel(String id,Actions actions){SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);return a==null?"—":a.resourceBurst()?SkillAbilityCatalog.resources(a):"MP "+actions.mpCost(id,a.mpCost);}
+  String descriptionFor(SkillBook.Entry e){
+    String source=book.sourceDescription(e.id);if(source!=null)return source;
+    SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(e.id);org.json.JSONObject captured=skin.capturedDetails(e.id);
+    return ability!=null&&ability.supported()?(ability.damage()||ability.heal()?e.effect+"\n":"")+ability.description:captured==null?book.summary(e.id):captured.optString("description");
+  }
   private void drawDetail(Canvas c,SkillBook.Entry e,Actions a){icon(c,e,new RectF(647,87,687,123));fitted(c,e.name,695,109,213,14,TEXT,true);
     SkillDef d=e.runtime;org.json.JSONObject captured=skin.capturedDetails(e.id);String cd=d==null?(captured==null?"—":captured.optInt("cooldownSeconds")+" 초"):"SK_공통_001".equals(e.id)?"무기 기준":seconds(d.cooldown)+" 초";
     label(c,"대기시간",646,141,13,TEXT,false);right(c,cd,773,141,13,TEXT);label(c,"시전시간",783,141,13,TEXT,false);right(c,Float.isNaN(a.castSeconds(e.id))?(captured==null?"—":captured.optInt("castSeconds")+" 초"):seconds(a.castSeconds(e.id))+" 초",911,141,13,TEXT);
     label(c,"숙련도",646,156,13,TEXT,false);right(c,book.proficiency(e.id)+"/100",773,156,13,TEXT);label(c,"소모MP",783,156,13,TEXT,false);right(c,SkillAbilityCatalog.get(e.id)==null?(captured==null?"—":""+captured.optInt("mpCost")):resourceLabel(e.id,a),911,156,13,TEXT);
-    if(detailPage==0){SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(e.id);String summary=ability!=null&&ability.supported()?(ability.damage()||ability.heal()?e.effect+"\n":"")+ability.description:captured==null?book.summary(e.id):captured.optString("description");List<String> lines=wrap(summary.isEmpty()?e.effect:summary,265,11);c.save();c.clipRect(646,164,912,219);for(int i=0;i<Math.min(4,lines.size());i++)label(c,lines.get(i),646,175+i*13,11,TEXT,false);c.restore();
-      fill(c,646,225,912,254,UiTheme.SURFACE);UiTheme.surface(c,new RectF(646,225,912,254),UiTheme.SURFACE,UiTheme.LINE,6);center(c,"퀵슬롯에 등록해 주세요.",779,244,12,MUTED);
+    if(detailPage==0){String summary=descriptionFor(e);List<String> lines=wrap(summary.isEmpty()?e.effect:summary,265,11);c.save();c.clipRect(646,164,912,219);for(int i=0;i<Math.min(4,lines.size());i++)label(c,lines.get(i),646,175+i*13,11,TEXT,false);c.restore();
+      fill(c,646,225,912,254,UiTheme.SURFACE);UiTheme.surface(c,new RectF(646,225,912,254),UiTheme.SURFACE,UiTheme.LINE,6);fittedCenter(c,a.currentPower(e.id).isEmpty()?"퀵슬롯에 등록해 주세요.":a.currentPower(e.id),779,244,260,11,GOLD);
       String status=book.learned(e.id)?"보유하고 있는 스킬입니다.":a.canLearn(e)?"습득할 수 있는 스킬입니다.":e.runtime==null&&!book.testAccess()?"현재 습득할 수 없는 스킬입니다.":"습득 조건을 확인해 주세요.";
       if(d==null&&captured!=null)label(c,"자료 정보 · 전투 효과 준비 중",646,280,9,MUTED,false);
       fittedCenter(c,status,779,303,270,12,book.learned(e.id)||a.canLearn(e)?GOLD:RED);
@@ -99,7 +105,7 @@ final class SkillWindow {
       String status=q.learned?"습득 완료":q.blockers.isEmpty()?"습득 가능":q.blockers.get(0);fittedCenter(c,status,779,303,265,11,q.learned||q.canLearn?GREEN:RED);
     }
   }
-  private void icon(Canvas c,SkillBook.Entry e,RectF r){float side=Math.min(r.width(),r.height());r=new RectF(r.centerX()-side/2,r.centerY()-side/2,r.centerX()+side/2,r.centerY()+side/2);if(!icons.drawSquare(c,e.id,r)){fill(c,r.left,r.top,r.right,r.bottom,0xff201d16);center(c,"—",r.centerX(),r.centerY()+4,13,MUTED);}}
+  private void icon(Canvas c,SkillBook.Entry e,RectF r){float side=Math.min(r.width(),r.height());r=new RectF(r.centerX()-side/2,r.centerY()-side/2,r.centerX()+side/2,r.centerY()+side/2);if(!icons.drawSquare(c,e.id,r)){icons.drawBookBackground(c,r);center(c,"—",r.centerX(),r.centerY()+4,13,MUTED);}}
   boolean motion(int action,float x,float y){if(!open)return false;
     if(action==MotionEvent.ACTION_DOWN){downY=y;startScroll=scroll;scrollGesture=VIEWPORT.contains(x,y)||new RectF(610,104,627,520).contains(x,y);dragging=false;return false;}
     if(action==MotionEvent.ACTION_MOVE&&scrollGesture){if(Math.abs(y-downY)>5)dragging=true;if(dragging)scroll=Math.max(0,Math.min(maxScroll(),startScroll+downY-y));return true;}
@@ -121,8 +127,8 @@ final class SkillWindow {
   void drawSlot(Canvas c,RectF r,int index,Actions a){SkillBook.Entry e=book.get(book.slot(index));if(e==null)return;RectF art=new RectF(r.left+6,r.top+6,r.right-6,r.bottom-6);icons.drawQuickslot(c,e.id,art);float cd=a.cooldown(e.id);if(cd>0){c.save();c.clipRect(art);fill(c,art.left,art.top,art.right,art.bottom,0xb9000000);center(c,seconds(cd),art.centerX(),art.centerY()+4,10,TEXT);c.restore();}}
   void drawHudSlot(Canvas c,RectF r,int index,Actions a){
     SkillBook.Entry e=book.get(book.slot(index));float radius=r.width()/2f;
-    MobileHudSkin.ring(c,r.centerX(),r.centerY(),radius,false);
-    if(e!=null){c.save();Path clip=new Path();clip.addCircle(r.centerX(),r.centerY(),radius-3,Path.Direction.CW);c.clipPath(clip);
+    fill(c,r.left,r.top,r.right,r.bottom,0xff171b20);outline(c,r,0xffa28d63,2);RectF inner=new RectF(r);inner.inset(2,2);outline(c,inner,0xff454039,1);
+    if(e!=null){c.save();c.clipRect(r.left+3,r.top+3,r.right-3,r.bottom-3);
       // Use the existing quickslot artwork; only its surrounding HUD changes.
       icons.drawQuickslot(c,e.id,new RectF(r.left+3,r.top+3,r.right-3,r.bottom-3));
       float cd=a.cooldown(e.id);if(cd>0){p.setStyle(Paint.Style.FILL);p.setColor(0xbc0c1014);float duration=e.runtime==null?cd:Math.max(cd,e.runtime.cooldown);c.drawArc(r,-90,360*Math.min(1,cd/Math.max(.01f,duration)),true,p);center(c,seconds(cd),r.centerX(),r.centerY()+4,11,TEXT);}c.restore();

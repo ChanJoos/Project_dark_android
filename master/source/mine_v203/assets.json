@@ -1,0 +1,858 @@
+{
+  "source": "Screen_Recording_20261020_160455_YouTube.mp4",
+  "sha256": "ec1ed3794096bba358b000b301067c969855cbdbeb6393c289da5ee5cc23f01b",
+  "canonicalFrame": "crop1920x1080at210,0 ->640x480; runtime scale8/7",
+  "evidence": "USER_VIDEO_SOURCE_PIXELS; layout/hidden joins ADAPTED",
+  "assets": [
+    {
+      "id": "house",
+      "size": [
+        322,
+        268
+      ],
+      "anchor": [
+        76,
+        242
+      ],
+      "frame": "SIFT aligned69..82; original compression retained; foreground post occlusion small at base",
+      "box": [
+        824,
+        174,
+        1146,
+        442
+      ],
+      "polygon": [
+        [
+          0,
+          135
+        ],
+        [
+          39,
+          87
+        ],
+        [
+          223,
+          0
+        ],
+        [
+          283,
+          27
+        ],
+        [
+          322,
+          119
+        ],
+        [
+          312,
+          138
+        ],
+        [
+          311,
+          208
+        ],
+        [
+          132,
+          268
+        ],
+        [
+          5,
+          217
+        ]
+      ],
+      "greenMask": true,
+      "sha256": "0a4aadadfb8179d5036256ba0bcf69bf55c17d695452c73333f4a1c80d7000b8"
+    },
+    {
+      "id": "lamp",
+      "size": [
+        61,
+        118
+      ],
+      "anchor": [
+        13,
+        116
+      ],
+      "frame": 68,
+      "box": [
+        404,
+        190,
+        465,
+        308
+      ],
+      "polygon": [
+        [
+          12,
+          0
+        ],
+        [
+          20,
+          0
+        ],
+        [
+          19,
+          25
+        ],
+        [
+          58,
+          13
+        ],
+        [
+          60,
+          19
+        ],
+        [
+          44,
+          28
+        ],
+        [
+          48,
+          48
+        ],
+        [
+          48,
+          57
+        ],
+        [
+          39,
+          59
+        ],
+        [
+          35,
+          53
+        ],
+        [
+          38,
+          35
+        ],
+        [
+          19,
+          33
+        ],
+        [
+          19,
+          97
+        ],
+        [
+          28,
+          114
+        ],
+        [
+          20,
+          118
+        ],
+        [
+          13,
+          110
+        ],
+        [
+          6,
+          118
+        ],
+        [
+          0,
+          114
+        ],
+        [
+          7,
+          96
+        ],
+        [
+          10,
+          37
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "8d454facffb8f1a9ce8f3064a94aa210aa2c8285a1e8f8c3596ee6b85cfcac9f"
+    },
+    {
+      "id": "bench",
+      "size": [
+        51,
+        44
+      ],
+      "anchor": [
+        25.5,
+        42
+      ],
+      "frame": "69..82",
+      "box": [
+        755,
+        386,
+        806,
+        430
+      ],
+      "polygon": [
+        [
+          0,
+          23
+        ],
+        [
+          42,
+          1
+        ],
+        [
+          51,
+          7
+        ],
+        [
+          51,
+          23
+        ],
+        [
+          10,
+          44
+        ],
+        [
+          5,
+          40
+        ],
+        [
+          5,
+          30
+        ],
+        [
+          0,
+          29
+        ]
+      ],
+      "greenMask": true,
+      "sha256": "c854792a06edcf911d4d87033bffbfbe1f9e9857bac432b707945056766b85d1"
+    },
+    {
+      "id": "mine_hatch",
+      "size": [
+        115,
+        63
+      ],
+      "anchor": [
+        50,
+        50
+      ],
+      "frame": 37,
+      "box": [
+        330,
+        143,
+        445,
+        206
+      ],
+      "polygon": [
+        [
+          0,
+          15
+        ],
+        [
+          33,
+          0
+        ],
+        [
+          115,
+          42
+        ],
+        [
+          80,
+          61
+        ],
+        [
+          8,
+          39
+        ]
+      ],
+      "greenMask": true,
+      "sha256": "ee4a274bb46d6d646317fc0cbaf4d3a01b019ee09175bed94af63093833e47e5"
+    },
+    {
+      "id": "cliff",
+      "size": [
+        175,
+        141
+      ],
+      "anchor": [
+        90,
+        130
+      ],
+      "frame": 50,
+      "box": [
+        230,
+        10,
+        405,
+        151
+      ],
+      "polygon": [
+        [
+          0,
+          97
+        ],
+        [
+          175,
+          10
+        ],
+        [
+          175,
+          140
+        ],
+        [
+          141,
+          139
+        ],
+        [
+          131,
+          129
+        ],
+        [
+          130,
+          106
+        ],
+        [
+          107,
+          101
+        ],
+        [
+          101,
+          87
+        ],
+        [
+          70,
+          84
+        ],
+        [
+          70,
+          79
+        ],
+        [
+          40,
+          82
+        ],
+        [
+          20,
+          86
+        ]
+      ],
+      "greenMask": true,
+      "sha256": "b2fa7956481ae94bcdd40fea9e3a8fb24af0ee620902392e268266a2a42581d0"
+    },
+    {
+      "id": "rock0",
+      "size": [
+        44,
+        45
+      ],
+      "anchor": [
+        22.0,
+        43
+      ],
+      "frame": 68,
+      "box": [
+        196,
+        217,
+        240,
+        262
+      ],
+      "polygon": [
+        [
+          0,
+          16
+        ],
+        [
+          9,
+          3
+        ],
+        [
+          23,
+          0
+        ],
+        [
+          42,
+          13
+        ],
+        [
+          44,
+          32
+        ],
+        [
+          30,
+          44
+        ],
+        [
+          11,
+          38
+        ],
+        [
+          1,
+          29
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "2e4e877736b5b4e36ea4c2a810c19a3de1c70755aae61a4ac1ac479687a30071"
+    },
+    {
+      "id": "rock1",
+      "size": [
+        45,
+        44
+      ],
+      "anchor": [
+        22.5,
+        42
+      ],
+      "frame": 68,
+      "box": [
+        242,
+        222,
+        287,
+        266
+      ],
+      "polygon": [
+        [
+          0,
+          11
+        ],
+        [
+          12,
+          0
+        ],
+        [
+          28,
+          4
+        ],
+        [
+          44,
+          16
+        ],
+        [
+          44,
+          29
+        ],
+        [
+          24,
+          43
+        ],
+        [
+          5,
+          35
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "5deaa6aefbcc3fc3fcf624ab796add7f304d5497bc88123cfe7b515d1204fc49"
+    },
+    {
+      "id": "rock2",
+      "size": [
+        45,
+        49
+      ],
+      "anchor": [
+        22.5,
+        47
+      ],
+      "frame": 68,
+      "box": [
+        352,
+        299,
+        397,
+        348
+      ],
+      "polygon": [
+        [
+          0,
+          16
+        ],
+        [
+          8,
+          5
+        ],
+        [
+          24,
+          0
+        ],
+        [
+          44,
+          17
+        ],
+        [
+          44,
+          36
+        ],
+        [
+          25,
+          48
+        ],
+        [
+          5,
+          37
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "68a0be5b7639a0650d910ea82d67ede8dd9fb2c2bb96e597f2e96834d63b72e1"
+    },
+    {
+      "id": "cobble",
+      "size": [
+        125,
+        73
+      ],
+      "anchor": [
+        62.5,
+        71
+      ],
+      "frame": 64,
+      "box": [
+        380,
+        174,
+        505,
+        247
+      ],
+      "polygon": [
+        [
+          0,
+          40
+        ],
+        [
+          38,
+          0
+        ],
+        [
+          125,
+          30
+        ],
+        [
+          124,
+          48
+        ],
+        [
+          57,
+          73
+        ],
+        [
+          0,
+          57
+        ]
+      ],
+      "greenMask": true,
+      "sha256": "c843fb563d6736d1c2901118dcfa3ff84142faaf63732a8398c236f2eb611baa"
+    },
+    {
+      "id": "grass",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "frame": 68,
+      "box": [
+        178,
+        121,
+        234,
+        149
+      ],
+      "polygon": [
+        [
+          0,
+          14
+        ],
+        [
+          28,
+          0
+        ],
+        [
+          56,
+          14
+        ],
+        [
+          28,
+          28
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "4523d14b73acd8a45afb871d8e3725f69399942732497a71fb582d9cb18b89b5"
+    },
+    {
+      "id": "grass2",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "frame": 64,
+      "box": [
+        332,
+        125,
+        388,
+        153
+      ],
+      "polygon": [
+        [
+          0,
+          14
+        ],
+        [
+          28,
+          0
+        ],
+        [
+          56,
+          14
+        ],
+        [
+          28,
+          28
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "07f4ba8f28961fc20b35e6cfb8bea6aa90e953bf50a368823f8efb6de091cec1"
+    },
+    {
+      "id": "grass3",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "frame": 68,
+      "box": [
+        152,
+        140,
+        208,
+        168
+      ],
+      "polygon": [
+        [
+          0,
+          14
+        ],
+        [
+          28,
+          0
+        ],
+        [
+          56,
+          14
+        ],
+        [
+          28,
+          28
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "3ea39d63cc7b40cd2df996c2b14f8a71a329c37280a435de0def2fb5ce9ce4ac"
+    },
+    {
+      "id": "water",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "frame": 68,
+      "box": [
+        306,
+        30,
+        362,
+        58
+      ],
+      "polygon": [
+        [
+          0,
+          14
+        ],
+        [
+          28,
+          0
+        ],
+        [
+          56,
+          14
+        ],
+        [
+          28,
+          28
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "02882efe8ef2b5a27cdde3a72ffec24278c8d185cdd6df060261d50eea735674"
+    },
+    {
+      "id": "planks",
+      "size": [
+        56,
+        28
+      ],
+      "anchor": [
+        28,
+        14
+      ],
+      "frame": 32,
+      "box": [
+        166,
+        207,
+        222,
+        235
+      ],
+      "polygon": [
+        [
+          0,
+          14
+        ],
+        [
+          28,
+          0
+        ],
+        [
+          56,
+          14
+        ],
+        [
+          28,
+          28
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "90ee7a394b312821eda638200502354a8ef999d7998b4654a676ae428317920b"
+    },
+    {
+      "id": "rail",
+      "size": [
+        57,
+        49
+      ],
+      "anchor": [
+        28,
+        42
+      ],
+      "frame": 32,
+      "box": [
+        100,
+        274,
+        157,
+        323
+      ],
+      "polygon": [
+        [
+          0,
+          23
+        ],
+        [
+          56,
+          0
+        ],
+        [
+          57,
+          5
+        ],
+        [
+          48,
+          10
+        ],
+        [
+          48,
+          36
+        ],
+        [
+          43,
+          38
+        ],
+        [
+          43,
+          13
+        ],
+        [
+          25,
+          23
+        ],
+        [
+          25,
+          46
+        ],
+        [
+          21,
+          49
+        ],
+        [
+          20,
+          25
+        ],
+        [
+          4,
+          34
+        ],
+        [
+          4,
+          48
+        ],
+        [
+          0,
+          49
+        ]
+      ],
+      "greenMask": false,
+      "sha256": "3da450e31a23937e05ae7b0a4f9db824ccf8dee7441a4d0811371a0bbf6ae509"
+    },
+    {
+      "id": "water_material",
+      "frame": 68,
+      "box": [
+        554,
+        51,
+        610,
+        79
+      ],
+      "polygon": null,
+      "greenMask": false,
+      "size": [
+        56,
+        28
+      ],
+      "sha256": "f30908fecda6bf8438952de7c354eb6c0317bc4e00fca2f0604bdf074e499a64"
+    },
+    {
+      "id": "cliff_material",
+      "frame": 50,
+      "box": [
+        500,
+        10,
+        580,
+        90
+      ],
+      "polygon": null,
+      "greenMask": false,
+      "size": [
+        80,
+        80
+      ],
+      "sha256": "b2fc517f9036caafa714a9eeb7c5baff2e10df4d8850c7a5b43bcf6a7152562f"
+    },
+    {
+      "id": "grass_material",
+      "frame": 68,
+      "box": [
+        178,
+        121,
+        234,
+        149
+      ],
+      "polygon": null,
+      "greenMask": false,
+      "size": [
+        56,
+        28
+      ],
+      "sha256": "93baa6a7f652128f0427c10a326b09e0e5e48b8ce05638ac7fbfd19349f747fd"
+    }
+  ],
+  "continuousMaterials": {
+    "water": "world-anchored REPEAT source ripple material; avoid mirrored ripple diamonds",
+    "cliff": "continuous jagged stone wall mesh from source material; source fragment no longer repeated",
+    "grass": "world-anchored continuous source grass; no alternating diamond tone grid"
+  }
+}

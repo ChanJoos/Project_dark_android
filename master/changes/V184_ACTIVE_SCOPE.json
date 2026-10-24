@@ -1,0 +1,30 @@
+{
+  "revision": "V184_WORK_IN_PROGRESS",
+  "status": "PARTIAL_BUILD_NATIVE_VERIFIED_FULL_EQUIPMENT_SOURCE_BLOCKED",
+  "userRequiredScope": "All article weapons and Horror monster armor/weapons/shields in inventory and character; original portal arrangement; leap lag; APK after completion",
+  "sourcePairsRecovered": 63,
+  "sourceRowsAdmitted": 53,
+  "allRequestedEquipmentComplete": false,
+  "portalCandidate": {
+    "lobbyMilles": 5,
+    "lobbyWest": 5,
+    "lobbyEast": 1,
+    "lobbyUpper": 1,
+    "corridorReturns": 4,
+    "roomDoorRings": false
+  },
+  "leapChange": "Static tile-center fast path with fresh landing collision; nearest legal fallback retained",
+  "buildVerified": true,
+  "phoneVerified": false,
+  "remaining": [
+    "Sparse source poses",
+    "Article variant appearances",
+    "Exact ten monster kits and shield names/stats",
+    "Native tests and visual positioning",
+    "Exact APK verification"
+  ],
+  "runtimeSource": "5381b1e278a45f59024b969bb01120742e64b9ae",
+  "nativeTests": 51,
+  "checkpoint": "master/changes/V184_BUILD_RUNTIME_RECEIPT.json",
+  "saveMigration": "ONCE_WITH_BANK_AND_RESTART_REGRESSION"
+}

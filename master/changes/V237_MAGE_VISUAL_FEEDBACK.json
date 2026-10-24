@@ -1,0 +1,22 @@
+{
+  "id": "V237_MAGE_VISUAL_FEEDBACK",
+  "status": "ACCEPTED",
+  "feedback": "DEVICE_FAILED_USER_REPORTED: Mage except Mareno differs from original. Promotion four element spells broadly similar but captured actor ghosts; buffs/guards need quality cleanup; Dark Mark rebuild; remove Helphura; Prabo circle5.",
+  "sourceArticle": "master/source/skill_fx/naver_magic_recovered_20261001/254766.json",
+  "implementation": [
+    "8 promotion source channels get strict prewarmed actor/HP masks and isolated-pixel cleanup; original source and exterior colors retained",
+    "Dark Mark replaced by native circle/double triangle seal guided by article254766 frames29..34; authored reveal/hold/fade explicitly adapted",
+    "Helphura057 retired from book/learning/preview/restore slots with stable ID retained for old-save reading",
+    "Prabo053 displayed circle5; no learning-cost/stat import"
+  ],
+  "maskLimitation": "Occluded source FX inside actor silhouettes remains unknown; no fake texture fill. Cleanup does not recover original continuous cadence.",
+  "pending": [
+    "Original motion reference for remaining Mage spells",
+    "User visual review of cleaned promotion capture channels and rebuilt Dark Mark"
+  ],
+  "mar eno": "Keep accepted Mareno source unchanged",
+  "verification": {
+    "status": "PENDING",
+    "phone": "PENDING"
+  }
+}

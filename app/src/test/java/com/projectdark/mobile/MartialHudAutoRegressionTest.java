@@ -30,12 +30,12 @@ public class MartialHudAutoRegressionTest {
    int column=0;
    for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
     GameView v=directed(direction);RuntimeState s=field(v,"state");RuntimeState.Monster target=s.monsters().get(0);int hp=target.hp;
-    call(v,"useBookSkill",SkillBook.Entry.class,((SkillBook)field(v,"skillBook")).get(entry.id));assertEquals(entry.id,field(v,"activeSkillVisualId"));
+    call(v,"useBookSkill",SkillBook.Entry.class,((SkillBook)field(v,"skillBook")).get(entry.id));if(MartialSkillPolicy.LEAP.equals(entry.id))assertNull(field(v,"activeSkillVisualId"));else assertEquals(entry.id,field(v,"activeSkillVisualId"));
     assertEquals(direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
     float contact="마법".equals(rule.kind)?((RuntimeCombatSession)field(v,"combatSession")).effectiveCastSeconds(entry.id):rule.contact;
     advance(v,Math.max(0,contact-.01f));assertEquals(entry.id+" no early enemy hit",hp,target.hp);
     SkillVfxRenderer fx=field(v,"skillVfx");assertFalse(entry.id+" no early recipient",fx.pulses.stream().anyMatch(p->!p.caster));
-    advance(v,.011f);assertEquals(direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
+    advance(v,.011f);assertEquals(MartialSkillPolicy.LEAP.equals(entry.id)?CanonicalActorFacing.quantize(target.x-s.player().x,target.y-s.player().y,direction):direction,((CanonicalActorFacing)field(v,"playerFacing")).presentation());
     if(rule.damage())assertTrue(entry.id+" actual target contact",target.hp<hp);
     for(SkillVfxRenderer.Pulse pulse:fx.pulses){
      if(pulse.sheet.equals("impact"))assertEquals("actual damage recipient",target.id,pulse.anchor);
@@ -45,7 +45,7 @@ public class MartialHudAutoRegressionTest {
    }
    save(sheet,"v89-martial-"+entry.id+".png");sheet.recycle();
   }
-  assertEquals(34,reviewed);assertEquals(30,active);
+  assertEquals(34,reviewed);assertEquals(31,active);
  }
  static void advance(GameView view,float seconds)throws Exception{while(seconds>.05f){call(view,"update",float.class,.05f);seconds-=.05f;}if(seconds>0)call(view,"update",float.class,seconds);}
  static void crop(GameView v,Canvas out,int x,int y)throws Exception{
@@ -62,13 +62,13 @@ public class MartialHudAutoRegressionTest {
  }
  @Test public void autoUsesQuickslotsFairlyAndSkipsCoolingUnlearnedAndFullHealthHeal()throws Exception{
   GameView v=directed(CharacterRenderer.Direction.SE);SkillBook book=field(v,"skillBook");book.restoreTestSlots(new String[]{"SK_무도가_002","SK_무도가_007",null,null,null,null,null,null});
-  tap(v,926,507);advance(v,.05f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertEquals("SK_무도가_002",field(v,"activeSkillVisualId"));
+  HudTestControlsV267.auto(v);advance(v,.05f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertEquals("SK_무도가_002",field(v,"activeSkillVisualId"));
   advance(v,.55f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertEquals("SK_무도가_007",field(v,"activeSkillVisualId"));
   Bitmap screenshot=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(screenshot));save(screenshot,"v89-auto-quickslots.png");
   advance(v,.55f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertNotEquals("Cooling slot is skipped","SK_무도가_007",field(v,"activeSkillVisualId"));
   GameView real=directed(CharacterRenderer.Direction.SE);real.setSkillTestMode(false);SkillBook actual=field(real,"skillBook");actual.learn("SK_무도가_002",100);actual.assign(0,"SK_무도가_002");actual.bindJob(()->"MARTIAL_ARTIST");actual.learn("SK_무도가_017",100);actual.assign(0,"SK_무도가_017");actual.assign(1,"SK_무도가_002");
-  actual.learn("SK_무도가_016",100);actual.assign(2,"SK_무도가_016");RuntimeState live=field(real,"state");live.player().mp=0;live.player().hp=live.player().maxHp;tap(real,926,507);advance(real,.05f);assertTrue((Boolean)field(real,"autoAttackEnabled"));assertEquals("Full-health heal is skipped","SK_무도가_002",field(real,"activeSkillVisualId"));
-  GameView unlearned=directed(CharacterRenderer.Direction.SE);unlearned.setSkillTestMode(false);SkillBook empty=field(unlearned,"skillBook");empty.bindJob(()->"MARTIAL_ARTIST");assertFalse(empty.assign(0,"SK_무도가_007"));tap(unlearned,926,507);advance(unlearned,.05f);assertNull(field(unlearned,"activeSkillVisualId"));
+  actual.learn("SK_무도가_016",100);actual.assign(2,"SK_무도가_016");RuntimeState live=field(real,"state");live.player().mp=0;live.player().hp=live.player().maxHp;HudTestControlsV267.auto(real);advance(real,.05f);assertTrue((Boolean)field(real,"autoAttackEnabled"));assertEquals("Full-health heal is skipped","SK_무도가_002",field(real,"activeSkillVisualId"));
+  GameView unlearned=directed(CharacterRenderer.Direction.SE);unlearned.setSkillTestMode(false);SkillBook empty=field(unlearned,"skillBook");empty.bindJob(()->"MARTIAL_ARTIST");assertFalse(empty.assign(0,"SK_무도가_007"));HudTestControlsV267.auto(unlearned);advance(unlearned,.05f);assertNull(field(unlearned,"activeSkillVisualId"));
  }
  @Test public void allEightQuickslotIconsStayInsideTheirSingleHudFramesAndNpcNamesFollowTheirHeads()throws Exception{
   GameView v=directed(CharacterRenderer.Direction.SE);SkillBook book=field(v,"skillBook");book.restoreTestSlots(new String[]{"SK_무도가_002","SK_무도가_007","SK_무도가_014","SK_무도가_020","SK_무도가_021","SK_무도가_023","SK_무도가_017","SK_무도가_008"});

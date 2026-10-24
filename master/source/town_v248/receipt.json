@@ -1,0 +1,556 @@
+{
+  "revision": "V248",
+  "source": "Retained741 Hades MPF/Roh EFA and user supplied modern travel-frame screenshot",
+  "installerSha256": "dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093",
+  "sourceFiles": {
+    "hades/mns035.mpf": "8cf4ef58bcd7f8e953b82ef33338faf9052eea51a2215bbcf925ca08a1795153",
+    "hades/mns000.pal": "ecf05b101c09df6309f695c12d642fd8a8b725701a2bbfad309b0773d7701b76",
+    "hades/mns028.mpf": "af02088c87c74c293384f1c2db66d3df75ff4f0ea597a421e01cafb0429db499",
+    "hades/mns056.mpf": "673368c5d33d28ed26dfc7cf00fe2e99ae6d2491607457ddbe51365f5078e6e0",
+    "hades/mns019.mpf": "a3c6c5c142026f64aec31c40df40e4031b18747dbfae677da25f7fa1cee0e437",
+    "roh/efct362.efa": "db1cceb388cc6ef229160eaded41aed7bcd1b64efa4180bf0c9beacc79027d50"
+  },
+  "assets": {
+    "reagent.png": {
+      "sha256": "f13ca36ccbbde7ca81f4ca6016d040aa9c163bd4756aff251f9edb5e67ef8a5a",
+      "size": [
+        41,
+        68
+      ],
+      "source": "mns035.mpf",
+      "palette": "mns000.pal",
+      "frame": 0,
+      "mirrored": true
+    },
+    "death-knight.png": {
+      "sha256": "391de33e661e9eedac3e990930b3521588daebae64a3510c0cb2f513e366fab2",
+      "size": [
+        26,
+        68
+      ],
+      "source": "mns028.mpf",
+      "palette": "mns000.pal",
+      "frame": 0,
+      "mirrored": true
+    },
+    "bank.png": {
+      "sha256": "d0ae3be098d767e71e72c9883ac0b3cd4680d25dfb002f4f152dae735d38ce57",
+      "size": [
+        22,
+        52
+      ],
+      "source": "mns056.mpf",
+      "palette": "mns000.pal",
+      "frame": 0,
+      "mirrored": false
+    },
+    "travel.png": {
+      "sha256": "3f0ff3bdc7e6de0302f0a1ae18390d3a1689b7774a1d67fb87d1ca682182f3ef",
+      "size": [
+        26,
+        44
+      ],
+      "source": "mns019.mpf",
+      "palette": "mns000.pal",
+      "frame": 0,
+      "mirrored": false
+    },
+    "portal.png": {
+      "sha256": "f85f9425358ed8ebd702785fb0f1a3234f5706c7d2af34779ee56f913c613cfa",
+      "size": [
+        304,
+        480
+      ],
+      "source": "efct362.efa",
+      "frames": 32,
+      "columns": 8,
+      "frameSize": [
+        38,
+        120
+      ],
+      "pivot": [
+        19,
+        110
+      ],
+      "frameMs": 125,
+      "blend": "ADDITIVE",
+      "scale": 1.1428571428571428
+    },
+    "choice-selected.png": {
+      "sha256": "b763c42faa7627005ab92d1d584dd537496607cb42df569d7f0aeab51b1ced48",
+      "size": [
+        316,
+        49
+      ],
+      "source": "1000060739.jpg",
+      "crop": [
+        1063,
+        373,
+        1379,
+        422
+      ],
+      "removedInterior": 9,
+      "preserved": "Clean original left border mirrored into right half; HUD-contaminated right cap removed, no repaint",
+      "mirrorRightHalf": true
+    },
+    "choice-idle.png": {
+      "sha256": "4e7b6f804947ebea5e247dbd5941debb392ee6fcade3756011d714270f37bd95",
+      "size": [
+        316,
+        49
+      ],
+      "source": "1000060739.jpg",
+      "crop": [
+        1063,
+        425,
+        1379,
+        474
+      ],
+      "removedInterior": 9,
+      "preserved": "Clean left screenshot border mirrored into right half to remove overlaid background HUD; original RGB retained, no repaint",
+      "mirrorRightHalf": true
+    },
+    "portrait.png": {
+      "sha256": "033a039cbdb09ed93daafdbe602eae308b762251a3b4cb8fbf319ca5cb2d52d2",
+      "size": [
+        108,
+        134
+      ],
+      "source": "1000060739.jpg",
+      "crop": [
+        229,
+        515,
+        337,
+        649
+      ],
+      "removedInterior": 12,
+      "preserved": "all border RGB, no AI repaint"
+    }
+  },
+  "portalFrames": [
+    {
+      "index": 0,
+      "rgbaSha256": "cea7ca2cd9443c4606f9c19096a100e38a3745c1a1e2d5a6dcf58906632bc2a4",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 1,
+      "rgbaSha256": "a3c26972975376593054d7382191ccd61622ba5c760b23e4a6075dedcec3f7b6",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 2,
+      "rgbaSha256": "7fe470d4e053d80f449e55146eb9a51435f384f3247571c6c994d554e6416f71",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 3,
+      "rgbaSha256": "6b26df83813742943be82091c1e412ddf189bf5e29854d3f6ff717d02cc2a9ef",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 4,
+      "rgbaSha256": "88c50ceac74a25aaebf0a685741e0be467f6c06ccd73ebd4ad1638407a3fc02c",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 5,
+      "rgbaSha256": "96b9d957ab7c3894d5978534934372cc1e280c8f741b31c745eaeb903b9346ac",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 6,
+      "rgbaSha256": "6fef424b14c34ca2ea971227db6dd55e65b353b63e2f57b14804e58db83bec52",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 7,
+      "rgbaSha256": "4acedbaa6eaaae07f6d0cb7d201a3deb6c594bf0d94287ba018eeb328b6e33e9",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 8,
+      "rgbaSha256": "be9bbd6030d29b4edd6d0863c1a748c5afd25742da714a338e1a24cf1bb83c0c",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 9,
+      "rgbaSha256": "6503f2aa3d3c5f3fd55c99d9428892a82db382b0ed3ada807cd8d3aa7ea02159",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 10,
+      "rgbaSha256": "6dbdac81ba126eb8767b40db8908afeb3629d0768b2162efa9ecbe465d088156",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 11,
+      "rgbaSha256": "a5bd83608d0e2c6a9fb767685b5c6a1d2c9b50f37be9901efcf803d4e6b82272",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 12,
+      "rgbaSha256": "31c0b2ea68edcbfc1f10e69586055fa6371c5a6d65e1992b56b0ef0170c4ca29",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 13,
+      "rgbaSha256": "d98ff272193faa7d4a6f0c8b8b425322847cee38053bed6dcbe9bd7cea160409",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 14,
+      "rgbaSha256": "1cb43797aab620212d781f5aaf3e77c1b57836f1ae74f19ed178642a091cc81a",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 15,
+      "rgbaSha256": "3625113322fec3e5f580276de631387d6f695e94c0f1f3de5ec7b0e491863b03",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 16,
+      "rgbaSha256": "d9c44040c6bb0f86bf5f3afdcf99b570b241a0279331e3fd394b2537afeaa998",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 17,
+      "rgbaSha256": "8279af37ed996698be2a05f256784cdecc98e7d5d5bf937caeaf392ed749a15a",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 18,
+      "rgbaSha256": "4ff31be81b07b8a60883d16623fca2731523dcde566bb295bd0b553277ceed45",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 19,
+      "rgbaSha256": "16acb167161ad1d85893d7f7f5afe644fa7bb0ce8fa100aafd3e860534663ff0",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 20,
+      "rgbaSha256": "40957c21cd2e9905aa315e2cbc39d099a354afd526725794e7de55a6f360595a",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 21,
+      "rgbaSha256": "1a14977e6c8efc4c5bcf3613d67b7ea053f78e91954bca1d1312059842a62a8f",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 22,
+      "rgbaSha256": "6192e0611d779a0ab16fa3d42052451c976518400fcd0d7aecf885e49810ea86",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 23,
+      "rgbaSha256": "465b3f5c958e36fa80d02e2d687f2d9f194855b9a45bd13fac2080ebf57f5103",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 24,
+      "rgbaSha256": "baff88189b96f056cb69bc9662173192d0507f49ae875f88964507bb319ccada",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 25,
+      "rgbaSha256": "9f1705726e6e68a92a9d0bcbee720af6a47ec33cd3a225ca05ceaa69129f4170",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 26,
+      "rgbaSha256": "a9cba81013ee07a176cc6ad1bf13e3bb70be259e640eca37275b129d21535248",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 27,
+      "rgbaSha256": "ccd6ffad7587a53ac12981317cefd32d9e1cefc759569b93a02d427456553be3",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 28,
+      "rgbaSha256": "b5fe9d131f5de5b025fb53c267428060114bc1bef1bf5a8066353c6e9b29d96e",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 29,
+      "rgbaSha256": "a7952188538a20477d5b36060f5a211396f57e800da45f2053cdb865220b31fe",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 30,
+      "rgbaSha256": "a8be5d986fe6c0fc01312ffbb1eaf22444b516a5c8b36c6aa83d466bb3fe417b",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    },
+    {
+      "index": 31,
+      "rgbaSha256": "50c2eecb278599d75f854468878db948d20a88dc2bee8bdf14c93f80c834d53e",
+      "pivot": [
+        19,
+        110
+      ],
+      "size": [
+        38,
+        120
+      ],
+      "rowPitch": 88
+    }
+  ],
+  "video": {
+    "name": "1000060741.mp4",
+    "sha256": "57321d25c64ca48fa9058dbad899afc350bd876ae8d0ee43514229d9b41ad104",
+    "seconds": 6.9672,
+    "identity": "Visual ring glyphs, hue and pulse progression match original efct362.efa32frames125ms additive; preserve full source sequence"
+  },
+  "userRule": "All portals share this looping appearance; all reagent/bank/transport roles use the recovered NPCs, transport name백원만/fare100; new Death lobby knight sells reagents/recalls",
+  "phone": "PENDING"
+}

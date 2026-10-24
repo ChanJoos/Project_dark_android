@@ -1,0 +1,255 @@
+[
+  {
+    "second": 0,
+    "ocr": "X:95Y:42",
+    "coordinate": [
+      95,
+      42
+    ]
+  },
+  {
+    "second": 4,
+    "ocr": "X:103Y:35 :",
+    "coordinate": [
+      103,
+      35
+    ]
+  },
+  {
+    "second": 8,
+    "ocr": "X:97Y:38",
+    "coordinate": [
+      97,
+      38
+    ]
+  },
+  {
+    "second": 12,
+    "ocr": "X:71Y:15",
+    "coordinate": [
+      71,
+      15
+    ]
+  },
+  {
+    "second": 16,
+    "ocr": "X:67Y:4",
+    "coordinate": [
+      67,
+      4
+    ]
+  },
+  {
+    "second": 20,
+    "ocr": "X:44Y:17",
+    "coordinate": [
+      44,
+      17
+    ]
+  },
+  {
+    "second": 24,
+    "ocr": "X:10Y:30",
+    "coordinate": [
+      10,
+      30
+    ]
+  },
+  {
+    "second": 28,
+    "ocr": "X:13Y:35",
+    "coordinate": [
+      13,
+      35
+    ]
+  },
+  {
+    "second": 32,
+    "ocr": "X:23Y:53",
+    "coordinate": [
+      23,
+      53
+    ]
+  },
+  {
+    "second": 36,
+    "ocr": "X:32Y:66",
+    "coordinate": [
+      32,
+      66
+    ]
+  },
+  {
+    "second": 40,
+    "ocr": "X:34Y:79",
+    "coordinate": [
+      34,
+      79
+    ]
+  },
+  {
+    "second": 44,
+    "ocr": "X:33Y:83",
+    "coordinate": [
+      33,
+      83
+    ]
+  },
+  {
+    "second": 48,
+    "ocr": "X:25Y:87",
+    "coordinate": [
+      25,
+      87
+    ]
+  },
+  {
+    "second": 52,
+    "ocr": "X:14Y:84",
+    "coordinate": [
+      14,
+      84
+    ]
+  },
+  {
+    "second": 56,
+    "ocr": "X:12Y:85",
+    "coordinate": [
+      12,
+      85
+    ]
+  },
+  {
+    "second": 60,
+    "ocr": "X:14Y:89",
+    "coordinate": [
+      14,
+      89
+    ]
+  },
+  {
+    "second": 64,
+    "ocr": "X:47Y:92",
+    "coordinate": [
+      47,
+      92
+    ]
+  },
+  {
+    "second": 68,
+    "ocr": "X:56Y:80",
+    "coordinate": [
+      56,
+      80
+    ]
+  },
+  {
+    "second": 72,
+    "ocr": "X:67Y:81",
+    "coordinate": [
+      67,
+      81
+    ]
+  },
+  {
+    "second": 76,
+    "ocr": "X:70Y:81",
+    "coordinate": [
+      70,
+      81
+    ]
+  },
+  {
+    "second": 80,
+    "ocr": "X:70Y:87",
+    "coordinate": [
+      70,
+      87
+    ]
+  },
+  {
+    "second": 84,
+    "ocr": "70 Y:77",
+    "coordinate": [
+      70,
+      77
+    ]
+  },
+  {
+    "second": 88,
+    "ocr": "X:65Y:65",
+    "coordinate": [
+      65,
+      65
+    ]
+  },
+  {
+    "second": 92,
+    "ocr": "Y:64",
+    "coordinate": null
+  },
+  {
+    "second": 96,
+    "ocr": "X:76Y:72",
+    "coordinate": [
+      76,
+      72
+    ]
+  },
+  {
+    "second": 100,
+    "ocr": "X:78Y:82",
+    "coordinate": [
+      78,
+      82
+    ]
+  },
+  {
+    "second": 104,
+    "ocr": "X:92Y:75",
+    "coordinate": [
+      92,
+      75
+    ]
+  },
+  {
+    "second": 108,
+    "ocr": "X:99Y:78",
+    "coordinate": [
+      99,
+      78
+    ]
+  },
+  {
+    "second": 112,
+    "ocr": "X:103Y:77",
+    "coordinate": [
+      103,
+      77
+    ]
+  },
+  {
+    "second": 116,
+    "ocr": "X:103Y:77",
+    "coordinate": [
+      103,
+      77
+    ]
+  },
+  {
+    "second": 120,
+    "ocr": "X:102Y:76",
+    "coordinate": [
+      102,
+      76
+    ]
+  },
+  {
+    "second": 124,
+    "ocr": "X:109Y:72",
+    "coordinate": [
+      109,
+      72
+    ]
+  }
+]

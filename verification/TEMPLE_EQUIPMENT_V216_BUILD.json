@@ -1,0 +1,108 @@
+{
+  "sourceCommit": "d551a99295aae45fa16ac88ca4b10f6256ea32ad",
+  "runId": "39604859782",
+  "builtAtKST": "2026-10-21T22:09:23.369617+09:00",
+  "apkSha256": "95eae39801e7608dd8195abcec0141fcc75c76be4b9c3ee9bb86bdc308eb9d1c",
+  "apkBytes": 99571607,
+  "identity": {
+    "sourceCommit": "d551a99295aae45fa16ac88ca4b10f6256ea32ad",
+    "runId": "39604859782",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V216 temple21,25 auto-entry; hub NPC removed;15filters with shield/earring/glove and bracelets; wing right of shield without caption; Rapid under Other",
+  "package": "com.projectdark.mobile.v216test",
+  "label": "PROJECT DARK V216 TEST",
+  "apkSignatureV2": "RSA/ECDSA cryptographic signature and1MiB chunked content digest independently VERIFIED",
+  "signatureAlgorithm": "0x103",
+  "signerCertificateSha256": "30acb1ebf4e7fa1886ba5283ddfebfb72618871cb0c7d6ab5ed5f32808344304",
+  "manifest": {
+    "manifest.versionCode": 184,
+    "manifest.versionName": "1.84-mobile-horror",
+    "manifest.compileSdkVersion": 35,
+    "manifest.compileSdkVersionCodename": "15",
+    "manifest.package": "com.projectdark.mobile.v216test",
+    "manifest.platformBuildVersionCode": 35,
+    "manifest.platformBuildVersionName": 15,
+    "uses-sdk.minSdkVersion": 26,
+    "uses-sdk.targetSdkVersion": 35,
+    "application.theme": 2130837504,
+    "application.label": "PROJECT DARK V216 TEST",
+    "application.debuggable": 4294967295,
+    "application.extractNativeLibs": 0
+  },
+  "extendedOriginalFiles": 104,
+  "retainedOriginalFiles": 2146,
+  "focused": {
+    "run": 39604859782,
+    "job": 119238330790,
+    "artifact": 12348053272,
+    "zipBytes": 111492509,
+    "zipSha256": "13045f2b941681ff6f27f1d05cabcc8f5eba288f65de316c720956cc636ee8b9",
+    "tests": 16,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0,
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.EquipmentWindowV176Test",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.InventoryRepairV212Test",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ItemWindowReferenceTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.RapidSourceV198Test",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TempleEquipmentV216Test",
+        "tests": 4,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.TempleMillesV213Test",
+        "tests": 2,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "physicalPhone": "PENDING",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "branchCandidate": true,
+  "ciScope": {
+    "run": 39604868913,
+    "scopeJob": 119238360354,
+    "scope": "SUCCESS",
+    "fullCompile": "INTENTIONALLY_NOT_RUN",
+    "duplicateFullPush": "NOT_TRIGGERED",
+    "finalIntegrationFull": "REQUIRED_BEFORE_MAIN_MERGE"
+  },
+  "nativeVisualReview": {
+    "captures": 10,
+    "reviewed": true,
+    "environment": "Robolectric SDK34 native graphics",
+    "phone": "PENDING"
+  }
+}

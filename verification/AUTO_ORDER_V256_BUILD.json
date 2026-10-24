@@ -1,0 +1,93 @@
+{
+  "revision": "V256",
+  "sourceCommit": "881485112978a4a30cc7ae99e70631eaa7331836",
+  "runId": "39973106366",
+  "jobId": 120480649819,
+  "artifactId": 12510386277,
+  "archiveSha256": "41d09a61abb01f3fad2667cecdabd2f6f052ca2b3f8567f4a3c886987a5bc11f",
+  "builtAtKST": "2026-10-23T23:54:18.910645+09:00",
+  "apkSha256": "f9d5ccfb2b8599723d4caf0e926fa6dc6f87f94df21edd95bceb338106e0dcd6",
+  "apkBytes": 106530594,
+  "identity": {
+    "sourceCommit": "881485112978a4a30cc7ae99e70631eaa7331836",
+    "runId": "39973106366",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V256 HUD top aligned with potions; AUTO1..12 accepted-slot cursor incl basic/nonvisual and async approach; sticky live selected target then cardinal neighbors; AUTO-only facing, original manual rules; focused native,phone pending",
+  "finalTests": 6,
+  "retainedAdjacentTests": {
+    "source": "1fa80e66ae0e2d4b9ecdfc380380d4af1681ded0",
+    "run": 39972098212,
+    "artifact": 12509797207,
+    "tests": 17,
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.SkillQuickslotApproachTest",
+        "tests": "6",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T14:48:20",
+        "hostname": "runnervm8k3b6",
+        "time": "20.58"
+      },
+      {
+        "name": "com.projectdark.mobile.HudNarcoliV253Test",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T14:47:02",
+        "hostname": "runnervm8k3b6",
+        "time": "8.536"
+      },
+      {
+        "name": "com.projectdark.mobile.HudItemsV254Test",
+        "tests": "5",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T14:46:41",
+        "hostname": "runnervm8k3b6",
+        "time": "20.069"
+      },
+      {
+        "name": "com.projectdark.mobile.AutoAttackTargetSelectorTest",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T14:45:37",
+        "hostname": "runnervm8k3b6",
+        "time": "0.008"
+      },
+      {
+        "name": "com.projectdark.mobile.CompactHudV255Test",
+        "tests": "2",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T14:46:02",
+        "hostname": "runnervm8k3b6",
+        "time": "13.253"
+      },
+      {
+        "name": "com.projectdark.mobile.MartialHudAutoRegressionTest",
+        "tests": "1",
+        "skipped": "0",
+        "failures": "0",
+        "errors": "0",
+        "timestamp": "2026-10-23T14:47:32",
+        "hostname": "runnervm8k3b6",
+        "time": "10.791"
+      }
+    ]
+  },
+  "focusedTotal": 23,
+  "signature": "CI apksigner APK v2 verified",
+  "archiveApkCrcHashIdentity": "PASS",
+  "phone": "PENDING",
+  "visual": "host 960/2340 top alignment reviewed; user acceptance PENDING",
+  "integration": "unmerged PR197 candidate; common39973118419 full fallback for workflow hash; existing catalog.json generator dirtydiff blocks full integration"
+}

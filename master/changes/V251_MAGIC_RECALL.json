@@ -1,0 +1,34 @@
+{
+  "status": "ACCEPTED_USER_CHANGE_IMPLEMENTED_CI_PENDING",
+  "base": "911e0e53f93fe0a17daf2bf7730295f34ca0be85",
+  "source": [
+    "master/source/recalls_v251/receipt.json",
+    "master/source/narcoli_review_v251/receipt.json",
+    "master/source/status_v249/receipt.json"
+  ],
+  "before": [
+    "Soruma donor anchorCASTER used by alias",
+    "Death available",
+    "two burst spells project fallback stars",
+    "recall images pending",
+    "EFA364 misidentified as Narcoli"
+  ],
+  "after": [
+    "effectSource recipient ownership",
+    "Death hidden/unusable oldsave cleanup",
+    "4 original Semelia copies per successful cast at actor/originaltarget center",
+    "10assets/4existing town grants",
+    "SLEEP visual suppressed until user reviews Z candidates"
+  ],
+  "unchanged": [
+    "skill damage formulas/current ranges",
+    "SLEEP mechanic",
+    "Semelia/Ragnarok original source frames",
+    "temple white light"
+  ],
+  "pending": [
+    "Narcoli replacement userreview",
+    "6recalltowns absent",
+    "phone/user visual acceptance"
+  ]
+}

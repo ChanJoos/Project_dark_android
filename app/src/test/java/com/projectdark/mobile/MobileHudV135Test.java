@@ -31,7 +31,7 @@ public final class MobileHudV135Test {
     v.pause();F5mSaveStore.install(c);RuntimeState saved=MobileHudV134Test.field(view(960,540),"state");assertEquals(Integer.valueOf(mpCount-1),saved.rpg().inventory().get("IT_B_MP_POTION"));assertEquals(r.player().mp,saved.player().mp);
   }
   @Test public void movedJoystickAndAllVisibleSurfacesLeaveOldUnusedEdgesAvailable(){
-    for(float d:new float[]{0,210}){assertTrue(GameView.blocksWorldTapForHud(110,374,false,d));assertFalse(GameView.blocksWorldTapForHud(160,455,false,d));assertTrue(GameView.blocksWorldTapForHud(370+d/2,500,false,d));assertTrue(GameView.blocksWorldTapForHud(456+d/2,450,false,d));assertTrue(GameView.blocksWorldTapForHud(790+d,170,false,d));assertFalse(GameView.blocksWorldTapForHud(620+d/2,490,false,d));}
+    for(float d:new float[]{0,210}){assertTrue(GameView.blocksWorldTapForHud(110,374,false,d));assertFalse(GameView.blocksWorldTapForHud(160,455,false,d));assertTrue(GameView.blocksWorldTapForHud(370+d/2,500,false,d));assertTrue(GameView.blocksWorldTapForHud(456+d/2,450,false,d));assertTrue(GameView.blocksWorldTapForHud(790+d,170,false,d));assertTrue("compact skills occupy the resource-bar right edge",GameView.blocksWorldTapForHud(620+d/2,490,false,d));}
   }
   @Test public void renderTownForestBothAspectRatiosAndActualQuestStates()throws Exception{
     for(int[] size:new int[][]{{960,540},{2340,1080}}){reset();GameView v=view(size[0],size[1]);v.setSkillTestMode(true);render(v,"town",size[0],size[1]);Method enter=GameView.class.getDeclaredMethod("enterPoteField");enter.setAccessible(true);enter.invoke(v);render(v,"forest",size[0],size[1]);}

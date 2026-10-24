@@ -9,7 +9,7 @@ import org.robolectric.annotation.*;
 @RunWith(RobolectricTestRunner.class) @Config(sdk=34,manifest=Config.NONE)
 @GraphicsMode(GraphicsMode.Mode.NATIVE)
 public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
- @Test public void all221RuntimeRoutesAreExercisedWithoutTestModeOrImaginaryResources(){
+ @Test public void allCurrentRuntimeRoutesAreExercisedWithoutTestModeOrImaginaryResources(){
   int count=0,spells=0;
   for(SkillAbilityCatalog.Ability a:SkillAbilityCatalog.all()){
    count++;SkillActionContract.Rule r=SkillActionContract.get(a.id);assertNotNull(a.id,r);
@@ -17,6 +17,7 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
    RuntimeState.Monster m=s.monsters().get(0);m.x=s.player().x+32*Math.max(1,r.minReach);m.y=s.player().y+16*Math.max(1,r.minReach);m.hp=1;
    s.skillEffects().put("player","qa-hidden","STEALTH",1,60);
    RuntimeCombatSession session=new RuntimeCombatSession(s,(x,y)->true,(x,id)->true,x->true);
+   session.setSkillMovement(new SkillAbilityExecutor.Movement(){public boolean movePlayer(float x,float y){s.player().x=x;s.player().y=y;return true;}public boolean moveMonster(RuntimeState.Monster m,float x,float y){return false;}public boolean canLeapPlayer(float x,float y){return true;}public boolean leapPlayer(float x,float y){return movePlayer(x,y);}});
    boolean spell=ItemEffects.magic(a.id);if(spell){spells++;assertTrue(a.id,MagicTimingPolicy.managed(a.id));}
    if(a.id.equals("SK_공통_001")){assertTrue(session.submitPlayerBasicAttack(m.id).combat.accepted());session.tick(.3f);continue;}
    if(!a.supported()){int mp=s.player().mp;assertFalse(a.id,session.useUtility(a.id));assertEquals(a.id,mp,s.player().mp);continue;}
@@ -31,7 +32,7 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
    RuntimeCombatSession.FrameResult frame=session.tick(session.effectiveCastSeconds(a.id)+.001f);
    assertTrue(a.id+" contact",frame.events.stream().anyMatch(e->e.type==CombatResolver.EventType.HIT_FEEDBACK&&e.actionId.equals(a.id)));
   }
-  assertEquals(221,count);assertEquals(138,spells);
+  assertEquals(222,count);assertEquals(143,spells);
  }
  @Test public void allSpellDefinitionsSeparateSharedCadenceFromExplicitReuse(){
   RuntimeCombatSession s=new RuntimeCombatSession(new RuntimeState(),(a,b)->true,(a,id)->true,a->true);
@@ -52,9 +53,9 @@ public class AllSkillRuntimeV138Test extends MagicRuntimeV137Test {
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String upper="SK_마법사_013";assertTrue(b.learn(upper,50));RuntimeState.Monster m=distantTarget(v);RuntimeCombatSession c=field(v,"combatSession");assertTrue(c.submitPlayer(m.id,upper).accepted());c.tick(.001f);assertEquals(CombatResolver.RejectReason.ACTION_BUSY,c.submitPlayer("player",HEAL).rejectReason);c.tick(.334f);assertTrue(c.submitPlayer("player",HEAL).accepted());
   s.rpg().autoLootResolvedItem("IT_WARDROBE_MW062",1);assertEquals(0,c.effectiveCastSeconds(upper),0);
  }
- @Test public void screenSpellAutoWaitsAtRangeAfterItsAllMpRelease()throws Exception{
+ @Test public void screenSpellAutoWaitsAtRangeAfterItsFixedCostRelease()throws Exception{
   GameView v=mage(true);RuntimeState s=field(v,"state");SkillBook b=field(v,"skillBook");String id="SK_마법사_043";assertTrue(b.learn(id,50));for(int i=0;i<SkillBook.SLOT_COUNT;i++)b.clearSlot(i);assertTrue(b.assign(0,id));RuntimeState.Monster m=distantTarget(v);float x=s.player().x,y=s.player().y;int hp=m.hp;
-  tap(v,926,507);advance(v,1.4f);assertTrue(m.hp<hp);assertEquals(0,s.player().mp);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);render(v,"screen-spell-empty-mp-auto");
+  int beforeMp=s.player().mp;tap(v,926,507);advance(v,2.8f);assertTrue(m.hp<hp);assertEquals(beforeMp-((RuntimeCombatSession)field(v,"combatSession")).effectiveMpCost(id),s.player().mp);assertEquals(x,s.player().x,0);assertEquals(y,s.player().y,0);render(v,"screen-spell-empty-mp-auto");
  }
  @Test public void utilityRejectsInsufficientMpDeadPlayerAndControlWithoutCharging(){
   RuntimeState s=new RuntimeState();RuntimeCombatSession c=new RuntimeCombatSession(s,(a,b)->true,(a,id)->true,a->true);String id="SK_도적_012";s.player().mp=0;assertFalse(c.useUtility(id));assertEquals(0,s.player().mp);s.player().mp=100;s.player().alive=false;assertFalse(c.useUtility(id));assertEquals(100,s.player().mp);s.player().alive=true;s.skillEffects().put("player","qa-sleep","SLEEP",1,30);assertFalse(c.useUtility(id));assertEquals(100,s.player().mp);

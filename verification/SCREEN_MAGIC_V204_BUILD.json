@@ -1,0 +1,205 @@
+{
+  "identity": {
+    "sourceCommit": "558cb267c403d2c4524a5e07b77aa95934403a16",
+    "runId": "39422054821",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "counts": {
+    "tests": 49,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.CurseHudV202Test",
+      "tests": 7,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.SkillContactRegressionTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ScreenMagicV204Test",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.AllSkillRuntimeV138Test",
+      "tests": 13,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.SkillAbilityRuntimeTest",
+      "tests": 11,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ScreenMagicV201Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "evidence": {
+    "sourceCommit": "558cb267c403d2c4524a5e07b77aa95934403a16",
+    "runId": "39422054821",
+    "builtAtKST": "2026-10-20T21:29:35.960914+09:00",
+    "apkSha256": "0bfd6fdf1c6199a4e45267600dec789844c1a15c4ba529069a96989d15c620f5",
+    "apkBytes": 86211839,
+    "identity": {
+      "sourceCommit": "558cb267c403d2c4524a5e07b77aa95934403a16",
+      "runId": "39422054821",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "Mobile Horror: automatic last-kill room progression, NPC removal, shifted Milles-return portals, scene-state reset, single-target release and multi-target direction regressions; handset pending; original rooms12/13 pending"
+  },
+  "artifact": 12265010849,
+  "archiveSha256": "eacc08d4b2ba7108c629989069303f48920e4b5c91b957550fd49986de3eb92a",
+  "allV204AssetsByteMatched": true,
+  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "source": "558cb267c403d2c4524a5e07b77aa95934403a16",
+  "run": 39422054821,
+  "firstCoreVerification": {
+    "counts": {
+      "tests": 48,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.AllSkillRuntimeV138Test",
+        "tests": 13,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.CurseHudV202Test",
+        "tests": 7,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ScreenMagicV201Test",
+        "tests": 9,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ScreenMagicV204Test",
+        "tests": 5,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.SkillAbilityRuntimeTest",
+        "tests": 11,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.SkillContactRegressionTest",
+        "tests": 3,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "sourceRoutingRegression": {
+    "source": "f69f1deff213d2897e958120208e27c08dffbaea",
+    "run": 39421250588,
+    "attempt": 2,
+    "artifact": 12264867007,
+    "counts": {
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    "suites": [
+      {
+        "name": "com.projectdark.mobile.AllJobSkillSourceTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.ClassicSkillReferenceTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      },
+      {
+        "name": "com.projectdark.mobile.SkillFxAuditTest",
+        "tests": 1,
+        "failures": 0,
+        "errors": 0,
+        "skipped": 0
+      }
+    ]
+  },
+  "phone": "PENDING",
+  "merged": false,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "verifiedScope": [
+    "NE:X+1/Yunchanged, SE:Y+1/Xunchanged, SW:X-1,NW:Y-1 over Milles/Mine/Horror/Pote adapters; current live HUD and map switches",
+    "Actual restored initial test-mode0MPquickslots for Ragnarok/HolyDragon/Meteor: positive resolved damage and per-target source VFX, real MPunchanged",
+    "Normal low-MP rejection, pre-charge fixed-cost damage using actual staff-adjusted MPcost; all221runtime IDs/141spells, existing contact and screen11spell/HUD4wholecurse108target regressions",
+    "Source screenshot formulas: Meteor max(0,MP-cost)*1.5; HolyDragon*1.8; basecost12960, DARK, Meteorbasecast2s; existing staff modifiers retained",
+    "Meteor7source-visibleGIFframes after empty lead/tail removal, source icon crop, alpha floor removal; allV204packagedbytes matched",
+    "New curse asset90x120 from clean supplied pink screenshot, floor/actor remnants removed; source silhouette/white bone retained; user-labelled4palette shifts and4hold/fade phases are ADAPTED, not recovered original cadence"
+  ],
+  "nativeReview": [
+    "v202/four-colors-three-phases.png",
+    "v201/v204-zero-mp-SK_마법사_037.png",
+    "v201/v204-zero-mp-SK_성직자_040.png",
+    "v201/v204-zero-mp-SK_마법사_043.png"
+  ],
+  "commonCI": [
+    {
+      "id": 39422064210,
+      "status": "in_progress",
+      "lastStep": "LV40 monster rewards/job/wardrobe/restart"
+    },
+    {
+      "id": 39422054642,
+      "status": "in_progress",
+      "lastStep": "V83abilities/formulas"
+    }
+  ],
+  "limits": [
+    "Host SDK34 native tests; physical handset FPS/OSprocessdeath/user visual acceptance pending",
+    "Original per-map absolute coordinate tables unknown: per-map navigation minima define stable adapted origins",
+    "User screenshot source era not independently dated; supplied base formulas override old fixtures, not a claim of modern upgrade/server total fidelity",
+    "Original curse animation cadence/occluded red/yellow pixels not recovered: clean observed family silhouette mapped to user labels with explicit project timing",
+    "Internal version184 and old workflow evidence scope are historical labels; this receipt states actual V204scope"
+  ],
+  "delivery": {
+    "file": "PROJECT_DARK_V204_TEST.apk",
+    "persistentCopy": "FAILED_HTTP403 current prepared helper tools/list beforeupload; localverifiedAPK and GitHubartifactretained"
+  }
+}

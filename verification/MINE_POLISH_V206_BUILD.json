@@ -1,0 +1,108 @@
+{
+  "sourceCommit": "61e7d3073b3334dba514178affbbc465b7b93c17",
+  "runId": "39436251669",
+  "builtAtKST": "2026-10-20T23:10:45.353095+09:00",
+  "apkSha256": "4728c20900ef80ab74523808eb1968fc61af09b9dc7d1e1ed1db392e39c10f47",
+  "apkBytes": 86630769,
+  "identity": {
+    "sourceCommit": "61e7d3073b3334dba514178affbbc465b7b93c17",
+    "runId": "39436251669",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": [
+    "Clean source tree without blue river pixels; preserved all other leaf/trunk pixels",
+    "Source lawn variation, flowers, ground contact shadows and irregular bank selection",
+    "Milles manager roundtrip and restart without progression grant",
+    "Both Mine service door paths, inn rest/reagent transactions and save",
+    "Bridge/cave/water routing, wide viewport and bounded32chunk cache/12roundtrips",
+    "V204 tile coordinates/screen magic and registered NPC appearances"
+  ],
+  "apk": "PROJECT_DARK_V206_TEST.apk",
+  "archiveSha256": "2dc09bbc9f52939a2884f2b0716709de7bb052006b006b509d8bf50f52837dea",
+  "archiveBytes": 105327023,
+  "artifact": 12271576530,
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.MinePolishV206Test",
+      "tests": 2,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MineTownV203Test",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.NpcAppearanceTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.ScreenMagicV204Test",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.TownInteriorTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "tests": 25,
+  "packagedAssetFiles": 38,
+  "packagedAssetBytesMatched": true,
+  "sourceRiverPixelsRemoved": 196,
+  "status": "BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "candidate": true,
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "saving": "Prepared upload failed HTTP403 before upload; local APK and immutable Actions artifact remain.",
+  "limits": [
+    "Physical handset, OS process death, original full map fidelity and user visual acceptance pending",
+    "Static source water, compact topology, joins and interior reuse remain ADAPTED",
+    "Historical internal versionCode184, versionName1.84-mobile-horror and workflow184label do not describe current content; embedded source/run are authoritative"
+  ],
+  "commonCI": {
+    "39436251474": "FAILED two stale Meteor timing fixtures,76of78 passed",
+    "39436284993": "FAILED; same-source PR run",
+    "validatorSource": "1956820e49d447587e34f9f376fa5fded1c1b135",
+    "focusedRun": 39441131035,
+    "status": "Focused validator SUCCESS; common runs still RUNNING; no full common PASS claim"
+  },
+  "screenshots": [
+    {
+      "path": "verification/v206/cave.png",
+      "sha256": "2ad6fd16ae192aac61f0c87f96cda8e817778ebb60c7e1ebeffb2ef273728aee",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER"
+    },
+    {
+      "path": "verification/v206/inn.png",
+      "sha256": "c720eddb91cb0824f69021011376456ac872d5a1c056b0c966028a98a04b2fd5",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER"
+    },
+    {
+      "path": "verification/v206/bridge.png",
+      "sha256": "2f1890fc92ff11c2fd9d403933955f351b2ee5bd053ce92dc4180ebaf9d5d84d",
+      "kind": "ACTUAL_ANDROID_HOST_NATIVE_RENDER"
+    }
+  ],
+  "validator": {
+    "source": "1956820e49d447587e34f9f376fa5fded1c1b135",
+    "run": 39441131035,
+    "job": 118690949389,
+    "artifact": 12275460291,
+    "status": "SUCCESS",
+    "productionTreeUnchanged": true,
+    "scope": "SkillSpatialContractTest entire corrected suite plus five original V206 suites; assembleDebug; signature; embedded source identity. Additional suite count not independently parsed from XML."
+  }
+}

@@ -1,0 +1,13 @@
+{
+  "id": "V233_ROGUE_VISUAL",
+  "status": "ACCEPTED",
+  "userFeedback": "V232 stab only differs;Hide bottom white;rogue FX clipped;assassin looks small;motion otherwise acceptable",
+  "scope": [
+    "full visible source colour emission without narrow rectangular masks",
+    "stab source contact same as hwi;motion keys already identical",
+    "Hide source glyph crop excludes white capture margin;other icons unchanged",
+    "assassin020/027 scale .416 to .52 and no actor-polygon emission hole"
+  ],
+  "martial": "USER_ACCEPTED_UNCHANGED",
+  "originalLimitations": "Visible retained source pixels recovered; truly occluded source pixels not invented;phone acceptance pending"
+}

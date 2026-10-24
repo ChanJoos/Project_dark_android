@@ -1,0 +1,117 @@
+{
+  "version": "V211",
+  "status": "IMPLEMENTED_BUILD_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "source": "f59b71fab20c25e98a44a6ded27bf77b856799c2",
+  "branch": "codex/rucesion-coast-v157",
+  "main": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "merged": false,
+  "run": 39552593128,
+  "job": 119064939066,
+  "artifact": 12323988125,
+  "archiveSha256": "a42282823e2b6a1f9dded3d79fb0abd2e242007c78f17c7318e1e1d04e5bfbe9",
+  "evidence": {
+    "sourceCommit": "f59b71fab20c25e98a44a6ded27bf77b856799c2",
+    "runId": "39552593128",
+    "builtAtKST": "2026-10-21T15:01:19.370623+09:00",
+    "apkSha256": "e6efc252398a2aaaaf6aeaf76148901f7f4347f4ec46c3c9d47c6ac414bd502f",
+    "apkBytes": 90196915,
+    "identity": {
+      "sourceCommit": "f59b71fab20c25e98a44a6ded27bf77b856799c2",
+      "runId": "39552593128",
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror"
+    },
+    "scope": "V211 original three-room temple, circular source entrance, Lv99 EXP cap, user-calibrated HP/MP purchases and immediate no-mastery advancement; handset pending"
+  },
+  "counts": {
+    "tests": 36,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "suites": [
+    {
+      "name": "com.projectdark.mobile.CampaignProgressTest",
+      "tests": 6,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.EquipmentStatsAndDetailsTest",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.F5mRestartPersistenceMatrixTest",
+      "tests": 4,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.HorrorCastleLoopV207Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.MineHuntV209Test",
+      "tests": 3,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.TempleV211Test",
+      "tests": 9,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    },
+    {
+      "name": "com.projectdark.mobile.TownInteriorTest",
+      "tests": 8,
+      "failures": 0,
+      "errors": 0,
+      "skipped": 0
+    }
+  ],
+  "packagedTemplePngsByteMatched": 6,
+  "archiveAndApkCrcVerified": true,
+  "commonCI": [
+    {
+      "run": 39552593171,
+      "event": "push",
+      "conclusion": "success"
+    },
+    {
+      "run": 39552598978,
+      "event": "pull_request",
+      "conclusion": "success"
+    }
+  ],
+  "testedScope": [
+    "Actual outdoor circle entry -> lobby guide -> Gods world stair -> Seo -> outdoor return, no immediate reentry",
+    "Exact user HP/MP batch formulas, repeated purchase equivalence, insufficient funds no mutation, long boundaries",
+    "Actual Seo HP/MP click, confirmation, first advancement and new GameView save restoration",
+    "Five jobs advance on level/pure HP/MP/held 250m EXP without mastery/offerings; repeat payment rejected",
+    "Level99 long EXP cap and legacy overcap preservation; transaction abort rollback; campaign earned-exp preservation",
+    "Three native room rendering, floor-cache bound, existing town/equipment/campaign/restart/Mine/Horror regressions"
+  ],
+  "limits": [
+    "Host Robolectric native SDK34 only; physical handset, OS process death and user visual acceptance pending",
+    "Exterior placement on existing Milles is adapted; light alpha/pulse reconstructed, not recovered original animation",
+    "Thresholds and simplified advancement follow accepted mobile policy; unverified original server behavior not asserted",
+    "Legacy internal versionCode184/versionName1.84 label retained; embedded source/run identifies V211",
+    "Generated build_evidence scope says user-calibrated; exact current policy is accepted user formula, not discarded approximate curve"
+  ],
+  "delivery": {
+    "file": "PROJECT_DARK_V211_TEST.apk",
+    "libraryFileId": "libfile_a6a5542d76d481918c4e6ebc37e7ab47",
+    "saved": true
+  }
+}

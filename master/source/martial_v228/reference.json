@@ -1,0 +1,179 @@
+{
+  "revision": "V228_USER_LABELLED_MARTIAL_VIDEO",
+  "date": "2026-10-22",
+  "classification": "U labelled order + V community demonstration",
+  "sourceVideo": "Screen_Recording_20261022_140905_NAVER.mp4",
+  "libraryFileId": "libfile_2a630cf24fac81919793ba88d449ed0e",
+  "sourceSha256": "e90e2198c39c79bdc534d551d66f64e30ba1dfe000c0cf504b57939044c36a6e",
+  "article": "https://m.cafe.naver.com/ca-fe/web/cafes/13434008/articles/415458",
+  "clipsArchiveSha256": "4474e3a6041d98f156402f8bea84070fae03d325ce68c0246b31f5a2256001c8",
+  "rows": [
+    {
+      "id": "SK_무도가_035",
+      "name": "허공답보",
+      "iconAt": 0,
+      "iconCrop": [
+        78,
+        531,
+        166,
+        619
+      ],
+      "clipSeconds": [
+        2.8,
+        4.6
+      ],
+      "clipCrop": [
+        348,
+        401,
+        958,
+        778
+      ],
+      "nonzeroPixels": 37,
+      "frames": 6
+    },
+    {
+      "id": "SK_무도가_027",
+      "name": "트리플어택",
+      "iconAt": 0,
+      "iconCrop": [
+        84,
+        1085,
+        174,
+        1175
+      ],
+      "clipSeconds": [
+        2.8,
+        4.6
+      ],
+      "clipCrop": [
+        375,
+        955,
+        985,
+        1332
+      ],
+      "nonzeroPixels": 13,
+      "frames": 4
+    },
+    {
+      "id": "SK_무도가_024",
+      "name": "연천단각",
+      "iconAt": 0,
+      "iconCrop": [
+        76,
+        1650,
+        166,
+        1740
+      ],
+      "clipSeconds": [
+        9.1,
+        11.9
+      ],
+      "clipCrop": [
+        358,
+        886,
+        969,
+        1263
+      ],
+      "nonzeroPixels": 567,
+      "frames": 9
+    },
+    {
+      "id": "SK_무도가_025",
+      "name": "붕신선각",
+      "iconAt": 6,
+      "iconCrop": [
+        76,
+        1825,
+        166,
+        1915
+      ],
+      "clipSeconds": [
+        9.1,
+        11.9
+      ],
+      "clipCrop": [
+        358,
+        1440,
+        969,
+        1817
+      ],
+      "nonzeroPixels": 17,
+      "frames": 2
+    },
+    {
+      "id": "SK_무도가_026",
+      "name": "파천각",
+      "iconAt": 15,
+      "iconCrop": [
+        66,
+        446,
+        156,
+        536
+      ],
+      "clipSeconds": [
+        16.6,
+        19.9
+      ],
+      "clipCrop": [
+        350,
+        305,
+        961,
+        682
+      ],
+      "nonzeroPixels": 5435,
+      "frames": 25
+    },
+    {
+      "id": "SK_무도가_028",
+      "name": "무영신공",
+      "iconAt": 15,
+      "iconCrop": [
+        72,
+        1069,
+        162,
+        1161
+      ],
+      "clipSeconds": [
+        16.6,
+        19.9
+      ],
+      "clipCrop": [
+        364,
+        915,
+        974,
+        1292
+      ],
+      "nonzeroPixels": 732,
+      "frames": 12
+    },
+    {
+      "id": "SK_무도가_029",
+      "name": "자기보호",
+      "iconAt": 15,
+      "iconCrop": [
+        76,
+        1663,
+        166,
+        1755
+      ],
+      "clipSeconds": [
+        16.6,
+        19.9
+      ],
+      "clipCrop": [
+        367,
+        1528,
+        977,
+        1905
+      ],
+      "nonzeroPixels": 1966,
+      "frames": 12
+    }
+  ],
+  "limitations": [
+    "Video samples at15fps; original GIF timing/alpha unavailable.",
+    "Approximate inverse SCREEN matting and colour masks. Captured people/floor/HP bars excluded; occluded pixels remain absent.",
+    "One recorded facing only; runtime retains approved body and selected directional rig.",
+    "Raw video attachment remains unchanged and is the full regeneration input; ZIP retains seven original icon crops and representative observations; no generated artwork."
+  ]
+}

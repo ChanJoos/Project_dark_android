@@ -58,7 +58,12 @@ public final class WorldEntityPresentationRenderer {
         "World entity presentation contract audit failed: "+WorldEntityPresentationAudit.summary());
   }
 
+  public void installNpcContext(android.content.Context c){npcActors=new NpcActorRenderer(c);}
+
   public void draw(Canvas c,Pose pose){
+    draw(c,pose,false);
+  }
+  public void draw(Canvas c,Pose pose,boolean cursed){
     if(c==null||pose==null||pose.kind==null||pose.direction==null||pose.state==null)
       throw new IllegalArgumentException("Entity pose requires kind, direction and state");
 
@@ -106,7 +111,8 @@ public final class WorldEntityPresentationRenderer {
       c.rotate(left?-68f:68f,8f,pose.kind==Kind.NPC?27f:24f);
       c.scale(1f,.84f,8f,pose.kind==Kind.NPC?27f:24f);
     }
-    drawMonster(c,pose,frame,idleWave);
+    p.setColorFilter(cursed?MonsterCursePalette.FADED:null);
+    try{drawMonster(c,pose,frame,idleWave);}finally{p.setColorFilter(null);}
     drawEffect(c,pose);
     c.restore();
   }

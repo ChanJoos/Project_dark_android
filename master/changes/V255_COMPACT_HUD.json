@@ -1,0 +1,28 @@
+{
+  "revision": "V255",
+  "user": "Shrink quickskills slightly and place to right of HP/MP bars",
+  "skills": {
+    "columns": 6,
+    "rows": 2,
+    "size": 36,
+    "previousSize": 44,
+    "gap": 3,
+    "origin": [
+      620,
+      456
+    ],
+    "viewportAnchor": "center offset d/2, matching resource bars",
+    "gapAfterStatusRight": 10,
+    "bottom": 531
+  },
+  "unchanged": "skill IDs, assignments, action/save rules; potion/item bar; attack/AUTO; accepted Narcoli",
+  "acceptance": "IMPLEMENTED_BUILD_VERIFIED_SCOPED_HOST_NATIVE_VERIFIED_PHONE_PENDING",
+  "source": "2fa9c3ad7760d3dd5fafd8daf957aeec85dff718",
+  "evidence": {
+    "run": 39966531212,
+    "artifact": 12507796335,
+    "nativePass": 19,
+    "commonRun": 39966544357,
+    "fullIntegration": "BLOCKED_EXISTING_SKILL_CATALOG_GENERATOR_DRIFT"
+  }
+}

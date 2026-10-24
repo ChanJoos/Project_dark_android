@@ -12,8 +12,8 @@ final class MillesSceneryFootprints {
     out.add(new MillesProductionCollision.Footprint("square_tree_west", MillesProductionCollision.Kind.TREE, 524.0f, 501.0f, 540.0f, 511.0f));
     out.add(new MillesProductionCollision.Footprint("boundary_tree_west", MillesProductionCollision.Kind.TREE, 152.0f, 1019.0f, 168.0f, 1029.0f));
     out.add(new MillesProductionCollision.Footprint("boundary_tree_north", MillesProductionCollision.Kind.TREE, 952.0f, 115.0f, 968.0f, 125.0f));
-    out.add(new MillesProductionCollision.Footprint("boundary_tree_east", MillesProductionCollision.Kind.TREE, 2192.0f, 939.0f, 2208.0f, 949.0f));
-    out.add(new MillesProductionCollision.Footprint("waterside_tree", MillesProductionCollision.Kind.TREE, 2032.0f, 1275.0f, 2048.0f, 1285.0f));
+    out.add(new MillesProductionCollision.Footprint("boundary_tree_east", MillesProductionCollision.Kind.TREE, 2256.0f, 859.0f, 2272.0f, 869.0f));
+    out.add(new MillesProductionCollision.Footprint("waterside_tree", MillesProductionCollision.Kind.TREE, 1752.0f, 1425.0f, 1768.0f, 1435.0f));
     out.add(new MillesProductionCollision.Footprint("church_bench", MillesProductionCollision.Kind.BENCH, 1735.0f, 571.0f, 1785.0f, 587.0f));
     out.add(new MillesProductionCollision.Footprint("inn_bench", MillesProductionCollision.Kind.BENCH, 2105.0f, 817.0f, 2155.0f, 833.0f));
     out.add(new MillesProductionCollision.Footprint("south_well", MillesProductionCollision.Kind.WELL, 317.0f, 1191.0f, 355.0f, 1213.0f));

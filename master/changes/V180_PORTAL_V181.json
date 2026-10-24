@@ -1,0 +1,53 @@
+{
+  "sourceCommit": "25b77c6482896caa6d1107e96706407d6abba439",
+  "runId": "39103131656",
+  "builtAtKST": "2026-10-18T15:13:54.365570+09:00",
+  "apkSha256": "55608336245e7d25266e40798795cd63775b784def128068f5f10a12445fb110",
+  "apkBytes": 83632974,
+  "identity": {
+    "sourceCommit": "25b77c6482896caa6d1107e96706407d6abba439",
+    "runId": "39103131656",
+    "versionCode": 181,
+    "versionName": "1.81-horror-portals"
+  },
+  "scope": "Horror portals, gated room travel, one-cell rejection and exit NPC; focused native tests verified; handset verification pending; exact original maps12-15 pending",
+  "apkPackage": "com.projectdark.mobile.v181test",
+  "signature": "APK v2 PASS (Actions job117603317946)",
+  "artifactId": 12126839593,
+  "unchangedOriginalHorrorPngs": 647,
+  "existingPortalAssetUnchanged": true,
+  "finalNativeTests": {
+    "tests": 3,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "priorNativeTests": {
+    "source": "122d0199c2dd9f9f61cc3fe693921a46b50ddd97",
+    "runId": 39102785715,
+    "tests": 9,
+    "failures": 0
+  },
+  "phoneVerification": "PENDING",
+  "firstFloorEntrances": "West/east both connect to retained original first-floor corridor; distinct west geometry not recovered",
+  "originalMaps12Through15": "PENDING",
+  "commonCI": {
+    "unintendedRuns": [
+      39102512303,
+      39102510494
+    ],
+    "status": "CANCELLED",
+    "fixedRuns": [
+      39103134412,
+      39103131706
+    ],
+    "compile": "SKIPPED"
+  },
+  "status": "IMPLEMENTED_BUILD_AND_NATIVE_VERIFIED_DEVICE_PENDING",
+  "sourceReferences": "master/source/horror_v180/user_lobby_portal_20261018.jpg",
+  "unmerged": true,
+  "delivery": {
+    "apkLibraryId": "libfile_68bafa34d38c81918917749c96b6ee93",
+    "screensLibraryId": "libfile_353605452bac8191bc0d5e7fc1bfbdfb"
+  }
+}

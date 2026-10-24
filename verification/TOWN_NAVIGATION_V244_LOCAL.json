@@ -1,0 +1,15 @@
+{
+  "base": "d6a1d34642b4cf0a9541efd5f01c688aa941ccf8",
+  "initialLocalCommit": "1a73b67",
+  "implementation": "LOCAL_CANDIDATE",
+  "javaMainCompile": "PASS: all app/src/main Java sources using API35 android-all jar, temporary resource/BuildConfig compile declarations and1073pinned generated wearable bindings",
+  "testCompile": "PASS: TownNavigationV244Test and source-dependent fixtures compile against actual JUnit/Robolectric jars",
+  "coordinateAndRecallProbe": "PASS: actual Milles tile layer yields46,39 at736,704; all6registered recall destinations resolve supported towns",
+  "scopeClassifierTests": "6PASS",
+  "nativeRun": "PENDING; standalone source probe stops at android.graphics.Paint.nInit without Robolectric Android native runtime",
+  "androidBuild": "PENDING",
+  "phone": "PENDING",
+  "githubPush": "BLOCKED_BY_AUTOMATIC_APPROVAL_REVIEW",
+  "blockReason": "Review requires explicit authorization to export this source/payload to ChanJoos/Project_dark_android; rejected push not retried or bypassed",
+  "next": "Obtain explicit destination publication approval, push final local commit to existing branch, inspect focused CI, resolve actual failures, verify exact APK source/run/digest/signature, then deliver"
+}

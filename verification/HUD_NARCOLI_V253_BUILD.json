@@ -1,0 +1,21 @@
+{
+  "sourceCommit": "28bfd6632d54d958a66c9e1ccbd4aa12fb617c19",
+  "runId": "39960483811",
+  "builtAtKST": "2026-10-23T22:24:21.762977+09:00",
+  "apkSha256": "4295b2ee68f74ed45668441616654351bdbaf8bc4bdee5d6264a3956cfdc6983",
+  "apkBytes": 106526650,
+  "identity": {
+    "sourceCommit": "28bfd6632d54d958a66c9e1ccbd4aa12fb617c19",
+    "runId": "39960483811",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V253 square12slots/8and10migration/input/restart/alljobmartialbookframe; sourceZ plus ADAPTED video-traced Narcoli aura; host native only,phone pending",
+  "finalTests": 3,
+  "retainedTests": 56,
+  "retainedRun": "39959244682",
+  "artifactId": 12504941154,
+  "artifactSha256": "4f68f78ab76f8b5bcaac4648236e48cd6cea8b1b3c91f08c8645d1158c3d847d",
+  "phone": "PENDING",
+  "originalNarcoliVisual": "UNRESOLVED_ADAPTED_RECONSTRUCTION"
+}

@@ -1,0 +1,12 @@
+{
+  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_HANDSET_PENDING",
+  "base": "66a7cb9525efc9c1a5c470bb17eb806dcf56f618",
+  "user": "2026-10-20 tile NE +X1, original curse shape, repair screen attack test mode, supplied Meteor GIF/icon/formula",
+  "deviceReport": "DEVICE_FAILED_USER_REPORTED V203 coordinate units, curse visual, Ragnarok/HolyDragon not firing; phone reproduction unavailable",
+  "coordinates": "inverse64x32; X=(worldX/32-worldY/16)/2 minus navigation minimum; Y=(worldX/32+worldY/16)/2 minus navigation minimum. Per-map origins adapted; no original absolute grid-number parity claim.",
+  "combat": "Synchronize initial test flag to combat port; nonpersistent virtual MP50000 only in test damage snapshots excludingDara; normal resources unchanged. Fixed costMeteor/HolyDragon12960 with post-cost1.5/1.8 from user screenshots, staff cost reductions enter formula snapshot. Dark element. Meteor source cast2s before existing staff modifiers.",
+  "art": "Clean supplied pink screenshot family silhouette90x120, white bone and observed structure retained; matte/downsample/subpixel cleanup and user-labelled hue variants; project hold/fade timing explicit. Supplied Meteor GIF7visibleframes and screenshot icon crop.",
+  "source": "558cb267c403d2c4524a5e07b77aa95934403a16",
+  "phone": "PENDING",
+  "verification": "verification/SCREEN_MAGIC_V204_BUILD.json"
+}

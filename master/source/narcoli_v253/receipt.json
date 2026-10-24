@@ -1,0 +1,20 @@
+{
+  "revision": "V253",
+  "reference": "Screen_Recording_20261023_213626_YouTube.mp4",
+  "sha256": "59173c1c9d5468e942c13983f6e19348948096ed48e232e0b192116de640761f",
+  "sourceZ": "Original741 efct032.epf/eff000.pal/pivot-table/frame-order exact pixels",
+  "sourceFiles": {
+    "efct032.epf": "8fce8e418a13e80c3ec45c479b850003209330d0e26fd19d6d6ad785f6e5fd45",
+    "efct032.tbl": "482fd9af3f43a63fef4b3d129259917267d3d82de21761006e70e549342f5653",
+    "eff000.pal": "4496b635758b9ebad458b4d614b0bbd47325136269ad34974bf266ecb3625ad0",
+    "effect.tbl": "48eda7d2181b85b98c0b04528f8bee1fdab65a1c231ce1c431798e870e800d1e"
+  },
+  "aura": "ADAPTED_VIDEO_TRACE: pink rising S-shaped wisps and foot rings observed at 2.0s and3.45s; curved runtime geometry, not an identified original client aura; continuous1second loop and Z100ms intervals are project adaptations",
+  "rejected": [
+    "efct364 blue lightning",
+    "Z-only rendering"
+  ],
+  "acceptance": "USER_VISUAL_ACCEPTED_2026-10-23: current V253 Narcoli retained at user's explicit request; ADAPTED provenance unchanged",
+  "referenceLibraryFileId": "libfile_baf588af44ec819192fe34330d5374fa",
+  "localAttachment": "upload/Screen_Recording_20261023_213626_YouTube.mp4"
+}

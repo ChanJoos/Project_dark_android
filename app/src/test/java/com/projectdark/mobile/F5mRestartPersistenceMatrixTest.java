@@ -45,7 +45,7 @@ public final class F5mRestartPersistenceMatrixTest {
     RpgProgressionState r=new RpgProgressionState();
     r.grantAdaptedReward(2500,25);
     assertEquals(RpgProgressionState.AutoLootResult.LOOTED,r.autoLootResolvedItem(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID,1));
-    assertEquals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,r.equipment().get(RpgProgressionState.WEAPON_SLOT));
+    assertEquals(RpgProgressionState.canonicalItemId(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID),r.equipment().get(RpgProgressionState.WEAPON_SLOT));
     assertEquals(RpgProgressionState.EquipResult.UNEQUIPPED,r.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID));
     assertEquals(RpgProgressionState.EquipResult.EQUIPPED,r.equip(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID));
     r.restoreStats(7,6,5,8,9,4);
@@ -57,7 +57,7 @@ public final class F5mRestartPersistenceMatrixTest {
     assertEquals(r.normalExp(),restored.normalExp());
     assertEquals(r.gold(),restored.gold());
     assertEquals(Integer.valueOf(1),restored.inventory().get(AdaptedPrototypeRewardCatalog.TRAINING_TOKEN_ITEM_ID));
-    assertEquals(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,restored.equipment().get(RpgProgressionState.WEAPON_SLOT));
+    assertEquals(RpgProgressionState.canonicalItemId(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID),restored.equipment().get(RpgProgressionState.WEAPON_SLOT));
     assertEquals(7,restored.str()); assertEquals(6,restored.intel()); assertEquals(5,restored.wis());
     assertEquals(8,restored.con()); assertEquals(9,restored.dex()); assertEquals(4,restored.statPoints());
   }

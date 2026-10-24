@@ -1,0 +1,55 @@
+{
+  "apkSha256": "42e222da7fa951f1025ee861bdda3ea2c91d028613b9153109b98c6248c3b950",
+  "apkBytes": 106522643,
+  "identity": {
+    "sourceCommit": "c43248c04b9e42e2565a2007e44f143604d4e1ac",
+    "runId": "39951347137",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "manifest": {
+    "manifest": {
+      "versionCode": 184,
+      "versionName": "1.84-mobile-horror",
+      "compileSdkVersion": 35,
+      "compileSdkVersionCodename": "15",
+      "package": "com.projectdark.mobile.v252test",
+      "platformBuildVersionCode": 35,
+      "platformBuildVersionName": 15
+    },
+    "application": {
+      "theme": 2130837504,
+      "label": "PROJECT DARK V252 TEST",
+      "debuggable": 4294967295,
+      "extractNativeLibs": 0
+    }
+  },
+  "signature": "APKv2 RSA-SHA256 cryptographic signature + certificate public key + full chunk content digest PASS",
+  "packagedSourceByteMatches": 767,
+  "skillPresentationFiles": 727,
+  "townSourceFiles": 26,
+  "npcProfiles": 1,
+  "builtAtKST": "2026-10-23T21:13:50.701844+09:00",
+  "runId": 39951347137,
+  "jobId": 120406292584,
+  "artifactId": 12501020646,
+  "artifactZipBytes": 112016684,
+  "artifactZipSha256": "b230b47550e2f7805a1b37c0b3e187a7eaf0b03e71eab25207337ca01f20f437",
+  "nativeDirectPassed": 1,
+  "nativeRetainedPassed": 9,
+  "nativeUniquePassed": 10,
+  "retainedSource": "29ce6738c9e739e3629c3f6bdab14f7383ad0790",
+  "retainedRun": 39949583532,
+  "retainedArtifact": 12499862329,
+  "retention": "CI asserts no production/assets/other testbytes changed; original/source alias and actual shared-window tests remain identical",
+  "originalInventoryFrames": 279,
+  "currentRuntimeBindings": 272,
+  "assetOnly": 7,
+  "narcoli": "VIDEO20593915RGBsamples/600msreviewGIF;not applied",
+  "commonScopeRun": 39951366543,
+  "commonCompile": "SKIPPED_AS_REVIEWED_SCOPE",
+  "phone": "PENDING",
+  "mainIntegration": "UNMERGED_CANDIDATE_NOT_FULL_REGRESSION",
+  "libraryApk": "libfile_fcabda42ba308191b8c4d02f49ac39cf",
+  "libraryGif": "libfile_cec9ac99bcbc819196bd52daf561357f"
+}

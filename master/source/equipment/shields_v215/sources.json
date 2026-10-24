@@ -1,0 +1,128 @@
+[
+  {
+    "itemId": "IT_SHIELD_WOOD",
+    "appearance": "ms001",
+    "sourceName": "나무방패",
+    "sha256": {
+      "data/type/shield/ms001.json": "b90e994595bad98c5f2c914046d9aaa9f22f205c56520fd5ab956426e6e9defa",
+      "atlas/shield/ms001.webp": "895ca597cbba6992b49f4e5a09b68b699a92e64058236425d8a464285c77bfe5"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_SILVER",
+    "appearance": "ms002",
+    "sourceName": "은제방패",
+    "sha256": {
+      "data/type/shield/ms002.json": "60098a307a80569dac98e3d8445743d03d0faa627e8d71ac101de845851e56e2",
+      "atlas/shield/ms002.webp": "ddbc2fb36db845e91186dd2c64e96944f6b768c0588331d81f1ca0801593ea72"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_GOLD",
+    "appearance": "ms003",
+    "sourceName": "금제방패",
+    "sha256": {
+      "data/type/shield/ms003.json": "c5fd52d09978156ff05d93211ca9b33366a73e9dd3161f5490be4456ff59e1d4",
+      "atlas/shield/ms003.webp": "854804f2d4619caf6d8c6f65f488ff7e933a23fb9332490c181972ed61187004"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_PLANUM",
+    "appearance": "ms004",
+    "sourceName": "플라늄방패",
+    "sha256": {
+      "data/type/shield/ms004.json": "a3da200e719a65ec58cb0fb6aeaafd6d11e27deed4d0403761834d0be64a8ee1",
+      "atlas/shield/ms004.webp": "0177467b17654e6e88fd3ff27e0f326eec366c030ca964ad7284d3e360507869"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_LEATHER",
+    "appearance": "ms005",
+    "sourceName": "가죽방패",
+    "sha256": {
+      "data/type/shield/ms005.json": "b6c82e108d79642b57a0b3a9c6174e9688cfb62f0f5b3df810807841cb91bf69",
+      "atlas/shield/ms005.webp": "f8f2ded02c77064081c9cc254399354d83615279994649d77f1b880538797c22"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_COPPER",
+    "appearance": "ms006",
+    "sourceName": "구리방패",
+    "sha256": {
+      "data/type/shield/ms006.json": "580e25e49d947d490400dbe821606fac378d32161294781a0815fcf6238a8980",
+      "atlas/shield/ms006.webp": "7f750e00c67d241efe46d27de8461217ac79f8d1a79d5ef9e6f699e12397e234"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_IRON",
+    "appearance": "ms007",
+    "sourceName": "철방패",
+    "sha256": {
+      "data/type/shield/ms007.json": "bceea95d3e36c1af72b4c732122c8ec51f6795e18e9e51fdde5a225c352e1e06",
+      "atlas/shield/ms007.webp": "735bc24a1c981023ed2428983a9e974e06e8b2364d68b44700e30f2ea90201f7"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_KNIGHT",
+    "appearance": "ms008",
+    "sourceName": "기사단방패",
+    "sha256": {
+      "data/type/shield/ms008.json": "cc9d6c3670503bf9203baa5b98f2cb56006694cfca31f8f5dd4d2218479a65aa",
+      "atlas/shield/ms008.webp": "a021cf357d4ac5585248d6cf9cf94ed196617506cffd8a26d242821ae926aa76"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_SKULL",
+    "appearance": "ms009",
+    "sourceName": "해골방패",
+    "sha256": {
+      "data/type/shield/ms009.json": "db85e08d8f9ab184ef8b346f2fe6ff75bbd584e1324198746fa45e28d5f48361",
+      "atlas/shield/ms009.webp": "769d1af486b22d26b792a621458f3fe41d74f2652f172df9971b31c6b8fcaf04"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_EXORCISM",
+    "appearance": "ms010",
+    "sourceName": "퇴마방패",
+    "sha256": {
+      "data/type/shield/ms010.json": "e361fc7b35cddc0c76a14eca9a50521a1c1027ec423f6b899922ebfc18088e98",
+      "atlas/shield/ms010.webp": "cee0e4c3dc8187b39d71df058c31b60f008e43ca9517d1386acb7103759738fa"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_BROKEN_PHOBOS",
+    "appearance": "ms014",
+    "sourceName": "깨진포보스방패",
+    "sha256": {
+      "data/type/shield/ms014.json": "e3f901c0d67dacaccc01c6a238cfe5d03da5bff827c0c5194cfa6f267605b237",
+      "atlas/shield/ms014.webp": "2bd30ea4ebe6e3c4b644a86b84b123a536169601f48ac2166e691d4160191055"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_PHOBOS",
+    "appearance": "ms015",
+    "sourceName": "포보스의방패",
+    "sha256": {
+      "data/type/shield/ms015.json": "3b121739fa270268d048fe44b62d51a9a1e1c12b122fd01d1a2b3e08412eb0cc",
+      "atlas/shield/ms015.webp": "1add683ef690a6b4a69deea88124ddfa6bbdcf328554577c13075b6057118a28"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_DEATHKNIGHT",
+    "appearance": "ms016",
+    "sourceName": "데스나이트의방패",
+    "sha256": {
+      "data/type/shield/ms016.json": "54ccc1bd51f9608cac2fd6ffbcb563eafe3621baebf68385a7a49d5a18ea5659",
+      "atlas/shield/ms016.webp": "8fb9b92616def1fa9eb842bd9fb34a8f6b3c30c9cc18c764790b9faea5ee5dcb"
+    }
+  },
+  {
+    "itemId": "IT_SHIELD_PAPAYA",
+    "appearance": "ms018",
+    "sourceName": "파파야방패",
+    "sha256": {
+      "data/type/shield/ms018.json": "9c6686f223a5aff4ce277de07e7233f623348fe1d342e8e4534605e98bc2c494",
+      "atlas/shield/ms018.webp": "50d13a39ded13a1bb00b4d87303a2012632f7fdc14c6f0307559a1b418afac84"
+    }
+  }
+]

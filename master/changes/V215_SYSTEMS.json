@@ -1,0 +1,47 @@
+{
+  "revision": "V215",
+  "status": "ACCEPTED",
+  "authority": "2026-10-21 current user explicit requests; Director single editor",
+  "before": {
+    "experience99": "residual after level thresholds; numeric balance absent in stats",
+    "temple": "portal labels and lobby/hub forward gates",
+    "inventory": "3 filters; 15 equipment slots",
+    "shield14": "appearance null (previous exact identity unresolved)",
+    "wings16": "unsupported back art, inventory-only ornament"
+  },
+  "after": {
+    "experience99": "refund all thresholds 1..98 exactly once at reaching99; retain overflow within existing4.2b cap; old99 saves one-time durable migration; pre-existing overcap retained",
+    "temple": "lobby guide only; hub actual door at17,23 walks toSeo; original hub exit27,26 returns; no portal drawings or tap shortcuts; visible interpolated foot radius28 handles continuous joystick, not idle-only logical exact-tile",
+    "inventory": "12 exact requested categories; exclusive wing slot; old ornament wing assignment migrates; ownership preserved; known reagents/potions→시약 including unusable reagents; food and recall→기타",
+    "shield14": "exact boot.json original Korean source-label bindings; 깨진포보스방패 to 깨진포보스의방패 is explicit observed name variant",
+    "altar": "source video21 cut; UI-occluded corner has explicit ADAPTED geometry/color reconstruction; hidden original geometry remains unresolved",
+    "wings18": "16 named wings plus 나겔링부스터mg261 and 플로팅블레이드mg332, both source Item.bin part26; paired original mc261/mc332 layers. mg332/mc332 packed16contact frames mapped source body0..3→0,4,8,12, preserving source north0..7/south8..15 and strict absent-layer omissions; current approved body poses unchanged.",
+    "wingClassificationCaveat": "18mobile wing-slot items is ADAPTED categorization per user. Original boot jobs tags 루캐트의윙mg285/화이어윙wg142 aspart14/level100; do not claim all18originalpart26 or change original condition fields. Two extra non-wing-nameditems confirmedpart26. Other3back entries remain accessory/cape."
+  },
+  "sourceFiles": [
+    "master/source/equipment/shields_v215/sources.json",
+    "master/source/equipment/wings_v215/sources.json",
+    "master/source/equipment/wings_v215/paired_layers.json",
+    "master/source/temple_v215/reference.json",
+    "master/source/equipment/wings_v215/extra_sources.json"
+  ],
+  "sourceUrls": [
+    "https://lod-dressup-2.web.app/data/boot.json",
+    "https://lod-dressup-2.web.app/data/list/cape.json",
+    "user Screen_Recording_20261021_092403_YouTube.mp4 at20-21seconds"
+  ],
+  "snapshots": "Original historical Master CSVs and previous screenshots/source archives retained unchanged. New originals and hashes retained separately. New shield appearance evidence supersedes earlier unresolved metadata without changing original facts/stats.",
+  "consumers": [
+    "RpgProgressionState",
+    "CampaignProgress",
+    "F5mSaveStore",
+    "CharacterVisualBinding",
+    "CharacterRenderer",
+    "SkillBodyRenderer",
+    "ItemWindow",
+    "GameView",
+    "TempleRoutes",
+    "TempleEntranceRenderer"
+  ],
+  "validation": "Exact7b6afeab226ab626c471e8798a323a27f1e25a81 focused39597531378SUCCESS/55tests/0failure-error-skip;512male/female paired render assertions; original2250files and APKsignature/source/hash verified. Common push39597531257/PR39597540594SUCCESS on exact source; handset/user visual PENDING. Receipt verification/SYSTEMS_V215_BUILD.json."
+}

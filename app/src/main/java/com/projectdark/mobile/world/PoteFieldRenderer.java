@@ -1,4 +1,6 @@
 package com.projectdark.mobile.world;
+import java.util.HashMap;
+import android.graphics.Color;
 
 import com.projectdark.mobile.CharacterRenderer;
 import com.projectdark.mobile.SpriteAlphaMask;
@@ -9,6 +11,8 @@ import android.content.res.AssetManager;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.BitmapShader;
+import android.graphics.BlurMaskFilter;
+import android.graphics.DashPathEffect;
 import android.graphics.Canvas;
 import android.graphics.Matrix;
 import android.graphics.Paint;
@@ -33,7 +37,7 @@ import java.util.Map;
 public final class PoteFieldRenderer {
   public static final String STATUS="POTE_FOREST_REFERENCE_GROUND_V10";
   private static final float TILE_W=64f,TILE_H=32f;
-  private static final String SOIL_TEXTURE="reference_v113/forest_floor.png";
+  private static final String SOIL_TEXTURE="reference_v239/forest_floor.png";
   private static final String TRAIL_TEXTURE="video_reference/terrain/pote_dirt_path_fill_texture.png";
   private final Paint pixel=new Paint();
   private final Paint soilPaint=new Paint();
@@ -58,23 +62,44 @@ public final class PoteFieldRenderer {
   private final List<Placement> depthPlacements=new ArrayList<>();
   private final List<ActorDraw> depthActors=new ArrayList<>();
   private final Map<String,Bitmap> hitCache=new LinkedHashMap<>();
+  private final Map<String,Bitmap> curseCache=new LinkedHashMap<>(),curseHitCache=new LinkedHashMap<>();
   private String preparedMonsterMap;
+  private com.projectdark.mobile.SkillEffectState monsterEffects;
   private final PoteMonsterMotion.Frame motion=new PoteMonsterMotion.Frame();
   private static final int MESH_COLS=4,MESH_ROWS=6;
   private final float[] motionVertices=new float[(MESH_COLS+1)*(MESH_ROWS+1)*2];
   private final RectF monsterDestination=new RectF();
 
+  private final Map<String,float[]> visualCenters=new HashMap<>();
+  private void prepareCenter(String key,Bitmap source){
+    int w=source.getWidth(),h=source.getHeight(),l=w,t=h,r=0,b=0;int[] pixels=new int[w*h];source.getPixels(pixels,0,w,0,0,w,h);
+    for(int y=0;y<h;y++)for(int x=0;x<w;x++)if(Color.alpha(pixels[y*w+x])>24){l=Math.min(l,x);r=Math.max(r,x+1);t=Math.min(t,y);b=Math.max(b,y+1);}
+    visualCenters.put(key,l<r?new float[]{(l+r)*.5f/w,(t+b)*.5f/h}:new float[]{.5f,.5f});
+  }
+  /** Same prewarmed pose, scale, inset and contact motion as the actual monster draw. */
+  public boolean monsterCenter(com.projectdark.mobile.RuntimeState.Monster m,float[] out){
+    CharacterRenderer.Direction d=PoteForestMonsterShowcase.presentationFacing(m);String state=PoteForestMonsterShowcase.poseFor(m);
+    PoteMonsterMotion.sample(m.id,state,PoteForestMonsterShowcase.attackProgress(m),m.animationClock,m.hitFlash,motion);
+    String key=PoteForestMonsterShowcase.assetPath(m.id,motion.pose,d);float[] center=visualCenters.get(key);Bitmap source=cache.get(key);if(center==null||source==null)return false;
+    String family=PoteForestMonsterShowcase.species(m.id);float h=PoteForestMonsterShowcase.bodyHeight(m.id),w=PoteForestMonsterShowcase.bodyWidth(m.id)*source.getWidth()/Math.max(1f,source.getHeight());
+    float inset=PoteForestMonsterShowcase.originalPote(m.id)?h*20f/96f:family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
+    out[0]=m.x+facingX(d)*(motion.lunge-motion.recoil)+(center[0]-.5f)*w;
+    out[1]=m.y+facingY(d)*(motion.lunge-motion.recoil)-motion.lift-h+inset+center[1]*h;return true;
+  }
   /** Decode/upload all states at map entry, rather than on a walk turn or first hit. */
+  public void releaseFloorCache(){floorChunks.clear();floorMap="";}
   public void prepareMonsters(com.projectdark.mobile.RuntimeState runtime){
+    monsterEffects=runtime.skillEffects();
     if(runtime.currentMapId().equals(preparedMonsterMap))return;
     cache.keySet().removeIf(key->key.startsWith(PoteForestMonsterShowcase.ASSET_ROOT));
-    hitCache.clear();
+    hitCache.clear();curseCache.clear();curseHitCache.clear();visualCenters.clear();
     java.util.Set<String> loaded=new java.util.HashSet<>();
     for(com.projectdark.mobile.RuntimeState.Monster monster:runtime.monsters()){
       for(String pose:new String[]{"idle","walk","attack"})for(CharacterRenderer.Direction direction:CharacterRenderer.Direction.values()){
         String key=PoteForestMonsterShowcase.assetPath(monster.id,pose,direction);
         if(key==null||!loaded.add(key))continue;
-        Bitmap source=bitmap(key);if(source!=null){source.prepareToDraw();hitBitmap(key,source).prepareToDraw();}
+        Bitmap source=bitmap(key);if(source!=null){prepareCenter(key,source);source.prepareToDraw();hitBitmap(key,source).prepareToDraw();
+          Bitmap faded=curseBitmap(key,source);faded.prepareToDraw();tintBitmap(key,faded,curseHitCache).prepareToDraw();}
       }
     }
     preparedMonsterMap=runtime.currentMapId();
@@ -125,7 +150,7 @@ public final class PoteFieldRenderer {
   /** Resolved damage uses the existing actor hit timer, retaining pose, alpha and foot anchor. */
   public void drawMonsterTestPose(Canvas c,String monsterId,String state,CharacterRenderer.Direction direction,
       float actionProgress,float idleClock,float x,float y,boolean hitFlash){
-    drawAnimatedMonster(c,monsterId,state,direction,actionProgress,idleClock,x,y,hitFlash?.14f:0f);
+    drawAnimatedMonster(c,monsterId,state,direction,actionProgress,idleClock,x,y,hitFlash?.14f:0f,false);
   }
 
   /** Live pose/phase is sampled from the same combat and movement state that owns contact. */
@@ -134,25 +159,27 @@ public final class PoteFieldRenderer {
     CharacterRenderer.Direction direction=PoteForestMonsterShowcase.presentationFacing(monster);
     String state=PoteForestMonsterShowcase.poseFor(monster);
     drawAnimatedMonster(c,monster.id,state,direction,PoteForestMonsterShowcase.attackProgress(monster),
-        monster.animationClock,x,y,monster.hitFlash);
+        monster.animationClock,x,y,monster.hitFlash,
+        com.projectdark.mobile.MonsterCursePalette.active(monsterEffects,monster.id));
   }
 
   private final Matrix monsterPixelMatrix=new Matrix();
   private final float[] monsterPixelValues=new float[9];
 
   private void drawAnimatedMonster(Canvas c,String id,String state,CharacterRenderer.Direction direction,
-      float progress,float clock,float x,float y,float hitRemaining){
+      float progress,float clock,float x,float y,float hitRemaining,boolean cursed){
     if(c==null||"dead".equals(state))return;
     PoteMonsterMotion.sample(id,state,progress,clock,hitRemaining,motion);
     String family=PoteForestMonsterShowcase.species(id);
     // Aliased back idle and walk must share the same rasterization as well as the same art.
-    if("idle".equals(state)&&("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
+    if(!PoteForestMonsterShowcase.originalPote(id)&&"idle".equals(state)&&("POTE_TREANT".equals(family)||"POTE_ANTGIANT".equals(family))
         &&(direction==CharacterRenderer.Direction.NW||direction==CharacterRenderer.Direction.NE))motion.articulated=true;
     String name=PoteForestMonsterShowcase.assetPath(id,motion.pose,direction);
     if(name==null)return;
     Bitmap source=bitmap(name);if(source==null)return;
-    Bitmap b=hitRemaining>0f?hitBitmap(name,source):source;
-    float h=PoteForestMonsterShowcase.bodyHeight(id),w=h*b.getWidth()/Math.max(1f,b.getHeight());
+    Bitmap base=cursed?curseBitmap(name,source):source;
+    Bitmap b=hitRemaining>0f?tintBitmap(name,base,cursed?curseHitCache:hitCache):base;
+    float h=PoteForestMonsterShowcase.bodyHeight(id),w=PoteForestMonsterShowcase.bodyWidth(id)*b.getWidth()/Math.max(1f,b.getHeight());
     float fx=facingX(direction),fy=facingY(direction);
     boolean spirit="POTE_SPIRIT".equals(PoteForestMonsterShowcase.species(id));
     float anchorX=x+fx*(motion.lunge-motion.recoil),anchorY=y+fy*(motion.lunge-motion.recoil);
@@ -167,7 +194,7 @@ public final class PoteFieldRenderer {
       }
     }
     float cx=anchorX,cy=anchorY-motion.lift;
-    float groundInset="POTE_MANTIS".equals(PoteForestMonsterShowcase.species(id))?h/24f:3f;
+    float groundInset=PoteForestMonsterShowcase.originalPote(id)?h*20f/96f:family!=null&&family.startsWith("LYK_")?h*8f/192f:"POTE_MANTIS".equals(family)?h/24f:3f;
     pixel.setColor(0xffffffff);pixel.setAlpha(255);pixel.setFilterBitmap(false);
     if(motion.articulated){
       // One reusable 35-vertex mesh: opposing lower-limb beats and upper-body lean.
@@ -191,8 +218,12 @@ public final class PoteFieldRenderer {
   }
 
   /** Cache a color-only variant: GPU color filters can bleed into transparent scaled edges. */
-  private Bitmap hitBitmap(String name,Bitmap source){
-    Bitmap hit=hitCache.get(name);if(hit!=null)return hit;
+  private Bitmap curseBitmap(String name,Bitmap source){
+    Bitmap faded=curseCache.get(name);if(faded==null){faded=com.projectdark.mobile.MonsterCursePalette.fadedBitmap(source,name.contains("/abel_v161/pong/"));curseCache.put(name,faded);}return faded;
+  }
+  private Bitmap hitBitmap(String name,Bitmap source){return tintBitmap(name,source,hitCache);}
+  private Bitmap tintBitmap(String name,Bitmap source,Map<String,Bitmap> variants){
+    Bitmap hit=variants.get(name);if(hit!=null)return hit;
     int width=source.getWidth(),height=source.getHeight();int[] colors=new int[width*height];
     source.getPixels(colors,0,width,0,0,width,height);
     for(int i=0;i<colors.length;i++){
@@ -200,7 +231,7 @@ public final class PoteFieldRenderer {
       int r=Math.min(255,((color>>>16)&255)+96),g=Math.min(255,((color>>>8)&255)+64),b=Math.min(255,(color&255)+64);
       colors[i]=(color&0xff000000)|(r<<16)|(g<<8)|b;
     }
-    hit=source.copy(Bitmap.Config.ARGB_8888,true);hit.setPixels(colors,0,width,0,0,width,height);hitCache.put(name,hit);return hit;
+    hit=source.copy(Bitmap.Config.ARGB_8888,true);hit.setPixels(colors,0,width,0,0,width,height);variants.put(name,hit);return hit;
   }
 
   private static float facingX(CharacterRenderer.Direction d){
@@ -216,6 +247,7 @@ public final class PoteFieldRenderer {
   }
   public static List<RectF> blockingFootprints(String mapId){
     List<RectF> out=new ArrayList<>();
+    if(RucesionCoastGeometry.contains(mapId)){for(RucesionCoastGeometry.Prop p:RucesionCoastGeometry.props(mapId))if(p.solid)out.add(new RectF(p.footprint));return Collections.unmodifiableList(out);}
     if(AbelCoastGeometry.contains(mapId)){for(AbelCoastGeometry.Prop p:AbelCoastGeometry.props(mapId))if(p.solid)out.add(new RectF(p.footprint));return Collections.unmodifiableList(out);}
     for(Placement p:placementsForMap(mapId)){
       if("canopy".equals(p.role))out.add(new RectF(p.x-14f,p.y-10f,p.x+14f,p.y+10f));
@@ -229,7 +261,7 @@ public final class PoteFieldRenderer {
     if(c==null||w==null)return;drawBelow(c,w,Float.POSITIVE_INFINITY);
   }
 
-  public void drawPortalWorld(Canvas c,float x,float y){Bitmap b=bitmap("assets/world/portal/portal_reagent_shop.webp");if(b!=null){pixel.setAlpha(255);pixel.setColor(0xffffffff);c.drawBitmap(b,null,new RectF(x-32,y-22,x+32,y+10),pixel);}}
+  public void drawPortalWorld(Canvas c,float x,float y){com.projectdark.mobile.PortalAnimation.draw(c,x,y);}
   /** Actor bounds/callbacks use world feet. Each tree fades only if its foreground pixels hide an actor. */
   public static final class ActorDraw {
     public final float x,y,height,width; public final Runnable draw;
@@ -298,25 +330,49 @@ public final class PoteFieldRenderer {
     pixel.setShader(null);
   }
   private void drawFloorDirect(Canvas c,String map,float ox,float oy){
+    if(RucesionCoastGeometry.contains(map)){drawRucesionFloor(c,map,ox,oy);return;}
     if(AbelCoastGeometry.contains(map)){drawCoastFloor(c,map,ox,oy);return;}
     pixel.setStyle(Paint.Style.FILL);pixel.setShader(null);pixel.setAlpha(255);pixel.setColor(0xff533a29);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
     drawGroundTiles(c,map,ox,oy);drawTrail(c,map,ox,oy);
   }
 
-  private void drawCoastFloor(Canvas c,String map,float ox,float oy){
-    Bitmap sand=bitmap("abel_v140/sand.png"),water=bitmap("abel_v140/water.png");
-    if(sand==null||water==null)throw new IllegalStateException("Missing Abel coast terrain assets");
+  private void drawCoastFloor(Canvas c,String map,float ox,float oy){drawCoastalFloor(c,map,ox,oy,false);}
+  private void drawRucesionFloor(Canvas c,String map,float ox,float oy){drawCoastalFloor(c,map,ox,oy,true);}
+  private void coastPath(float[][] points,float ox,float oy,boolean closeToBottom,float n){
+    groundCells.reset();if(points.length==0)return;groundCells.moveTo(points[0][0]-ox,points[0][1]-oy);
+    for(int i=1;i<points.length;i++)groundCells.lineTo(points[i][0]-ox,points[i][1]-oy);
+    if(closeToBottom){groundCells.lineTo(n-ox,n-oy);groundCells.lineTo(64-ox,n-oy);}groundCells.close();
+  }
+  private final BlurMaskFilter coastDepthBlur=new BlurMaskFilter(26,BlurMaskFilter.Blur.NORMAL);
+  private final BlurMaskFilter coastWetBlur=new BlurMaskFilter(11,BlurMaskFilter.Blur.NORMAL);
+  private final DashPathEffect coastFoamBreaks=new DashPathEffect(new float[]{17,9,34,13,7,21},0);
+  private void drawCoastDepth(Canvas c,float[][] line,float ox,float oy,boolean bottom,float n){
+    c.save();c.clipPath(groundCells);pixel.setShader(null);pixel.setStyle(Paint.Style.STROKE);
+    groundCells.reset();groundCells.moveTo(line[0][0]-ox,line[0][1]-oy);
+    for(int i=1;i<line.length;i++)groundCells.lineTo(line[i][0]-ox,line[i][1]-oy);
+    pixel.setMaskFilter(coastDepthBlur);pixel.setStrokeWidth(135);pixel.setColor(0xffa2b7b6);pixel.setAlpha(150);c.drawPath(groundCells,pixel);pixel.setMaskFilter(null);
+    pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);c.restore();
+  }
+  private void drawCoastalFloor(Canvas c,String map,float ox,float oy,boolean r){
+    Bitmap sand=bitmap(r?"rucesion_v157/sand.png":"abel_v140/sand.png"),water=bitmap("coast-v159/water.png");
+    if(sand==null||water==null)throw new IllegalStateException("Missing coast terrain assets");
+    int z=r?RucesionCoastGeometry.index(map):AbelCoastGeometry.index(map);float n=CoastalHuntLayout.size(z);
     pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
-    BitmapShader s=shader("abel-sand",sand,Shader.TileMode.MIRROR);texturePhase.setTranslate(-ox,-oy);s.setLocalMatrix(texturePhase);pixel.setShader(s);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
-    BitmapShader sea=shader("abel-water",water,Shader.TileMode.MIRROR);sea.setLocalMatrix(texturePhase);pixel.setShader(sea);
-    groundCells.reset();groundCells.moveTo(64-ox,AbelCoastGeometry.shoreY(map,64)-oy);
-    for(float x=96;x<=AbelCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,AbelCoastGeometry.shoreY(map,x)-oy);
-    groundCells.lineTo(AbelCoastGeometry.width(map)-ox,AbelCoastGeometry.height(map)-oy);groundCells.lineTo(64-ox,AbelCoastGeometry.height(map)-oy);groundCells.close();c.drawPath(groundCells,pixel);
-    pixel.setShader(null);pixel.setColor(0xffe4d2a7);pixel.setStyle(Paint.Style.STROKE);pixel.setStrokeWidth(3f);pixel.setAlpha(170);
-    groundCells.reset();groundCells.moveTo(64-ox,AbelCoastGeometry.shoreY(map,64)-oy);
-    for(float x=96;x<=AbelCoastGeometry.width(map);x+=32)groundCells.lineTo(x-ox,AbelCoastGeometry.shoreY(map,x)-oy);
-    c.drawPath(groundCells,pixel);pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);
+    BitmapShader earth=shader(r?"rucesion-sand-159":"abel-sand-159",sand,Shader.TileMode.REPEAT);
+    texturePhase.setTranslate(-ox,-oy);earth.setLocalMatrix(texturePhase);pixel.setShader(earth);c.drawRect(0,0,c.getWidth(),c.getHeight(),pixel);
+    BitmapShader sea=shader(r?"rucesion-water-159":"abel-water-159",water,Shader.TileMode.REPEAT);sea.setLocalMatrix(texturePhase);pixel.setShader(sea);
+    float[][] edge=CoastalHuntLayout.shoreLine(z,r),inlet=CoastalHuntLayout.inlet(z,r);
+    coastPath(edge,ox,oy,true,n);c.drawPath(groundCells,pixel);drawCoastDepth(c,edge,ox,oy,true,n);
+    if(inlet.length>0){coastPath(inlet,ox,oy,false,n);pixel.setShader(sea);c.drawPath(groundCells,pixel);drawCoastDepth(c,inlet,ox,oy,false,n);}
     pixel.setShader(null);
+    // Wet sand and a shallow surf ribbon follow the authored coast, rather than a horizontal ocean strip.
+    for(float[][] line:new float[][][]{edge,inlet})if(line.length>1){
+      groundCells.reset();groundCells.moveTo(line[0][0]-ox,line[0][1]-oy);
+      for(int i=1;i<line.length;i++)groundCells.lineTo(line[i][0]-ox,line[i][1]-oy);
+      pixel.setStyle(Paint.Style.STROKE);pixel.setMaskFilter(coastWetBlur);pixel.setStrokeWidth(22);pixel.setColor(r?0xffb6b398:0xffbaaa89);pixel.setAlpha(125);c.drawPath(groundCells,pixel);pixel.setMaskFilter(null);
+      pixel.setPathEffect(coastFoamBreaks);pixel.setStrokeWidth(2);pixel.setColor(0xffe9eadf);pixel.setAlpha(130);c.drawPath(groundCells,pixel);pixel.setPathEffect(null);
+    }
+    pixel.setStyle(Paint.Style.FILL);pixel.setAlpha(255);pixel.setColor(0xffffffff);pixel.setShader(null);
   }
 
   /** Feathered source earth patches overlap at irregular widths; no painted road border. */
@@ -342,7 +398,7 @@ public final class PoteFieldRenderer {
   }
   /** The visible river and the bank collision consume identical sampled centre/width data. */
   private void drawCreekBed(Canvas c,WorldRuntimeAdapter w){
-    if(AbelCoastGeometry.contains(w.runtime().currentMapId()))return;
+    if(AbelCoastGeometry.contains(w.runtime().currentMapId())||RucesionCoastGeometry.contains(w.runtime().currentMapId()))return;
     float[][] nodes=channels.computeIfAbsent(w.runtime().currentMapId(),PoteForestGeometry::channel);if(nodes.length<2)return;
     Bitmap water=bitmap("reference_v113/water_current.png");if(water==null)return;
     BitmapShader shader=shader("water",water,Shader.TileMode.MIRROR);
@@ -449,9 +505,10 @@ public final class PoteFieldRenderer {
   private static float trailAngle(String map,float x,float y){float[][] pts=PoteForestGeometry.trailCenterline(map);float best=Float.MAX_VALUE,angle=20;for(int i=1;i<pts.length;i++){float d=(float)Math.hypot(x-pts[i][0],y-pts[i][1]);if(d<best){best=d;angle=(float)Math.toDegrees(Math.atan2(pts[i][1]-pts[i-1][1],pts[i][0]-pts[i-1][0]));}}return angle;}
   private Bitmap bitmap(String name){
     if(cache.containsKey(name))return cache.get(name);
-    Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(name)){
+    Bitmap b=null;if(assets!=null)try(InputStream in=assets.open(CoastSpritePalette.sourcePath(name))){
       BitmapFactory.Options o=new BitmapFactory.Options();o.inScaled=false;b=BitmapFactory.decodeStream(in,null,o);
-      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/")&&!name.startsWith("abel_v139/")&&!name.startsWith("abel_v140/")&&!name.startsWith("abel_v141/"))
+      b=CoastSpritePalette.apply(name,b);
+      if(b!=null&&!SOIL_TEXTURE.equals(name)&&!TRAIL_TEXTURE.equals(name)&&!name.startsWith("assets/world/portal/")&&!name.startsWith("pote/monsters/pamfet_")&&!name.startsWith(PoteForestMonsterShowcase.ASSET_ROOT)&&!name.startsWith("POTE_WATER_")&&!name.startsWith("reference_v113/")&&!name.startsWith("abel_v139/")&&!name.startsWith("abel_v140/")&&!name.startsWith("abel_v141/")&&!name.startsWith("rucesion_v157/")&&!name.startsWith("coast-v159/"))
         b=name.equals("POTE_BR_01.png")||name.equals("POTE_TR_08.png")
             ?trimSourceEdge(b):trimSourceEdge(stripEdgeMatte(b));
       if(b!=null&&name.startsWith("POTE_GD_"))b=softenGroundTileRim(b);
@@ -528,6 +585,7 @@ public final class PoteFieldRenderer {
   }
   private static List<Placement> buildPlacements(String mapId){
     List<Placement> p=new ArrayList<>();PoteCampaignMapDef d=PoteCampaignMapDef.forId(mapId);
+    if(RucesionCoastGeometry.contains(mapId)){for(RucesionCoastGeometry.Prop a:RucesionCoastGeometry.props(mapId))p.add(new Placement("abel_v140/"+a.asset+".png",a.x,a.y,a.scale,a.canopy?"canopy":a.solid?"rock":"decoration",false));return Collections.unmodifiableList(p);}
     if(AbelCoastGeometry.contains(mapId)){for(AbelCoastGeometry.Prop a:AbelCoastGeometry.props(mapId))p.add(new Placement("abel_v140/"+a.asset+".png",a.x,a.y,a.scale,a.canopy?"canopy":a.solid?"rock":"decoration",false));return Collections.unmodifiableList(p);}
     float[][] trail=PoteForestGeometry.trailCenterline(mapId),creek=PoteForestGeometry.creekCenterline(mapId);
     // Authored macro patches vary by map. Jitter only distributes source sprites inside each patch.

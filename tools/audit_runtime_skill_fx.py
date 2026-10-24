@@ -9,8 +9,11 @@ for e in cat:
  sid=e['id'];candidates=[k for k in order if sid in manifests[k]];selected=candidates[0] if candidates else 'NO_PARTICLE' if presentation[sid]['caster']=='NONE' and presentation[sid]['target']=='NONE' else 'ADAPTED';channels=[];warnings=[];reviewedSource=None
  if selected not in ['ADAPTED','NO_PARTICLE']:
   entry=manifests[selected][sid];ch=entry.get('channels',{'RECIPIENT_CONTACT':entry})
-  if not ch:
+  if not ch and entry.get('sourceGif'):
    source=R/entry['sourceGif'];sourcehash=hashlib.sha256(source.read_bytes()).hexdigest();assert sourcehash==entry['sourceSha256'];reviewedSource={'source':entry['sourceGif'],'sourceSha256':sourcehash,'reason':entry.get('review',{}).get('reason','No separately recoverable particle')} 
+  if not ch and not entry.get('sourceGif'):
+   assert entry.get('displayPolicy'),(sid,'missing no-particle provenance')
+   warnings.append('EXPLICIT_DISPLAY_POLICY:'+entry['displayPolicy'])
   for phase,v in ch.items():
    source=R/v['sourceGif'];atlas=B/v['path'];sourcehash=hashlib.sha256(source.read_bytes()).hexdigest();atlashash=hashlib.sha256(atlas.read_bytes()).hexdigest();assert sourcehash==v['sourceSha256'];assert atlashash==v['atlasSha256']
    for item in v.get('sourceFrames',[]):

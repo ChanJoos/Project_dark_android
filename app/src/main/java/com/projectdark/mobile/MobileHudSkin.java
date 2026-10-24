@@ -7,18 +7,25 @@ final class MobileHudSkin {
   private static Bitmap mapTerrain;private static String terrainKey;
   private static final int WHITE=0xfff1eee4,GOLD=0xffdfc88c;
   static void fade(Canvas c,RectF r){p.setStyle(Paint.Style.FILL);p.setShader(new LinearGradient(r.left,r.top,r.right,r.top,0x03080b10,0x77080b10,Shader.TileMode.CLAMP));c.drawRect(r,p);p.setShader(null);}
+  static void square(Canvas c,RectF r,boolean active){
+    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(0xff171b20);c.drawRect(r,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(2);p.setColor(active?0xfff4e6b1:0xffa28d63);c.drawRect(r,p);
+    p.setStrokeWidth(1);p.setColor(0xff454039);c.drawRect(r.left+2,r.top+2,r.right-2,r.bottom-2,p);p.setStyle(Paint.Style.FILL);
+  }
   static void ring(Canvas c,float x,float y,float r,boolean active){
     p.setStyle(Paint.Style.FILL);p.setColor(active?0x775f573a:0x6413191b);c.drawCircle(x,y,r,p);
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(active?1.8f:1f);p.setColor(active?GOLD:0x998e876d);c.drawCircle(x,y,r-.7f,p);
     p.setStrokeWidth(.6f);p.setColor(0x554d4e42);c.drawCircle(x,y,r-2.8f,p);
     p.setColor(active?0xfff4e6b1:0xaaddd0a6);c.drawArc(x-r+1,y-r+1,x+r-1,y+r-1,210,120,false,p);p.setStyle(Paint.Style.FILL);
   }
+  private static final Shader STICK_IDLE=new RadialGradient(-5,-6,28,new int[]{0xdd6a756c,0xd4212a26},null,Shader.TileMode.CLAMP);
+  private static final Shader STICK_ACTIVE=new RadialGradient(-5,-6,28,new int[]{0xee85917e,0xe8324138},null,Shader.TileMode.CLAMP);
   static void joystick(Canvas c,float x,float y,float r,float kx,float ky,boolean active){
-    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(active?0x2413191b:0x0e13191b);c.drawCircle(x,y,r,p);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);p.setColor(active?0x88c2bea8:0x428e978d);c.drawCircle(x,y,r-1,p);
+    p.setShader(null);p.setStyle(Paint.Style.FILL);p.setColor(active?0x9b13191b:0x8513191b);c.drawCircle(x,y,r,p);
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.8f);p.setColor(active?0xffe9ddba:0xd9c4cbbb);c.drawCircle(x,y,r-1,p);
     p.setStrokeWidth(.5f);p.setColor(active?0x445d695e:0x205d695e);c.drawCircle(x,y,r-4,p);
-    p.setStyle(Paint.Style.FILL);p.setShader(new RadialGradient(kx-5,ky-6,28,new int[]{active?0x665f6961:0x28455047,active?0x44141d18:0x14141d18},null,Shader.TileMode.CLAMP));c.drawCircle(kx,ky,active?23:20,p);p.setShader(null);
-    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);p.setColor(active?0x99d5d2ba:0x507b877d);c.drawCircle(kx,ky,active?23:20,p);p.setStyle(Paint.Style.FILL);
+    c.save();c.translate(kx,ky);p.setStyle(Paint.Style.FILL);p.setShader(active?STICK_ACTIVE:STICK_IDLE);c.drawCircle(0,0,active?23:20,p);p.setShader(null);c.restore();
+    p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.9f);p.setColor(active?0xffffedba:0xffbdc6b0);c.drawCircle(kx,ky,active?23:20,p);p.setStyle(Paint.Style.FILL);
   }
   static void crown(Canvas c,float x,float y){
     p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(1);p.setColor(0xbbb7b4a2);
@@ -98,11 +105,14 @@ final class MobileHudSkin {
     final float cx=68,cy=73,r=49;ring(c,cx,cy,r+2,false);c.save();path.reset();path.addCircle(cx,cy,r-2,Path.Direction.CW);c.clipPath(path);
     String key=state.currentMapId()+":"+minX+":"+maxX+":"+minY+":"+maxY;
     if(mapTerrain==null||!key.equals(terrainKey)){
-      if(mapTerrain!=null)mapTerrain.recycle();mapTerrain=Bitmap.createBitmap(96,96,Bitmap.Config.ARGB_8888);Canvas terrain=new Canvas(mapTerrain);terrain.drawColor(0xff625943);
+      if(mapTerrain!=null)mapTerrain.recycle();mapTerrain=Bitmap.createBitmap(96,96,Bitmap.Config.ARGB_8888);Canvas terrain=new Canvas(mapTerrain);if(com.projectdark.mobile.world.DeathVillageGeometry.contains(state.currentMapId())){DeathVillageMinimap.drawTerrain(terrain,state.currentMapId(),minX,minY,maxX,maxY);terrainKey=key;}else if(com.projectdark.mobile.world.MineHuntGeometry.contains(state.currentMapId())){MineHuntMinimapV209.drawTerrain(terrain,minX,minY,maxX,maxY);terrainKey=key;}else{terrain.drawColor(0xff625943);
       p.setStyle(Paint.Style.FILL);p.setColor(0xff3f4135);
       // Project the authored static collision footprints once per map, never live actors or paths.
       for(RectF o:state.obstacles())terrain.drawRect(map(o.left,minX,maxX,0,96),map(o.top,minY,maxY,0,96),map(o.right,minX,maxX,0,96),map(o.bottom,minY,maxY,0,96),p);
-      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.6f);p.setColor(0x339c8c65);for(int i=1;i<5;i++){float v=i*19.2f;terrain.drawLine(v,0,v,96,p);terrain.drawLine(0,v,96,v,p);}p.setStyle(Paint.Style.FILL);terrainKey=key;
+      p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.6f);p.setColor(0x339c8c65);for(int i=1;i<5;i++){float v=i*19.2f;terrain.drawLine(v,0,v,96,p);terrain.drawLine(0,v,96,v,p);}p.setStyle(Paint.Style.FILL);terrainKey=key;}
+      p.setColor(0xffffe4aa);p.setStyle(Paint.Style.STROKE);p.setStrokeWidth(.7f);
+      for(WorldMapWindow.Pin pin:WorldMapWindow.entrances(state.currentMapId()))terrain.drawCircle(map(pin.x,minX,maxX,0,96),map(pin.y,minY,maxY,0,96),1.7f,p);
+      p.setStyle(Paint.Style.FILL);
     }
     p.setColor(0xffffffff);c.drawBitmap(mapTerrain,null,new RectF(20,25,116,121),p);
     for(RuntimeState.Npc n:state.npcs())marker(c,n.x,n.y,minX,minY,maxX,maxY,0xffc3dfad,1.8f);

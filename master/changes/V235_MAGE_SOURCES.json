@@ -1,0 +1,52 @@
+{
+  "id": "V235_MAGE_SOURCES",
+  "status": "ACCEPTED",
+  "userScope": "429943 icons and descriptions only; no acquisition cost/material/mastery import. 221564 lower three images per element only. Screen element spells reuse third-tier source per live visible monster. 254766 missing promotion FX only.",
+  "sources": [
+    "master/source/mage_v235/guide.json",
+    "master/source/skill_fx/naver_magic_recovered_20261001/221564.json",
+    "master/source/skill_fx/naver_magic_recovered_20261001/254766.json",
+    "master/source/skill_fx/naver_magic_recovered_20261001/media.json",
+    "master/source/skill_fx/naver_magic_recovered_20261001/mage_bindings.json"
+  ],
+  "guideCount": 54,
+  "unlistedGuideSkillsRetained": [
+    "SK_마법사_054",
+    "SK_마법사_055",
+    "SK_마법사_057"
+  ],
+  "sourceLabelRepairs": {
+    "table13": "placeholder 스킬명 -> 데프레코, corroborated by icon filename and prose",
+    "table15": "placeholder 스킬명 -> 소루마, corroborated by icon filename and prose"
+  },
+  "displayNameAlias": "user 마레나로 denotes existing stable SK_마법사_030 마네나로; do not rename save ID",
+  "screenFxAliases": {
+    "SK_마법사_030": "SK_마법사_026",
+    "SK_마법사_031": "SK_마법사_027",
+    "SK_마법사_032": "SK_마법사_028",
+    "SK_마법사_033": "SK_마법사_029"
+  },
+  "learningPolicyCoreSha256": "37a66a77bdc9502e6bad7429db3ad85f58e68e505ad401eb0e89173180d983b8",
+  "catalogCoreSha256": "281e5a9c3da4391516b0088001a3a9e90746bd2fc6f3dff25cb5306516bb37dc",
+  "noNumericalChanges": [
+    "acquisition stats/gold/items",
+    "spell MP/HP costs",
+    "damage formulas",
+    "timings",
+    "save IDs"
+  ],
+  "limitations": [
+    "Fan source, not official current server data",
+    "221564 and254766 are still screenshots: retained project hold/fade cadence, not invented original animation frames",
+    "Guide is description import only; existing mechanics beyond explicitly requested screen FX stay unchanged"
+  ],
+  "base": "4cc554d2400671d03aceaf0c3e9b8354fd87675e",
+  "darkMarkFix": "SK_마법사_046 was intercepted by generic red skull despite dedicated original sigil being retained. Route source254766 frames29..34 through classic; retain curse70 mechanics.",
+  "verification": {
+    "receipt": "verification/MAGE_SOURCES_V235_BUILD.json",
+    "source": "14f50075a08123740273626d5c62108a4c023420",
+    "focusedRun": 39781578591,
+    "uniqueNativePasses": 51,
+    "phone": "PENDING"
+  }
+}

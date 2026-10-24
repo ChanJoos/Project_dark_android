@@ -1,0 +1,20 @@
+{
+  "path": "screen-magic-v204/meteor.png",
+  "width": 294,
+  "height": 235,
+  "columns": 4,
+  "durationsMs": [
+    90,
+    90,
+    120,
+    150,
+    90,
+    120,
+    60
+  ],
+  "pivotX": 151,
+  "pivotY": 173,
+  "scale": 1,
+  "blend": "NORMAL",
+  "atlasSha256": "47eb2fc87dbe94ffab2e8818f34eef147326f9d9cd4c0e78aa030ca1a3e8ba31"
+}

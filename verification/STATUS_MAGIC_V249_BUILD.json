@@ -1,0 +1,103 @@
+{
+  "sourceCommit": "4311a11ca096023b5fab6fb952d4ce9bdfca6233",
+  "runId": "39911143492",
+  "builtAtKST": "2026-10-23T15:27:48.030765+09:00",
+  "apkSha256": "c8dbf7e60a204f5432a17fee36171e09a98e37c9a2822eff59c0c790545b4625",
+  "apkBytes": 106342117,
+  "identity": {
+    "sourceCommit": "4311a11ca096023b5fab6fb952d4ce9bdfca6233",
+    "runId": "39911143492",
+    "versionCode": 184,
+    "versionName": "1.84-mobile-horror"
+  },
+  "scope": "V249 status repairs; final11feature/source-description tests plus29 unchanged adjacent tests reused via strict source guard; allskill audit; phone pending",
+  "status": [
+    "IMPLEMENTED",
+    "BUILD_VERIFIED",
+    "SCOPED_HOST_NATIVE_VERIFIED"
+  ],
+  "branch": "codex/rucesion-coast-v157",
+  "pr": 197,
+  "mainSha": "41fe6def5120b6c33b58f609e52fbaf2ead700ee",
+  "runUrl": "https://github.com/ChanJoos/Project_dark_android/actions/runs/39911143492",
+  "jobId": 120274194411,
+  "artifactId": 12483535278,
+  "artifactZipSha256": "8d0d980e4feffb42d5880c54ea4e3cb258cd6bd893981d2cb57d79c45602efba",
+  "artifactZipBytes": 124906874,
+  "apkFilename": "PROJECT_DARK_V249_TEST.apk",
+  "applicationId": "com.projectdark.mobile.v249test",
+  "label": "PROJECT DARK V249 TEST",
+  "manifestVersionCode": 184,
+  "manifestVersionName": "1.84-mobile-horror",
+  "checks": [
+    {
+      "name": "com.projectdark.mobile.StatusMagicV249Test",
+      "tests": "10",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    },
+    {
+      "name": "com.projectdark.mobile.MageSourcesV235Test",
+      "tests": "1",
+      "failures": "0",
+      "errors": "0",
+      "skipped": "0"
+    }
+  ],
+  "newNativePassed": 11,
+  "reusedAdjacentPassed": 29,
+  "reuseSource": "8f321f5d35711c8f77acbb3b821786caff2fca26",
+  "reuseRunId": "39909943836",
+  "reuseGuard": "CI asserts exact production delta is only sleep anchor +46 -> -8; all10 feature tests rerun. Separate54-icon description test rerun.",
+  "packagedSkillFilesByteEqual": 727,
+  "archiveCrc": "PASS",
+  "embeddedSourceAndRun": "PASS",
+  "signature": {
+    "scheme": "APK v2",
+    "algorithm": "RSA PKCS1 SHA256",
+    "ciApksigner": "PASS",
+    "independentSignaturePublicKeyAndWholeContentDigest": "PASS",
+    "certificateSha256": "04befc5fcd2954279c9ea54668c18aa56426275a71d8c8652db09167fed6016f"
+  },
+  "visualReview": {
+    "sourceSequenceGrid": "Reviewed complete heal, reinforcement, confusion frames",
+    "nativeCapturesReviewed": 13,
+    "sleepBounds": "Every frame at actor heights16/46/90 above body top PASS",
+    "caveat": "Death underground capture switches state/actors but helper does not enterPoteField, leaving Milles background. Confirms death-species head glyph rendering only, NOT complete Death underground scene visual verification."
+  },
+  "catalogAudit": {
+    "rows": 225,
+    "unsupportedServiceSkills": 15,
+    "unsupportedPrototypeFixtures": 3,
+    "scope": "Static registry reachability, not all skills runtime/original appearance accepted",
+    "canonicalCatalogRows": 222,
+    "undefinedCanonicalAbilities": 0,
+    "undefinedCanonicalRules": 0,
+    "retiredCanonicalSkills": 6,
+    "humanReport": "docs/V249_SKILL_AUDIT_KO.md",
+    "nativeReport": "verification/STATUS_MAGIC_V249_SKILL_AUDIT.json"
+  },
+  "limitations": [
+    "Physical phone and user visual acceptance PENDING",
+    "Venomi green original particles adapted; exact original Korean poison appearance unverified",
+    "15 service skills and retained capture/project fallback FX gaps remain",
+    "Candidate PR197 is unmerged; main integration full gate not run"
+  ],
+  "savedDeliverable": {
+    "libraryFileId": "libfile_86832f4fd644819196ad343cfe5511e2",
+    "filename": "PROJECT_DARK_V249_TEST.apk"
+  },
+  "independentRecheck": {
+    "apkSha256": "c8dbf7e60a204f5432a17fee36171e09a98e37c9a2822eff59c0c790545b4625",
+    "zipCrc": "PASS",
+    "embeddedSourceAndRun": "PASS",
+    "binaryManifestPackageAndLabel": "PASS",
+    "apkV2SignatureCertificatePublicKeyAndChunkDigest": "PASS",
+    "packagedSourceByteMatches": 754,
+    "skillPresentationFiles": 727,
+    "townFiles": 26,
+    "npcProfiles": 1,
+    "savedFileMetadataMatchesLibraryId": true
+  }
+}

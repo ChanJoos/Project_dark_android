@@ -31,7 +31,16 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(31,c.entries().size());assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
+    assertEquals(41,c.entries().keySet().stream().filter(id->!id.startsWith("HORROR_")&&!id.startsWith("MINE_")&&!id.startsWith("DEATH_")).count());
+    java.util.Set<String> expectedDeath=new java.util.HashSet<>(),actualDeath=new java.util.HashSet<>();
+    for(int type=0;type<4;type++){String id=DeathVillageMonsters.species(type);expectedDeath.add(id);AbelCombatProfile p=DeathVillageMonsters.profile(id);assertNotNull(p);assertNotNull(c.find(id));assertEquals(p.exp,c.find(id).exp);assertEquals(p.gold,c.find(id).gold);}
+    for(String id:c.entries().keySet())if(id.startsWith("DEATH_"))actualDeath.add(id);
+    assertEquals(expectedDeath,actualDeath);
+    assertEquals(MineHuntMonsters.COUNT,c.entries().keySet().stream().filter(id->id.startsWith("MINE_")).count());for(AbelCombatProfile p:MineHuntMonsters.all()){assertEquals(p.exp,c.find(p.id).exp);assertEquals(p.gold,c.find(p.id).gold);}
+    java.util.Set<String> expectedHorror=new java.util.HashSet<>(),actualHorror=new java.util.HashSet<>();
+    for(int type=0;type<10;type++)for(int element=0;element<4;element++){String id=String.format(java.util.Locale.ROOT,"HORROR_%02d_%d",type,element);expectedHorror.add(id);assertEquals(HorrorCastleMonsters.EXP[type],c.find(id).exp);assertEquals(0,c.find(id).gold);}
+    for(String id:c.entries().keySet())if(id.startsWith("HORROR_"))actualHorror.add(id);
+    assertEquals(expectedHorror,actualHorror);assertEquals(40000,c.find("POTE_SPIRIT").exp);assertEquals(Integer.valueOf(308950),new CanonicalMonsterRewardCatalog().find("POTE_SPIRIT").exp);
     java.util.Set<String> coast=new java.util.HashSet<>();
     for(String id:c.entries().keySet())if(id.startsWith("ABEL_")||id.startsWith("ADAPTED_COAST_"))coast.add(id);
     assertEquals(new java.util.HashSet<>(AbelCoastMonsters.ALL),coast);
@@ -76,7 +85,7 @@ public final class AdaptedCampaignRewardTest {
     assertEquals(Integer.valueOf(3),r.normalLevel());
     assertTrue(r.chooseInitialJob("MARTIAL_ARTIST"));
     assertEquals("MARTIAL_ARTIST",r.currentJobCode());
-    assertEquals("IT_B_JOB_MONK_GI",r.equipment().get(RpgProgressionState.ARMOR_SLOT));
+    assertTrue(r.inventory().containsKey(RpgProgressionState.canonicalItemId("IT_B_JOB_MONK_GI")));
     assertFalse(r.chooseInitialJob("MAGE"));
   }
   @Test public void firstJobChoiceSurvivesRestartWithoutRegranting(){
@@ -95,9 +104,18 @@ public final class AdaptedCampaignRewardTest {
     assertFalse(state.blocked(counselor.x,counselor.y));
     assertNotNull(state.nearestMonsterTileCenter(counselor.x,counselor.y));
   }
-  @Test public void eachInitialJobGetsItsOwnWearableAndUsableWeaponPolicy(){
+  @Test public void eachInitialJobOwnsOriginalGearAndAutoEquipsOnlyWhenOriginalConditionsAllow(){
     String[][] expected={{"WARRIOR","IT_B_JOB_WARRIOR_TUNIC","IT_B_JOB_WARRIOR_WEAPON"},{"ROGUE","IT_B_JOB_ROGUE_GARMENT","IT_B_JOB_ROGUE_WEAPON"},{"MAGE","IT_B_JOB_MAGE_ROBE","IT_B_JOB_MAGE_WAND"},{"CLERIC","IT_B_JOB_CLERIC_ROBE","IT_B_JOB_CLERIC_WAND"},{"MARTIAL_ARTIST","IT_B_JOB_MONK_GI",null}};
-    for(String[] row:expected){RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(22800,0);assertTrue(r.chooseInitialJob(row[0]));String armor=r.equipment().get(RpgProgressionState.ARMOR_SLOT);assertEquals(row[1],armor);assertTrue(r.itemDefinitions().get(armor).allowedJobCodes.contains(row[0]));if(row[2]==null)assertFalse(r.equipment().containsKey(RpgProgressionState.WEAPON_SLOT));else{assertEquals(row[2],r.equipment().get(RpgProgressionState.WEAPON_SLOT));assertTrue(r.itemDefinitions().get(row[2]).allowedJobCodes.contains(row[0]));}}
+    for(String[] row:expected){
+      RpgProgressionState r=new RpgProgressionState();r.grantAdaptedReward(22800,0);java.util.Map<String,String> before=new java.util.LinkedHashMap<>(r.equipment());assertTrue(r.chooseInitialJob(row[0]));
+      for(int i=1;i<=2;i++){
+        String slot=i==1?RpgProgressionState.ARMOR_SLOT:RpgProgressionState.WEAPON_SLOT;
+        if(row[i]==null){assertFalse(r.equipment().containsKey(slot));continue;}
+        String canonical=RpgProgressionState.canonicalItemId(row[i]);assertTrue(row[0]+" owns "+canonical,r.inventory().getOrDefault(canonical,0)>0);assertFalse(r.inventory().containsKey(row[i]));
+        if(r.currentRequirements(canonical)==RpgProgressionState.RequirementResult.MET)assertEquals(canonical,r.equipment().get(slot));
+        else assertEquals("unmet original conditions must not auto-equip "+canonical,before.get(slot),r.equipment().get(slot));
+      }
+    }
   }
   private RuntimeState.Monster find(RuntimeState r,String id){for(RuntimeState.Monster m:r.monsters())if(id.equals(m.id))return m;throw new AssertionError(id);}
 }

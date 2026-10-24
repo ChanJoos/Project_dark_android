@@ -1,0 +1,449 @@
+[
+  {
+    "name": "밀레스레더튜닉",
+    "appearanceId": "mu0000066",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 1,
+    "itemId": "USER_ITEM_20261018_R04102",
+    "historicalArticleStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "currentUserMasterStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "루어스레더튜닉",
+    "appearanceId": "mu0000065",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 1,
+    "itemId": "USER_ITEM_20261018_R04926",
+    "historicalArticleStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "currentUserMasterStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "뤼케시온레더튜닉",
+    "appearanceId": "mu0000064",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 1,
+    "itemId": "USER_ITEM_20261018_R04665",
+    "historicalArticleStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "currentUserMasterStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "수오미레더튜닉",
+    "appearanceId": "mu0000063",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 1,
+    "itemId": "USER_ITEM_20261018_R03255",
+    "historicalArticleStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "currentUserMasterStats": {
+      "AC": -11,
+      "requiredLevel": 1,
+      "weight": 4
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "밀레스지폰",
+    "appearanceId": "mu0000044",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 2,
+    "itemId": "USER_ITEM_20261018_R04002",
+    "historicalArticleStats": {
+      "AC": -19,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "currentUserMasterStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "루어스지폰",
+    "appearanceId": "mu0000046",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 2,
+    "itemId": "USER_ITEM_20261018_R04825",
+    "historicalArticleStats": {
+      "AC": -19,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "currentUserMasterStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "뤼케시온지폰",
+    "appearanceId": "mu0000045",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 2,
+    "itemId": "USER_ITEM_20261018_R04564",
+    "historicalArticleStats": {
+      "AC": -19,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "currentUserMasterStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "수오미지폰",
+    "appearanceId": "mu0000043",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 2,
+    "itemId": "USER_ITEM_20261018_R03154",
+    "historicalArticleStats": {
+      "AC": -19,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "currentUserMasterStats": {
+      "AC": -17,
+      "requiredLevel": 11,
+      "weight": 7
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "밀레스하프플레이트",
+    "appearanceId": "mu0000084",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 3,
+    "itemId": "USER_ITEM_20261018_R03921",
+    "historicalArticleStats": {
+      "AC": -26,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "currentUserMasterStats": {
+      "AC": -24,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "루어스하프플레이트",
+    "appearanceId": "mu0000085",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 3,
+    "itemId": "USER_ITEM_20261018_R04744",
+    "historicalArticleStats": {
+      "AC": -26,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "currentUserMasterStats": {
+      "AC": -24,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "뤼케시온하프플레이트",
+    "appearanceId": "mu0000083",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 3,
+    "itemId": "USER_ITEM_20261018_R04483",
+    "historicalArticleStats": {
+      "AC": -26,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "currentUserMasterStats": {
+      "AC": -24,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "수오미하프플레이트",
+    "appearanceId": "mu0000086",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 3,
+    "itemId": "USER_ITEM_20261018_R03073",
+    "historicalArticleStats": {
+      "AC": -26,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "currentUserMasterStats": {
+      "AC": -24,
+      "requiredLevel": 26,
+      "weight": 10
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "밀레스체인메일",
+    "appearanceId": "mu0000146",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 4,
+    "itemId": "USER_ITEM_20261018_R03992",
+    "historicalArticleStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "currentUserMasterStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "루어스체인메일",
+    "appearanceId": "mu0000145",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 4,
+    "itemId": "USER_ITEM_20261018_R04815",
+    "historicalArticleStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "currentUserMasterStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "뤼케시온체인메일",
+    "appearanceId": "mu0000144",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 4,
+    "itemId": "USER_ITEM_20261018_R04554",
+    "historicalArticleStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "currentUserMasterStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "수오미체인메일",
+    "appearanceId": "mu0000143",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 4,
+    "itemId": "USER_ITEM_20261018_R03144",
+    "historicalArticleStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "currentUserMasterStats": {
+      "AC": -36,
+      "requiredLevel": 56,
+      "weight": 16
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "밀레스풀플레이트",
+    "appearanceId": "mu0000126",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 5,
+    "itemId": "USER_ITEM_20261018_R03936",
+    "historicalArticleStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "currentUserMasterStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "루어스풀플레이트",
+    "appearanceId": "mu0000125",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 5,
+    "itemId": "USER_ITEM_20261018_R04759",
+    "historicalArticleStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "currentUserMasterStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "뤼케시온풀플레이트",
+    "appearanceId": "mu0000124",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 5,
+    "itemId": "USER_ITEM_20261018_R04498",
+    "historicalArticleStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "currentUserMasterStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "수오미풀플레이트",
+    "appearanceId": "mu0000123",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_FOUR_TOWNS",
+    "sourceTierRow": 5,
+    "itemId": "USER_ITEM_20261018_R03088",
+    "historicalArticleStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "currentUserMasterStats": {
+      "AC": -49,
+      "requiredLevel": 86,
+      "weight": 22
+    },
+    "statPolicy": "PRESERVE_CURRENT_USER_MASTER_RECORD_HISTORICAL_DIFFERENCE"
+  },
+  {
+    "name": "레더튜닉",
+    "appearanceId": "mu0000002",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_ORANGE_TOWN",
+    "itemId": "USER_ITEM_20261018_R05124"
+  },
+  {
+    "name": "하프플레이트",
+    "appearanceId": "mu0000012",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_ORANGE_TOWN",
+    "itemId": "USER_ITEM_20261018_R01529"
+  },
+  {
+    "name": "이프리트메일",
+    "appearanceId": "mu0000028",
+    "type": "armor",
+    "articleId": 291457,
+    "source": "291457/source_00.png",
+    "sourceSection": "MALE_ORANGE_TOWN",
+    "itemId": "USER_ITEM_20261018_R02378"
+  }
+]
