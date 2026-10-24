@@ -1,17 +1,17 @@
 {
-  "stage": 5,
+  "stage": 1,
   "commands": [
     {
-      "action": "tap",
+      "op": "tap",
       "x": 1664,
       "y": 190
     },
     {
-      "action": "wait",
+      "op": "wait",
       "seconds": 35
     },
     {
-      "action": "snapshot"
+      "op": "snapshot"
     }
   ]
 }
