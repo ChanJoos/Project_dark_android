@@ -1,3 +1,11 @@
+## V266 main 통합 완료 · 자동 회귀 미해결 항목 분리 (2026-10-24 KST)
+
+PR197 실제 병합 완료: merge `e839aa58512450f92ab5552734e6dd75b7dd7351`, branch head `85b3a3269afece0522665a223809912b3749ac74`, 이전 main41fe6def. 사용자 “지금 기준에서 모두 통과야. Main통합해”를 현재 V266 사용자 보고 실기기 수동 수용 기준으로 기록했다. 승인 APK7a4310b8/SHA2564c07f7b1180bbc509f813054111c3ce4beb16f6dc72d00e45c88ff82aa6d0f39와 병합소스의 app/src/main·app/build.gradle 차이0을 GitHub compare로 확인했다.
+
+**자동 전체 회귀는 실패 상태다.** Actions40058587879/job120767058364:45묶음 중32통과/13실패(9,10,11,12,13,14,15,17,18,23,30,33,44). 예전 UI좌표·목록수·계약 가정과 전투/성장 시나리오 실패가 혼재하며, 개별 원인 확정은 미완료다. 단계 진행을 통과로 표현했던 중간 보고는 전체 결과로 정정한다. Director가 사용자 수동 수용 기준과 명시적 main통합 지시로 병합했으며, 사용자가 CI실패를 별도 면제했다고 기록하지 않는다. 게임을 추가 수정하거나 실패를 통과로 바꾸지 않았다.
+
+현재 판정: IMPLEMENTED / BUILD_VERIFIED(V26640045415341) / FEATURE_HOST17_VERIFIED / USER_DEVICE_ACCEPTED / MAIN_MERGED / FULL_AUTOMATED_REGRESSION_FAILED. 다음 작업은13실패묶음 진단·수정·재검증. [병합 및 실패 영수증](../verification/V266_MAIN_INTEGRATION.json), [실제 PR](https://github.com/ChanJoos/Project_dark_android/pull/197). 이전 PHONE_PENDING·MAIN_PENDING 기록은 역사이며 이 최신 상태가 우선한다.
+
 ## V266 사용자 실기기 전체 통과 · main 통합 진행 (2026-10-24 KST)
 
 사용자 확인: “지금 기준에서 모두 통과야. Main통합해”. V266 APK source `7a4310b8538338f17244d7a6d7d63839e214f4dd`, SHA256 `4c07f7b1180bbc509f813054111c3ce4beb16f6dc72d00e45c88ff82aa6d0f39`의 현재 동작/외형 USER_DEVICE_ACCEPTED. 직전 확인목록의 밀집사냥 공격방향, 버튼 조작, 소비탭/리콜/목걸이 표시를 모두 통과한 사용자 보고로 기록하며 자동화 실기기 검증으로 표기하지 않는다. 이전 V264/V265/V266의 PHONE_PENDING은 이 현재 승인으로 해소; 과거 실패 이력은 보존한다.
