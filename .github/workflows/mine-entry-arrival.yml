@@ -34,6 +34,7 @@ jobs:
           --tests '*RogueCombatV234Test.shuriken*'
           --tests '*RequestedWeaponLoadoutTest'
           --tests '*RequestedOutfitPreviewTest'
+          --tests '*FilmingProfileExportTest'
           --stacktrace
       - name: Build exact candidate
         run: |
@@ -70,4 +71,10 @@ jobs:
           name: PROJECT_DARK_MINE_ENTRY_CANDIDATE
           retention-days: 7
           path: delivery/
+          if-no-files-found: error
+      - uses: actions/upload-artifact@v4
+        with:
+          name: DEDICATED_FILMING_PROFILES
+          retention-days: 7
+          path: app/build/reports/horror-v179/filming-profiles/
           if-no-files-found: error
