@@ -1,5 +1,5 @@
 {
-  "stage": 9,
+  "stage": 10,
   "commands": [
     {
       "op": "wait",
@@ -7,21 +7,24 @@
     },
     {
       "op": "tap",
-      "x": 1070,
-      "y": 730
+      "x": 896,
+      "y": 50
     },
     {
       "op": "wait",
-      "seconds": 5
+      "seconds": 20
+    },
+    {
+      "op": "snapshot"
     },
     {
       "op": "tap",
-      "x": 620,
-      "y": 790
+      "x": 1628,
+      "y": 750
     },
     {
       "op": "wait",
-      "seconds": 7
+      "seconds": 6
     },
     {
       "op": "snapshot"
