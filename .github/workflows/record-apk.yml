@@ -117,9 +117,14 @@ jobs:
               assert all(p[k]==1000000 for k in ('currentHp','maxHp','currentMp','maxMp'))
               assert p['auto'] is False
           PYVERIFY
-          tar -C profiles/ROGUE -cf rogue-profile.tar shared_prefs
+          # Resume only untouched checkpoints from this authorized filming session.
+          mkdir -p checkpoints/MAGE checkpoints/ROGUE
+          gh api repos/$GH_REPO/actions/artifacts/12553952273/zip > mage-checkpoint.zip
+          gh api repos/$GH_REPO/actions/artifacts/12554095563/zip > rogue-checkpoint.zip
+          unzip -q mage-checkpoint.zip -d checkpoints/MAGE
+          unzip -q rogue-checkpoint.zip -d checkpoints/ROGUE
           adb shell am force-stop "$PKG"
-          adb exec-in run-as "$PKG" tar -xf - < rogue-profile.tar
+          adb exec-in run-as "$PKG" tar -xf - < checkpoints/MAGE/test-profile-readonly.tar
           adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity"
           sleep 5
           adb shell pidof "$PKG" | tee evidence/pid-before.txt
@@ -170,13 +175,13 @@ jobs:
               raise SystemExit(0)
           commands=control.get('commands',[])
           assert isinstance(commands,list) and len(commands)<=80
-          allowed={'tap','swipe','wait','snapshot','launch','reset_test_profile','load_filming_profile'}
+          allowed={'tap','swipe','wait','snapshot','launch','reset_test_profile','load_filming_profile','load_checkpoint'}
           for c in commands:
               assert isinstance(c,dict) and c.get('op') in allowed
               for k in ('x','y','x2','y2'):
                   if k in c:assert type(c[k]) is int and 0<=c[k]<=1920
               if 'seconds' in c:assert isinstance(c['seconds'],(int,float)) and 0<=c['seconds']<=90
-              if c.get('op')=='load_filming_profile':assert c.get('job') in ('ROGUE','MAGE')
+              if c.get('op') in ('load_filming_profile','load_checkpoint'):assert c.get('job') in ('ROGUE','MAGE')
               if 'ms' in c:assert type(c['ms']) is int and 100<=c['ms']<=10000
           snap('start')
           video=f'/sdcard/stage-{stage:02d}.mp4'
@@ -192,6 +197,13 @@ jobs:
                   elif op=='wait':time.sleep(c.get('seconds',1))
                   elif op=='snapshot':snap(f'checkpoint-{index:02d}')
                   elif op=='launch':adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
+                  elif op=='load_checkpoint':
+                      job=c['job']
+                      adb('shell','am','force-stop',pkg)
+                      adb('shell','pm','clear',pkg)
+                      packed=pathlib.Path('checkpoints/'+job+'/test-profile-readonly.tar').read_bytes()
+                      subprocess.run(['adb','exec-in','run-as',pkg,'tar','-xf','-'],input=packed,check=True)
+                      adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
                   elif op=='load_filming_profile':
                       job=c['job']
                       adb('shell','am','force-stop',pkg)
