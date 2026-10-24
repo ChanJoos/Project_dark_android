@@ -10,6 +10,9 @@ final class CompanionWindow {
     SELECT_SELF,
     WARRIOR,
     PRIEST,
+    ROGUE,
+    MAGE,
+    MONK,
     DISMISS,
     FOLLOW,
     FOCUS,
@@ -27,6 +30,9 @@ final class CompanionWindow {
   void drawHud(Canvas c, RuntimeState s) {
     RectF r = hud();
     UiTheme.surface(c, r, 0xe5101722, 0x88607485, 5);
+    buttonCompact(c, 260, 230, "도적 동료");
+    buttonCompact(c, 414, 230, "마법사 동료");
+    buttonCompact(c, 568, 230, "무도가 동료");
     CompanionParty.Member m = s.party().active();
     UiTheme.text(
         c,
@@ -87,6 +93,9 @@ final class CompanionWindow {
     button(c, 260, 185, "전사 동료");
     button(c, 414, 185, "성직자 동료");
     button(c, 568, 185, s.party().testing() ? "동행 해제" : "마을 대기");
+    buttonCompact(c, 260, 230, "도적 동료");
+    buttonCompact(c, 414, 230, "마법사 동료");
+    buttonCompact(c, 568, 230, "무도가 동료");
     CompanionParty.Member m = s.party().active();
     UiTheme.text(
         c,
@@ -94,7 +103,7 @@ final class CompanionWindow {
             ? "동행 중인 동료가 없습니다"
             : m.name + " · HP " + m.body.hp + " / " + m.body.maxHp + " · MP " + m.body.mp,
         260,
-        245,
+        379,
         10,
         UiTheme.TEXT,
         false);
@@ -113,6 +122,11 @@ final class CompanionWindow {
     UiTheme.center(c, label, x + 66, y + 24, 10, UiTheme.TEXT, true);
   }
 
+  private void buttonCompact(Canvas c, float x, float y, String label) {
+    UiTheme.surface(c, new RectF(x, y, x + 132, y + 27), 0xff273340, UiTheme.LINE, 4);
+    UiTheme.center(c, label, x + 66, y + 18, 10, UiTheme.TEXT, true);
+  }
+
   Command touch(float x, float y, float offset) {
     if (!open) {
       if (hud().contains(x, y)) {
@@ -128,6 +142,8 @@ final class CompanionWindow {
     }
     int row = y >= 185 && y <= 224 ? 0 : y >= 262 && y <= 301 ? 1 : y >= 322 && y <= 361 ? 2 : -1;
     int col = x >= 260 && x <= 392 ? 0 : x >= 414 && x <= 546 ? 1 : x >= 568 && x <= 700 ? 2 : -1;
+    if (y >= 230 && y <= 257 && col >= 0)
+      return new Command[] {Command.ROGUE, Command.MAGE, Command.MONK}[col];
     if (row < 0 || col < 0) return Command.NONE;
     Command[][] commands = {
       {Command.WARRIOR, Command.PRIEST, Command.DISMISS},

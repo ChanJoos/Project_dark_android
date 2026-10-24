@@ -21,6 +21,8 @@ final class SkillAbilityExecutor {
   SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);if(a==null||!actor.equals(actorId))return null;
   if(!a.supported())return CombatResolver.RejectReason.CONTROL;
   RuntimeState.Player p=actor();
+  // Player-only movement services have no companion navigation adapter; never move the player for them.
+  if(!actorId.equals("player")&&(a.status.equals("LEAP")||MartialSourceV228.ADVANCE.equals(id)))return CombatResolver.RejectReason.CONTROL;
   if(a.status.equals("TRANSFER"))return CombatResolver.RejectReason.TARGET_DEAD;
   if(a.status.equals("LEAP")&&MartialSkillPolicy.landings(state,target,movement).isEmpty())return CombatResolver.RejectReason.RANGE;
   if(MartialSourceV228.ADVANCE.equals(id)){
@@ -72,7 +74,7 @@ final class SkillAbilityExecutor {
   }else if(kind.startsWith("HIT")){putStrong(target,id,"HIT",Integer.parseInt(kind.substring(3)),duration);
   }else if(kind.startsWith("DAM")){putStrong(target,id,"DAM",Integer.parseInt(kind.substring(3)),duration);
   }else switch(kind){
-   case "STEALTH":fx.put(target,id,kind,1,duration);if(self)for(RuntimeState.Monster monster:state.monsters()){state.cancelMonsterAttack(monster);monster.provoked=false;}break;
+   case "STEALTH":fx.put(target,id,kind,1,duration);if(self)for(RuntimeState.Monster monster:state.monsters())if(actorId.equals("player")||actorId.equals(monster.attackTarget)){state.cancelMonsterAttack(monster);if(actorId.equals("player"))monster.provoked=false;else monster.attackTarget="player";}break;
    case "DRAGON":case "PHOENIX":
     boolean active=fx.has(target,kind);fx.remove(target,"DRAGON");fx.remove(target,"PHOENIX");if(!active)fx.put(target,id,kind,kind.equals("DRAGON")?4:8,duration);break;
    case "POISON":fx.put(target,id,kind,Math.max(1,(stats().intel+a.circle*2)/3),duration);break;

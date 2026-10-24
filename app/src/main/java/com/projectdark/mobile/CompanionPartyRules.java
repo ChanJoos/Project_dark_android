@@ -7,15 +7,15 @@ final class CompanionPartyRules {
   static boolean allySupport(String id) {
     SkillAbilityCatalog.Ability a = SkillAbilityCatalog.get(id);
     if (a == null) return false;
-    return a.heal()
-        || a.job.equals("성직자")
-            && (a.status.startsWith("CLEAR_") && !a.status.equals("CLEAR_ALL")
-                || a.status.startsWith("ARMOR")
-                || a.status.startsWith("HIT")
-                || a.status.startsWith("DAM")
-                || a.status.equals("PROTECT")
-                || a.status.equals("REGEN")
-                || a.status.equals("BLESS_ALL"));
+    return a.job.equals("성직자")
+        && (a.heal()
+            || a.status.startsWith("CLEAR_") && !a.status.equals("CLEAR_ALL")
+            || a.status.startsWith("ARMOR")
+            || a.status.startsWith("HIT")
+            || a.status.startsWith("DAM")
+            || a.status.equals("PROTECT")
+            || a.status.equals("REGEN")
+            || a.status.equals("BLESS_ALL"));
   }
 
   static String heal(CompanionParty.Member healer, RuntimeState.Player target) {

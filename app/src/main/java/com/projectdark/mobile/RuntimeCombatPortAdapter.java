@@ -39,7 +39,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   String frontTarget(String id){return MartialSkillPolicy.frontTarget(state,id,facing(),this::visible);}
   public String takeSkillNotice(){return abilities.takeNotice();}
   public CombatResolver.RejectReason actionReady(String actor,String target,String id,boolean begin){
-    if(!friendly(actor)&&"player".equals(target)&&(state.skillEffects().hidden()||state.skillEffects().has(actor,"AGGRO_RESET")&&!state.skillEffects().has(actor,"TAUNT")))return CombatResolver.RejectReason.CONTROL;
+    if(!friendly(actor)&&friendly(target)&&(state.skillEffects().has(target,"STEALTH")||state.skillEffects().has(actor,"AGGRO_RESET")&&!state.skillEffects().has(actor,"TAUNT")))return CombatResolver.RejectReason.CONTROL;
     if("player".equals(actor)&&RogueSkillPolicy.sense(id)&&!RogueSkillPolicy.valid(state,target,facing(),this::visible))return CombatResolver.RejectReason.RANGE;
     if("player".equals(actor)&&RogueSkillPolicy.ray(id)&&!RogueSkillPolicy.validRay(state,id,target,facing(),this::visible))return CombatResolver.RejectReason.RANGE;
     if(begin&&"player".equals(actor)&&MagicTimingPolicy.managed(id)&&spellIntervalRemaining>0)return CombatResolver.RejectReason.ACTION_BUSY;
@@ -53,6 +53,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(state.party().find(actor)!=null&&id.startsWith("attack_proto_")&&state.party().holdAttack(actor,target))return CombatResolver.RejectReason.CONTROL;
     if(a!=null&&friendly(actor)){
       if(a.damage()&&friendly(target)&&!(actor.equals(target)&&SkillActionContract.get(id)!=null&&SkillActionContract.get(id).selfAnchored())||!a.damage()&&!friendly(target)&&a.heal())return CombatResolver.RejectReason.CONTROL;
+      if(a.heal()&&!CompanionPartyRules.allySupport(id)&&!actor.equals(target))return CombatResolver.RejectReason.CONTROL;
       if(CompanionPartyRules.allySupport(id)&&!friendly(target))return CombatResolver.RejectReason.CONTROL;
       if(!a.damage()&&!a.heal()&&!CompanionPartyRules.allySupport(id)&&friendly(target)&&!actor.equals(target))return CombatResolver.RejectReason.CONTROL;
       if(state.party().find(actor)!=null&&a.damage()&&state.party().holdAttack(actor,target))return CombatResolver.RejectReason.CONTROL;
@@ -78,11 +79,11 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private final Map<String,Float> cooldowns=new HashMap<>();
   private float spellIntervalRemaining;
   private final Map<String,float[]> directions=new HashMap<>();
-  public void lockDirection(String actor,String target,String id){Position a=position(actor),t=position(target);if(MartialSkillPolicy.facingOnly(id)&&(playerFacing!=null||actor.equals(target)))directions.put(actor+":"+id,MartialSkillPolicy.step(facing()));else if(a!=null&&t!=null)directions.put(actor+":"+id,new float[]{t.x-a.x,t.y-a.y});}
+  public void lockDirection(String actor,String target,String id){Position a=position(actor),t=position(target);if("player".equals(actor)&&MartialSkillPolicy.facingOnly(id)&&(playerFacing!=null||actor.equals(target)))directions.put(actor+":"+id,MartialSkillPolicy.step(facing()));else if(a!=null&&t!=null)directions.put(actor+":"+id,new float[]{t.x-a.x,t.y-a.y});}
   private java.util.function.Predicate<String> visible=id->true;
   private java.util.function.IntSupplier basicHits=()->1;
   public void setBasicHits(java.util.function.IntSupplier hits){basicHits=hits;}
-  public int hitCount(String actor,String action){CompanionParty.Member companion=state.party().find(actor);if(companion!=null&&state.party().testing()&&action.startsWith("attack_proto_"))return companion.learned("SK_전사_005")?3:companion.learned("SK_전사_002")?2:1;return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(3,basicHits.getAsInt())):1;}
+  public int hitCount(String actor,String action){CompanionParty.Member companion=state.party().find(actor);if(companion!=null&&action.startsWith("attack_proto_"))return companion.learned("SK_전사_005")||companion.learned("SK_도적_024")||companion.learned(MartialSourceV228.TRIPLE)?3:companion.learned("SK_전사_002")||companion.learned("SK_도적_008")||companion.learned("SK_무도가_005")?2:1;return "player".equals(actor)&&action.startsWith("attack_proto_")?Math.max(1,Math.min(3,basicHits.getAsInt())):1;}
   public int contactHitCount(String actor,String target,String action,int initial){return "player".equals(actor)&&MartialSourceV228.MUYEONG.equals(action)?Math.max(1,recipients(actor,target,action).size()):initial;}
   public float hitSpacing(String actor,String action){return "player".equals(actor)&&action.startsWith("attack_proto_")?0f:BasicAttackTiming.HIT_SPACING;}
   public void setVisible(java.util.function.Predicate<String> visible){this.visible=visible;}
@@ -94,7 +95,14 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(a==null||t==null)return out;
     if(CompanionPartyRules.allySupport(action)&&r.pattern!=SkillActionContract.Pattern.GROUP)return friendly(target)&&distance(actor,target)<=192&&hasLineOfSight(actor,target)?java.util.Collections.singletonList(target):out;
     if(MartialSkillPolicy.leap(action))return targetAlive(target)?java.util.Collections.singletonList(target):out;
-    if(RogueSkillPolicy.ray(action))return RogueSkillPolicy.validRay(state,action,target,facing(),this::visible)?java.util.Collections.singletonList(target):out;
+    if(RogueSkillPolicy.ray(action)) {
+      if("player".equals(actor)) return RogueSkillPolicy.validRay(state,action,target,facing(),this::visible)?java.util.Collections.singletonList(target):out;
+      float[] direction=MartialSkillPolicy.step(state.party().find(actor).facing);
+      String first=null;
+      for(int n=1;n<=RogueSkillPolicy.reach(action)&&first==null;n++) for(RuntimeState.Monster m:state.monsters())
+        if(m.alive&&visible(m.id)&&MartialSkillPolicy.same(a.x+direction[0]*n,a.y+direction[1]*n,m.x,m.y)) {first=m.id;break;}
+      return target.equals(first)?java.util.Collections.singletonList(target):out;
+    }
     if(r.pattern==SkillActionContract.Pattern.SINGLE)return visible(target)&&SkillActionContract.canStart(r,a.x,a.y,t.x,t.y,true)?java.util.Collections.singletonList(target):out;
     if(r.pattern==SkillActionContract.Pattern.ALLY||r.pattern==SkillActionContract.Pattern.GROUP){
       if(r.pattern==SkillActionContract.Pattern.GROUP){out.add("player");CompanionParty.Member m=state.party().active();if(m!=null&&m.body.alive&&distance(actor,m.id)<=192&&hasLineOfSight(actor,m.id))out.add(m.id);}
@@ -102,7 +110,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     }
     if(r.pattern==SkillActionContract.Pattern.SELF){out.add(actor);return out;}
     float tx=t.x,ty=t.y;float[] intent=directions.get(actor+":"+action);
-    if(intent==null&&MartialSourceV228.line(action)&&(playerFacing!=null||actor.equals(target)))intent=MartialSkillPolicy.step(facing());
+    if("player".equals(actor)&&intent==null&&MartialSourceV228.line(action)&&(playerFacing!=null||actor.equals(target)))intent=MartialSkillPolicy.step(facing());
     if(intent!=null&&(r.pattern==SkillActionContract.Pattern.FRONT||r.pattern==SkillActionContract.Pattern.FRONT_BACK)){tx=a.x+intent[0];ty=a.y+intent[1];}
     for(RuntimeState.Monster m:state.monsters())if(m.alive&&visible(m.id)&&SkillActionContract.includes(r,a.x,a.y,tx,ty,m.x,m.y,true)&&hasActionLineOfSight(actor,m.id,action))out.add(m.id);
     return out;
@@ -217,7 +225,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(playerActor&&basic){if(state.skillEffects().has(actorId,"BASIC_POWER")&&abilities.random.getAsDouble()<.3)amount=safeScale(amount,2);}
     SkillEffectState fx=state.skillEffects();
     // Reflection redirects the computed incoming hit once, before other immunity; never recurses.
-    if(!playerActor&&"player".equals(targetId)&&fx.has(targetId,"REFLECT_ALL")){
+    if(!playerActor&&friendly(targetId)&&fx.has(targetId,"REFLECT_ALL")){
       RuntimeState.Monster reflected=findMonster(actorId);if(reflected!=null&&amount>0)state.damage(reflected,amount);
       return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,CombatResolver.HitSemantic.STATUS);
     }
@@ -293,7 +301,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     return findMonster(targetId)==null?CombatResolver.DefeatedTargetKind.OTHER:CombatResolver.DefeatedTargetKind.MONSTER;
   }
 
-  private static String skillElement(SkillAbilityCatalog.Ability a){String n=a.name;if(a.formula.equals("METEOR")||a.formula.equals("HOLY_DRAGON"))return "DARK";if(n.contains("마레")||n.equals("마네나로")||n.equals("아이스블러스트"))return "WATER";if(n.contains("테라")||n.equals("퀘이크"))return "EARTH";if(n.contains("아듀")||n.equals("플레쉬스톰")||n.equals("무영신공"))return "WIND";if(n.contains("플라")&&!n.startsWith("프라")||n.equals("플레어"))return "FIRE";return "";}
+  static String skillElement(SkillAbilityCatalog.Ability a){String n=a.name;if(a.formula.equals("METEOR")||a.formula.equals("HOLY_DRAGON"))return "DARK";if(n.contains("마레")||n.equals("마네나로")||n.equals("아이스블러스트"))return "WATER";if(n.contains("테라")||n.equals("퀘이크"))return "EARTH";if(n.contains("아듀")||n.equals("플레쉬스톰")||n.equals("무영신공"))return "WIND";if(n.contains("플라")&&!n.startsWith("프라")||n.equals("플레어"))return "FIRE";return "";}
   private static int safeScale(int n,double scale){return (int)Math.min(Integer.MAX_VALUE,Math.max(0,Math.round(n*scale)));}
   private static String key(String actorId,String actionId){return String.valueOf(actorId)+'\u0000'+String.valueOf(actionId);}
   private static final class Position { final float x,y; Position(float x,float y){this.x=x;this.y=y;} }

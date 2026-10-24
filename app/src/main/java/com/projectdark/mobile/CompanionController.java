@@ -22,10 +22,21 @@ public final class CompanionController {
   private Object navIdentity;
   private final Map<Long, WorldMoveTargetController.TileCenter> cells = new HashMap<>();
   private float decisionClock;
+  private final EnumMap<CompanionParty.Job, CompanionAgent> agents =
+      new EnumMap<>(CompanionParty.Job.class);
+
+  CompanionAgent agent(CompanionParty.Job job) {
+    return agents.get(job);
+  }
 
   public CompanionController(RuntimeState s, RuntimeCombatSession session) {
     state = s;
     combat = session;
+    agents.put(CompanionParty.Job.WARRIOR, new WarriorCompanionAgent());
+    agents.put(CompanionParty.Job.PRIEST, new PriestCompanionAgent());
+    agents.put(CompanionParty.Job.ROGUE, new RogueCompanionAgent());
+    agents.put(CompanionParty.Job.MAGE, new MageCompanionAgent());
+    agents.put(CompanionParty.Job.MONK, new MonkCompanionAgent());
   }
 
   public void tick(float dt, Navigation nav, RuntimeState.Monster selected, boolean allowCombat) {
@@ -65,22 +76,10 @@ public final class CompanionController {
       return;
     }
     if (combat.companionBusy()) return;
+    CompanionAgentContext context = new CompanionAgentContext(state, combat, m, nav, this);
     if (m.order == CompanionParty.Order.WAIT) {
       m.notice = "대기";
-      if (allowCombat && m.job == CompanionParty.Job.PRIEST) {
-        support(m, nav);
-        return;
-      }
-      if (allowCombat)
-        for (RuntimeState.Monster enemy : state.monsters())
-          if (enemy.alive
-              && m.id.equals(enemy.attackTarget)
-              && CanonicalMeleeTileContract.reachable(m.body.x, m.body.y, enemy.x, enemy.y)
-              && !state.skillEffects().has(enemy.id, "SLEEP")
-              && !state.party().holdAttack(m.id, enemy.id)) {
-            use(m, enemy.id, RuntimeCombatSession.playerAttackActionId(0));
-            break;
-          }
+      if (allowCombat) agents.get(m.job).defend(context);
       return;
     }
     if (!allowCombat) {
@@ -88,156 +87,14 @@ public final class CompanionController {
       follow(m, nav);
       return;
     }
-    if (m.job == CompanionParty.Job.PRIEST && support(m, nav)) return;
     RuntimeState.Monster target = choose(m, selected);
-    if (target == null) {
-      m.notice = "동행";
-      follow(m, nav);
-      return;
-    }
-    m.target = target.id;
-    if (Math.hypot(target.x - state.player().x, target.y - state.player().y) > 224) {
+    if (target != null
+        && Math.hypot(target.x - state.player().x, target.y - state.player().y) > 224) {
       m.target = null;
-      m.notice = "추격 중단";
-      follow(m, nav);
-      return;
+      target = null;
     }
-    if (m.job == CompanionParty.Job.PRIEST) {
-      m.notice = "지원 대기";
-      follow(m, nav);
-      return;
-    }
-    if (state.party().holdAttack(m.id, target.id) || state.skillEffects().has(target.id, "SLEEP")) {
-      // A sleeping target is reserved for the strongest available warrior hit, never a stray basic
-      // attack.
-      if (state.skillEffects().has(target.id, "SLEEP")
-          && canBurst(m)
-          && !state.party().holdAttack(m.id, target.id)) {
-        if (use(m, target.id, burst(m))) {
-          state.party().reserve(m.id, target.id, burst(m), .7f);
-          return;
-        }
-      }
-      m.notice = "연계 대기";
-      return;
-    }
-    if (!CanonicalMeleeTileContract.reachable(m.body.x, m.body.y, target.x, target.y)
-        || !nav.sight(m.body.x, m.body.y, target.x, target.y)) {
-      m.notice = "접근";
-      step(m, nav, target.x, target.y, 1);
-      return;
-    }
-    m.facing = CanonicalActorFacing.quantize(target.x - m.body.x, target.y - m.body.y, m.facing);
-    if ("player".equals(target.attackTarget)
-        && m.body.hp > m.body.maxHp * .3f
-        && use(m, target.id, "SK_전사_012")) return;
-    if (m.body.hp <= m.body.maxHp * .02f && use(m, target.id, crash(m))) return;
-    if (m.body.hp < m.body.maxHp * .25f) {
-      m.notice = "회복 대기";
-      return;
-    }
-    boolean support =
-        state.skillEffects().has(m.id, "PROTECT")
-            || state.skillEffects().has(m.id, "PHYSICAL_GUARD")
-            || "CLERIC".equals(state.rpg().currentJobCode());
-    if (target.hp > m.stats().prototypePhysicalAttack() * 5
-        && support
-        && m.body.hp > m.body.maxHp * .8f
-        && use(m, target.id, soul(m))) return;
-    for (String id : new String[] {"SK_전사_006", "SK_전사_003", "SK_전사_001"})
-      if (use(m, target.id, id)) return;
-    use(m, target.id, RuntimeCombatSession.playerAttackActionId(0));
-  }
-
-  private boolean support(CompanionParty.Member m, Navigation nav) {
-    String[] allies = {"player", m.id};
-    String urgent = null;
-    float health = 1f;
-    for (String id : allies) {
-      RuntimeState.Player b = state.party().body(state, id);
-      if (b != null
-          && b.alive
-          && Math.hypot(b.x - m.body.x, b.y - m.body.y) <= 192
-          && nav.sight(m.body.x, m.body.y, b.x, b.y)) {
-        float ratio = b.hp / (float) b.maxHp;
-        if (ratio < health) {
-          health = ratio;
-          urgent = id;
-        }
-      }
-    }
-    if (urgent != null && health < .3f) {
-      RuntimeState.Player b = state.party().body(state, urgent);
-      if (!state.party().holdHeal(urgent) || health < .01f) {
-        String id = CompanionPartyRules.heal(m, b);
-        if (id != null && use(m, urgent, id)) return true;
-      }
-    }
-    for (String target : allies) {
-      RuntimeState.Player b = state.party().body(state, target);
-      if (b == null
-          || !b.alive
-          || Math.hypot(b.x - m.body.x, b.y - m.body.y) > 192
-          || !nav.sight(m.body.x, m.body.y, b.x, b.y)) continue;
-      String id = CompanionPartyRules.dispel(m, state.skillEffects(), target);
-      if (id != null && use(m, target, id)) return true;
-    }
-    if (urgent != null && health < .8f && !state.party().holdHeal(urgent)) {
-      String id = CompanionPartyRules.heal(m, state.party().body(state, urgent));
-      if (id != null && use(m, urgent, id)) return true;
-    }
-    boolean engaged = false;
-    for (RuntimeState.Monster enemy : state.monsters())
-      if (enemy.alive
-          && (enemy.provoked || enemy.attackPrimed || enemy.attackVisualRemaining > 0)
-          && Math.hypot(enemy.x - state.player().x, enemy.y - state.player().y) < 224)
-        engaged = true;
-    if (!engaged) return false;
-    for (String id : new String[] {"SK_성직자_029", "SK_성직자_034"}) {
-      SkillAbilityCatalog.Ability a = SkillAbilityCatalog.get(id);
-      if (m.learned(id) && !state.skillEffects().has(m.id, a.status) && use(m, m.id, id))
-        return true;
-    }
-    for (String target : allies) {
-      String id = CompanionPartyRules.protection(m, state.skillEffects(), target);
-      if (id != null && use(m, target, id)) return true;
-    }
-    return false;
-  }
-
-  private boolean use(CompanionParty.Member m, String target, String id) {
-    if (id == null || m.cooldown(id) > 0 || !id.startsWith("attack_proto_") && !m.learned(id))
-      return false;
-    if (combat.submitCompanion(target, id).accepted()) {
-      m.notice = SkillAbilityCatalog.get(id) == null ? "기본공격" : SkillAbilityCatalog.get(id).name;
-      m.actionClock = 0;
-      m.actionId = id;
-      return true;
-    }
-    return false;
-  }
-
-  private String crash(CompanionParty.Member m) {
-    return m.learned("SK_전사_023") ? "SK_전사_023" : "SK_전사_015";
-  }
-
-  private String soul(CompanionParty.Member m) {
-    return m.learned("SK_전사_022") ? "SK_전사_022" : "SK_전사_013";
-  }
-
-  private String burst(CompanionParty.Member m) {
-    return m.body.hp <= m.body.maxHp * .02f ? crash(m) : soul(m);
-  }
-
-  private boolean canBurst(CompanionParty.Member m) {
-    String id = burst(m);
-    return m.learned(id)
-        && m.cooldown(id) <= 0
-        && m.body.hp > 1
-        && (SkillAbilityCatalog.get(id).formula.equals("CRASH")
-            || m.body.hp > m.body.maxHp * .8f
-                && ("CLERIC".equals(state.rpg().currentJobCode())
-                    || state.skillEffects().has(m.id, "PROTECT")));
+    if (target != null) m.target = target.id;
+    agents.get(m.job).decide(context, target);
   }
 
   private RuntimeState.Monster choose(CompanionParty.Member m, RuntimeState.Monster selected) {
@@ -257,16 +114,45 @@ public final class CompanionController {
     return null;
   }
 
-  private void follow(CompanionParty.Member m, Navigation nav) {
+  void follow(CompanionParty.Member m, Navigation nav) {
     if (Math.hypot(m.body.x - state.player().x, m.body.y - state.player().y) > 48)
       step(m, nav, state.player().x, state.player().y, 1);
+  }
+
+  boolean retreat(CompanionParty.Member m, Navigation nav, RuntimeState.Monster target) {
+    if (m.order == CompanionParty.Order.WAIT || state.skillEffects().rooted(m.id)) return false;
+    float best = (float) Math.hypot(target.x - m.body.x, target.y - m.body.y);
+    WorldMoveTargetController.TileCenter chosen = null;
+    for (WorldMoveTargetController.Direction d : WorldMoveTargetController.Direction.values()) {
+      WorldMoveTargetController.TileCenter t = cells.get(key(m.body.x + d.dx, m.body.y + d.dy));
+      if (t == null
+          || Math.hypot(t.x - state.player().x, t.y - state.player().y) > 160
+          || !nav.stand(t.x, t.y)
+          || !nav.traverse(m.body.x, m.body.y, t.x, t.y)
+          || !nav.sight(t.x, t.y, target.x, target.y)) continue;
+      float distance = (float) Math.hypot(t.x - target.x, t.y - target.y);
+      if (distance > best) {
+        best = distance;
+        chosen = t;
+      }
+    }
+    if (chosen == null) return false;
+    m.fromX = m.body.x;
+    m.fromY = m.body.y;
+    m.body.x = chosen.x;
+    m.body.y = chosen.y;
+    m.facing = CanonicalActorFacing.quantize(m.body.x - m.fromX, m.body.y - m.fromY, m.facing);
+    m.moving = true;
+    m.moveClock = WorldMoveTargetController.TILE_STEP_SECONDS;
+    m.notice = "거리 확보";
+    return true;
   }
 
   private static long key(float x, float y) {
     return ((long) Math.round(x) << 32) ^ (Math.round(y) & 0xffffffffL);
   }
 
-  private void step(CompanionParty.Member m, Navigation nav, float tx, float ty, int reach) {
+  void step(CompanionParty.Member m, Navigation nav, float tx, float ty, int reach) {
     if (state.skillEffects().rooted(m.id)) return;
     WorldMoveTargetController.TileCenter start = cells.get(key(m.body.x, m.body.y));
     if (start == null) {

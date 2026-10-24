@@ -1,0 +1,15 @@
+{
+  "revision": "V271_COMPANION_AGENTS",
+  "authorization": "모든 직업 캐릭터 동료 구현·직업별 에이전트",
+  "scope": [
+    "five professions",
+    "one active companion",
+    "own-job AI strategies",
+    "immediate99test",
+    "legacy party save migration"
+  ],
+  "sourceSnapshotsChanged": false,
+  "policyEvidence": "USER+PROJECT_ADAPTED",
+  "contract": "design/COMPANION_AGENTS_V271.md",
+  "verification": "verification/COMPANION_AGENTS_V271.json"
+}

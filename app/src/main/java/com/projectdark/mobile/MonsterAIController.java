@@ -10,7 +10,7 @@ import java.util.Map;
  */
 public final class MonsterAIController {
   private static RuntimeState.Player targetBody(RuntimeState s,RuntimeState.Monster m){RuntimeState.Player b=s.party().body(s,m.attackTarget);if(b==null||!b.alive){m.attackTarget="player";return s.player();}return b;}
-  private static boolean targetHidden(RuntimeState s,RuntimeState.Monster m){return "player".equals(m.attackTarget)&&s.skillEffects().hidden();}
+  private static boolean targetHidden(RuntimeState s,RuntimeState.Monster m){return s.skillEffects().has(m.attackTarget,"STEALTH");}
   private static final float CHASE_RADIUS_B = 180f;
   static final int ATTACK_DAMAGE_B = 4;
   static final float ATTACK_COOLDOWN_B = 1.8f;

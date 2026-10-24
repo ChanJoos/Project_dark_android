@@ -897,6 +897,9 @@ public final class GameView extends View {
     switch(command){
       case WARRIOR:changed=state.party().recruit(state,CompanionParty.Job.WARRIOR);break;
       case PRIEST:changed=state.party().recruit(state,CompanionParty.Job.PRIEST);break;
+      case ROGUE:changed=state.party().recruit(state,CompanionParty.Job.ROGUE);break;
+      case MAGE:changed=state.party().recruit(state,CompanionParty.Job.MAGE);break;
+      case MONK:changed=state.party().recruit(state,CompanionParty.Job.MONK);break;
       case DISMISS:changed=state.party().recruit(state,null);break;
       case RECOVER:changed=state.party().recover(state);break;
       case FOLLOW:state.party().order(CompanionParty.Order.FOLLOW,null);break;

@@ -9,8 +9,17 @@ import org.json.*;
  */
 public final class CompanionParty {
   public enum Job {
-    WARRIOR,
-    PRIEST
+    WARRIOR("전사", "WARRIOR"),
+    PRIEST("성직자", "CLERIC"),
+    ROGUE("도적", "ROGUE"),
+    MAGE("마법사", "MAGE"),
+    MONK("무도가", "MARTIAL_ARTIST");
+    public final String label, code;
+
+    Job(String label, String code) {
+      this.label = label;
+      this.code = code;
+    }
   }
 
   public enum Order {
@@ -36,9 +45,9 @@ public final class CompanionParty {
     Member(Job j) {
       job = j;
       id = "companion_" + j.name().toLowerCase(Locale.ROOT);
-      name = j == Job.WARRIOR ? "전사 동료" : "성직자 동료";
+      name = j.label + " 동료";
       growth.restoreProgression(3, 0);
-      growth.chooseInitialJob(j == Job.WARRIOR ? "WARRIOR" : "CLERIC");
+      growth.chooseInitialJob(j.code);
       configure(1);
       body.hp = body.maxHp;
       body.mp = body.maxMp;
@@ -46,10 +55,22 @@ public final class CompanionParty {
 
     void configure(int lv) {
       level = lv;
-      boolean w = job == Job.WARRIOR;
+      boolean physical = job == Job.WARRIOR || job == Job.ROGUE || job == Job.MONK;
+      int str = job == Job.WARRIOR || job == Job.MONK ? 2 : job == Job.ROGUE ? 1 : 0;
+      int dex = job == Job.ROGUE ? 3 : 1;
+      int intel = job == Job.MAGE ? 3 : job == Job.PRIEST ? 1 : 0;
+      int wis = job == Job.PRIEST ? 2 : job == Job.MAGE ? 1 : 0;
+      int con = job == Job.MONK ? 2 : 1;
+      growth.restoreProgression(lv, 0);
       growth.restoreStats(
-          3 + lv * (w ? 2 : 0), 3 + lv * (w ? 0 : 1), 3 + lv * (w ? 0 : 2), 3 + lv, 3 + lv / 2, 0);
-      growth.restoreBaseResources(120 + lv * lv * (w ? 2 : 1), 100 + lv * lv * (w ? 1 : 2));
+          3 + lv * str,
+          3 + lv * intel,
+          3 + lv * wis,
+          3 + lv * con,
+          3 + (job == Job.WARRIOR || job == Job.PRIEST ? lv / 2 : lv * dex),
+          0);
+      growth.restoreBaseResources(
+          120 + lv * lv * (physical ? 2 : 1), 100 + lv * lv * (physical ? 1 : 2));
       body.maxHp = growth.finalStats().maxHp;
       body.maxMp = growth.finalStats().maxMp;
     }
@@ -65,14 +86,11 @@ public final class CompanionParty {
 
     public boolean learned(String id) {
       SkillAbilityCatalog.Ability a = SkillAbilityCatalog.get(id);
-      if (testAccess)
-        return a != null
-            && !SkillPolicyV227.retired(id)
-            && (job == Job.WARRIOR ? a.job.equals("전사") : a.job.equals("성직자"));
+      if (testAccess) return a != null && !SkillPolicyV227.retired(id) && a.job.equals(job.label);
       return a != null
           && a.supported()
           && a.circle <= circle()
-          && (job == Job.WARRIOR ? a.job.equals("전사") : a.job.equals("성직자"))
+          && a.job.equals(job.label)
           && !a.kind.equals("SERVICE")
           && !Arrays.asList("SK_성직자_002", "SK_성직자_012", "SK_성직자_031").contains(id);
     }
@@ -297,7 +315,7 @@ public final class CompanionParty {
                 .put("cooldowns", cds));
       }
       return new JSONObject()
-          .put("version", 1)
+          .put("version", 2)
           .put("selected", selected == null ? JSONObject.NULL : selected.name())
           .put("members", rows);
     } catch (JSONException e) {
@@ -307,14 +325,16 @@ public final class CompanionParty {
 
   public boolean restore(JSONObject json) {
     try {
-      if (json.getInt("version") != 1) return false;
+      int version = json.getInt("version");
+      if (version != 1 && version != 2) return false;
       EnumMap<Job, Member> staged = new EnumMap<>(Job.class);
       JSONArray rows = json.getJSONArray("members");
-      if (rows.length() != 2) return false;
+      if (rows.length() != (version == 1 ? 2 : Job.values().length)) return false;
       for (int i = 0; i < rows.length(); i++) {
         JSONObject row = rows.getJSONObject(i);
         Job j = Job.valueOf(row.getString("job"));
-        if (staged.containsKey(j)) return false;
+        if (staged.containsKey(j) || version == 1 && j != Job.WARRIOR && j != Job.PRIEST)
+          return false;
         Member m = new Member(j);
         int lv = row.getInt("level");
         if (lv < 1 || lv > 99) return false;
@@ -337,6 +357,9 @@ public final class CompanionParty {
         staged.put(j, m);
       }
       Job next = json.isNull("selected") ? null : Job.valueOf(json.getString("selected"));
+      if (version == 1)
+        for (Job j : Job.values()) if (!staged.containsKey(j)) staged.put(j, new Member(j));
+      if (next != null && !staged.containsKey(next)) return false;
       roster.clear();
       roster.putAll(staged);
       selected = next;

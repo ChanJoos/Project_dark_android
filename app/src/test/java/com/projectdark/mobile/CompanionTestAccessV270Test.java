@@ -32,7 +32,7 @@ public class CompanionTestAccessV270Test {
     assertEquals(7, m.circle());
     int learned = 0;
     for (SkillAbilityCatalog.Ability a : SkillAbilityCatalog.all())
-      if (a.job.equals(m.job == CompanionParty.Job.WARRIOR ? "전사" : "성직자")
+      if (a.job.equals(m.job.label)
           && !SkillPolicyV227.retired(a.id)) {
         assertTrue(a.id, m.learned(a.id));
         learned++;
@@ -54,7 +54,7 @@ public class CompanionTestAccessV270Test {
   @Test
   public void realApkEntryStartsWith99CompanionBeforeAnyQuestOrJob() throws Exception {
     assertEquals(
-        BuildConfig.APPLICATION_ID.endsWith(".v270test"), BuildConfig.COMPANION_TEST_ACCESS);
+        BuildConfig.APPLICATION_ID.endsWith(".v271test"), BuildConfig.COMPANION_TEST_ACCESS);
     MainActivity a = Robolectric.buildActivity(MainActivity.class).create().get();
     assertFalse(h.field(a, "startupFailed"));
     GameView v = h.field(a, "game");

@@ -1,0 +1,18 @@
+{
+  "revision": "V271_COMPANION_AGENTS",
+  "base": "957bc038ddf0147829234c329eea2bca26951d13",
+  "local": {
+    "productionCompile": "PASS_ECJ17_ANDROID_API",
+    "domainTests": 34,
+    "failed": 0
+  },
+  "android": "PENDING",
+  "fullCurrentRegression": "PENDING",
+  "apk": "PENDING",
+  "main": "NOT_MERGED",
+  "phone": "PENDING",
+  "firstLocalFindings": [
+    "self-heal actor ID must be checked even at same position; fixed shared gate",
+    "Dara original contact3seconds; test advances beyond real contact, production timing unchanged"
+  ]
+}

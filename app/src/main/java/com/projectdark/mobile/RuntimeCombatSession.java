@@ -64,6 +64,7 @@ public final class RuntimeCombatSession {
   }
 
   public CombatActionOrchestrator.Submission submitCompanion(String target,String action){CompanionParty.Member m=state.party().active();if(m==null)throw new IllegalStateException("no companion");CombatActionOrchestrator.Submission r=actions.submitAuto(m.id,target,action);if(r.accepted()){port.lockDirection(m.id,target,action);m.actionId=action;m.actionClock=0;}return r;}
+  java.util.List<String> companionRecipients(String target,String action) { CompanionParty.Member m=state.party().active(); return m==null?java.util.Collections.emptyList():port.recipients(m.id,target,action); }
   public boolean companionBusy(){CompanionParty.Member m=state.party().active();return m!=null&&resolver.actionActive(m.id);}
   public MonsterAutoCombatBridge monsterAutoBridge(){return new MonsterAutoCombatBridge(actions,MONSTER_BASIC_ACTION_ID);}
 

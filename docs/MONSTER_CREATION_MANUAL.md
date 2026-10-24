@@ -1,3 +1,7 @@
+## V271 companion stealth targeting contract
+
+New rogue companion stealth uses its own actor ID in the existing monster targetHidden gate. Only attacks targeting that companion are cancelled by its hide; attacks on player/other actors retain their prior state. No monster source art, movement/facing/attack cadence/population changes. Companion and actual monster-retaliation regressions plus current full gates required. Phone acceptance pending. Contract design/COMPANION_AGENTS_V271.md.
+
 ## V264 — 공격 그림의 프레임 선택·반전 교정 후보 (2026-10-24 KST)
 
 V263 DEVICE_FAILED_USER_REPORTED: Screen_Recording_20261024_081540.mp4(29.390678s,2340x1080,libfile_1556c6c0b3748191bac77952c1d935a4). 전체1fps와10~14/19~23초6fps크롭확인. 설치SHA영상내UNKNOWN/최근eca4d745. 기존 방향값/소스회귀 검사는 실제 몸그림의 방향을 놓쳤다.
