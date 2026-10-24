@@ -160,7 +160,7 @@ jobs:
                   for ex in (60,160):warm.append(f'input swipe {round(110*ws)} {round(374*ws)} {round(ex*ws)} {round(374*ws)} 700')
               adb('shell','; '.join(warm));time.sleep(3)
               (dest/'start.png').write_bytes(adb('exec-out','screencap','-p').stdout)
-              windows=adb('shell','dumpsys','window','windows').stdout.decode(errors='replace')
+              windows=adb('shell','dumpsys','window').stdout.decode(errors='replace')
               (dest/'windows-before.txt').write_text(windows)
               focused='\n'.join(x for x in windows.splitlines() if 'mCurrentFocus' in x or 'mFocusedApp' in x)
               assert pkg in focused, 'Game is not the focused foreground app: '+focused
