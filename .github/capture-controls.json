@@ -1,1 +1,1 @@
-{"stage":3,"commands":[{"op":"swipe","x":110,"y":374,"x2":110,"y2":430,"ms":6000},{"op":"wait","seconds":1}]}
+{"stage":4,"commands":[{"op":"swipe","x":110,"y":374,"x2":110,"y2":430,"ms":2700},{"op":"wait","seconds":1},{"op":"save_pilot_checkpoint"},{"op":"wait","seconds":6}]}
