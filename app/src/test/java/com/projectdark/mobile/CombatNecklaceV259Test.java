@@ -54,7 +54,7 @@ public class CombatNecklaceV259Test {
   for(String defense:new String[]{"WATER","FIRE"}){GameView v=senseView(defense);SkillBook b=field(v,"skillBook");call(v,"useBookSkill",SkillBook.Entry.class,b.get(RogueSkillPolicy.SENSE));h.advance(v,1f);RuntimeState s=field(v,"state");assertEquals(StarterNecklacesV259.id(defense.equals("WATER")?StarterNecklacesV259.EARTH:StarterNecklacesV259.WATER),s.rpg().equipment().get("목걸이"));assertTrue(((SenseMonsterWindow)field(v,"senseMonsterWindow")).visible());}
  }
  @Test public void autoSenseUsesTheSameEquipPathAndRejectedOutOfRangeSenseNeverSwaps()throws Exception{
-  GameView v=senseView("WATER");h.tap(v,854,391);h.advance(v,1f);RuntimeState s=field(v,"state");assertEquals(StarterNecklacesV259.id(StarterNecklacesV259.EARTH),s.rpg().equipment().get("목걸이"));
+  GameView v=senseView("WATER");HudTestControlsV267.auto(v);h.advance(v,1f);RuntimeState s=field(v,"state");assertEquals(StarterNecklacesV259.id(StarterNecklacesV259.EARTH),s.rpg().equipment().get("목걸이"));
   v=senseView("WATER");s=field(v,"state");RuntimeState.Monster m=((CombatController)field(v,"combat")).target();m.x=s.player().x+96;m.y=s.player().y+48;SkillBook b=field(v,"skillBook");call(v,"useBookSkill",SkillBook.Entry.class,b.get(RogueSkillPolicy.SENSE));h.advance(v,.3f);assertEquals(StarterNecklacesV259.id(StarterNecklacesV259.WATER),s.rpg().equipment().get("목걸이"));
  }
  @Test public void waterDefenseFallbackPriorityIsEarthThenWindThenFireAndCurrentWaterNeverUnequips()throws Exception{

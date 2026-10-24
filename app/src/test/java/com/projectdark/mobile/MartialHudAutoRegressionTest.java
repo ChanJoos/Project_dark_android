@@ -62,13 +62,13 @@ public class MartialHudAutoRegressionTest {
  }
  @Test public void autoUsesQuickslotsFairlyAndSkipsCoolingUnlearnedAndFullHealthHeal()throws Exception{
   GameView v=directed(CharacterRenderer.Direction.SE);SkillBook book=field(v,"skillBook");book.restoreTestSlots(new String[]{"SK_무도가_002","SK_무도가_007",null,null,null,null,null,null});
-  tap(v,854,391);advance(v,.05f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertEquals("SK_무도가_002",field(v,"activeSkillVisualId"));
+  HudTestControlsV267.auto(v);advance(v,.05f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertEquals("SK_무도가_002",field(v,"activeSkillVisualId"));
   advance(v,.55f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertEquals("SK_무도가_007",field(v,"activeSkillVisualId"));
   Bitmap screenshot=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(screenshot));save(screenshot,"v89-auto-quickslots.png");
   advance(v,.55f);assertTrue((Boolean)field(v,"autoAttackEnabled"));assertNotEquals("Cooling slot is skipped","SK_무도가_007",field(v,"activeSkillVisualId"));
   GameView real=directed(CharacterRenderer.Direction.SE);real.setSkillTestMode(false);SkillBook actual=field(real,"skillBook");actual.learn("SK_무도가_002",100);actual.assign(0,"SK_무도가_002");actual.bindJob(()->"MARTIAL_ARTIST");actual.learn("SK_무도가_017",100);actual.assign(0,"SK_무도가_017");actual.assign(1,"SK_무도가_002");
-  actual.learn("SK_무도가_016",100);actual.assign(2,"SK_무도가_016");RuntimeState live=field(real,"state");live.player().mp=0;live.player().hp=live.player().maxHp;tap(real,854,391);advance(real,.05f);assertTrue((Boolean)field(real,"autoAttackEnabled"));assertEquals("Full-health heal is skipped","SK_무도가_002",field(real,"activeSkillVisualId"));
-  GameView unlearned=directed(CharacterRenderer.Direction.SE);unlearned.setSkillTestMode(false);SkillBook empty=field(unlearned,"skillBook");empty.bindJob(()->"MARTIAL_ARTIST");assertFalse(empty.assign(0,"SK_무도가_007"));tap(unlearned,854,391);advance(unlearned,.05f);assertNull(field(unlearned,"activeSkillVisualId"));
+  actual.learn("SK_무도가_016",100);actual.assign(2,"SK_무도가_016");RuntimeState live=field(real,"state");live.player().mp=0;live.player().hp=live.player().maxHp;HudTestControlsV267.auto(real);advance(real,.05f);assertTrue((Boolean)field(real,"autoAttackEnabled"));assertEquals("Full-health heal is skipped","SK_무도가_002",field(real,"activeSkillVisualId"));
+  GameView unlearned=directed(CharacterRenderer.Direction.SE);unlearned.setSkillTestMode(false);SkillBook empty=field(unlearned,"skillBook");empty.bindJob(()->"MARTIAL_ARTIST");assertFalse(empty.assign(0,"SK_무도가_007"));HudTestControlsV267.auto(unlearned);advance(unlearned,.05f);assertNull(field(unlearned,"activeSkillVisualId"));
  }
  @Test public void allEightQuickslotIconsStayInsideTheirSingleHudFramesAndNpcNamesFollowTheirHeads()throws Exception{
   GameView v=directed(CharacterRenderer.Direction.SE);SkillBook book=field(v,"skillBook");book.restoreTestSlots(new String[]{"SK_무도가_002","SK_무도가_007","SK_무도가_014","SK_무도가_020","SK_무도가_021","SK_무도가_023","SK_무도가_017","SK_무도가_008"});
