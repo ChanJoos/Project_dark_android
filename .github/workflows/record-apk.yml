@@ -11,7 +11,7 @@ jobs:
     runs-on: ubuntu-24.04
     timeout-minutes: 45
     env:
-      APP_PACKAGE: 'com.projectdark.mobile.v266test'
+      APP_PACKAGE: 'com.projectdark.mobile.v266test.canvas'
       SOURCE_RUN: '40080774752'
       SOURCE_SHA: '912ec0352491327ac249c28e7aad2e1b9cca1be0'
       SOURCE_ARTIFACT: '12555515890'
@@ -115,9 +115,9 @@ jobs:
           adb shell settings put system user_rotation 1
       - name: Install exact artifact and record real running app
         run: |
-          adb install -r input/app.apk | tee evidence/install.txt
+          adb install -r input/canvas.apk | tee evidence/install.txt
           adb shell pm list packages | grep projectdark | tee evidence/packages.txt
-          PKG=com.projectdark.mobile.v266test
+          PKG=com.projectdark.mobile.v266test.canvas
           adb shell pm path "$PKG" | tee evidence/installed-path.txt
           adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity" | tee evidence/launch.txt
           sleep 8
@@ -153,7 +153,8 @@ jobs:
           adb exec-out screencap -p > evidence/start.png
           mkdir -p evidence/boot
           cp evidence/start.png evidence/boot/start.png
-          cp evidence/apk-identity.json evidence/boot/apk-identity.json
+          cp evidence/canvas-identity.json evidence/boot/apk-identity.json
+          adb shell input keyevent KEYCODE_HOME
       - name: Upload boot checkpoint
         uses: actions/upload-artifact@v4
         with:
@@ -205,6 +206,11 @@ jobs:
               if c.get('op') in ('load_filming_profile',):assert c.get('job') in ('ROGUE','MAGE')
               if 'ms' in c:assert type(c['ms']) is int and 100<=c['ms']<=10000
           (root/'package.txt').write_text(pkg)
+          prior=pathlib.Path('last-app-pid.txt')
+          current=adb('shell','pidof',pkg).stdout.decode().strip()
+          if prior.exists(): assert current==prior.read_text().strip(), 'App process changed; do not claim continuous pull'
+          adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
+          time.sleep(0.4)
           snap('start')
           video=f'/sdcard/stage-{stage:02d}.mp4'
           rec=subprocess.Popen(['adb','shell','screenrecord','--size','1280x720','--bit-rate','4000000','--time-limit','150',video],stdout=(root/'record.log').open('wb'),stderr=subprocess.STDOUT)
@@ -257,6 +263,8 @@ jobs:
               except subprocess.TimeoutExpired:rec.terminate();rec.wait(timeout=5)
               adb('pull',video,str(root/'capture.mp4'),check=False)
               snap('end')
+              adb('shell','input','keyevent','KEYCODE_HOME')
+              pathlib.Path('last-app-pid.txt').write_text(adb('shell','pidof',pkg).stdout.decode().strip())
               (root/'activity.txt').write_bytes(adb('shell','dumpsys','activity','activities',check=False).stdout)
               (root/'pid.txt').write_bytes(adb('shell','pidof',pkg,check=False).stdout)
               saved=adb('exec-out','run-as',pkg,'tar','-cf','-','shared_prefs','files',check=False)
