@@ -1,0 +1,67 @@
+name: Mine doorway arrival candidate
+on:
+  push:
+    branches: [dot/mine-entry-arrival]
+  workflow_dispatch:
+permissions:
+  contents: read
+jobs:
+  mine-entry:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    env:
+      JAVA_TOOL_OPTIONS: '-Drobolectric.dependency.repo.url=https://repo.maven.apache.org/maven2'
+      PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
+      PROJECT_DARK_SIDE_BY_SIDE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: 8.11.1
+      - name: Offline source generator dependencies
+        run: pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
+      - name: Scoped mine arrival, navigation, population, save and renderer regression
+        run: >-
+          gradle :app:testDebugUnitTest
+          --tests '*MineEntryArrivalTest'
+          --tests '*MineHuntV208Test'
+          --tests '*MineHuntV209Test'
+          --stacktrace
+      - name: Build exact candidate
+        run: |
+          gradle :app:assembleDebug --stacktrace
+          mkdir -p delivery
+          cp app/build/outputs/apk/debug/app-debug.apk delivery/PROJECT_DARK_MINE_ENTRY_CANDIDATE.apk
+          sha256sum delivery/*.apk > delivery/SHA256SUMS
+          python3 - <<'PY'
+          import os,json,datetime,zipfile
+          from pathlib import Path
+          apk=Path('delivery/PROJECT_DARK_MINE_ENTRY_CANDIDATE.apk')
+          with zipfile.ZipFile(apk) as z:
+              assert z.testzip() is None
+              identity=json.loads(z.read('assets/build_identity.json'))
+              assert identity['sourceCommit']==os.environ['GITHUB_SHA']
+              assert identity['runId']==os.environ['GITHUB_RUN_ID']
+          Path('delivery/build.json').write_text(json.dumps(dict(identity=identity,builtUTC=datetime.datetime.now(datetime.timezone.utc).isoformat(),scope='Mine entry candidate, not main merged'),indent=2))
+          PY
+          "$ANDROID_HOME/build-tools/35.0.0/apksigner" verify --verbose delivery/*.apk
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: MINE_ENTRY_DIAGNOSTICS
+          retention-days: 7
+          path: |
+            app/build/test-results/
+            app/build/reports/tests/
+            build/reports/horror-v179/
+            app/build/reports/horror-v179/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PROJECT_DARK_MINE_ENTRY_CANDIDATE
+          retention-days: 7
+          path: delivery/
+          if-no-files-found: error
