@@ -7,12 +7,28 @@
     "failed": 0
   },
   "android": "PENDING",
-  "fullCurrentRegression": "PENDING",
+  "fullCurrentRegression": {
+    "status": "32_PASS_REUSABLE_SHARED_RUNTIME",
+    "sourceCommit": "e7b18af0b6ceb8d14baa6d7ada4d259ff7f22356",
+    "runId": 40076146616,
+    "jobId": 120819844500,
+    "finalDelta": "HUD-only three accidental button draws removed; native closed-window ROI regression added; exact reviewed scope metadata updated",
+    "reuseGuard": "Final production diff from full-verified source must contain only CompanionWindow.java three draw removals; all other production/assets/build bytes equal"
+  },
   "apk": "PENDING",
   "main": "NOT_MERGED",
   "phone": "PENDING",
   "firstLocalFindings": [
     "self-heal actor ID must be checked even at same position; fixed shared gate",
     "Dara original contact3seconds; test advances beyond real contact, production timing unchanged"
-  ]
+  ],
+  "firstCandidate": {
+    "sourceCommit": "e7b18af0b6ceb8d14baa6d7ada4d259ff7f22356",
+    "featureRun": 40076144491,
+    "featureTests": 60,
+    "fullRun": 40076146616,
+    "fullGroups": 32,
+    "status": "PASS_BUT_VISUAL_REVIEW_FOUND_CLOSED_MENU_BUTTON_LEAK",
+    "delivery": "NOT_DELIVERED"
+  }
 }

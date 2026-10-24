@@ -33,6 +33,26 @@ public class CompanionAgentsNativeV271Test {
   }
 
   @Test
+  public void closedManagementDrawsOnlyWithinTheCompanionHud() {
+    CompanionWindow window = new CompanionWindow();
+    RuntimeState state = new RuntimeState();
+    state.party().enableTesting(state);
+    Bitmap bitmap = Bitmap.createBitmap(960, 540, Bitmap.Config.ARGB_8888);
+    Canvas canvas = new Canvas(bitmap);
+    window.drawHud(canvas, state);
+    window.draw(canvas, state, 0);
+    RectF hud = CompanionWindow.hud();
+    for (int y = 0; y < bitmap.getHeight(); y++)
+      for (int x = 0; x < bitmap.getWidth(); x++)
+        if (x < hud.left - 2 || x > hud.right + 2 || y < hud.top - 2 || y > hud.bottom + 2)
+          assertEquals(
+              "Closed window leaked outside HUD at " + x + "," + y,
+              0,
+              Color.alpha(bitmap.getPixel(x, y)));
+    bitmap.recycle();
+  }
+
+  @Test
   public void allFiveJobsAreReachableThroughRealTouchAtBothScreenWidths() throws Exception {
     CompanionParty.Job[] jobs = {
       CompanionParty.Job.WARRIOR,

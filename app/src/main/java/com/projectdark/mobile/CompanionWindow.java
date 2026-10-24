@@ -30,9 +30,6 @@ final class CompanionWindow {
   void drawHud(Canvas c, RuntimeState s) {
     RectF r = hud();
     UiTheme.surface(c, r, 0xe5101722, 0x88607485, 5);
-    buttonCompact(c, 260, 230, "도적 동료");
-    buttonCompact(c, 414, 230, "마법사 동료");
-    buttonCompact(c, 568, 230, "무도가 동료");
     CompanionParty.Member m = s.party().active();
     UiTheme.text(
         c,
