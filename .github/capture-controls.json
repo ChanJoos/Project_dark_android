@@ -1,1 +1,1 @@
-{"stage":6,"commands":[{"op":"switch_canvas_variant"},{"op":"wait","seconds":7}]}
+{"stage":7,"commands":[{"op":"restore_pilot_checkpoint"},{"op":"wait","seconds":6}]}
