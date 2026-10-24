@@ -1,1 +1,1 @@
-{"stage":3,"commands":[{"op":"wait","seconds":3},{"op":"tap","x":695,"y":214},{"op":"wait","seconds":1},{"op":"tap","x":695,"y":214},{"op":"wait","seconds":1}]}
+{"stage":4,"commands":[{"op":"tap","x":813,"y":456},{"op":"swipe","x":60,"y":374,"x2":60,"y2":374,"ms":100},{"op":"wait","seconds":0.7},{"op":"tap","x":656,"y":456},{"op":"wait","seconds":0.5}]}
