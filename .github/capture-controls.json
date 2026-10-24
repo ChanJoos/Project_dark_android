@@ -1,5 +1,5 @@
 {
-  "stage": 3,
+  "stage": 4,
   "commands": [
     {
       "op": "tap",
@@ -8,10 +8,74 @@
     },
     {
       "op": "wait",
-      "seconds": 2
+      "seconds": 1.4
+    },
+    {
+      "op": "tap",
+      "x": 832,
+      "y": 570
+    },
+    {
+      "op": "tap",
+      "x": 1392,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1.4
     },
     {
       "op": "snapshot"
+    },
+    {
+      "op": "tap",
+      "x": 1216,
+      "y": 510
+    },
+    {
+      "op": "tap",
+      "x": 1392,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1.4
+    },
+    {
+      "op": "snapshot"
+    },
+    {
+      "op": "tap",
+      "x": 576,
+      "y": 946
+    },
+    {
+      "op": "tap",
+      "x": 1392,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1.4
+    },
+    {
+      "op": "snapshot"
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 4
+    },
+    {
+      "op": "snapshot"
+    },
+    {
+      "op": "wait",
+      "seconds": 3
     }
   ]
 }
