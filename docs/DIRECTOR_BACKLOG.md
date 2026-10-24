@@ -1,3 +1,11 @@
+## V273 — 검증 완료 후보 APK (2026-10-24 23:21 KST)
+
+Source `4e4229ad2b4e5fa3c7ab17151290cb909f8a8e86`, branch codex/companion-party-v269, PR198. IMPLEMENTED / BUILD VERIFIED / HOST RUNTIME VERIFIED. Focused Actions40101784352/job120895267977 SUCCESS: downloaded JUnit15suites/89tests/0failure/0error/0skip. Full current regression Actions40101787130 SUCCESS. Production matches b2b85fed; subsequent fixes validate14Countess reward profiles separately while retaining41legacy profiles, and replace brittle two-pixel inequality with viewport detail sampling after inspecting the valid courtyard image. No retired tests restored.
+
+APK PROJECT_DARK_V273_COUNTESS_TEST.apk,107889383bytes, SHA256 `3451adae1b6843776a2bf3e823277c67dd77ceea68ad6384464a4dff8a8d4be5`. Build completed2026-10-24 23:21:04KST. artifact12563326178; archive digest fb7cbd635264b9ad23e41e7761ff5579746265dbe048ce5b85b84d70420f7989 verified; ZIP/APK CRC PASS; embedded source/run exact match. Library libfile_3d67099305408191bd1b1c2e249985c6. Final native12zone2340 image inspected; courtyard/zone12/boss source-equivalent renders inspected. APK signature not independently checked in this resumption.
+
+Guard→exterior envoy→lobby,16maps/12zones,14source species,live paths/two aspect ratios,combat/support,boss two lives,save/restart/cache checks passed. Original server values, boss Korean-name/MPF identity and drops remain unresolved or explicitly ADAPTED per design/COUNTESS_CASTLE_V273.md. PHONE VERIFIED / USER VISUAL ACCEPTED remain PENDING. Main not merged. Next: deliver exact candidate and collect handset feedback; do not rerun unchanged passed checks.
+
 ## V273 — 백작부인의성 런타임 후보 / Android 검증 대기 (2026-10-24 KST)
 
 기존 PR198/브랜치 유지, mainf86d961e 미변경. 두 번째140.317056초 영상 및 원본클라이언트 복구 완료. 원본16맵(2899/2900/2901/2934/26301~26312),14 MPF fullframe/팔레트/pivot 보존. 경비병→외부전령→응접실/1~12존/상층결계, 원본Tile/Object/Collision/Spawn/Portal 분리, 공유Resolver 나르콜리·디스펠·침묵/동료, 지역 HP/사망저장, 보스 두 생명 및 테스트 다이애나 폭탄1회 소환 구현. HP/MP/EXP/스폰/시간/연결좌표는 명시ADAPTED; 보스한국명↔MPF 정체/원작드랍·서버수치·폰수용은 미확정. 로컬 production compile/도메인8건 PASS; Android/native/새APK는PENDING. 기존V272검증은 기존범위에서보존하며 새후보통과로 재라벨금지. 다음: exact GitHub 후보→성전용+직접인접 CI→실제화면검토→APK source/run/hash 검증. 계약design/COUNTESS_CASTLE_V273.md.
