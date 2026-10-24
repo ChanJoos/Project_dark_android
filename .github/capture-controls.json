@@ -1,72 +1,10 @@
 {
-  "stage": 13,
+  "stage": 14,
   "commands": [
     {
       "op": "tap",
-      "x": 1410,
-      "y": 752
-    },
-    {
-      "op": "tap",
-      "x": 1626,
+      "x": 1548,
       "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 0.8
-    },
-    {
-      "op": "swipe",
-      "x": 220,
-      "y": 748,
-      "x2": 220,
-      "y2": 648,
-      "ms": 1500
-    },
-    {
-      "op": "wait",
-      "seconds": 0.7
-    },
-    {
-      "op": "swipe",
-      "x": 220,
-      "y": 748,
-      "x2": 220,
-      "y2": 848,
-      "ms": 100
-    },
-    {
-      "op": "wait",
-      "seconds": 0.7
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 1392,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 0.4
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 1470,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 2
-    },
-    {
-      "op": "tap",
-      "x": 1830,
-      "y": 990
     },
     {
       "op": "wait",
@@ -79,10 +17,221 @@
     },
     {
       "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
+      "seconds": 3
+    },
+    {
+      "op": "tap",
+      "x": 1470,
+      "y": 912
+    },
+    {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
+      "op": "tap",
+      "x": 1830,
+      "y": 990
+    },
+    {
+      "op": "wait",
       "seconds": 3
     },
     {
       "op": "snapshot"
+    },
+    {
+      "op": "wait",
+      "seconds": 3
     }
   ]
 }
