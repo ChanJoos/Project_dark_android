@@ -141,7 +141,25 @@ jobs:
           PYVERIFY
           # Restore only canonical authorized all255 dedicated test character.
           adb shell am force-stop "$PKG"
-          tar -C profiles/MAGE -cf - shared_prefs | adb exec-in run-as "$PKG" tar -xf -
+          gh run download 40103632597 --repo "$GH_REPO" --name gameplay-40103632597-stage-17 --dir recorded-checkpoint
+          python3 - <<'PYCHECKPOINT'
+          import pathlib,hashlib,tarfile,xml.etree.ElementTree as ET
+          p=pathlib.Path('recorded-checkpoint/test-profile-readonly.tar')
+          assert hashlib.sha256(p.read_bytes()).hexdigest()=='ef0d9a90506ec7ed9c84daea531ec4a322e9a66c22bc2422fd335bcefeebc36f'
+          out=pathlib.Path('recorded-profile/shared_prefs');out.mkdir(parents=True)
+          names=['project_dark_f5m_v1.xml','project_dark_skill_book_v1.xml','project_dark_skill_test_v1.xml','project_dark_visual_v1.xml','project_dark_quick_items_v254.xml']
+          with tarfile.open(p) as t:
+              for name in names:
+                  raw=t.extractfile('shared_prefs/'+name).read()
+                  ET.fromstring(raw)
+                  (out/name).write_bytes(raw)
+          root=ET.parse(out/'project_dark_f5m_v1.xml').getroot()
+          values={x.attrib['name']:x.attrib.get('value',x.text) for x in root}
+          assert values['map_id']=='MAP_MINE_HUNT_3'
+          assert float(values['player_x'])==6728 and float(values['player_y'])==2272
+          pathlib.Path('evidence/checkpoint-provenance.json').write_text('{"run":40103632597,"artifact":12563873812,"stage":17,"scope":"Actual prior Android rogue checkpoint; no stat or progression edits. Monster scene reload is a new take."}')
+          PYCHECKPOINT
+          tar -C recorded-profile -cf - shared_prefs | adb exec-in run-as "$PKG" tar -xf -
           adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity"
           sleep 5
           adb shell am force-stop com.google.android.apps.nexuslauncher
