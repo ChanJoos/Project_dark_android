@@ -1,1 +1,113 @@
-{"revision":"V270_TEMP_COMPANION_TEST_ACCESS","base":"8e16e30b4852f7c5e44e5b2dfb3bfeb15f82f883","authorization":"처음부터 임시적으로 레벨99 모든기술을배운동료","localProductionCompile":"PASS_ECJ17_ANDROID_API","retainedDomainTests":20,"localDomain":"PASS","android":"PENDING","apk":"PENDING","scope":"real APK entry, default99warrior, immediate99priest, own-job all nonretired skill knowledge, no quest/job/level gates, player progression unchanged, test-only field access","mainIntegration":"NOT_MERGED"}
+{
+  "revision": "V270_TEMP_COMPANION_TEST_ACCESS",
+  "base": "8e16e30b4852f7c5e44e5b2dfb3bfeb15f82f883",
+  "authorization": "처음부터 임시적으로 레벨99 모든기술을배운동료",
+  "localProductionCompile": "PASS_ECJ17_ANDROID_API",
+  "retainedDomainTests": 20,
+  "localDomain": "PASS",
+  "android": {
+    "status": "PASS",
+    "runId": 40072944512,
+    "jobId": 120810120110,
+    "passed": 43,
+    "failed": 0,
+    "classes": {
+      "com.projectdark.mobile.CompanionControllerV269Test": [
+        "followerUsesAdjacentTileStepsAndWaitCommandStopsMovement",
+        "priestUsesHealOrDispelAndNeverAttacksOrCurses",
+        "noCombatBuffSpamInTown",
+        "priestDoesNotBreakPlayerCrashReservationAndRecoversAfterContact",
+        "warriorDoesNotWakeSleepingTargetWithBasicOrLowTierAttack"
+      ],
+      "com.projectdark.mobile.CompanionWorldV269Test": [
+        "rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck"
+      ],
+      "com.projectdark.mobile.CompanionTestAccessV270Test": [
+        "restartAndSkillTestToggleKeep99CompanionWithoutRefillingResources",
+        "learnedTriplePassiveActuallyAddsThreeCompanionBasicHits",
+        "testRecruitmentWorksInFieldAndNormalGameStaysLocked",
+        "hudCanSelectPriestWithoutProgressAndShowsTestAccess",
+        "levelDependentHealingUsesCompanion99WhilePlayerStaysOne",
+        "realApkEntryStartsWith99CompanionBeforeAnyQuestOrJob"
+      ],
+      "com.projectdark.mobile.EquipmentHudV262Test": [
+        "wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+        "bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+        "necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+        "combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths"
+      ],
+      "com.projectdark.mobile.CompanionNativeV269Test": [
+        "selectedAllyReceivesActualQuickslotHealAndProtection",
+        "recruitSelectSupportAndPersistThroughRealHudInBothAspectRatios",
+        "managementOverlayConsumesTouchesAndRecoveryDoesNotChangePlayerResources"
+      ],
+      "com.projectdark.mobile.SkillTimingV174Test": [
+        "realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes"
+      ],
+      "com.projectdark.mobile.CompanionPartyV269Test": [
+        "priestCompanionHealsPlayerWithoutSpendingPlayerMp",
+        "startingCommonerHasNoImplicitPartyAndRecruitmentRequiresJob",
+        "allyHealConsumesCasterMpAndUsesRecipientHp",
+        "friendlyDamageAndEnemyHealingAreRejected",
+        "reservationProtectsSleepAndCrashButExpiresAndEndsOnContact",
+        "companionEffectsKeepDurationAndAreRestoredWithoutTouchingPlayer",
+        "companionCannotUseUnlearnedOrWrongJobSkills",
+        "playerSelfCenteredAttackStillUsesEnemyRecipients",
+        "partySnapshotPreservesHpMpDeathCooldownAndDoesNotHealOnRejoin",
+        "invalidSnapshotDoesNotPartiallyReplaceRoster",
+        "monsterAttackCanHitCompanionAndNotPlayer",
+        "crashConditionIsNotInventedByMadSoul",
+        "hiddenRogueCanStillReceiveFriendlyHealing",
+        "supportPoliciesAvoidFullHpHealingAndPriestCurse",
+        "warriorSoulUsesCompanionHpAndCostsCompanionHp"
+      ],
+      "com.projectdark.mobile.InventoryPolishV266Test": [
+        "allTenRecallsLoseOuterBlackRectangleAndKeepForegroundPixelsAndCachedIdentity",
+        "consumptionTabIncludesAllReagentsFoodAndRecallsWithoutAddingOwnership",
+        "everyNecklaceVisibleBoundsAreCenteredOnBothAxesAndActualEquipmentUsesSameProjection"
+      ],
+      "com.projectdark.mobile.SkillSpatialContractTest": [
+        "originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId",
+        "passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic",
+        "liveGameInputRendersDistinctFinisherAndSpellEffects",
+        "targetMovesWallsAndViewportAreRecheckedAtContact",
+        "actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass"
+      ]
+    }
+  },
+  "apk": {
+    "sourceCommit": "49578e7ed7ba17e600347e797a597fe18ce4f3c8",
+    "runId": 40072944512,
+    "jobId": 120810120110,
+    "artifactId": 12552630170,
+    "name": "PROJECT_DARK_V270_COMPANION_TEST.apk",
+    "package": "com.projectdark.mobile.v270test",
+    "label": "PROJECT DARK V270 TEST",
+    "buildCompletedKST": "2026-10-24 16:12:12",
+    "bytes": 106558974,
+    "sha256": "9d6d67afbbb376dc3093942b2ab03c7fc855c01a3fee03f5e3a8842f4199356a",
+    "crc": "PASS",
+    "trackedAssetsByteExact": 1518,
+    "signature": "VERIFIED_APKSIG_8_7_3_V2",
+    "libraryFileId": "libfile_0ab613beb2088191b0a5e1971316976b"
+  },
+  "scope": "real APK entry, default99warrior, immediate99priest, own-job all nonretired skill knowledge, no quest/job/level gates, player progression unchanged, test-only field access",
+  "mainIntegration": "NOT_MERGED",
+  "sourceCommit": "49578e7ed7ba17e600347e797a597fe18ce4f3c8",
+  "fullRegression": {
+    "runId": 40072947480,
+    "jobId": 120810274435,
+    "sourceCommit": "49578e7ed7ba17e600347e797a597fe18ce4f3c8",
+    "status": "PASS",
+    "activeGroups": 32,
+    "passed": 32,
+    "skipped": 0,
+    "failed": 0
+  },
+  "userDeviceAcceptance": "PENDING_NEW_V270_ONLY",
+  "status": "IMPLEMENTED_BUILD_HOST_VERIFIED_CANDIDATE",
+  "rendersReviewed": [
+    "fresh-start-level99",
+    "priest-all-skills-test-menu"
+  ]
+}
