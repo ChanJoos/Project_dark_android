@@ -1,5 +1,5 @@
 {
-  "stage": 15,
+  "stage": 16,
   "commands": [
     {
       "op": "swipe",
@@ -10,13 +10,17 @@
       "ms": 100
     },
     {
+      "op": "wait",
+      "seconds": 1
+    },
+    {
       "op": "tap",
       "x": 1314,
       "y": 912
     },
     {
       "op": "wait",
-      "seconds": 0.5
+      "seconds": 2
     },
     {
       "op": "snapshot"
