@@ -1,3 +1,13 @@
+## V272 — 동료 장비창·직업/레벨·능력치·외형 후보 완료 (2026-10-24 KST)
+
+사용자 지시대로 다섯 동료별 장비창/능력치보기/부위별 여분장비선택/착용·해제를 구현했다. 진입은 동료관리→동료장비. 비활성동료도 탭으로 개별관리하며 동행선택은 바뀌지 않는다. 동료자신의직업·레벨로엄격판정(플레이어sandbox/초기목걸이면제비전파), 장비옵션·속성·HP/MP·지팡이시전/MP·무기동작/타이밍·재생력을자신의FinalStats/Resolver에반영. 같은CharacterVisualBinding이장비창·필드·원본공격레이어를그린다. 공용가방의여분복사본↔동료착용복사본보존/명시적양손·반지·의복범위규칙/저장실패원복/직업별snapshot3장비저장/v1·v2호환. 이전시작99·모든기술테스트유지, 새장비세트지급없음. 장비교체로회복/부활안됨. 기존정확한초기장비슬롯/ID쌍의레거시저장호환만유지하며새착용은조건면제없음. 원문미확인능력치최소조건/직업조건은임의작성하지않는다.
+
+최종APKsource `3bf159d3f071843a47dcc3135c5de4be13d60bcc`, Actions40081979346/job120837235414: **76feature/adjacent Android testsPASS/0skip/0fail**. 실제HUD진입·960/2340터치/5직업탭·비활성장비관리/자신의스탯/착용전후paper-doll·필드pixel변화/4방향새갑옷원본공격레이어/실제GameView재시작/소유복사본·저장실패·조건·공유전투포함. 로컬45domain PASS. 실제최종화면직접검토완료.
+
+생산코드완성3268a2fa/Actions40081393297/job120835527237의75feature검증과 Actions40081396216/job120835573432의 **현재유효전체32gate PASS/0skip/0fail** 유지. 최종3bf159d3는네방향착용공격렌더검사·검토된정확blob CI프로파일·증거만추가했고 production/build/sourceart/workflow byte차이0guard PASS. 따라서공유전체검증을그유효범위에서재사용하며최종전체32를재실행했다고표기하지않는다. 최종scope40081982843SUCCESS/commoncompile의도적SKIP. V268폐기검사부활없음.
+
+APK PROJECT_DARK_V272_COMPANION_TEST.apk/com.projectdark.mobile.v272test/106573934bytes/2026-10-24 18:31:24 KST/SHA256 `bab8ad8db4ac6fded308248b8fde7c1229d5e78eb6ea29fedfa33e89c896b2ee`. artifact12556095119, embeddedsource/run·ZIPdigest/CRC·v2서명·1518trackedmainasset byte일치PASS. 저장완료 libfile_c20a947d10bc8191b275627e8124ab94. 사용자요청대로 직접sandbox APK다운로드링크로전달한다(파일상세페이지대체금지). mainf86d961미변경/PR198미통합후보, 새V272휴대폰/사용자시각수용PENDING. 다음: 해당기기에서장비교체·조건·외형·사냥·재시작피드백;동일통과소스재빌드불필요. 계약design/COMPANION_EQUIPMENT_V272.md, 영수증verification/COMPANION_EQUIPMENT_V272.json.
+
 ## V272 — 동료 장비창·직업/레벨·능력치·외형 연결 진행 (2026-10-24 KST)
 
 사용자 “동료 장비창도 만들어. 그리고 직업 레벨 능력치를 적용시키고 외형에 반영해.” 동료5직업 전용장비창/능력치보기/부위별여분장비선택/착용해제를 구현했다. 각동료자신의직업/레벨로엄격판정하며 플레이어sandbox·초기목걸이면제를전파하지않는다. 장비옵션·속성·최대HP/MP·무기동작·지팡이시전/MP기능을자신의FinalStats/Resolver에연결하고 같은착용정보가장비창·필드외형을그린다. 공용가방여분↔동료착용복사본 원자적이동/동일복사본중복방지/저장실패원복/직업별장비저장(snapshot3)/v1·v2호환. 기존시작99·모든기술테스트유지, 새장비세트지급없음.
