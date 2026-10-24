@@ -1,3 +1,13 @@
+## V274 — 사용자 영상 재검수·백작 경로 수정 후보
+
+V273는 `DEVICE_FAILED_USER_REPORTED`: NPC 외형/응접실 분기/포탈 위치/존 이름/몬스터 구성이 사용자 영상과 다름. 폰 전체 증상의 근본 원인은 재현 전 UNKNOWN; 코드에서 잘못된 NPC→LOBBY, 외부 직접입장 누락, 모든 존 공통 포탈 좌표와 잘못된 로스터를 확인하고 수정했다.
+
+별장지기 original MPF314→응접실2, 외부 건물 입구(22,29) 직접포탈→응접실1. 응접실1 북서문→1존, 응접실2 북동문→결계. 임의 응접실1↔2 및12존→응접실2 연결 제거. 제목/포탈 목적지 `백작부인별장1존`~`백작부인별장12존`. 존1~5/7/9~11 북동문(13,0),6 북서문(0,14),8 남동난간(29,13)으로 전진. 포탈 생성은 연결된 정확한 타일만 허용하며 자동 가까운 타일 이동 금지. 영상에서 역방향 이동이 확인되지 않은 복귀 포탈은 ADAPTED로 구분한다.
+
+1~2 MPF383,3 MPF385,4 MPF314,5~6 MPF341,7 MPF342,8~9 큐브388~391,10 MPF319+검정/파랑/금빛큐브,11 여기에 붉은머리/초록옷MPF321 추가.12/결계 보스4종과 유령/인형/319 유지; 보스의 한국명↔MPF 최종정체·서버수치·스폰수·원작드랍은 여전히 미확정/ADAPTED. 원본zip의 기존 모든 바이트 유지,314/321 및 팔레트 추가. static furniture387을 몬스터로 쓰지 않는다.
+
+검증 범위: CountessGeometry/Travel/Monsters/Renderer/RuntimeState와 원본자산, 지도/포탈/NPC/UI/저장 직접경로. 로컬9도메인PASS·16맵/15종 원본프레임 디코드PASS. Android native16장면/15종4방향/실제NPC진입/포탈통행/저장/캐시 및 기존동료·보상 인접회귀는 CI 대기. APK 후보 패키지v274test. PHONE/USER_VISUAL PENDING; 아직 새 APK 검증완료 아님. 기존main/PR198유지.
+
 ## V273 — 검증 완료 후보 APK (2026-10-24 23:21 KST)
 
 Source `4e4229ad2b4e5fa3c7ab17151290cb909f8a8e86`, branch codex/companion-party-v269, PR198. IMPLEMENTED / BUILD VERIFIED / HOST RUNTIME VERIFIED. Focused Actions40101784352/job120895267977 SUCCESS: downloaded JUnit15suites/89tests/0failure/0error/0skip. Full current regression Actions40101787130 SUCCESS. Production matches b2b85fed; subsequent fixes validate14Countess reward profiles separately while retaining41legacy profiles, and replace brittle two-pixel inequality with viewport detail sampling after inspecting the valid courtyard image. No retired tests restored.

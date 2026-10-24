@@ -151,7 +151,7 @@
     385,
     341,
     342,
-    387,
+    314,
     388,
     389,
     390,
@@ -160,7 +160,8 @@
     400,
     401,
     397,
-    410
+    410,
+    321
   ],
   "sourceFiles": {
     "hades/mns000.pal": "ecf05b101c09df6309f695c12d642fd8a8b725701a2bbfad309b0773d7701b76",
@@ -519,7 +520,9 @@
     "seo/mpt0036.tbl": "03a7dab4b0cdafe69fb4144196326177cd33e1c8672cbec3a8af8003ec480778",
     "seo/mpt0039.tbl": "ee6f596ce8bbfbb88a038315f9954fe64e54de989535dc97a0893d0ef92888ba",
     "seo/mpt0056.tbl": "f8d70d4d796551b09257922bb146fe0d21ae9f7e69cdd89ddd3868f569dc5d89",
-    "seo/mptpal.tbl": "04481498793c8d7caa85a48b7f21a14f63a702e0e8e47144ab6f5441a7f7b357"
+    "seo/mptpal.tbl": "04481498793c8d7caa85a48b7f21a14f63a702e0e8e47144ab6f5441a7f7b357",
+    "hades/mns314.mpf": "845c5577bd82fe561b3db76ff69dfd0ebb7ce51dc61da7585619b2318dbf8f3d",
+    "hades/mns321.mpf": "453e8709527d7a24305c35bd5b7f414a93beb3125039ceab6cda8606975e28c6"
   },
   "evidence": "Original maps26301..26312 visually match zone sequence, geometry, carpet/furniture/bookcase details in supplied140.317056s video. Exterior2899 matches supplied first video. Lobby2900 and upper2901 are original reception rooms; connective gates/arrival/population and unobserved server statistics explicitly ADAPTED. Boss MPF identity joins remain provisional; source pixels exact.",
   "installerSha256": "dbbd937d4dd1eed310b7b1de4c5c3d98e829ed77e5493b0857063528a47e1093",

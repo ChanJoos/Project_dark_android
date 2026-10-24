@@ -1,6 +1,6 @@
 {
   "revision": "V273_COUNTESS_SOURCE_INTAKE",
-  "status": "IMPLEMENTED_BUILD_AND_HOST_NATIVE_VERIFIED_CANDIDATE",
+  "status": "V273_DEVICE_FAILED_USER_REPORTED_V274_CORRECTION_CANDIDATE",
   "base": "108b0f3bfc6d965e1e1b92d6d96ffd28b60d0b93",
   "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
   "sources": [
@@ -167,5 +167,6 @@
     "sourceRecovery": "Original client and full map archive recovered with hashes matching retained V180 source receipts; do not download them again. Installer needs its actual installer-format extraction, 7zip direct-open failed.",
     "nextAction": "Extract client archives; identify zone maps and monster MPFs against both recovered videos; then implement authorized guard/exterior/lobby/12-zone/boss path. No reattachment needed."
   },
-  "verification": "verification/COUNTESS_CASTLE_V273.json"
+  "verification": "verification/COUNTESS_CASTLE_V273.json",
+  "correctionReview": "V274: both full videos contact sheets reviewed, source doors annotated; MPF314 keeper and zone4, MPF321 zone11. See design/COUNTESS_CASTLE_V273.md for reviewed mapping and remaining adapted returns/server facts."
 }

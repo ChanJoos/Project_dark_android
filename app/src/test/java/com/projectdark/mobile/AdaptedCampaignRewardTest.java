@@ -33,7 +33,7 @@ public final class AdaptedCampaignRewardTest {
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
     assertEquals(41,c.entries().keySet().stream().filter(id->!id.startsWith("HORROR_")&&!id.startsWith("MINE_")&&!id.startsWith("DEATH_")&&!id.startsWith("COUNTESS_")).count());
     java.util.Set<String> expectedCastle=new java.util.HashSet<>(),actualCastle=new java.util.HashSet<>();
-    for(int type=0;type<14;type++){String id=CountessCastleMonsters.species(type);expectedCastle.add(id);AbelCombatProfile p=CountessCastleMonsters.profile(id);assertNotNull(p);assertNotNull(c.find(id));assertEquals(p.exp,c.find(id).exp);assertEquals(p.gold,c.find(id).gold);}
+    for(int type=0;type<15;type++){String id=CountessCastleMonsters.species(type);expectedCastle.add(id);AbelCombatProfile p=CountessCastleMonsters.profile(id);assertNotNull(p);assertNotNull(c.find(id));assertEquals(p.exp,c.find(id).exp);assertEquals(p.gold,c.find(id).gold);}
     for(String id:c.entries().keySet())if(id.startsWith("COUNTESS_"))actualCastle.add(id);
     assertEquals(expectedCastle,actualCastle);
     assertEquals(0,c.find(CountessCastleMonsters.species(10)).exp);
