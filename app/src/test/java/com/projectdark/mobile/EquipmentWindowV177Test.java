@@ -25,7 +25,8 @@ public class EquipmentWindowV177Test {
   for(String[] entry:cases){Bitmap src=icons.get(entry[1]);assertNotNull(entry[1],src);Bitmap out=Bitmap.createBitmap(100,100,Bitmap.Config.ARGB_8888);SourceItemIconRegistry.drawEquipmentForSlot(new Canvas(out),src,new RectF(20,20,80,80),new Paint(),entry[0],entry[1]);Rect bounds=SourceItemIconRegistry.visibleEquipmentBounds(out);
    assertTrue(entry[1],bounds.left>=20&&bounds.top>=20&&bounds.right<=80&&bounds.bottom<=80);
    if(entry[1].equals(RpgProgressionState.STARTER_HAT_ITEM_ID)||entry[1].equals("IT_EARRING_DOUBLE_SILVER")||entry[1].equals(RpgProgressionState.STARTER_SHIRT_ITEM_ID))assertTrue(entry[1]+bounds,Math.max(bounds.width(),bounds.height())<=52);
-   if("목걸이".equals(entry[0])||"갑옷".equals(entry[0])){PointF center=SourceItemIconRegistry.equipmentOpticalCenter(out);System.out.println("OPTICAL_CENTER "+entry[1]+" "+center);assertEquals(entry[1],50,center.x,.8);assertEquals(entry[1],50,center.y,.8);}
+   if("목걸이".equals(entry[0])){assertEquals(50,bounds.exactCenterX(),.8);assertEquals(50,bounds.exactCenterY(),.8);}
+   if("갑옷".equals(entry[0])){PointF center=SourceItemIconRegistry.equipmentOpticalCenter(out);System.out.println("OPTICAL_CENTER "+entry[1]+" "+center);assertEquals(entry[1],50,center.x,.8);assertEquals(entry[1],50,center.y,.8);}
   }
  }
  @Test public void actualEquipmentFrameShowsStarterAndBothGlovesNecklaceAndEarring()throws Exception{

@@ -10,10 +10,10 @@ final class ItemWindow {
   interface Visuals { void icon(Canvas c,RpgInventoryPresentation.ItemRow row,float x,float y,float size); void actor(Canvas c,float x,float y); default void equipmentIcon(Canvas c,RpgInventoryPresentation.ItemRow row,String slot,float x,float y,float size){icon(c,row,x,y,size);} }
   enum Hit { NONE,CLOSE,SELECT,ACTION,DETAILS,CONSUMED }
   static final int PAGE_SIZE=50;
-  static final String[] FILTERS={"전체","무기","모자","옷","신발","각반","반지","목걸이","벨트","날개","시약","방패","귀걸이","장갑","기타"};
+  static final String[] FILTERS={"전체","무기","모자","옷","신발","각반","반지","목걸이","벨트","날개","소비","방패","귀걸이","장갑","기타"};
   static RectF filterTab(int i){float width=580f/FILTERS.length;return new RectF(344+i*width,82,344+(i+1)*width-1,110);}
   static int category(RpgInventoryPresentation.ItemRow row,RpgProgressionState r){String slot=row.equipSlot;
-    if("무기".equals(slot))return 1;if("모자".equals(slot))return 2;if("갑옷".equals(slot))return 3;if("신발".equals(slot))return 4;if("각반".equals(slot))return 5;if("반지".equals(slot)||RpgProgressionState.RIGHT_RING_SLOT.equals(slot))return 6;if("목걸이".equals(slot))return 7;if("벨트".equals(slot))return 8;if("날개".equals(slot))return 9;if(row.itemId.startsWith("IT_REAGENT_")||RpgProgressionState.B5_SMALL_HP_POTION_ITEM_ID.equals(row.itemId)||"IT_B_MP_POTION".equals(row.itemId))return 10;if("방패".equals(slot))return 11;if("귀걸이".equals(slot))return 12;if("장갑".equals(RpgProgressionState.baseSlot(slot))||"팔찌".equals(slot))return 13;return 14;
+    if("무기".equals(slot))return 1;if("모자".equals(slot))return 2;if("갑옷".equals(slot))return 3;if("신발".equals(slot))return 4;if("각반".equals(slot))return 5;if("반지".equals(slot)||RpgProgressionState.RIGHT_RING_SLOT.equals(slot))return 6;if("목걸이".equals(slot))return 7;if("벨트".equals(slot))return 8;if("날개".equals(slot))return 9;if(row.itemId.startsWith("IT_REAGENT_")||row.itemId.startsWith("IT_NA_FOOD_")||row.itemId.startsWith("IT_RECALL_")||ItemEffects.usable(row.itemId)||r.isRecall(row.itemId))return 10;if("방패".equals(slot))return 11;if("귀걸이".equals(slot))return 12;if("장갑".equals(RpgProgressionState.baseSlot(slot))||"팔찌".equals(slot))return 13;return 14;
   }
   static final String[] SLOTS={"모자","귀걸이","목걸이","갑옷","무기","장갑",RpgProgressionState.RIGHT_GLOVE_SLOT,"반지",RpgProgressionState.RIGHT_RING_SLOT,"신발","각반","벨트","방패","장식",RpgProgressionState.SECOND_ORNAMENT_SLOT,"날개"};
   // Coordinates in the user's 522x556 reference crop. Cosmetic-only source cells omitted.

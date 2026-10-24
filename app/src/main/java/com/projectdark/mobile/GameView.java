@@ -35,7 +35,7 @@ public final class GameView extends View {
   private static final float W=960f,H=540f;
   private static final float JOY_X=110f,JOY_Y=374f,JOY_R=58f;
   private static final float SLOT=36f,SLOT_GAP=3f,SLOT_X0=659f,SLOT_Y0=438f;
-  private static final float ATK_X=935f,ATK_Y=490f,ATK_R=37.2f;
+  private static final float ATK_X=945f,ATK_Y=490f,ATK_R=37.2f;
   private static final float CHAT_LEFT=14f,CHAT_RIGHT=266f;
   private static final float AUTO_X=935f,AUTO_Y=428f,AUTO_R=16f;
   static final float AUTO_TARGET_RADIUS=Float.MAX_VALUE;
@@ -790,7 +790,7 @@ public final class GameView extends View {
     if(townInterior.kind==TownInteriorDef.Kind.INN){
       if(!state.player().alive){if(dist(x,y,480,270)<=180){state.revivePlayer();reagentShopAdapter.snapCameraToPlayer();checkpoint();}return true;}
       if(MobileHudLayout.quest(hudRightOffset).contains(x,y)){touchQuickQuest(x,y);return true;}
-      if(circleHit(x,y,ATK_X+combatHudOffset(hudRightOffset),ATK_Y,ATK_R+4)){merchantApproach=false;attack();return true;}
+      if(circleHit(x,y,attackHudX(hudRightOffset),ATK_Y,ATK_R+4)){merchantApproach=false;attack();return true;}
       if(circleHit(x,y,AUTO_X+combatHudOffset(hudRightOffset),AUTO_Y,AUTO_R+3)){merchantApproach=false;cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled)autoSkillCursor=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null)combat.selectTarget(best);}return true;}
       for(int i=0;i<SkillBook.SLOT_COUNT;i++)if(slotRect(i).contains(x,y)){SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);return true;}
       WorldCameraTransform.Point target=reagentShopAdapter.screenToWorld(x,y);RuntimeState.Monster rat=state.hitMonster(target.x,target.y,18);if(rat!=null&&!isHudSurface(x,y)){merchantApproach=false;reagentShopAdapter.cancelForAction();combat.selectTarget(rat);return true;}
@@ -1008,7 +1008,7 @@ private void drawUtilityRail(Canvas c){
     for(int i=0;i<SkillBook.SLOT_COUNT;i++)skillWindow.drawHudSlot(c,slotRect(i),i,skillActions);
     for(int i=0;i<2;i++){RectF r=MobileHudLayout.potion(i,hudRightOffset);MobileHudSkin.square(c,r,false);MobileHudSkin.potion(c,r.centerX(),r.centerY()-4,i==0);UiTheme.center(c,""+inventoryQuantity(i==0?state.rpg().quickHpPotionId():"IT_B_MP_POTION"),r.centerX(),r.bottom-3,8,UiTheme.TEXT,true);}
     quickItems.draw(c,state.rpg(),hudRightOffset,(canvas,id,rect)->{if(sourceItemIcons==null)sourceItemIcons=new SourceItemIconRegistry(getContext());Bitmap b=sourceItemIcons.get(state.rpg().itemDefinitions().get(id));if(b!=null)SourceItemIconRegistry.draw(canvas,b,rect,p);else SourceItemIconRegistry.drawPending(canvas,rect);});
-    float d=hudRightOffset;MobileHudSkin.combat(c,ATK_X+combatHudOffset(d),ATK_Y,ATK_R,false,combat.attackReady()&&combat.hasUsableTarget());
+    float d=hudRightOffset;MobileHudSkin.combat(c,attackHudX(d),ATK_Y,ATK_R,false,combat.attackReady()&&combat.hasUsableTarget());
     MobileHudSkin.combat(c,AUTO_X+combatHudOffset(d),AUTO_Y,AUTO_R,true,autoAttackEnabled);
   }
   private boolean useQuickItem(String id){
@@ -1166,11 +1166,12 @@ private void drawUtilityRail(Canvas c){
     if(circleHit(x,y,JOY_X,JOY_Y,JOY_R))return true;
     for(int i=0;i<4;i++){float cx=UTILITY_X0+i*UTILITY_STEP+d;if(circleHit(x,y,cx,UTILITY_Y0,UTILITY_R+2)||inside(x,y,cx-18,44,cx+18,54))return true;}
     for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRectStatic(i,d);if(r.contains(x,y))return true;}
-    return circleHit(x,y,ATK_X+combatHudOffset(d),ATK_Y,ATK_R+3)||circleHit(x,y,AUTO_X+combatHudOffset(d),AUTO_Y,AUTO_R+3);
+    return circleHit(x,y,attackHudX(d),ATK_Y,ATK_R+3)||circleHit(x,y,AUTO_X+combatHudOffset(d),AUTO_Y,AUTO_R+3);
   }
 
   // Keep both buttons beside the skill grid; fit the whole cluster inside narrow screens.
-  private static float combatHudOffset(float d){return d*.5f+Math.min(0f,W+d-8f-ATK_R-(ATK_X+d*.5f));}
+  private static float attackHudX(float d){return Math.min(ATK_X+combatHudOffset(d),W+d-2f-ATK_R);}
+  private static float combatHudOffset(float d){return d*.5f+Math.min(0f,W+d-8f-ATK_R-(AUTO_X+d*.5f));}
   private static RectF slotRectStatic(int index,float d){int col=index%6,row=index/6;float l=SLOT_X0+combatHudOffset(d)+col*(SLOT+SLOT_GAP),t=SLOT_Y0+row*(SLOT+SLOT_GAP);return new RectF(l,t,l+SLOT,t+SLOT);}
   private boolean isHudSurface(float x,float y){return (chatExpanded&&MobileHudLayout.chat(true).contains(x,y))||blocksWorldTapForHud(x,y,combat.target()!=null,hudRightOffset);}
   private void autoNavigateQuest2(){worldAdapter.cancelForAction();interaction.cancelApproach();combat.cancelApproach();if(quest2.state()==GrowthQuest2.State.AVAILABLE||quest2.state()==GrowthQuest2.State.RETURN_READY){RuntimeState.Npc npc=findNpc("milles_guide_proto");if(npc!=null)worldAdapter.requestNpcApproach(npc.id);return;}if(quest2.state()==GrowthQuest2.State.ACTIVE){RuntimeState.Monster m=findMonster("combat_dummy_01");if(m==null)m=findMonster("combat_dummy_02");if(m==null)m=findMonster("combat_dummy_03");if(m!=null){combat.selectTarget(m);worldAdapter.requestMonsterApproach(m.id,48f);}else showFeedback("훈련 목표를 모두 처치했습니다 · 안내인에게 돌아가세요",FeedbackTone.INFO);}}
@@ -1206,7 +1207,7 @@ private void drawUtilityRail(Canvas c){
       if(useHudPotion(x,y))return true;
       for(int i=0;i<SkillBook.SLOT_COUNT;i++){RectF r=slotRect(i);if(r.contains(x,y)){pressedControl="SLOT"+i;SkillBook.Entry entry=skillBook.get(skillBook.slot(i));if(entry!=null)useBookSkill(entry);else showFeedback("스킬창에서 퀵슬롯을 등록하세요",FeedbackTone.INFO);return true;}}
 
-      if(circleHit(x,y,ATK_X+combatHudOffset(hudRightOffset),ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
+      if(circleHit(x,y,attackHudX(hudRightOffset),ATK_Y,ATK_R+4)){pressedControl="ATK";attack();return true;}
       if(circleHit(x,y,AUTO_X+combatHudOffset(hudRightOffset),AUTO_Y,AUTO_R+3)){cancelSkillApproach();autoHuntQuestId=null;autoAcquireWait=0;autoAttackEnabled=!autoAttackEnabled;if(autoAttackEnabled)autoSkillCursor=0;pressedControl="AUTO";autoTargetHintClock=0;if(autoAttackEnabled){RuntimeState.Monster best=bestReachableAutoTarget();if(best!=null){combat.selectTarget(best);showFeedback("자동 공격 시작 · "+best.name,FeedbackTone.INFO);}else showFeedback("자동 공격 대기 · 접근 가능한 몬스터가 없습니다",FeedbackTone.INFO);}else showFeedback("자동 공격 정지",FeedbackTone.INFO);return true;}
       if(isHudSurface(x,y))return true;
       WorldRuntimeAdapter active=activeWorld();WorldCameraTransform.Point wp=active.screenToWorld(x,y);RuntimeState.Npc npc=state.hitNpc(wp.x,wp.y,34f);if(npc!=null){cancelSkillApproach();combat.cancelApproach();interaction.cancelApproach();active.requestNpcApproach(npc.id);showFeedback("NPC 접근 · "+npc.name,FeedbackTone.INFO);return true;}RuntimeState.Monster monster=state.hitMonster(wp.x,wp.y,34f);if(monster!=null){cancelSkillApproach();active.cancelForAction();combat.selectTarget(monster);interaction.cancelApproach();showFeedback("타깃 선택 · "+monster.name,FeedbackTone.INFO);return true;}requestGroundMove(x,y);return true;

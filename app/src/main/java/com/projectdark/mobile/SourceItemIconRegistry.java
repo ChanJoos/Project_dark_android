@@ -101,7 +101,7 @@ final class SourceItemIconRegistry {
  static void drawEquipmentForSlot(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,String slot,String itemId){
   if("무기".equals(RpgProgressionState.baseSlot(slot))){draw(canvas,bitmap,target,paint);return;}
   RectF fitted=new RectF(target);float size=equipmentSize(slot,itemId);fitted.inset(target.width()*(1-size)/2,target.height()*(1-size)/2);
-  drawEquipment(canvas,bitmap,fitted,paint,equipmentMirrored(slot),"목걸이".equals(slot)||"갑옷".equals(slot));
+  drawEquipment(canvas,bitmap,fitted,paint,equipmentMirrored(slot),"갑옷".equals(slot));
  }
  static void drawEquipment(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,boolean mirror){drawEquipment(canvas,bitmap,target,paint,mirror,false);}
  private static void drawEquipment(Canvas canvas,Bitmap bitmap,RectF target,Paint paint,boolean mirror,boolean optical){

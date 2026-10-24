@@ -1,0 +1,9 @@
+{
+  "version": "V266",
+  "status": "ACCEPTED_USER_REQUEST",
+  "source": "user20261024",
+  "change": "attack right; consumption includes reagents/food/recalls; display-only recall matte; allnecklace visible-bounds center",
+  "preserve": "source pixels,IDs,ownership,use,equipment stats,combat,facing,AUTO/grid",
+  "contract": "design/INVENTORY_POLISH_V266.md",
+  "verification": "PENDING exact-source focused native/build; phone PENDING"
+}

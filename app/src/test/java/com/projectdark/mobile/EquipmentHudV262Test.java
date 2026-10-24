@@ -13,19 +13,19 @@ public class EquipmentHudV262Test {
  @Before public void setup(){f.setup();}
  @Test public void combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths()throws Exception{
   for(int[] size:new int[][]{{960,540},{2340,1080}}){GameView v=f.view(size[0],size[1]);float scale=size[1]/540f,d=size[0]/scale-960;
-   RectF last=f.h.slot(v,5);float x=last.right+45,y=f.h.<Float>field(v,"ATK_Y"),radius=f.h.<Float>field(v,"ATK_R");
+   RectF last=f.h.slot(v,5);float autoX=last.right+45;float x=Math.min(autoX+10,960+d-2-37.2f),y=f.h.<Float>field(v,"ATK_Y"),radius=f.h.<Float>field(v,"ATK_R");
    float ay=f.h.<Float>field(v,"AUTO_Y"),ar=f.h.<Float>field(v,"AUTO_R");
-   assertEquals(31*1.2f,radius,.001f);assertTrue(x+radius<=960+d-7.99f);assertTrue(y+radius<540);
+   assertEquals(31*1.2f,radius,.001f);assertTrue(x+radius<=960+d-1.99f);assertTrue(y+radius<540);
    assertTrue("both buttons below their previous positions",y>418&&ay>391);assertTrue("auto above attack with separate touch circles",y-ay>radius+4+ar+3);
    if(d>100){assertEquals("wide layout retains approved skill anchor",659+d*.5f,f.h.slot(v,0).left,.001f);assertTrue(x<854+d);}
    for(int i=0;i<12;i++){RectF r=f.h.slot(v,i);
-    for(float[] circle:new float[][]{{x,y,radius+4},{x,ay,ar+3}}){float nx=Math.max(r.left,Math.min(circle[0],r.right)),ny=Math.max(r.top,Math.min(circle[1],r.bottom));assertTrue("button touch circle does not cover slot "+i,Math.hypot(circle[0]-nx,circle[1]-ny)>circle[2]);}
+    for(float[] circle:new float[][]{{x,y,radius+4},{autoX,ay,ar+3}}){float nx=Math.max(r.left,Math.min(circle[0],r.right)),ny=Math.max(r.top,Math.min(circle[1],r.bottom));assertTrue("button touch circle does not cover slot "+i,Math.hypot(circle[0]-nx,circle[1]-ny)>circle[2]);}
     tap(v,r.centerX()*scale,r.centerY()*scale);assertEquals("SLOT"+i,f.h.field(v,"pressedControl"));}
-   assertTrue(GameView.blocksWorldTapForHud(x,y,false,d));assertTrue(GameView.blocksWorldTapForHud(x,ay,false,d));
+   assertTrue(GameView.blocksWorldTapForHud(x,y,false,d));assertTrue(GameView.blocksWorldTapForHud(autoX,ay,false,d));
    tap(v,x*scale,y*scale);assertEquals("ATK",f.h.field(v,"pressedControl"));
-   boolean enabled=f.h.field(v,"autoAttackEnabled");tap(v,x*scale,ay*scale);assertEquals("AUTO",f.h.field(v,"pressedControl"));assertEquals(!enabled,f.h.field(v,"autoAttackEnabled"));
-   tap(v,x*scale,ay*scale);assertEquals(enabled,f.h.field(v,"autoAttackEnabled"));
-   render(v,"v265-hud-"+size[0],size[0],size[1]);
+   boolean enabled=f.h.field(v,"autoAttackEnabled");tap(v,autoX*scale,ay*scale);assertEquals("AUTO",f.h.field(v,"pressedControl"));assertEquals(!enabled,f.h.field(v,"autoAttackEnabled"));
+   tap(v,autoX*scale,ay*scale);assertEquals(enabled,f.h.field(v,"autoAttackEnabled"));
+   render(v,"v266-hud-"+size[0],size[0],size[1]);
   }
  }
  @Test public void bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput()throws Exception{
