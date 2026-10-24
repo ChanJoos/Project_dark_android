@@ -48,6 +48,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     CompanionParty.Member companionActor=state.party().find(actor);if(begin&&companionActor!=null&&MagicTimingPolicy.managed(id)&&companionActor.cooldown("party_spell_interval")>0)return CombatResolver.RejectReason.ACTION_BUSY;
     CombatResolver.RejectReason r=friendly(actor)?executor(actor).ready(actor,target,id,begin):null;if(r!=null)return r;
     SkillAbilityCatalog.Ability a=SkillAbilityCatalog.get(id);
+    if(friendly(actor)&&MagicTimingPolicy.managed(id)&&!"SK_성직자_031".equals(id)&&state.skillEffects().has(actor,"SILENCE"))return CombatResolver.RejectReason.CONTROL;
     if(friendly(actor)&&!body(actor).alive)return CombatResolver.RejectReason.ACTOR_DEAD;
     if(state.party().find(actor)!=null&&!state.player().alive)return CombatResolver.RejectReason.CONTROL;
     if(state.party().find(actor)!=null&&id.startsWith("attack_proto_")&&state.party().holdAttack(actor,target))return CombatResolver.RejectReason.CONTROL;
@@ -204,6 +205,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
     if(!friendly(actorId)&&"player".equals(targetId)&&state.skillEffects().hidden())return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,CombatResolver.HitSemantic.STATUS);
     AbelCombatProfile profile=AbelCombatProfile.forId(actorId);
     if(profile!=null&&actionId.equals("MONSTER_RECOVER")){RuntimeState.Monster m=findMonster(actorId);if(m==null||!m.alive||m.bossRecovered)return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.MONSTER,CombatResolver.HitSemantic.MISS);int before=m.hp;m.hp=Math.min(m.maxHp,m.hp+m.maxHp/8);m.bossRecovered=true;return new CombatResolver.EffectResult(m.hp-before,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.MONSTER,CombatResolver.HitSemantic.HEAL);}
+    if(CountessCastleMonsters.actor(actorId)&&friendly(targetId)&&("MONSTER_NARCOLI".equals(actionId)||"MONSTER_DISPEL".equals(actionId))){countessStatus(actorId,targetId,actionId);return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.OTHER,CombatResolver.HitSemantic.STATUS);}
     SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(actionId);
     boolean playerActor=friendly(actorId);
     SkillAbilityExecutor activeAbilities=playerActor?executor(actorId):abilities;
@@ -251,10 +253,10 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
       return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,
           targetKind(targetId),ability!=null&&ability.status.equals("FREEZE_HIT")?CombatResolver.HitSemantic.STATUS:CombatResolver.HitSemantic.MISS);
 
-    if(state.party().find(targetId)!=null){int before=body(targetId).hp;damageCompanion(targetId,amount);return new CombatResolver.EffectResult(before-body(targetId).hp,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.OTHER,CombatResolver.HitSemantic.DAMAGE);}
+    if(state.party().find(targetId)!=null){int before=body(targetId).hp;damageCompanion(targetId,amount);countessStatus(actorId,targetId,actionId);return new CombatResolver.EffectResult(before-body(targetId).hp,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.OTHER,CombatResolver.HitSemantic.DAMAGE);}
     if("player".equals(targetId)){
       int before=state.player().hp;
-      state.damagePlayer(amount);
+      state.damagePlayer(amount);countessStatus(actorId,targetId,actionId);
       if(profile!=null&&state.player().alive&&AbelCombatProfile.spell(actionId)){String kind=actionId.equals("MONSTER_BLIND")?"BLIND":actionId.equals("MONSTER_ROOT")?"ROOT":actionId.equals("MONSTER_CURSE")?"CURSE":actionId.startsWith("MONSTER_VENOM")?"POISON":actionId.equals("MONSTER_FREEZE")?"FREEZE":null;if(kind!=null)state.skillEffects().put("player",actionId,kind,kind.equals("POISON")?2:kind.equals("CURSE")?10:kind.equals("BLIND")?20:0,kind.equals("FREEZE")?1.1f:kind.equals("ROOT")?1.5f:5f);}
       int applied=Math.max(0,before-state.player().hp);
       return new CombatResolver.EffectResult(applied,before>0&&!state.player().alive,
@@ -311,4 +313,10 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   private static int safeScale(int n,double scale){return (int)Math.min(Integer.MAX_VALUE,Math.max(0,Math.round(n*scale)));}
   private static String key(String actorId,String actionId){return String.valueOf(actorId)+'\u0000'+String.valueOf(actionId);}
   private static final class Position { final float x,y; Position(float x,float y){this.x=x;this.y=y;} }
+  private void countessStatus(String actor,String target,String action){
+    if(!CountessCastleMonsters.actor(actor)||!entityAlive(target))return;
+    if("MONSTER_NARCOLI".equals(action))state.skillEffects().put(target,action,"SLEEP",0,2.5f);
+    if("MONSTER_DISPEL".equals(action)){for(String kind:new String[]{"STEALTH","PROTECT","SHIELD","ARMOR","INVINCIBLE","REFLECT_ALL","MAGIC_GUARD"})state.skillEffects().remove(target,kind);state.skillEffects().put(target,action,"SILENCE",0,3f);}
+  }
+
 }

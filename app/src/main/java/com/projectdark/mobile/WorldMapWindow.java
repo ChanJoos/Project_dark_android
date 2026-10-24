@@ -23,7 +23,8 @@ final class WorldMapWindow {
  static List<Pin> rawEntrances(String id){
   id=RucesionTownGeometry.canonical(AbelTownGeometry.canonical(AbelCoastGeometry.canonical(id)));
   List<Pin> out=new ArrayList<>();TownInteriorDef room=TownInteriorDef.forMap(id);
-  if(room!=null){
+  if(CountessCastleGeometry.contains(id)){for(CountessCastleGeometry.Gate g:CountessCastleGeometry.gates(id))out.add(new Pin(g.label,g.to,g.x,g.y,g.x,g.y));}
+  else if(room!=null){
    if(room.isTemple())for(TempleRoutes.Gate g:TempleRoutes.forRoom(room))out.add(new Pin(g.label,g.exit?interiorExitMap(room):g.target,g.x,g.y,g.x,g.y));
    else out.add(new Pin("출구",interiorExitMap(room),room.exitX(),room.exitY(),room.exitX(),room.exitY()));
   }else if(HorrorCastleGeometry.contains(id)){

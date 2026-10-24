@@ -69,6 +69,7 @@ final class SkillAbilityExecutor {
    if(clear.equals("ALL"))fx.clear(target);
    else if(clear.startsWith("CURSE")){int n=Integer.parseInt(clear.substring(5));if(fx.power(target,"CURSE")<=n)fx.remove(target,"CURSE");}
    else fx.remove(target,clear);
+   if(a.name.equals("디퓨레이션")||a.name.equals("리베라토"))fx.remove(target,"SILENCE");
   }else if(kind.startsWith("CURSE")){power=Integer.parseInt(kind.substring(5));if(power>=fx.power(target,"CURSE"))fx.put(target,id,"CURSE",power,duration);
   }else if(kind.startsWith("ARMOR")&&!kind.equals("ARMOR_BREAK")){power=Integer.parseInt(kind.substring(5));putStrong(target,id,"ARMOR",power,duration);
   }else if(kind.startsWith("HIT")){putStrong(target,id,"HIT",Integer.parseInt(kind.substring(3)),duration);

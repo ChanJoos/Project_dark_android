@@ -1,3 +1,7 @@
+## V273 Countess candidate acceptance record — Android pending
+
+14 native MPFs383/385/341/342/387/388–391/319/400/401/397/410 retain every indexed frame and pivot. Runtime stores each native source cell once; west directions use source-compatible canvas mirroring. MPF387 contains one static furniture frame; no fabricated attack frame. All14 source species are admitted to scene rosters including dormant second boss and summonable bomb. Specific Korean boss identity joins and original server tuning remain PENDING/ADAPTED. Shared Resolver/AI, actual player+companion sleep/dispel, per-map lifetime snapshot, source-alpha variants, navigation/current-map prewarm and12trip cache checks added. Local compile/domain8PASS; Android/native/artifact/phone acceptance pending. Do not promote this to original full parity solely from compilation. See design/COUNTESS_CASTLE_V273.md.
+
 ## V271 companion stealth acceptance evidence
 
 Actor-specific targetHidden/Resolver begin-and-contact guard is host/native verified at b6e9961b, Actions40076725337 (61 current feature/adjacent tests including real monster retaliation). Shared full32gate run40076146616 on e7b18af0 is reused through exact three-line HUD-only final delta guard. Source monster art, movement/facing/attack cadence/population unchanged. User phone acceptance PENDING. Receipt verification/COMPANION_AGENTS_V271.json.

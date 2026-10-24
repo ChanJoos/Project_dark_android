@@ -1,3 +1,7 @@
+## V273 — 백작부인의성 런타임 후보 / Android 검증 대기 (2026-10-24 KST)
+
+기존 PR198/브랜치 유지, mainf86d961e 미변경. 두 번째140.317056초 영상 및 원본클라이언트 복구 완료. 원본16맵(2899/2900/2901/2934/26301~26312),14 MPF fullframe/팔레트/pivot 보존. 경비병→외부전령→응접실/1~12존/상층결계, 원본Tile/Object/Collision/Spawn/Portal 분리, 공유Resolver 나르콜리·디스펠·침묵/동료, 지역 HP/사망저장, 보스 두 생명 및 테스트 다이애나 폭탄1회 소환 구현. HP/MP/EXP/스폰/시간/연결좌표는 명시ADAPTED; 보스한국명↔MPF 정체/원작드랍·서버수치·폰수용은 미확정. 로컬 production compile/도메인8건 PASS; Android/native/새APK는PENDING. 기존V272검증은 기존범위에서보존하며 새후보통과로 재라벨금지. 다음: exact GitHub 후보→성전용+직접인접 CI→실제화면검토→APK source/run/hash 검증. 계약design/COUNTESS_CASTLE_V273.md.
+
 ## V273 — 중단 지점 확인·두 번째 영상 복구 기록 정정 (2026-10-24 KST)
 
 실제 브랜치 `codex/companion-party-v269`, 재개 base `e111ed58`, 최신 main `f86d961e` 확인. 마지막 검증 APK source `3bf159d3`/Actions40081979346(76 scoped PASS); 공유 full32 근거3268a2fa/40081396216 유지. 두 번째 영상은 이미 scratch에 복구되어 있고 140.317056초·2340×1080·344682709bytes, SHA256 `1afd1d3134d7b0af0ce3c0b08aa07ce5f9a0f45994366d202a11bd3c775f8eee` 확인. 개요2장·보스상세 검토; 재첨부 요청 취소. 원본 client/map archive도 기존 수신 해시와 일치하여 재다운로드 불필요. 클라이언트 직접7zip열기는 실패하여 실제 설치파일 형식 추출 필요. 게임 코드·새 빌드·새 APK는 아직 없음. 다음: 원본 map/MPF 대조→경비병/외부NPC/로비/12존/보스 구현. 아래 수신대기 기록은 과거 이력이다.

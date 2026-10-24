@@ -5,8 +5,8 @@ android {
     compileSdk 35
     defaultConfig {
         applicationId 'com.projectdark.mobile'
-        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v272test'
-        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V272 TEST' : 'PROJECT DARK']
+        if (System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1') applicationIdSuffix '.v273test'
+        manifestPlaceholders = [appLabel: System.getenv('PROJECT_DARK_SIDE_BY_SIDE') == '1' ? 'PROJECT DARK V273 TEST' : 'PROJECT DARK']
         minSdk 26
         targetSdk 35
         versionCode 184
@@ -17,7 +17,7 @@ android {
     buildFeatures { buildConfig true }
     sourceSets {
         main {
-            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile, layout.buildDirectory.dir('generated/wearables-v212').get().asFile, layout.buildDirectory.dir('generated/death-v217').get().asFile]
+            assets.srcDirs += ['../assets/milles/production', '../assets/pote/production', layout.buildDirectory.dir('generated/build-identity').get().asFile, layout.buildDirectory.dir('generated/wardrobe-v128').get().asFile, layout.buildDirectory.dir('generated/abel-v139').get().asFile, layout.buildDirectory.dir('generated/horror-v180-pack').get().asFile, layout.buildDirectory.dir('generated/mine-hunt-v208').get().asFile, layout.buildDirectory.dir('generated/temple-v211').get().asFile, layout.buildDirectory.dir('generated/wearables-v212').get().asFile, layout.buildDirectory.dir('generated/death-v217').get().asFile, layout.buildDirectory.dir('generated/countess-v273').get().asFile]
         }
     }
     testOptions {
@@ -253,3 +253,13 @@ tasks.register('generateDeathV217', Exec) {
  commandLine 'python3', 'tools/build_death_v217.py'
 }
 tasks.named('preBuild').configure { dependsOn('generateDeathV217') }
+
+// Original Countess layers and complete native MPF frames from retained verified bytes.
+tasks.register('generateCountessV273', Exec) {
+ inputs.files(rootProject.fileTree('master/source/countess_v273') { include '*.zip'; include 'sources.json' })
+ inputs.file(rootProject.file('tools/build_countess_v273.py'))
+ outputs.dir(layout.buildDirectory.dir('generated/countess-v273'))
+ workingDir rootProject.projectDir
+ commandLine 'python3', 'tools/build_countess_v273.py'
+}
+tasks.named('preBuild').configure { dependsOn('generateCountessV273') }
