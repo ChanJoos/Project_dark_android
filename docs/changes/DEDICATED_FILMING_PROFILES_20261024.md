@@ -9,3 +9,5 @@ Rogue: Hell thief armorR01486,helmetR01485(mh128),Shinwoldo,knightshield. Mage: 
 Exporter calls canonical F5mSaveStore checkpoint, exports typed Android SharedPreferences XML, imports unchanged typed values into a clean test environment, reconstructs GameView and verifies actual job/advancement/map/equipment/current+maxresources/quickslots. Artifacts include five separate directories with shared_prefs and explicit provenance,7day retention. These files are for an isolated filming emulator only, never a user's normal save. Actual Android install/reload remains separate acceptance.
 
 Verification scope adds one exporter test looping all5 jobs to previously33adjacent tests. No retired verification restored. Local diff check passed; CI pending.
+
+Final verification:34passed on d8c3fdb8/run40075882243; five profiles exported and roundtrip verified. See dedicated build receipt for exact hashes. First attempt failed unresolved LIFE source-row lookup; retry selects actual existing runtime accessory. ActualAndroidrestore remains pending, no normal-save install.
