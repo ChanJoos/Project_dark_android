@@ -122,7 +122,6 @@ jobs:
           adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity" | tee evidence/launch.txt
           sleep 8
           # Dismiss the observed Android first-run fullscreen tutorial, not a permission dialog.
-          adb shell input tap 927 285
           sleep 20
           # Only explicit dedicated filming profiles, never a user's save.
           mkdir -p profiles
