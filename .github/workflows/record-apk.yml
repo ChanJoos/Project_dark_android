@@ -9,12 +9,13 @@ permissions:
 jobs:
   record:
     runs-on: ubuntu-24.04
-    timeout-minutes: 25
+    timeout-minutes: 45
     env:
-      SOURCE_RUN: '39422054821'
-      SOURCE_SHA: '558cb267c403d2c4524a5e07b77aa95934403a16'
-      SOURCE_ARTIFACT: '12265010849'
-      APK_SHA256: '0bfd6fdf1c6199a4e45267600dec789844c1a15c4ba529069a96989d15c620f5'
+      APP_PACKAGE: 'com.projectdark.mobile.v266test'
+      SOURCE_RUN: '40061780890'
+      SOURCE_SHA: '8be211a3ccffca6d0bb73071c0994ec3218d015b'
+      SOURCE_ARTIFACT: '12548255643'
+      APK_SHA256: 'b9e793795c1ab23de439907810b44d136398b85acc6befb767632732fb5d9e6d'
       GH_TOKEN: ${{ github.token }}
       GH_REPO: ${{ github.repository }}
     steps:
@@ -30,13 +31,13 @@ jobs:
           assert r['head_repository']['full_name']==os.environ['GH_REPO']
           PY
           gh api "repos/$GH_REPO/actions/runs/$SOURCE_RUN/artifacts" > evidence/source-artifacts.json
-          gh run download "$SOURCE_RUN" --repo "$GH_REPO" --name PROJECT_DARK_v184_portals --dir input
+          gh run download "$SOURCE_RUN" --repo "$GH_REPO" --name PROJECT_DARK_MINE_ENTRY_CANDIDATE --dir input
           python3 - <<'PY'
           import pathlib, json, hashlib, zipfile, os
           artifacts=json.load(open('evidence/source-artifacts.json'))['artifacts']
           selected=[a for a in artifacts if str(a['id'])==os.environ['SOURCE_ARTIFACT']]
           assert len(selected)==1 and not selected[0]['expired']
-          assert selected[0]['name']=='PROJECT_DARK_v184_portals'
+          assert selected[0]['name']=='PROJECT_DARK_MINE_ENTRY_CANDIDATE'
           apks=list(pathlib.Path('input').rglob('*.apk'))
           assert len(apks)==1, apks
           p=apks[0]
@@ -47,7 +48,7 @@ jobs:
           assert str(identity['runId'])==os.environ['SOURCE_RUN']
           proof={'identity':identity,'apkSha256':hashlib.sha256(p.read_bytes()).hexdigest(),
                  'capture':'installed APK on Android emulator; not a handset recording',
-                 'scope':'startup and idle smoke footage; gameplay interactions not yet verified',
+                 'scope':'Mine-entry fix candidate, real class setup and input capture; inspect outcomes; development skill-test mode disclosed',
                  'audio':False}
           pathlib.Path('evidence/apk-identity.json').write_text(json.dumps(proof,indent=2))
           pathlib.Path('input/app.apk').write_bytes(p.read_bytes())
@@ -93,7 +94,7 @@ jobs:
         run: |
           adb install -r input/app.apk | tee evidence/install.txt
           adb shell pm list packages | grep projectdark | tee evidence/packages.txt
-          PKG=com.projectdark.mobile.v184test
+          PKG=com.projectdark.mobile.v266test
           adb shell pm path "$PKG" | tee evidence/installed-path.txt
           adb shell am start -W -n "$PKG/com.projectdark.mobile.MainActivity" | tee evidence/launch.txt
           sleep 8
@@ -103,19 +104,380 @@ jobs:
           adb shell pidof "$PKG" | tee evidence/pid-before.txt
           adb shell dumpsys activity activities > evidence/activity.txt
           adb exec-out screencap -p > evidence/start.png
-          # First pass intentionally has no speculative gameplay taps. Inspect the screenshot
-          # and then add a reviewed adb input sequence for the intended walkthrough.
-          adb shell screenrecord --size 1920x1080 --bit-rate 12000000 --time-limit 20 /sdcard/installed-apk.mp4
-          adb pull /sdcard/installed-apk.mp4 evidence/installed-apk.mp4
-          adb exec-out screencap -p > evidence/end.png
-          adb shell pidof "$PKG" | tee evidence/pid-after.txt
-          adb logcat -d > evidence/logcat.txt
-          test -s evidence/installed-apk.mp4
-      - name: Preserve video and diagnostic evidence
+          mkdir -p evidence/boot
+          cp evidence/start.png evidence/boot/start.png
+          cp evidence/apk-identity.json evidence/boot/apk-identity.json
+      - name: Upload boot checkpoint
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-boot
+          path: evidence/boot/
+          retention-days: 7
+      - name: Prepare bounded input controller
+        run: |
+          cat > capture_stage.py <<'PYCODE'
+          import base64, json, os, pathlib, subprocess, time
+          stage=int(os.environ['CAPTURE_STAGE'])
+          root=pathlib.Path('evidence')/f'stage-{stage:02d}'
+          root.mkdir(parents=True,exist_ok=True)
+          pkg=os.environ['APP_PACKAGE']
+          
+          def run(*args,check=True):
+              return subprocess.run(list(args),check=check,capture_output=True)
+          def adb(*args,check=True): return run('adb',*args,check=check)
+          def snap(name):
+              (root/(name+'.png')).write_bytes(adb('exec-out','screencap','-p').stdout)
+          
+          if pathlib.Path('capture-finished').exists():
+              with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('finished=true\n')
+              raise SystemExit(0)
+          
+          start=time.monotonic(); control=None
+          while time.monotonic()-start<240:
+              raw=run('gh','api',f'repos/{os.environ["GH_REPO"]}/contents/.github/capture-controls.json?ref=dot%2Fapk-recording-20261020',check=False)
+              if raw.returncode==0:
+                  try:
+                      info=json.loads(raw.stdout); value=json.loads(base64.b64decode(info['content']))
+                      if value.get('stage')==stage:control=value;break
+                  except (ValueError,KeyError):pass
+              time.sleep(5)
+          if control is None:raise RuntimeError(f'No approved control for stage {stage} within 240 seconds')
+          (root/'control.json').write_text(json.dumps(control,ensure_ascii=False,indent=2))
+          if control.get('finish') is True:
+              pathlib.Path('capture-finished').touch()
+              with open(os.environ['GITHUB_OUTPUT'],'a') as f:f.write('finished=true\n')
+              raise SystemExit(0)
+          commands=control.get('commands',[])
+          assert isinstance(commands,list) and len(commands)<=80
+          allowed={'tap','swipe','wait','snapshot','launch','reset_test_profile'}
+          for c in commands:
+              assert isinstance(c,dict) and c.get('op') in allowed
+              for k in ('x','y','x2','y2'):
+                  if k in c:assert type(c[k]) is int and 0<=c[k]<=1920
+              if 'seconds' in c:assert isinstance(c['seconds'],(int,float)) and 0<=c['seconds']<=90
+              if 'ms' in c:assert type(c['ms']) is int and 100<=c['ms']<=10000
+          snap('start')
+          video=f'/sdcard/stage-{stage:02d}.mp4'
+          rec=subprocess.Popen(['adb','shell','screenrecord','--size','1920x1080','--bit-rate','16000000','--time-limit','150',video],stdout=(root/'record.log').open('wb'),stderr=subprocess.STDOUT)
+          time.sleep(1)
+          try:
+              begun=time.monotonic()
+              for index,c in enumerate(commands):
+                  if time.monotonic()-begun>135:raise RuntimeError('Capture stage exceeded bounded duration')
+                  op=c['op']
+                  if op=='tap':adb('shell','input','tap',str(c['x']),str(c['y']))
+                  elif op=='swipe':adb('shell','input','swipe',str(c['x']),str(c['y']),str(c['x2']),str(c['y2']),str(c.get('ms',1000)))
+                  elif op=='wait':time.sleep(c.get('seconds',1))
+                  elif op=='snapshot':snap(f'checkpoint-{index:02d}')
+                  elif op=='launch':adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
+                  elif op=='reset_test_profile':
+                      # Only the fresh, agent-created emulator profile; no user's device/data.
+                      adb('shell','am','force-stop',pkg)
+                      saved=adb('exec-out','run-as',pkg,'tar','-cf','-','shared_prefs','files',check=False)
+                      (root/'previous-test-profile.tar').write_bytes(saved.stdout)
+                      adb('shell','pm','clear',pkg)
+                      adb('shell','am','start','-W','-n',pkg+'/com.projectdark.mobile.MainActivity')
+                  time.sleep(.3)
+          finally:
+              adb('shell','pkill','-INT','screenrecord',check=False)
+              try:rec.wait(timeout=15)
+              except subprocess.TimeoutExpired:rec.terminate();rec.wait(timeout=5)
+              adb('pull',video,str(root/'capture.mp4'),check=False)
+              snap('end')
+              (root/'activity.txt').write_bytes(adb('shell','dumpsys','activity','activities',check=False).stdout)
+              (root/'pid.txt').write_bytes(adb('shell','pidof',pkg,check=False).stdout)
+              saved=adb('exec-out','run-as',pkg,'tar','-cf','-','shared_prefs','files',check=False)
+              (root/'test-profile-readonly.tar').write_bytes(saved.stdout)
+          print(f'Stage {stage} captured; inspect end.png and video before claiming gameplay.')
+          PYCODE
+      - name: Capture inspected stage 1
+        id: stage1
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '1'
+        run: python3 capture_stage.py
+      - name: Upload stage 1
+        if: ${{ always() && steps.stage1.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-01
+          path: evidence/stage-01/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 2
+        id: stage2
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '2'
+        run: python3 capture_stage.py
+      - name: Upload stage 2
+        if: ${{ always() && steps.stage2.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-02
+          path: evidence/stage-02/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 3
+        id: stage3
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '3'
+        run: python3 capture_stage.py
+      - name: Upload stage 3
+        if: ${{ always() && steps.stage3.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-03
+          path: evidence/stage-03/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 4
+        id: stage4
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '4'
+        run: python3 capture_stage.py
+      - name: Upload stage 4
+        if: ${{ always() && steps.stage4.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-04
+          path: evidence/stage-04/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 5
+        id: stage5
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '5'
+        run: python3 capture_stage.py
+      - name: Upload stage 5
+        if: ${{ always() && steps.stage5.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-05
+          path: evidence/stage-05/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 6
+        id: stage6
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '6'
+        run: python3 capture_stage.py
+      - name: Upload stage 6
+        if: ${{ always() && steps.stage6.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-06
+          path: evidence/stage-06/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 7
+        id: stage7
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '7'
+        run: python3 capture_stage.py
+      - name: Upload stage 7
+        if: ${{ always() && steps.stage7.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-07
+          path: evidence/stage-07/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 8
+        id: stage8
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '8'
+        run: python3 capture_stage.py
+      - name: Upload stage 8
+        if: ${{ always() && steps.stage8.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-08
+          path: evidence/stage-08/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 9
+        id: stage9
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '9'
+        run: python3 capture_stage.py
+      - name: Upload stage 9
+        if: ${{ always() && steps.stage9.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-09
+          path: evidence/stage-09/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 10
+        id: stage10
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '10'
+        run: python3 capture_stage.py
+      - name: Upload stage 10
+        if: ${{ always() && steps.stage10.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-10
+          path: evidence/stage-10/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 11
+        id: stage11
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '11'
+        run: python3 capture_stage.py
+      - name: Upload stage 11
+        if: ${{ always() && steps.stage11.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-11
+          path: evidence/stage-11/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 12
+        id: stage12
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '12'
+        run: python3 capture_stage.py
+      - name: Upload stage 12
+        if: ${{ always() && steps.stage12.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-12
+          path: evidence/stage-12/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 13
+        id: stage13
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '13'
+        run: python3 capture_stage.py
+      - name: Upload stage 13
+        if: ${{ always() && steps.stage13.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-13
+          path: evidence/stage-13/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 14
+        id: stage14
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '14'
+        run: python3 capture_stage.py
+      - name: Upload stage 14
+        if: ${{ always() && steps.stage14.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-14
+          path: evidence/stage-14/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 15
+        id: stage15
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '15'
+        run: python3 capture_stage.py
+      - name: Upload stage 15
+        if: ${{ always() && steps.stage15.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-15
+          path: evidence/stage-15/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 16
+        id: stage16
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '16'
+        run: python3 capture_stage.py
+      - name: Upload stage 16
+        if: ${{ always() && steps.stage16.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-16
+          path: evidence/stage-16/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 17
+        id: stage17
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '17'
+        run: python3 capture_stage.py
+      - name: Upload stage 17
+        if: ${{ always() && steps.stage17.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-17
+          path: evidence/stage-17/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 18
+        id: stage18
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '18'
+        run: python3 capture_stage.py
+      - name: Upload stage 18
+        if: ${{ always() && steps.stage18.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-18
+          path: evidence/stage-18/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 19
+        id: stage19
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '19'
+        run: python3 capture_stage.py
+      - name: Upload stage 19
+        if: ${{ always() && steps.stage19.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-19
+          path: evidence/stage-19/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Capture inspected stage 20
+        id: stage20
+        if: ${{ !cancelled() && success() }}
+        env:
+          CAPTURE_STAGE: '20'
+        run: python3 capture_stage.py
+      - name: Upload stage 20
+        if: ${{ always() && steps.stage20.outputs.finished != 'true' }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: gameplay-${{ github.run_id }}-stage-20
+          path: evidence/stage-20/
+          retention-days: 7
+          if-no-files-found: ignore
+      - name: Preserve diagnostic evidence
         if: always()
         uses: actions/upload-artifact@v4
         with:
-          name: installed-apk-recording-${{ github.run_id }}
-          path: evidence/
+          name: gameplay-${{ github.run_id }}-diagnostics
+          path: |
+            evidence/*.txt
+            evidence/*.json
+            evidence/*.log
           retention-days: 7
-          if-no-files-found: error
+          if-no-files-found: ignore
