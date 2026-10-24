@@ -1,6 +1,50 @@
 {
-  "stage": 4,
+  "stage": 5,
   "commands": [
+    {
+      "op": "load_checkpoint",
+      "job": "MAGE"
+    },
+    {
+      "op": "wait",
+      "seconds": 4
+    },
+    {
+      "op": "tap",
+      "x": 1400,
+      "y": 780
+    },
+    {
+      "op": "wait",
+      "seconds": 7
+    },
+    {
+      "op": "tap",
+      "x": 1400,
+      "y": 750
+    },
+    {
+      "op": "wait",
+      "seconds": 4
+    },
+    {
+      "op": "tap",
+      "x": 1490,
+      "y": 720
+    },
+    {
+      "op": "wait",
+      "seconds": 5
+    },
+    {
+      "op": "tap",
+      "x": 520,
+      "y": 650
+    },
+    {
+      "op": "wait",
+      "seconds": 7
+    },
     {
       "op": "tap",
       "x": 1314,
@@ -8,74 +52,10 @@
     },
     {
       "op": "wait",
-      "seconds": 1.4
-    },
-    {
-      "op": "tap",
-      "x": 832,
-      "y": 570
-    },
-    {
-      "op": "tap",
-      "x": 1392,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 1.4
+      "seconds": 2
     },
     {
       "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 1216,
-      "y": 510
-    },
-    {
-      "op": "tap",
-      "x": 1392,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 1.4
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 576,
-      "y": 946
-    },
-    {
-      "op": "tap",
-      "x": 1392,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 1.4
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "tap",
-      "x": 1470,
-      "y": 912
-    },
-    {
-      "op": "wait",
-      "seconds": 4
-    },
-    {
-      "op": "snapshot"
-    },
-    {
-      "op": "wait",
-      "seconds": 3
     }
   ]
 }
