@@ -84,8 +84,8 @@ public final class GameView extends View {
   private final SkillApproachController skillApproach=new SkillApproachController();
   private final float[] monsterFxCenter=new float[2];
   private final SkillVfxRenderer.Anchors skillAnchors=new SkillVfxRenderer.Anchors(){
-    public float facingX(String id){CharacterRenderer.Direction d=playerFacing.presentation();return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-32:32;}
-    public float facingY(String id){CharacterRenderer.Direction d=playerFacing.presentation();return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-16:16;}
+    public float facingX(String id){CompanionParty.Member companion=state.party().find(id);CharacterRenderer.Direction d=companion==null?playerFacing.presentation():companion.facing;return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.SW?-32:32;}
+    public float facingY(String id){CompanionParty.Member companion=state.party().find(id);CharacterRenderer.Direction d=companion==null?playerFacing.presentation():companion.facing;return d==CharacterRenderer.Direction.NW||d==CharacterRenderer.Direction.NE?-16:16;}
 
     public float x(String id){CompanionParty.Member companion=state.party().find(id);if(companion!=null)return companionX(companion);if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldX();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.x;return Float.NaN;}
     public float y(String id){CompanionParty.Member companion=state.party().find(id);if(companion!=null)return companionY(companion);if(RuntimeCombatSession.PLAYER_ID.equals(id))return renderedPlayerWorldY();for(RuntimeState.Monster m:state.monsters())if(id.equals(m.id))return m.y;return Float.NaN;}

@@ -21,7 +21,7 @@ public final class SkillEffectState {
   if(dt<=0)return;
   for(String actor:new ArrayList<>(effects.keySet())){
    RuntimeState.Monster m=monster(state,actor);boolean player=actor.equals("player");CompanionParty.Member companion=state.party().find(actor);
-   if(companion!=null){if(!companion.body.alive){clear(actor);continue;}Map<String,Effect> own=effects.get(actor);for(Effect e:new ArrayList<>(own.values())){float active=Math.min(dt,e.remaining);e.remaining-=dt;e.tick+=active;while(e.tick>=1){e.tick-=1;if(e.kind.equals("REGEN"))companion.body.hp=Math.min(companion.body.maxHp,companion.body.hp+e.power);else if(e.kind.equals("POISON")){companion.body.hp=Math.max(0,companion.body.hp-e.power);companion.body.alive=companion.body.hp>0;}}if(e.remaining<=0)own.remove(e.kind);}continue;}
+   if(companion!=null){if(!companion.body.alive){clear(actor);continue;}Map<String,Effect> own=effects.get(actor);for(Effect e:new ArrayList<>(own.values())){float active=Math.min(dt,e.remaining);e.remaining-=dt;e.tick+=active;while(e.tick>=1){e.tick-=1;if(!companion.body.alive)continue;if(e.kind.equals("REGEN"))companion.body.hp=Math.min(companion.body.maxHp,companion.body.hp+e.power);else if(e.kind.equals("POISON")){companion.body.hp=Math.max(0,companion.body.hp-e.power);companion.body.alive=companion.body.hp>0;}}if(e.remaining<=0)own.remove(e.kind);}continue;}
    if(player?!state.player().alive:m==null||!m.alive){clear(actor);continue;}
    Map<String,Effect> map=effects.get(actor);if(map==null)continue;
    for(Effect e:new ArrayList<>(map.values())){

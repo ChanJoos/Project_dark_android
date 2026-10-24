@@ -39,7 +39,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   String frontTarget(String id){return MartialSkillPolicy.frontTarget(state,id,facing(),this::visible);}
   public String takeSkillNotice(){return abilities.takeNotice();}
   public CombatResolver.RejectReason actionReady(String actor,String target,String id,boolean begin){
-    if(!"player".equals(actor)&&"player".equals(target)&&(state.skillEffects().hidden()||state.skillEffects().has(actor,"AGGRO_RESET")&&!state.skillEffects().has(actor,"TAUNT")))return CombatResolver.RejectReason.CONTROL;
+    if(!friendly(actor)&&"player".equals(target)&&(state.skillEffects().hidden()||state.skillEffects().has(actor,"AGGRO_RESET")&&!state.skillEffects().has(actor,"TAUNT")))return CombatResolver.RejectReason.CONTROL;
     if("player".equals(actor)&&RogueSkillPolicy.sense(id)&&!RogueSkillPolicy.valid(state,target,facing(),this::visible))return CombatResolver.RejectReason.RANGE;
     if("player".equals(actor)&&RogueSkillPolicy.ray(id)&&!RogueSkillPolicy.validRay(state,id,target,facing(),this::visible))return CombatResolver.RejectReason.RANGE;
     if(begin&&"player".equals(actor)&&MagicTimingPolicy.managed(id)&&spellIntervalRemaining>0)return CombatResolver.RejectReason.ACTION_BUSY;
@@ -187,7 +187,7 @@ public final class RuntimeCombatPortAdapter implements CombatResolver.Port {
   }
 
   public CombatResolver.EffectResult applyDamage(String actorId,String targetId,String actionId,int amount){
-    if(!"player".equals(actorId)&&"player".equals(targetId)&&state.skillEffects().hidden())return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,CombatResolver.HitSemantic.STATUS);
+    if(!friendly(actorId)&&"player".equals(targetId)&&state.skillEffects().hidden())return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.PLAYER,CombatResolver.HitSemantic.STATUS);
     AbelCombatProfile profile=AbelCombatProfile.forId(actorId);
     if(profile!=null&&actionId.equals("MONSTER_RECOVER")){RuntimeState.Monster m=findMonster(actorId);if(m==null||!m.alive||m.bossRecovered)return new CombatResolver.EffectResult(0,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.MONSTER,CombatResolver.HitSemantic.MISS);int before=m.hp;m.hp=Math.min(m.maxHp,m.hp+m.maxHp/8);m.bossRecovered=true;return new CombatResolver.EffectResult(m.hp-before,false,CombatResolver.DefeatPublication.PORT_ALREADY_PUBLISHED,CombatResolver.DefeatedTargetKind.MONSTER,CombatResolver.HitSemantic.HEAL);}
     SkillAbilityCatalog.Ability ability=SkillAbilityCatalog.get(actionId);

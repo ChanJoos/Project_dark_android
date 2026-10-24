@@ -37,7 +37,7 @@ jobs:
           --tests 'com.projectdark.mobile.CompanionControllerV269Test'
           --tests 'com.projectdark.mobile.CompanionNativeV269Test'
           --tests 'com.projectdark.mobile.SkillSpatialContractTest'
-          --tests 'com.projectdark.mobile.SkillTimingV174Test'
+          --tests 'com.projectdark.mobile.SkillTimingV174Test.realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes'
           --tests 'com.projectdark.mobile.InventoryPolishV266Test'
           --tests 'com.projectdark.mobile.EquipmentHudV262Test'
           --stacktrace
