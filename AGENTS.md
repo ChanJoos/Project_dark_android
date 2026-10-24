@@ -42,3 +42,6 @@ Before creating or changing any hunting map, read `docs/HUNT_MAP_PERFORMANCE_LES
 
 ## Required magic FX lessons
 Before creating or replacing magic effects, read `docs/MAGIC_FX_LESSONS.md`. Preserve complete original frames, per-frame anchors and blending; verify source pixels, multi-tile bounds and actual single/screen casts. User explicitly requires these V241/V242 lessons in later spell work.
+
+## User-retired obsolete verification — 2026-10-24
+The user confirmed the13previously reported failed groups had already been reviewed against the current baseline and explicitly ordered them discarded. `verification/V268_OBSOLETE_CHECKS_RETIRED.json` is the closed retirement record. Do not reopen those groups/cases as outstanding debt, regenerate their old assumptions, or restore them without a new user request. Their historical failures are not relabelled PASS. Keep current valid checks; new requested changes receive current-contract verification. Approved V266 runtime/assets and main integration remain the baseline.

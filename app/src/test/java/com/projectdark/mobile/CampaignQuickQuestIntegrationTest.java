@@ -48,7 +48,8 @@ public final class CampaignQuickQuestIntegrationTest {
     assertEquals("the tap-driven quick hunt defeats its selected quest target",1,campaign.count(CampaignProgress.find("M04"),r));
   }
 
-  @Test public void killQuickQuestTravelsToForestTargetsAndAutoAttacksQuestMonster()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void killQuickQuestTravelsToForestTargetsAndAutoAttacksQuestMonster()throws Exception{
     GameView view=new GameView(context);view.layout(0,0,960,540);
     RuntimeState runtime=TownInteriorTest.field(view,"state");RpgProgressionState r=runtime.rpg();
     r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));
@@ -75,7 +76,8 @@ public final class CampaignQuickQuestIntegrationTest {
     assertTrue("AUTO stays enabled after an objective kill",(Boolean)TownInteriorTest.field(view,"autoAttackEnabled"));
   }
 
-  @Test public void warriorShortbladePracticeCountsThreeAcceptedVisibleQuickslotUses()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void warriorShortbladePracticeCountsThreeAcceptedVisibleQuickslotUses()throws Exception{
     GameView view=new GameView(context);view.layout(0,0,960,540);
     RuntimeState runtime=TownInteriorTest.field(view,"state");RpgProgressionState r=runtime.rpg();
     r.grantAdaptedReward(5_000_000,0);assertTrue(r.chooseInitialJob("WARRIOR"));

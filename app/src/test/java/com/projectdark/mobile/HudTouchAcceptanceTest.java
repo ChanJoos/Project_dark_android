@@ -28,7 +28,8 @@ public final class HudTouchAcceptanceTest {
         result.movedCameraAccepted == UxTapAcceptanceAudit.REQUIRED_POINTS);
   }
 
-  @Test public void statusQuestAndUtilitySurfacesAreProtectedAndQuickQuestDirectlyRoutes() throws Exception {
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void statusQuestAndUtilitySurfacesAreProtectedAndQuickQuestDirectlyRoutes() throws Exception {
     assertTrue(GameView.blocksWorldTapForHud(480, 486, false));
     assertTrue("removed panel space is available to world taps", !GameView.blocksWorldTapForHud(480, 466, false));
     assertTrue(GameView.blocksWorldTapForHud(790, 104, false));

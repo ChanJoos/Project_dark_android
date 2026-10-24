@@ -253,59 +253,11 @@ jobs:
           pip install Pillow
           python tools/assets/build_v108_mouse_animation.py
           git diff --exit-code -- assets/milles/production/interiors/v108
-      - name: Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart
-        id: integration_gate_9
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V86 town interiors, dual-tile doors, numeric merchant input, source-backed gear stats, atomic trade and bank restart') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.TownInteriorTest --stacktrace
-      - name: Verify V90 adapted Milles story quest and shared mouse AI
-        id: integration_gate_10
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V90 adapted Milles story quest and shared mouse AI') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.InnDetailQuestFxTest --tests com.projectdark.mobile.InnWorldObjectTest --tests com.projectdark.mobile.InnSourceRepairTest --tests com.projectdark.mobile.MillesStoryQuestTest --tests com.projectdark.mobile.MillesMousePresentationTest --tests com.projectdark.mobile.FieldTransitionE2ETest --stacktrace
-      - name: Verify V138 all skills, spell timing, range, staff and restart
-        id: integration_gate_11
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V138 all skills, spell timing, range, staff and restart') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MagicRuntimeV137Test --tests com.projectdark.mobile.AllSkillRuntimeV138Test --stacktrace
-      - name: Verify V110 learning and retained phone-default quest actions and full campaign route audit
-        id: integration_gate_12
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V110 learning and retained phone-default quest actions and full campaign route audit') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.OnboardingUiTest --tests com.projectdark.mobile.DeviceQuestRegressionTest --tests com.projectdark.mobile.CampaignQuickQuestIntegrationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.QuestJournalTest --tests com.projectdark.mobile.QuickQuestLatencyTest --tests com.projectdark.mobile.MobileHudV135Test --tests com.projectdark.mobile.MobileHudV134Test --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
-      - name: Verify V97 quest list, state filters, compact navigation and restart
-        id: integration_gate_13
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V97 quest list, state filters, compact navigation and restart') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.QuestJournalTest --stacktrace
-      - name: Verify V99 equipment UI fonts, all modal input and wide native rendering
-        id: integration_gate_14
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V99 equipment UI fonts, all modal input and wide native rendering') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ModernUiTest --stacktrace
-      - name: Verify V96 four-way carry, all weapon motions and complete defense jump
-        id: integration_gate_15
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V96 four-way carry, all weapon motions and complete defense jump') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ChungryongWeaponTest --stacktrace
       - name: Verify LV40 monster rewards, job choice, wardrobe and restart
         id: integration_gate_16
         continue-on-error: true
         if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify LV40 monster rewards, job choice, wardrobe and restart') }}
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.AdaptedCampaignRewardTest --tests com.projectdark.mobile.NpcAppearanceTest --tests com.projectdark.mobile.F5mRestartPersistenceMatrixTest --stacktrace
-      - name: Verify V95 low-resource Dara recipient release and cancellation
-        id: integration_gate_17
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V95 low-resource Dara recipient release and cancellation') }}
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DaraRecipientFxTest --stacktrace
-      - name: Verify V83 per-skill abilities and runtime formulas
-        id: integration_gate_18
-        continue-on-error: true
-        if: ${{ !contains(fromJSON(steps.resume.outputs.passed), 'Verify V83 per-skill abilities and runtime formulas') }}
-        run: |
-          python3 tools/generate_skill_abilities.py
-          git diff --exit-code -- app/src/main/assets/skills/abilities.json app/src/main/java/com/projectdark/mobile/SkillAbilityData.java docs/SKILL_ABILITY_FORMULAS.csv
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.SkillAbilityRuntimeTest --tests com.projectdark.mobile.MonsterCurseV162Test --stacktrace
       - name: Verify classic capture sources and projections
         id: integration_gate_19
         continue-on-error: true
@@ -343,10 +295,6 @@ jobs:
           python3 tools/extract_item_window_reference.py
           git diff --exit-code -- app/src/main/assets/item-window
           gradle :app:testDebugUnitTest --tests com.projectdark.mobile.ItemWindowReferenceTest --tests com.projectdark.mobile.EquipmentStatsAndDetailsTest --stacktrace
-      - name: Verify skill window, shared combat and restart persistence
-        id: integration_gate_23
-        continue-on-error: true
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MartialHudAutoRegressionTest --tests com.projectdark.mobile.SkillFxAuditTest --tests com.projectdark.mobile.SkillWindowReferenceTest --tests com.projectdark.mobile.SkillWindowTest --tests com.projectdark.mobile.SkillPresentationTest --tests com.projectdark.mobile.SkillTestModeTest --tests com.projectdark.mobile.SkillSpatialContractTest --tests com.projectdark.mobile.SkillQuickslotApproachTest --tests com.projectdark.mobile.CapturedSkillFxTest --tests com.projectdark.mobile.ClassicSkillReferenceTest --tests com.projectdark.mobile.RogueSkillReferenceTest --tests com.projectdark.mobile.AllJobSkillSourceTest --tests com.projectdark.mobile.SkillContactRegressionTest --tests com.projectdark.mobile.MartialDefenseStarRegressionTest --tests com.projectdark.mobile.RagnarokSourceCaptureTest --stacktrace
       - name: Compile debug sources
         id: integration_gate_24
         continue-on-error: true
@@ -374,10 +322,6 @@ jobs:
         id: integration_gate_29
         continue-on-error: true
         run: java -cp "app/build/intermediates/javac/debug/compileDebugJavaWithJavac/classes:$ANDROID_HOME/platforms/android-35/android.jar" com.projectdark.mobile.world.QuickQuestApproachPathAudit
-      - name: Verify HUD leaves empty-world tap regions available
-        id: integration_gate_30
-        continue-on-error: true
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MobileHudV135Test --tests com.projectdark.mobile.MobileHudV134Test --tests com.projectdark.mobile.HudTouchAcceptanceTest --stacktrace
       - name: Verify V100 Milles whole-map depth, scenery collision and district navigation
         id: integration_gate_31
         continue-on-error: true
@@ -386,12 +330,6 @@ jobs:
         id: integration_gate_32
         continue-on-error: true
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.MillesDistrictReviewTest --stacktrace
-      - name: Render and test POTE production forest and A/B/C/D campaign
-        id: integration_gate_33
-        continue-on-error: true
-        run: |
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteVisualReviewTest --stacktrace
-          gradle :app:testDebugUnitTest --tests com.projectdark.mobile.PoteForestSpatialGrammarTest --tests com.projectdark.mobile.PoteMonsterPlayableRuntimeTest --tests com.projectdark.mobile.MonsterDamagePresentationTest --tests com.projectdark.mobile.PotePamfetPresentationTest --tests com.projectdark.mobile.AbelCoastV139Test --tests com.projectdark.mobile.CampaignNavigationTest --tests com.projectdark.mobile.CampaignProgressTest --tests com.projectdark.mobile.PoteCreekWaterAssetTest --tests com.projectdark.mobile.AutoAttackTargetSelectorTest --tests com.projectdark.mobile.MonsterChasePathfinderTest --tests com.projectdark.mobile.world.WorldMoveTargetControllerPathTest --stacktrace
       - name: Execute 4-way BODY robe mokdo visual contract audit
         id: integration_gate_34
         continue-on-error: true
@@ -432,10 +370,6 @@ jobs:
         id: integration_gate_43
         continue-on-error: true
         run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.RuntimeCheckpointTest --stacktrace
-      - name: Execute device recording regressions with native source rendering
-        id: integration_gate_44
-        continue-on-error: true
-        run: gradle :app:testDebugUnitTest --tests com.projectdark.mobile.DeviceRecordingRegressionTest --tests com.projectdark.mobile.ShirtRenderingRegressionTest --stacktrace
       - name: Print unit test failure details
         if: failure()
         run: |

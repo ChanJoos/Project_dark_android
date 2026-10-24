@@ -16,7 +16,8 @@ public class ModernUiTest {
   GameView start(int width,int height){GameView v=new GameView(c);v.layout(0,0,width,height);return v;}
   void tap(GameView v,float x,float y){ItemWindowReferenceTest.tap(v,x,y);}
   void capture(GameView v,String name)throws Exception{Bitmap b=Bitmap.createBitmap(v.getWidth(),v.getHeight(),Bitmap.Config.ARGB_8888);v.draw(new Canvas(b));File f=new File("build/reports/device-review/v99-"+name+".png");f.getParentFile().mkdirs();try(FileOutputStream out=new FileOutputStream(f)){assertTrue(b.compress(Bitmap.CompressFormat.PNG,100,out));}b.recycle();}
-  @Test public void everyWindowAndQuickbarRenderWithoutChangingGameState()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void everyWindowAndQuickbarRenderWithoutChangingGameState()throws Exception{
     GameView v=start(960,540);RuntimeState state=ItemWindowReferenceTest.field(v,"state");long gold=state.rpg().gold();float x=state.player().x,y=state.player().y;
     SkillBook book=ItemWindowReferenceTest.field(v,"skillBook");book.setTestAccess(true);String[] ids={"SK_전사_012","SK_도적_014","SK_무도가_007","SK_성직자_011"};for(int i=0;i<4;i++)assertTrue(book.assign(i,ids[i]));capture(v,"hud");
     state.rpg().autoLootResolvedItem(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID,1);tap(v,742,28);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"inventoryOpen"));capture(v,"inventory");ItemWindow w=ItemWindowReferenceTest.field(v,"itemWindow");int selected=0;for(RpgInventoryPresentation.ItemRow row:w.rows(state.rpg())){if(row.itemId.equals(RpgProgressionState.canonicalItemId(RpgProgressionState.PLAYTEST_WEAPON_ITEM_ID)))break;selected++;}assertTrue(selected<w.rows(state.rpg()).size());for(int page=0;page<selected/ItemWindow.PAGE_SIZE;page++)ItemWindowReferenceTest.inventoryTap(v,894,480);RectF cell=ItemWindow.cell(selected%ItemWindow.PAGE_SIZE);ItemWindowReferenceTest.inventoryTap(v,cell.centerX(),cell.centerY());assertTrue(w.details);capture(v,"inventory-compare");ItemWindowReferenceTest.inventoryTap(v,914,250);ItemWindowReferenceTest.inventoryTap(v,916,66);
@@ -25,7 +26,8 @@ public class ModernUiTest {
     QuestJournalTest.gesture(v,918,28);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"questJournalOpen"));capture(v,"quests");QuestJournalTest.gesture(v,818,78);
     assertEquals(gold,state.rpg().gold().longValue());assertEquals(x,state.player().x,0);assertEquals(y,state.player().y,0);
   }
-  @Test public void wideWindowsAndTheirCloseTargetsStayAligned()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void wideWindowsAndTheirCloseTargetsStayAligned()throws Exception{
     GameView v=start(2340,1080);float right=GameView.rightHudOffsetForView(2340,1080),center=right/2;
     tap(v,(742+right)*2,56);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"inventoryOpen"));capture(v,"wide-inventory");tap(v,(InventoryPairV262.INV_X+916*InventoryPairV262.INV_SCALE+center)*2,(InventoryPairV262.INV_Y+66*InventoryPairV262.INV_SCALE)*2);assertFalse((Boolean)ItemWindowReferenceTest.field(v,"inventoryOpen"));
     tap(v,(742+right)*2,56);assertTrue((Boolean)ItemWindowReferenceTest.field(v,"equipmentOpen"));capture(v,"wide-equipment");tap(v,(InventoryPairV262.EQUIP_X+ItemWindow.equipmentClose().centerX()*InventoryPairV262.EQUIP_SCALE+center)*2,(InventoryPairV262.EQUIP_Y+ItemWindow.equipmentClose().centerY()*InventoryPairV262.EQUIP_SCALE)*2);assertFalse((Boolean)ItemWindowReferenceTest.field(v,"equipmentOpen"));

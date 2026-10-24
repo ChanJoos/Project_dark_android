@@ -34,7 +34,8 @@ public class InnDetailQuestFxTest {
     int changed=0;for(int y=100;y<380;y++)for(int x=280;x<660;x++)if(with.getPixel(x,y)!=without.getPixel(x,y))changed++;
     assertTrue("indoor onDraw actually projects effect pixels, count="+changed,changed>5);with.recycle();without.recycle();
   }
-  @Test public void realIndoorQuickslotsDrawMartialMagicAndSelfEffects()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void realIndoorQuickslotsDrawMartialMagicAndSelfEffects()throws Exception{
     for(String id:new String[]{"SK_무도가_007","SK_마법사_005","SK_무도가_017"}){
       setup();GameView v=start();place(v);SkillBook b=TownInteriorTest.field(v,"skillBook");assertTrue(b.assign(0,id));TownInteriorTest.tap(v,672,429);
       assertEquals("actual quickslot is accepted indoors",id,TownInteriorTest.field(v,"activeSkillVisualId"));
@@ -47,7 +48,8 @@ public class InnDetailQuestFxTest {
     GameView v=start();place(v);RuntimeState s=TownInteriorTest.field(v,"state");RuntimeState.Monster m=s.monsters().get(0);s.skillEffects().clear(m.id);m.attackCooldown=0;m.attackPrimed=false;
     int hp=s.player().hp;advance(v,.52f);assertTrue("real shared mouse attack damages player",s.player().hp<hp);assertVisibleFx(v,"player");capture(v,"inn-mouse-hit");
   }
-  @Test public void rewardUnlocksTheNextQuestAndJournalWalksOutToItsNpc()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void rewardUnlocksTheNextQuestAndJournalWalksOutToItsNpc()throws Exception{
     GameView v=start();RuntimeState s=TownInteriorTest.field(v,"state");RuntimeState.Monster rat=s.monsters().get(0);
     s.damage(rat,rat.hp);advance(v,.01f);F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");assertEquals(F5mAdaptedPrologueQuest.State.RETURN_READY,q.state());
     TownInteriorDef d=TownInteriorDef.forMap(s.currentMapId());WorldRuntimeAdapter w=TownInteriorTest.field(v,"reagentShopAdapter");WorldCameraTransform.Point npc=w.worldToScreen(d.npcX(),d.npcY());TownInteriorTest.tap(v,npc.x,npc.y-24);TownInteriorTest.tick(v,600);TownInteriorTest.tap(v,570,426);
@@ -57,7 +59,8 @@ public class InnDetailQuestFxTest {
     assertEquals(WorldDef.ID,s.currentMapId());InteractionController interaction=TownInteriorTest.field(v,"interaction");assertTrue("continued route opens next dialogue; alive="+s.player().alive+", hp="+s.player().hp+", x="+s.player().x+", y="+s.player().y,interaction.dialogOpen());assertEquals("milles_guide_proto",interaction.dialogNpc().id);capture(v,"growth-npc");TownInteriorTest.tap(v,550,426);assertEquals(GrowthQuest2.State.ACTIVE,next.state());
     assertTrue(F5mSaveStore.checkpointActive());F5mSaveStore.install(c);GameView restored=new GameView(c);assertEquals(GrowthQuest2.State.ACTIVE,((GrowthQuest2)TownInteriorTest.field(restored,"quest2")).state());assertEquals(s.rpg().gold(),((RuntimeState)TownInteriorTest.field(restored,"state")).rpg().gold());
   }
-  @Test public void completedGrowthJournalRequiresJobAndCoreLessonsBeforeForestTravel()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void completedGrowthJournalRequiresJobAndCoreLessonsBeforeForestTravel()throws Exception{
     GameView v=start();F5mAdaptedPrologueQuest q=TownInteriorTest.field(v,"f5mQuest");q.restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);GrowthQuest2 growth=TownInteriorTest.field(v,"quest2");growth.restore(GrowthQuest2.State.COMPLETED,3);
     TownInteriorTest.call(v,"leaveReagentShop");RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().grantAdaptedReward(25300,350);s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=s.player().maxHp;
     TownInteriorTest.tap(v,918,28);QuestJournalWindow window=TownInteriorTest.field(v,"questJournalWindow");QuestJournalModel model=TownInteriorTest.field(v,"questJournalModel");assertEquals(QuestJournalModel.JOB_CHOICE,window.selected(model.rows(q,growth,false,s.rpg())).id);capture(v,"job-before-forest-journal");TownInteriorTest.tap(v,680,443);TownInteriorTest.tick(v,1600);
@@ -91,7 +94,8 @@ public class InnDetailQuestFxTest {
     RuntimeState s=TownInteriorTest.field(v,"state");s.rpg().restoreBaseResources(20000,20000);s.applyDerivedGrowth();s.player().hp=10000;s.player().mp=20000;
     SkillWindow.Actions actions=TownInteriorTest.field(v,"skillActions");SkillBook book=TownInteriorTest.field(v,"skillBook");actions.use(book.get("SK_무도가_017"));assertEquals("SK_무도가_017",TownInteriorTest.field(v,"activeSkillVisualId"));advance(v,.2f);assertTrue("shared UI action actually resolves in all facility maps",s.player().hp>10000);advance(v,.6f);assertNull("service room cannot strand an accepted action clock",TownInteriorTest.field(v,"activeSkillVisualId"));capture(v,"service-self-cast-finished");
   }
-  @Test public void skillWindowAndInventoryCanBeOpenedAndClosedInsideInn()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void skillWindowAndInventoryCanBeOpenedAndClosedInsideInn()throws Exception{
     GameView v=start();TownInteriorTest.tap(v,874,28);assertTrue(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);capture(v,"inn-skills");TownInteriorTest.tap(v,874,28);assertFalse(((SkillWindow)TownInteriorTest.field(v,"skillWindow")).open);
     TownInteriorTest.tap(v,742,28);assertTrue((Boolean)TownInteriorTest.field(v,"inventoryOpen"));capture(v,"inn-inventory");
   }

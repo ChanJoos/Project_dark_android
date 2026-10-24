@@ -25,6 +25,7 @@ public class CampaignProgressTest {
  }
  private CampaignProgress.Def findRoute(List<CampaignProgress.Def> route,String id){for(CampaignProgress.Def d:route)if(d.id.equals(id))return d;throw new AssertionError(id);}
  private boolean contains(JSONArray values,String id)throws Exception{for(int i=0;i<values.length();i++)if(id.equals(values.getString(i)))return true;return false;}
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void eachClassReachesFortyOneThroughResolverKillsAndQuestTurnIns()throws Exception{
   JSONObject report=new JSONObject();
   for(String job:CampaignProgress.JOBS){

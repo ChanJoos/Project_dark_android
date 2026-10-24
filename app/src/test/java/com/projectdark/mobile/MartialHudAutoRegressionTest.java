@@ -21,6 +21,7 @@ public class MartialHudAutoRegressionTest {
   s.player().x=m.x-dx;s.player().y=m.y-dy;((CombatController)field(v,"combat")).selectTarget(m);
   ((CanonicalActorFacing)field(v,"playerFacing")).setLocomotion(direction);((WorldRuntimeAdapter)field(v,"worldAdapter")).snapCameraToPlayer();return v;
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void everyActiveMartialSkillHasCorrectLiveDirectionTimingAndRecipientAnchors()throws Exception{
   SkillPresentationCatalog catalog=new SkillPresentationCatalog(c);int reviewed=0,active=0;
   for(SkillPresentationCatalog.Entry entry:catalog.entries.values())if(entry.id.startsWith("SK_무도가_")){
@@ -52,6 +53,7 @@ public class MartialHudAutoRegressionTest {
   Bitmap full=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);v.draw(new Canvas(full));WorldRuntimeAdapter world=field(v,"worldAdapter");RuntimeState s=field(v,"state");WorldCameraTransform.Point p=world.worldToScreen(s.player().x,s.player().y);
   int left=Math.max(0,Math.min(720,Math.round(p.x)-120)),top=Math.max(0,Math.min(340,Math.round(p.y)-140));out.drawBitmap(full,new Rect(left,top,left+240,top+200),new RectF(x,y,x+240,y+200),null);full.recycle();
  }
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void movingTargetCannotTurnAnAcceptedFrontAttackBehindTheActor()throws Exception{
   for(String id:new String[]{"SK_무도가_001","SK_무도가_002","SK_무도가_006","SK_무도가_007","SK_무도가_009","SK_무도가_010","SK_무도가_018","SK_무도가_023","SK_무도가_024","SK_무도가_028"})for(float[] dir:new float[][]{{32,16},{-32,16},{32,-16},{-32,-16}}){
    RuntimeState s=new RuntimeState();s.player().x=0;s.player().y=0;RuntimeState.Monster m=s.monsters().get(0);m.x=dir[0];m.y=dir[1];m.hp=20000;
@@ -80,6 +82,7 @@ public class MartialHudAutoRegressionTest {
   for(TownInteriorDef d:TownInteriorDef.ALL){Method enter=GameView.class.getDeclaredMethod("enterTownInterior",TownInteriorDef.class);enter.setAccessible(true);enter.invoke(v,d);v.draw(new Canvas(full));save(full,"v89-town-"+d.kind.toString().toLowerCase()+".png");}
  }
 
+ @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
  @Test public void everyMartialDamageShapeHitsOnlyItsDeclaredRecipients()throws Exception{
   for(SkillActionContract.Rule rule:SkillActionContract.all())if(rule.id.startsWith("SK_무도가_")&&rule.presentationAllowed()&&rule.damage())for(float[] direction:new float[][]{{32,16},{-32,16},{32,-16},{-32,-16}}){
    RuntimeState s=new RuntimeState();s.player().x=0;s.player().y=0;s.player().hp=20000;s.player().mp=20000;

@@ -62,7 +62,8 @@ public class DeviceQuestRegressionTest {
     for(int frame=0;frame<2400&&growth.state()==GrowthQuest2.State.ACTIVE;frame++)TownInteriorTest.tick(v,1);
     assertEquals("growth hunt retargets the remaining two mice",GrowthQuest2.State.RETURN_READY,growth.state());assertEquals(3,growth.currentCount());capture(v,"growth-auto-three-kills");
   }
-  @Test public void startupPreviewShortbladeCountsThreeUsesAcrossSavedRestart()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void startupPreviewShortbladeCountsThreeUsesAcrossSavedRestart()throws Exception{
     GameView v=launch();RuntimeState s=TownInteriorTest.field(v,"state");RpgProgressionState r=s.rpg();
     ((F5mAdaptedPrologueQuest)TownInteriorTest.field(v,"f5mQuest")).restore(F5mAdaptedPrologueQuest.State.COMPLETED,1);
     ((GrowthQuest2)TownInteriorTest.field(v,"quest2")).restore(GrowthQuest2.State.COMPLETED,3);
@@ -85,7 +86,8 @@ public class DeviceQuestRegressionTest {
     }
     s=TownInteriorTest.field(v,"state");assertEquals(CampaignProgress.Status.REPORT,s.rpg().campaign().status(CampaignProgress.find("J01_WARRIOR"),s.rpg()));capture(v,"shortblade-three-report");
   }
-  @Test public void rescueQuickslotApproachesAndActuallyForcesAggroWithoutDamage()throws Exception{
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void rescueQuickslotApproachesAndActuallyForcesAggroWithoutDamage()throws Exception{
     GameView v=launch();RuntimeState s=TownInteriorTest.field(v,"state");SkillBook book=TownInteriorTest.field(v,"skillBook");
     RuntimeState.Monster target=s.monsters().get(0);for(RuntimeState.Monster m:s.monsters())if(m!=target)m.alive=false;
     SkillActionContract.Rule rule=SkillActionContract.get("SK_전사_012");

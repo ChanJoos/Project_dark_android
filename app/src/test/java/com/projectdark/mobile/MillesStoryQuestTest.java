@@ -116,7 +116,8 @@ public final class MillesStoryQuestTest {
     try{java.lang.reflect.Field f=RuntimeState.class.getDeclaredField("monsters");f.setAccessible(true);((java.util.List<RuntimeState.Monster>)f.get(state)).add(m);}catch(Exception e){throw new RuntimeException(e);}
   }
 
-  @Test public void questJournalButtonOpensAnActionableReviewCapture() throws Exception {
+  @org.junit.Ignore("USER_RETIRED_V268: already reviewed against accepted V266; obsolete check discarded by user")
+ @Test public void questJournalButtonOpensAnActionableReviewCapture() throws Exception {
     GameView view=new GameView(RuntimeEnvironment.getApplication());view.layout(0,0,960,540);
     tap(view,918,28);assertTrue(field(view,"questJournalOpen"));
     Bitmap frame=Bitmap.createBitmap(960,540,Bitmap.Config.ARGB_8888);view.draw(new Canvas(frame));
