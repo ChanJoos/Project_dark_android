@@ -40,6 +40,7 @@ jobs:
           gradle --no-daemon :app:testDebugUnitTest
           --tests 'com.projectdark.mobile.CompanionPartyV269Test'
           --tests 'com.projectdark.mobile.CompanionControllerV269Test'
+          --tests 'com.projectdark.mobile.CompanionWorldV269Test'
           --tests 'com.projectdark.mobile.CompanionNativeV269Test'
           --tests 'com.projectdark.mobile.SkillSpatialContractTest'
           --tests 'com.projectdark.mobile.SkillTimingV174Test.realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes'

@@ -85,7 +85,7 @@ final class SkillAbilityExecutor {
    case "RESCUE":if(self){RuntimeState.Player recipient=friendly(target);int before=recipient.hp;recipient.hp=Math.min(recipient.maxHp,Math.max(before,recipient.maxHp/10));power=recipient.hp-before;}break;
    case "RESET_AGGRO":float resetSeconds=duration;fx.put(target,id,"AGGRO_RESET",1,resetSeconds);fx.put(target,id,"AMNESIA",2,resetSeconds);if(m!=null){state.cancelMonsterAttack(m);m.provoked=false;m.state=RuntimeState.Monster.State.IDLE;}break;
    case "TAUNT":
-    if(m!=null){m.attackTarget=actorId;fx.remove(target,"AGGRO_RESET");fx.put(target,id,"TAUNT",1,duration);m.state=RuntimeState.Monster.State.CHASE;notice=a.name+" · "+m.name+"이 당신을 추적합니다";}break;
+    if(m!=null){state.cancelMonsterAttack(m);m.attackTarget=actorId;fx.remove(target,"AGGRO_RESET");fx.put(target,id,"TAUNT",1,duration);m.state=RuntimeState.Monster.State.CHASE;notice=a.name+" · "+m.name+"이 당신을 추적합니다";}break;
    case "LEAP":
     java.util.List<float[]> landing=MartialSkillPolicy.landings(state,target,movement);
     if(!landing.isEmpty()){float[] at=landing.get(Math.min(landing.size()-1,(int)(random.getAsDouble()*landing.size())));movement.leapPlayer(at[0],at[1]);}break;

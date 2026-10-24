@@ -11,11 +11,11 @@
   ],
   "local": {
     "productionCompile": "PASS_ECJ17_ANDROID_API",
-    "domainTests": 20,
+    "domainTests": 21,
     "domainResult": "PASS"
   },
   "androidNative": {
-    "status": "PASS",
+    "status": "PASS_PRE_LIVE_WORLD_FIX_PENDING_RERUN",
     "runId": 40069361873,
     "jobId": 120799257394,
     "sourceCommit": "2f85445979f6c51fb7561027b1a5b8f52fbc4a0f",
@@ -59,7 +59,8 @@
       1,
       2
     ],
-    "libraryFileId": "libfile_198c24363560819187627d60f4be08ba"
+    "libraryFileId": "libfile_198c24363560819187627d60f4be08ba",
+    "status": "SUPERSEDED_PENDING_REPLACEMENT_AFTER_LIVE_WORLD_FIX"
   },
   "phoneAcceptance": "PENDING_NEW_FEATURE_ONLY",
   "mainIntegration": "NOT_REQUESTED_FOR_THIS_CANDIDATE",
@@ -86,5 +87,11 @@
     ],
     "failedGateGroups": [],
     "reason": "Retired v88-v109 render generators no longer emit historical screenshot files; mandatory artifact upload aborted before gate45. Make this archival artifact optional, retain every active assertion, then rerun remaining pipeline. Exact source APK already independently built and verified in40069361873."
+  },
+  "liveWorldRegression": {
+    "initialResult": "FAILED: RESCUE could leave attackPrimed=true with CHASE state and prevent monster retaliation",
+    "fix": "Cancel old windup on taunt retarget; face the real party target when a new windup starts",
+    "test": "CompanionWorldV269Test.rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck",
+    "localResult": "PASS"
   }
 }
