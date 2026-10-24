@@ -1,18 +1,18 @@
 {
   "revision": "V81_FULL_RUNTIME_FX_AUDIT",
-  "catalogCount": 221,
+  "catalogCount": 222,
   "branchCounts": {
     "warrior": 15,
-    "NO_PARTICLE": 41,
+    "NO_PARTICLE": 39,
     "captured": 6,
-    "ADAPTED": 32,
-    "rogue": 20,
+    "rogue": 22,
     "classic": 103,
+    "ADAPTED": 33,
     "shared": 4
   },
-  "sourceProjectedSkillCount": 141,
+  "sourceProjectedSkillCount": 142,
   "reviewedWithoutChannelCount": 7,
-  "sourceChannelCount": 182,
+  "sourceChannelCount": 183,
   "lowPixelChannels": 12,
   "rows": [
     {
@@ -741,12 +741,29 @@
       "name": "찌르기",
       "job": "도적",
       "standalonePresentationAllowed": true,
-      "runtimeBranch": "ADAPTED",
-      "sourceCandidates": [],
-      "channels": [],
+      "runtimeBranch": "rogue",
+      "sourceCandidates": [
+        "rogue"
+      ],
+      "channels": [
+        {
+          "phase": "RECIPIENT_CONTACT",
+          "anchor": "RECIPIENT",
+          "path": "rogue/74240a02e5a3ab10.png",
+          "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
+          "sourceSha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
+          "atlasSha256": "3f87d235eb4093c64e3f37aa866e39d15ee10b279f7ffefddc6b772967bd2022",
+          "frames": 4,
+          "durationMs": 600,
+          "peakPixels": 1170,
+          "blend": "SCREEN",
+          "directional": false,
+          "flags": []
+        }
+      ],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",
@@ -777,25 +794,11 @@
       "sourceCandidates": [
         "rogue"
       ],
-      "channels": [
-        {
-          "phase": "RECIPIENT_CONTACT",
-          "anchor": "RECIPIENT",
-          "path": "rogue/28439989d9d3276c.png",
-          "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830.gif",
-          "sourceSha256": "4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830",
-          "atlasSha256": "54ef74bb4d7832909fca36abee31c51a4f3c02ae18e33a74f4191a4b8db63088",
-          "frames": 4,
-          "durationMs": 600,
-          "peakPixels": 460,
-          "blend": "SCREEN",
-          "directional": false,
-          "flags": []
-        }
-      ],
+      "channels": [],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
+        "EXPLICIT_DISPLAY_POLICY:USER_V231_THROW_BODY_AND_DAMAGE_ONLY",
+        "REVIEWED_NO_PARTICLE_CHANNEL"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",
@@ -906,10 +909,10 @@
           "path": "rogue/74240a02e5a3ab10.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif",
           "sourceSha256": "572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a",
-          "atlasSha256": "c0e41c176195bf05e062293eded8ba81d5e02b280b315a9e122e375305536663",
+          "atlasSha256": "3f87d235eb4093c64e3f37aa866e39d15ee10b279f7ffefddc6b772967bd2022",
           "frames": 4,
           "durationMs": 600,
-          "peakPixels": 994,
+          "peakPixels": 1170,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1035,10 +1038,10 @@
           "path": "rogue/7290e6f0c6448723.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50.gif",
           "sourceSha256": "e7a267372c57549474f1ae8598ed3ab083aa9b61381f8cd0eb38b49c06b83e50",
-          "atlasSha256": "d6362c1f42943e1ffc13ba4c204b581288376a21a99a27fba0fcf6f772e6c38a",
+          "atlasSha256": "9691b92dc01a78b9c26f01e131320bb1c8b6ed1d594d1a6eb65ee5ecdcdd9c12",
           "frames": 4,
           "durationMs": 600,
-          "peakPixels": 291,
+          "peakPixels": 229,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1068,10 +1071,10 @@
           "path": "rogue/d3e88d3b9c127da5.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f.gif",
           "sourceSha256": "9166a61dd591a7d4919bc681b698e2dcbaa3259a035066d119d4f4d354a3476f",
-          "atlasSha256": "bbfb32e12454a9c6fe9c4e3fd5731016e797a39e41262f1332751e11cd1005f3",
+          "atlasSha256": "4f7fb9783d63d03a75d9df49dd66cd75b2e92ab2f3e2455175e5c249de763700",
           "frames": 4,
           "durationMs": 600,
-          "peakPixels": 940,
+          "peakPixels": 1013,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1090,12 +1093,29 @@
       "name": "습격",
       "job": "도적",
       "standalonePresentationAllowed": true,
-      "runtimeBranch": "ADAPTED",
-      "sourceCandidates": [],
-      "channels": [],
+      "runtimeBranch": "rogue",
+      "sourceCandidates": [
+        "rogue"
+      ],
+      "channels": [
+        {
+          "phase": "RECIPIENT_CONTACT",
+          "anchor": "RECIPIENT",
+          "path": "rogue/cfcd39e6a1fb7ca3.png",
+          "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d.gif",
+          "sourceSha256": "64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d",
+          "atlasSha256": "476ebf93d83b2ecad7ab8d38f2cee4987b9868b739151abc632edecf667dfaba",
+          "frames": 4,
+          "durationMs": 600,
+          "peakPixels": 469,
+          "blend": "SCREEN",
+          "directional": false,
+          "flags": []
+        }
+      ],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",
@@ -1117,10 +1137,10 @@
           "path": "rogue/d6f80c667eaee807.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f.gif",
           "sourceSha256": "d71c66bef4bc261f020ef7cb5010d6f35e939f2d271b1ac1c05426cb60dd865f",
-          "atlasSha256": "464c53df0cc61e25a2a61bfc94d208fea45e43259cdbb8d492b06c69f71a4dd6",
+          "atlasSha256": "7e64e4b38ae233c0dfe8ebd19f68e3af890dedef90aab776714d0e8f4cb130c8",
           "frames": 4,
           "durationMs": 600,
-          "peakPixels": 564,
+          "peakPixels": 569,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1220,10 +1240,10 @@
           "path": "captured/assassination.png",
           "source": "master/source/skill_fx/naver_401229/assassination.gif",
           "sourceSha256": "f27a2844f16193af620cca7c9d38bde6c3767678e187894272cf5c3d15aef98d",
-          "atlasSha256": "5f2226e23e4fe8839fdc3889f0918b7b6fb5dd49b43261a59b256ccba7910c17",
+          "atlasSha256": "3bf4069739f3cd57cb42c0b48605d633d99645ed97ceb2203304f420680e342d",
           "frames": 31,
           "durationMs": 1740,
-          "peakPixels": 30947,
+          "peakPixels": 38127,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1253,10 +1273,10 @@
           "path": "rogue/5599ff0303eba4ae.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b.gif",
           "sourceSha256": "b2a0b1f2e9e98a377c42072aa937b16b5ebdec248b3d14d4bcf7d756bb32ba6b",
-          "atlasSha256": "1aeb4b209309d7f7b3a769ab0e12f5d727d0a25d7c0fa615b005d311a5447112",
+          "atlasSha256": "6c67544e82f78862c6e0d3168f6de62dc456e43ba49737af943bf21815e6b0b4",
           "frames": 4,
           "durationMs": 800,
-          "peakPixels": 1206,
+          "peakPixels": 987,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1286,10 +1306,10 @@
           "path": "rogue/b20a0224a0fd0a38.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8.gif",
           "sourceSha256": "332d37fe7dce599bf2e7ea305a0476955b1a78fb09f980fa875a0b3bbe3dcab8",
-          "atlasSha256": "57996ee2ad9360ac7ae53e08a7b467f18cc582dae5c5e89d6a8d1291d5a0b36a",
+          "atlasSha256": "31ffb1ce2f1806adf98ed208c33416485da49e332228f1de95edd669715f96ee",
           "frames": 4,
           "durationMs": 800,
-          "peakPixels": 2000,
+          "peakPixels": 2359,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1319,10 +1339,10 @@
           "path": "rogue/4459f9eb02d24cbe.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa.gif",
           "sourceSha256": "25a04ccd1c4e74e207ae27bc848dc67618a6b901bcd0a6ff2da3af6e29fd82fa",
-          "atlasSha256": "0789169ea5276e667ad236418dfea0a65fecb9c68362edf0b0bb939d3b687c79",
+          "atlasSha256": "96e24adc11a9b1ffee750a84a233fdb9c3fc07357b63c8c7de934cca3f43209b",
           "frames": 4,
           "durationMs": 600,
-          "peakPixels": 660,
+          "peakPixels": 397,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1409,10 +1429,10 @@
           "path": "captured/assassination_jin.png",
           "source": "master/source/skill_fx/naver_401229/assassination_jin.gif",
           "sourceSha256": "74bc5c3f02de93b690974f90b7537e0c1176397c911b5b20252a8b1de74f81cf",
-          "atlasSha256": "bdb66ce2600387452a95f058bacea68e696d902032915252b834b6f367d526b3",
+          "atlasSha256": "5d0cb9ae1225196262134937359d51a27f63914b9a3c407072ff5d41fc4d7a18",
           "frames": 19,
           "durationMs": 1830,
-          "peakPixels": 19469,
+          "peakPixels": 29336,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1442,10 +1462,10 @@
           "path": "rogue/b84e64bb25d05ea8.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983.gif",
           "sourceSha256": "116c76eea19b2161ca44b6075eae11c2418154487ddd4a6d6425dbf427db7983",
-          "atlasSha256": "fd0fcb513893d3ac73bae5766d1221a8a4e9ac96b5fedafde42270e51c8594fb",
+          "atlasSha256": "f1a47decae536aa42d91e747a6d4dc63fef6dd7de408cc9d8435926c592905e9",
           "frames": 4,
           "durationMs": 600,
-          "peakPixels": 228,
+          "peakPixels": 191,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -1475,10 +1495,10 @@
           "path": "rogue/b397a45e949ffa87.png",
           "source": "master/source/skill_fx/naver_cafe_archive_20261001/media/8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70.gif",
           "sourceSha256": "8f8b3ace6d03e00b3d7767a9390ca3a827bfd235b95671f58544aa9083b0fd70",
-          "atlasSha256": "c074edea67f30c6505ec828ec5bf9be1ff61f0fd7aaed247352a3908a2950962",
+          "atlasSha256": "12322e859a00e5d375f21c2bb611d3381fa7bfeae8a160dcf76551dc39834a3b",
           "frames": 5,
           "durationMs": 750,
-          "peakPixels": 393,
+          "peakPixels": 265,
           "blend": "SCREEN",
           "directional": false,
           "flags": []
@@ -5721,12 +5741,12 @@
       "name": "파천각",
       "job": "무도가",
       "standalonePresentationAllowed": true,
-      "runtimeBranch": "NO_PARTICLE",
+      "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "NO_DECLARED_PARTICLE"
+        "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",
@@ -5734,15 +5754,15 @@
     },
     {
       "id": "SK_무도가_027",
-      "name": "트리플펀치",
+      "name": "트리플어택",
       "job": "무도가",
       "standalonePresentationAllowed": false,
-      "runtimeBranch": "NO_PARTICLE",
+      "runtimeBranch": "ADAPTED",
       "sourceCandidates": [],
       "channels": [],
       "reviewedSourceWithoutChannel": null,
       "warnings": [
-        "NO_DECLARED_PARTICLE",
+        "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
@@ -6706,6 +6726,22 @@
       "warnings": [
         "NO_DECLARED_PARTICLE",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
+      ],
+      "originalFourFacingPixels": "NOT_PROVEN",
+      "device": "PENDING",
+      "visualAcceptance": "PENDING"
+    },
+    {
+      "id": "SK_무도가_035",
+      "name": "허공답보",
+      "job": "무도가",
+      "standalonePresentationAllowed": true,
+      "runtimeBranch": "ADAPTED",
+      "sourceCandidates": [],
+      "channels": [],
+      "reviewedSourceWithoutChannel": null,
+      "warnings": [
+        "PROJECT_DRAWN_FALLBACK_NOT_SUPPLIED_ORIGINAL"
       ],
       "originalFourFacingPixels": "NOT_PROVEN",
       "device": "PENDING",

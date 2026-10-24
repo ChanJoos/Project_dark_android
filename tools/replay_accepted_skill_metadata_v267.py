@@ -18,5 +18,7 @@ def apply():
  f.write_text(json.dumps(d,ensure_ascii=False,indent=2)+'\n')
  with (R/'docs/SKILL_PRESENTATION_MAPPING.csv').open('w',newline='') as out:
   w=csv.DictWriter(out,fieldnames=list(d['skills'][0]),lineterminator='\n');w.writeheader();w.writerows(d['skills'])
+ action=R/'app/src/main/java/com/projectdark/mobile/SkillActionData.java'
+ action.write_text(action.read_text().replace('/** Generated from the reviewed per-ID decisions; do not infer rules from skill names. */','/** Generated reviewed action decisions. */'))
  print('V267 approved descriptions/notes replayed; formulas/status/routes untouched')
 if __name__=='__main__':apply()

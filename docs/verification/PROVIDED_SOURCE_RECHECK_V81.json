@@ -1,7 +1,7 @@
 {
   "revision": "PROVIDED_SOURCE_RECHECK_V81",
   "base": "d57e480c1342f8f9ad7936b3c3f25d4630d9345c",
-  "catalogCount": 221,
+  "catalogCount": 222,
   "initialFallbackCount": 40,
   "resolved": [
     {
@@ -29,15 +29,26 @@
       ]
     },
     {
-      "id": "SK_도적_003",
-      "name": "표창날리기",
+      "id": "SK_도적_001",
+      "name": "찌르기",
       "route": "rogue",
       "status": "SOURCE_CHANNEL_CONNECTED",
       "source": [
-        "master/source/skill_fx/naver_cafe_archive_20261001/media/4bee28c52fa92541f7321a619f6efa9df073fed76b85f54016def8bdd4849830.gif"
+        "master/source/skill_fx/naver_cafe_archive_20261001/media/572dbe7ecb5bcb13ce26d5b6f9867753b78f3220ba6d95250f8104f29c606e4a.gif"
       ],
       "warnings": [
         "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
+      ]
+    },
+    {
+      "id": "SK_도적_003",
+      "name": "표창날리기",
+      "route": "rogue",
+      "status": "DEMONSTRATION_LINKED_NO_SEPARATELY_RECOVERABLE_PARTICLE",
+      "source": [],
+      "warnings": [
+        "EXPLICIT_DISPLAY_POLICY:USER_V231_THROW_BODY_AND_DAMAGE_ONLY",
+        "REVIEWED_NO_PARTICLE_CHANNEL"
       ]
     },
     {
@@ -51,6 +62,18 @@
       "warnings": [
         "REVIEWED_NO_PARTICLE_CHANNEL",
         "SERVICE_PASSIVE_LINKED_NOT_STANDALONE_CAST"
+      ]
+    },
+    {
+      "id": "SK_도적_015",
+      "name": "습격",
+      "route": "rogue",
+      "status": "SOURCE_CHANNEL_CONNECTED",
+      "source": [
+        "master/source/skill_fx/naver_cafe_archive_20261001/media/64fe00e0bc963ac81971a1fd8098d15a8ab191b993df56e32164e246d973b17d.gif"
+      ],
+      "warnings": [
+        "SOURCE_MATTING_OCCLUSION_APPROXIMATE"
       ]
     },
     {
@@ -101,26 +124,8 @@
       ]
     }
   ],
-  "remainingOriginalEffectCount": 32,
+  "remainingOriginalEffectCount": 30,
   "remaining": [
-    {
-      "id": "SK_도적_001",
-      "name": "찌르기",
-      "job": "도적",
-      "reasonCode": "NO_LABELLED_DEMONSTRATION",
-      "reason": "No labelled basic 찌르기 particle demonstration in the retained articles or attachments.",
-      "runtime": "Existing project fallback; NOT original",
-      "needed": "Labelled original use/impact footage or sprite frames"
-    },
-    {
-      "id": "SK_도적_015",
-      "name": "습격",
-      "job": "도적",
-      "reasonCode": "LABEL_CONFLICT",
-      "reason": "Article 245450 places the GIF under 습격 but its text calls it 기습; cannot certify 습격-specific pixels.",
-      "runtime": "Existing project fallback; NOT original",
-      "needed": "Labelled original use/impact footage or sprite frames"
-    },
     {
       "id": "SK_마법사_006",
       "name": "콘푸지오",
