@@ -1,26 +1,26 @@
 {
-  "stage": 11,
+  "stage": 12,
   "commands": [
     {
       "op": "tap",
-      "x": 770,
-      "y": 100
+      "x": 580,
+      "y": 740
     },
     {
       "op": "wait",
-      "seconds": 14
+      "seconds": 8
     },
     {
       "op": "snapshot"
     },
     {
       "op": "tap",
-      "x": 1628,
-      "y": 750
+      "x": 520,
+      "y": 700
     },
     {
       "op": "wait",
-      "seconds": 4
+      "seconds": 8
     },
     {
       "op": "snapshot"
