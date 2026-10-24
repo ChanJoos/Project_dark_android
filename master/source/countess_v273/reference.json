@@ -1,0 +1,150 @@
+{
+  "revision": "V273_COUNTESS_SOURCE_INTAKE",
+  "status": "SOURCE_ANALYSIS_ONLY_RUNTIME_NOT_IMPLEMENTED",
+  "base": "108b0f3bfc6d965e1e1b92d6d96ffd28b60d0b93",
+  "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
+  "sources": [
+    {
+      "name": "Screen_Recording_20261024_195115_YouTube.mp4",
+      "library_file_id": "libfile_274a905e19388191b2f0b0506ad8ffcc",
+      "sha256": "d1f1a534fa1bfe0bd542ae3f1c80dfc9ae0804635af85c7685ab9558afbbffde",
+      "bytes": 253570541,
+      "durationSeconds": 120.806767,
+      "resolution": [
+        2340,
+        1080
+      ],
+      "review": "1fps contact sheets spanning full video; selected raw frames retained in scratch",
+      "evidence": "USER_VIDEO_OBSERVATION_AND_SUBTITLES"
+    },
+    {
+      "name": "Screen_Recording_20261024_203835_YouTube.mp4",
+      "status": "ATTACHMENT_MATERIALIZATION_FAILED_NOT_READ",
+      "requestedContent": "zones1through12, monsters, attacks"
+    }
+  ],
+  "observations": [
+    {
+      "seconds": [
+        1,
+        4
+      ],
+      "key": "EXTERIOR",
+      "finding": "Stone courtyard, long blue-roof building and entrance markers; source map title includes 백작부인의별장입구."
+    },
+    {
+      "seconds": [
+        5,
+        8
+      ],
+      "key": "UPPER_WAITING_ROOM",
+      "finding": "Room title 백작부인의별장응접실2; repeated furniture/carpet layout; subtitles direct to two oclock for boss room."
+    },
+    {
+      "seconds": [
+        8,
+        12
+      ],
+      "key": "BOSS_DOOR",
+      "finding": "Northeast/two-oclock doorway marked 보스방 in source overlay."
+    },
+    {
+      "seconds": [
+        13,
+        22
+      ],
+      "key": "CONTROL_TACTIC",
+      "finding": "Subtitle recommends immobilizing Jonathan because of frequent movement, then using rogue/priest 셀드. This describes player tactics, not an NPC AI definition."
+    },
+    {
+      "seconds": [
+        27,
+        30
+      ],
+      "key": "BOSS_SECOND_LIFE",
+      "finding": "Narration subtitles state a killed boss revives once. Exact entity-stage identity, HP and delay remain unverified."
+    },
+    {
+      "seconds": [
+        39,
+        47
+      ],
+      "key": "STEALTH_TACTIC",
+      "finding": "Subtitles advise maintaining hide; hide dispel is visible/advised. Exact dispel target/range/cooldown unknown."
+    },
+    {
+      "seconds": [
+        56,
+        72
+      ],
+      "key": "REGULAR_ENEMIES",
+      "finding": "Ghost/doll/광수 labels and large multi-enemy pull shown; subtitles identify ghost and doll room as 반속(생명). Treat as video commentary, not independently verified element constants."
+    },
+    {
+      "seconds": [
+        77,
+        87
+      ],
+      "key": "CORNER_SETUP",
+      "finding": "Enter hidden; caster finds corner at opposite side; priest waits to rejoin; priest lures boss onto trap."
+    },
+    {
+      "seconds": [
+        88,
+        98
+      ],
+      "key": "TRAP_AND_CONTROL",
+      "finding": "Subtitles warn Jonathan applies persistent Narcoli; advise trapping boss, then 메테우 and gathering other mobs. Exact boss skill IDs/timing and mechanics remain pending."
+    },
+    {
+      "seconds": [
+        100,
+        111
+      ],
+      "key": "REWARD_SCENE",
+      "finding": "Ring icon shown after combat and crests shown in inventory. No canonical item ID, stats, drop probability or ground-pickup implementation inferred."
+    }
+  ],
+  "requestedRoute": [
+    {
+      "from": "MAP_DEATH_LOBBY",
+      "via": "guard NPC",
+      "to": "COUNTESS_EXTERIOR",
+      "evidence": "USER_EXPLICIT"
+    },
+    {
+      "from": "COUNTESS_EXTERIOR",
+      "via": "outdoor NPC",
+      "to": "COUNTESS_LOBBY",
+      "evidence": "USER_EXPLICIT"
+    },
+    {
+      "from": "COUNTESS_LOBBY",
+      "to": "ZONES_1_THROUGH_12",
+      "exactTopology": "PENDING_SECOND_VIDEO"
+    },
+    {
+      "from": "upper waiting room",
+      "via": "two oclock door",
+      "to": "BOSS_ROOM",
+      "evidence": "FIRST_VIDEO"
+    }
+  ],
+  "pending": [
+    "external/lobby/zone geometry and source map identity",
+    "full species and source atlas IDs",
+    "directional idle/walk/attack source frames and anchors",
+    "spawn counts and per-zone relations",
+    "boss skills, timings, HP, resurrection state, rewards",
+    "entry price and requirements; do not inherit Horror fee or Urid party/ability/cooldown gates"
+  ],
+  "lessons": [
+    "docs/HUNT_MAP_PERFORMANCE_LESSONS.md",
+    "docs/MONSTER_CREATION_MANUAL.md",
+    "design/DATA_CONTRACT.md",
+    "design/DESIGN_CONSTITUTION.md"
+  ],
+  "runtimeChanges": [],
+  "build": "NOT_RUN_NO_GAME_CHANGE",
+  "nextAction": "Receive missing second video; identify original maps/monster assets; implement guard/exterior NPC routes with legal arrival/latches, then source-backed zones and combat, focused checks and exact APK."
+}
