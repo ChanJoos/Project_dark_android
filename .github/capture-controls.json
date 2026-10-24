@@ -1,14 +1,1 @@
-{
-  "stage": 1,
-  "commands": [
-    {
-      "op": "tap",
-      "x": 416,
-      "y": 227
-    },
-    {
-      "op": "wait",
-      "seconds": 3
-    }
-  ]
-}
+{"stage":2,"commands":[{"op":"tap","x":814,"y":375},{"op":"wait","seconds":5}]}
