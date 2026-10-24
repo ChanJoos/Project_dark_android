@@ -1,0 +1,182 @@
+{
+  "revision": "V272_COMPANION_EQUIPMENT",
+  "base": "64dd3c0c7c722d6a35ede7f6f2531ee2596e7d97",
+  "local": {
+    "productionCompile": "PASS_ECJ17_ANDROID_API",
+    "domainPassed": 45,
+    "failed": 0
+  },
+  "android": {
+    "status": "PASS",
+    "runId": 40081979346,
+    "jobId": 120837235414,
+    "passed": 76,
+    "failed": 0,
+    "skipped": 0,
+    "classes": {
+      "com.projectdark.mobile.CompanionControllerV269Test": [
+        "followerUsesAdjacentTileStepsAndWaitCommandStopsMovement",
+        "priestUsesHealOrDispelAndNeverAttacksOrCurses",
+        "noCombatBuffSpamInTown",
+        "priestDoesNotBreakPlayerCrashReservationAndRecoversAfterContact",
+        "warriorDoesNotWakeSleepingTargetWithBasicOrLowTierAttack"
+      ],
+      "com.projectdark.mobile.CompanionAgentsV271Test": [
+        "monkDispelsPoisonAndHealsSelfWithoutHealingPlayerOrChangingItsMp",
+        "mageAreaChoiceDoesNotWakeSleepingOrIdleBystanders",
+        "mageControlsAdditionalEnemyWithoutSleepingDamageTarget",
+        "mageSelectsAdvantageousElementAndPaysItsOwnMp",
+        "hiddenCompanionCannotBeHitAndItsInactiveEffectsSurviveSwitching",
+        "legacyTwoMemberSaveAndEffectsMigrateAtomicallyAndFiveJobsPersist",
+        "mageUsesAreaForSeveralControlledTargetsAndNoBlindAllMpDump",
+        "rogueActuallyHidesThenAmbushesWithoutResettingPlayersOtherEnemy",
+        "monkUsesDefenseBeforeResourceBurstAndReallyPaysDaraResources",
+        "fiveFullyLearnedProfessionsHaveDistinctAgentsAndCorrectStats",
+        "rogueAndMonkBasicTripleProducesThreeRealContacts",
+        "endangeredMageFreezesOwnAttackerBeforeSmallSelfHeal",
+        "shurikenUsesCompanionRayAndCannotPierceFirstMonster",
+        "allAgentsRespectWaitMenusDeadActorsAndSleepingReservation"
+      ],
+      "com.projectdark.mobile.CompanionAgentsNativeV271Test": [
+        "newProfessionsRestoreRealSaveWithoutRefillingOrCompletingQuests",
+        "allFiveJobsAreReachableThroughRealTouchAtBothScreenWidths",
+        "actualViewControllerDrivesEachNewProfessionIntoItsOwnActions",
+        "closedManagementDrawsOnlyWithinTheCompanionHud"
+      ],
+      "com.projectdark.mobile.CompanionWorldV269Test": [
+        "rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck"
+      ],
+      "com.projectdark.mobile.CompanionEquipmentV272Test": [
+        "weaponDamageAndStaffCostsUseCompanionEquipmentOnly",
+        "playerNecklaceTestBypassDoesNotBypassCompanionLevel",
+        "gearChangeCannotResurrectOrHealAndRemovedMaximumClampsOnlyOwner",
+        "ownProfessionAndLevelAreEnforcedEvenWithPlayerSandboxEnabled",
+        "legacySnapshotMigratesAndInvalidEquipmentNeverPartiallyRestores",
+        "failedCheckpointRollsBackOwnershipStatsAndLiveOrdersWithoutRefilling",
+        "cannotBorrowPlayerWornCopyOrDuplicateOneCopyAcrossCompanions",
+        "changedWeaponActuallyChangesSharedResolverDamageOnlyForItsOwner",
+        "equipmentChangesCompanionStatsAndVisualBindingWithoutPlayerChanges",
+        "ringHandsConserveCopiesAndUnequipReturnsTheExactCopy",
+        "eachJobStoresItsOwnEquipmentAndRestoresWithHpMpAndCooldowns"
+      ],
+      "com.projectdark.mobile.CompanionTestAccessV270Test": [
+        "restartAndSkillTestToggleKeep99CompanionWithoutRefillingResources",
+        "learnedTriplePassiveActuallyAddsThreeCompanionBasicHits",
+        "testRecruitmentWorksInFieldAndNormalGameStaysLocked",
+        "hudCanSelectPriestWithoutProgressAndShowsTestAccess",
+        "levelDependentHealingUsesCompanion99WhilePlayerStaysOne",
+        "realApkEntryStartsWith99CompanionBeforeAnyQuestOrJob"
+      ],
+      "com.projectdark.mobile.CompanionEquipmentNativeV272Test": [
+        "fiveJobTabsEditInactiveMembersAndActualRestartKeepsEquipment",
+        "realHudOpensOwnEquipmentAndAppliesGearAtBothWidths",
+        "equippedArmorKeepsOriginalActionLayersInAllFourDirections",
+        "unknownAndWrongJobItemsFailClosedAndFemaleGearUsesSourceBody"
+      ],
+      "com.projectdark.mobile.EquipmentHudV262Test": [
+        "wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+        "bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+        "necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+        "combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths"
+      ],
+      "com.projectdark.mobile.CompanionNativeV269Test": [
+        "selectedAllyReceivesActualQuickslotHealAndProtection",
+        "recruitSelectSupportAndPersistThroughRealHudInBothAspectRatios",
+        "managementOverlayConsumesTouchesAndRecoveryDoesNotChangePlayerResources"
+      ],
+      "com.projectdark.mobile.SkillTimingV174Test": [
+        "realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes"
+      ],
+      "com.projectdark.mobile.CompanionPartyV269Test": [
+        "priestCompanionHealsPlayerWithoutSpendingPlayerMp",
+        "startingCommonerHasNoImplicitPartyAndRecruitmentRequiresJob",
+        "allyHealConsumesCasterMpAndUsesRecipientHp",
+        "friendlyDamageAndEnemyHealingAreRejected",
+        "reservationProtectsSleepAndCrashButExpiresAndEndsOnContact",
+        "companionEffectsKeepDurationAndAreRestoredWithoutTouchingPlayer",
+        "companionCannotUseUnlearnedOrWrongJobSkills",
+        "playerSelfCenteredAttackStillUsesEnemyRecipients",
+        "partySnapshotPreservesHpMpDeathCooldownAndDoesNotHealOnRejoin",
+        "invalidSnapshotDoesNotPartiallyReplaceRoster",
+        "monsterAttackCanHitCompanionAndNotPlayer",
+        "crashConditionIsNotInventedByMadSoul",
+        "hiddenRogueCanStillReceiveFriendlyHealing",
+        "supportPoliciesAvoidFullHpHealingAndPriestCurse",
+        "warriorSoulUsesCompanionHpAndCostsCompanionHp"
+      ],
+      "com.projectdark.mobile.InventoryPolishV266Test": [
+        "allTenRecallsLoseOuterBlackRectangleAndKeepForegroundPixelsAndCachedIdentity",
+        "consumptionTabIncludesAllReagentsFoodAndRecallsWithoutAddingOwnership",
+        "everyNecklaceVisibleBoundsAreCenteredOnBothAxesAndActualEquipmentUsesSameProjection"
+      ],
+      "com.projectdark.mobile.SkillSpatialContractTest": [
+        "originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId",
+        "passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic",
+        "liveGameInputRendersDistinctFinisherAndSpellEffects",
+        "targetMovesWallsAndViewportAreRecheckedAtContact",
+        "actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass"
+      ]
+    },
+    "rendersReviewed": [
+      "equipment-before-after-960-and2340",
+      "own-stats-960-and2340",
+      "five-job-equipment-tabs",
+      "field-armor-before-after",
+      "four-direction-original-equipped-action-layers",
+      "closed-clean"
+    ]
+  },
+  "fullCurrentRegression": {
+    "fullSource": "3268a2fa8b4dd99d777b7004b97748742715663c",
+    "finalSource": "3bf159d3f071843a47dcc3135c5de4be13d60bcc",
+    "fullRunId": 40081396216,
+    "fullJobId": 120835573432,
+    "activeGroups": 32,
+    "passed": 32,
+    "skipped": 0,
+    "failed": 0,
+    "productionBuildAssetsWorkflowDelta": [],
+    "guard": "PASS_ALL_PRODUCTION_BUILD_SOURCE_ART_BYTES_IDENTICAL",
+    "finalExtraScope": "Native four-direction worn action-layer regression plus exact reviewed scope metadata; no production change",
+    "retiredV268Groups": "REMAIN_ABSENT"
+  },
+  "apk": {
+    "sourceCommit": "3bf159d3f071843a47dcc3135c5de4be13d60bcc",
+    "runId": 40081979346,
+    "jobId": 120837235414,
+    "name": "PROJECT_DARK_V272_COMPANION_TEST.apk",
+    "bytes": 106573934,
+    "sha256": "bab8ad8db4ac6fded308248b8fde7c1229d5e78eb6ea29fedfa33e89c896b2ee",
+    "package": "com.projectdark.mobile.v272test",
+    "label": "PROJECT DARK V272 TEST",
+    "artifactId": 12556095119,
+    "buildCompletedKST": "2026-10-24 18:31:24",
+    "crc": "PASS",
+    "trackedAssetsByteExact": 1518,
+    "signature": "VERIFIED_APKSIG_8_7_3_V2",
+    "libraryFileId": "libfile_c20a947d10bc8191b275627e8124ab94"
+  },
+  "main": "PR198_NOT_MERGED",
+  "phone": "PENDING_NEW_V272_ONLY",
+  "scope": "Own companion equipment window, real profession/level/stat/effect/visual projection, ownership transactions and save3 migration",
+  "sourceConditionLimits": "Unknown minima are not invented; exact legacy starter pairs grandfather restore only; new commands are strict",
+  "localFindings": [
+    "legacy starter shoes/shield pending and hat level1 cannot be rejected on old-save reconstruction; exact constructor pairs preserved",
+    "original ring definitions exist but are not pre-owned; paired-slot test explicitly grants actual source ring copies only in test",
+    "source Magic Pana job conditions unresolved; labelled JVM-only fixture exercises known staff function without changing source data"
+  ],
+  "firstAndroid": {
+    "sourceCommit": "3268a2fa8b4dd99d777b7004b97748742715663c",
+    "runId": 40081393297,
+    "jobId": 120835527237,
+    "passed": 75,
+    "failed": 0,
+    "skipped": 0
+  },
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED_CANDIDATE",
+  "sourceCommit": "3bf159d3f071843a47dcc3135c5de4be13d60bcc",
+  "scopeCI": {
+    "runId": 40081982843,
+    "status": "SUCCESS_FULL_COMPILE_INTENTIONALLY_SKIPPED_EXACT_REVIEWED_BLOBS"
+  }
+}

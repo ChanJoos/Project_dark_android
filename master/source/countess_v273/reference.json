@@ -1,0 +1,172 @@
+{
+  "revision": "V273_COUNTESS_SOURCE_INTAKE",
+  "status": "V273_DEVICE_FAILED_USER_REPORTED_V274_CORRECTION_CANDIDATE",
+  "base": "108b0f3bfc6d965e1e1b92d6d96ffd28b60d0b93",
+  "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
+  "sources": [
+    {
+      "name": "Screen_Recording_20261024_195115_YouTube.mp4",
+      "library_file_id": "libfile_274a905e19388191b2f0b0506ad8ffcc",
+      "sha256": "d1f1a534fa1bfe0bd542ae3f1c80dfc9ae0804635af85c7685ab9558afbbffde",
+      "bytes": 253570541,
+      "durationSeconds": 120.806767,
+      "resolution": [
+        2340,
+        1080
+      ],
+      "review": "1fps contact sheets spanning full video; selected raw frames retained in scratch",
+      "evidence": "USER_VIDEO_OBSERVATION_AND_SUBTITLES"
+    },
+    {
+      "name": "Screen_Recording_20261024_203835_YouTube.mp4",
+      "status": "RECOVERED_AND_CONTACT_SHEETS_REVIEWED",
+      "requestedContent": "zones1through12, monsters, attacks",
+      "sha256": "1afd1d3134d7b0af0ce3c0b08aa07ce5f9a0f45994366d202a11bd3c775f8eee",
+      "bytes": 344682709,
+      "durationSeconds": 140.317056,
+      "resolution": [
+        2340,
+        1080
+      ],
+      "review": "Recovered full video; reviewed two overview sheets and boss detail sheet. Prior attachment failure is superseded. Zone-by-zone source map and MPF identities remain pending."
+    }
+  ],
+  "observations": [
+    {
+      "seconds": [
+        1,
+        4
+      ],
+      "key": "EXTERIOR",
+      "finding": "Stone courtyard, long blue-roof building and entrance markers; source map title includes 백작부인의별장입구."
+    },
+    {
+      "seconds": [
+        5,
+        8
+      ],
+      "key": "UPPER_WAITING_ROOM",
+      "finding": "Room title 백작부인의별장응접실2; repeated furniture/carpet layout; subtitles direct to two oclock for boss room."
+    },
+    {
+      "seconds": [
+        8,
+        12
+      ],
+      "key": "BOSS_DOOR",
+      "finding": "Northeast/two-oclock doorway marked 보스방 in source overlay."
+    },
+    {
+      "seconds": [
+        13,
+        22
+      ],
+      "key": "CONTROL_TACTIC",
+      "finding": "Subtitle recommends immobilizing Jonathan because of frequent movement, then using rogue/priest 셀드. This describes player tactics, not an NPC AI definition."
+    },
+    {
+      "seconds": [
+        27,
+        30
+      ],
+      "key": "BOSS_SECOND_LIFE",
+      "finding": "Narration subtitles state a killed boss revives once. Exact entity-stage identity, HP and delay remain unverified."
+    },
+    {
+      "seconds": [
+        39,
+        47
+      ],
+      "key": "STEALTH_TACTIC",
+      "finding": "Subtitles advise maintaining hide; hide dispel is visible/advised. Exact dispel target/range/cooldown unknown."
+    },
+    {
+      "seconds": [
+        56,
+        72
+      ],
+      "key": "REGULAR_ENEMIES",
+      "finding": "Ghost/doll/광수 labels and large multi-enemy pull shown; subtitles identify ghost and doll room as 반속(생명). Treat as video commentary, not independently verified element constants."
+    },
+    {
+      "seconds": [
+        77,
+        87
+      ],
+      "key": "CORNER_SETUP",
+      "finding": "Enter hidden; caster finds corner at opposite side; priest waits to rejoin; priest lures boss onto trap."
+    },
+    {
+      "seconds": [
+        88,
+        98
+      ],
+      "key": "TRAP_AND_CONTROL",
+      "finding": "Subtitles warn Jonathan applies persistent Narcoli; advise trapping boss, then 메테우 and gathering other mobs. Exact boss skill IDs/timing and mechanics remain pending."
+    },
+    {
+      "seconds": [
+        100,
+        111
+      ],
+      "key": "REWARD_SCENE",
+      "finding": "Ring icon shown after combat and crests shown in inventory. No canonical item ID, stats, drop probability or ground-pickup implementation inferred."
+    }
+  ],
+  "requestedRoute": [
+    {
+      "from": "MAP_DEATH_LOBBY",
+      "via": "guard NPC",
+      "to": "COUNTESS_EXTERIOR",
+      "evidence": "USER_EXPLICIT"
+    },
+    {
+      "from": "COUNTESS_EXTERIOR",
+      "via": "outdoor NPC",
+      "to": "COUNTESS_LOBBY",
+      "evidence": "USER_EXPLICIT"
+    },
+    {
+      "from": "COUNTESS_LOBBY",
+      "to": "ZONES_1_THROUGH_12",
+      "exactTopology": "PENDING_SECOND_VIDEO"
+    },
+    {
+      "from": "upper waiting room",
+      "via": "two oclock door",
+      "to": "BOSS_ROOM",
+      "evidence": "FIRST_VIDEO"
+    }
+  ],
+  "pending": [
+    "Korean name-to-boss MPF joins remain provisional;14 source species retained",
+    "Native server HP/MP/EXP/skills/timing/counts/reward IDs remain unverified; explicit ADAPTED test tuning",
+    "Full source-gate topology beyond observed video sequence; mobile connective gates/arrivals ADAPTED",
+    "Handset performance and user visual acceptance"
+  ],
+  "lessons": [
+    "docs/HUNT_MAP_PERFORMANCE_LESSONS.md",
+    "docs/MONSTER_CREATION_MANUAL.md",
+    "design/DATA_CONTRACT.md",
+    "design/DESIGN_CONSTITUTION.md"
+  ],
+  "runtimeChanges": [
+    "Native original16map layers; 14 MPF fullframe species",
+    "Death lobby guard and exterior envoy confirmation/cancel",
+    "Twelve-zone mobile route and separate upper/boss entrance",
+    "Shared Resolver attacks/Narcoli/dispel/silence, source status FX reuse",
+    "Persistent regional HP/deaths, one boss second life, one Diana bomb summon",
+    "Original atlas pivots/4directions/current-map prewarm/32floorLRU"
+  ],
+  "build": "PASS_SOURCE_4e4229ad_ACTIONS_40101784352",
+  "nextAction": "Deliver exact verified candidate; collect physical handset feedback. Do not rebuild unchanged validated source. Unverified original server and Korean boss identity facts remain explicit.",
+  "resumeCheckpoint": {
+    "base": "e111ed582afac9e7b67cb3335ddb8b7fef757f90",
+    "main": "f86d961eee066f2575b3d805a9006cde99f9119b",
+    "runtime": "NOT_IMPLEMENTED",
+    "sourceRecovery": "Original client and full map archive recovered with hashes matching retained V180 source receipts; do not download them again. Installer needs its actual installer-format extraction, 7zip direct-open failed.",
+    "nextAction": "Extract client archives; identify zone maps and monster MPFs against both recovered videos; then implement authorized guard/exterior/lobby/12-zone/boss path. No reattachment needed."
+  },
+  "verification": "verification/COUNTESS_CASTLE_V273.json",
+  "correctionReview": "V274: both full videos contact sheets reviewed, source doors annotated; MPF314 keeper and zone4, MPF321 zone11. See design/COUNTESS_CASTLE_V273.md for reviewed mapping and remaining adapted returns/server facts."
+}

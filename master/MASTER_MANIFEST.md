@@ -1,3 +1,33 @@
+## V273 — 원본 별장 자료·테스트 런타임 후보 검증 (2026-10-24 KST)
+
+원본16map cell/SOTP와14 MPF215frame/palette/pivot를 master/source/countess_v273에 보존하고 별도 런타임 투영에 연결했다. 기존 canonical CSV를 수정하지 않는다. 미확인 서버수치/스폰/연결좌표/일부보스정체/드랍은 명시ADAPTED/PENDING으로 유지한다. Source4e4229ad:89scoped Android/32현재fullgate PASS, v2서명/CRC/source/run/1518main+318CountessPNG byte PASS. 변경 master/changes/V273_COUNTESS_CASTLE.json, 영수증verification/COUNTESS_CASTLE_V273.json. main미통합/phone미수용.
+
+## V270 — 퀘스트와 분리한 시작 즉시 Lv99 동료 테스트 (2026-10-24 KST)
+
+사용자 요청: “처음부터 임시적으로 레벨99 모든기술을배운동료”. side-by-side 테스트 APK 진입에서 퀘스트/전직/플레이어Lv와 별개로 전사동료가 자동 동행하고 성직자로 즉시 변경된다. 두 동료는 Lv99/해당직업 모든 비폐기 기술 습득(상위써클 포함); 수혈·성직자 저주는 AI 기본운용에 넣지 않는다. 플레이어 스킬 테스트를 꺼도 동료 테스트는 유지. 레벨 의존 기술 계산도 동료 자신의99 사용. 전사 상위주력기/트리플 패시브와 성직자 상위버프 연결. 플레이어Lv/직업/EXP/퀘스트/습득정보는 건드리지 않으며 재시작 시 기존 동료 HP/MP/전투불능/쿨타임을 보존한다. 테스트에서 필드 선택/회복도 가능; 전투중/사망/동작중 제한은 유지. 일반빌드는 임시flag=false로 기존 성장규칙 유지.
+
+최종 APK 소스 `49578e7ed7ba17e600347e797a597fe18ce4f3c8`, Actions40072944512/job120810120110 기능·인접43PASS(신규 실제MainActivity 시작/모든기술/퀘스트불변/재시작·토글/필드/트리플/99레벨회복 포함). 현재유효 전체32묶음은40072947480/job120810274435 전부PASS/0skip/0fail. APK PROJECT_DARK_V270_COMPANION_TEST.apk/com.projectdark.mobile.v270test/106558974bytes/2026-10-24 16:12:12 KST/SHA2569d6d67afbbb376dc3093942b2ab03c7fc855c01a3fee03f5e3a8842f4199356a. embedded source/run·CRC·v2서명·1518mainasset byte일치PASS. main미통합/PR198 후보 유지, 기존V266수용/V268폐기 유지. 새V270폰수용은 별도.
+
+계약 design/COMPANION_TEST_ACCESS_V270.md · 검증 verification/COMPANION_TEST_ACCESS_V270.json. 아래V269의전직/Lv3/마을필수조건은 일반모드 이력이며 이번임시테스트진입에는적용하지않는다.
+
+## V269 — 전사·성직자 동료 후보 검증 완료 (2026-10-24 KST)
+
+사용자 승인 기획의 첫 단계: 전사/성직자 중1명 동행, FOLLOW/FOCUS/WAIT, 아군 지원 선택, 공유 Resolver 기반 전투/자원/상태/보상, 충돌 준수 타일 추적, 몬스터 공격대상, 주력기 예약과 회복 판단, HP/MP/전투불능/쿨타임/버프 저장복원. 수혈·성직자저주는 동료 AI에서 제외. 실제 맵 레스큐 재타깃 시 windup 상태 교착을 수정하고 실제 몬스터의 동료 반격까지 검증했다. 신규 동료 성장/AI 수치는 PROJECT_ADAPTED이며 기존 원작 스킬계수와 에셋을 변경하지 않았다.
+
+최종 APK 소스 `96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db`, Actions40070443661/job120802529002. 기능·인접검증37PASS(실제Android UI/두화면/퀵슬롯 아군 회복보호/재시작 및 실제맵 상호전투 포함), assemble PASS. APK PROJECT_DARK_V269_COMPANION_TEST.apk/106558034bytes/2026-10-24 15:33:38 KST/SHA256 `3bda7b1e3748a7f63a18cec80dadfcb0e8da8002481b7a162abf871b1b3608ac`. embedded source/run·CRC·v2서명·1518 tracked main assets byte일치PASS. 설치파일 저장완료 libfile_198c24363560819187627d60f4be08ba.
+
+현재유효 전체검증: {"runId": 40070446870, "jobId": 120802660120, "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db", "status": "PASS", "activeGateGroups": 32, "passed": 32, "skipped": 0, "failed": 0, "retiredGroupsRemainAbsent": true}. 폐기된 V268 13묶음/57항목은 그대로 폐기상태이며 옛 render artifact만 optional로 정리했다. main은f86d961의V266사용자수용기준 유지, PR198 후보만 작성. 신규 V269 폰/사용자 시각수용은 별도이며 기존 V266수용을 취소하지 않는다. 5직업 전체 동료/3인 파티는 후속 범위.
+
+계약: design/COMPANION_PARTY_V269.md · 정확한 검증/APK 영수증: verification/COMPANION_PARTY_V269.json. 이전 V269 진행/부분 실패 기록은 아래의 이력이며 이 완료 기록이 우선한다.
+
+## V269 — 직업별 협동 동료 구현 후보 (2026-10-24 KST)
+
+사용자 “응 그렇게 이제 만들어봐”에 따라 전사·성직자 중1명 동행/명령/아군지원, 공유Resolver 전투·자원·상태·보상, 타일추적/몬스터 공격대상, 주력기예약과 회복판단, 파티자원/쿨타임/상태 저장복원을 구현했다. 원작스킬계수·원본그림변경없음;동료성장/AI는PROJECT_ADAPTED. 수혈·성직자저주는동료AI에서제외. 전사SOUL후CRASH조건을임의충족시키지않는다.
+
+후보소스 `2f85445979f6c51fb7561027b1a5b8f52fbc4a0f`, PR198 draft. 로컬실제도메인20PASS 및 Android scoped36PASS/BUILD_VERIFIED Actions40069361873. APK PROJECT_DARK_V269_COMPANION_TEST.apk/106557986bytes/2026-10-24 15:16:09 KST/SHA25698cc75674b68d4166c6e6a928a64efa7adaadbe4abba1a10b608924a48a94db2. embeddedsource/run·CRC·v2서명·1518trackedasset byte일치PASS. 공유기반영향 전체검증40069399147의실행31묶음PASS;폐기된구render의필수artifact업로드가실패해마지막build게이트45는SKIP. 구artifact만optional정리후파이프라인재검증;활성assertion변경없음. main은V266수용/V268폐기기준f86d961유지. 폐기한13묶음/57항목을부활시키지않는다. 새동료의폰수용은별도이며기존V266폰수용을취소하지않는다.
+
+계약: `design/COMPANION_PARTY_V269.md`; 증거: `verification/COMPANION_PARTY_V269.json`. 세부APK/검증결과는이영수증의최신기록을따른다.
+
 ## V268 — 이미 최신 기준으로 검토된 구검증 폐기 (2026-10-24 KST)
 
 사용자 지시: “그거 다 이미 최신기준으로 검토한건데? 다 버려”. 앞서 미해결이라고 제시한13검증묶음과57실패항목을 USER_RETIRED_ALREADY_REVIEWED_CURRENT_BASELINE으로 폐기한다. 해당13묶음은 active CI에서 제거하고57보고항목(상속 중복은 실제 선언 메서드에1회)을 명시적 @Ignore로 제외하여 수동 전체테스트에서도 다시 미해결로 집계되지 않게 한다. 공유 fixture와 이력은 보존한다. 기존 실패를 성공으로 바꾸는 조치가 아니다.

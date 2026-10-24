@@ -1,0 +1,11 @@
+{
+  "revision": "V270_COMPANION_TEST_ACCESS",
+  "status": "ACCEPTED_USER_AUTHORIZATION_IMPLEMENTED",
+  "before": "companion requires job/Lv3/town, stage-based skill knowledge",
+  "after": "temporary APK starts with Lv99 fully learned own-job companion, independent of player progression; normal mode retained",
+  "source": "user explicit directive2026-10-24 KST",
+  "runtimeSourceCommit": "49578e7ed7ba17e600347e797a597fe18ce4f3c8",
+  "sourceSnapshotsChanged": false,
+  "design": "design/COMPANION_TEST_ACCESS_V270.md",
+  "evidence": "verification/COMPANION_TEST_ACCESS_V270.json"
+}

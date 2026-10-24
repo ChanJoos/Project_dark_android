@@ -1,3 +1,77 @@
+## V273 — 검증된 성 후보와 정확한 APK 전달 (2026-10-24 23:21 KST)
+
+원본16맵/14종215frame, 경비병→전령→로비/12존/상층보스, 공유전투·상태/보스2생명/소환/저장 구현 후보. Source4e4229ad, focused40101784352/job120895267977의89검사0failure/0error/0skip, full40101787130/job120895330796의현행32gate전부PASS. 실제 두화면/전체미니맵/14종공격/경비병원래이름/앞마당시작 화면검토. APK107889383bytes/2026-10-24 23:21:04KST/SHA2563451adae1b6843776a2bf3e823277c67dd77ceea68ad6384464a4dff8a8d4be5, artifact12563326178. 독립v2서명/CRC/embeddedsource+run/1518mainasset+318CountessPNG정확일치PASS. Source/통과APK를후속문서HEAD로재라벨금지. PR198미통합/mainf86d961e유지. 원작서버수치·스폰·시간·일부보스한국명↔MPF·아이템드랍은미확정또는명시ADAPTED, 새폰/시각수용PENDING. 영수증verification/COUNTESS_CASTLE_V273.json. 다음은동일소스재빌드가아닌기기피드백.
+
+## V273 — 백작부인의성 런타임 후보 / Android 검증 대기 (2026-10-24 KST)
+
+기존 PR198/브랜치 유지, mainf86d961e 미변경. 두 번째140.317056초 영상 및 원본클라이언트 복구 완료. 원본16맵(2899/2900/2901/2934/26301~26312),14 MPF fullframe/팔레트/pivot 보존. 경비병→외부전령→응접실/1~12존/상층결계, 원본Tile/Object/Collision/Spawn/Portal 분리, 공유Resolver 나르콜리·디스펠·침묵/동료, 지역 HP/사망저장, 보스 두 생명 및 테스트 다이애나 폭탄1회 소환 구현. HP/MP/EXP/스폰/시간/연결좌표는 명시ADAPTED; 보스한국명↔MPF 정체/원작드랍·서버수치·폰수용은 미확정. 로컬 production compile/도메인8건 PASS; Android/native/새APK는PENDING. 기존V272검증은 기존범위에서보존하며 새후보통과로 재라벨금지. 다음: exact GitHub 후보→성전용+직접인접 CI→실제화면검토→APK source/run/hash 검증. 계약design/COUNTESS_CASTLE_V273.md.
+
+## V273 — 중단 지점 확인·두 번째 영상 복구 기록 정정 (2026-10-24 KST)
+
+실제 브랜치 `codex/companion-party-v269`, 재개 base `e111ed58`, 최신 main `f86d961e` 확인. 마지막 검증 APK source `3bf159d3`/Actions40081979346(76 scoped PASS); 공유 full32 근거3268a2fa/40081396216 유지. 두 번째 영상은 이미 scratch에 복구되어 있고 140.317056초·2340×1080·344682709bytes, SHA256 `1afd1d3134d7b0af0ce3c0b08aa07ce5f9a0f45994366d202a11bd3c775f8eee` 확인. 개요2장·보스상세 검토; 재첨부 요청 취소. 원본 client/map archive도 기존 수신 해시와 일치하여 재다운로드 불필요. 클라이언트 직접7zip열기는 실패하여 실제 설치파일 형식 추출 필요. 게임 코드·새 빌드·새 APK는 아직 없음. 다음: 원본 map/MPF 대조→경비병/외부NPC/로비/12존/보스 구현. 아래 수신대기 기록은 과거 이력이다.
+
+## V273 — 백작부인의성 자료 분석 / 두 번째 영상 수신 대기 (2026-10-24 KST)
+
+사용자 요청은 죽음의마을 대기실 경비병→외부 NPC→로비→1~12존·전체몬스터·보스. 첫120.807초 영상 전체 분석/원본해시·타임스탬프·공략vsAI근거 구분 완료. 두 번째203835영상은 첨부처리실패/미열람, 재첨부요청. 런타임·빌드·APK는 아직 미구현/미실행이며 자료분석을 게임완료로 표기하지 않는다. 기존V272/동료/통과검증 보존. 계약 `design/COUNTESS_CASTLE_V273.md`, 근거 `master/source/countess_v273/reference.json`. 다음: 누락영상수신→원본맵/몬스터대조→경비병/외부NPC입장→존·보스구현·집중검증. 자료부족은 관련맵/몬스터확정만 보류하며 새조건을 추정하지 않는다.
+
+## V272 — 동료 장비창·직업/레벨·능력치·외형 후보 완료 (2026-10-24 KST)
+
+사용자 지시대로 다섯 동료별 장비창/능력치보기/부위별 여분장비선택/착용·해제를 구현했다. 진입은 동료관리→동료장비. 비활성동료도 탭으로 개별관리하며 동행선택은 바뀌지 않는다. 동료자신의직업·레벨로엄격판정(플레이어sandbox/초기목걸이면제비전파), 장비옵션·속성·HP/MP·지팡이시전/MP·무기동작/타이밍·재생력을자신의FinalStats/Resolver에반영. 같은CharacterVisualBinding이장비창·필드·원본공격레이어를그린다. 공용가방의여분복사본↔동료착용복사본보존/명시적양손·반지·의복범위규칙/저장실패원복/직업별snapshot3장비저장/v1·v2호환. 이전시작99·모든기술테스트유지, 새장비세트지급없음. 장비교체로회복/부활안됨. 기존정확한초기장비슬롯/ID쌍의레거시저장호환만유지하며새착용은조건면제없음. 원문미확인능력치최소조건/직업조건은임의작성하지않는다.
+
+최종APKsource `3bf159d3f071843a47dcc3135c5de4be13d60bcc`, Actions40081979346/job120837235414: **76feature/adjacent Android testsPASS/0skip/0fail**. 실제HUD진입·960/2340터치/5직업탭·비활성장비관리/자신의스탯/착용전후paper-doll·필드pixel변화/4방향새갑옷원본공격레이어/실제GameView재시작/소유복사본·저장실패·조건·공유전투포함. 로컬45domain PASS. 실제최종화면직접검토완료.
+
+생산코드완성3268a2fa/Actions40081393297/job120835527237의75feature검증과 Actions40081396216/job120835573432의 **현재유효전체32gate PASS/0skip/0fail** 유지. 최종3bf159d3는네방향착용공격렌더검사·검토된정확blob CI프로파일·증거만추가했고 production/build/sourceart/workflow byte차이0guard PASS. 따라서공유전체검증을그유효범위에서재사용하며최종전체32를재실행했다고표기하지않는다. 최종scope40081982843SUCCESS/commoncompile의도적SKIP. V268폐기검사부활없음.
+
+APK PROJECT_DARK_V272_COMPANION_TEST.apk/com.projectdark.mobile.v272test/106573934bytes/2026-10-24 18:31:24 KST/SHA256 `bab8ad8db4ac6fded308248b8fde7c1229d5e78eb6ea29fedfa33e89c896b2ee`. artifact12556095119, embeddedsource/run·ZIPdigest/CRC·v2서명·1518trackedmainasset byte일치PASS. 저장완료 libfile_c20a947d10bc8191b275627e8124ab94. 사용자요청대로 직접sandbox APK다운로드링크로전달한다(파일상세페이지대체금지). mainf86d961미변경/PR198미통합후보, 새V272휴대폰/사용자시각수용PENDING. 다음: 해당기기에서장비교체·조건·외형·사냥·재시작피드백;동일통과소스재빌드불필요. 계약design/COMPANION_EQUIPMENT_V272.md, 영수증verification/COMPANION_EQUIPMENT_V272.json.
+
+## V272 — 동료 장비창·직업/레벨·능력치·외형 연결 진행 (2026-10-24 KST)
+
+사용자 “동료 장비창도 만들어. 그리고 직업 레벨 능력치를 적용시키고 외형에 반영해.” 동료5직업 전용장비창/능력치보기/부위별여분장비선택/착용해제를 구현했다. 각동료자신의직업/레벨로엄격판정하며 플레이어sandbox·초기목걸이면제를전파하지않는다. 장비옵션·속성·최대HP/MP·무기동작·지팡이시전/MP기능을자신의FinalStats/Resolver에연결하고 같은착용정보가장비창·필드외형을그린다. 공용가방여분↔동료착용복사본 원자적이동/동일복사본중복방지/저장실패원복/직업별장비저장(snapshot3)/v1·v2호환. 기존시작99·모든기술테스트유지, 새장비세트지급없음.
+
+로컬생산JavacompilePASS/관련45domain testsPASS. Android기능·두화면실제렌더·터치·재시작/공유변경전체32gate/새APK는PENDING. 같은PR198/브랜치유지/mainf86d961미변경. 계약design/COMPANION_EQUIPMENT_V272.md, 검증verification/COMPANION_EQUIPMENT_V272.json. 다음: exact-source CI→실제외형검토→APK identity/hash/signature확인→직접다운로드전달. 기존V271수용을새실기기수용으로대체하지않는다.
+
+## V271 — 다섯 직업 동료·직업별 독립 AI 후보 완료 (2026-10-24 KST)
+
+전사·성직자·도적·마법사·무도가5종 동료를 기존1명동행 구조에 구현하고 직업마다 독립 에이전트를 연결했다. 시작즉시Lv99/직업별모든비폐기기술 테스트 유지; 플레이어 퀘스트·직업·경험치 불변. 전사 도발/블레이드/소울·실제조건크래셔, 성직자 회복·맞는해제·보호(수혈/저주제외), 도적 동료좌표표창/은신→기습/위험관리, 마법사 추가적수면/속성·범위·거리·MP판단, 무도가 자가해독·회복/보호후실제비용다라/근접연계. 공유Resolver·실제비용·계수 및 기존원본에셋 사용. 레거시2동료저장→5직업저장 원자적호환 포함. 이동서비스LEAP/ADVANCE의 동료전용 adapter는 미구현이므로 fail-closed/AI미선택; 모든기술지식과 모든유틸자동사용은 구분한다.
+
+최종 APK source `b6e9961bd1d17620be2b2b5c5eb0d6b6cee089d4`, Actions40076725337/job120821545789: **61feature/adjacent native tests PASS/0skip/0fail**, 두화면실제터치/5직업렌더/새3직업실제GameView행동/자원·상태·재시작/닫힌HUD영역검사포함. 초기e7b18af0도60PASS였으나 실제화면검토에서 새직업버튼3개가 관리창밖HUD에남는표시버그를발견해 미전달; 최종은draw3줄만삭제하고61건전부재검증/새화면확인했다.
+
+공유기반전체32gate는 e7b18af0/Actions40076146616/job120819844500 **32PASS/0skip/0fail**. 최종production/build/assets차이는 CompanionWindow의잘못된draw3줄삭제뿐임을exact-diffguard로확인하여 공유검증유효범위를재사용한다. 최종전체32를재실행했다고표기하지않는다. 최종scope40076728407 SUCCESS/검토한정확blobprofile의commoncompile의도적SKIP. V268폐기검사는그대로폐기. 최종main통합은별도.
+
+APK PROJECT_DARK_V271_COMPANION_TEST.apk/com.projectdark.mobile.v271test/106566274bytes/2026-10-24 17:09:22 KST/SHA256 `8a70d633abc8cd5b9aabd92753841024800cc72fdb00cd8337af879ea23c33ef`. embeddedsource/run·CRC·v2서명·1518trackedmainasset byte일치PASS, 저장완료 libfile_cec692c12148819180706a74eefed53d. 최종960/2340관리창·5직업월드·새3직업행동화면검토. exactAPK폰검증/사용자시각수용PENDING; 기존V266사용자수용유지. mainf86d961미변경/PR198 draft후보. 다음은V271실기기사냥피드백, 동일통과소스재빌드불필요. 계약design/COMPANION_AGENTS_V271.md · 영수증verification/COMPANION_AGENTS_V271.json.
+
+## V271 — 다섯 직업 동료·직업별 독립 AI 구현 진행 (2026-10-24 KST)
+
+사용자 요청: 모든 직업 캐릭터 동료와 직업별 AI 에이전트. 같은 PR198/브랜치에서 전사·성직자·도적·마법사·무도가5종 선택 및 독립 에이전트를 구현했다. 기존1명동행/시작즉시Lv99·직업별모든기술 테스트 유지. 기존 전사·성직자 운용 보존; 도적은 은신기습/표창/위험관리, 마법사는 추가적수면/속성·범위/거리·자원판단, 무도가는 자가해독·치료/보호/실제조건다라/근접연계. 공유Resolver/원작비용·계수/원본에셋 사용. 이전2인저장→5직업저장 원자적마이그레이션 포함.
+
+로컬 생산Java컴파일PASS, 실제Controller→Agent→Resolver34testsPASS. Android/native/build/full현재32gate는PENDING; 아직새APK완료아님. mainf86d961유지/후보미통합/새폰수용PENDING. 다음: exact-source GitHub focused+공유저장변경전체검증→APK/source/run/hash/서명검증→전달. 계약design/COMPANION_AGENTS_V271.md.
+
+## V270 — 퀘스트와 분리한 시작 즉시 Lv99 동료 테스트 (2026-10-24 KST)
+
+사용자 요청: “처음부터 임시적으로 레벨99 모든기술을배운동료”. side-by-side 테스트 APK 진입에서 퀘스트/전직/플레이어Lv와 별개로 전사동료가 자동 동행하고 성직자로 즉시 변경된다. 두 동료는 Lv99/해당직업 모든 비폐기 기술 습득(상위써클 포함); 수혈·성직자 저주는 AI 기본운용에 넣지 않는다. 플레이어 스킬 테스트를 꺼도 동료 테스트는 유지. 레벨 의존 기술 계산도 동료 자신의99 사용. 전사 상위주력기/트리플 패시브와 성직자 상위버프 연결. 플레이어Lv/직업/EXP/퀘스트/습득정보는 건드리지 않으며 재시작 시 기존 동료 HP/MP/전투불능/쿨타임을 보존한다. 테스트에서 필드 선택/회복도 가능; 전투중/사망/동작중 제한은 유지. 일반빌드는 임시flag=false로 기존 성장규칙 유지.
+
+최종 APK 소스 `49578e7ed7ba17e600347e797a597fe18ce4f3c8`, Actions40072944512/job120810120110 기능·인접43PASS(신규 실제MainActivity 시작/모든기술/퀘스트불변/재시작·토글/필드/트리플/99레벨회복 포함). 현재유효 전체32묶음은40072947480/job120810274435 전부PASS/0skip/0fail. APK PROJECT_DARK_V270_COMPANION_TEST.apk/com.projectdark.mobile.v270test/106558974bytes/2026-10-24 16:12:12 KST/SHA2569d6d67afbbb376dc3093942b2ab03c7fc855c01a3fee03f5e3a8842f4199356a. embedded source/run·CRC·v2서명·1518mainasset byte일치PASS. main미통합/PR198 후보 유지, 기존V266수용/V268폐기 유지. 새V270폰수용은 별도.
+
+계약 design/COMPANION_TEST_ACCESS_V270.md · 검증 verification/COMPANION_TEST_ACCESS_V270.json. 아래V269의전직/Lv3/마을필수조건은 일반모드 이력이며 이번임시테스트진입에는적용하지않는다.
+
+## V269 — 전사·성직자 동료 후보 검증 완료 (2026-10-24 KST)
+
+사용자 승인 기획의 첫 단계: 전사/성직자 중1명 동행, FOLLOW/FOCUS/WAIT, 아군 지원 선택, 공유 Resolver 기반 전투/자원/상태/보상, 충돌 준수 타일 추적, 몬스터 공격대상, 주력기 예약과 회복 판단, HP/MP/전투불능/쿨타임/버프 저장복원. 수혈·성직자저주는 동료 AI에서 제외. 실제 맵 레스큐 재타깃 시 windup 상태 교착을 수정하고 실제 몬스터의 동료 반격까지 검증했다. 신규 동료 성장/AI 수치는 PROJECT_ADAPTED이며 기존 원작 스킬계수와 에셋을 변경하지 않았다.
+
+최종 APK 소스 `96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db`, Actions40070443661/job120802529002. 기능·인접검증37PASS(실제Android UI/두화면/퀵슬롯 아군 회복보호/재시작 및 실제맵 상호전투 포함), assemble PASS. APK PROJECT_DARK_V269_COMPANION_TEST.apk/106558034bytes/2026-10-24 15:33:38 KST/SHA256 `3bda7b1e3748a7f63a18cec80dadfcb0e8da8002481b7a162abf871b1b3608ac`. embedded source/run·CRC·v2서명·1518 tracked main assets byte일치PASS. 설치파일 저장완료 libfile_198c24363560819187627d60f4be08ba.
+
+현재유효 전체검증: {"runId": 40070446870, "jobId": 120802660120, "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db", "status": "PASS", "activeGateGroups": 32, "passed": 32, "skipped": 0, "failed": 0, "retiredGroupsRemainAbsent": true}. 폐기된 V268 13묶음/57항목은 그대로 폐기상태이며 옛 render artifact만 optional로 정리했다. main은f86d961의V266사용자수용기준 유지, PR198 후보만 작성. 신규 V269 폰/사용자 시각수용은 별도이며 기존 V266수용을 취소하지 않는다. 5직업 전체 동료/3인 파티는 후속 범위.
+
+계약: design/COMPANION_PARTY_V269.md · 정확한 검증/APK 영수증: verification/COMPANION_PARTY_V269.json. 이전 V269 진행/부분 실패 기록은 아래의 이력이며 이 완료 기록이 우선한다.
+
+## V269 — 직업별 협동 동료 구현 후보 (2026-10-24 KST)
+
+사용자 “응 그렇게 이제 만들어봐”에 따라 전사·성직자 중1명 동행/명령/아군지원, 공유Resolver 전투·자원·상태·보상, 타일추적/몬스터 공격대상, 주력기예약과 회복판단, 파티자원/쿨타임/상태 저장복원을 구현했다. 원작스킬계수·원본그림변경없음;동료성장/AI는PROJECT_ADAPTED. 수혈·성직자저주는동료AI에서제외. 전사SOUL후CRASH조건을임의충족시키지않는다.
+
+후보소스 `2f85445979f6c51fb7561027b1a5b8f52fbc4a0f`, PR198 draft. 로컬실제도메인20PASS 및 Android scoped36PASS/BUILD_VERIFIED Actions40069361873. APK PROJECT_DARK_V269_COMPANION_TEST.apk/106557986bytes/2026-10-24 15:16:09 KST/SHA25698cc75674b68d4166c6e6a928a64efa7adaadbe4abba1a10b608924a48a94db2. embeddedsource/run·CRC·v2서명·1518trackedasset byte일치PASS. 공유기반영향 전체검증40069399147의실행31묶음PASS;폐기된구render의필수artifact업로드가실패해마지막build게이트45는SKIP. 구artifact만optional정리후파이프라인재검증;활성assertion변경없음. main은V266수용/V268폐기기준f86d961유지. 폐기한13묶음/57항목을부활시키지않는다. 새동료의폰수용은별도이며기존V266폰수용을취소하지않는다.
+
+계약: `design/COMPANION_PARTY_V269.md`; 증거: `verification/COMPANION_PARTY_V269.json`. 세부APK/검증결과는이영수증의최신기록을따른다.
+
 ## V268 — 이미 최신 기준으로 검토된 구검증 폐기 (2026-10-24 KST)
 
 사용자 지시: “그거 다 이미 최신기준으로 검토한건데? 다 버려”. 앞서 미해결이라고 제시한13검증묶음과57실패항목을 USER_RETIRED_ALREADY_REVIEWED_CURRENT_BASELINE으로 폐기한다. 해당13묶음은 active CI에서 제거하고57보고항목(상속 중복은 실제 선언 메서드에1회)을 명시적 @Ignore로 제외하여 수동 전체테스트에서도 다시 미해결로 집계되지 않게 한다. 공유 fixture와 이력은 보존한다. 기존 실패를 성공으로 바꾸는 조치가 아니다.

@@ -15,11 +15,11 @@ import java.util.Arrays;
 public final class RuntimeState {
   /** Captures live actor objects so a failed paid transfer cannot respawn or heal the source map. */
   static final class TravelSnapshot {
-    final String map;final float[] at;final List<Npc> npcs;final List<Monster> monsters;final List<RectF> obstacles;final org.json.JSONObject campaign,effects,horror;
-    TravelSnapshot(RuntimeState s){map=s.currentMapId;at=new float[]{s.currentMinX,s.currentMaxX,s.currentMinY,s.currentMaxY,s.player.x,s.player.y,s.player.spawnX,s.player.spawnY};npcs=new ArrayList<>(s.npcs);monsters=new ArrayList<>(s.monsters);obstacles=new ArrayList<>(s.obstacles);campaign=s.rpg.campaign().snapshot();effects=s.skillEffects.snapshot();horror=s.horror.snapshot();}
+    final String map;final float[] at;final List<Npc> npcs;final List<Monster> monsters;final List<RectF> obstacles;final org.json.JSONObject campaign,effects,horror,countess;
+    TravelSnapshot(RuntimeState s){map=s.currentMapId;at=new float[]{s.currentMinX,s.currentMaxX,s.currentMinY,s.currentMaxY,s.player.x,s.player.y,s.player.spawnX,s.player.spawnY};npcs=new ArrayList<>(s.npcs);monsters=new ArrayList<>(s.monsters);obstacles=new ArrayList<>(s.obstacles);campaign=s.rpg.campaign().snapshot();effects=s.skillEffects.snapshot();horror=s.horror.snapshot();countess=s.countess.snapshot();}
   }
   TravelSnapshot captureTravel(){return new TravelSnapshot(this);}
-  void restoreTravel(TravelSnapshot b){currentMapId=b.map;currentMinX=b.at[0];currentMaxX=b.at[1];currentMinY=b.at[2];currentMaxY=b.at[3];player.x=b.at[4];player.y=b.at[5];player.spawnX=b.at[6];player.spawnY=b.at[7];npcs.clear();npcs.addAll(b.npcs);monsters.clear();monsters.addAll(b.monsters);obstacles.clear();obstacles.addAll(b.obstacles);terrainIndex=null;rpg.campaign().restore(b.campaign);skillEffects.restore(b.effects);horror.restore(b.horror);}
+  void restoreTravel(TravelSnapshot b){currentMapId=b.map;currentMinX=b.at[0];currentMaxX=b.at[1];currentMinY=b.at[2];currentMaxY=b.at[3];player.x=b.at[4];player.y=b.at[5];player.spawnX=b.at[6];player.spawnY=b.at[7];npcs.clear();npcs.addAll(b.npcs);monsters.clear();monsters.addAll(b.monsters);obstacles.clear();obstacles.addAll(b.obstacles);terrainIndex=null;rpg.campaign().restore(b.campaign);skillEffects.restore(b.effects);horror.restore(b.horror);countess.restore(b.countess);}
 
   public enum BootMode { MILLES, POTE_01_PROTOTYPE }
 
@@ -38,7 +38,7 @@ public final class RuntimeState {
 
   public static final class Npc {
     public final String id,name,dialogue,assetStatus;public final float x,y;
-    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||id.startsWith("campaign_altar_")?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
+    Npc(String id,String name,float x,float y,String dialogue,String assetStatus){this.id=id;this.name="town_keeper".equals(id)||id.startsWith("campaign_altar_")||CountessCastleTravel.GUARD.equals(id)||CountessCastleTravel.ENVOY.equals(id)?name:NpcIdentity.forId(id).label();this.x=x;this.y=y;this.dialogue=NpcIdentity.text(dialogue);this.assetStatus=assetStatus;}
   }
 
   public static final class Monster {
@@ -51,6 +51,7 @@ public final class RuntimeState {
     public boolean isMoving;
     /** Ephemeral damage aggro for this actor life; never bypasses live movement collision. */
     public boolean provoked;
+    public String attackTarget="player";
     public int hp;public final int maxHp;public boolean alive=true;
     public int level,mp,maxMp;public float manaClock;public boolean bossRecovered;
     public State state=State.SPAWN;
@@ -69,6 +70,9 @@ public final class RuntimeState {
 
   private final BootMode bootMode;
   private String currentMapId;
+  private final CountessCastleRun countess=new CountessCastleRun();
+  public CountessCastleRun countess(){return countess;}
+  public void restoreCountessEncounter(){if(com.projectdark.mobile.world.CountessCastleGeometry.contains(currentMapId)){monsters.clear();monsters.addAll(CountessCastleMonsters.spawn(currentMapId));countess.apply(currentMapId,monsters);}}
   private final HorrorCastleRun horror=new HorrorCastleRun();
   public HorrorCastleRun horror(){return horror;}
   public void restoreHorrorEncounter(){if(com.projectdark.mobile.world.HorrorCastleGeometry.contains(currentMapId)){monsters.clear();monsters.addAll(HorrorCastleMonsters.spawn(currentMapId,horror.seed()));horror.apply(monsters);}}
@@ -83,6 +87,8 @@ public final class RuntimeState {
   private final List<Npc> suspendedMillesNpcs=new ArrayList<>();
   private final List<RectF> suspendedMillesObstacles=new ArrayList<>();
   private final CombatLedger ledger=new CombatLedger();
+  private final CompanionParty party=new CompanionParty();
+  public CompanionParty party(){return party;}
   private final SkillEffectState skillEffects=new SkillEffectState();
   public SkillEffectState skillEffects(){return skillEffects;}
   private final RuntimeMetrics metrics=new RuntimeMetrics();
@@ -209,11 +215,12 @@ public final class RuntimeState {
   }
   public void enterCampaignMap(String id,boolean fromNext){id=com.projectdark.mobile.world.AbelCoastGeometry.canonical(com.projectdark.mobile.world.AbelTownGeometry.canonical(id));
     if(!com.projectdark.mobile.world.CampaignWorld.contains(id))throw new IllegalArgumentException("campaign map");
-    horror.record(currentMapId,monsters);if(com.projectdark.mobile.world.HorrorCastleGeometry.room(currentMapId)==com.projectdark.mobile.world.HorrorCastleGeometry.ROOM_COUNT&&com.projectdark.mobile.world.HorrorCastleGeometry.roomId(1).equals(id)&&horror.clear(currentMapId,monsters))horror.start();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
-    int zone=map.zone;monsters.addAll(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)?HorrorCastleMonsters.spawn(id,horror.seed()):CampaignMonsters.spawnForMap(id));horror.apply(monsters);
+    countess.record(currentMapId,monsters);horror.record(currentMapId,monsters);if(com.projectdark.mobile.world.HorrorCastleGeometry.room(currentMapId)==com.projectdark.mobile.world.HorrorCastleGeometry.ROOM_COUNT&&com.projectdark.mobile.world.HorrorCastleGeometry.roomId(1).equals(id)&&horror.clear(currentMapId,monsters))horror.start();com.projectdark.mobile.world.PoteCampaignMapDef map=com.projectdark.mobile.world.PoteCampaignMapDef.forId(id);currentMapId=id;currentMinX=map.minX;currentMaxX=map.maxX;currentMinY=map.minY;currentMaxY=map.maxY;obstacles.clear();terrainIndex=null;for(RectF r:map.obstacles())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
+    int zone=map.zone;monsters.addAll(com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)?HorrorCastleMonsters.spawn(id,horror.seed()):CampaignMonsters.spawnForMap(id));horror.apply(monsters);countess.apply(id,monsters);
     // This roster contains new lives. Reused species#slot keys must not inherit old-map effects.
     for(Monster fresh:monsters)skillEffects.clear(fresh.id);
-    if(com.projectdark.mobile.world.DeathVillageGeometry.contains(id)){if(com.projectdark.mobile.world.DeathVillageGeometry.LOBBY.equals(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("death_village_travel","죽음의마을 이동 도우미",t.x,t.y,"마을 안의 세 건물과 지하로 이어지는 길을 살펴보세요.","ADAPTED_ORIGINAL_SOURCE"));com.projectdark.mobile.world.WorldMoveTargetController.TileCenter shop=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,t.x+96,t.y+48);npcs.add(new Npc("death_reagent_knight","수호기사",shop.x,shop.y,"시약과 마을 리콜을 판매합니다.","ORIGINAL_MNS028_USER_ASSIGNED_SERVICE"));}}
+    if(com.projectdark.mobile.world.CountessCastleGeometry.contains(id)){if(com.projectdark.mobile.world.CountessCastleGeometry.EXTERIOR.equals(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter e=com.projectdark.mobile.world.CountessCastleGeometry.near(id,25,29);npcs.add(new Npc(CountessCastleTravel.ENVOY,"별장지기",e.x,e.y,"별장 응접실2로 안내하겠습니다.","USER_REQUESTED / ORIGINAL_GHOST_MPF"));}}
+    else if(com.projectdark.mobile.world.DeathVillageGeometry.contains(id)){if(com.projectdark.mobile.world.DeathVillageGeometry.LOBBY.equals(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("death_village_travel","죽음의마을 이동 도우미",t.x,t.y,"마을 안의 세 건물과 지하로 이어지는 길을 살펴보세요.","ADAPTED_ORIGINAL_SOURCE"));com.projectdark.mobile.world.WorldMoveTargetController.TileCenter shop=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,t.x+96,t.y+48);npcs.add(new Npc("death_reagent_knight","수호기사",shop.x,shop.y,"시약과 마을 리콜을 판매합니다.","ORIGINAL_MNS028_USER_ASSIGNED_SERVICE"));com.projectdark.mobile.world.WorldMoveTargetController.TileCenter guard=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,t.x-128,t.y-64);npcs.add(new Npc(CountessCastleTravel.GUARD,"백작부인별장입장",guard.x,guard.y,"백작부인의별장 입구로 이동하시겠습니까?","USER_REQUESTED / ORIGINAL_KNIGHT_SERVICE"));}}
     else if(com.projectdark.mobile.world.MineHuntGeometry.contains(id)||com.projectdark.mobile.world.HorrorCastleGeometry.contains(id)){ /* Dedicated return portals, no generic forest NPC. */ }
     else if(com.projectdark.mobile.world.MineTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=TownTravel.center(id);npcs.add(new Npc("mine_town_travel","마인 이동 도우미",t.x,t.y,"밀레스를 비롯한 마을로 이동할 수 있습니다.","ADAPTED_USER_VIDEO"));}
     else if(com.projectdark.mobile.world.RucesionTownGeometry.contains(id)){com.projectdark.mobile.world.WorldMoveTargetController.TileCenter t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,TownTravel.center(id).x,TownTravel.center(id).y);npcs.add(new Npc("rucesion_town_travel","해럴드",t.x,t.y,"모든 마을로 이동할 수 있습니다.","ADAPTED"));t=com.projectdark.mobile.world.CampaignWorld.nearestConnectedTile(id,com.projectdark.mobile.world.RucesionTownGeometry.x(15,24),com.projectdark.mobile.world.RucesionTownGeometry.y(15,24));npcs.add(new Npc("rucesion_beach_keeper","루크",t.x,t.y,"뤼케시온 해변으로 이동합니다. Lv71 이상 · 시험 모드 미리보기 가능","ADAPTED"));}
@@ -225,6 +232,7 @@ public final class RuntimeState {
     com.projectdark.mobile.world.WorldMoveTargetController.TileCenter arrival=com.projectdark.mobile.world.CampaignWorld.arrival(id,fromNext);player.spawnX=arrival.x;player.spawnY=arrival.y;player.x=arrival.x;player.y=arrival.y;rpg.campaign().visit(id);
   }
   public void enterMillesFromField(float x,float y){
+    countess.record(currentMapId,monsters);
     currentMapId=WorldDef.ID;currentMinX=WorldDef.MIN_X;currentMaxX=WorldDef.MAX_X;currentMinY=WorldDef.MIN_Y;currentMaxY=WorldDef.MAX_Y;
     obstacles.clear();terrainIndex=null;for(RectF r:world.blockers())obstacles.add(new RectF(r));npcs.clear();monsters.clear();
     for(WorldDef.NpcSpawn n:world.npcSpawns())npcs.add(new Npc(n.id,n.name,n.x,n.y,n.dialogue,n.assetStatus));
@@ -376,7 +384,7 @@ public final class RuntimeState {
   public float distanceTo(Npc n){return distance(player.x,player.y,n.x,n.y);}
   public float distanceTo(Monster m){return distance(player.x,player.y,m.x,m.y);}
 
-  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){m.visualFacing.beginAttack(player.x-m.x,player.y-m.y);m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;m.attackVisualRemaining=.36f;}}
+  public void beginMonsterAttack(Monster m){if(m!=null&&m.alive&&!m.attackPrimed&&m.attackCooldown<=0f){RuntimeState.Player target=party.body(this,m.attackTarget);if(target==null)target=player;m.visualFacing.beginAttack(target.x-m.x,target.y-m.y);m.state=Monster.State.ATTACK;m.attackPrimed=true;m.attackWindup=.24f;m.attackVisualRemaining=.36f;}}
   public boolean monsterAttackReady(Monster m){return m!=null&&m.alive&&m.state==Monster.State.ATTACK&&m.attackPrimed&&m.attackWindup<=0f&&m.attackCooldown<=0f;}
   public void resolveMonsterAttack(Monster m,int damage,float cooldown){if(!monsterAttackReady(m))return;m.attackPrimed=false;m.attackWindup=0f;m.attackCooldown=Math.max(0f,cooldown);m.attackVisualRemaining=.36f;damagePlayer(damage);if(m.alive)m.state=m.attackVisualRemaining>0f?Monster.State.ATTACK:Monster.State.IDLE;}
   public void cancelMonsterAttack(Monster m){if(m!=null){m.attackPrimed=false;m.attackWindup=0f;m.attackVisualRemaining=0f;m.visualFacing.endAttack();if(m.alive)m.state=Monster.State.IDLE;}}
@@ -394,7 +402,7 @@ public final class RuntimeState {
     int ticks=(int)(equipmentRegenClock/25f);if(ticks<=0)return;equipmentRegenClock-=ticks*25f;
     player.hp=(int)Math.min(player.maxHp,(long)player.hp+(long)ticks*ItemEffects.additionalRegeneration(rpg));
   }
-  public void tick(float dt){tickEquipmentRegeneration(dt);skillEffects.tick(this,Math.max(0f,dt));player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){m.damageNumbers.tick(Math.max(0f,dt));tickMonsterMovement(m,dt);if(m.alive&&m.maxMp>0){m.manaClock+=Math.max(0,dt);if(m.manaClock>=1){int gain=(int)m.manaClock;m.mp=Math.min(m.maxMp,m.mp+gain*2);m.manaClock-=gain;}}m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);float priorAttackVisual=m.attackVisualRemaining;if(!m.attackPrimed)m.attackVisualRemaining=Math.max(0f,m.attackVisualRemaining-dt);if(priorAttackVisual>0f&&m.attackVisualRemaining<=0f&&!m.attackPrimed){m.visualFacing.endAttack();if(m.alive&&m.state==Monster.State.ATTACK)m.state=Monster.State.IDLE;}m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive)m.animationClock+=Math.max(0f,dt);if(m.alive)continue;if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){if(!monsterCanOccupy(m,m.spawnX,m.spawnY))continue;m.state=Monster.State.SPAWN;MonsterElementsV258.spawn(m);skillEffects.clear(m.id);m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.mp=m.maxMp;m.bossRecovered=false;m.provoked=false;m.attackCooldown=0f;m.attackWindup=0f;m.attackVisualRemaining=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.damageNumbers.clear();m.lastDamage=0;m.hitFlash=0f;m.damagePopupClock=0f;m.animationClock=0f;m.isMoving=false;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
+  public void tick(float dt){tickEquipmentRegeneration(dt);skillEffects.tick(this,Math.max(0f,dt));player.hitFlash=Math.max(0f,player.hitFlash-dt);for(Monster m:monsters){m.damageNumbers.tick(Math.max(0f,dt));tickMonsterMovement(m,dt);if(m.alive&&m.maxMp>0){m.manaClock+=Math.max(0,dt);if(m.manaClock>=1){int gain=(int)m.manaClock;m.mp=Math.min(m.maxMp,m.mp+gain*2);m.manaClock-=gain;}}m.attackCooldown=Math.max(0f,m.attackCooldown-dt);m.hitFlash=Math.max(0,m.hitFlash-dt);m.damagePopupClock=Math.max(0,m.damagePopupClock-dt);m.attackWindup=Math.max(0,m.attackWindup-dt);float priorAttackVisual=m.attackVisualRemaining;if(!m.attackPrimed)m.attackVisualRemaining=Math.max(0f,m.attackVisualRemaining-dt);if(priorAttackVisual>0f&&m.attackVisualRemaining<=0f&&!m.attackPrimed){m.visualFacing.endAttack();if(m.alive&&m.state==Monster.State.ATTACK)m.state=Monster.State.IDLE;}m.detourClock=Math.max(0f,m.detourClock-dt*.25f);if(m.alive)m.animationClock+=Math.max(0f,dt);if(m.alive)continue;if(m.state==Monster.State.DEAD)m.state=Monster.State.RESPAWN;m.respawnClock=Math.max(0f,m.respawnClock-dt);if(m.respawnClock<=0f){if(!monsterCanOccupy(m,m.spawnX,m.spawnY))continue;m.state=Monster.State.SPAWN;MonsterElementsV258.spawn(m);skillEffects.clear(m.id);m.x=m.spawnX;m.y=m.spawnY;m.hp=m.maxHp;m.mp=m.maxMp;m.bossRecovered=false;m.provoked=false;m.attackTarget="player";m.attackCooldown=0f;m.attackWindup=0f;m.attackVisualRemaining=0f;m.attackPrimed=false;m.detourClock=0f;m.detourSign=1;m.alive=true;m.damageNumbers.clear();m.lastDamage=0;m.hitFlash=0f;m.damagePopupClock=0f;m.animationClock=0f;m.isMoving=false;m.state=Monster.State.IDLE;ledger.add(CombatLedger.Type.MONSTER_RESPAWNED,"runtime",m.id,0);}}countess.revive(this);List<CombatLedger.Event> events=ledger.snapshot();metrics.consume(events);rpg.consumeCombat(events,this);}
 
   private static void tickMonsterMovement(Monster m,float dt){if(!m.isMoving)return;m.moveElapsed=Math.min(m.moveDuration,m.moveElapsed+Math.max(0f,dt));float t=m.moveDuration<=0f?1f:m.moveElapsed/m.moveDuration;float eased=t*t*(3f-2f*t);m.x=m.moveStartX+(m.moveTargetX-m.moveStartX)*eased;m.y=m.moveStartY+(m.moveTargetY-m.moveStartY)*eased;if(t>=1f){m.x=m.moveTargetX;m.y=m.moveTargetY;m.isMoving=false;}}
   private static float distance(float ax,float ay,float bx,float by){float dx=ax-bx,dy=ay-by;return(float)Math.sqrt(dx*dx+dy*dy);}

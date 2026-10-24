@@ -1,0 +1,40 @@
+{
+  "source": "19840bf885b411d8b9e510e670869155d4746267",
+  "run": 40105712364,
+  "job": 120906926061,
+  "artifact": 12564488536,
+  "reportArtifact": 12564364225,
+  "tests": {
+    "suites": 15,
+    "tests": 91,
+    "failures": 0,
+    "errors": 0,
+    "skipped": 0
+  },
+  "commonRun": 40105715515,
+  "commonStatus": "SUCCESS",
+  "apk": {
+    "name": "PROJECT_DARK_V274_COUNTESS_TEST.apk",
+    "bytes": 107917052,
+    "sha256": "4310421a64a6473898da7b7cece382c86286c46250a49cb081665f61bbe2dca9",
+    "package": "com.projectdark.mobile.v274test",
+    "buildCompletedKst": "2026-10-25T00:14:37+09:00",
+    "signature": "APK_V2_VERIFIED",
+    "libraryFileId": "libfile_ef5d765afb9081919406a2f41fdfe0a7"
+  },
+  "sourceArchive": {
+    "retainedEntries": 357,
+    "addedMpf": [
+      314,
+      321
+    ],
+    "verifiedSourceHashes": 359,
+    "packagedPngHashes": 319
+  },
+  "phone": "PENDING",
+  "visualAcceptance": "PENDING",
+  "limits": [
+    "Unobserved reverse portal coordinates remain adapted",
+    "Boss identity joins and original server values remain unresolved"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "revision": "V272_COMPANION_EQUIPMENT",
+  "authorization": "동료 장비창·직업/레벨·능력치·외형 반영",
+  "status": "IMPLEMENTED_BUILD_NATIVE_VERIFIED_CANDIDATE",
+  "sourceSnapshotsChanged": false,
+  "newEquipmentGrants": false,
+  "contract": "design/COMPANION_EQUIPMENT_V272.md",
+  "verification": "verification/COMPANION_EQUIPMENT_V272.json",
+  "runtimeSourceCommit": "3bf159d3f071843a47dcc3135c5de4be13d60bcc",
+  "focusedRun": 40081979346,
+  "focusedPassed": 76,
+  "fullSharedRun": 40081396216,
+  "fullSharedPassed": 32,
+  "fullSharedReuse": "EXACT_IDENTICAL_PRODUCTION_BUILD_ASSET_WORKFLOW_GUARD",
+  "phoneAcceptance": "PENDING",
+  "mainMerged": false
+}

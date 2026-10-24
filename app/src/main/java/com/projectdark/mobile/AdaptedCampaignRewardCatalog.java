@@ -35,6 +35,7 @@ public final class AdaptedCampaignRewardCatalog {
     for(int t=0;t<10;t++)for(int e=0;e<4;e++)add(m,String.format(java.util.Locale.ROOT,"HORROR_%02d_%d",t,e),"호러캐슬 / Master U+B",HorrorCastleMonsters.EXP[t],0);
     for(AbelCombatProfile p:MineHuntMonsters.all())add(m,p.id,"광산 / "+MineHuntMonsters.POLICY,p.exp,p.gold);
     for(AbelCombatProfile p:DeathVillageMonsters.all())add(m,p.id,"죽음의마을 / "+DeathVillageMonsters.POLICY,p.exp,p.gold);
+    for(AbelCombatProfile p:CountessCastleMonsters.all())add(m,p.id,"백작부인의별장 / "+CountessCastleMonsters.POLICY,p.exp,p.gold);
     rewards=Collections.unmodifiableMap(m);
   }
   private static void add(Map<String,Reward> m,String id,String zone,int exp,long gold){m.put(id,new Reward(id,zone,exp,gold));}

@@ -31,7 +31,12 @@ public final class AdaptedCampaignRewardTest {
   }
   @Test public void campaignHasPerSpeciesProfilesAndDoesNotReplaceSpiritCanon(){
     AdaptedCampaignRewardCatalog c=new AdaptedCampaignRewardCatalog();
-    assertEquals(41,c.entries().keySet().stream().filter(id->!id.startsWith("HORROR_")&&!id.startsWith("MINE_")&&!id.startsWith("DEATH_")).count());
+    assertEquals(41,c.entries().keySet().stream().filter(id->!id.startsWith("HORROR_")&&!id.startsWith("MINE_")&&!id.startsWith("DEATH_")&&!id.startsWith("COUNTESS_")).count());
+    java.util.Set<String> expectedCastle=new java.util.HashSet<>(),actualCastle=new java.util.HashSet<>();
+    for(int type=0;type<15;type++){String id=CountessCastleMonsters.species(type);expectedCastle.add(id);AbelCombatProfile p=CountessCastleMonsters.profile(id);assertNotNull(p);assertNotNull(c.find(id));assertEquals(p.exp,c.find(id).exp);assertEquals(p.gold,c.find(id).gold);}
+    for(String id:c.entries().keySet())if(id.startsWith("COUNTESS_"))actualCastle.add(id);
+    assertEquals(expectedCastle,actualCastle);
+    assertEquals(0,c.find(CountessCastleMonsters.species(10)).exp);
     java.util.Set<String> expectedDeath=new java.util.HashSet<>(),actualDeath=new java.util.HashSet<>();
     for(int type=0;type<4;type++){String id=DeathVillageMonsters.species(type);expectedDeath.add(id);AbelCombatProfile p=DeathVillageMonsters.profile(id);assertNotNull(p);assertNotNull(c.find(id));assertEquals(p.exp,c.find(id).exp);assertEquals(p.gold,c.find(id).gold);}
     for(String id:c.entries().keySet())if(id.startsWith("DEATH_"))actualDeath.add(id);

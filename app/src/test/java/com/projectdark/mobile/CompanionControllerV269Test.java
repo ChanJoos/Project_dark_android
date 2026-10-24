@@ -1,0 +1,152 @@
+package com.projectdark.mobile;
+
+import static org.junit.Assert.*;
+
+import com.projectdark.mobile.world.WorldMoveTargetController;
+import java.util.*;
+import org.junit.Test;
+
+public class CompanionControllerV269Test {
+  final CompanionPartyV269Test setup = new CompanionPartyV269Test();
+
+  CompanionController.Navigation nav(RuntimeState s) {
+    List<WorldMoveTargetController.TileCenter> tiles = new ArrayList<>();
+    for (int u = -8; u <= 8; u++)
+      for (int v = -8; v <= 8; v++)
+        tiles.add(
+            new WorldMoveTargetController.TileCenter(
+                s.player().x + (u - v) * 32, s.player().y + (u + v) * 16));
+    return new CompanionController.Navigation() {
+      public Object identity() {
+        return this;
+      }
+
+      public List<WorldMoveTargetController.TileCenter> tiles() {
+        return tiles;
+      }
+
+      public boolean stand(float x, float y) {
+        return true;
+      }
+
+      public boolean traverse(float ax, float ay, float bx, float by) {
+        return Math.abs(bx - ax) == 32 && Math.abs(by - ay) == 16;
+      }
+
+      public boolean sight(float ax, float ay, float bx, float by) {
+        return true;
+      }
+    };
+  }
+
+  @Test
+  public void followerUsesAdjacentTileStepsAndWaitCommandStopsMovement() {
+    RuntimeState s = setup.state(41, "MAGE");
+    CompanionParty.Member m = setup.recruit(s, CompanionParty.Job.WARRIOR);
+    m.map = s.currentMapId();
+    m.body.x = s.player().x - 160;
+    m.body.y = s.player().y - 80;
+    RuntimeCombatSession c = setup.session(s);
+    CompanionController controller = new CompanionController(s, c);
+    CompanionController.Navigation nav = nav(s);
+    float x = m.body.x, y = m.body.y;
+    controller.tick(.1f, nav, null, true);
+    assertTrue(m.moving);
+    assertEquals(32, Math.abs(m.body.x - x), 0);
+    assertEquals(16, Math.abs(m.body.y - y), 0);
+    for (int i = 0; i < 8; i++) {
+      controller.tick(.1f, nav, null, true);
+      c.tick(.1f);
+    }
+    s.party().order(CompanionParty.Order.WAIT, null);
+    for (int i = 0; i < 10; i++) controller.tick(.1f, nav, null, true);
+    x = m.body.x;
+    y = m.body.y;
+    for (int i = 0; i < 20; i++) controller.tick(.1f, nav, null, true);
+    assertEquals(x, m.body.x, 0);
+    assertEquals(y, m.body.y, 0);
+  }
+
+  @Test
+  public void priestUsesHealOrDispelAndNeverAttacksOrCurses() {
+    RuntimeState s = setup.state(71, "WARRIOR");
+    CompanionParty.Member m = setup.recruit(s, CompanionParty.Job.PRIEST);
+    m.map = s.currentMapId();
+    s.player().hp = 1;
+    RuntimeCombatSession c = setup.session(s);
+    CompanionController controller = new CompanionController(s, c);
+    CompanionController.Navigation nav = nav(s);
+    controller.tick(.1f, nav, null, true);
+    assertTrue(SkillAbilityCatalog.get(m.actionId).heal());
+    c.tick(.3f);
+    assertTrue(s.player().hp > 1);
+    s.skillEffects().put("player", "SK_마법사_025", "FREEZE", 1, 5);
+    for (int i = 0; i < 15; i++) {
+      controller.tick(.1f, nav, null, true);
+      c.tick(.1f);
+    }
+    assertFalse(s.skillEffects().has("player", "FREEZE"));
+    assertFalse(m.actionId.equals("SK_성직자_012"));
+  }
+
+  @Test
+  public void warriorDoesNotWakeSleepingTargetWithBasicOrLowTierAttack() {
+    RuntimeState s = setup.state(41, "MAGE");
+    CompanionParty.Member m = setup.recruit(s, CompanionParty.Job.WARRIOR);
+    RuntimeState.Monster enemy = s.monsters().get(0);
+    s.player().x = enemy.x - 64;
+    s.player().y = enemy.y - 32;
+    m.map = s.currentMapId();
+    m.body.x = enemy.x - 32;
+    m.body.y = enemy.y - 16;
+    enemy.provoked = true;
+    s.skillEffects().put(enemy.id, "SK_마법사_017", "SLEEP", 1, 12);
+    RuntimeCombatSession c = setup.session(s);
+    CompanionController controller = new CompanionController(s, c);
+    int hp = enemy.hp;
+    controller.tick(.1f, nav(s), enemy, true);
+    c.tick(.3f);
+    assertEquals(hp, enemy.hp);
+    assertEquals("연계 대기", m.notice);
+  }
+
+  @Test
+  public void priestDoesNotBreakPlayerCrashReservationAndRecoversAfterContact() {
+    RuntimeState s = setup.state(99, "WARRIOR");
+    CompanionParty.Member m = setup.recruit(s, CompanionParty.Job.PRIEST);
+    m.map = s.currentMapId();
+    RuntimeState.Monster enemy = s.monsters().get(0);
+    s.player().hp = Math.max(2, s.player().maxHp / 50);
+    s.party().reserve("player", enemy.id, "SK_전사_015", .8f);
+    RuntimeCombatSession c = setup.session(s);
+    CompanionController controller = new CompanionController(s, c);
+    CompanionController.Navigation nav = nav(s);
+    int hp = s.player().hp;
+    controller.tick(.1f, nav, enemy, true);
+    c.tick(.1f);
+    assertEquals(hp, s.player().hp);
+    s.party().finishReservation("player", "SK_전사_015");
+    for (int i = 0; i < 10; i++) {
+      controller.tick(.1f, nav, enemy, true);
+      c.tick(.1f);
+    }
+    assertTrue(s.player().hp > hp);
+  }
+
+  @Test
+  public void noCombatBuffSpamInTown() {
+    RuntimeState s = setup.state(99, "MAGE");
+    CompanionParty.Member m = setup.recruit(s, CompanionParty.Job.PRIEST);
+    m.map = s.currentMapId();
+    RuntimeCombatSession c = setup.session(s);
+    CompanionController controller = new CompanionController(s, c);
+    CompanionController.Navigation nav = nav(s);
+    int mp = m.body.mp;
+    for (int i = 0; i < 100; i++) {
+      controller.tick(.1f, nav, null, true);
+      c.tick(.1f);
+    }
+    assertEquals(mp, m.body.mp);
+    assertEquals("", m.actionId);
+  }
+}

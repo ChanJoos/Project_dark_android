@@ -197,6 +197,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
   }
 
   /** Placement is a terrain/occupancy check, independent of timed movement prohibition. */
+  public boolean canPartyStandAt(float x,float y){return canPlayerStandAt(x,y);}
   private boolean canPlayerStandAt(float x,float y){
     float r=RuntimeState.PLAYER_RADIUS;
     if(x-r<sceneMinX||x+r>sceneMaxX||y-r<sceneMinY||y+r>sceneMaxY)return false;
@@ -226,6 +227,7 @@ public final class WorldRuntimeAdapter implements WorldMoveTargetController.Navi
     return true;
   }
   private float[] combatPosition(String id){
+    com.projectdark.mobile.CompanionParty.Member companion=runtime.party().find(id);if(companion!=null)return new float[]{companion.body.x,companion.body.y};
     for(RuntimeState.Npc n:runtime.npcs())if(n.id.equals(id))return new float[]{n.x,n.y};
     if("player".equals(id))return new float[]{runtime.player().x,runtime.player().y};
     for(RuntimeState.Monster m:runtime.monsters())if(m.id.equals(id))return new float[]{m.x,m.y};

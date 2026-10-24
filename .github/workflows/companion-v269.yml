@@ -1,0 +1,70 @@
+name: V274 Countess video corrections
+on:
+  push:
+    branches: [codex/companion-party-v269]
+    paths:
+      - app/**
+      - assets/**
+      - tools/**
+      - master/source/**
+  workflow_dispatch:
+concurrency:
+  group: companion-v269-${{ github.ref }}
+  cancel-in-progress: true
+permissions:
+  contents: read
+jobs:
+  candidate:
+    runs-on: ubuntu-latest
+    timeout-minutes: 35
+    env:
+      JAVA_TOOL_OPTIONS: '-Drobolectric.dependency.repo.url=https://repo.maven.apache.org/maven2'
+      PROJECT_DARK_SOURCE_SHA: ${{ github.sha }}
+      PROJECT_DARK_SIDE_BY_SIDE: '1'
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+      - uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.11.1'
+      - run: pip install numpy==2.3.5 Pillow==12.3.0 scipy==1.17.0
+      # Existing generators retrieve only public static art at pinned paths/hashes.
+      # No user files, credentials, or project source are uploaded to those art hosts.
+      - name: Restore retained source registrations
+        run: python3 tools/collect_peasant_sources.py
+      - name: Compile and verify party, support, resources, rewards and restart
+        run: >-
+          gradle --no-daemon :app:testDebugUnitTest
+          --tests 'com.projectdark.mobile.CountessCastleV273Test'
+          --tests 'com.projectdark.mobile.CountessCastleNativeV273Test'
+          --tests 'com.projectdark.mobile.CompanionEquipmentV272Test'
+          --tests 'com.projectdark.mobile.CompanionEquipmentNativeV272Test'
+          --tests 'com.projectdark.mobile.CompanionAgentsV271Test'
+          --tests 'com.projectdark.mobile.CompanionAgentsNativeV271Test'
+          --tests 'com.projectdark.mobile.CompanionTestAccessV270Test'
+          --tests 'com.projectdark.mobile.CompanionPartyV269Test'
+          --tests 'com.projectdark.mobile.CompanionControllerV269Test'
+          --tests 'com.projectdark.mobile.CompanionWorldV269Test'
+          --tests 'com.projectdark.mobile.CompanionNativeV269Test'
+          --tests 'com.projectdark.mobile.SkillSpatialContractTest'
+          --tests 'com.projectdark.mobile.SkillTimingV174Test.realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes'
+          --tests 'com.projectdark.mobile.InventoryPolishV266Test'
+          --tests 'com.projectdark.mobile.EquipmentHudV262Test'
+          --stacktrace
+      - name: Assemble exact tested source
+        run: gradle --no-daemon :app:assembleDebug
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: V274_CASTLE_VERIFICATION
+          path: |
+            build/reports/countess-v273/
+            app/build/reports/
+            app/build/test-results/
+      - uses: actions/upload-artifact@v4
+        with:
+          name: PROJECT_DARK_V274_COUNTESS_TEST
+          path: app/build/outputs/apk/debug/*.apk

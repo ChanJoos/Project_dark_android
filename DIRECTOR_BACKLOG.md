@@ -1,3 +1,19 @@
+## V274 — 영상 수정 후보 APK 검증·전달 완료
+
+Source `19840bf885b411d8b9e510e670869155d4746267`, PR198/branch codex/companion-party-v269; main unchanged. IMPLEMENTED / BUILD_VERIFIED / SCOPED_HOST_RUNTIME_VERIFIED. Focused Actions40105712364/job120906926061 SUCCESS: independently downloaded XML15 suites,91 tests,0 failures/errors/skips. Every reviewed gate is walked through live collision and invokes actual GameView transition to its named target; NPC admission reaches reception2 and survives restart. Native16 maps/two aspect ratios/overviews/15 species four-direction poses, cache and companion/reward neighbors pass. Common Actions40105715515/job120907002178 SUCCESS, failed gates {}. Original357 retained source entries byte-identical;2 MPFs added,359 hashes validated; packaged319 Countess PNGs independently hash-verified.
+
+APK `PROJECT_DARK_V274_COUNTESS_TEST.apk`, com.projectdark.mobile.v274test,107917052 bytes; SHA256 `4310421a64a6473898da7b7cece382c86286c46250a49cb081665f61bbe2dca9`. Build completed2026-10-25 00:14:37KST. APK artifact12564488536, report12564364225; both download digests/CRC pass, embedded source/run and independent APKv2 signature verified. Saved Library libfile_ef5d765afb9081919406a2f41fdfe0a7. Inspected16 overview frames, actual exterior keeper/reception2-restored and15-species directional review. Phone/user visual acceptance PENDING. Unobserved reverse exits, original server facts and provisional boss identity joins remain explicitly ADAPTED/unresolved; do not call these source-confirmed. Receipt verification/COUNTESS_CASTLE_V274.json. Old V273 failed-device report remains history; this is a newly tested candidate, not handset confirmation.
+
+## V274 — 사용자 영상 재검수·백작 경로 수정 후보
+
+V273는 `DEVICE_FAILED_USER_REPORTED`: NPC 외형/응접실 분기/포탈 위치/존 이름/몬스터 구성이 사용자 영상과 다름. 폰 전체 증상의 근본 원인은 재현 전 UNKNOWN; 코드에서 잘못된 NPC→LOBBY, 외부 직접입장 누락, 모든 존 공통 포탈 좌표와 잘못된 로스터를 확인하고 수정했다.
+
+별장지기 original MPF314→응접실2, 외부 건물 입구(22,29) 직접포탈→응접실1. 응접실1 북서문→1존, 응접실2 북동문→결계. 임의 응접실1↔2 및12존→응접실2 연결 제거. 제목/포탈 목적지 `백작부인별장1존`~`백작부인별장12존`. 존1~5/7/9~11 북동문(13,0),6 북서문(0,14),8 남동난간(29,13)으로 전진. 포탈 생성은 연결된 정확한 타일만 허용하며 자동 가까운 타일 이동 금지. 영상에서 역방향 이동이 확인되지 않은 복귀 포탈은 ADAPTED로 구분한다.
+
+1~2 MPF383,3 MPF385,4 MPF314,5~6 MPF341,7 MPF342,8~9 큐브388~391,10 MPF319+검정/파랑/금빛큐브,11 여기에 붉은머리/초록옷MPF321 추가.12/결계 보스4종과 유령/인형/319 유지; 보스의 한국명↔MPF 최종정체·서버수치·스폰수·원작드랍은 여전히 미확정/ADAPTED. 원본zip의 기존 모든 바이트 유지,314/321 및 팔레트 추가. static furniture387을 몬스터로 쓰지 않는다.
+
+검증 범위: CountessGeometry/Travel/Monsters/Renderer/RuntimeState와 원본자산, 지도/포탈/NPC/UI/저장 직접경로. 로컬9도메인PASS·16맵/15종 원본프레임 디코드PASS. Android native16장면/15종4방향/실제NPC진입/포탈통행/저장/캐시 및 기존동료·보상 인접회귀는 CI 대기. APK 후보 패키지v274test. PHONE/USER_VISUAL PENDING; 아직 새 APK 검증완료 아님. 기존main/PR198유지.
+
 ## V248 — 최종 후보 검증·APK 전달 완료
 
 APK source `e38aeba15e34a7d9c797f16af7d8c8ed2922bb87`; [Actions39906861205](https://github.com/ChanJoos/Project_dark_android/actions/runs/39906861205) / job120260704047 SUCCESS, artifact12481077445. Final PortalServices3 + TempleMilles5 =8 PASS/0 failures/errors/skips. Exact-delta guarded retained32 PASS from eb7c55be/run39904714042 and 2df7cdf4/run39905956948:40 unique scoped checks, not a full-suite claim. Final71map/130portal groups,20source NPC roles, death-knight shop/recall checked. Prior21paid town routes/coast locking/cancel/poor/rollback/restart and adjacent navigation/save/cache/input evidence retained. Source pixel audit PASS. All71 final portal scenes plus temple capture inspected; old baked temple white beam removed, original32frame portal is common live overlay. Screenshot choice idle border cleaned with preserved original pixels.

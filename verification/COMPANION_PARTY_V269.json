@@ -1,0 +1,143 @@
+{
+  "revision": "V269_COMPANION_PARTY",
+  "baseMain": "f86d961eee066f2575b3d805a9006cde99f9119b",
+  "authorization": "응 그렇게 이제 만들어봐",
+  "scope": [
+    "warrior or priest companion",
+    "shared combat and ally support",
+    "role-aware decisions and bounded burst coordination",
+    "tile following and monster threat",
+    "HUD management and checkpoint persistence"
+  ],
+  "local": {
+    "productionCompile": "PASS_ECJ17_ANDROID_API",
+    "domainTests": 21,
+    "domainResult": "PASS"
+  },
+  "androidNative": {
+    "status": "PASS",
+    "runId": 40070443661,
+    "jobId": 120802529002,
+    "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db",
+    "passed": 37,
+    "failed": 0,
+    "classes": {
+      "com.projectdark.mobile.CompanionControllerV269Test": [
+        "followerUsesAdjacentTileStepsAndWaitCommandStopsMovement",
+        "priestUsesHealOrDispelAndNeverAttacksOrCurses",
+        "noCombatBuffSpamInTown",
+        "priestDoesNotBreakPlayerCrashReservationAndRecoversAfterContact",
+        "warriorDoesNotWakeSleepingTargetWithBasicOrLowTierAttack"
+      ],
+      "com.projectdark.mobile.CompanionWorldV269Test": [
+        "rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck"
+      ],
+      "com.projectdark.mobile.EquipmentHudV262Test": [
+        "wearingRemovesOnlyEquippedCopiesAndFooterReturnsThemWithoutChangingOwnership",
+        "bagButtonOpensLeftEquipmentRightBagAndBothCloseThroughActualInput",
+        "necklaceSwapUsesTappedSlotIncludingDuplicateBindingsAndSurvivesRestart",
+        "combatButtonsSitBesideSkillsAndDispatchTouchesAtBothWidths"
+      ],
+      "com.projectdark.mobile.CompanionNativeV269Test": [
+        "selectedAllyReceivesActualQuickslotHealAndProtection",
+        "recruitSelectSupportAndPersistThroughRealHudInBothAspectRatios",
+        "managementOverlayConsumesTouchesAndRecoveryDoesNotChangePlayerResources"
+      ],
+      "com.projectdark.mobile.SkillTimingV174Test": [
+        "realFinisherReuseBoundariesAreIndependentAndEqualInNormalAndTestModes"
+      ],
+      "com.projectdark.mobile.CompanionPartyV269Test": [
+        "priestCompanionHealsPlayerWithoutSpendingPlayerMp",
+        "startingCommonerHasNoImplicitPartyAndRecruitmentRequiresJob",
+        "allyHealConsumesCasterMpAndUsesRecipientHp",
+        "friendlyDamageAndEnemyHealingAreRejected",
+        "reservationProtectsSleepAndCrashButExpiresAndEndsOnContact",
+        "companionEffectsKeepDurationAndAreRestoredWithoutTouchingPlayer",
+        "companionCannotUseUnlearnedOrWrongJobSkills",
+        "playerSelfCenteredAttackStillUsesEnemyRecipients",
+        "partySnapshotPreservesHpMpDeathCooldownAndDoesNotHealOnRejoin",
+        "invalidSnapshotDoesNotPartiallyReplaceRoster",
+        "monsterAttackCanHitCompanionAndNotPlayer",
+        "crashConditionIsNotInventedByMadSoul",
+        "hiddenRogueCanStillReceiveFriendlyHealing",
+        "supportPoliciesAvoidFullHpHealingAndPriestCurse",
+        "warriorSoulUsesCompanionHpAndCostsCompanionHp"
+      ],
+      "com.projectdark.mobile.InventoryPolishV266Test": [
+        "allTenRecallsLoseOuterBlackRectangleAndKeepForegroundPixelsAndCachedIdentity",
+        "consumptionTabIncludesAllReagentsFoodAndRecallsWithoutAddingOwnership",
+        "everyNecklaceVisibleBoundsAreCenteredOnBothAxesAndActualEquipmentUsesSameProjection"
+      ],
+      "com.projectdark.mobile.SkillSpatialContractTest": [
+        "originalTileOraclesCoverAllFourDirectionsAndEveryReviewedId",
+        "passivesUtilitiesUnknownEffectsDoNotPlayMonsterAttackAndLinkedSkillsAffectBasic",
+        "liveGameInputRendersDistinctFinisherAndSpellEffects",
+        "targetMovesWallsAndViewportAreRecheckedAtContact",
+        "actualResolverHitsOnlyExpectedRecipientsForEveryCombatClass"
+      ]
+    },
+    "rendersReviewed": [
+      "warrior-hud-960",
+      "warrior-hud-2340",
+      "priest-management",
+      "ally-heal-protect"
+    ]
+  },
+  "apk": {
+    "status": "BUILD_VERIFIED_SIGNATURE_VERIFIED_CANDIDATE",
+    "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db",
+    "runId": 40070443661,
+    "jobId": 120802529002,
+    "artifactId": 12550144749,
+    "apkSha256": "3bda7b1e3748a7f63a18cec80dadfcb0e8da8002481b7a162abf871b1b3608ac",
+    "bytes": 106558034,
+    "package": "com.projectdark.mobile.v269test",
+    "label": "PROJECT DARK V269 TEST",
+    "buildCompletedKST": "2026-10-24 15:33:38",
+    "trackedAssetsByteExact": 1518,
+    "crc": "PASS",
+    "signature": "VERIFIED_APKSIG_8_7_3_V2",
+    "libraryFileId": "libfile_198c24363560819187627d60f4be08ba"
+  },
+  "phoneAcceptance": "PENDING_NEW_V269_FEATURE_ONLY",
+  "mainIntegration": "NOT_MERGED; PR198 candidate",
+  "retiredV268Checks": "REMAIN_RETIRED",
+  "firstAndroidRun": {
+    "id": 40068976919,
+    "sha": "c5e4cb6fd0fc912d5521d48ffaeb1d8128381088",
+    "result": "FAILED",
+    "tests": 36,
+    "failed": 5,
+    "disposition": [
+      "3 JVM JSON fixture environment failures: add real JSON test dependency",
+      "native support input lifecycle: exercise full update between actions",
+      "unrelated V174 whole-catalog snapshot differs from accepted V228 martial timings: bound adjacent check to finisher reuse; no runtime/old test edits"
+    ]
+  },
+  "fullCurrentRegression": {
+    "runId": 40070446870,
+    "jobId": 120802660120,
+    "sourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db",
+    "status": "PASS",
+    "activeGateGroups": 32,
+    "passed": 32,
+    "skipped": 0,
+    "failed": 0,
+    "retiredGroupsRemainAbsent": true
+  },
+  "liveWorldRegression": {
+    "initialResult": "FAILED: RESCUE could leave attackPrimed=true with CHASE state and prevent monster retaliation",
+    "fix": "Cancel old windup on taunt retarget; face the real party target when a new windup starts",
+    "test": "CompanionWorldV269Test.rescueRetargetsLiveMonsterWithoutLeavingPrimedWindupStuck",
+    "localResult": "PASS",
+    "androidResult": "PASS_ON_FINAL_SOURCE"
+  },
+  "liveWorldAndroidRun": {
+    "runId": 40070181040,
+    "sourceCommit": "2d7bff630462f18117fa30628ed4960b839ebf94",
+    "passed": 36,
+    "failed": 1,
+    "reason": "New real-world fixture used JVM mock RectF; move only that fixture to Robolectric Android runtime. All game production bytes unchanged by this fixture correction."
+  },
+  "currentSourceCommit": "96607aeb1b0dac9cafc15a6c6e2597ef55a6a8db"
+}

@@ -1,3 +1,15 @@
+## V273 Countess candidate acceptance record — Android pending
+
+14 native MPFs383/385/341/342/387/388–391/319/400/401/397/410 retain every indexed frame and pivot. Runtime stores each native source cell once; west directions use source-compatible canvas mirroring. MPF387 contains one static furniture frame; no fabricated attack frame. All14 source species are admitted to scene rosters including dormant second boss and summonable bomb. Specific Korean boss identity joins and original server tuning remain PENDING/ADAPTED. Shared Resolver/AI, actual player+companion sleep/dispel, per-map lifetime snapshot, source-alpha variants, navigation/current-map prewarm and12trip cache checks added. Local compile/domain8PASS; Android/native/artifact/phone acceptance pending. Do not promote this to original full parity solely from compilation. See design/COUNTESS_CASTLE_V273.md.
+
+## V271 companion stealth acceptance evidence
+
+Actor-specific targetHidden/Resolver begin-and-contact guard is host/native verified at b6e9961b, Actions40076725337 (61 current feature/adjacent tests including real monster retaliation). Shared full32gate run40076146616 on e7b18af0 is reused through exact three-line HUD-only final delta guard. Source monster art, movement/facing/attack cadence/population unchanged. User phone acceptance PENDING. Receipt verification/COMPANION_AGENTS_V271.json.
+
+## V271 companion stealth targeting contract
+
+New rogue companion stealth uses its own actor ID in the existing monster targetHidden gate. Only attacks targeting that companion are cancelled by its hide; attacks on player/other actors retain their prior state. No monster source art, movement/facing/attack cadence/population changes. Companion and actual monster-retaliation regressions plus current full gates required. Phone acceptance pending. Contract design/COMPANION_AGENTS_V271.md.
+
 ## V264 — 공격 그림의 프레임 선택·반전 교정 후보 (2026-10-24 KST)
 
 V263 DEVICE_FAILED_USER_REPORTED: Screen_Recording_20261024_081540.mp4(29.390678s,2340x1080,libfile_1556c6c0b3748191bac77952c1d935a4). 전체1fps와10~14/19~23초6fps크롭확인. 설치SHA영상내UNKNOWN/최근eca4d745. 기존 방향값/소스회귀 검사는 실제 몸그림의 방향을 놓쳤다.
@@ -698,3 +710,13 @@ Exact sourceeb0c979f8d30d0272df52fc20cb065a5054b1cb6,focused39132348710/job11768
 Saved PROJECT_DARK_V183_TEST.apk/com.projectdark.mobile.v183test;built2026-10-18 22:46:31KST,83634542bytes,SHA256da4df42f9048eaab97188a06c9b5b40c0e5441afdb49a43f476042c83bc4193a. Artifact12138184924/ZIP92786070bytes,SHA256588aa5b7c51762d7405b9d1dfc4f3372e783503be81d683d180fa4682e78bade. Download initially truncated82837504bytes;resumed only the missing tail via validated206/Content-Range,then fullhash/CRC/source/run/version/all10monster hashes verified. APKsignaturev2PASS. Actualroom01/03screens reviewed: noexitNPC,sourceprops,onegroundreturnportal and centeredlabels. Library save succeeded with metadata applied. Receipt master/changes/V183_BUILD_RUNTIME_RECEIPT.json;policy master/changes/V183_MOBILE_HORROR_POLICY.json. Full common39132352529 still running; no fullPASS claimed. Phone/useracceptance PENDING;PR197/main41fe6def unmerged.
 
 Requests1and2are NOTCOMPLETE. Original310542 source info3PNG+8GIF(369frames),14mediarefs including headings preserved. Added paired originalmw069 full868x50atlas+27frame/anchor registration, allboundsPASS and existing38x13inventorycrop equals exact idle0pixels. ExistingMasterweaponWebPs are often singleidle images,NOTfullwearableatlases; do not fake missing motion by using the static crop. Fiveweapon source-row/art checks recorded in source/items/naver_310542_20261018/mapping_checks.json. Other article weapon/attribute/enhancement identities, matching original fullatlases/registrations,10Horror exact separate armor/weapon/shield kits, fullruntime/inventory/stat/equip tests remain unfinished. Color-histogram lookalikes are exploratory only and NOTidentity proof. Resume these concrete source gaps, or current fullCI result. Do not recreate/reupload the testedV183APK or redo41passing tests merely because the chat was interrupted.
+
+## V274 — 사용자 영상 재검수·백작 경로 수정 후보
+
+V273는 `DEVICE_FAILED_USER_REPORTED`: NPC 외형/응접실 분기/포탈 위치/존 이름/몬스터 구성이 사용자 영상과 다름. 폰 전체 증상의 근본 원인은 재현 전 UNKNOWN; 코드에서 잘못된 NPC→LOBBY, 외부 직접입장 누락, 모든 존 공통 포탈 좌표와 잘못된 로스터를 확인하고 수정했다.
+
+별장지기 original MPF314→응접실2, 외부 건물 입구(22,29) 직접포탈→응접실1. 응접실1 북서문→1존, 응접실2 북동문→결계. 임의 응접실1↔2 및12존→응접실2 연결 제거. 제목/포탈 목적지 `백작부인별장1존`~`백작부인별장12존`. 존1~5/7/9~11 북동문(13,0),6 북서문(0,14),8 남동난간(29,13)으로 전진. 포탈 생성은 연결된 정확한 타일만 허용하며 자동 가까운 타일 이동 금지. 영상에서 역방향 이동이 확인되지 않은 복귀 포탈은 ADAPTED로 구분한다.
+
+1~2 MPF383,3 MPF385,4 MPF314,5~6 MPF341,7 MPF342,8~9 큐브388~391,10 MPF319+검정/파랑/금빛큐브,11 여기에 붉은머리/초록옷MPF321 추가.12/결계 보스4종과 유령/인형/319 유지; 보스의 한국명↔MPF 최종정체·서버수치·스폰수·원작드랍은 여전히 미확정/ADAPTED. 원본zip의 기존 모든 바이트 유지,314/321 및 팔레트 추가. static furniture387을 몬스터로 쓰지 않는다.
+
+검증 범위: CountessGeometry/Travel/Monsters/Renderer/RuntimeState와 원본자산, 지도/포탈/NPC/UI/저장 직접경로. 로컬9도메인PASS·16맵/15종 원본프레임 디코드PASS. Android native16장면/15종4방향/실제NPC진입/포탈통행/저장/캐시 및 기존동료·보상 인접회귀는 CI 대기. APK 후보 패키지v274test. PHONE/USER_VISUAL PENDING; 아직 새 APK 검증완료 아님. 기존main/PR198유지.

@@ -403,7 +403,9 @@ jobs:
             app/build/reports/device-review/v92-*.png
             app/build/reports/device-review/v93-*.png
             app/build/reports/device-review/v88-*.png
-          if-no-files-found: error
+          # V268 retired their generators; historical screenshots are optional artifacts.
+          # Current integration_gate outcomes remain mandatory below.
+          if-no-files-found: warn
       - name: Upload focused V93 review
         if: always()
         uses: actions/upload-artifact@v4
